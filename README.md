@@ -1,2 +1,2 @@
-# machoChallengeEvents
+# macroChallengeEvents
 Repositório do Macro Challenge 
