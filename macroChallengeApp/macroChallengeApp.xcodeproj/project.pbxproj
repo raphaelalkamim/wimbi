@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A10A28C6827800994196 /* Roadmaps.swift */; };
+		13C8A10D28C6828900994196 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A10C28C6828900994196 /* User.swift */; };
+		13C8A10F28C6829100994196 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A10E28C6829100994196 /* Day.swift */; };
+		13C8A11128C6833D00994196 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A11028C6833D00994196 /* Like.swift */; };
+		13C8A11328C6835300994196 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A11228C6835300994196 /* Activity.swift */; };
+		13C8A11628C68B7700994196 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A11528C68B7700994196 /* DataManager.swift */; };
+		13C8A11828C691F100994196 /* DataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A11728C691F100994196 /* DataType.swift */; };
 		13C8A10628C6698100994196 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 13C8A10528C6698100994196 /* .swiftlint.yml */; };
 		B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21528C27F2000D46F61 /* AppDelegate.swift */; };
 		B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21728C27F2000D46F61 /* SceneDelegate.swift */; };
@@ -38,6 +45,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13C8A10A28C6827800994196 /* Roadmaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmaps.swift; sourceTree = "<group>"; };
+		13C8A10C28C6828900994196 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		13C8A10E28C6829100994196 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		13C8A11028C6833D00994196 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		13C8A11228C6835300994196 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		13C8A11528C68B7700994196 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		13C8A11728C691F100994196 /* DataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataType.swift; sourceTree = "<group>"; };
 		13C8A10528C6698100994196 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		B078F21228C27F2000D46F61 /* macroChallengeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macroChallengeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B078F21528C27F2000D46F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +94,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13C8A10728C6824F00994196 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B078F21928C27F2000D46F61 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		13C8A10828C6826200994196 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B078F21B28C27F2000D46F61 /* Main.storyboard */,
+				B078F22328C27F2400D46F61 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		13C8A10928C6826B00994196 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				13C8A10C28C6828900994196 /* User.swift */,
+				13C8A10A28C6827800994196 /* Roadmaps.swift */,
+				13C8A11228C6835300994196 /* Activity.swift */,
+				13C8A10E28C6829100994196 /* Day.swift */,
+				13C8A11028C6833D00994196 /* Like.swift */,
+				13C8A11528C68B7700994196 /* DataManager.swift */,
+				13C8A11728C691F100994196 /* DataType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		13C8A11428C68B0F00994196 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				B078F21528C27F2000D46F61 /* AppDelegate.swift */,
+				B078F21728C27F2000D46F61 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		B078F20928C27F2000D46F61 = {
 			isa = PBXGroup;
 			children = (
@@ -103,12 +157,11 @@
 		B078F21428C27F2000D46F61 /* macroChallengeApp */ = {
 			isa = PBXGroup;
 			children = (
-				B078F21528C27F2000D46F61 /* AppDelegate.swift */,
-				B078F21728C27F2000D46F61 /* SceneDelegate.swift */,
-				B078F21928C27F2000D46F61 /* ViewController.swift */,
-				B078F21B28C27F2000D46F61 /* Main.storyboard */,
+				13C8A11428C68B0F00994196 /* Delegates */,
+				13C8A10928C6826B00994196 /* Models */,
+				13C8A10828C6826200994196 /* Views */,
+				13C8A10728C6824F00994196 /* Controllers */,
 				B078F22128C27F2400D46F61 /* Assets.xcassets */,
-				B078F22328C27F2400D46F61 /* LaunchScreen.storyboard */,
 				B078F22628C27F2400D46F61 /* Info.plist */,
 				B078F21E28C27F2000D46F61 /* macroChallengeApp.xcdatamodeld */,
 				13C8A10528C6698100994196 /* .swiftlint.yml */,
@@ -287,9 +340,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13C8A10F28C6829100994196 /* Day.swift in Sources */,
+				13C8A11628C68B7700994196 /* DataManager.swift in Sources */,
 				B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */,
+				13C8A11128C6833D00994196 /* Like.swift in Sources */,
 				B078F21A28C27F2000D46F61 /* ViewController.swift in Sources */,
+				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
 				B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */,
+				13C8A11328C6835300994196 /* Activity.swift in Sources */,
+				13C8A10D28C6828900994196 /* User.swift in Sources */,
+				13C8A11828C691F100994196 /* DataType.swift in Sources */,
 				B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
