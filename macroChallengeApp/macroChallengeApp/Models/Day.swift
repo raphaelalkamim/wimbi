@@ -8,7 +8,6 @@
 import Foundation
 
 struct Day: Codable {
-    
     var id: Int
     var date: String
     var roadmap: Roadmaps

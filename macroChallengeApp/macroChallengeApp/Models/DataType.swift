@@ -8,9 +8,9 @@
 import Foundation
 
 enum DataType: String {
-    case User = "User"
-    case Roadmaps = "Roadmaps"
-    case Activity = "Activity"
-    case Day = "Day"
-    case Like = "Like"
+    case USER = "User"
+    case ROADMAPS = "Roadmaps"
+    case ACTIVITY = "Activity"
+    case DAY = "Day"
+    case LIKE = "Like"
 }

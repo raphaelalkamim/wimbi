@@ -8,9 +8,8 @@
 import Foundation
 import UIKit
 
-
 class DataManager {
-    public static var shared: DataManager = DataManager()
+    public static var shared = DataManager()
     let baseURL: String = "https://macroptrip-api.herokuapp.com/"
         
     public let imageCash = NSCache<NSNumber, UIImage>()
@@ -22,13 +21,13 @@ class DataManager {
     var like: Like?
     
     // MARK: - Load Data
-    public func loadData(_ completion: @escaping (()->Void), dataURL: String, dataType: DataType) {
-        let session: URLSession = URLSession.shared
-        let url: URL = URL(string: baseURL + dataURL)!
+    public func loadData(_ completion: @escaping (() -> Void), dataURL: String, dataType: DataType) {
+        let session = URLSession.shared
+        let url = URL(string: baseURL + dataURL)!
         
         // resposta vem no data (json), error vem no error
         let task = session.dataTask(with: url) { data, _, error in
-            guard let data = data else {return}
+            guard let data = data else { return }
             if error != nil {
                 print(String(describing: error?.localizedDescription))
             }
@@ -39,31 +38,31 @@ class DataManager {
     
     private func getDataType(dataType: DataType, data: Data ) {
         switch dataType {
-        case .User:
+        case .USER:
             do {
-                self.user =  try JSONDecoder().decode(User.self, from: data)
+                self.user = try JSONDecoder().decode(User.self, from: data)
             } catch {
                 print("Parse Error")
             }
-        case .Roadmaps:
+        case .ROADMAPS:
             do {
-                self.roadmaps =  try JSONDecoder().decode(Roadmaps.self, from: data)
+                self.roadmaps = try JSONDecoder().decode(Roadmaps.self, from: data)
             } catch {
                 print("Parse Error")
             }
-        case .Activity:
+        case .ACTIVITY:
             do {
-                self.activity =  try JSONDecoder().decode(Activity.self, from: data)
+                self.activity = try JSONDecoder().decode(Activity.self, from: data)
             } catch {
                 print("Parse Error")
             }
-        case .Day:
+        case .DAY:
             do {
-                self.day =  try JSONDecoder().decode(Day.self, from: data)
+                self.day = try JSONDecoder().decode(Day.self, from: data)
             } catch {
                 print("Parse Error")
             }
-        case .Like:
+        case .LIKE:
             do {
                 self.like = try JSONDecoder().decode(Like.self, from: data)
             } catch {
@@ -74,7 +73,7 @@ class DataManager {
     #warning("Corrigir essa funcao para utilizar no codigo")
     func decodeType<T: Codable>(_ class: T, data: Data) -> T? {
         do {
-            let newData  = try JSONDecoder().decode(T.self, from: data)
+            let newData = try JSONDecoder().decode(T.self, from: data)
             return newData
         } catch {
             print("Parse Error")

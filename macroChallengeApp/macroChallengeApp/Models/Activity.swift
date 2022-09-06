@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Activity: Codable {
-    
+struct Activity: Codable {    
     var id: Int
     var name: String
     var category: String
