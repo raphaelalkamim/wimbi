@@ -7,7 +7,7 @@
 
 import XCTest
 
-class macroChallengeAppUITestsLaunchTests: XCTestCase {
+class MacroChallengeAppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
