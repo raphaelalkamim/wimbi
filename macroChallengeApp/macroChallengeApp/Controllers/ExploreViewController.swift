@@ -9,8 +9,11 @@ import UIKit
 
 class ExploreViewController: UIViewController {
     weak var coordinator: ExploreCoordinator?
+    let designSystem: DesignSystem = DefaultDesignSystem.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
+        
     }
 }

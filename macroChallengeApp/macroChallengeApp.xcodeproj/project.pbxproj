@@ -40,6 +40,10 @@
 		B078F23028C27F2500D46F61 /* macroChallengeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F22F28C27F2500D46F61 /* macroChallengeAppTests.swift */; };
 		B078F23A28C27F2500D46F61 /* macroChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */; };
 		B078F23C28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */; };
+		DF5F774128CA7E1600BA5F5F /* DesignSystem+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774028CA7E1600BA5F5F /* DesignSystem+UIFont.swift */; };
+		DF5F774328CA820200BA5F5F /* DefaultDesignFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774228CA820200BA5F5F /* DefaultDesignFonts.swift */; };
+		DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774428CA846C00BA5F5F /* UILabel+Font.swift */; };
+		DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774628CA853000BA5F5F /* CustomLabelDesignable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +101,10 @@
 		B078F23528C27F2500D46F61 /* macroChallengeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macroChallengeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITests.swift; sourceTree = "<group>"; };
 		B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DF5F774028CA7E1600BA5F5F /* DesignSystem+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+UIFont.swift"; sourceTree = "<group>"; };
+		DF5F774228CA820200BA5F5F /* DefaultDesignFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignFonts.swift; sourceTree = "<group>"; };
+		DF5F774428CA846C00BA5F5F /* UILabel+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Font.swift"; sourceTree = "<group>"; };
+		DF5F774628CA853000BA5F5F /* CustomLabelDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelDesignable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +203,7 @@
 				13C8A12428CA693700994196 /* DesignSpacing.swift */,
 				13C8A12628CA693F00994196 /* DesignText.swift */,
 				13C8A13528CA6C1100994196 /* TextStyle.swift */,
+				DF5F774628CA853000BA5F5F /* CustomLabelDesignable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -205,6 +214,7 @@
 				13C8A12F28CA6AF400994196 /* DefaultDesignSystem.swift */,
 				13C8A13128CA6B0400994196 /* DefaultDesignPalette.swift */,
 				13C8A13328CA6B4200994196 /* DefaultDesignSpacing.swift */,
+				DF5F774228CA820200BA5F5F /* DefaultDesignFonts.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -213,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				13C8A13728CA75EA00994196 /* DesignSystem+UIColor.swift */,
+				DF5F774028CA7E1600BA5F5F /* DesignSystem+UIFont.swift */,
+				DF5F774428CA846C00BA5F5F /* UILabel+Font.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -441,16 +453,20 @@
 				13C8A12D28CA6A2500994196 /* ProfileCoordinator.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
 				B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */,
+				DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */,
+				DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */,
 				13C8A11328C6835300994196 /* Activity.swift in Sources */,
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
 				13C8A12728CA693F00994196 /* DesignText.swift in Sources */,
 				13C8A13B28CA78E600994196 /* CurrentViewController.swift in Sources */,
 				13C8A11A28CA668F00994196 /* TabBarController.swift in Sources */,
+				DF5F774328CA820200BA5F5F /* DefaultDesignFonts.swift in Sources */,
 				13C8A12528CA693700994196 /* DesignSpacing.swift in Sources */,
 				13C8A11828C691F100994196 /* DataType.swift in Sources */,
 				13C8A12B28CA6A0A00994196 /* CurrentCoordinator.swift in Sources */,
 				B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */,
+				DF5F774128CA7E1600BA5F5F /* DesignSystem+UIFont.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

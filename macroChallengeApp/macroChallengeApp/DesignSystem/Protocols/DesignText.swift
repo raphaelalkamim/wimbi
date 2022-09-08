@@ -7,5 +7,8 @@
 import UIKit
 
 struct DesignText {
-    
+    let largeTitle: TextStyle = LargeTitleTextStyle()
+    let title: TextStyle = TitleTextStyle()
+    let body: TextStyle = BodyTextStyle()
+    let caption: TextStyle = CaptionTextStyle()
 }

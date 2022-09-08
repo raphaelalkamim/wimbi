@@ -33,7 +33,11 @@ class ExploreCoordinator: Coordinator {
         
         navigationController.navigationBar.prefersLargeTitles = true
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
+        
         UINavigationBar.appearance().barTintColor = designSystem.palette.backgroundPrimary
+        
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
+        
+        self.navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.largeTitle]
     }
 }

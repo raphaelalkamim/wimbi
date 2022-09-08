@@ -9,12 +9,8 @@ import UIKit
 
 struct DefaultDesignPalette: DesignPalette {
     var backgroundPrimary: UIColor = .backgroundPrimary
-    
     var accent: UIColor = .accent
-    
     var textPrimary: UIColor = .textPrimary
-    
     var titlePrimary: UIColor = .titlePrimary
-    
     var backgroundCell: UIColor = .backgroundCell
 }
