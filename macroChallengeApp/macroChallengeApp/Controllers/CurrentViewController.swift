@@ -11,5 +11,7 @@ class CurrentViewController: UIViewController {
     weak var coordinator: CurrentCoordinator?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .backgroundPrimary
+
     }
 }

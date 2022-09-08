@@ -11,7 +11,6 @@ class ExploreViewController: UIViewController {
     weak var coordinator: ExploreCoordinator?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .yellow
+        self.view.backgroundColor = .backgroundPrimary
     }
 }
