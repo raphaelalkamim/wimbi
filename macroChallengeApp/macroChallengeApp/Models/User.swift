@@ -8,7 +8,6 @@
 import Foundation
 
 struct User: Codable {
-    
     var id: Int
     var date: String
     var roadmaps: Roadmaps
@@ -18,7 +17,6 @@ struct User: Codable {
         case date = "dd/mm/yyyy"
         case roadmaps
     }
-    
 }
 
 extension User: CustomStringConvertible {
