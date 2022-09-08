@@ -12,4 +12,5 @@ protocol DesignPalette {
     var textPrimary: UIColor { get }
     var titlePrimary: UIColor { get }
     var backgroundCell: UIColor { get }
+    var caption: UIColor { get }
 }

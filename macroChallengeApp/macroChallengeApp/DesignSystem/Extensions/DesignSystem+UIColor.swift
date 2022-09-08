@@ -27,5 +27,9 @@ extension UIColor {
     static var backgroundCell: UIColor {
         UIColor(named: "BackgroundCell")!
     }
+    
+    static var caption: UIColor {
+        UIColor(named: "Caption")!
+    }
 }
 

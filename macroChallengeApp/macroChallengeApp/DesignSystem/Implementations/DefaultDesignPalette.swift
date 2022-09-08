@@ -13,4 +13,5 @@ struct DefaultDesignPalette: DesignPalette {
     var textPrimary: UIColor = .textPrimary
     var titlePrimary: UIColor = .titlePrimary
     var backgroundCell: UIColor = .backgroundCell
+    var caption: UIColor = .caption
 }
