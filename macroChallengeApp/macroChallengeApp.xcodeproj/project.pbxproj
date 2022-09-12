@@ -36,6 +36,7 @@
 		13C8A14B28CFA68C00994196 /* NewRoadmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A14A28CFA68C00994196 /* NewRoadmapViewController.swift */; };
 		13C8A14D28CFC20B00994196 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A14C28CFC20B00994196 /* LocationSearchTableViewController.swift */; };
 		13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A15128CFC29500994196 /* HandleMapSearch.swift */; };
+		13C8A15528CFD0D000994196 /* NewRoadmapViewController+Destiny.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A15428CFD0D000994196 /* NewRoadmapViewController+Destiny.swift */; };
 		640CD5CCE40B36AB975231D2 /* Pods_macroChallengeApp_macroChallengeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D148866C3AA7A72395A6BDAC /* Pods_macroChallengeApp_macroChallengeAppUITests.framework */; };
 		8937FC4EB5BEAACC958B84A1 /* Pods_macroChallengeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */; };
 		90297BBF83D0A825FF081EB4 /* Pods_macroChallengeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */; };
@@ -100,6 +101,7 @@
 		13C8A14A28CFA68C00994196 /* NewRoadmapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoadmapViewController.swift; sourceTree = "<group>"; };
 		13C8A14C28CFC20B00994196 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 		13C8A15128CFC29500994196 /* HandleMapSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleMapSearch.swift; sourceTree = "<group>"; };
+		13C8A15428CFD0D000994196 /* NewRoadmapViewController+Destiny.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewRoadmapViewController+Destiny.swift"; sourceTree = "<group>"; };
 		277A5A175FEAF690AE55045F /* Pods-macroChallengeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeAppTests.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeAppTests/Pods-macroChallengeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4842CC9B9D145281B17CEC0E /* Pods-macroChallengeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeAppTests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeAppTests/Pods-macroChallengeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macroChallengeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 		13C8A10728C6824F00994196 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				13C8A15328CFD0B900994196 /* Extensions */,
 				13C8A14F28CFC21700994196 /* View */,
 				13C8A14E28CFC21000994196 /* Table */,
 			);
@@ -285,6 +288,14 @@
 				13C8A15128CFC29500994196 /* HandleMapSearch.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		13C8A15328CFD0B900994196 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				13C8A15428CFD0D000994196 /* NewRoadmapViewController+Destiny.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4171B73C15A2C812F704D532 /* Pods */ = {
@@ -650,6 +661,7 @@
 				13C8A11328C6835300994196 /* Activity.swift in Sources */,
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
+				13C8A15528CFD0D000994196 /* NewRoadmapViewController+Destiny.swift in Sources */,
 				13C8A12728CA693F00994196 /* DesignText.swift in Sources */,
 				13C8A13B28CA78E600994196 /* CurrentViewController.swift in Sources */,
 				13C8A14D28CFC20B00994196 /* LocationSearchTableViewController.swift in Sources */,

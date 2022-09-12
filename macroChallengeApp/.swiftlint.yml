@@ -11,16 +11,20 @@ disabled_rules:
   - type_body_length
   - unavailable_function
   - cyclomatic_complexity
+  - redundant_optional_initialization
+  - overridden_super_call
+  - empty_xctest_method
+  - lower_acl_than_parent
 excluded:
   - Pods
   - ATSwiftLintTest/AppDelegate.swift
 
 type_name:
   min_length:
-    error: 3
+    error: 2
   max_length:
-    warning: 30
-    error: 40
+    warning: 40
+    error: 45
 
 identifier_name:
   min_length:
