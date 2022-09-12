@@ -43,6 +43,8 @@
 		B078F23028C27F2500D46F61 /* macroChallengeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F22F28C27F2500D46F61 /* macroChallengeAppTests.swift */; };
 		B078F23A28C27F2500D46F61 /* macroChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */; };
 		B078F23C28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */; };
+		B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */; };
+		B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461628CFA85E00D62AF1 /* CategoryView.swift */; };
 		DF5F774128CA7E1600BA5F5F /* DesignSystem+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774028CA7E1600BA5F5F /* DesignSystem+UIFont.swift */; };
 		DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774228CA820200BA5F5F /* DefaultDesignTextFonts.swift */; };
 		DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774428CA846C00BA5F5F /* UILabel+Font.swift */; };
@@ -109,6 +111,8 @@
 		B078F23528C27F2500D46F61 /* macroChallengeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macroChallengeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITests.swift; sourceTree = "<group>"; };
 		B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
+		B0E2461628CFA85E00D62AF1 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		B897B6EEE760DBB56A9888E4 /* Pods-macroChallengeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp/Pods-macroChallengeApp.release.xcconfig"; sourceTree = "<group>"; };
 		D148866C3AA7A72395A6BDAC /* Pods_macroChallengeApp_macroChallengeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macroChallengeApp_macroChallengeAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4996FD9467D4E74060F7D0 /* Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 		13C8A10828C6826200994196 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B0E2461328CFA39A00D62AF1 /* UIViewCell */,
+				B0E2461228CFA39100D62AF1 /* UIView */,
 				B078F22328C27F2400D46F61 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -254,7 +260,6 @@
 				277A5A175FEAF690AE55045F /* Pods-macroChallengeAppTests.debug.xcconfig */,
 				4842CC9B9D145281B17CEC0E /* Pods-macroChallengeAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -322,6 +327,22 @@
 				B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */,
 			);
 			path = macroChallengeAppUITests;
+			sourceTree = "<group>";
+		};
+		B0E2461228CFA39100D62AF1 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				B0E2461628CFA85E00D62AF1 /* CategoryView.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		B0E2461328CFA39A00D62AF1 /* UIViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */,
+			);
+			path = UIViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -587,11 +608,13 @@
 				13C8A11628C68B7700994196 /* DataManager.swift in Sources */,
 				13C8A11D28CA681C00994196 /* Coordinator.swift in Sources */,
 				13C8A13228CA6B0400994196 /* DefaultDesignPalette.swift in Sources */,
+				B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */,
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
 				13C8A13D28CA795A00994196 /* ProfileViewController.swift in Sources */,
 				B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */,
 				13C8A12128CA690500994196 /* DesignSystem.swift in Sources */,
 				13C8A13828CA75EA00994196 /* DesignSystem+UIColor.swift in Sources */,
+				B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */,
 				13C8A13028CA6AF400994196 /* DefaultDesignSystem.swift in Sources */,
 				13C8A12328CA692500994196 /* DesignPalette.swift in Sources */,
 				13C8A13F28CA7B3D00994196 /* ExploreViewController.swift in Sources */,
