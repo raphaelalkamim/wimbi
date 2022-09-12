@@ -12,7 +12,7 @@ import SnapKit
 class DestinyView: UIView {
     var mapView: MKMapView
     var searchBar: UISearchBar
-    var searchController: UISearchController
+    var searchController: UISearchController? = nil
     var designSystem: DesignSystem = DefaultDesignSystem.shared
     
     override init(frame: CGRect) {
@@ -32,10 +32,6 @@ class DestinyView: UIView {
         // view
         self.backgroundColor = designSystem.palette.backgroundPrimary
         
-        // searchBar
-        searchBar = searchController.searchBar
-        searchBar.placeholder = "Para onde você vai?"
-        searchBar.sizeToFit()
         
         // mapa
         self.addSubview(mapView)
@@ -54,5 +50,21 @@ class DestinyView: UIView {
         navigation.searchController = searchController
         navigation.title = "Destiny"
     }
+    
+    func setupSearchController(locationTable: LocationSearchTableViewController) {
+        // searchBar
+        searchController = UISearchController(searchResultsController: locationTable)
+        guard let searchController = searchController else {
+            return
+        }
         
+        searchController.searchResultsUpdater = locationTable
+        
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = true
+        
+        searchBar = searchController.searchBar
+        searchBar.placeholder = "Para onde você vai?"
+        searchBar.sizeToFit()
+    }
 }
