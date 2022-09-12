@@ -7,12 +7,44 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class CategoryView: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
     
-    fileprivate let collection: UICollectionView = {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: 80)
         
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(CategoryViewCell.self, forCellWithReuseIdentifier: CategoryViewCell.identifier)
+        return collectionView
     }()
+}
+
+extension CategoryView {
+    func setup() {
+        self.addSubview(collectionView)
+        setupConstraints()
+    }
+    
+    func setupConstraints() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.snp.makeConstraints { make in
+            make.width.height.equalToSuperview()
+        }
+    }
+    
+    func bindColletionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+        collectionView.delegate = delegate
+        collectionView.dataSource = dataSource
+    }
 }
