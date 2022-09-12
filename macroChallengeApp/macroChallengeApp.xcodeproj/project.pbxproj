@@ -34,6 +34,8 @@
 		13C8A13F28CA7B3D00994196 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A13E28CA7B3D00994196 /* ExploreViewController.swift */; };
 		13C8A14928CFA66200994196 /* DestinyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A14828CFA66200994196 /* DestinyView.swift */; };
 		13C8A14B28CFA68C00994196 /* NewRoadmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A14A28CFA68C00994196 /* NewRoadmapViewController.swift */; };
+		13C8A14D28CFC20B00994196 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A14C28CFC20B00994196 /* LocationSearchTableViewController.swift */; };
+		13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A15128CFC29500994196 /* HandleMapSearch.swift */; };
 		640CD5CCE40B36AB975231D2 /* Pods_macroChallengeApp_macroChallengeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D148866C3AA7A72395A6BDAC /* Pods_macroChallengeApp_macroChallengeAppUITests.framework */; };
 		8937FC4EB5BEAACC958B84A1 /* Pods_macroChallengeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */; };
 		90297BBF83D0A825FF081EB4 /* Pods_macroChallengeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */; };
@@ -96,6 +98,8 @@
 		13C8A13E28CA7B3D00994196 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		13C8A14828CFA66200994196 /* DestinyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinyView.swift; sourceTree = "<group>"; };
 		13C8A14A28CFA68C00994196 /* NewRoadmapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoadmapViewController.swift; sourceTree = "<group>"; };
+		13C8A14C28CFC20B00994196 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
+		13C8A15128CFC29500994196 /* HandleMapSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleMapSearch.swift; sourceTree = "<group>"; };
 		277A5A175FEAF690AE55045F /* Pods-macroChallengeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeAppTests.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeAppTests/Pods-macroChallengeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4842CC9B9D145281B17CEC0E /* Pods-macroChallengeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeAppTests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeAppTests/Pods-macroChallengeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macroChallengeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,11 +158,8 @@
 		13C8A10728C6824F00994196 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				13C8A13E28CA7B3D00994196 /* ExploreViewController.swift */,
-				13C8A11928CA668F00994196 /* TabBarController.swift */,
-				13C8A13A28CA78E600994196 /* CurrentViewController.swift */,
-				13C8A13C28CA795A00994196 /* ProfileViewController.swift */,
-				13C8A14A28CFA68C00994196 /* NewRoadmapViewController.swift */,
+				13C8A14F28CFC21700994196 /* View */,
+				13C8A14E28CFC21000994196 /* Table */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -258,6 +259,34 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		13C8A14E28CFC21000994196 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				13C8A14C28CFC20B00994196 /* LocationSearchTableViewController.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		13C8A14F28CFC21700994196 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				13C8A13E28CA7B3D00994196 /* ExploreViewController.swift */,
+				13C8A11928CA668F00994196 /* TabBarController.swift */,
+				13C8A13A28CA78E600994196 /* CurrentViewController.swift */,
+				13C8A13C28CA795A00994196 /* ProfileViewController.swift */,
+				13C8A14A28CFA68C00994196 /* NewRoadmapViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		13C8A15028CFC27C00994196 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				13C8A15128CFC29500994196 /* HandleMapSearch.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		4171B73C15A2C812F704D532 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +336,7 @@
 		B078F21428C27F2000D46F61 /* macroChallengeApp */ = {
 			isa = PBXGroup;
 			children = (
+				13C8A15028CFC27C00994196 /* Protocols */,
 				13C8A11E28CA68C900994196 /* DesignSystem */,
 				13C8A11B28CA66A800994196 /* Coordinator */,
 				13C8A11428C68B0F00994196 /* Delegates */,
@@ -595,6 +625,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */,
 				13C8A13628CA6C1100994196 /* TextStyle.swift in Sources */,
 				13C8A10F28C6829100994196 /* Day.swift in Sources */,
 				13C8A11628C68B7700994196 /* DataManager.swift in Sources */,
@@ -621,6 +652,7 @@
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
 				13C8A12728CA693F00994196 /* DesignText.swift in Sources */,
 				13C8A13B28CA78E600994196 /* CurrentViewController.swift in Sources */,
+				13C8A14D28CFC20B00994196 /* LocationSearchTableViewController.swift in Sources */,
 				13C8A11A28CA668F00994196 /* TabBarController.swift in Sources */,
 				DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */,
 				13C8A12528CA693700994196 /* DesignSpacing.swift in Sources */,
