@@ -19,8 +19,8 @@ type_name:
   min_length:
     error: 3
   max_length:
-    warning: 25
-    error: 30
+    warning: 30
+    error: 40
 
 identifier_name:
   min_length:
