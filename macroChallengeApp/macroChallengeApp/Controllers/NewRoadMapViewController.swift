@@ -15,7 +15,9 @@ class NewRoadMapViewController: UIViewController {
     [Category(title: "Camp", subtitle: "Descrição aqui", icon: "categoryCamp"),
      Category(title: "Beach", subtitle: "Descrição aqui", icon: "categoryBeach"),
      Category(title: "Mountain", subtitle: "Descrição aqui", icon: "categoryMountain"),
-     Category(title: "City", subtitle: "Descrição aqui", icon: "categoryCity"),]
+     Category(title: "City", subtitle: "Descrição aqui", icon: "categoryCity")]
+    
+    let designSystem: DesignSystem = DefaultDesignSystem.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,9 @@ extension NewRoadMapViewController: UICollectionViewDataSource {
         }
         cell.setup()
         cell.setCell(title: categories[indexPath.row].title, subtitle: categories[indexPath.row].subtitle, icon: categories[indexPath.row].icon)
+        cell.backgroundColor = designSystem.palette.backgroundCell
+        cell.layer.cornerRadius = 16
+        
         return cell
     }
 }

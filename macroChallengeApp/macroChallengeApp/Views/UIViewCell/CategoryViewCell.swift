@@ -11,7 +11,8 @@ import SnapKit
 
 class CategoryViewCell: UICollectionViewCell {
     static let identifier = "categoryCell"
-   
+    let designSystem: DesignSystem = DefaultDesignSystem.shared
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -21,22 +22,21 @@ class CategoryViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var title: UILabel = {
+    lazy var title: UILabel = {
         let title = UILabel()
-        title.backgroundColor = .orange
+        title.stylize(with: designSystem.text.title)
         return title
     }()
     
-    private var subtitle: UILabel = {
+    lazy var subtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.backgroundColor = .yellow
+        subtitle.stylize(with: designSystem.text.caption)
         return subtitle
     }()
     
-    private var icon: UIImageView = {
+    lazy var icon: UIImageView = {
         let icon = UIImageView()
         icon.contentMode = .scaleAspectFit
-        icon.backgroundColor = .purple
         return icon
     }()
 }
@@ -51,24 +51,22 @@ extension CategoryViewCell {
     
     func setupConstraints() {
         title.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(10)
-            make.trailing.equalTo(icon.snp.leading).inset(-10)
+            make.leading.equalToSuperview().inset(16)
+            make.trailing.equalTo(icon.snp.leading).inset(-16)
             make.top.equalToSuperview().inset(10)
-            make.bottom.equalTo(subtitle.snp.top)
         }
         
         subtitle.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(10)
-            make.trailing.equalTo(icon.snp.leading).inset(-10)
-            make.top.equalTo(title.snp.bottom).inset(10)
-            make.bottom.equalToSuperview().inset(-10)
+            make.leading.equalToSuperview().inset(16)
+            make.trailing.equalTo(icon.snp.leading).inset(-16)
+            make.top.equalTo(title.snp.bottom).inset(-8)
         }
         
         icon.snp.makeConstraints { make in
             make.leading.equalTo(title.snp.trailing)
-            make.trailing.equalToSuperview().inset(-10)
-            make.top.equalToSuperview().inset(10)
-            make.bottom.equalToSuperview().inset(-10)
+            make.trailing.equalToSuperview().inset(16)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(self.snp.height).inset(10)
         }
     }
     

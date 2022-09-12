@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 
 class CategoryView: UIView {
+    let designSystem: DesignSystem = DefaultDesignSystem.shared
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -26,6 +28,7 @@ class CategoryView: UIView {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(CategoryViewCell.self, forCellWithReuseIdentifier: CategoryViewCell.identifier)
+        collectionView.backgroundColor = .red
         return collectionView
     }()
 }
@@ -39,7 +42,8 @@ extension CategoryView {
     func setupConstraints() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.snp.makeConstraints { make in
-            make.width.height.equalToSuperview()
+            make.edges.equalToSuperview()
+            make.centerX.equalToSuperview()
         }
     }
     
