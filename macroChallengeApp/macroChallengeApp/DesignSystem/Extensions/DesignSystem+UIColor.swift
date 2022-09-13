@@ -31,4 +31,20 @@ extension UIColor {
     static var caption: UIColor {
         UIColor(named: "Caption")!
     }
+    
+    static var greenCamp: UIColor {
+        UIColor(named: "greenCamp")!
+    }
+    
+    static var blueBeach: UIColor {
+        UIColor(named: "blueBeach")!
+    }
+    
+    static var yellowMontain: UIColor {
+        UIColor(named: "yellowMontain")!
+    }
+    
+    static var redCity: UIColor {
+        UIColor(named: "redCity")!
+    }
 }
