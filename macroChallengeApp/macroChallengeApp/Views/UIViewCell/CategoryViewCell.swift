@@ -76,3 +76,15 @@ extension CategoryViewCell {
         self.icon.image = UIImage(named: icon)
     }
 }
+
+extension CategoryViewCell {
+    func selectedBackgroundView() {
+        self.layer.borderWidth = 1.5
+        self.layer.borderColor = designSystem.palette.caption.cgColor
+    }
+    
+    func notSelectedBackgroundView() {
+        self.layer.borderWidth = 0
+        
+    }
+}

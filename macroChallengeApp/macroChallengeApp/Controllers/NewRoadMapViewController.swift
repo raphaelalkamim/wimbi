@@ -44,6 +44,19 @@ extension NewRoadMapViewController: UICollectionViewDataSource {
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryViewCell {
+            cell.selectedBackgroundView()
+            print(cell.title.text)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryViewCell {
+            cell.notSelectedBackgroundView()
+        }
+    }
 }
 
 extension NewRoadMapViewController {
@@ -54,7 +67,7 @@ extension NewRoadMapViewController {
     
     func setupConstraints() {
         categoryView.snp.makeConstraints { make in
-            make.top.bottom.trailing.leading.equalToSuperview()
+            make.edges.equalToSuperview().inset(20)
         }
     }
 }

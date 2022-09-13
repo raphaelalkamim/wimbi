@@ -21,16 +21,41 @@ class CategoryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let collectionView: UICollectionView = {
+    private let horizontalInset: CGFloat = 0
+    lazy var verticalInset: CGFloat = {
+        var size = CGFloat()
+        size = designSystem.spacing.xxLargePositive
+        return size
+    }()
+    
+    private lazy var flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 16
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: 80)
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.sectionInset = UIEdgeInsets(
+           top: verticalInset,
+           left: horizontalInset,
+           bottom: verticalInset,
+           right: horizontalInset)
+        return layout
+    }()
+    
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.register(CategoryViewCell.self, forCellWithReuseIdentifier: CategoryViewCell.identifier)
-        collectionView.backgroundColor = .red
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.alwaysBounceHorizontal = true
+        collectionView.backgroundColor = .systemGroupedBackground
         return collectionView
     }()
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let height = 80.0
+        let width = collectionView.frame.width
+        let itemSize = CGSize(width: width, height: height)
+        flowLayout.itemSize = itemSize
+    }
 }
 
 extension CategoryView {
