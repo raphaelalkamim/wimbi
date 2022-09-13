@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Activity" representedClassName="Activity" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ActivityLocal" representedClassName="ActivityLocal" syncable="YES" codeGenerationType="class">
         <attribute name="budget" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="hour" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="activity" inverseEntity="Day"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayLocal" inverseName="activity" inverseEntity="DayLocal"/>
     </entity>
-    <entity name="Day" representedClassName="Day" syncable="YES" codeGenerationType="class">
+    <entity name="DayLocal" representedClassName="DayLocal" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="activity" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="day" inverseEntity="Activity"/>
-        <relationship name="roadmap" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Roadmap" inverseName="day" inverseEntity="Roadmap"/>
+        <relationship name="activity" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ActivityLocal" inverseName="day" inverseEntity="ActivityLocal"/>
+        <relationship name="roadmap" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RoadmapLocal" inverseName="day" inverseEntity="RoadmapLocal"/>
     </entity>
-    <entity name="Roadmap" representedClassName="Roadmap" syncable="YES" codeGenerationType="class">
+    <entity name="RoadmapLocal" representedClassName="RoadmapLocal" syncable="YES" codeGenerationType="class">
         <attribute name="budget" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="dayCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -27,17 +27,17 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="peopleCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="shareKey" optional="YES" attributeType="String"/>
-        <relationship name="day" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Day" inverseName="roadmap" inverseEntity="Day"/>
-        <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="roadmap" inverseEntity="User"/>
+        <relationship name="day" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DayLocal" inverseName="roadmap" inverseEntity="DayLocal"/>
+        <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserLocal" inverseName="roadmap" inverseEntity="UserLocal"/>
     </entity>
-    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+    <entity name="UserLocal" representedClassName="UserLocal" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="roadmap" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Roadmap" inverseName="user" inverseEntity="Roadmap"/>
+        <relationship name="roadmap" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RoadmapLocal" inverseName="user" inverseEntity="RoadmapLocal"/>
     </entity>
     <elements>
-        <element name="User" positionX="507.5167846679688" positionY="8.65545654296875" width="128" height="73"/>
-        <element name="Roadmap" positionX="242.735107421875" positionY="150.4322204589844" width="128" height="238"/>
-        <element name="Day" positionX="-25.946533203125" positionY="-114.9786682128906" width="128" height="103"/>
-        <element name="Activity" positionX="299.7770385742188" positionY="-175.2937316894531" width="128" height="148"/>
+        <element name="ActivityLocal" positionX="299.7770385742188" positionY="-175.2937316894531" width="128" height="134"/>
+        <element name="DayLocal" positionX="-25.946533203125" positionY="-114.9786682128906" width="128" height="89"/>
+        <element name="RoadmapLocal" positionX="242.735107421875" positionY="150.4322204589844" width="128" height="224"/>
+        <element name="UserLocal" positionX="507.5167846679688" positionY="8.65545654296875" width="128" height="59"/>
     </elements>
 </model>
