@@ -19,6 +19,7 @@ struct Roadmaps: Codable {
     var isShared: Bool
     var isPublic: Bool
     var shareKey: String
+    var days: [Day]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -32,6 +33,7 @@ struct Roadmaps: Codable {
         case isShared
         case isPublic
         case shareKey
+        case days
     }
 }
 
