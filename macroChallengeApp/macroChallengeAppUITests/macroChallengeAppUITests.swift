@@ -8,7 +8,6 @@
 import XCTest
 
 class MacroChallengeAppUITests: XCTestCase {
-
     override func setUpWithError() throws {
         continueAfterFailure = false
     }

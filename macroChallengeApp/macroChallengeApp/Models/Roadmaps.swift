@@ -8,7 +8,6 @@
 import Foundation
 
 struct Roadmaps: Codable {
-    
     var id: Int
     var name: String
     var location: String

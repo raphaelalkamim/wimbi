@@ -32,4 +32,3 @@ extension UIColor {
         UIColor(named: "Caption")!
     }
 }
-

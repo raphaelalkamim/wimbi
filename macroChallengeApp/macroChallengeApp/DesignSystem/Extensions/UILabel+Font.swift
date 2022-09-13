@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 extension UILabel {
-    
     func stylize(with textStyle: TextStyle) {
         self.font = textStyle.font
         self.textColor = textStyle.color
