@@ -19,6 +19,7 @@ extension NewRoadmapViewController: UITableViewDelegate, UITableViewDataSource {
         
         daysView.numberPickerTableView.delegate = self
         daysView.numberPickerTableView.dataSource = self
+
         
         daysView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -68,5 +69,5 @@ extension NewRoadmapViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    
+
 }

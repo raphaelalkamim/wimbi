@@ -7,20 +7,40 @@
 
 import UIKit
 
-class NumberPickerTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
-    var label = UILabel()
-    var numberPicker = UIPickerView()
+class NumberPickerTableViewCell: UITableViewCell {
+    
+    lazy var numberPicker: UIPickerView = {
+        let numberPicker = UIPickerView()
+        numberPicker.dataSource = self
+        numberPicker.delegate = self
+        return numberPicker
+    }()
+    
+    lazy var label: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
     let designSystem = DefaultDesignSystem.shared
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         contentView.addSubview(label)
         contentView.addSubview(numberPicker)
         
-        numberPicker.dataSource = self
-        numberPicker.delegate = self
-        
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+
+
+    func setupConstraints() {
         label.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
             make.top.equalToSuperview().offset(designSystem.spacing.largeNegative)
@@ -34,22 +54,9 @@ class NumberPickerTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPicker
             make.trailing.equalToSuperview().offset(designSystem.spacing.largeNegative)
         }
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+extension NumberPickerTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -59,6 +66,6 @@ class NumberPickerTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(row)"
+        return "\(row + 1)"
     }
 }
