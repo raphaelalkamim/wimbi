@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ReviewTravelView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
