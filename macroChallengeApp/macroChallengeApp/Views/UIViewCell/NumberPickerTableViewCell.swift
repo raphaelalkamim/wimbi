@@ -39,7 +39,6 @@ class NumberPickerTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-
     func setupConstraints() {
         label.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)

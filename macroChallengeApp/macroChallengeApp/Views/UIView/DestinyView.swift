@@ -32,7 +32,6 @@ class DestinyView: UIView {
         // view
         self.backgroundColor = designSystem.palette.backgroundPrimary
         
-        
         // mapa
         self.addSubview(mapView)
         mapView.snp.makeConstraints { make in
