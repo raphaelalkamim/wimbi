@@ -22,7 +22,7 @@ class NewRoadmapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        self.setupDaysView()
+        self.setupDestinyView()
     
     }
 }
