@@ -9,18 +9,16 @@ import Foundation
 
 struct User: Codable {
     var id: Int
-    var date: String
     var roadmaps: Roadmaps
     
     enum CodingKeys: String, CodingKey {
         case id
-        case date = "dd/mm/yyyy"
         case roadmaps
     }
 }
 
 extension User: CustomStringConvertible {
     var description: String {
-        return "{id:\(id),date:\(date),roadmaps\(roadmaps)}"
+        return "{id:\(id),roadmaps\(roadmaps)}"
     }
 }
