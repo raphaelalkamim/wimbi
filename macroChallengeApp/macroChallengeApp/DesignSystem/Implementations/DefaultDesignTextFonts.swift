@@ -42,7 +42,7 @@ struct LargeTitleTextStyle: TextStyle, CustomLabelDesignable {
 }
 
 struct CaptionTextStyle: TextStyle, CustomLabelDesignable {
-    var color: UIColor = .yellow
+    var color: UIColor = .caption
     var alignment: NSTextAlignment = .natural
     var font: UIFont = .caption
     
