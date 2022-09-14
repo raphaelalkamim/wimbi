@@ -56,6 +56,10 @@
 		B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */; };
 		B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461628CFA85E00D62AF1 /* CategoryView.swift */; };
 		B0E2461928CFAA3800D62AF1 /* NewRoadMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461828CFAA3800D62AF1 /* NewRoadMapViewController.swift */; };
+		DF57253D28D110E1005466D9 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57253C28D110E1005466D9 /* DaysView.swift */; };
+		DF57253F28D11153005466D9 /* NewRoadmapViewController+Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57253E28D11153005466D9 /* NewRoadmapViewController+Days.swift */; };
+		DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */; };
+		DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */; };
 		DF5F774128CA7E1600BA5F5F /* DesignSystem+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774028CA7E1600BA5F5F /* DesignSystem+UIFont.swift */; };
 		DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774228CA820200BA5F5F /* DefaultDesignTextFonts.swift */; };
 		DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774428CA846C00BA5F5F /* UILabel+Font.swift */; };
@@ -138,6 +142,10 @@
 		B897B6EEE760DBB56A9888E4 /* Pods-macroChallengeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp/Pods-macroChallengeApp.release.xcconfig"; sourceTree = "<group>"; };
 		D148866C3AA7A72395A6BDAC /* Pods_macroChallengeApp_macroChallengeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macroChallengeApp_macroChallengeAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4996FD9467D4E74060F7D0 /* Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DF57253C28D110E1005466D9 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
+		DF57253E28D11153005466D9 /* NewRoadmapViewController+Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewRoadmapViewController+Days.swift"; sourceTree = "<group>"; };
+		DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
+		DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerTableViewCell.swift; sourceTree = "<group>"; };
 		DF5F774028CA7E1600BA5F5F /* DesignSystem+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+UIFont.swift"; sourceTree = "<group>"; };
 		DF5F774228CA820200BA5F5F /* DefaultDesignTextFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignTextFonts.swift; sourceTree = "<group>"; };
 		DF5F774428CA846C00BA5F5F /* UILabel+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Font.swift"; sourceTree = "<group>"; };
@@ -284,6 +292,7 @@
 				14553B3628D123DB0059793B /* ReviewTravelView.swift */,
 				B0E2461628CFA85E00D62AF1 /* CategoryView.swift */,
 				13C8A14828CFA66200994196 /* DestinyView.swift */,
+				DF57253C28D110E1005466D9 /* DaysView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -316,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				13C8A15428CFD0D000994196 /* NewRoadmapViewController+Destiny.swift */,
+				DF57253E28D11153005466D9 /* NewRoadmapViewController+Days.swift */,
 				13F994DD28D244E700B077C0 /* NewRoadmapViewController+Category.swift */,
 				14553B3828D24C040059793B /* NewRoadmapViewController+ReviewTravel.swift */,
 			);
@@ -405,6 +415,8 @@
 		B0E2461328CFA39A00D62AF1 /* UIViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */,
+				DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */,
 				B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */,
 			);
 			path = UIViewCell;
@@ -683,9 +695,11 @@
 				13C8A14928CFA66200994196 /* DestinyView.swift in Sources */,
 				B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */,
 				13C8A12128CA690500994196 /* DesignSystem.swift in Sources */,
+				DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */,
 				13C8A13828CA75EA00994196 /* DesignSystem+UIColor.swift in Sources */,
 				B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */,
 				13C8A13028CA6AF400994196 /* DefaultDesignSystem.swift in Sources */,
+				DF57253F28D11153005466D9 /* NewRoadmapViewController+Days.swift in Sources */,
 				13C8A12328CA692500994196 /* DesignPalette.swift in Sources */,
 				13F994D928D244A200B077C0 /* ExploreViewController.swift in Sources */,
 				13F994DA28D244A200B077C0 /* ProfileViewController.swift in Sources */,
@@ -708,7 +722,9 @@
 				13C8A14D28CFC20B00994196 /* LocationSearchTableViewController.swift in Sources */,
 				DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */,
 				13C8A12528CA693700994196 /* DesignSpacing.swift in Sources */,
+				DF57253D28D110E1005466D9 /* DaysView.swift in Sources */,
 				13C8A11828C691F100994196 /* DataType.swift in Sources */,
+				DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */,
 				13C8A12B28CA6A0A00994196 /* CurrentCoordinator.swift in Sources */,
 				B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */,
 				DF5F774128CA7E1600BA5F5F /* DesignSystem+UIFont.swift in Sources */,
