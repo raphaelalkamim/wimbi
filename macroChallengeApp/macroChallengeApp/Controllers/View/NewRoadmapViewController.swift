@@ -11,30 +11,30 @@ import CoreLocation
 import MapKit
 
 class NewRoadmapViewController: UIViewController {
-    let destinyView = DestinyView(frame: .zero)
-    let roadmapView = NewRoadmapView(frame: .zero)
-    
+    let destinyView = DestinyView()
     let locationManager = CLLocationManager()
     let locationSearchTable = LocationSearchTableViewController()
     var categoria: String = ""
     var selectedPin: MKPlacemark? = nil
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        self.setupRoadmapView()
-    
+        self.setupDestinyView()
+        self.tabBarController?.removeFromParent()
+        // ToolBar
+        let toolBar = UIToolbar()
+        toolBar.translatesAutoresizingMaskIntoConstraints = true
+        toolBar.barStyle = .default
+        toolBar.backgroundColor = .red
+        let previous = UIBarButtonItem(title: "Anterior", style: .plain, target: self, action: #selector(clicou))
+        let next = UIBarButtonItem(title: "Próximo", style: .plain, target: self, action: #selector(clicou))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let items = [spacer, previous, spacer, spacer, spacer, spacer, spacer, spacer, spacer, next, spacer]
+        self.setToolbarItems(items, animated: false)
+        self.navigationController?.setToolbarHidden(false, animated: false)
+      
     }
-}
-
-extension NewRoadmapViewController {
-    func setupRoadmapView() {
-        view.addSubview(roadmapView)
-        
-        roadmapView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        definesPresentationContext = true
+    @objc func clicou() {
+        print("clicou")
     }
 }

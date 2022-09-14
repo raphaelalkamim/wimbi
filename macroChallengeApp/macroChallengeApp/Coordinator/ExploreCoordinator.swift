@@ -28,8 +28,14 @@ class ExploreCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     func newRoadmap() {
-        let vc = NewRoadmapViewController()
-        navigationController.pushViewController(vc, animated: true)
+        let vc = UINavigationController(rootViewController: NewRoadmapViewController())
+        vc.modalPresentationStyle = .fullScreen
+        vc.navigationController?.navigationBar.prefersLargeTitles = true
+        vc.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.largeTitle]
+
+        navigationController
+            .present(vc, animated: true)
+            
     }
     
     func setupBarAppearence() {
