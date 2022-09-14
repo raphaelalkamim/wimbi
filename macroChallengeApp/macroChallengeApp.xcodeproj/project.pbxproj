@@ -185,7 +185,6 @@
 				13C8A15328CFD0B900994196 /* Extensions */,
 				13C8A14F28CFC21700994196 /* View */,
 				13C8A14E28CFC21000994196 /* Table */,
-				14553B3628D123DB0059793B /* ReviewTravelView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -282,6 +281,7 @@
 		13C8A14728CFA65000994196 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				14553B3628D123DB0059793B /* ReviewTravelView.swift */,
 				B0E2461628CFA85E00D62AF1 /* CategoryView.swift */,
 				13C8A14828CFA66200994196 /* DestinyView.swift */,
 			);

@@ -17,7 +17,7 @@ extension NewRoadmapViewController{
     
     func setupReviewConstraints() {
         reviewTravelView.snp.makeConstraints{ make in
-            make.edges.equalToSuperview().inset(20)
+            make.edges.equalToSuperview()
         }
     }
 }
