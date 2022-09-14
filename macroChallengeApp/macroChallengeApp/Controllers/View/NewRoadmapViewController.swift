@@ -12,6 +12,8 @@ import MapKit
 
 class NewRoadmapViewController: UIViewController {
     let destinyView = DestinyView(frame: .zero)
+    let roadmapView = NewRoadmapView(frame: .zero)
+    
     let locationManager = CLLocationManager()
     let locationSearchTable = LocationSearchTableViewController()
     var categoria: String = ""
@@ -20,7 +22,19 @@ class NewRoadmapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        self.setupDestinyView()
+        self.setupRoadmapView()
     
+    }
+}
+
+extension NewRoadmapViewController {
+    func setupRoadmapView() {
+        view.addSubview(roadmapView)
+        
+        roadmapView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        definesPresentationContext = true
     }
 }
