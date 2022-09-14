@@ -52,4 +52,3 @@ extension NewRoadMapViewController: UICollectionViewDataSource {
         }
     }
 }
-

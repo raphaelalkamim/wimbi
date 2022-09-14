@@ -8,7 +8,6 @@
 import Foundation
 
 class Category {
-    
     var title: String
     var subtitle: String
     var icon: String
