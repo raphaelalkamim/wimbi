@@ -55,6 +55,39 @@ class ReviewTravelView: UIView {
         return subtitle
     }()
     
+    private lazy var daysTable: UITableView = {
+       let table = UITableView()
+        table.register(LabelTableViewCell.self, forCellReuseIdentifier: LabelTableViewCell.identifier)
+        table.layer.cornerRadius = 16
+        table.isScrollEnabled = false
+        table.separatorColor = .clear
+        table.allowsSelection = false
+        table.backgroundColor = designSystem.palette.backgroundCell
+        return table
+    }()
+    
+    private lazy var travelersTable: UITableView = {
+       let table = UITableView()
+        table.register(LabelTableViewCell.self, forCellReuseIdentifier: LabelTableViewCell.identifier)
+        table.layer.cornerRadius = 16
+        table.isScrollEnabled = false
+        table.separatorColor = .clear
+        table.allowsSelection = false
+        table.backgroundColor = designSystem.palette.backgroundCell
+        return table
+    }()
+    
+    private lazy var privacyTable: UITableView = {
+       let table = UITableView()
+        table.register(LabelTableViewCell.self, forCellReuseIdentifier: LabelTableViewCell.identifier)
+        table.layer.cornerRadius = 16
+        table.isScrollEnabled = false
+        table.separatorColor = .clear
+        table.allowsSelection = false
+        table.backgroundColor = designSystem.palette.backgroundCell
+        return table
+    }()
+    
 }
 
 extension ReviewTravelView {
@@ -64,6 +97,9 @@ extension ReviewTravelView {
         self.addSubview(categoryImage)
         self.addSubview(title)
         self.addSubview(subtitle)
+        self.addSubview(daysTable)
+        self.addSubview(travelersTable)
+        self.addSubview(privacyTable)
         setupConstraints()
     }
     
@@ -92,7 +128,32 @@ extension ReviewTravelView {
             make.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(categoryImage.snp.trailing).inset(designSystem.spacing.xLargeNegative)
             make.height.equalTo(16)
-            
         }
+        
+        daysTable.snp.makeConstraints { make in
+            make.top.equalTo(categoryImage.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+        }
+        
+        travelersTable.snp.makeConstraints { make in
+            make.top.equalTo(daysTable.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+        }
+        
+        privacyTable.snp.makeConstraints { make in
+            make.top.equalTo(travelersTable.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+        }
+    }
+    
+    func bindTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+        daysTable.delegate = delegate
+        daysTable.dataSource = dataSource
+        
+        travelersTable.delegate = delegate
+        travelersTable.dataSource = dataSource
+        
+        privacyTable.delegate = delegate
+        privacyTable.dataSource = dataSource
     }
 }

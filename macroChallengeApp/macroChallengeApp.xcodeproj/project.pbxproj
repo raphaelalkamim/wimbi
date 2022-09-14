@@ -41,6 +41,7 @@
 		13F994DE28D244E700B077C0 /* NewRoadmapViewController+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F994DD28D244E700B077C0 /* NewRoadmapViewController+Category.swift */; };
 		14553B3728D123DB0059793B /* ReviewTravelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14553B3628D123DB0059793B /* ReviewTravelView.swift */; };
 		14553B3928D24C040059793B /* NewRoadmapViewController+ReviewTravel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14553B3828D24C040059793B /* NewRoadmapViewController+ReviewTravel.swift */; };
+		1467706728D2699D00D55098 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1467706628D2699D00D55098 /* LabelTableViewCell.swift */; };
 		640CD5CCE40B36AB975231D2 /* Pods_macroChallengeApp_macroChallengeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D148866C3AA7A72395A6BDAC /* Pods_macroChallengeApp_macroChallengeAppUITests.framework */; };
 		8937FC4EB5BEAACC958B84A1 /* Pods_macroChallengeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */; };
 		90297BBF83D0A825FF081EB4 /* Pods_macroChallengeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */; };
@@ -118,6 +119,7 @@
 		13F994DD28D244E700B077C0 /* NewRoadmapViewController+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewRoadmapViewController+Category.swift"; sourceTree = "<group>"; };
 		14553B3628D123DB0059793B /* ReviewTravelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTravelView.swift; sourceTree = "<group>"; };
 		14553B3828D24C040059793B /* NewRoadmapViewController+ReviewTravel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewRoadmapViewController+ReviewTravel.swift"; sourceTree = "<group>"; };
+		1467706628D2699D00D55098 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		277A5A175FEAF690AE55045F /* Pods-macroChallengeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeAppTests.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeAppTests/Pods-macroChallengeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4842CC9B9D145281B17CEC0E /* Pods-macroChallengeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeAppTests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeAppTests/Pods-macroChallengeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macroChallengeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -418,6 +420,7 @@
 				DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */,
 				DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */,
 				B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */,
+				1467706628D2699D00D55098 /* LabelTableViewCell.swift */,
 			);
 			path = UIViewCell;
 			sourceTree = "<group>";
@@ -705,6 +708,7 @@
 				13F994DA28D244A200B077C0 /* ProfileViewController.swift in Sources */,
 				13C8A14B28CFA68C00994196 /* NewRoadmapViewController.swift in Sources */,
 				13C8A11128C6833D00994196 /* Like.swift in Sources */,
+				1467706728D2699D00D55098 /* LabelTableViewCell.swift in Sources */,
 				B0E2461928CFAA3800D62AF1 /* NewRoadMapViewController.swift in Sources */,
 				13C8A12D28CA6A2500994196 /* ProfileCoordinator.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
