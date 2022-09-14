@@ -13,4 +13,9 @@ protocol DesignPalette {
     var titlePrimary: UIColor { get }
     var backgroundCell: UIColor { get }
     var caption: UIColor { get }
+    
+    var greenCamp: UIColor { get }
+    var blueBeach: UIColor { get }
+    var yellowMontain: UIColor { get }
+    var redCity: UIColor { get }
 }
