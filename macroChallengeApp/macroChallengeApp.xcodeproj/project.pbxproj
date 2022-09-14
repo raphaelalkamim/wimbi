@@ -184,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				B0E2461328CFA39A00D62AF1 /* UIViewCell */,
-				B0E2461228CFA39100D62AF1 /* UIView */,
 				13C8A14728CFA65000994196 /* UIView */,
 				B078F22328C27F2400D46F61 /* LaunchScreen.storyboard */,
 			);
@@ -273,6 +272,7 @@
 		13C8A14728CFA65000994196 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				B0E2461628CFA85E00D62AF1 /* CategoryView.swift */,
 				13C8A14828CFA66200994196 /* DestinyView.swift */,
 			);
 			path = UIView;
@@ -289,10 +289,6 @@
 		13C8A14F28CFC21700994196 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				13C8A13E28CA7B3D00994196 /* ExploreViewController.swift */,
-				13C8A11928CA668F00994196 /* TabBarController.swift */,
-				13C8A13A28CA78E600994196 /* CurrentViewController.swift */,
-				13C8A13C28CA795A00994196 /* ProfileViewController.swift */,
 				13C8A14A28CFA68C00994196 /* NewRoadmapViewController.swift */,
 			);
 			path = View;
@@ -392,14 +388,6 @@
 				B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */,
 			);
 			path = macroChallengeAppUITests;
-			sourceTree = "<group>";
-		};
-		B0E2461228CFA39100D62AF1 /* UIView */ = {
-			isa = PBXGroup;
-			children = (
-				B0E2461628CFA85E00D62AF1 /* CategoryView.swift */,
-			);
-			path = UIView;
 			sourceTree = "<group>";
 		};
 		B0E2461328CFA39A00D62AF1 /* UIViewCell */ = {
