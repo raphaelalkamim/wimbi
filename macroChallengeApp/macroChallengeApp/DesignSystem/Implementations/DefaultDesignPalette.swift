@@ -14,4 +14,9 @@ struct DefaultDesignPalette: DesignPalette {
     var titlePrimary: UIColor = .titlePrimary
     var backgroundCell: UIColor = .backgroundCell
     var caption: UIColor = .caption
+    var greenCamp: UIColor = .greenCamp
+    var blueBeach: UIColor = .blueBeach
+    var redCity: UIColor = .redCity
+    var yellowMontain: UIColor = .yellowMontain
+    
 }

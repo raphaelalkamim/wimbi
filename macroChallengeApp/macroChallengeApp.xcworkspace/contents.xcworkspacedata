@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "container:"
+      name = "CoreData">
+      <FileRef
+         location = "group:RoadmapLocal+CoreDataClass.swift">
+      </FileRef>
+      <FileRef
+         location = "group:RoadmapLocal+CoreDataProperties.swift">
+      </FileRef>
+      <FileRef
+         location = "group:ActivityLocal+CoreDataClass.swift">
+      </FileRef>
+      <FileRef
+         location = "group:ActivityLocal+CoreDataProperties.swift">
+      </FileRef>
+      <FileRef
+         location = "group:UserLocal+CoreDataClass.swift">
+      </FileRef>
+      <FileRef
+         location = "group:UserLocal+CoreDataProperties.swift">
+      </FileRef>
+      <FileRef
+         location = "group:DayLocal+CoreDataClass.swift">
+      </FileRef>
+      <FileRef
+         location = "group:DayLocal+CoreDataProperties.swift">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:macroChallengeApp.xcodeproj">
    </FileRef>

@@ -8,7 +8,6 @@
 import Foundation
 
 struct Roadmaps: Codable {
-    
     var id: Int
     var name: String
     var location: String
@@ -20,6 +19,7 @@ struct Roadmaps: Codable {
     var isShared: Bool
     var isPublic: Bool
     var shareKey: String
+    var days: [Day]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -33,6 +33,7 @@ struct Roadmaps: Codable {
         case isShared
         case isPublic
         case shareKey
+        case days
     }
 }
 

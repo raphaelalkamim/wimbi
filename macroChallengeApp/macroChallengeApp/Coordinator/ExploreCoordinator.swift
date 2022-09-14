@@ -27,6 +27,10 @@ class ExploreCoordinator: Coordinator {
         vc.navigationItem.title = "Explore"
         navigationController.pushViewController(vc, animated: true)
     }
+    func newRoadmap() {
+        let vc = NewRoadmapViewController()
+        navigationController.pushViewController(vc, animated: true)
+    }
     
     func setupBarAppearence() {
         let designSystem: DesignSystem = DefaultDesignSystem.shared
