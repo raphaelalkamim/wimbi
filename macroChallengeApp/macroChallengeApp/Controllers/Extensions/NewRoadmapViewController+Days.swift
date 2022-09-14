@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 extension NewRoadmapViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func setupDaysView() {
         view.addSubview(daysView)
         navigationItem.title = "Dias e viajantes"
@@ -20,7 +19,6 @@ extension NewRoadmapViewController: UITableViewDelegate, UITableViewDataSource {
         daysView.numberPickerTableView.delegate = self
         daysView.numberPickerTableView.dataSource = self
 
-        
         daysView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
