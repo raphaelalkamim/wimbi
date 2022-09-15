@@ -27,17 +27,6 @@ class ExploreCoordinator: Coordinator {
         vc.navigationItem.title = "Explore"
         navigationController.pushViewController(vc, animated: true)
     }
-    func newRoadmap() {
-        let vc = UINavigationController(rootViewController: NewRoadmapViewController())
-        vc.modalPresentationStyle = .fullScreen
-        vc.navigationController?.navigationBar.prefersLargeTitles = true
-        vc.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.largeTitle]
-
-        navigationController
-            .present(vc, animated: true)
-            
-    }
-    
     func setupBarAppearence() {
         let designSystem: DesignSystem = DefaultDesignSystem.shared
         
@@ -50,4 +39,28 @@ class ExploreCoordinator: Coordinator {
         
         self.navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.largeTitle]
     }
+    
+    func apertouOMais() {
+        let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
+        childCoordinators.append(coordinator)
+        coordinator.delegate = self
+        coordinator.start()
+        
+        navigationController.present(coordinator.navigationController, animated: true) {
+            print("OI")
+        }
+    }
+}
+
+extension ExploreCoordinator: PresentationCoordinatorDelegate {
+    func didFinishPresent(of coordinator: Coordinator) {
+        print(childCoordinators)
+        childCoordinators = childCoordinators.filter { $0 === coordinator }
+        print(childCoordinators)
+    }
+}
+
+
+protocol PresentationCoordinatorDelegate: AnyObject {
+    func didFinishPresent(of coordinator: Coordinator)
 }

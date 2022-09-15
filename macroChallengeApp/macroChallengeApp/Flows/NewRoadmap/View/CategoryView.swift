@@ -45,7 +45,7 @@ class CategoryView: UIView {
         collectionView.register(CategoryViewCell.self, forCellWithReuseIdentifier: CategoryViewCell.identifier)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.alwaysBounceHorizontal = true
-        collectionView.backgroundColor = .systemGroupedBackground
+        collectionView.backgroundColor = designSystem.palette.backgroundPrimary
         return collectionView
     }()
     

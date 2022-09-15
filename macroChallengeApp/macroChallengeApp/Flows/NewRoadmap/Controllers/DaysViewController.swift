@@ -1,14 +1,53 @@
 //
-//  NewRoadmapViewController+Days.swift
+//  DaysViewController.swift
 //  macroChallengeApp
 //
-//  Created by Luca Hummel on 13/09/22.
+//  Created by Beatriz Duque on 15/09/22.
 //
 
-import Foundation
 import UIKit
 
-extension NewRoadmapViewController: UITableViewDelegate, UITableViewDataSource {
+class DaysViewController: UIViewController {
+    let designSystem = DefaultDesignSystem.shared
+    let daysView = DaysView(frame: .zero)
+    weak var coordinator: NewRoadmapCoordinator?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupDaysView()
+        self.setupToolbar()
+    }
+    
+    func setupToolbar() {
+        let barItems = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelRoadmap))
+        barItems.tintColor = .systemRed
+        self.navigationItem.leftBarButtonItems = [barItems]
+        
+        let toolBar = UIToolbar()
+        toolBar.translatesAutoresizingMaskIntoConstraints = true
+        toolBar.barStyle = .default
+        toolBar.backgroundColor = designSystem.palette.backgroundCell
+        
+        let previous = UIBarButtonItem(title: "Previous", style: .plain, target: self, action: #selector(backPage))
+        let next = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextPage))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let items = [spacer, previous, spacer, spacer, spacer, spacer, spacer, spacer, spacer, next, spacer]
+        self.setToolbarItems(items, animated: false)
+        self.navigationController?.setToolbarHidden(false, animated: false)
+    }
+    
+    @objc func nextPage() {
+        coordinator?.dismiss()
+    }
+    @objc func backPage() {
+        coordinator?.back()
+    }
+    @objc func cancelRoadmap() {
+        coordinator?.dismiss()
+    }
+}
+
+extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
     func setupDaysView() {
         view.addSubview(daysView)
         navigationItem.title = "Dias e viajantes"
@@ -67,5 +106,4 @@ extension NewRoadmapViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-
 }
