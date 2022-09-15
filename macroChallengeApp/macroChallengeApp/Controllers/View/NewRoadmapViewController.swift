@@ -11,13 +11,15 @@ import CoreLocation
 import MapKit
 
 class NewRoadmapViewController: UIViewController {
-    let destinyView = DestinyView()
+    let destinyView = DestinyView(frame: .zero)
+    let daysView = DaysView(frame: .zero)
     let locationManager = CLLocationManager()
     let locationSearchTable = LocationSearchTableViewController()
     var categoria: String = ""
     var selectedPin: MKPlacemark? = nil
  
     weak var coordinator: NewRoadmapCoordinator?
+    let designSystem = DefaultDesignSystem.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
