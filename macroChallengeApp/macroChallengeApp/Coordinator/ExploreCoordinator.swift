@@ -27,6 +27,18 @@ class ExploreCoordinator: Coordinator {
         vc.navigationItem.title = "Explore"
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func createNewRoadmap() {
+        let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
+        childCoordinators.append(coordinator)
+        coordinator.delegate = self
+        coordinator.start()
+        
+        navigationController.present(coordinator.navigationController, animated: true) {
+            print("OI")
+        }
+    }
+    
     func setupBarAppearence() {
         let designSystem: DesignSystem = DefaultDesignSystem.shared
         
@@ -38,17 +50,6 @@ class ExploreCoordinator: Coordinator {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
         
         self.navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.largeTitle]
-    }
-    
-    func apertouOMais() {
-        let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
-        childCoordinators.append(coordinator)
-        coordinator.delegate = self
-        coordinator.start()
-        
-        navigationController.present(coordinator.navigationController, animated: true) {
-            print("OI")
-        }
     }
 }
 

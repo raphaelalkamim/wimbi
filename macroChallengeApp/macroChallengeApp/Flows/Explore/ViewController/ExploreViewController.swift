@@ -19,7 +19,7 @@ class ExploreViewController: UIViewController {
     
     @objc
     func addNewRoadmap() {
-        coordinator?.apertouOMais()
+        coordinator?.createNewRoadmap()
     }
     
 }
