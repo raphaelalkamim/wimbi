@@ -14,7 +14,6 @@ class DestinyView: UIView {
     var searchBar: UISearchBar
     var searchController: UISearchController? = nil
     var designSystem: DesignSystem = DefaultDesignSystem.shared
-    
     override init(frame: CGRect) {
         self.mapView = MKMapView()
         self.searchBar = UISearchBar()
