@@ -17,6 +17,8 @@ class NewRoadmapViewController: UIViewController {
     var categoria: String = ""
     var selectedPin: MKPlacemark? = nil
  
+    weak var coordinator: NewRoadmapCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupDestinyView()
