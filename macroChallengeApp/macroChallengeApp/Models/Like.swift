@@ -8,7 +8,6 @@
 import Foundation
 
 struct Like: Codable {
-    
     var id: Int
     var roadmap: Roadmaps
     var user: User

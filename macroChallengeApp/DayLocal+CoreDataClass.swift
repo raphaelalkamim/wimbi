@@ -17,7 +17,7 @@ public class DayLocal: NSManagedObject {
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "macroChallengeApp")
         container.loadPersistentStores { _, error in
-            if let erro = error{
+            if let erro = error {
                 preconditionFailure(erro.localizedDescription)
             }
             
@@ -25,7 +25,7 @@ public class DayLocal: NSManagedObject {
         return container
     }()
     
-    var context: NSManagedObjectContext{
+    var context: NSManagedObjectContext {
         persistentContainer.viewContext
     }
     

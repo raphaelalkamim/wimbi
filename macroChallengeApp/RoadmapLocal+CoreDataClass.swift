@@ -42,7 +42,7 @@ public class RoadmapLocal: NSManagedObject {
     }
     
     func createRoadmap(roadmap: Roadmaps, user: User) -> RoadmapLocal {
-        guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else {preconditionFailure()}
+        guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         
         newRoadmap.id = roadmap.id
         newRoadmap.name = roadmap.name
@@ -62,7 +62,7 @@ public class RoadmapLocal: NSManagedObject {
     }
     
     func getRoadmap() -> [RoadmapLocal] {
-        let fr = NSFetchRequest<Devocionais>(entityName: "RoadmapLocal")
+        let fr = NSFetchRequest<RoadmapLocal>(entityName: "RoadmapLocal")
         do {
             return try self.persistentContainer.viewContext.fetch(fr)
         } catch {
