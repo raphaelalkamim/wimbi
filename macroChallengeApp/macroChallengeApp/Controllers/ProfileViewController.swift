@@ -17,6 +17,8 @@ class ProfileViewController: UIViewController {
         self.view.backgroundColor = .backgroundPrimary
         self.setupProfileView()
         
+        profileView.bindColletionView(delegate: self, dataSource: self)
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
     }
     

@@ -19,10 +19,32 @@ struct BodyTextStyle: TextStyle, CustomLabelDesignable {
     }
 }
 
+struct CellTitleTextStyle: TextStyle, CustomLabelDesignable {
+    var color: UIColor = .titlePrimary
+    var alignment: NSTextAlignment = .natural
+    var font: UIFont = .cellTitle
+    
+    func custom(_ label: UILabel) {
+        label.numberOfLines = 0
+        label.lineBreakMode = .byTruncatingHead
+    }
+}
+
 struct TitleTextStyle: TextStyle, CustomLabelDesignable {
     var color: UIColor = .titlePrimary
     var alignment: NSTextAlignment = .natural
     var font: UIFont = .title
+    
+    func custom(_ label: UILabel) {
+        label.numberOfLines = 0
+        label.lineBreakMode = .byTruncatingHead
+    }
+}
+
+struct MediumTitleTextStyle: TextStyle, CustomLabelDesignable {
+    var color: UIColor = .titlePrimary
+    var alignment: NSTextAlignment = .natural
+    var font: UIFont = .mediumTitle
     
     func custom(_ label: UILabel) {
         label.numberOfLines = 0

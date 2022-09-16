@@ -8,7 +8,9 @@ import UIKit
 
 struct DesignText {
     let largeTitle: TextStyle = LargeTitleTextStyle()
+    let mediumTitle: TextStyle = MediumTitleTextStyle()
     let title: TextStyle = TitleTextStyle()
+    let cellTitle: TextStyle = CellTitleTextStyle()
     let body: TextStyle = BodyTextStyle()
     let caption: TextStyle = CaptionTextStyle()
 }
