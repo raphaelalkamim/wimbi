@@ -23,30 +23,29 @@ class LabelTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
-   private lazy var title: UILabel = {
-        let label = UILabel()
+   public lazy var title: UILabel = {
+       let label = UILabel()
        label.stylize(with: designSystem.text.caption)
        label.textColor = designSystem.palette.textPrimary
-        label.text = "Title"
-        return label
+       label.text = "Title"
+       return label
     }()
     
-    private lazy var value: UILabel = {
+    public lazy var value: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.caption)
         label.textColor = designSystem.palette.caption
         label.text = "Value"
         return label
     }()
-
     
     func setup() {
         contentView.addSubview(title)
         contentView.addSubview(value)
         setupConstraints()
+        self.backgroundColor = designSystem.palette.backgroundCell
     }
     
     func setupConstraints() {
@@ -57,10 +56,56 @@ class LabelTableViewCell: UITableViewCell {
         }
         
         value.snp.makeConstraints { make in
-            make.leading.equalTo(value.snp.trailing).offset(20)
             make.top.equalToSuperview().offset(designSystem.spacing.xSmallNegative)
             make.bottom.equalToSuperview().offset(designSystem.spacing.xSmallPositive)
             make.trailing.equalToSuperview().offset(designSystem.spacing.largeNegative)
+        }
+    }
+    func configureDays(indexPath: Int, value: String) {
+        if indexPath == 0 {
+            self.title.text = "Dias de viagem"
+            self.value.text = value
+            let separator = UIView()
+            self.addSubview(separator)
+            separator.backgroundColor = .gray
+            
+            separator.snp.makeConstraints { make in
+                make.height.equalTo(0.5)
+                make.bottom.equalToSuperview()
+                make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
+                make.trailing.equalToSuperview()
+            }
+        }
+        if indexPath == 1 {
+            self.title.text = "Começa"
+            self.value.text = value
+            let separator = UIView()
+            self.addSubview(separator)
+            separator.backgroundColor = .gray
+            
+            separator.snp.makeConstraints { make in
+                make.height.equalTo(0.5)
+                make.bottom.equalToSuperview()
+                make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
+                make.trailing.equalToSuperview()
+            }
+        }
+        if indexPath == 2 {
+            self.title.text = "Termina"
+            self.value.text = "23 de outubro 2022"
+        }
+    }
+    
+    func configureTravelers(daysValue: Int) {
+        self.title.text = "Quantidade de viajantes"
+        self.value.text = String(daysValue)
+    }
+    func configureTripStatus(isPublic: Bool) {
+        self.title.text = "Trip"
+        if isPublic == true {
+            self.value.text = "Public"
+        } else {
+            self.value.text = "Private"
         }
     }
 }

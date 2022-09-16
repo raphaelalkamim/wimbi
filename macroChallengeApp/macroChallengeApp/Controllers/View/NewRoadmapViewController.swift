@@ -23,8 +23,6 @@ class NewRoadmapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupReviewTravelView()
-
-    
+        self.setupReviewTravelView()    
     }
 }

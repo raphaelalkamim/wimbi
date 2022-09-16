@@ -32,7 +32,7 @@ extension NewRoadmapViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    //swiftlint: disable force_cast
+    // swiftlint: disable force_cast
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == daysView.daysTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DatePickerTableViewCell
@@ -62,7 +62,7 @@ extension NewRoadmapViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
-    //swiftlint: enable force_cast
+    // swiftlint: enable force_cast
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
