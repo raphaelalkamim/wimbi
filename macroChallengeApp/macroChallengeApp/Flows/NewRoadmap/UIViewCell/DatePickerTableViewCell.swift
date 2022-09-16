@@ -12,6 +12,7 @@ class DatePickerTableViewCell: UITableViewCell {
     lazy var label: UILabel = {
         let label = UILabel()
         label.text = "Teste"
+        label.stylize(with: designSystem.text.body)
         return label
     }()
     
@@ -19,7 +20,6 @@ class DatePickerTableViewCell: UITableViewCell {
         let datePicker = UIDatePicker()
         datePicker.preferredDatePickerStyle = .compact
         datePicker.datePickerMode = .date
-        
         let currentDate = Date()
         datePicker.minimumDate = currentDate
         return datePicker
@@ -48,6 +48,7 @@ class DatePickerTableViewCell: UITableViewCell {
     }
     
     func setup() {
+        self.backgroundColor = designSystem.palette.backgroundCell
         contentView.addSubview(label)
         contentView.addSubview(datePicker)
         setupConstraints()

@@ -37,7 +37,7 @@ class DaysViewController: UIViewController {
     }
     
     @objc func nextPage() {
-        coordinator?.dismiss()
+        coordinator?.startReview()
     }
     @objc func backPage() {
         coordinator?.back()
@@ -102,7 +102,6 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     // swiftlint: enable force_cast
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }

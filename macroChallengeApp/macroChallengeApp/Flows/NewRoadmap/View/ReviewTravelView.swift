@@ -127,7 +127,7 @@ extension ReviewTravelView {
     
     func setupConstraints() {
         coverImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.top.equalTo(self.snp.topMargin)
             make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
             make.height.equalTo(150)
         }

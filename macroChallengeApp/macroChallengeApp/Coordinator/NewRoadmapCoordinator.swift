@@ -40,17 +40,20 @@ class NewRoadmapCoordinator: Coordinator {
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
-    
+    func startReview() {
+        let viewController = ReviewTravelViewController()
+        viewController.coordinator = self
+        UIAccessibility.post(notification: .screenChanged, argument: viewController)
+        navigationController.pushViewController(viewController, animated: true)
+    }
     func dismiss() {
         navigationController.dismiss(animated: true)
         delegate?.didFinishPresent(of: self)
     }
-    
     func back() {
         navigationController.popViewController(animated: true)
         delegate?.didFinishPresent(of: self)
     }
-    
     func setupBarAppearence() {
         let designSystem: DesignSystem = DefaultDesignSystem.shared
         navigationController.navigationBar.prefersLargeTitles = true
