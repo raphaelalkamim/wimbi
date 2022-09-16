@@ -151,7 +151,7 @@ extension ReviewTravelView {
         }
         daysTitle.snp.makeConstraints { make in
             make.top.equalTo(categoryImage.snp.bottom).inset(designSystem.spacing.xLargeNegative)
-            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
+            make.leading.trailing.equalToSuperview().inset(30)
         }
         daysTable.snp.makeConstraints { make in
             make.top.equalTo(daysTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
@@ -160,7 +160,7 @@ extension ReviewTravelView {
         }
         travelersTitle.snp.makeConstraints { make in
             make.top.equalTo(daysTable.snp.bottom).inset(designSystem.spacing.xLargeNegative)
-            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
+            make.leading.trailing.equalToSuperview().inset(30)
         }
         travelersTable.snp.makeConstraints { make in
             make.top.equalTo(travelersTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
@@ -169,7 +169,7 @@ extension ReviewTravelView {
         }
         privacyTitle.snp.makeConstraints { make in
             make.top.equalTo(travelersTable.snp.bottom).inset(designSystem.spacing.xLargeNegative)
-            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
+            make.leading.trailing.equalToSuperview().inset(30)
         }
         privacyTable.snp.makeConstraints { make in
             make.top.equalTo(privacyTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
