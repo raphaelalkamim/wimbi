@@ -230,7 +230,6 @@
 		13C8A11E28CA68C900994196 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				13F994F828D3B1F800B077C0 /* Components */,
 				13C8A13928CA75EF00994196 /* Extensions */,
 				13C8A12E28CA6AE100994196 /* Implementations */,
 				13C8A11F28CA68F500994196 /* Protocols */,
@@ -448,10 +447,11 @@
 		B078F21428C27F2000D46F61 /* macroChallengeApp */ = {
 			isa = PBXGroup;
 			children = (
-				13C8A15028CFC27C00994196 /* Protocols */,
-				13C8A11E28CA68C900994196 /* DesignSystem */,
 				13C8A11B28CA66A800994196 /* Coordinator */,
 				13C8A11428C68B0F00994196 /* Delegates */,
+				13C8A15028CFC27C00994196 /* Protocols */,
+				13C8A11E28CA68C900994196 /* DesignSystem */,
+				13F994F828D3B1F800B077C0 /* Components */,
 				13C8A10928C6826B00994196 /* Models */,
 				13C8A10728C6824F00994196 /* Flows */,
 				B078F22128C27F2400D46F61 /* Assets.xcassets */,

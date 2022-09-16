@@ -8,7 +8,6 @@
 import UIKit
 
 class RoadmapToolbar: UIToolbar {
-    
     func initLayout(coordinator: NewRoadmapCoordinator) {
         self.translatesAutoresizingMaskIntoConstraints = true
         self.barStyle = .default
