@@ -11,7 +11,6 @@ import CoreData
 
 @objc(RoadmapLocal)
 public class RoadmapLocal: NSManagedObject {
-    
     static let shared: RoadmapLocal = RoadmapLocal()
     
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -42,7 +41,7 @@ public class RoadmapLocal: NSManagedObject {
     }
     
     func createRoadmap(roadmap: Roadmaps, user: User) -> RoadmapLocal {
-        guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else {preconditionFailure()}
+        guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         
         newRoadmap.id = roadmap.id
         newRoadmap.name = roadmap.name

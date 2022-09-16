@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 extension DayLocal {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<DayLocal> {
         return NSFetchRequest<DayLocal>(entityName: "DayLocal")
     }

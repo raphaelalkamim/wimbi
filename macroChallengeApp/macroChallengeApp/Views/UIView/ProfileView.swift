@@ -35,7 +35,7 @@ class ProfileView: UIView {
     
     private lazy var username: UILabel = {
         let title = UILabel()
-        title.text = "@malco" // adicionar username
+        title.text = "@malcon" // adicionar username
         title.numberOfLines = 0
         title.textColor = .caption
         title.font = designSystem.text.body.font
@@ -53,7 +53,7 @@ class ProfileView: UIView {
     
     private lazy var roadmapTitle: UILabel = {
         let title = UILabel()
-        title.text = "Meus " // adicionar nome
+        title.text = "Meus roteiros " // adicionar nome
         title.numberOfLines = 0
         title.textColor = .textPrimary
         title.font = designSystem.text.largeTitle.font
