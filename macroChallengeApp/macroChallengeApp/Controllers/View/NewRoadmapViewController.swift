@@ -11,6 +11,7 @@ import CoreLocation
 import MapKit
 
 class NewRoadmapViewController: UIViewController {
+    let reviewTravelView = ReviewTravelView()
     let destinyView = DestinyView(frame: .zero)
     let daysView = DaysView(frame: .zero)
     let locationManager = CLLocationManager()
@@ -21,8 +22,7 @@ class NewRoadmapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        self.setupDestinyView()
-    
+
+        self.setupReviewTravelView()    
     }
 }
