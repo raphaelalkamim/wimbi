@@ -27,15 +27,14 @@ class LabelTableViewCell: UITableViewCell {
     
    public lazy var title: UILabel = {
        let label = UILabel()
-       label.stylize(with: designSystem.text.caption)
-       label.textColor = designSystem.palette.textPrimary
+       label.stylize(with: designSystem.text.body)
        label.text = "Title"
        return label
     }()
     
     public lazy var value: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.body)
         label.textColor = designSystem.palette.caption
         label.text = "Value"
         return label

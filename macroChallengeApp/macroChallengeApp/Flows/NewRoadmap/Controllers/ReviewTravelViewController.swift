@@ -49,7 +49,7 @@ class ReviewTravelViewController: UIViewController {
         self.navigationController?.setToolbarHidden(false, animated: false)
     }
     @objc func nextPage() {
-        coordinator?.startReview()
+        coordinator?.dismiss()
     }
     @objc func backPage() {
         coordinator?.back()
