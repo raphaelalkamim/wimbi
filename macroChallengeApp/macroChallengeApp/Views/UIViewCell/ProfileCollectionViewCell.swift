@@ -41,7 +41,10 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         let tag = UILabel()
         tag.font = UIFont(name: "Avenir-Medium", size: 15)
         tag.textColor = .white
-        tag.text = " NOVO "
+        tag.text = "NOVO"
+        tag.textAlignment = .center
+        tag.layer.masksToBounds = true
+        tag.layer.cornerRadius = 10
         tag.backgroundColor = .accent
         return tag
     }()
@@ -91,8 +94,11 @@ extension ProfileCollectionViewCell {
         newTag.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(designSystem.spacing.smallPositive)
             make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
+            make.height.equalTo(designSystem.spacing.xxLargePositive)
+            make.width.equalTo(57)
+
         }
-        
+
         likeImage.snp.makeConstraints { make in
             make.top.equalTo(roadmapImage.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)

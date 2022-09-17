@@ -52,6 +52,15 @@ class ProfileView: UIView {
         return title
     }()
     
+    private lazy var addButton: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(systemName: "plus"), for: .normal)
+        btn.tintColor = .accent
+        btn.addTarget(self, action: #selector(addAction), for: .touchDown)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
     private lazy var myRoadmapCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
@@ -65,6 +74,10 @@ class ProfileView: UIView {
         return collectionView
     }()
     
+    @objc func addAction() {
+        print("adicionar")
+    }
+    
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)
@@ -73,6 +86,7 @@ class ProfileView: UIView {
         contentView.addSubview(name)
         contentView.addSubview(username)
         contentView.addSubview(roadmapTitle)
+        contentView.addSubview(addButton)
         contentView.addSubview(myRoadmapCollectionView)
         setupConstraints()
     }
@@ -114,11 +128,16 @@ class ProfileView: UIView {
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
         }
         
+        addButton.snp.makeConstraints { make in
+            make.top.equalTo(roadmapTitle.snp.top)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+            make.size.equalTo(40)
+        }
+        
         myRoadmapCollectionView.snp.makeConstraints { make in
             make.top.equalTo(roadmapTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
-
             make.height.equalTo(900)
             make.bottom.equalTo(scrollView.snp.bottom)
         }
