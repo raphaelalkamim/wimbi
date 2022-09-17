@@ -8,7 +8,6 @@
 import UIKit
 
 class NumberPickerTableViewCell: UITableViewCell {
-    
     lazy var numberPicker: UIPickerView = {
         let numberPicker = UIPickerView()
         numberPicker.dataSource = self

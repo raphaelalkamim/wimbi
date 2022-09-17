@@ -20,10 +20,16 @@ class ProfileViewController: UIViewController {
         profileView.bindColletionView(delegate: self, dataSource: self)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
+        
+        profileView.addButton.addTarget(self, action: #selector(addAction), for: .touchDown)
+
     }
     
     @objc func profileSettings() {
-        print("oi")
-        // implementar
+        coordinator?.settings()
+    }
+    
+    @objc func addAction() {
+        coordinator?.newRoadmap()
     }
 }

@@ -52,11 +52,11 @@ class ProfileView: UIView {
         return title
     }()
     
-    private lazy var addButton: UIButton = {
+    lazy var addButton: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(systemName: "plus"), for: .normal)
+        let img = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
+        btn.setImage(img, for: .normal)
         btn.tintColor = .accent
-        btn.addTarget(self, action: #selector(addAction), for: .touchDown)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -73,11 +73,7 @@ class ProfileView: UIView {
         collectionView.backgroundColor = .backgroundPrimary
         return collectionView
     }()
-    
-    @objc func addAction() {
-        print("adicionar")
-    }
-    
+
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)

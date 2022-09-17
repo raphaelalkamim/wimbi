@@ -44,6 +44,10 @@
 		A04B45D028D393E00045558E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45CF28D393E00045558E /* ProfileView.swift */; };
 		A04B45D228D39B420045558E /* ProfileViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D128D39B420045558E /* ProfileViewControllerExtension.swift */; };
 		A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */; };
+		A04B45D828D620250045558E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D728D620250045558E /* SettingsViewController.swift */; };
+		A04B45DA28D621F60045558E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D928D621F60045558E /* SettingsView.swift */; };
+		A04B45DC28D622A80045558E /* ProfileViewController+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45DB28D622A80045558E /* ProfileViewController+Settings.swift */; };
+		A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */; };
 		B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21528C27F2000D46F61 /* AppDelegate.swift */; };
 		B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21728C27F2000D46F61 /* SceneDelegate.swift */; };
 		B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B078F21E28C27F2000D46F61 /* macroChallengeApp.xcdatamodeld */; };
@@ -122,6 +126,10 @@
 		A04B45CF28D393E00045558E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A04B45D128D39B420045558E /* ProfileViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerExtension.swift; sourceTree = "<group>"; };
 		A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		A04B45D728D620250045558E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A04B45D928D621F60045558E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A04B45DB28D622A80045558E /* ProfileViewController+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Settings.swift"; sourceTree = "<group>"; };
+		A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A2717F6A055C734D418E1360 /* Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B078F21228C27F2000D46F61 /* macroChallengeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macroChallengeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B078F21528C27F2000D46F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +194,7 @@
 			children = (
 				13F994D828D244A200B077C0 /* CurrentViewController.swift */,
 				13C8A13C28CA795A00994196 /* ProfileViewController.swift */,
+				A04B45D728D620250045558E /* SettingsViewController.swift */,
 				13F994D528D244A100B077C0 /* ExploreViewController.swift */,
 				13F994D728D244A100B077C0 /* TabBarController.swift */,
 				B0E2461828CFAA3800D62AF1 /* NewRoadMapViewController.swift */,
@@ -290,6 +299,7 @@
 			children = (
 				B0E2461628CFA85E00D62AF1 /* CategoryView.swift */,
 				A04B45CF28D393E00045558E /* ProfileView.swift */,
+				A04B45D928D621F60045558E /* SettingsView.swift */,
 				13C8A14828CFA66200994196 /* DestinyView.swift */,
 				DF57253C28D110E1005466D9 /* DaysView.swift */,
 			);
@@ -324,9 +334,10 @@
 			isa = PBXGroup;
 			children = (
 				13C8A15428CFD0D000994196 /* NewRoadmapViewController+Destiny.swift */,
-				A04B45D128D39B420045558E /* ProfileViewControllerExtension.swift */,
 				DF57253E28D11153005466D9 /* NewRoadmapViewController+Days.swift */,
 				13F994DD28D244E700B077C0 /* NewRoadmapViewController+Category.swift */,
+				A04B45D128D39B420045558E /* ProfileViewControllerExtension.swift */,
+				A04B45DB28D622A80045558E /* ProfileViewController+Settings.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -418,6 +429,7 @@
 				DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */,
 				B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */,
 				A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */,
+				A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */,
 			);
 			path = UIViewCell;
 			sourceTree = "<group>";
@@ -695,7 +707,10 @@
 				B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */,
 				13C8A12128CA690500994196 /* DesignSystem.swift in Sources */,
 				DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */,
+				A04B45DA28D621F60045558E /* SettingsView.swift in Sources */,
 				13C8A13828CA75EA00994196 /* DesignSystem+UIColor.swift in Sources */,
+				A04B45DC28D622A80045558E /* ProfileViewController+Settings.swift in Sources */,
+				A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */,
 				B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */,
 				13C8A13028CA6AF400994196 /* DefaultDesignSystem.swift in Sources */,
 				DF57253F28D11153005466D9 /* NewRoadmapViewController+Days.swift in Sources */,
@@ -710,6 +725,7 @@
 				B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */,
 				DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */,
 				DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */,
+				A04B45D828D620250045558E /* SettingsViewController.swift in Sources */,
 				13C8A11328C6835300994196 /* Activity.swift in Sources */,
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
