@@ -27,6 +27,19 @@ class ProfileCoordinator: Coordinator {
         vc.navigationItem.title = "Profile"
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func newRoadmap() {
+        let vc = NewRoadmapViewController()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func settings() {
+        let vc = SettingsViewController()
+        vc.coordinator = self
+        vc.navigationItem.title = "Settings"
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func setupBarAppearence() {
         let designSystem: DesignSystem = DefaultDesignSystem.shared
         navigationController.navigationBar.prefersLargeTitles = true

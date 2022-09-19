@@ -13,8 +13,17 @@ extension UIFont {
         UIFont(name: "Avenir-Roman", size: 17)!
     }
     
+    // Utilizada nas células da tela de Perfil
+    static var cellTitle: UIFont {
+        UIFont(name: "Avenir-Medium", size: 18)!
+    }
+    
     static var title: UIFont {
         UIFont(name: "Avenir-Black", size: 24)!
+    }
+    
+    static var mediumTitle: UIFont {
+        UIFont(name: "Avenir-Black", size: 30)!
     }
     
     static var largeTitle: UIFont {

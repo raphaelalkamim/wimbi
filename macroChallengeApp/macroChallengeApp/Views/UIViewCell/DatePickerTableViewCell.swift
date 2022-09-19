@@ -7,8 +7,7 @@
 
 import UIKit
 
-class DatePickerTableViewCell: UITableViewCell {
-    
+class DatePickerTableViewCell: UITableViewCell {    
     lazy var label: UILabel = {
         let label = UILabel()
         label.text = "Teste"

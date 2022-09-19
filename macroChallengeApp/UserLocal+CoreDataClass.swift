@@ -24,7 +24,7 @@ public class UserLocal: NSManagedObject {
         return container
     }()
     
-    var context: NSManagedObjectContext{
+    var context: NSManagedObjectContext {
         persistentContainer.viewContext
     }
     

@@ -11,13 +11,12 @@ import CoreData
 
 @objc(ActivityLocal)
 public class ActivityLocal: NSManagedObject {
-
     static let shared: ActivityLocal = ActivityLocal()
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "macroChallengeApp")
         container.loadPersistentStores { _, error in
-            if let erro = error{
+            if let erro = error {
                 preconditionFailure(erro.localizedDescription)
             }
             
@@ -25,7 +24,7 @@ public class ActivityLocal: NSManagedObject {
         return container
     }()
     
-    var context: NSManagedObjectContext{
+    var context: NSManagedObjectContext {
         persistentContainer.viewContext
     }
     

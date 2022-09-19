@@ -11,13 +11,12 @@ import CoreData
 
 @objc(DayLocal)
 public class DayLocal: NSManagedObject {
-    
     static let shared: DayLocal = DayLocal()
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "macroChallengeApp")
         container.loadPersistentStores { _, error in
-            if let erro = error{
+            if let erro = error {
                 preconditionFailure(erro.localizedDescription)
             }
             
@@ -25,7 +24,7 @@ public class DayLocal: NSManagedObject {
         return container
     }()
     
-    var context: NSManagedObjectContext{
+    var context: NSManagedObjectContext {
         persistentContainer.viewContext
     }
     

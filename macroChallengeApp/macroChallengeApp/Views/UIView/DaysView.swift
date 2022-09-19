@@ -7,8 +7,7 @@
 
 import UIKit
 
-class DaysView: UIView {
-    
+class DaysView: UIView {    
     let designSystem = DefaultDesignSystem.shared
     
     lazy var dataTitleLabel: UILabel = {
