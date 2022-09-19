@@ -23,7 +23,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     
     lazy var title: UILabel = {
         let title = UILabel()
-        title.text = "Rio de Janeiro"
+        title.text = "River of January"
         title.stylize(with: designSystem.text.cellTitle)
         return title
     }()
@@ -41,7 +41,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         let tag = UILabel()
         tag.font = UIFont(name: "Avenir-Medium", size: 15)
         tag.textColor = .white
-        tag.text = "NOVO"
+        tag.text = "NEW"
         tag.textAlignment = .center
         tag.layer.masksToBounds = true
         tag.layer.cornerRadius = 10

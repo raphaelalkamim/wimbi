@@ -57,7 +57,7 @@ class CategoryViewController: UIViewController {
         
         let next = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextPage))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let items = [spacer, spacer, spacer, spacer, spacer, spacer, spacer, next, spacer]
+        let items = [spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, next, spacer]
         self.setToolbarItems(items, animated: false)
         self.navigationController?.setToolbarHidden(false, animated: false)
     }

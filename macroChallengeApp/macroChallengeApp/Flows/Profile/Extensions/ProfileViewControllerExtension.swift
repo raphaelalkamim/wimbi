@@ -37,7 +37,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 16
         
         if indexPath.row == 1 || indexPath.row == 5 {
-            cell.title.text = "Fernando de Noronha"
+            cell.title.text = "Fernando of Noronha"
         }
         
         cell.title.translatesAutoresizingMaskIntoConstraints = false

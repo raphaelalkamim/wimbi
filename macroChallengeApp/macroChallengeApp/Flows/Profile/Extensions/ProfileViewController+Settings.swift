@@ -46,11 +46,11 @@ extension SettingsViewController: UITableViewDataSource {
             let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
             alert.view.tintColor = .accent
             let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
-            let string = NSAttributedString(string: "Sair da sua conta?", attributes: titleAtt)
+            let string = NSAttributedString(string: "Sign out of your account?", attributes: titleAtt)
             alert.setValue(string, forKey: "attributedTitle")
-            alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
             }))
-            alert.addAction(UIAlertAction(title: "Sair", style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
+            alert.addAction(UIAlertAction(title: "Sign out", style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
                     // Ação Cancelar
             }))
             present(alert, animated: true)
@@ -69,23 +69,23 @@ extension SettingsViewController: UITableViewDataSource {
 
         switch indexPath.row {
         case 0:
-            cell.title.text = "Editar perfil"
+            cell.title.text = "Edit profile"
             cell.icon.setImage(UIImage(systemName: "person.fill"), for: .normal)
         
         case 1:
-            cell.title.text = "Roteiros curtidos"
+            cell.title.text = "Liked roadmaps"
             cell.icon.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         
         case 2:
-            cell.title.text = "Notificações"
+            cell.title.text = "Notifications"
             cell.icon.setImage(UIImage(systemName: "bell.fill"), for: .normal)
         
         case 3:
-            cell.title.text = "Termos de privacidade"
+            cell.title.text = "Terms of privacy"
             cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
         
         case 4:
-            cell.title.text = "Sair"
+            cell.title.text = "Sign out"
             cell.title.textColor = .redCity
             cell.icon.isHidden = true
             cell.chevron.isHidden = true

@@ -47,7 +47,7 @@ class ProfileView: UIView {
     
     private lazy var roadmapTitle: UILabel = {
         let title = UILabel()
-        title.text = "Meus roteiros" // adicionar nome
+        title.text = "My roadmaps" // adicionar nome
         title.stylize(with: designSystem.text.mediumTitle)
         return title
     }()
