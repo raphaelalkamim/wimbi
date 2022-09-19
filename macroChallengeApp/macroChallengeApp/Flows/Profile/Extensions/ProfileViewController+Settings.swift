@@ -32,13 +32,17 @@ extension SettingsViewController: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             print("Ação editar perfil")
-        
+//            let vc = NotificationsViewController()
+//            vc.navigationItem.title = "Edit profile"
+//            navigationController?.pushViewController(vc, animated: true)
+            
         case 1:
             print("Ação roteiros curtidos")
         
         case 2:
-            print("Ação notificações")
-        
+            let vc = NotificationsViewController()
+            vc.navigationItem.title = "Notifications"
+            navigationController?.pushViewController(vc, animated: true)
         case 3:
             print("Ação termos")
         

@@ -47,7 +47,7 @@ class CategoryViewController: UIViewController {
     
     func setupToolbar() {
         let barItems = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelRoadmap))
-        barItems.tintColor = .systemRed
+        barItems.tintColor = .accent
         self.navigationItem.leftBarButtonItems = [barItems]
         
         let toolBar = UIToolbar()
