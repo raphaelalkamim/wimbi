@@ -36,8 +36,8 @@ class ProfileCoordinator: Coordinator {
     func settings() {
         let vc = SettingsViewController()
         vc.coordinator = self
-        navigationController.present(vc, animated: true)
-        navigationController.modalPresentationStyle = .automatic
+        vc.navigationItem.title = "Settings"
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func setupBarAppearence() {

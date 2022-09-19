@@ -48,11 +48,10 @@ extension SettingsViewController: UITableViewDataSource {
             let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
             let string = NSAttributedString(string: "Sair da sua conta?", attributes: titleAtt)
             alert.setValue(string, forKey: "attributedTitle")
-            
-            alert.addAction(UIAlertAction(title: "Sair", style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-                    // Ação Cancelar
+            alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
             }))
-            alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+            alert.addAction(UIAlertAction(title: "Sair", style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
+                    // Ação Cancelar
             }))
             present(alert, animated: true)
             

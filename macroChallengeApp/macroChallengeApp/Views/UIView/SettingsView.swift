@@ -49,7 +49,7 @@ class SettingsView: UIView {
         settingsTableView.snp.makeConstraints { make in
             make.leading.equalTo(designSystem.spacing.xLargePositive)
             make.trailing.equalTo(designSystem.spacing.xLargeNegative)
-            make.top.equalTo(contentView.snp.topMargin).inset(designSystem.spacing.xxLargePositive)
+            make.top.equalTo(contentView.snp.topMargin).inset(designSystem.spacing.xSmallPositive)
             make.height.equalTo(230)
         }
     }
