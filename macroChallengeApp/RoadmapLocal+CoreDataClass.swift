@@ -11,7 +11,6 @@ import CoreData
 
 @objc(RoadmapLocal)
 public class RoadmapLocal: NSManagedObject {
-    
     static let shared: RoadmapLocal = RoadmapLocal()
     
     private lazy var persistentContainer: NSPersistentContainer = {

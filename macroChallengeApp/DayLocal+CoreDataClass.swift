@@ -11,7 +11,6 @@ import CoreData
 
 @objc(DayLocal)
 public class DayLocal: NSManagedObject {
-    
     static let shared: DayLocal = DayLocal()
     
     private lazy var persistentContainer: NSPersistentContainer = {
