@@ -11,7 +11,6 @@ import SnapKit
 class ProfileCollectionViewCell: UICollectionViewCell {
     static let identifier = "profileCell"
     let designSystem: DesignSystem = DefaultDesignSystem.shared
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
