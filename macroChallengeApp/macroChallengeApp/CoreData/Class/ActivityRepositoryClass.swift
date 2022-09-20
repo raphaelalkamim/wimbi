@@ -1,6 +1,6 @@
 //
-//  DayLocal+CoreDataClass.swift
-//  
+//  ActivityLocal+CoreDataClass.swift
+//
 //
 //  Created by Carolina Ortega on 13/09/22.
 //
@@ -9,9 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(DayLocal)
-public class DayLocal: NSManagedObject {
-    static let shared: DayLocal = DayLocal()
+class ActivityRepository {
+    static let shared: ActivityRepository = ActivityRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "macroChallengeApp")
@@ -40,31 +39,34 @@ public class DayLocal: NSManagedObject {
         }
     }
     
-    func createDay(roadmap: RoadmapLocal, day: Day) -> DayLocal {
-        guard let newDay = NSEntityDescription.insertNewObject(forEntityName: "DayLocal", into: context) as? DayLocal else { preconditionFailure() }
+    func createActivity(day: DayLocal, activity: ActivityLocal) -> ActivityLocal {
+        guard let newActivity = NSEntityDescription.insertNewObject(forEntityName: "ActivityLocal", into: context) as? ActivityLocal else { preconditionFailure() }
         
-        newDay.id = day.id
-        newDay.date = day.date
+        newActivity.id = Int32(activity.id)
+        newActivity.name = activity.name
+        newActivity.category = activity.category
+        newActivity.location = activity.location
+        newActivity.hour = activity.hour
+        newActivity.budget = activity.budget
         
-        roadmap.addToDay(newDay)
+        day.addToActivity(newActivity)
         
         self.saveContext()
-        return newDay
+        return newActivity
     }
     
-    func getDay() -> [DayLocal] {
-        let fr = NSFetchRequest<DayLocal>(entityName: "DayLocal")
+    func getActivity() -> [ActivityLocal] {
+        let fetchRequest = NSFetchRequest<ActivityLocal>(entityName: "ActivityLocal")
         do {
-            return try self.persistentContainer.viewContext.fetch(fr)
+            return try self.persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             print(error)
         }
         return []
     }
     
-    func deleteDay(day: DayLocal) throws {
-        self.persistentContainer.viewContext.delete(day)
+    func deleteActivity(activity: ActivityLocal) throws {
+        self.persistentContainer.viewContext.delete(activity)
         self.saveContext()
     }
-    
 }
