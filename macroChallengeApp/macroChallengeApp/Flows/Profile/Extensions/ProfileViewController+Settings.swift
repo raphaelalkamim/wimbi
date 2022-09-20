@@ -31,24 +31,24 @@ extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            print("Ação editar perfil")
-//            let vc = NotificationsViewController()
-//            vc.navigationItem.title = "Edit profile"
-//            navigationController?.pushViewController(vc, animated: true)
+            let vc = EditProfileViewController()
+            vc.navigationItem.title = "Edit profile"
+            navigationController?.pushViewController(vc, animated: true)
             
         case 1:
-            print("Ação roteiros curtidos")
-        
+            let vc = LikedRoadmapsViewController()
+            vc.navigationItem.title = "Liked roadmaps"
+            navigationController?.pushViewController(vc, animated: true)
+            
         case 2:
             let vc = NotificationsViewController()
             vc.navigationItem.title = "Notifications"
             navigationController?.pushViewController(vc, animated: true)
         case 3:
-            print("Ação termos")
             let vc = TermsViewController()
             vc.navigationItem.title = "Terms of privacy"
             navigationController?.pushViewController(vc, animated: true)
-        
+            
         case 4:
             let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
             alert.view.tintColor = .accent
@@ -58,7 +58,7 @@ extension SettingsViewController: UITableViewDataSource {
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
             }))
             alert.addAction(UIAlertAction(title: "Sign out", style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
-                    // Ação Cancelar
+                // Ação Cancelar
             }))
             present(alert, animated: true)
             
@@ -73,24 +73,24 @@ extension SettingsViewController: UITableViewDataSource {
         }
         cell.setup()
         cell.backgroundColor = designSystem.palette.backgroundCell
-
+        
         switch indexPath.row {
         case 0:
             cell.title.text = "Edit profile"
             cell.icon.setImage(UIImage(systemName: "person.fill"), for: .normal)
-        
+            
         case 1:
             cell.title.text = "Liked roadmaps"
             cell.icon.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        
+            
         case 2:
             cell.title.text = "Notifications"
             cell.icon.setImage(UIImage(systemName: "bell.fill"), for: .normal)
-        
+            
         case 3:
             cell.title.text = "Terms of privacy"
             cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
-        
+            
         case 4:
             cell.title.text = "Sign out"
             cell.title.textColor = .redCity
@@ -104,7 +104,7 @@ extension SettingsViewController: UITableViewDataSource {
         }
         
         return cell
-
+        
     }
     
 }

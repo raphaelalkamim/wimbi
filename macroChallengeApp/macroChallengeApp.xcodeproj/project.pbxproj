@@ -63,6 +63,8 @@
 		A0B9F4C928DA2A5400F2DF06 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4C828DA2A5400F2DF06 /* TermsViewController.swift */; };
 		A0B9F4CB28DA2E3B00F2DF06 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CA28DA2E3B00F2DF06 /* EditProfileView.swift */; };
 		A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */; };
+		A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CE28DA342300F2DF06 /* LikedRoadmapsView.swift */; };
+		A0B9F4D128DA342B00F2DF06 /* LikedRoadmapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4D028DA342B00F2DF06 /* LikedRoadmapsViewController.swift */; };
 		B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21528C27F2000D46F61 /* AppDelegate.swift */; };
 		B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21728C27F2000D46F61 /* SceneDelegate.swift */; };
 		B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B078F21E28C27F2000D46F61 /* macroChallengeApp.xcdatamodeld */; };
@@ -158,6 +160,8 @@
 		A0B9F4C828DA2A5400F2DF06 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		A0B9F4CA28DA2E3B00F2DF06 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		A0B9F4CE28DA342300F2DF06 /* LikedRoadmapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedRoadmapsView.swift; sourceTree = "<group>"; };
+		A0B9F4D028DA342B00F2DF06 /* LikedRoadmapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedRoadmapsViewController.swift; sourceTree = "<group>"; };
 		A2717F6A055C734D418E1360 /* Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B078F21228C27F2000D46F61 /* macroChallengeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macroChallengeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B078F21528C27F2000D46F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -219,8 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				1379745228D8E6B700AEA662 /* SettingsView.swift */,
+				A0B9F4CE28DA342300F2DF06 /* LikedRoadmapsView.swift */,
 				A0B9F4CA28DA2E3B00F2DF06 /* EditProfileView.swift */,
-				A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */,
 				A0B9F4BE28D8FB5900F2DF06 /* NotificationsView.swift */,
 				1379744F28D8E61B00AEA662 /* ProfileView.swift */,
 				A0B9F4C628DA2A4C00F2DF06 /* TermsView.swift */,
@@ -427,8 +431,10 @@
 			isa = PBXGroup;
 			children = (
 				1379745128D8E6B700AEA662 /* SettingsViewController.swift */,
+				A0B9F4D028DA342B00F2DF06 /* LikedRoadmapsViewController.swift */,
 				1379744228D8E56700AEA662 /* ProfileViewController.swift */,
 				A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */,
+				A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */,
 				A0B9F4C828DA2A5400F2DF06 /* TermsViewController.swift */,
 			);
 			path = ViewController;
@@ -846,8 +852,10 @@
 				1467706728D2699D00D55098 /* LabelTableViewCell.swift in Sources */,
 				13C8A12D28CA6A2500994196 /* ProfileCoordinator.swift in Sources */,
 				1379744928D8E57B00AEA662 /* NewRoadmapViewController+ReviewTravel.swift in Sources */,
+				A0B9F4D128DA342B00F2DF06 /* LikedRoadmapsViewController.swift in Sources */,
 				A0B9F4CB28DA2E3B00F2DF06 /* EditProfileView.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
+				A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */,
 				B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */,
 				DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */,
 				1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */,
