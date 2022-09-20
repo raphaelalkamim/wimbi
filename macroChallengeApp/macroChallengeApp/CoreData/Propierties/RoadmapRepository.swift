@@ -10,51 +10,49 @@ import Foundation
 import CoreData
 
 extension RoadmapRepository {
-
-    @NSManaged public var budget: Double
-    @NSManaged public var category: String?
-    @NSManaged public var dayCount: Int32
-    @NSManaged public var id: Int32
-    @NSManaged public var imageId: String?
-    @NSManaged public var isPublic: Bool
-    @NSManaged public var isShared: Bool
-    @NSManaged public var location: String?
-    @NSManaged public var name: String?
-    @NSManaged public var peopleCount: Int32
-    @NSManaged public var shareKey: String?
-    @NSManaged public var day: NSSet?
-    @NSManaged public var user: NSSet?
-
+    @NSManaged var budget: Double
+    @NSManaged var category: String?
+    @NSManaged var dayCount: Int32
+    @NSManaged var id: Int32
+    @NSManaged var imageId: String?
+    @NSManaged var isPublic: Bool
+    @NSManaged var isShared: Bool
+    @NSManaged var location: String?
+    @NSManaged var name: String?
+    @NSManaged var peopleCount: Int32
+    @NSManaged var shareKey: String?
+    @NSManaged var day: NSSet?
+    @NSManaged var user: NSSet?
 }
 
 // MARK: Generated accessors for day
 extension RoadmapRepository {
     @objc(addDayObject:)
-    @NSManaged public func addToDay(_ value: DayLocal)
+    @NSManaged func addToDay(_ value: DayLocal)
 
     @objc(removeDayObject:)
-    @NSManaged public func removeFromDay(_ value: DayLocal)
+    @NSManaged func removeFromDay(_ value: DayLocal)
 
     @objc(addDay:)
-    @NSManaged public func addToDay(_ values: NSSet)
+    @NSManaged func addToDay(_ values: NSSet)
 
     @objc(removeDay:)
-    @NSManaged public func removeFromDay(_ values: NSSet)
+    @NSManaged func removeFromDay(_ values: NSSet)
 
 }
 
 // MARK: Generated accessors for user
 extension RoadmapRepository {
     @objc(addUserObject:)
-    @NSManaged public func addToUser(_ value: UserLocal)
+    @NSManaged func addToUser(_ value: UserLocal)
 
     @objc(removeUserObject:)
-    @NSManaged public func removeFromUser(_ value: UserLocal)
+    @NSManaged func removeFromUser(_ value: UserLocal)
 
     @objc(addUser:)
-    @NSManaged public func addToUser(_ values: NSSet)
+    @NSManaged func addToUser(_ values: NSSet)
 
     @objc(removeUser:)
-    @NSManaged public func removeFromUser(_ values: NSSet)
+    @NSManaged func removeFromUser(_ values: NSSet)
 
 }

@@ -71,7 +71,7 @@ class DataManager {
         }
     }
     
-    func postUser(username: String, usernameApp:String, name: String, photoId: String, password: String) {
+    func postUser(username: String, usernameApp: String, name: String, photoId: String, password: String) {
         let user: [String: Any] = [
             "username": username,
             "usernameApp": usernameApp,

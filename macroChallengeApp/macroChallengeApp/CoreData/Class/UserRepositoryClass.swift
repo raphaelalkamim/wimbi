@@ -49,9 +49,9 @@ class UserRepository: NSManagedObject {
     }
     
     func getUser() -> [UserLocal] {
-        let fr = NSFetchRequest<UserLocal>(entityName: "UserLocal")
+        let fetchRequest = NSFetchRequest<UserLocal>(entityName: "UserLocal")
         do {
-            return try self.persistentContainer.viewContext.fetch(fr)
+            return try self.persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             print(error)
         }

@@ -10,25 +10,25 @@ import Foundation
 import CoreData
 
 extension DayRepository {
-    @NSManaged public var date: String?
-    @NSManaged public var id: Int32
-    @NSManaged public var activity: NSSet?
-    @NSManaged public var roadmap: RoadmapLocal?
+    @NSManaged var date: String?
+    @NSManaged var id: Int32
+    @NSManaged var activity: NSSet?
+    @NSManaged var roadmap: RoadmapLocal?
 
 }
 
 // MARK: Generated accessors for activity
 extension DayRepository {
     @objc(addActivityObject:)
-    @NSManaged public func addToActivity(_ value: ActivityLocal)
+    @NSManaged func addToActivity(_ value: ActivityLocal)
 
     @objc(removeActivityObject:)
-    @NSManaged public func removeFromActivity(_ value: ActivityLocal)
+    @NSManaged func removeFromActivity(_ value: ActivityLocal)
 
     @objc(addActivity:)
-    @NSManaged public func addToActivity(_ values: NSSet)
+    @NSManaged func addToActivity(_ values: NSSet)
 
     @objc(removeActivity:)
-    @NSManaged public func removeFromActivity(_ values: NSSet)
+    @NSManaged func removeFromActivity(_ values: NSSet)
 
 }

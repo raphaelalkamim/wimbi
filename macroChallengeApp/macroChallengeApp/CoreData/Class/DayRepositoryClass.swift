@@ -52,9 +52,9 @@ class DayRepository: NSManagedObject {
     }
     
     func getDay() -> [DayLocal] {
-        let fr = NSFetchRequest<DayLocal>(entityName: "DayLocal")
+        let fetchRequest = NSFetchRequest<DayLocal>(entityName: "DayLocal")
         do {
-            return try self.persistentContainer.viewContext.fetch(fr)
+            return try self.persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             print(error)
         }

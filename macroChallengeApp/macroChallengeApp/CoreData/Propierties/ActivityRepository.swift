@@ -10,13 +10,11 @@ import Foundation
 import CoreData
 
 extension ActivityRepository {
-
-    @NSManaged public var budget: Double
-    @NSManaged public var category: String?
-    @NSManaged public var hour: Date?
-    @NSManaged public var id: Int32
-    @NSManaged public var location: String?
-    @NSManaged public var name: String?
-    @NSManaged public var day: DayLocal?
-
+    @NSManaged var budget: Double
+    @NSManaged var category: String?
+    @NSManaged var hour: Date?
+    @NSManaged var id: Int32
+    @NSManaged var location: String?
+    @NSManaged var name: String?
+    @NSManaged var day: DayLocal?
 }

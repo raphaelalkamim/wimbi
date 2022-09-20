@@ -56,9 +56,9 @@ class ActivityRepository {
     }
     
     func getActivity() -> [ActivityLocal] {
-        let fr = NSFetchRequest<ActivityLocal>(entityName: "ActivityLocal")
+        let fetchRequest = NSFetchRequest<ActivityLocal>(entityName: "ActivityLocal")
         do {
-            return try self.persistentContainer.viewContext.fetch(fr)
+            return try self.persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             print(error)
         }

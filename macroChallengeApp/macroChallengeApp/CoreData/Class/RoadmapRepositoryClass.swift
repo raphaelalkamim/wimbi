@@ -53,16 +53,16 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.isShared = roadmap.isShared
         newRoadmap.isPublic = roadmap.isPublic
         newRoadmap.shareKey = roadmap.shareKey
-        //newRoadmap.addToUser(user)
+        // newRoadmap.addToUser(user)
         
         self.saveContext()
         return newRoadmap
     }
     
     func getRoadmap() -> [RoadmapLocal] {
-        let fr = NSFetchRequest<RoadmapLocal>(entityName: "RoadmapLocal")
+        let fetchRequest = NSFetchRequest<RoadmapLocal>(entityName: "RoadmapLocal")
         do {
-            return try self.persistentContainer.viewContext.fetch(fr)
+            return try self.persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             print(error)
         }

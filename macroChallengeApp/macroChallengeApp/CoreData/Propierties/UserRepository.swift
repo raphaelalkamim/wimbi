@@ -10,24 +10,23 @@ import Foundation
 import CoreData
 
 extension UserRepository {
-
-    @NSManaged public var id: Int32
-    @NSManaged public var roadmap: NSSet?
+    @NSManaged var id: Int32
+    @NSManaged var roadmap: NSSet?
 
 }
 
 // MARK: Generated accessors for roadmap
 extension UserRepository {
     @objc(addRoadmapObject:)
-    @NSManaged public func addToRoadmap(_ value: RoadmapLocal)
+    @NSManaged func addToRoadmap(_ value: RoadmapLocal)
 
     @objc(removeRoadmapObject:)
-    @NSManaged public func removeFromRoadmap(_ value: RoadmapLocal)
+    @NSManaged func removeFromRoadmap(_ value: RoadmapLocal)
 
     @objc(addRoadmap:)
-    @NSManaged public func addToRoadmap(_ values: NSSet)
+    @NSManaged func addToRoadmap(_ values: NSSet)
 
     @objc(removeRoadmap:)
-    @NSManaged public func removeFromRoadmap(_ values: NSSet)
+    @NSManaged func removeFromRoadmap(_ values: NSSet)
 
 }
