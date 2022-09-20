@@ -12,10 +12,22 @@ class DaysViewController: UIViewController {
     let daysView = DaysView(frame: .zero)
     weak var coordinator: NewRoadmapCoordinator?
 
+    var roadmap: Roadmaps
+    var initialDate = UIDatePicker()
+    var finalDate = UIDatePicker()
+    var travelersCount = UIPickerView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupDaysView()
         self.setupToolbar()
+    }
+    init(roadmap: Roadmaps) {
+        self.roadmap = roadmap
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setupToolbar() {
@@ -37,13 +49,24 @@ class DaysViewController: UIViewController {
     }
     
     @objc func nextPage() {
-        coordinator?.startReview()
+        self.roadmap.dateFinal = finalDate.date
+        self.roadmap.dateInitial = initialDate.date
+        self.roadmap.dayCount = Int(self.countDays(datePickerInitial: self.initialDate, datePickerFinal: self.finalDate))
+        self.roadmap.peopleCount = (self.travelersCount.selectedRow(inComponent: 0)) + 1
+        self.roadmap.isPublic = daysView.isPublic
+        
+        coordinator?.startReview(roadmap: self.roadmap)
     }
     @objc func backPage() {
         coordinator?.back()
     }
     @objc func cancelRoadmap() {
         coordinator?.dismiss()
+    }
+    func countDays(datePickerInitial: UIDatePicker, datePickerFinal: UIDatePicker) -> Double {
+        let initialDate = datePickerInitial.date
+        let finalDate = datePickerFinal.date
+        return ( finalDate.timeIntervalSince(initialDate) / (60 * 60 * 24) ) + 2
     }
 }
 
@@ -71,37 +94,32 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    // swiftlint: disable force_cast
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cellTable = UITableViewCell()
+        
         if tableView == daysView.daysTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DatePickerTableViewCell
-            
-            if indexPath.row == 0 {
-                cell.label.text = "Começa"
-                let separator = UIView()
-                cell.addSubview(separator)
-                separator.backgroundColor = .gray
-                
-                separator.snp.makeConstraints { make in
-                    make.height.equalTo(0.5)
-                    make.bottom.equalToSuperview()
-                    make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
-                    make.trailing.equalToSuperview()
-
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as? DatePickerTableViewCell {
+                if indexPath.row == 0 {
+                    cell.label.text = "Começa"
+                    cell.setupSeparator()
+                    self.initialDate = cell.datePicker
+                } else {
+                    cell.label.text = "Termina"
+                    self.finalDate = cell.datePicker
                 }
-            } else {
-                cell.label.text = "Termina"
+                cellTable = cell
             }
-            return cell
-
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NumberCell", for: indexPath) as! NumberPickerTableViewCell
-
-            cell.label.text = "Quantidade de viajantes"
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "NumberCell", for: indexPath) as? NumberPickerTableViewCell {
+                cell.label.text = "Quantidade de viajantes"
+                self.travelersCount = cell.numberPicker
+                cellTable = cell
+            }
         }
+        
+        return cellTable
     }
-    // swiftlint: enable force_cast
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }

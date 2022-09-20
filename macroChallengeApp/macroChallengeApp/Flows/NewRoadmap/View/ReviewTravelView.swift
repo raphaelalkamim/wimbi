@@ -22,7 +22,7 @@ class ReviewTravelView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var coverImage: UIImageView = {
+    public lazy var coverImage: UIImageView = {
         let image = UIImageView()
         image.clipsToBounds = true
         image.image = UIImage(named: "beachView")
@@ -33,7 +33,7 @@ class ReviewTravelView: UIView {
         return image
     }()
     
-    private lazy var categoryImage: UIImageView = {
+    public lazy var categoryImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleToFill
         image.clipsToBounds = true
@@ -49,7 +49,7 @@ class ReviewTravelView: UIView {
         return title
     }()
     
-    private lazy var subtitle: UILabel = {
+    public lazy var subtitle: UILabel = {
         let subtitle = UILabel()
         subtitle.stylize(with: designSystem.text.caption)
         subtitle.textColor = designSystem.palette.textPrimary

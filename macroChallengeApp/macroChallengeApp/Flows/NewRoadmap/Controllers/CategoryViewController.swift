@@ -11,13 +11,15 @@ import SnapKit
 class CategoryViewController: UIViewController {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     weak var coordinator: NewRoadmapCoordinator?
-
+    
     let categoryView = CategoryView()
     let categories: [Category] =
     [Category(title: "Camp", subtitle: "Descrição aqui", icon: "categoryCamp"),
      Category(title: "Beach", subtitle: "Descrição aqui", icon: "categoryBeach"),
      Category(title: "Mountain", subtitle: "Descrição aqui", icon: "categoryMountain"),
      Category(title: "City", subtitle: "Descrição aqui", icon: "categoryCity")]
+    
+    var roadmap = Roadmaps()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,7 @@ class CategoryViewController: UIViewController {
         }
     }
     @objc func nextPage() {
-        coordinator?.startDestiny()
+        coordinator?.startDestiny(roadmap: roadmap)
     }
     @objc func cancelRoadmap() {
         coordinator?.dismiss()
@@ -85,7 +87,7 @@ extension CategoryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryViewCell {
             cell.selectedBackgroundView()
-            print(cell.title.text)
+            roadmap.category = cell.title.text ?? "Nova Categoria"
         }
     }
     

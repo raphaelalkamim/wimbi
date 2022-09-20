@@ -9,6 +9,7 @@ import UIKit
 
 class DaysView: UIView {    
     let designSystem = DefaultDesignSystem.shared
+    public var isPublic = false
     
     lazy var dataTitleLabel: UILabel = {
         let dataTitleLabel = UILabel()
@@ -91,8 +92,9 @@ class DaysView: UIView {
     @objc func turnRoadmapPublic(_ sender: UISwitch!) {
         if sender.isOn {
             print("on")
+            isPublic = true
         } else {
-            print("off")
+            isPublic = false
         }
     }
     

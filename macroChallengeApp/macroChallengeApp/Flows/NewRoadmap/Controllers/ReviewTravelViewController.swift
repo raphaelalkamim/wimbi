@@ -11,9 +11,27 @@ class ReviewTravelViewController: UIViewController {
     weak var coordinator: NewRoadmapCoordinator?
 
     let reviewTravelView = ReviewTravelView()
-    var categoria: String = ""
     let designSystem = DefaultDesignSystem.shared
-
+    
+    var roadmap: Roadmaps
+    var category = ""
+    var location = ""
+    var daysCount = 1
+    var start = Date()
+    var final = Date()
+    var peopleCount = 1
+    var isPublic = false
+    
+    init(roadmap: Roadmaps) {
+        self.roadmap = roadmap
+        super.init(nibName: nil, bundle: nil)
+        self.setupContent()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupReviewTravelView()
@@ -57,6 +75,28 @@ class ReviewTravelViewController: UIViewController {
     @objc func cancelRoadmap() {
         coordinator?.dismiss()
     }
+    func setupCategory() {
+        if self.category == "Beach" {
+            self.reviewTravelView.categoryImage.image = designSystem.images.beach
+        } else if self.category == "Mountain" {
+            self.reviewTravelView.categoryImage.image = designSystem.images.mountain
+        } else if self.category == "City" {
+            self.reviewTravelView.categoryImage.image = designSystem.images.city
+        } else {
+            self.reviewTravelView.categoryImage.image = designSystem.images.camp
+        }
+    }
+    func setupContent() {
+        self.category = roadmap.category
+        self.reviewTravelView.subtitle.text = self.category
+        self.location = roadmap.location
+        self.daysCount = roadmap.dayCount
+        self.start = roadmap.dateInitial
+        self.final = roadmap.dateFinal
+        self.peopleCount = roadmap.peopleCount
+        self.isPublic = roadmap.isPublic
+        self.setupCategory()
+    }
 }
 
 extension ReviewTravelViewController: UITableViewDelegate {
@@ -79,31 +119,35 @@ extension ReviewTravelViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
+        let format = DateFormatter()
+        format.timeStyle = .none
+        format.dateStyle = .medium
+        
         if tableView == reviewTravelView.daysTable {
             if let newCell = tableView.dequeueReusableCell(withIdentifier: LabelTableViewCell.identifier, for: indexPath) as? LabelTableViewCell {
                 if indexPath.row == 0 {
-                    newCell.configureDays(indexPath: 0, value: "5")
+                    newCell.configureDays(indexPath: 0, value: String(self.daysCount))
                     cell = newCell
                 }
                 if indexPath.row == 1 {
-                    newCell.configureDays(indexPath: 1, value: "20 de outubro de 2022")
+                    newCell.configureDays(indexPath: 1, value: format.string(from: self.start))
                     cell = newCell
                 }
                 if indexPath.row == 2 {
-                    newCell.configureDays(indexPath: 2, value: "23 de outubro de 2022")
+                    newCell.configureDays(indexPath: 2, value: format.string(from: self.final))
                     cell = newCell
                 }
             }
         }
         if tableView == reviewTravelView.travelersTable {
             if let newCell = tableView.dequeueReusableCell(withIdentifier: LabelTableViewCell.identifier, for: indexPath) as? LabelTableViewCell {
-                newCell.configureTravelers(daysValue: 3)
+                newCell.configureTravelers(daysValue: self.peopleCount)
                 cell = newCell
             }
         }
         if tableView == reviewTravelView.privacyTable {
             if let newCell = tableView.dequeueReusableCell(withIdentifier: LabelTableViewCell.identifier, for: indexPath) as? LabelTableViewCell {
-                newCell.configureTripStatus(isPublic: true)
+                newCell.configureTripStatus(isPublic: self.isPublic)
                 cell = newCell
             }
         }

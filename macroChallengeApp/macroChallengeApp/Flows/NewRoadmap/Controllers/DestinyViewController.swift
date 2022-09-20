@@ -17,9 +17,20 @@ class DestinyViewController: UIViewController {
     let destinyView = DestinyView(frame: .zero)
     let locationManager = CLLocationManager()
     let locationSearchTable = LocationSearchTableViewController()
-    var categoria: String = ""
+    var searchedText: String = ""
+    var subtitle: String = ""
     var selectedPin: MKPlacemark? = nil
     
+    var roadmap: Roadmaps
+    
+    init(roadmap: Roadmaps) {
+        self.roadmap = roadmap
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupDestinyView()
@@ -77,7 +88,8 @@ class DestinyViewController: UIViewController {
     }
     
     @objc func nextPage() {
-        coordinator?.startDays()
+        self.roadmap.location = subtitle
+        coordinator?.startDays(roadmap: roadmap)
     }
     @objc func backPage() {
         coordinator?.back()
@@ -89,14 +101,14 @@ class DestinyViewController: UIViewController {
 
 extension DestinyViewController: UISearchBarDelegate {
 func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    self.categoria = searchText
+    self.searchedText = searchText
 }
 
 func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     destinyView.mapView.removeAnnotations(destinyView.mapView.annotations)
     
     let request = MKLocalSearch.Request()
-    request.naturalLanguageQuery = categoria
+    request.naturalLanguageQuery = searchedText
     request.region = destinyView.mapView.region
     
     let search = MKLocalSearch(request: request)
@@ -121,44 +133,44 @@ func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 }
 
 extension DestinyViewController: CLLocationManagerDelegate {
-func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-    if manager.authorizationStatus == .authorizedWhenInUse || manager.authorizationStatus == .authorizedAlways {
-        locationManager.requestLocation()
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        if manager.authorizationStatus == .authorizedWhenInUse || manager.authorizationStatus == .authorizedAlways {
+            locationManager.requestLocation()
+        }
     }
-}
-func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    if let location = locations.first {
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: location.coordinate, span: span)
-        destinyView.mapView.setRegion(region, animated: true)
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            destinyView.mapView.setRegion(region, animated: true)
+        }
     }
-}
-func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    print(error)
-}
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
 }
 
 extension DestinyViewController: MKMapViewDelegate {
 // change view of mkpoint
-func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    guard annotation is MKPointAnnotation else { return nil }
-    
-    let identifier = "Annotation"
-    var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-    
-    if annotationView == nil {
-        annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        annotationView!.canShowCallout = true
-    } else {
-        annotationView!.annotation = annotation
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+        
+        let identifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+        
+        return annotationView
     }
-    
-    return annotationView
-}
 
-func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    print(view.annotation?.title as Any)
-}
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print(view.annotation?.title as Any)
+    }
 }
 
 extension DestinyViewController: HandleMapSearch {
@@ -170,7 +182,8 @@ extension DestinyViewController: HandleMapSearch {
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
         if let city = placemark.locality, let state = placemark.administrativeArea {
-            annotation.subtitle = "\(city) \(state)"
+            subtitle = "\(city) \(state)"
+            annotation.subtitle = subtitle
         }
         destinyView.mapView.addAnnotation(annotation)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
@@ -178,4 +191,3 @@ extension DestinyViewController: HandleMapSearch {
         destinyView.mapView.setRegion(region, animated: true)
     }
 }
-

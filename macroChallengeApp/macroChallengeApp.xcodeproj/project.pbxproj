@@ -19,6 +19,18 @@
 		1379745028D8E61B00AEA662 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744F28D8E61B00AEA662 /* ProfileView.swift */; };
 		1379745328D8E6B700AEA662 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379745128D8E6B700AEA662 /* SettingsViewController.swift */; };
 		1379745428D8E6B700AEA662 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379745228D8E6B700AEA662 /* SettingsView.swift */; };
+		13BD4FFB28D90EF700C0EA7C /* DesignSystem+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */; };
+		13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */; };
+		13BD4FFF28D90F9700C0EA7C /* DefaultDesignSystemImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */; };
+		13BD500128DA286600C0EA7C /* IconSubtitleComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500028DA286600C0EA7C /* IconSubtitleComponentView.swift */; };
+		13BD500628DA28D600C0EA7C /* NewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500528DA28D600C0EA7C /* NewActivityViewController.swift */; };
+		13BD500828DA28E500C0EA7C /* NewActivitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500728DA28E500C0EA7C /* NewActivitView.swift */; };
+		13BD500E28DA297500C0EA7C /* SignInWithAppleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500A28DA297500C0EA7C /* SignInWithAppleManager.swift */; };
+		13BD500F28DA297500C0EA7C /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500B28DA297500C0EA7C /* KeychainManager.swift */; };
+		13BD501028DA297500C0EA7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500C28DA297500C0EA7C /* LoginViewController.swift */; };
+		13BD501128DA297500C0EA7C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500D28DA297500C0EA7C /* LoginView.swift */; };
+		13BD501528DA2A8300C0EA7C /* StackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD501328DA2A8300C0EA7C /* StackTableViewCell.swift */; };
+		13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */; };
 		13C8A10628C6698100994196 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 13C8A10528C6698100994196 /* .swiftlint.yml */; };
 		13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A10A28C6827800994196 /* Roadmaps.swift */; };
 		13C8A10D28C6828900994196 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A10C28C6828900994196 /* User.swift */; };
@@ -83,6 +95,7 @@
 		DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774228CA820200BA5F5F /* DefaultDesignTextFonts.swift */; };
 		DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774428CA846C00BA5F5F /* UILabel+Font.swift */; };
 		DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774628CA853000BA5F5F /* CustomLabelDesignable.swift */; };
+		DFA30CAF28DA2E5A00F316EB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA30CAE28DA2E5A00F316EB /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +128,18 @@
 		1379744F28D8E61B00AEA662 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = macroChallengeApp/Flows/NewRoadmap/View/ProfileView.swift; sourceTree = SOURCE_ROOT; };
 		1379745128D8E6B700AEA662 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = macroChallengeApp/Flows/Profile/ViewController/SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
 		1379745228D8E6B700AEA662 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = macroChallengeApp/Flows/NewRoadmap/View/SettingsView.swift; sourceTree = SOURCE_ROOT; };
+		13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+UIImage.swift"; sourceTree = "<group>"; };
+		13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImages.swift; sourceTree = "<group>"; };
+		13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignSystemImages.swift; sourceTree = "<group>"; };
+		13BD500028DA286600C0EA7C /* IconSubtitleComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSubtitleComponentView.swift; sourceTree = "<group>"; };
+		13BD500528DA28D600C0EA7C /* NewActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewController.swift; sourceTree = "<group>"; };
+		13BD500728DA28E500C0EA7C /* NewActivitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivitView.swift; sourceTree = "<group>"; };
+		13BD500A28DA297500C0EA7C /* SignInWithAppleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleManager.swift; sourceTree = "<group>"; };
+		13BD500B28DA297500C0EA7C /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		13BD500C28DA297500C0EA7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		13BD500D28DA297500C0EA7C /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		13BD501328DA2A8300C0EA7C /* StackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTableViewCell.swift; sourceTree = "<group>"; };
+		13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		13C8A10528C6698100994196 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		13C8A10A28C6827800994196 /* Roadmaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmaps.swift; sourceTree = "<group>"; };
 		13C8A10C28C6828900994196 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -188,6 +213,8 @@
 		DF5F774228CA820200BA5F5F /* DefaultDesignTextFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignTextFonts.swift; sourceTree = "<group>"; };
 		DF5F774428CA846C00BA5F5F /* UILabel+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Font.swift"; sourceTree = "<group>"; };
 		DF5F774628CA853000BA5F5F /* CustomLabelDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelDesignable.swift; sourceTree = "<group>"; };
+		DFA30CAE28DA2E5A00F316EB /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		DFA30CB028DA2F0900F316EB /* macroChallengeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macroChallengeApp.entitlements; sourceTree = "<group>"; };
 		F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macroChallengeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -242,9 +269,57 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		13BD500228DA28B600C0EA7C /* NewActivity */ = {
+			isa = PBXGroup;
+			children = (
+				13BD501228DA2A2600C0EA7C /* ViewCell */,
+				13BD500428DA28CB00C0EA7C /* View */,
+				13BD500328DA28BC00C0EA7C /* ViewController */,
+			);
+			path = NewActivity;
+			sourceTree = "<group>";
+		};
+		13BD500328DA28BC00C0EA7C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13BD500528DA28D600C0EA7C /* NewActivityViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		13BD500428DA28CB00C0EA7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				13BD500728DA28E500C0EA7C /* NewActivitView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		13BD500928DA292300C0EA7C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				13BD500B28DA297500C0EA7C /* KeychainManager.swift */,
+				13BD500D28DA297500C0EA7C /* LoginView.swift */,
+				13BD500C28DA297500C0EA7C /* LoginViewController.swift */,
+				13BD500A28DA297500C0EA7C /* SignInWithAppleManager.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		13BD501228DA2A2600C0EA7C /* ViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				13BD501328DA2A8300C0EA7C /* StackTableViewCell.swift */,
+				13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */,
+			);
+			path = ViewCell;
+			sourceTree = "<group>";
+		};
 		13C8A10728C6824F00994196 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				13BD500928DA292300C0EA7C /* Login */,
+				13BD500228DA28B600C0EA7C /* NewActivity */,
 				13F994F328D3956100B077C0 /* Explore */,
 				13F994F228D3954B00B077C0 /* TabBar */,
 				13F994F128D3954300B077C0 /* Profile */,
@@ -310,6 +385,7 @@
 				13C8A12628CA693F00994196 /* DesignText.swift */,
 				13C8A13528CA6C1100994196 /* TextStyle.swift */,
 				DF5F774628CA853000BA5F5F /* CustomLabelDesignable.swift */,
+				13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -321,6 +397,7 @@
 				13C8A13128CA6B0400994196 /* DefaultDesignPalette.swift */,
 				13C8A13328CA6B4200994196 /* DefaultDesignSpacing.swift */,
 				DF5F774228CA820200BA5F5F /* DefaultDesignTextFonts.swift */,
+				13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -330,6 +407,7 @@
 			children = (
 				13C8A13728CA75EA00994196 /* DesignSystem+UIColor.swift */,
 				DF5F774028CA7E1600BA5F5F /* DesignSystem+UIFont.swift */,
+				13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */,
 				DF5F774428CA846C00BA5F5F /* UILabel+Font.swift */,
 			);
 			path = Extensions;
@@ -422,7 +500,7 @@
 		13F994F528D3957F00B077C0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A0B9F4B928D8E97E00F2DF06 /* TabBarController.swift */,
+				DFA30CAE28DA2E5A00F316EB /* TabBarController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -453,6 +531,7 @@
 			children = (
 				1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */,
 				13F994F928D3B21800B077C0 /* RoadmapToolbar.swift */,
+				13BD500028DA286600C0EA7C /* IconSubtitleComponentView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -517,6 +596,7 @@
 		B078F21428C27F2000D46F61 /* macroChallengeApp */ = {
 			isa = PBXGroup;
 			children = (
+				DFA30CB028DA2F0900F316EB /* macroChallengeApp.entitlements */,
 				13C8A11B28CA66A800994196 /* Coordinator */,
 				13C8A11428C68B0F00994196 /* Delegates */,
 				13C8A15028CFC27C00994196 /* Protocols */,
@@ -823,6 +903,8 @@
 				A0B9F4C528D90A7C00F2DF06 /* SwitchTableViewCell.swift in Sources */,
 				13C8A10F28C6829100994196 /* Day.swift in Sources */,
 				13C8A11628C68B7700994196 /* DataManager.swift in Sources */,
+				13BD500628DA28D600C0EA7C /* NewActivityViewController.swift in Sources */,
+				13BD501528DA2A8300C0EA7C /* StackTableViewCell.swift in Sources */,
 				13C8A11D28CA681C00994196 /* Coordinator.swift in Sources */,
 				13C8A13228CA6B0400994196 /* DefaultDesignPalette.swift in Sources */,
 				B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */,
@@ -844,30 +926,40 @@
 				B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */,
 				13C8A13028CA6AF400994196 /* DefaultDesignSystem.swift in Sources */,
 				1379745328D8E6B700AEA662 /* SettingsViewController.swift in Sources */,
+				13BD500F28DA297500C0EA7C /* KeychainManager.swift in Sources */,
 				13C8A12328CA692500994196 /* DesignPalette.swift in Sources */,
+				13BD4FFF28D90F9700C0EA7C /* DefaultDesignSystemImages.swift in Sources */,
 				13F994E728D393CE00B077C0 /* CategoryViewController.swift in Sources */,
 				13C8A11128C6833D00994196 /* Like.swift in Sources */,
 				1379745428D8E6B700AEA662 /* SettingsView.swift in Sources */,
 				A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */,
 				1467706728D2699D00D55098 /* LabelTableViewCell.swift in Sources */,
+				13BD501128DA297500C0EA7C /* LoginView.swift in Sources */,
 				13C8A12D28CA6A2500994196 /* ProfileCoordinator.swift in Sources */,
 				1379744928D8E57B00AEA662 /* NewRoadmapViewController+ReviewTravel.swift in Sources */,
 				A0B9F4D128DA342B00F2DF06 /* LikedRoadmapsViewController.swift in Sources */,
 				A0B9F4CB28DA2E3B00F2DF06 /* EditProfileView.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
 				A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */,
+				13BD500128DA286600C0EA7C /* IconSubtitleComponentView.swift in Sources */,
+				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
 				B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */,
 				DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */,
 				1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */,
 				DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */,
+				13BD500E28DA297500C0EA7C /* SignInWithAppleManager.swift in Sources */,
+				13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */,
 				1379743D28D5165200AEA662 /* LocationSearchTableViewController.swift in Sources */,
 				1379743B28D5162C00AEA662 /* ReviewTravelView.swift in Sources */,
 				13C8A11328C6835300994196 /* Activity.swift in Sources */,
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
+				13BD500828DA28E500C0EA7C /* NewActivitView.swift in Sources */,
 				1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */,
 				A0B9F4C328D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift in Sources */,
 				1379744D28D8E5CA00AEA662 /* ExploreViewController.swift in Sources */,
+				DFA30CAF28DA2E5A00F316EB /* TabBarController.swift in Sources */,
+				13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */,
 				A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */,
 				13C8A12728CA693F00994196 /* DesignText.swift in Sources */,
 				DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */,
@@ -880,9 +972,11 @@
 				DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */,
 				1379744828D8E57B00AEA662 /* ReviewTravelViewController.swift in Sources */,
 				13F994FA28D3B21900B077C0 /* RoadmapToolbar.swift in Sources */,
+				13BD4FFB28D90EF700C0EA7C /* DesignSystem+UIImage.swift in Sources */,
 				13C8A12B28CA6A0A00994196 /* CurrentCoordinator.swift in Sources */,
 				B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */,
 				A0B9F4C728DA2A4C00F2DF06 /* TermsView.swift in Sources */,
+				13BD501028DA297500C0EA7C /* LoginViewController.swift in Sources */,
 				DF5F774128CA7E1600BA5F5F /* DesignSystem+UIFont.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1051,6 +1145,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2A2JAGWQ62;
@@ -1079,6 +1174,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2A2JAGWQ62;
