@@ -1,6 +1,6 @@
 //
-//  ActivityLocal+CoreDataClass.swift
-//  
+//  UserLocal+CoreDataClass.swift
+//
 //
 //  Created by Carolina Ortega on 13/09/22.
 //
@@ -9,9 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(ActivityLocal)
-public class ActivityLocal: NSManagedObject {
-    static let shared: ActivityLocal = ActivityLocal()
+class UserRepository: NSManagedObject {
+    static let shared: UserRepository = UserRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "macroChallengeApp")
@@ -40,34 +39,27 @@ public class ActivityLocal: NSManagedObject {
         }
     }
     
-    func createActivity(day: DayLocal, activity: Activity) -> ActivityLocal {
-        guard let newActivity = NSEntityDescription.insertNewObject(forEntityName: "ActivityLocal", into: context) as? ActivityLocal else { preconditionFailure() }
+    func createUser(user: User) -> UserLocal {
+        guard let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserLocal", into: context) as? UserLocal else { preconditionFailure() }
         
-        newActivity.id = activity.id
-        newActivity.nam = activity.name
-        newActivity.category = activity.category
-        newActivity.location = activity.location
-        newActivity.hour = activity.hour
-        newActivity.budget = activity.budget
-        
-        day.addToActivity(newActivity)
+        newUser.id = Int32(user.id)
         
         self.saveContext()
-        return newActivity
+        return newUser
     }
     
-    func getActivity() -> [ActivityLocal] {
-        let fr = NSFetchRequest<ActivityLocal>(entityName: "ActivityLocal")
+    func getUser() -> [UserLocal] {
+        let fetchRequest = NSFetchRequest<UserLocal>(entityName: "UserLocal")
         do {
-            return try self.persistentContainer.viewContext.fetch(fr)
+            return try self.persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             print(error)
         }
         return []
     }
     
-    func deleteActivity(activity: ActivityLocal) throws {
-        self.persistentContainer.viewContext.delete(activity)
+    func deleteUser(user: UserLocal) throws {
+        self.persistentContainer.viewContext.delete(user)
         self.saveContext()
     }
 }

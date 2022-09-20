@@ -19,13 +19,13 @@ class ExploreCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = ExploreViewController()
-        vc.coordinator = self
+        let viewController = ExploreViewController()
+        viewController.coordinator = self
         let tabBarItem = UITabBarItem(title: "Explore", image: UIImage(systemName: "globe.americas"), tag: 0)
         tabBarItem.selectedImage = UIImage(systemName: "globe.americas.fill")
-        vc.tabBarItem = tabBarItem
-        vc.navigationItem.title = "Explore"
-        navigationController.pushViewController(vc, animated: true)
+        viewController.tabBarItem = tabBarItem
+        viewController.navigationItem.title = "Explore"
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func createNewRoadmap() {
