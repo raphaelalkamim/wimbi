@@ -22,7 +22,6 @@ class NumberPickerTableViewCell: UITableViewCell {
     }()
     
     let designSystem = DefaultDesignSystem.shared
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(label)

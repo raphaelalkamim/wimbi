@@ -15,6 +15,12 @@ struct Day: Codable {
         case id
         case date
     }
+
+    init() {
+        self.id = 1
+        let format = DateFormatter()
+        self.date = format.string(from: Date())
+    }
 }
 
 extension Day: CustomStringConvertible {

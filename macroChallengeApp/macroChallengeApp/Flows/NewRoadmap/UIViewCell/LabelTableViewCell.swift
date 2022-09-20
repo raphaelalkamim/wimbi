@@ -91,7 +91,7 @@ class LabelTableViewCell: UITableViewCell {
         }
         if indexPath == 2 {
             self.title.text = "Termina"
-            self.value.text = "23 de outubro 2022"
+            self.value.text = value
         }
     }
     

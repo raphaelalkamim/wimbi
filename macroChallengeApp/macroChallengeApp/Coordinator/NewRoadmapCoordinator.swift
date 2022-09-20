@@ -27,21 +27,21 @@ class NewRoadmapCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func startDestiny() {
-        let viewController = DestinyViewController()
+    func startDestiny(roadmap: Roadmaps) {
+        let viewController = DestinyViewController(roadmap: roadmap)
         viewController.coordinator = self
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func startDays() {
-        let viewController = DaysViewController()
+    func startDays(roadmap: Roadmaps) {
+        let viewController = DaysViewController(roadmap: roadmap)
         viewController.coordinator = self
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
-    func startReview() {
-        let viewController = ReviewTravelViewController()
+    func startReview(roadmap: Roadmaps) {
+        let viewController = ReviewTravelViewController(roadmap: roadmap)
         viewController.coordinator = self
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)

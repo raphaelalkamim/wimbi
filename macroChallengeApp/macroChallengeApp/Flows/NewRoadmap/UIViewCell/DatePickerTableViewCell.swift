@@ -7,7 +7,9 @@
 
 import UIKit
 
-class DatePickerTableViewCell: UITableViewCell {    
+class DatePickerTableViewCell: UITableViewCell {
+    static let identifier = "DayCell"
+    
     lazy var label: UILabel = {
         let label = UILabel()
         label.text = "Teste"
@@ -65,6 +67,19 @@ class DatePickerTableViewCell: UITableViewCell {
             make.top.equalToSuperview().offset(designSystem.spacing.xSmallNegative)
             make.bottom.equalToSuperview().offset(designSystem.spacing.xSmallPositive)
             make.trailing.equalToSuperview().offset(designSystem.spacing.largeNegative)
+        }
+    }
+    
+    func setupSeparator() {
+        let separator = UIView()
+        self.addSubview(separator)
+        separator.backgroundColor = .gray
+        
+        separator.snp.makeConstraints { make in
+            make.height.equalTo(0.5)
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
+            make.trailing.equalToSuperview()
         }
     }
 }
