@@ -12,10 +12,12 @@ class ReviewTravelViewController: UIViewController {
 
     let reviewTravelView = ReviewTravelView()
     let designSystem = DefaultDesignSystem.shared
+    var dataManager = DataManager.shared
     
     var roadmap: Roadmaps
     var category = ""
     var location = ""
+    var name = ""
     var daysCount = 1
     var start = Date()
     var final = Date()
@@ -67,6 +69,7 @@ class ReviewTravelViewController: UIViewController {
         self.navigationController?.setToolbarHidden(false, animated: false)
     }
     @objc func nextPage() {
+        dataManager.postRoadmap(name: name, location: location, dayCount: daysCount, peopleCount: peopleCount, imageId: "beachView", category: category, isShared: false, isPublic: isPublic)
         coordinator?.dismiss()
     }
     @objc func backPage() {
@@ -88,6 +91,7 @@ class ReviewTravelViewController: UIViewController {
     }
     func setupContent() {
         self.category = roadmap.category
+        self.name = roadmap.name
         self.reviewTravelView.subtitle.text = self.category
         self.location = roadmap.location
         self.daysCount = roadmap.dayCount

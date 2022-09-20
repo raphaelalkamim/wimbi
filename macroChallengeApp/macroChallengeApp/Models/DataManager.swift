@@ -158,6 +158,58 @@ class DataManager {
         task.resume()
     }
     
+    // swiftlint:disable function_parameter_count
+    func postRoadmap(name: String, location: String, dayCount: Int, peopleCount: Int, imageId: String, category: String, isShared: Bool, isPublic: Bool) {
+        let roadmap: [String: Any] = [
+            "name": name,
+            "location": location,
+            "budget": 0,
+            "dayCount": dayCount,
+            "peopleCount": peopleCount,
+            "imageId": imageId,
+            "category": category,
+            "isShared": isShared,
+            "isPublic": isPublic,
+            "shareKey": "ABC123"
+        ]
+        
+        let session = URLSession.shared
+        guard let url = URL(string: baseURL + "roadmaps") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: roadmap, options: .prettyPrinted)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                print(response)
+                if let error = error {
+                    print(error)
+                } else if data == data {
+                    if let httpResponse = response as? HTTPURLResponse {
+                        if httpResponse.statusCode == 200 {
+                            print("Criou Roadmap")
+                        }
+                    }
+                } else {
+                    // Handle unexpected error
+                }
+            }
+            task.resume()
+        }
+        
+        
+    }
+    
 #warning("Corrigir essa funcao para utilizar no codigo")
     func decodeType<T: Codable>(_ class: T, data: Data) -> T? {
         do {
