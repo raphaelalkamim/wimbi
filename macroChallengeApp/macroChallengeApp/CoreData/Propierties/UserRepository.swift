@@ -1,6 +1,6 @@
 //
 //  UserLocal+CoreDataProperties.swift
-//  
+//
 //
 //  Created by Carolina Ortega on 13/09/22.
 //
@@ -9,10 +9,7 @@
 import Foundation
 import CoreData
 
-extension UserLocal {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<UserLocal> {
-        return NSFetchRequest<UserLocal>(entityName: "UserLocal")
-    }
+extension UserRepository {
 
     @NSManaged public var id: Int32
     @NSManaged public var roadmap: NSSet?
@@ -20,7 +17,7 @@ extension UserLocal {
 }
 
 // MARK: Generated accessors for roadmap
-extension UserLocal {
+extension UserRepository {
     @objc(addRoadmapObject:)
     @NSManaged public func addToRoadmap(_ value: RoadmapLocal)
 

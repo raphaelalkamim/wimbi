@@ -1,6 +1,6 @@
 //
 //  RoadmapLocal+CoreDataClass.swift
-//  
+//
 //
 //  Created by Carolina Ortega on 13/09/22.
 //
@@ -9,9 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(RoadmapLocal)
-public class RoadmapLocal: NSManagedObject {
-    static let shared: RoadmapLocal = RoadmapLocal()
+public class RoadmapRepository: NSManagedObject {
+    static let shared: RoadmapRepository = RoadmapRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "macroChallengeApp")
@@ -40,21 +39,21 @@ public class RoadmapLocal: NSManagedObject {
         }
     }
     
-    func createRoadmap(roadmap: Roadmaps, user: User) -> RoadmapLocal {
+    func createRoadmap(roadmap: Roadmaps) -> RoadmapLocal {
         guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         
-        newRoadmap.id = roadmap.id
+        newRoadmap.id = Int32(roadmap.id)
         newRoadmap.name = roadmap.name
         newRoadmap.location = roadmap.location
         newRoadmap.budget = roadmap.budget
-        newRoadmap.dayCount = roadmap.dayCount
-        newRoadmap.peopleCount = roadmap.peopleCount
+        newRoadmap.dayCount = Int32(roadmap.dayCount)
+        newRoadmap.peopleCount = Int32(roadmap.peopleCount)
         newRoadmap.imageId = roadmap.imageId
         newRoadmap.category = roadmap.category
         newRoadmap.isShared = roadmap.isShared
         newRoadmap.isPublic = roadmap.isPublic
         newRoadmap.shareKey = roadmap.shareKey
-        newRoadmap.addToUser(user)
+        //newRoadmap.addToUser(user)
         
         self.saveContext()
         return newRoadmap

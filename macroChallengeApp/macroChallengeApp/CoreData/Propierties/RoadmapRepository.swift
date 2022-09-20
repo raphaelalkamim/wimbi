@@ -1,6 +1,6 @@
 //
 //  RoadmapLocal+CoreDataProperties.swift
-//  
+//
 //
 //  Created by Carolina Ortega on 13/09/22.
 //
@@ -9,10 +9,7 @@
 import Foundation
 import CoreData
 
-extension RoadmapLocal {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<RoadmapLocal> {
-        return NSFetchRequest<RoadmapLocal>(entityName: "RoadmapLocal")
-    }
+extension RoadmapRepository {
 
     @NSManaged public var budget: Double
     @NSManaged public var category: String?
@@ -31,7 +28,7 @@ extension RoadmapLocal {
 }
 
 // MARK: Generated accessors for day
-extension RoadmapLocal {
+extension RoadmapRepository {
     @objc(addDayObject:)
     @NSManaged public func addToDay(_ value: DayLocal)
 
@@ -47,7 +44,7 @@ extension RoadmapLocal {
 }
 
 // MARK: Generated accessors for user
-extension RoadmapLocal {
+extension RoadmapRepository {
     @objc(addUserObject:)
     @NSManaged public func addToUser(_ value: UserLocal)
 

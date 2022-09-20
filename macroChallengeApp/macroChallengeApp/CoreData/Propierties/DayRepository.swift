@@ -1,6 +1,6 @@
 //
 //  DayLocal+CoreDataProperties.swift
-//  
+//
 //
 //  Created by Carolina Ortega on 13/09/22.
 //
@@ -9,11 +9,7 @@
 import Foundation
 import CoreData
 
-extension DayLocal {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<DayLocal> {
-        return NSFetchRequest<DayLocal>(entityName: "DayLocal")
-    }
-
+extension DayRepository {
     @NSManaged public var date: String?
     @NSManaged public var id: Int32
     @NSManaged public var activity: NSSet?
@@ -22,7 +18,7 @@ extension DayLocal {
 }
 
 // MARK: Generated accessors for activity
-extension DayLocal {
+extension DayRepository {
     @objc(addActivityObject:)
     @NSManaged public func addToActivity(_ value: ActivityLocal)
 

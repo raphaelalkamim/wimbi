@@ -1,6 +1,6 @@
 //
 //  UserLocal+CoreDataClass.swift
-//  
+//
 //
 //  Created by Carolina Ortega on 13/09/22.
 //
@@ -9,9 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(UserLocal)
-public class UserLocal: NSManagedObject {
-    static let shared: UserLocal = UserLocal()
+class UserRepository: NSManagedObject {
+    static let shared: UserRepository = UserRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "macroChallengeApp")
@@ -40,10 +39,10 @@ public class UserLocal: NSManagedObject {
         }
     }
     
-    func createUser(user: User) -> ActivityLocal {
+    func createUser(user: User) -> UserLocal {
         guard let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserLocal", into: context) as? UserLocal else { preconditionFailure() }
         
-        newUser.id = user.id
+        newUser.id = Int32(user.id)
         
         self.saveContext()
         return newUser

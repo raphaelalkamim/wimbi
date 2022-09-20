@@ -1,6 +1,6 @@
 //
 //  ActivityLocal+CoreDataClass.swift
-//  
+//
 //
 //  Created by Carolina Ortega on 13/09/22.
 //
@@ -9,9 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(ActivityLocal)
-public class ActivityLocal: NSManagedObject {
-    static let shared: ActivityLocal = ActivityLocal()
+class ActivityRepository {
+    static let shared: ActivityRepository = ActivityRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "macroChallengeApp")
@@ -40,11 +39,11 @@ public class ActivityLocal: NSManagedObject {
         }
     }
     
-    func createActivity(day: DayLocal, activity: Activity) -> ActivityLocal {
+    func createActivity(day: DayLocal, activity: ActivityLocal) -> ActivityLocal {
         guard let newActivity = NSEntityDescription.insertNewObject(forEntityName: "ActivityLocal", into: context) as? ActivityLocal else { preconditionFailure() }
         
-        newActivity.id = activity.id
-        newActivity.nam = activity.name
+        newActivity.id = Int32(activity.id)
+        newActivity.name = activity.name
         newActivity.category = activity.category
         newActivity.location = activity.location
         newActivity.hour = activity.hour

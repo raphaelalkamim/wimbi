@@ -1,6 +1,6 @@
 //
 //  DayLocal+CoreDataClass.swift
-//  
+//
 //
 //  Created by Carolina Ortega on 13/09/22.
 //
@@ -9,9 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(DayLocal)
-public class DayLocal: NSManagedObject {
-    static let shared: DayLocal = DayLocal()
+class DayRepository: NSManagedObject {
+    static let shared: DayRepository = DayRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "macroChallengeApp")
@@ -43,7 +42,7 @@ public class DayLocal: NSManagedObject {
     func createDay(roadmap: RoadmapLocal, day: Day) -> DayLocal {
         guard let newDay = NSEntityDescription.insertNewObject(forEntityName: "DayLocal", into: context) as? DayLocal else { preconditionFailure() }
         
-        newDay.id = day.id
+        newDay.id = Int32(day.id)
         newDay.date = day.date
         
         roadmap.addToDay(newDay)
