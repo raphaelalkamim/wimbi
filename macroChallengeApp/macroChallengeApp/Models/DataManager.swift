@@ -159,17 +159,17 @@ class DataManager {
     }
     
     // swiftlint:disable function_parameter_count
-    func postRoadmap(name: String, location: String, dayCount: Int, peopleCount: Int, imageId: String, category: String, isShared: Bool, isPublic: Bool) {
+    func postRoadmap(roadmap: Roadmaps) {
         let roadmap: [String: Any] = [
-            "name": name,
-            "location": location,
+            "name": roadmap.name,
+            "location": roadmap.location,
             "budget": 0,
-            "dayCount": dayCount,
-            "peopleCount": peopleCount,
-            "imageId": imageId,
-            "category": category,
-            "isShared": isShared,
-            "isPublic": isPublic,
+            "dayCount": roadmap.dayCount,
+            "peopleCount": roadmap.peopleCount,
+            "imageId": roadmap.imageId,
+            "category": roadmap.category,
+            "isShared": roadmap.isShared,
+            "isPublic": roadmap.isPublic,
             "shareKey": "ABC123"
         ]
         
@@ -206,8 +206,6 @@ class DataManager {
             }
             task.resume()
         }
-        
-        
     }
     
 #warning("Corrigir essa funcao para utilizar no codigo")
@@ -219,5 +217,15 @@ class DataManager {
             print("Parse Error")
         }
         return nil
+    }
+}
+
+struct FailableDecodable<Base : Decodable> : Decodable {
+
+    let base: Base?
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        self.base = try? container.decode(Base.self)
     }
 }

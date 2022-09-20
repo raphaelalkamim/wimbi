@@ -69,7 +69,7 @@ class ReviewTravelViewController: UIViewController {
         self.navigationController?.setToolbarHidden(false, animated: false)
     }
     @objc func nextPage() {
-        dataManager.postRoadmap(name: name, location: location, dayCount: daysCount, peopleCount: peopleCount, imageId: "beachView", category: category, isShared: false, isPublic: isPublic)
+        dataManager.postRoadmap(roadmap: roadmap)
         coordinator?.dismiss()
     }
     @objc func backPage() {
