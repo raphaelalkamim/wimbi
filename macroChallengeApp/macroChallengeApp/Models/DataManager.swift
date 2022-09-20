@@ -11,7 +11,7 @@ import UIKit
 class DataManager {
     public static var shared = DataManager()
     let baseURL: String = "https://macroptrip-api.herokuapp.com/"
-        
+    
     public let imageCash = NSCache<NSNumber, UIImage>()
     
     var roadmaps: Roadmaps?
@@ -70,7 +70,95 @@ class DataManager {
             }
         }
     }
-    #warning("Corrigir essa funcao para utilizar no codigo")
+    
+    func postUser(username: String, usernameApp:String, name: String, photoId: String, password: String) {
+        let user: [String: Any] = [
+            "username": username,
+            "usernameApp": usernameApp,
+            "name": name,
+            "photoId": photoId,
+            "password": password
+        ]
+        
+        let session = URLSession.shared
+        guard let url = URL(string: baseURL + "users") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: user, options: .prettyPrinted)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            print(response)
+            if let error = error {
+                print(error)
+            } else if data != nil {
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        print("Criou")
+                    }
+                }
+            } else {
+                // Handle unexpected error
+            }
+        }
+        task.resume()
+    }
+    
+    func postLogin(username: String, password: String) {
+        let user: [String: Any] = [
+            "username": username,
+            "password": password
+        ]
+        
+        let session = URLSession.shared
+        guard let url = URL(string: baseURL + "login") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: user, options: .prettyPrinted)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            print(response)
+            if let error = error {
+                print(error)
+            } else if data != nil {
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        do {
+                            try KeychainManager.shared.save(username, service: "username", account: "explorer")
+                        } catch {
+                            print(error)
+                        }
+                        
+                        let jwtToken = httpResponse.value(forHTTPHeaderField: "Authorization")
+                        UserDefaults.standard.setValue(jwtToken, forKey: "authorization")
+                        UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                    }
+                }
+            } else {
+                // Handle unexpected error
+            }
+        }
+        task.resume()
+    }
+    
+#warning("Corrigir essa funcao para utilizar no codigo")
     func decodeType<T: Codable>(_ class: T, data: Data) -> T? {
         do {
             let newData = try JSONDecoder().decode(T.self, from: data)

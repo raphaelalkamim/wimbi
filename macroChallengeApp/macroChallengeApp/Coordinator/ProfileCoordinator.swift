@@ -29,8 +29,14 @@ class ProfileCoordinator: Coordinator {
     }
     
     func newRoadmap() {
-        let vc = NewRoadmapViewController()
-        navigationController.pushViewController(vc, animated: true)
+        let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
+        childCoordinators.append(coordinator)
+        coordinator.delegate = self
+        coordinator.start()
+        
+        navigationController.present(coordinator.navigationController, animated: true) {
+            print("OI")
+        }
     }
     
     func settings() {
@@ -51,5 +57,13 @@ class ProfileCoordinator: Coordinator {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
         
         self.navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.largeTitle]
+    }
+}
+
+extension ProfileCoordinator: PresentationCoordinatorDelegate {
+    func didFinishPresent(of coordinator: Coordinator) {
+        print(childCoordinators)
+        childCoordinators = childCoordinators.filter { $0 === coordinator }
+        print(childCoordinators)
     }
 }

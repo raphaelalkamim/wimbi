@@ -14,7 +14,6 @@ class DestinyView: UIView {
     var searchBar: UISearchBar
     var searchController: UISearchController? = nil
     var designSystem: DesignSystem = DefaultDesignSystem.shared
-    
     override init(frame: CGRect) {
         self.mapView = MKMapView()
         self.searchBar = UISearchBar()
@@ -27,7 +26,6 @@ class DestinyView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     func setupView() {
         // view
         self.backgroundColor = designSystem.palette.backgroundPrimary
@@ -48,6 +46,7 @@ class DestinyView: UIView {
     func addSearchBarNavigation(navigation: UINavigationItem) {
         navigation.searchController = searchController
         navigation.title = "Destiny"
+        self.searchController?.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setupSearchController(locationTable: LocationSearchTableViewController) {
@@ -65,5 +64,8 @@ class DestinyView: UIView {
         searchBar = searchController.searchBar
         searchBar.placeholder = "Para onde você vai?"
         searchBar.sizeToFit()
+    }
+    @objc func clicou() {
+        print("clicou")
     }
 }

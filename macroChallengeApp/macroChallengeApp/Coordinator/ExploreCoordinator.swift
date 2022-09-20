@@ -27,9 +27,16 @@ class ExploreCoordinator: Coordinator {
         vc.navigationItem.title = "Explore"
         navigationController.pushViewController(vc, animated: true)
     }
-    func newRoadmap() {
-        let vc = NewRoadmapViewController()
-        navigationController.pushViewController(vc, animated: true)
+    
+    func createNewRoadmap() {
+        let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
+        childCoordinators.append(coordinator)
+        coordinator.delegate = self
+        coordinator.start()
+        
+        navigationController.present(coordinator.navigationController, animated: true) {
+            print("OI")
+        }
     }
     
     func setupBarAppearence() {
@@ -44,4 +51,16 @@ class ExploreCoordinator: Coordinator {
         
         self.navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.largeTitle]
     }
+}
+
+extension ExploreCoordinator: PresentationCoordinatorDelegate {
+    func didFinishPresent(of coordinator: Coordinator) {
+        print(childCoordinators)
+        childCoordinators = childCoordinators.filter { $0 === coordinator }
+        print(childCoordinators)
+    }
+}
+
+protocol PresentationCoordinatorDelegate: AnyObject {
+    func didFinishPresent(of coordinator: Coordinator)
 }

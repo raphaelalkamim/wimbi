@@ -17,16 +17,16 @@ class NumberPickerTableViewCell: UITableViewCell {
     
     lazy var label: UILabel = {
         let label = UILabel()
+        label.stylize(with: designSystem.text.body)
         return label
     }()
     
     let designSystem = DefaultDesignSystem.shared
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(label)
         contentView.addSubview(numberPicker)
-        
+        self.backgroundColor = designSystem.palette.backgroundCell
         setupConstraints()
     }
     

@@ -61,7 +61,7 @@ public class RoadmapLocal: NSManagedObject {
     }
     
     func getRoadmap() -> [RoadmapLocal] {
-        let fr = NSFetchRequest<Devocionais>(entityName: "RoadmapLocal")
+        let fr = NSFetchRequest<RoadmapLocal>(entityName: "RoadmapLocal")
         do {
             return try self.persistentContainer.viewContext.fetch(fr)
         } catch {
