@@ -13,7 +13,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setup(name: "Novo roteiro", image: "beach0", isNew: false)
     }
     
     required init?(coder: NSCoder) {
@@ -22,14 +22,12 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     
     lazy var title: UILabel = {
         let title = UILabel()
-        title.text = "River of January"
         title.stylize(with: designSystem.text.cellTitle)
         return title
     }()
     
     lazy var roadmapImage: UIImageView = {
         let img = UIImageView()
-        img.image = UIImage(named: "fundo") // adicionar foto de perfil
         img.clipsToBounds = true
         img.layer.cornerRadius = 16
         img.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -67,13 +65,22 @@ class ProfileCollectionViewCell: UICollectionViewCell {
 }
 
 extension ProfileCollectionViewCell {
-    func setup() {
+    func setup(name: String, image: String, isNew: Bool ) {
         self.addSubview(title)
+        self.title.text = name
+        
         self.addSubview(roadmapImage)
+        self.roadmapImage.image = UIImage(named: image)
+        
         self.addSubview(newTag)
+        newTag.isHidden = true
+        
+        if isNew == true {
+            newTag.isHidden = false
+        }
+        
         self.addSubview(likeImage)
         self.addSubview(likeLabel)
-
         setupConstraints()
     }
     

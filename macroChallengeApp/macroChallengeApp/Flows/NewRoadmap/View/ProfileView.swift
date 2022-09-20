@@ -13,7 +13,7 @@ class ProfileView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let scrollView = UIScrollView()
     let contentView = UIView()
-    let roadmaps: [String] = []
+    let roadmaps: [RoadmapLocal] = []
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,8 +69,7 @@ class ProfileView: UIView {
         img.clipsToBounds = true
         return img
     }()
-    
-    
+        
     lazy var addButton: UIButton = {
         let btn = UIButton()
         let img = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
@@ -80,7 +79,7 @@ class ProfileView: UIView {
         return btn
     }()
     
-    private lazy var myRoadmapCollectionView: UICollectionView = {
+    lazy var myRoadmapCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         layout.itemSize = CGSize(width: 170, height: 165)
@@ -92,7 +91,6 @@ class ProfileView: UIView {
         return collectionView
     }()
     
-
     func emptyState() {
         if roadmaps.isEmpty {
             myRoadmapCollectionView.isHidden = true

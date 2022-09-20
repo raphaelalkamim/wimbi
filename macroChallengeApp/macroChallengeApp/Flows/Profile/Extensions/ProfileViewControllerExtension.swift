@@ -25,20 +25,17 @@ extension ProfileViewController: UICollectionViewDelegate {
 
 extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return roadmaps.count
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else {
             preconditionFailure("Cell not find")
         }
-        cell.setup()
+        cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: true)
+        
         cell.backgroundColor = designSystem.palette.backgroundCell
         cell.layer.cornerRadius = 16
-        
-        if indexPath.row == 1 || indexPath.row == 5 {
-            cell.title.text = "Fernando of Noronha"
-        }
         
         cell.title.translatesAutoresizingMaskIntoConstraints = false
         
