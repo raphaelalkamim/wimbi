@@ -11,6 +11,11 @@ import UIKit
 class NewActivityViewController: UIViewController {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let newActivityView = NewActivityView()
+    var fonts: [UIFont]! {
+        didSet {
+            //tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +62,9 @@ extension NewActivityViewController: UITableViewDataSource {
             cell = newCell
             
         } else if tableView == newActivityView.localyTable {
-            guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
-            
             if indexPath.row == 0 {
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
+                
                 newCell.title.placeholder = "Address"
                 
                 let separator = UIView()
@@ -73,17 +78,19 @@ extension NewActivityViewController: UITableViewDataSource {
                     make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
                     make.trailing.equalToSuperview()
                 }
+                cell = newCell
                 
-            } else {
+            } else if indexPath.row == 1 {
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
+                
                 newCell.title.placeholder = "Name"
+                
+                cell = newCell
             }
-            
-            cell = newCell
             
         } else if tableView == newActivityView.dateTable {
-            guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
-            
             if indexPath.row == 0 {
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Date"
                 
                 let separator = UIView()
@@ -97,18 +104,18 @@ extension NewActivityViewController: UITableViewDataSource {
                     make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
                     make.trailing.equalToSuperview()
                 }
+                cell = newCell
+            } else if indexPath.row == 1 {
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: TimePickerTableViewCell.identifier, for: indexPath) as? TimePickerTableViewCell else { fatalError("TableCell not found") }
                 
-            } else {
                 newCell.label.text = "Hour"
+                cell = newCell
             }
             
-            cell = newCell
-            
-        } else if tableView == newActivityView.dateTable {
-            guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
-            
+        } else if tableView == newActivityView.valueTable {
             if indexPath.row == 0 {
-                newCell.label.text = "Date"
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
+                newCell.title.text = "Currency"
                 
                 let separator = UIView()
                 
@@ -122,36 +129,32 @@ extension NewActivityViewController: UITableViewDataSource {
                     make.trailing.equalToSuperview()
                 }
                 
+                cell = newCell
+                
             } else {
-                newCell.label.text = "Hour"
-            }
-            
-            cell = newCell
-            
-        } else if tableView == newActivityView.valueLabel {
-            guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
-            
-            if indexPath.row == 0 {
-                newCell.label.text = "Date"
-                
-                let separator = UIView()
-                
-                newCell.addSubview(separator)
-                separator.backgroundColor = .gray
-                
-                separator.snp.makeConstraints { make in
-                    make.height.equalTo(0.5)
-                    make.bottom.equalToSuperview()
-                    make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
-                    make.trailing.equalToSuperview()
+                if indexPath.row == 1 {
+                    guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
+                    
+                    newCell.title.text = "Value"
+                    newCell.value.placeholder = "$ 0.00"
+                    cell = newCell
                 }
                 
-            } else {
-                newCell.label.text = "Hour"
             }
-            cell = newCell
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == newActivityView.localyTable {
+            if indexPath.row == 0 {
+                //self.navigationController?.pushViewController(), animated: true)
+            }
+        }
+        
+        else if tableView == newActivityView.valueTable {
+            if indexPath.row == 0 {}
+        }
     }
 }
 
@@ -160,4 +163,13 @@ extension NewActivityViewController: UITableViewDelegate {
         return 50
     }
     
+//    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+//        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions -> UIMenu? in
+//            let font = self.fonts[indexPath.row]
+//            let copyAction = UIAction(title: "Copy", image: UIImage(systemName: "doc.on.doc"), identifier: nil, discoverabilityTitle: nil, handler: <#UIActionHandler#>)
+//            
+//        }
+//        return UIMenu(title: "A", image: nil, identifier: nil, options: [], children: [copyAction])
+//    }
+//    
 }

@@ -22,7 +22,7 @@ class NewActivityView: UIView {
     
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
-        label.text = "CATEGORY"
+        label.text = "TYPE"
         label.stylize(with: designSystem.text.caption)
         return label
     }()
@@ -67,6 +67,7 @@ class NewActivityView: UIView {
     lazy var dateTable: UITableView = {
         let table = UITableView()
         table.register(DatePickerTableViewCell.self, forCellReuseIdentifier: DatePickerTableViewCell.identifier)
+        table.register(TimePickerTableViewCell.self, forCellReuseIdentifier: TimePickerTableViewCell.identifier)
         table.layer.cornerRadius = 16
         table.isScrollEnabled = false
         table.separatorColor = .clear
@@ -77,7 +78,7 @@ class NewActivityView: UIView {
     
     lazy var valueLabel: UILabel = {
         let label = UILabel()
-        label.text = "VALUE"
+        label.text = "EXPENSE"
         label.stylize(with: designSystem.text.caption)
         return label
     }()
@@ -85,7 +86,7 @@ class NewActivityView: UIView {
     lazy var valueTable: UITableView = {
         let table = UITableView()
         table.register(TextFieldTableViewCell.self, forCellReuseIdentifier: TextFieldTableViewCell.identifier)
-        // table.register(StackTableViewCell.self, forCellReuseIdentifier: TextFieldTableViewCell.identifier)
+         table.register(ValueTableViewCell.self, forCellReuseIdentifier: ValueTableViewCell.identifier)
         table.layer.cornerRadius = 16
         table.isScrollEnabled = false
         table.separatorColor = .clear
@@ -123,7 +124,7 @@ extension NewActivityView {
         categoryTable.snp.makeConstraints { make in
             make.top.equalTo(categoryLabel.snp.bottom).offset(designSystem.spacing.xSmallPositive)
             make.trailing.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
-            make.height.equalTo(150)
+            make.height.equalTo(100)
         }
         
         localyLabel.snp.makeConstraints { make in

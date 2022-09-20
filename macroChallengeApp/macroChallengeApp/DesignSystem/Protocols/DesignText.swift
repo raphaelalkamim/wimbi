@@ -13,4 +13,5 @@ struct DesignText {
     let cellTitle: TextStyle = CellTitleTextStyle()
     let body: TextStyle = BodyTextStyle()
     let caption: TextStyle = CaptionTextStyle()
+    let smallCaption: TextStyle = SmallCaption()
 }

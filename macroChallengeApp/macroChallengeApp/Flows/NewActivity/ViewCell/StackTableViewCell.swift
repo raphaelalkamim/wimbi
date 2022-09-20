@@ -32,32 +32,67 @@ class StackTableViewCell: UITableViewCell {
     lazy var stack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.distribution = .fillEqually
+        stack.distribution = .equalSpacing
         stack.alignment = .center
         stack.spacing = 8
         stack.isUserInteractionEnabled = true
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+    
+    lazy var foodButtom: IconSubtitleComponentView = {
+        let type = "Food"
+        let buttom = IconSubtitleComponentView(image: designSystem.images.camp, label: type)
+        buttom.addTarget(self, action: #selector(didSelectedType), for: .touchUpInside)
+        return buttom
+    }()
+    
+    lazy var accommodationButtom: IconSubtitleComponentView = {
+        let type = "Accommodation"
+        let buttom = IconSubtitleComponentView(image: designSystem.images.camp, label: type)
+        buttom.addTarget(self, action: #selector(didSelectedType), for: .touchUpInside)
+        return buttom
+    }()
+    
+    lazy var leisureButtom: IconSubtitleComponentView = {
+        let type = "Leisure"
+        let buttom = IconSubtitleComponentView(image: designSystem.images.camp, label: type)
+        buttom.addTarget(self, action: #selector(didSelectedType), for: .touchUpInside)
+        return buttom
+    }()
+    
+    lazy var transportationButtom: IconSubtitleComponentView = {
+        let type = "Transportation"
+        let buttom = IconSubtitleComponentView(image: designSystem.images.camp, label: type)
+        buttom.addTarget(self, action: #selector(didSelectedType), for: .touchUpInside)
+        return buttom
+    }()
+    
+    
 }
 
 extension StackTableViewCell {
     func setup() {
-        contentView.addSubview(title)
         contentView.addSubview(stack)
         
-        stack.addArrangedSubview(IconSubtitleComponentView(image: designSystem.images.camp, label: "Alimentação"))
-        stack.addArrangedSubview(IconSubtitleComponentView(image: designSystem.images.beach, label: "Hospedagem"))
-        stack.addArrangedSubview(IconSubtitleComponentView(image: designSystem.images.mountain, label: "Lazer"))
-        stack.addArrangedSubview(IconSubtitleComponentView(image: designSystem.images.city, label: "Transporte"))
+        stack.addArrangedSubview(foodButtom)
+        stack.addArrangedSubview(accommodationButtom)
+        stack.addArrangedSubview(leisureButtom)
+        stack.addArrangedSubview(transportationButtom)
         
         setupConstraints()
     }
     
     func setupConstraints() {
-        title.snp.makeConstraints { make in
-            make.topMargin.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
+        stack.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(40)
         }
+    }
+}
+
+extension StackTableViewCell {
+    @objc func didSelectedType() {
+        print("taped")
     }
 }

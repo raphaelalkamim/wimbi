@@ -34,9 +34,10 @@ class IconSubtitleComponentView: UIButton {
     lazy var iconDescription: UILabel = {
         let description = UILabel()
         description.text = self.label
-        description.stylize(with: designSystem.text.caption)
+        description.stylize(with: designSystem.text.smallCaption)
         return description
     }()
+        
 }
 extension IconSubtitleComponentView {
     func setup() {
@@ -48,11 +49,14 @@ extension IconSubtitleComponentView {
     
     func setupConstraints() {
         icon.snp.makeConstraints { make in
-            make.top.trailing.leading.equalToSuperview()
+            make.topMargin.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(60)
+            
         }
         iconDescription.snp.makeConstraints { make in
-            make.top.equalTo(icon.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(icon.snp.bottom).offset(designSystem.spacing.xSmallPositive)
+            make.centerX.equalTo(icon.snp.centerX)
         }
     }
 }

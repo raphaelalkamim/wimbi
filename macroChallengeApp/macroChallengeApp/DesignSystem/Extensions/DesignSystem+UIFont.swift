@@ -33,4 +33,8 @@ extension UIFont {
     static var caption: UIFont {
         UIFont(name: "Avenir-Roman", size: 14)!
     }
+    
+    static var smallCaption: UIFont {
+        UIFont(name: "Avenir-Roman", size: 12)!
+    }
 }

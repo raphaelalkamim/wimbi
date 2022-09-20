@@ -66,6 +66,8 @@
 		A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */; };
 		A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */; };
 		B04BA9A428DA2EE100EBA44A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A328DA2EE100EBA44A /* TabBarController.swift */; };
+		B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */; };
+		B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */; };
 		B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21528C27F2000D46F61 /* AppDelegate.swift */; };
 		B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21728C27F2000D46F61 /* SceneDelegate.swift */; };
 		B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B078F21E28C27F2000D46F61 /* macroChallengeApp.xcdatamodeld */; };
@@ -165,6 +167,8 @@
 		A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A2717F6A055C734D418E1360 /* Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B04BA9A328DA2EE100EBA44A /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerTableViewCell.swift; sourceTree = "<group>"; };
+		B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
 		B078F21228C27F2000D46F61 /* macroChallengeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macroChallengeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B078F21528C27F2000D46F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B078F21728C27F2000D46F61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -281,6 +285,8 @@
 			children = (
 				13BD501328DA2A8300C0EA7C /* StackTableViewCell.swift */,
 				13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */,
+				B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */,
+				B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -865,6 +871,7 @@
 				B0CDF35028CFC7E90092A76C /* Category.swift in Sources */,
 				1379744328D8E56700AEA662 /* ProfileViewController.swift in Sources */,
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
+				B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */,
 				13C8A14928CFA66200994196 /* DestinyView.swift in Sources */,
 				B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */,
 				13C8A12128CA690500994196 /* DesignSystem.swift in Sources */,
@@ -911,6 +918,7 @@
 				DF57253D28D110E1005466D9 /* DaysView.swift in Sources */,
 				1379744A28D8E57B00AEA662 /* ProfileViewControllerExtension.swift in Sources */,
 				1379745028D8E61B00AEA662 /* ProfileView.swift in Sources */,
+				B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */,
 				13C8A11828C691F100994196 /* DataType.swift in Sources */,
 				DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */,
 				1379744828D8E57B00AEA662 /* ReviewTravelViewController.swift in Sources */,
