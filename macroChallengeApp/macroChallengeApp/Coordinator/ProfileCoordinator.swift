@@ -19,13 +19,13 @@ class ProfileCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = ProfileViewController()
-        vc.coordinator = self
+        let viewController = ProfileViewController()
+        viewController.coordinator = self
         
         let tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
-        vc.tabBarItem = tabBarItem
-        vc.navigationItem.title = "Profile"
-        navigationController.pushViewController(vc, animated: true)
+        viewController.tabBarItem = tabBarItem
+        viewController.navigationItem.title = "Profile"
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func newRoadmap() {
@@ -40,10 +40,10 @@ class ProfileCoordinator: Coordinator {
     }
     
     func settings() {
-        let vc = SettingsViewController()
-        vc.coordinator = self
-        vc.navigationItem.title = "Settings"
-        navigationController.pushViewController(vc, animated: true)
+        let viewController = SettingsViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "Settings"
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func setupBarAppearence() {

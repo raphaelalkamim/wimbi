@@ -1,6 +1,6 @@
 //
-//  UserLocal+CoreDataClass.swift
-//  
+//  DayLocal+CoreDataClass.swift
+//
 //
 //  Created by Carolina Ortega on 13/09/22.
 //
@@ -9,9 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(UserLocal)
-public class UserLocal: NSManagedObject {
-    static let shared: UserLocal = UserLocal()
+class DayRepository: NSManagedObject {
+    static let shared: DayRepository = DayRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "macroChallengeApp")
@@ -40,27 +39,31 @@ public class UserLocal: NSManagedObject {
         }
     }
     
-    func createUser(user: User) -> ActivityLocal {
-        guard let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserLocal", into: context) as? UserLocal else { preconditionFailure() }
+    func createDay(roadmap: RoadmapLocal, day: Day) -> DayLocal {
+        guard let newDay = NSEntityDescription.insertNewObject(forEntityName: "DayLocal", into: context) as? DayLocal else { preconditionFailure() }
         
-        newUser.id = user.id
+        newDay.id = Int32(day.id)
+        newDay.date = day.date
+        
+        roadmap.addToDay(newDay)
         
         self.saveContext()
-        return newUser
+        return newDay
     }
     
-    func getUser() -> [UserLocal] {
-        let fr = NSFetchRequest<UserLocal>(entityName: "UserLocal")
+    func getDay() -> [DayLocal] {
+        let fetchRequest = NSFetchRequest<DayLocal>(entityName: "DayLocal")
         do {
-            return try self.persistentContainer.viewContext.fetch(fr)
+            return try self.persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             print(error)
         }
         return []
     }
     
-    func deleteUser(user: UserLocal) throws {
-        self.persistentContainer.viewContext.delete(user)
+    func deleteDay(day: DayLocal) throws {
+        self.persistentContainer.viewContext.delete(day)
         self.saveContext()
     }
+    
 }

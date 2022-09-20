@@ -41,7 +41,7 @@ class ReviewTravelView: UIView {
         return image
     }()
     
-    private lazy var title: UILabel = {
+    public lazy var title: UILabel = {
         let title = UILabel()
         title.textColor = designSystem.palette.titlePrimary
         title.stylize(with: designSystem.text.title)
