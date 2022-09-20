@@ -73,7 +73,6 @@
 		90297BBF83D0A825FF081EB4 /* Pods_macroChallengeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */; };
 		A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */; };
 		A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */; };
-		A0B9F4BA28D8E97E00F2DF06 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4B928D8E97E00F2DF06 /* TabBarController.swift */; };
 		A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */; };
 		A0B9F4BF28D8FB5900F2DF06 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4BE28D8FB5900F2DF06 /* NotificationsView.swift */; };
 		A0B9F4C128D8FD5100F2DF06 /* SettingsViewController+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4C028D8FD5100F2DF06 /* SettingsViewController+Notifications.swift */; };
@@ -617,6 +616,14 @@
 			path = UIViewCell;
 			sourceTree = "<group>";
 		};
+		A0FD739728DA5CBD0044E47C /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A0B9F4B928D8E97E00F2DF06 /* TabBarController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		B078F20928C27F2000D46F61 = {
 			isa = PBXGroup;
 			children = (
@@ -627,6 +634,7 @@
 				B078F21328C27F2000D46F61 /* Products */,
 				4171B73C15A2C812F704D532 /* Pods */,
 				8873B324A12FFF3116531BEB /* Frameworks */,
+				A0FD739728DA5CBD0044E47C /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -995,7 +1003,6 @@
 				1359F15228DA48D5009509DF /* ActivityRepositoryClass.swift in Sources */,
 				1359F15428DA48E5009509DF /* RoadmapRepositoryClass.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
-				1379745628D8E70600AEA662 /* TabBarController.swift in Sources */,
 				1359F15828DA48FD009509DF /* UserRepositoryClass.swift in Sources */,
 				1359F14F28DA48AF009509DF /* UserRepository.swift in Sources */,
 				B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */,
@@ -1022,7 +1029,6 @@
 				13C8A12528CA693700994196 /* DesignSpacing.swift in Sources */,
 				DF57253D28D110E1005466D9 /* DaysView.swift in Sources */,
 				1379744A28D8E57B00AEA662 /* ProfileViewControllerExtension.swift in Sources */,
-				A0B9F4BA28D8E97E00F2DF06 /* TabBarController.swift in Sources */,
 				1379745028D8E61B00AEA662 /* ProfileView.swift in Sources */,
 				13C8A11828C691F100994196 /* DataType.swift in Sources */,
 				DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */,
