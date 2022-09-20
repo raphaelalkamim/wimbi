@@ -94,29 +94,32 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    // swiftlint: disable force_cast
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cellTable = UITableViewCell()
+        
         if tableView == daysView.daysTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DatePickerTableViewCell
-            if indexPath.row == 0 {
-                cell.label.text = "Começa"
-                cell.setupSeparator()
-                self.initialDate = cell.datePicker
-            } else {
-                cell.label.text = "Termina"
-                self.finalDate = cell.datePicker
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as? DatePickerTableViewCell {
+                if indexPath.row == 0 {
+                    cell.label.text = "Começa"
+                    cell.setupSeparator()
+                    self.initialDate = cell.datePicker
+                } else {
+                    cell.label.text = "Termina"
+                    self.finalDate = cell.datePicker
+                }
+                cellTable = cell
             }
-            return cell
-
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NumberCell", for: indexPath) as! NumberPickerTableViewCell
-
-            cell.label.text = "Quantidade de viajantes"
-            self.travelersCount = cell.numberPicker
-            return cell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "NumberCell", for: indexPath) as? NumberPickerTableViewCell {
+                cell.label.text = "Quantidade de viajantes"
+                self.travelersCount = cell.numberPicker
+                cellTable = cell
+            }
         }
+        
+        return cellTable
     }
-    // swiftlint: enable force_cast
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
