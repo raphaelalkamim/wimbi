@@ -34,10 +34,19 @@ class NotificationsView: UIView {
         return tableView
     }()
     
+    lazy var descriptionTitle: UILabel = {
+        let title = UILabel()
+        title.text = "Descrever a notificação"
+        title.textColor = .caption
+        title.stylize(with: designSystem.text.caption)
+        return title
+    }()
+    
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(contentView)
         self.addSubview(notificationsTableView)
+        self.addSubview(descriptionTitle)
         setupConstraints()
     }
     
@@ -53,6 +62,12 @@ class NotificationsView: UIView {
             make.trailing.equalTo(designSystem.spacing.xLargeNegative)
             make.top.equalTo(contentView.snp.topMargin).inset(designSystem.spacing.xSmallPositive)
             make.height.equalTo(230)
+        }
+        
+        descriptionTitle.snp.makeConstraints { make in
+            make.leading.equalTo(designSystem.spacing.xxLargePositive)
+            make.trailing.equalTo(designSystem.spacing.xxLargeNegative)
+            make.top.equalTo(notificationsTableView.snp.bottom).inset(designSystem.spacing.mediumNegative)
         }
     }
 }

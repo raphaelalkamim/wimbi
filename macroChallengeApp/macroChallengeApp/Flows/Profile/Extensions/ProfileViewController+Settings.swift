@@ -45,6 +45,9 @@ extension SettingsViewController: UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
         case 3:
             print("Ação termos")
+            let vc = TermsViewController()
+            vc.navigationItem.title = "Terms of privacy"
+            navigationController?.pushViewController(vc, animated: true)
         
         case 4:
             let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
