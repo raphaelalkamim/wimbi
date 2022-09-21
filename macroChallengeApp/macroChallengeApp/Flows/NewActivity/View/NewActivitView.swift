@@ -48,7 +48,7 @@ class NewActivityView: UIView {
     lazy var localyTable: UITableView = {
         let table = UITableView()
         table.register(TextFieldTableViewCell.self, forCellReuseIdentifier: TextFieldTableViewCell.identifier)
-        //table.register(StackTableViewCell.self, forCellReuseIdentifier: TextFieldTableViewCell.identifier)
+        // table.register(StackTableViewCell.self, forCellReuseIdentifier: TextFieldTableViewCell.identifier)
         table.layer.cornerRadius = 16
         table.isScrollEnabled = false
         table.separatorColor = .clear

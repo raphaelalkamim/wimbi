@@ -61,7 +61,7 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
     func checkUserStatus() {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         if let userId = userId {
-            appleIDProvider.getCredentialState(forUserID: userId) {  (credentialState, error) in
+            appleIDProvider.getCredentialState(forUserID: userId) { credentialState, _ in
                 switch credentialState {
                 case .authorized:
                     // The Apple ID credential is valid.

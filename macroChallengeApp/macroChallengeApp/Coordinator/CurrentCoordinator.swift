@@ -19,13 +19,13 @@ class CurrentCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = CurrentViewController()
-        vc.coordinator = self
+        let viewController = CurrentViewController()
+        viewController.coordinator = self
         let tabBarItem = UITabBarItem(title: "Current", image: UIImage(systemName: "map"), tag: 0)
         tabBarItem.selectedImage = UIImage(systemName: "map.fill")
-        vc.tabBarItem = tabBarItem
-        vc.navigationItem.title = "Current"
-        navigationController.pushViewController(vc, animated: true)
+        viewController.tabBarItem = tabBarItem
+        viewController.navigationItem.title = "Current"
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func setupBarAppearence() {
