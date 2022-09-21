@@ -13,4 +13,6 @@ struct DefaultDesignSystem: DesignSystem {
     let spacing: DesignSpacing = DefaultDesignSpacing()
     let images: DesignImages = DefaultDesignSystemImages()
     static var shared: DesignSystem = DefaultDesignSystem()
+    var imagesDefault: DesignDefaultImages = DefaultDesignDefaultSystemImages()
+
 }
