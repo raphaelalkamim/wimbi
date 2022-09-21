@@ -33,7 +33,6 @@ class DaysView: UIView {
         viajantesTitleLabel.text = "VIAJANTES"
         return viajantesTitleLabel
     }()
-    
     lazy var numberPickerTableView: UITableView = {
         let numberPickerTableView = UITableView()
         numberPickerTableView.register(NumberPickerTableViewCell.self, forCellReuseIdentifier: "NumberCell")
