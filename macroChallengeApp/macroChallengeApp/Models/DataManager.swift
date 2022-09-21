@@ -71,7 +71,7 @@ class DataManager {
         }
     }
     
-    func postUser(username: String, usernameApp:String, name: String, photoId: String, password: String) {
+    func postUser(username: String, usernameApp: String, name: String, photoId: String, password: String) {
         let user: [String: Any] = [
             "username": username,
             "usernameApp": usernameApp,
@@ -137,7 +137,7 @@ class DataManager {
             print(response)
             if let error = error {
                 print(error)
-            } else if data != nil {
+            } else if data == data {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
                         do {
