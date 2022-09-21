@@ -139,6 +139,18 @@ class ProfileView: UIView {
         }
     }
     
+    func getTable() -> UICollectionView {
+        return myRoadmapCollectionView
+    }
+    
+    func getTitle() -> UILabel {
+        return name
+    }
+    
+    func getUsernameApp() -> UILabel {
+        return username
+    }
+    
 }
 
 extension ProfileView {

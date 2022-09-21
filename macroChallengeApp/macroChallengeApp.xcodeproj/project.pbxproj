@@ -84,6 +84,8 @@
 		B0CDF35028CFC7E90092A76C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CDF34F28CFC7E90092A76C /* Category.swift */; };
 		B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */; };
 		B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461628CFA85E00D62AF1 /* CategoryView.swift */; };
+		DF2643AB28DB9CC500053180 /* UserRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AA28DB9CC500053180 /* UserRoadmap.swift */; };
+		DF2643AD28DB9EAD00053180 /* RoadmapDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */; };
 		DF57253D28D110E1005466D9 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57253C28D110E1005466D9 /* DaysView.swift */; };
 		DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */; };
 		DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */; };
@@ -198,6 +200,8 @@
 		B897B6EEE760DBB56A9888E4 /* Pods-macroChallengeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp/Pods-macroChallengeApp.release.xcconfig"; sourceTree = "<group>"; };
 		D148866C3AA7A72395A6BDAC /* Pods_macroChallengeApp_macroChallengeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macroChallengeApp_macroChallengeAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4996FD9467D4E74060F7D0 /* Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DF2643AA28DB9CC500053180 /* UserRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoadmap.swift; sourceTree = "<group>"; };
+		DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapDTO.swift; sourceTree = "<group>"; };
 		DF57253C28D110E1005466D9 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
 		DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -359,6 +363,8 @@
 				13C8A11728C691F100994196 /* DataType.swift */,
 				B0CDF34F28CFC7E90092A76C /* Category.swift */,
 				B078F22328C27F2400D46F61 /* LaunchScreen.storyboard */,
+				DF2643AA28DB9CC500053180 /* UserRoadmap.swift */,
+				DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -916,6 +922,7 @@
 				1379744328D8E56700AEA662 /* ProfileViewController.swift in Sources */,
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
 				13C8A14928CFA66200994196 /* DestinyView.swift in Sources */,
+				DF2643AB28DB9CC500053180 /* UserRoadmap.swift in Sources */,
 				B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */,
 				13C8A12128CA690500994196 /* DesignSystem.swift in Sources */,
 				DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */,
@@ -942,7 +949,6 @@
 				1359F15228DA48D5009509DF /* ActivityRepositoryClass.swift in Sources */,
 				1359F15428DA48E5009509DF /* RoadmapRepositoryClass.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
-				1379745628D8E70600AEA662 /* TabBarController.swift in Sources */,
 				1359F15828DA48FD009509DF /* UserRepositoryClass.swift in Sources */,
 				1359F14F28DA48AF009509DF /* UserRepository.swift in Sources */,
 				B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */,
@@ -964,6 +970,7 @@
 				13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */,
 				A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */,
 				13C8A12728CA693F00994196 /* DesignText.swift in Sources */,
+				DF2643AD28DB9EAD00053180 /* RoadmapDTO.swift in Sources */,
 				DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */,
 				13C8A12528CA693700994196 /* DesignSpacing.swift in Sources */,
 				DF57253D28D110E1005466D9 /* DaysView.swift in Sources */,

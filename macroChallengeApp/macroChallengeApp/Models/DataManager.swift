@@ -158,13 +158,17 @@ class DataManager {
         task.resume()
     }
     
-    // swiftlint:disable function_parameter_count
     func postRoadmap(roadmap: Roadmaps) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d/M/y"
+        
         let roadmap: [String: Any] = [
             "name": roadmap.name,
             "location": roadmap.location,
             "budget": 0,
             "dayCount": roadmap.dayCount,
+            "dateInitial": dateFormatter.string(from: roadmap.dateInitial),
+            "dateFinal": dateFormatter.string(from: roadmap.dateFinal),
             "peopleCount": roadmap.peopleCount,
             "imageId": roadmap.imageId,
             "category": roadmap.category,
@@ -174,37 +178,76 @@ class DataManager {
         ]
         
         let session = URLSession.shared
-        guard let url = URL(string: baseURL + "roadmaps") else { return }
+        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+            let userID = String(data: data, encoding: .utf8)!
+            guard let url = URL(string: baseURL + "roadmaps/users/\(userID)") else { return }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            if let token = UserDefaults.standard.string(forKey: "authorization") {
+                request.setValue(token, forHTTPHeaderField: "Authorization")
+                
+                do {
+                    request.httpBody = try JSONSerialization.data(withJSONObject: roadmap, options: .prettyPrinted)
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                
+                let task = session.dataTask(with: request) { data, response, error in
+                    print(response)
+                    if let error = error {
+                        print(error)
+                    } else if data == data {
+                        if let httpResponse = response as? HTTPURLResponse {
+                            if httpResponse.statusCode == 200 {
+                                print("Criou Roadmap")
+                            }
+                        }
+                    } else {
+                        // Handle unexpected error
+                    }
+                }
+                task.resume()
+            }
+        }
+    }
+    
+    func getUser(username: String, _ completion: @escaping ((_ user: User)->Void)) {
+        var user: User?
+        let session: URLSession = URLSession.shared
+        let url: URL = URL(string: baseURL + "users/\(username)")!
         
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
         if let token = UserDefaults.standard.string(forKey: "authorization") {
             request.setValue(token, forHTTPHeaderField: "Authorization")
-            
-            do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: roadmap, options: .prettyPrinted)
-            } catch {
-                print(error.localizedDescription)
-            }
-            
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-            
             let task = session.dataTask(with: request) { data, response, error in
                 print(response)
-                if let error = error {
-                    print(error)
-                } else if data == data {
-                    if let httpResponse = response as? HTTPURLResponse {
-                        if httpResponse.statusCode == 200 {
-                            print("Criou Roadmap")
-                        }
+                guard let data = data else {return}
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                
+                do {
+                    // tentar transformar os dados no tipo Cohort
+                    user = try JSONDecoder().decode(User.self, from: data)
+                    
+                    DispatchQueue.main.async {
+                        completion(user!)
                     }
-                } else {
-                    // Handle unexpected error
+                } catch {
+                    // FIXME: tratar o erro do decoder
+                    print("DEU RUIM NO PARSE")
                 }
             }
             task.resume()
+            
         }
     }
     
@@ -221,9 +264,9 @@ class DataManager {
 }
 
 struct FailableDecodable<Base : Decodable> : Decodable {
-
+    
     let base: Base?
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         self.base = try? container.decode(Base.self)
