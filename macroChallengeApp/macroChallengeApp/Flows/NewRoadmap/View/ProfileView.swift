@@ -143,12 +143,16 @@ class ProfileView: UIView {
         return myRoadmapCollectionView
     }
     
-    func getTitle() -> UILabel {
+    func getName() -> UILabel {
         return name
     }
     
     func getUsernameApp() -> UILabel {
         return username
+    }
+    
+    func getImage() -> UIImageView {
+        return image
     }
     
 }

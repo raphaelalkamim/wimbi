@@ -80,7 +80,6 @@ extension ProfileCollectionViewCell {
     }
     
     func setupConstraints() {
-        
         roadmapImage.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
@@ -98,7 +97,8 @@ extension ProfileCollectionViewCell {
         title.snp.makeConstraints { make in
             make.top.equalTo(roadmapImage.snp.bottom).inset(designSystem.spacing.largeNegative)
             make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.mediumPositive)
+            make.trailing.equalTo(likeLabel.snp.leading).inset(designSystem.spacing.mediumNegative)
+            make.bottom.equalToSuperview()
         }
 
         likeImage.snp.makeConstraints { make in
@@ -108,7 +108,7 @@ extension ProfileCollectionViewCell {
         
         likeLabel.snp.makeConstraints { make in
             make.top.equalTo(likeImage.snp.bottom).inset(designSystem.spacing.xSmallNegative)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
+            make.centerX.equalTo(likeImage.snp.centerX)
         }
         
     }
