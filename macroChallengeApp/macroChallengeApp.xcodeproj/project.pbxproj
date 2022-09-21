@@ -62,6 +62,8 @@
 		13C8A13828CA75EA00994196 /* DesignSystem+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A13728CA75EA00994196 /* DesignSystem+UIColor.swift */; };
 		13C8A14928CFA66200994196 /* DestinyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A14828CFA66200994196 /* DestinyView.swift */; };
 		13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A15128CFC29500994196 /* HandleMapSearch.swift */; };
+		13EC5C5228DB8FF0005F7128 /* DesignDefaultImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC5C5128DB8FF0005F7128 /* DesignDefaultImages.swift */; };
+		13EC5C5428DB902F005F7128 /* DefaultDesignDefaultImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC5C5328DB902F005F7128 /* DefaultDesignDefaultImages.swift */; };
 		13F994E428D273EB00B077C0 /* NewRoadmapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F994E328D273EB00B077C0 /* NewRoadmapCoordinator.swift */; };
 		13F994E728D393CE00B077C0 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F994E628D393CE00B077C0 /* CategoryViewController.swift */; };
 		13F994E928D393D900B077C0 /* DestinyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F994E828D393D900B077C0 /* DestinyViewController.swift */; };
@@ -169,6 +171,8 @@
 		13C8A13728CA75EA00994196 /* DesignSystem+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+UIColor.swift"; sourceTree = "<group>"; };
 		13C8A14828CFA66200994196 /* DestinyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinyView.swift; sourceTree = "<group>"; };
 		13C8A15128CFC29500994196 /* HandleMapSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleMapSearch.swift; sourceTree = "<group>"; };
+		13EC5C5128DB8FF0005F7128 /* DesignDefaultImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignDefaultImages.swift; sourceTree = "<group>"; };
+		13EC5C5328DB902F005F7128 /* DefaultDesignDefaultImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignDefaultImages.swift; sourceTree = "<group>"; };
 		13F994E328D273EB00B077C0 /* NewRoadmapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoadmapCoordinator.swift; sourceTree = "<group>"; };
 		13F994E628D393CE00B077C0 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		13F994E828D393D900B077C0 /* DestinyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinyViewController.swift; sourceTree = "<group>"; };
@@ -410,6 +414,7 @@
 				13C8A13528CA6C1100994196 /* TextStyle.swift */,
 				DF5F774628CA853000BA5F5F /* CustomLabelDesignable.swift */,
 				13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */,
+				13EC5C5128DB8FF0005F7128 /* DesignDefaultImages.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				13C8A13328CA6B4200994196 /* DefaultDesignSpacing.swift */,
 				DF5F774228CA820200BA5F5F /* DefaultDesignTextFonts.swift */,
 				13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */,
+				13EC5C5328DB902F005F7128 /* DefaultDesignDefaultImages.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -918,6 +924,7 @@
 				13C8A11D28CA681C00994196 /* Coordinator.swift in Sources */,
 				13C8A13228CA6B0400994196 /* DefaultDesignPalette.swift in Sources */,
 				B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */,
+				13EC5C5228DB8FF0005F7128 /* DesignDefaultImages.swift in Sources */,
 				B0CDF35028CFC7E90092A76C /* Category.swift in Sources */,
 				1379744328D8E56700AEA662 /* ProfileViewController.swift in Sources */,
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
@@ -985,6 +992,7 @@
 				B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */,
 				13BD501028DA297500C0EA7C /* LoginViewController.swift in Sources */,
 				1359F14B28DA489A009509DF /* DayRepository.swift in Sources */,
+				13EC5C5428DB902F005F7128 /* DefaultDesignDefaultImages.swift in Sources */,
 				DF5F774128CA7E1600BA5F5F /* DesignSystem+UIFont.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
