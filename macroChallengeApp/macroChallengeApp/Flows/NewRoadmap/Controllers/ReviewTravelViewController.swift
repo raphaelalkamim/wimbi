@@ -76,7 +76,6 @@ class ReviewTravelViewController: UIViewController {
     func setupContent() {
         self.reviewTravelView.subtitle.text = self.roadmap.category
         self.reviewTravelView.title.text = self.roadmap.name
-        
         self.setupCategory()
     }
     func setupCategory() {

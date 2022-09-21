@@ -65,7 +65,7 @@ class ProfileView: UIView {
     
     private lazy var emptyStateImage: UIImageView = {
         let img = UIImageView()
-        img.image = UIImage(named: "binoculo")
+        img.image = designSystem.images.binoculars
         img.clipsToBounds = true
         img.contentMode = .scaleAspectFit
         return img
@@ -171,8 +171,8 @@ class ProfileView: UIView {
             make.top.equalTo(roadmapTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
-            make.height.equalTo(900)
             make.bottom.equalTo(scrollView.snp.bottom)
+            make.height.equalTo(self.snp.height)
         }
         
         emptyStateTitle.snp.makeConstraints { make in
@@ -185,7 +185,6 @@ class ProfileView: UIView {
             make.top.equalTo(emptyStateTitle.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
             make.centerX.equalTo(contentView.snp.centerX)
             make.height.equalTo(120)
-
         }
     }
     

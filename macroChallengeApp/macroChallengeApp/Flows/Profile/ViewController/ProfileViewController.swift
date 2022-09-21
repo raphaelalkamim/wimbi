@@ -31,7 +31,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         self.setupProfileView()
         
         profileView.bindColletionView(delegate: self, dataSource: self)
-        
+        profileView.myRoadmapCollectionView.reloadData()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
         
         profileView.addButton.addTarget(self, action: #selector(addAction), for: .touchDown)

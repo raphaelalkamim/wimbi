@@ -21,4 +21,16 @@ extension UIImage {
     static var city: UIImage {
         UIImage(named: "categoryCity")!
     }
+    static var binoculars: UIImage {
+        UIImage(named: "binoculo")!
+    }
+    static var compass: UIImage {
+        UIImage(named: "bussola")!
+    }
+    static var flora: UIImage {
+        UIImage(named: "flora")!
+    }
+    static var map: UIImage {
+        UIImage(named: "map")!
+    }
 }
