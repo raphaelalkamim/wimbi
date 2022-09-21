@@ -16,7 +16,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     private lazy var fetchResultController: NSFetchedResultsController<RoadmapLocal> = {
         let request: NSFetchRequest<RoadmapLocal> = RoadmapLocal.fetchRequest()
-//        request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal., ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal.name, ascending: true)]
         let frc = NSFetchedResultsController(fetchRequest: request,
                                              managedObjectContext: RoadmapRepository.shared.context,
                                              sectionNameKeyPath: nil,
@@ -56,6 +56,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         let newRoadmaps = RoadmapRepository.shared.getRoadmap()
         self.roadmaps = newRoadmaps
+        profileView.roadmaps = newRoadmaps
         profileView.myRoadmapCollectionView.reloadData()
     }
 }

@@ -13,7 +13,7 @@ class ProfileView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let scrollView = UIScrollView()
     let contentView = UIView()
-    let roadmaps: [RoadmapLocal] = []
+    var roadmaps = RoadmapRepository.shared.getRoadmap()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,8 +65,9 @@ class ProfileView: UIView {
     
     private lazy var emptyStateImage: UIImageView = {
         let img = UIImageView()
-        img.image = UIImage(named: "categoryBeach")
+        img.image = UIImage(named: "binoculo")
         img.clipsToBounds = true
+        img.contentMode = .scaleAspectFit
         return img
     }()
         
@@ -95,10 +96,12 @@ class ProfileView: UIView {
         if roadmaps.isEmpty {
             myRoadmapCollectionView.isHidden = true
             emptyStateTitle.isHidden = false
+            emptyStateImage.isHidden = false
             scrollView.isScrollEnabled = false
         } else {
             myRoadmapCollectionView.isHidden = false
             emptyStateTitle.isHidden = true
+            emptyStateImage.isHidden = true
             scrollView.isScrollEnabled = true
         }
     }
@@ -116,6 +119,7 @@ class ProfileView: UIView {
         contentView.addSubview(emptyStateTitle)
         contentView.addSubview(emptyStateImage)
         emptyStateTitle.isHidden = true
+        emptyStateImage.isHidden = true
         setupConstraints()
         emptyState()
     }
@@ -180,6 +184,7 @@ class ProfileView: UIView {
         emptyStateImage.snp.makeConstraints { make in
             make.top.equalTo(emptyStateTitle.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
             make.centerX.equalTo(contentView.snp.centerX)
+            make.height.equalTo(120)
 
         }
     }
