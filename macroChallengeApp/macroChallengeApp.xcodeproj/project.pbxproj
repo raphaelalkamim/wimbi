@@ -73,9 +73,11 @@
 		90297BBF83D0A825FF081EB4 /* Pods_macroChallengeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */; };
 		A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */; };
 		A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */; };
-		B04BA9A428DA2EE100EBA44A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A328DA2EE100EBA44A /* TabBarController.swift */; };
 		B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */; };
 		B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */; };
+		B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */; };
+		B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */; };
+		B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */; };
 		B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21528C27F2000D46F61 /* AppDelegate.swift */; };
 		B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21728C27F2000D46F61 /* SceneDelegate.swift */; };
 		B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B078F21E28C27F2000D46F61 /* macroChallengeApp.xcdatamodeld */; };
@@ -183,9 +185,11 @@
 		A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A2717F6A055C734D418E1360 /* Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		B04BA9A328DA2EE100EBA44A /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerTableViewCell.swift; sourceTree = "<group>"; };
 		B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
+		B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNewActivityViewController.swift; sourceTree = "<group>"; };
+		B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		B078F21228C27F2000D46F61 /* macroChallengeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macroChallengeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B078F21528C27F2000D46F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B078F21728C27F2000D46F61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -307,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				13BD500528DA28D600C0EA7C /* NewActivityViewController.swift */,
+				B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -337,6 +342,8 @@
 				13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */,
 				B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */,
 				B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */,
+				B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */,
+				B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -928,6 +935,7 @@
 				B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */,
 				13C8A12128CA690500994196 /* DesignSystem.swift in Sources */,
 				DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */,
+				B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */,
 				13C8A13828CA75EA00994196 /* DesignSystem+UIColor.swift in Sources */,
 				13F994E428D273EB00B077C0 /* NewRoadmapCoordinator.swift in Sources */,
 				13F994E928D393D900B077C0 /* DestinyViewController.swift in Sources */,
@@ -942,6 +950,7 @@
 				1359F15628DA48F3009509DF /* DayRepositoryClass.swift in Sources */,
 				13F994E728D393CE00B077C0 /* CategoryViewController.swift in Sources */,
 				13C8A11128C6833D00994196 /* Like.swift in Sources */,
+				B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */,
 				1379745428D8E6B700AEA662 /* SettingsView.swift in Sources */,
 				1467706728D2699D00D55098 /* LabelTableViewCell.swift in Sources */,
 				13BD501128DA297500C0EA7C /* LoginView.swift in Sources */,
@@ -951,7 +960,6 @@
 				1359F15228DA48D5009509DF /* ActivityRepositoryClass.swift in Sources */,
 				1359F15428DA48E5009509DF /* RoadmapRepositoryClass.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
-				1379745628D8E70600AEA662 /* TabBarController.swift in Sources */,
 				1359F15828DA48FD009509DF /* UserRepositoryClass.swift in Sources */,
 				1359F14F28DA48AF009509DF /* UserRepository.swift in Sources */,
 				B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */,
@@ -959,6 +967,7 @@
 				1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */,
 				DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */,
 				13BD500E28DA297500C0EA7C /* SignInWithAppleManager.swift in Sources */,
+				B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */,
 				1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */,
 				13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */,
 				1379743D28D5165200AEA662 /* LocationSearchTableViewController.swift in Sources */,
@@ -1162,6 +1171,7 @@
 				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1171,7 +1181,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm2022.macroChallengeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm.macroChallengeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1191,6 +1201,7 @@
 				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1200,7 +1211,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm2022.macroChallengeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm.macroChallengeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

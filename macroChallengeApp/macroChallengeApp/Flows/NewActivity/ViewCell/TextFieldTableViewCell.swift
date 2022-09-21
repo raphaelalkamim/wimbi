@@ -39,13 +39,14 @@ class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 extension TextFieldTableViewCell {
     func setup() {
+        self.backgroundColor = designSystem.palette.backgroundCell
         contentView.addSubview(title)
         setupConstraints()
     }
     
     func setupConstraints() {
         title.snp.makeConstraints { make in
-            make.leadingMargin.equalToSuperview().inset(designSystem.spacing.xSmallPositive)
+            make.leading.equalToSuperview().inset(designSystem.spacing.largePositive)
             make.top.bottom.trailing.equalToSuperview()
         }
     }

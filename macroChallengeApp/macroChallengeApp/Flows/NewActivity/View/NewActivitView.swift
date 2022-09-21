@@ -47,12 +47,12 @@ class NewActivityView: UIView {
     
     lazy var localyTable: UITableView = {
         let table = UITableView()
+        table.register(AddressTableViewCell.self, forCellReuseIdentifier: AddressTableViewCell.identifier)
         table.register(TextFieldTableViewCell.self, forCellReuseIdentifier: TextFieldTableViewCell.identifier)
-        // table.register(StackTableViewCell.self, forCellReuseIdentifier: TextFieldTableViewCell.identifier)
         table.layer.cornerRadius = 16
         table.isScrollEnabled = false
         table.separatorColor = .clear
-        table.allowsSelection = false
+        table.allowsSelection = true
         
         return table
     }()
@@ -85,8 +85,8 @@ class NewActivityView: UIView {
     
     lazy var valueTable: UITableView = {
         let table = UITableView()
-        table.register(TextFieldTableViewCell.self, forCellReuseIdentifier: TextFieldTableViewCell.identifier)
-         table.register(ValueTableViewCell.self, forCellReuseIdentifier: ValueTableViewCell.identifier)
+        table.register(CurrencyTableViewCell.self, forCellReuseIdentifier: CurrencyTableViewCell.identifier)
+        table.register(ValueTableViewCell.self, forCellReuseIdentifier: ValueTableViewCell.identifier)
         table.layer.cornerRadius = 16
         table.isScrollEnabled = false
         table.separatorColor = .clear

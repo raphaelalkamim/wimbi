@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class ValueTableViewCell: UITableViewCell, UITextFieldDelegate {
-    static let identifier = "valueFieldCell"
+    static let identifier = "valueCell"
     let designSystem = DefaultDesignSystem.shared
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -47,6 +47,7 @@ class ValueTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 extension ValueTableViewCell {
     func setup() {
+        self.backgroundColor = designSystem.palette.backgroundCell
         contentView.addSubview(title)
         contentView.addSubview(value)
         setupConstraints()
@@ -55,13 +56,13 @@ extension ValueTableViewCell {
     func setupConstraints() {
         title.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leadingMargin.equalToSuperview().inset(designSystem.spacing.xSmallPositive)
+            make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
             
         }
         value.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.leading.equalTo(title.snp.trailing).offset(designSystem.spacing.xxLargePositive)
-            make.trailingMargin.equalToSuperview().inset(designSystem.spacing.xSmallPositive)
+            make.trailing.equalToSuperview().inset(designSystem.spacing.largePositive)
       
         }
     }

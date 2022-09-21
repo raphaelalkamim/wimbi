@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class NewActivityViewController: UIViewController {
+    weak var coordinator: ProfileCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let newActivityView = NewActivityView()
     var fonts: [UIFont]! {
@@ -20,6 +21,9 @@ class NewActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNewActivityView()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dissMissKeyboard))
     }
 }
 
@@ -63,28 +67,14 @@ extension NewActivityViewController: UITableViewDataSource {
             
         } else if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
-                guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
-                
-                newCell.title.placeholder = "Address"
-                
-                let separator = UIView()
-                
-                newCell.addSubview(separator)
-                separator.backgroundColor = .gray
-                
-                separator.snp.makeConstraints { make in
-                    make.height.equalTo(0.5)
-                    make.bottom.equalToSuperview()
-                    make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
-                    make.trailing.equalToSuperview()
-                }
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
+                newCell.label.text = "Address"
+                newCell.setupSeparator()
                 cell = newCell
                 
             } else if indexPath.row == 1 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
-                
                 newCell.title.placeholder = "Name"
-                
                 cell = newCell
             }
             
@@ -92,43 +82,20 @@ extension NewActivityViewController: UITableViewDataSource {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Date"
+                newCell.setupSeparator()
                 
-                let separator = UIView()
-                
-                newCell.addSubview(separator)
-                separator.backgroundColor = .gray
-                
-                separator.snp.makeConstraints { make in
-                    make.height.equalTo(0.5)
-                    make.bottom.equalToSuperview()
-                    make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
-                    make.trailing.equalToSuperview()
-                }
                 cell = newCell
             } else if indexPath.row == 1 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TimePickerTableViewCell.identifier, for: indexPath) as? TimePickerTableViewCell else { fatalError("TableCell not found") }
-                
                 newCell.label.text = "Hour"
                 cell = newCell
             }
             
         } else if tableView == newActivityView.valueTable {
             if indexPath.row == 0 {
-                guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
-                newCell.title.text = "Currency"
-                
-                let separator = UIView()
-                
-                newCell.addSubview(separator)
-                separator.backgroundColor = .gray
-                
-                separator.snp.makeConstraints { make in
-                    make.height.equalTo(0.5)
-                    make.bottom.equalToSuperview()
-                    make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
-                    make.trailing.equalToSuperview()
-                }
-                
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell else { fatalError("TableCell not found") }
+                newCell.label.text = "Currency"
+                newCell.setupSeparator()
                 cell = newCell
                 
             } else {
@@ -148,7 +115,9 @@ extension NewActivityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
-                //self.navigationController?.pushViewController(), animated: true)
+                //self.coordinator?.openLocationActivity()
+                self.present(LocationNewActivityViewController(), animated: true)
+                print("oi")
             }
         }
         
@@ -162,14 +131,24 @@ extension NewActivityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+}
+
+extension NewActivityViewController {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
     
-//    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-//        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions -> UIMenu? in
-//            let font = self.fonts[indexPath.row]
-//            let copyAction = UIAction(title: "Copy", image: UIImage(systemName: "doc.on.doc"), identifier: nil, discoverabilityTitle: nil, handler: <#UIActionHandler#>)
-//            
-//        }
-//        return UIMenu(title: "A", image: nil, identifier: nil, options: [], children: [copyAction])
-//    }
-//    
+    @objc func dissMissKeyboard() {
+        view.endEditing(true)
+    }
 }
