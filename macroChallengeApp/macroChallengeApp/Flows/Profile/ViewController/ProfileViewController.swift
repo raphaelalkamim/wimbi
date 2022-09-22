@@ -17,9 +17,9 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     private lazy var fetchResultController: NSFetchedResultsController<RoadmapLocal> = {
         let request: NSFetchRequest<RoadmapLocal> = RoadmapLocal.fetchRequest()
-        //request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal.createdAt, ascending: false)]
-        let sectionSortDescriptor = NSSortDescriptor(key: "createdAt", ascending: false)
-        request.sortDescriptors = [sectionSortDescriptor]
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal.name, ascending: false)]
+        //let sectionSortDescriptor = NSSortDescriptor()
+        //request.sortDescriptors = [sectionSortDescriptor]
         let frc = NSFetchedResultsController(fetchRequest: request,
                                              managedObjectContext: RoadmapRepository.shared.context,
                                              sectionNameKeyPath: nil,
@@ -50,6 +50,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.profileView.myRoadmapCollectionView.reloadData()
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
             DataManager.shared.getUser(username: userID, { user in

@@ -20,7 +20,6 @@
 		1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744028D8E55000AEA662 /* CurrentViewController.swift */; };
 		1379744328D8E56700AEA662 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744228D8E56700AEA662 /* ProfileViewController.swift */; };
 		1379744828D8E57B00AEA662 /* ReviewTravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744428D8E57B00AEA662 /* ReviewTravelViewController.swift */; };
-		1379744928D8E57B00AEA662 /* NewRoadmapViewController+ReviewTravel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744528D8E57B00AEA662 /* NewRoadmapViewController+ReviewTravel.swift */; };
 		1379744A28D8E57B00AEA662 /* ProfileViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744628D8E57B00AEA662 /* ProfileViewControllerExtension.swift */; };
 		1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744728D8E57B00AEA662 /* ProfileViewController+Settings.swift */; };
 		1379744D28D8E5CA00AEA662 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744C28D8E5CA00AEA662 /* ExploreViewController.swift */; };
@@ -140,7 +139,6 @@
 		1379744028D8E55000AEA662 /* CurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
 		1379744228D8E56700AEA662 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1379744428D8E57B00AEA662 /* ReviewTravelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTravelViewController.swift; sourceTree = "<group>"; };
-		1379744528D8E57B00AEA662 /* NewRoadmapViewController+ReviewTravel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewRoadmapViewController+ReviewTravel.swift"; sourceTree = "<group>"; };
 		1379744628D8E57B00AEA662 /* ProfileViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerExtension.swift; sourceTree = "<group>"; };
 		1379744728D8E57B00AEA662 /* ProfileViewController+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Settings.swift"; sourceTree = "<group>"; };
 		1379744C28D8E5CA00AEA662 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
@@ -491,7 +489,6 @@
 		13F994EE28D3941F00B077C0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1379744528D8E57B00AEA662 /* NewRoadmapViewController+ReviewTravel.swift */,
 				1379744428D8E57B00AEA662 /* ReviewTravelViewController.swift */,
 				13F994E828D393D900B077C0 /* DestinyViewController.swift */,
 				13F994E628D393CE00B077C0 /* CategoryViewController.swift */,
@@ -1006,7 +1003,6 @@
 				1467706728D2699D00D55098 /* LabelTableViewCell.swift in Sources */,
 				13BD501128DA297500C0EA7C /* LoginView.swift in Sources */,
 				13C8A12D28CA6A2500994196 /* ProfileCoordinator.swift in Sources */,
-				1379744928D8E57B00AEA662 /* NewRoadmapViewController+ReviewTravel.swift in Sources */,
 				A0B9F4D128DA342B00F2DF06 /* LikedRoadmapsViewController.swift in Sources */,
 				A0B9F4CB28DA2E3B00F2DF06 /* EditProfileView.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
