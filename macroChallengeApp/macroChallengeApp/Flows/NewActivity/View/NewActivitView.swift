@@ -10,6 +10,8 @@ import UIKit
 
 class NewActivityView: UIView {
     let designSystem = DefaultDesignSystem.shared
+    let scrollView = UIScrollView()
+    let contentView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -99,65 +101,88 @@ class NewActivityView: UIView {
 extension NewActivityView {
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
+        self.addSubview(scrollView)
+        scrollView.addSubview(contentView)
         
-        self.addSubview(categoryLabel)
-        self.addSubview(categoryTable)
+        contentView.addSubview(categoryLabel)
+        contentView.addSubview(categoryTable)
         
-        self.addSubview(localyLabel)
-        self.addSubview(localyTable)
+        contentView.addSubview(localyLabel)
+        contentView.addSubview(localyTable)
         
-        self.addSubview(dateLabel)
-        self.addSubview(dateTable)
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(dateTable)
         
-        self.addSubview(valueLabel)
-        self.addSubview(valueTable)
+        contentView.addSubview(valueLabel)
+        contentView.addSubview(valueTable)
         
         setupConstraints()
     }
     
     func setupConstraints() {
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(self.snp.topMargin)
+            make.bottom.equalTo(self.snp.bottom)
+            make.left.right.equalTo(self)
+        }
+
+        contentView.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.top)
+            make.bottom.equalTo(valueTable.snp.bottom)
+            make.left.right.equalTo(self)
+        }
+        
         categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.snp.topMargin).offset(designSystem.spacing.largePositive)
-            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(contentView.snp.top).offset(designSystem.spacing.largePositive)
+            make.leading.equalTo(contentView.snp.leading).inset(32)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
         }
         
         categoryTable.snp.makeConstraints { make in
             make.top.equalTo(categoryLabel.snp.bottom).offset(designSystem.spacing.xSmallPositive)
-            make.trailing.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.height.equalTo(100)
         }
         
         localyLabel.snp.makeConstraints { make in
             make.top.equalTo(categoryTable.snp.bottom).offset(designSystem.spacing.xLargePositive)
-            make.leading.trailing.equalToSuperview().inset(30)
+            make.leading.equalTo(contentView.snp.leading).inset(32)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
         }
 
         localyTable.snp.makeConstraints { make in
             make.top.equalTo(localyLabel.snp.bottom).offset(designSystem.spacing.xSmallPositive)
-            make.trailing.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.height.equalTo(100)
         }
 
         dateLabel.snp.makeConstraints { make in
             make.top.equalTo(localyTable.snp.bottom).offset(designSystem.spacing.xLargePositive)
-            make.leading.trailing.equalToSuperview().inset(30)
+            make.leading.equalTo(contentView.snp.leading).inset(32)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
         }
 
         dateTable.snp.makeConstraints { make in
             make.top.equalTo(dateLabel.snp.bottom).offset(designSystem.spacing.xSmallPositive)
-            make.trailing.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.height.equalTo(100)
         }
 
         valueLabel.snp.makeConstraints { make in
             make.top.equalTo(dateTable.snp.bottom).offset(designSystem.spacing.xLargePositive)
-            make.leading.trailing.equalToSuperview().inset(30)
+            make.leading.equalTo(contentView.snp.leading).inset(32)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
         }
 
         valueTable.snp.makeConstraints { make in
             make.top.equalTo(valueLabel.snp.bottom).offset(designSystem.spacing.xSmallPositive)
-            make.trailing.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.height.equalTo(100)
+            make.bottom.equalTo(scrollView.snp.bottom)
         }
     }
 }

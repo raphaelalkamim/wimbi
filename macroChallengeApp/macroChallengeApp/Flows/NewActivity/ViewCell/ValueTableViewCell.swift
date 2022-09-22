@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ValueTableViewCell: UITableViewCell, UITextFieldDelegate {
+class ValueTableViewCell: UITableViewCell {
     static let identifier = "valueCell"
     let designSystem = DefaultDesignSystem.shared
     
@@ -43,6 +43,22 @@ class ValueTableViewCell: UITableViewCell, UITextFieldDelegate {
         textField.delegate = self
         return textField
     }()
+    
+    let formatterTextField: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale.current
+        formatter.minimumFractionDigits = 2
+        return formatter
+    }()
+    
+    let formatterNumber: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale.current
+        return formatter
+    }()
+
 }
 
 extension ValueTableViewCell {
@@ -57,13 +73,18 @@ extension ValueTableViewCell {
         title.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
+            make.trailing.equalTo(value.snp.leading).inset(designSystem.spacing.largePositive)
             
         }
         value.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.equalTo(title.snp.trailing).offset(designSystem.spacing.xxLargePositive)
             make.trailing.equalToSuperview().inset(designSystem.spacing.largePositive)
-      
         }
+    }
+}
+
+extension ValueTableViewCell: UITextFieldDelegate{
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        
     }
 }
