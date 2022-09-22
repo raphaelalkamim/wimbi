@@ -24,6 +24,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         frc.delegate = self
         return frc
     }()
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,19 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
             fatalError("Não foi possível atualizar conteúdo")
         }
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+            let userID = String(data: data, encoding: .utf8)!
+            DataManager.shared.getUser(username: userID, { user in
+                self.user = user
+                self.profileView.getName().text = user.name
+                self.profileView.getUsernameApp().text = "@\(user.usernameApp)"
+                self.profileView.getTable().reloadData()
+                self.profileView.getImage().image = UIImage(named: user.photoId)
+            })
+        }
     }
     
     @objc func profileSettings() {

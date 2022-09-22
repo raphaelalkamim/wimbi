@@ -29,6 +29,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     lazy var roadmapImage: UIImageView = {
         let img = UIImageView()
         img.clipsToBounds = true
+        img.contentMode = .scaleAspectFill
         img.layer.cornerRadius = 16
         img.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         return img
@@ -85,16 +86,11 @@ extension ProfileCollectionViewCell {
     }
     
     func setupConstraints() {
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.mediumPositive)
-        }
-        
         roadmapImage.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.top.equalToSuperview()
+            make.height.equalTo(98)
         }
         
         newTag.snp.makeConstraints { make in
@@ -102,7 +98,13 @@ extension ProfileCollectionViewCell {
             make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
             make.height.equalTo(designSystem.spacing.xxLargePositive)
             make.width.equalTo(57)
-
+        }
+        
+        title.snp.makeConstraints { make in
+            make.top.equalTo(roadmapImage.snp.bottom).inset(designSystem.spacing.largeNegative)
+            make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
+            make.trailing.equalTo(likeLabel.snp.leading).inset(designSystem.spacing.mediumNegative)
+            make.bottom.equalToSuperview()
         }
 
         likeImage.snp.makeConstraints { make in
@@ -112,7 +114,7 @@ extension ProfileCollectionViewCell {
         
         likeLabel.snp.makeConstraints { make in
             make.top.equalTo(likeImage.snp.bottom).inset(designSystem.spacing.xSmallNegative)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
+            make.centerX.equalTo(likeImage.snp.centerX)
         }
         
     }
