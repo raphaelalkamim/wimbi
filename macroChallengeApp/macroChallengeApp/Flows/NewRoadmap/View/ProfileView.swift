@@ -13,6 +13,7 @@ class ProfileView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let scrollView = UIScrollView()
     let contentView = UIView()
+    var roadmaps = RoadmapRepository.shared.getRoadmap()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,7 +39,7 @@ class ProfileView: UIView {
         return title
     }()
     
-    private lazy var image: UIImageView = {
+    private lazy var userImage: UIImageView = {
         let img = UIImageView()
         img.image = UIImage(named: "categoryBeach") // adicionar foto de perfil
         img.clipsToBounds = true
@@ -47,11 +48,29 @@ class ProfileView: UIView {
     
     private lazy var roadmapTitle: UILabel = {
         let title = UILabel()
-        title.text = "Meus roteiros" // adicionar nome
+        title.text = "My roadmaps" // adicionar nome
         title.stylize(with: designSystem.text.mediumTitle)
         return title
     }()
     
+    private lazy var emptyStateTitle: UILabel = {
+        let title = UILabel()
+        title.text = "Clique em ”+” para criar um novo roteiro ou explore roteiros já criados"
+        title.numberOfLines = 0
+        title.font = designSystem.text.body.font
+        title.textAlignment = .center
+        title.textColor = .textPrimary
+        return title
+    }()
+    
+    private lazy var emptyStateImage: UIImageView = {
+        let img = UIImageView()
+        img.image = designSystem.images.binoculars
+        img.clipsToBounds = true
+        img.contentMode = .scaleAspectFit
+        return img
+    }()
+        
     lazy var addButton: UIButton = {
         let btn = UIButton()
         let img = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
@@ -61,11 +80,10 @@ class ProfileView: UIView {
         return btn
     }()
     
-    private lazy var myRoadmapCollectionView: UICollectionView = {
+    lazy var myRoadmapCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         layout.itemSize = CGSize(width: 170, height: 165)
-        
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
         collectionView.isScrollEnabled = false
@@ -73,18 +91,37 @@ class ProfileView: UIView {
         collectionView.backgroundColor = .backgroundPrimary
         return collectionView
     }()
-
+    
+    func emptyState() {
+        if roadmaps.isEmpty {
+            myRoadmapCollectionView.isHidden = true
+            emptyStateTitle.isHidden = false
+            emptyStateImage.isHidden = false
+            scrollView.isScrollEnabled = false
+        } else {
+            myRoadmapCollectionView.isHidden = false
+            emptyStateTitle.isHidden = true
+            emptyStateImage.isHidden = true
+            scrollView.isScrollEnabled = true
+        }
+    }
+    
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubview(image)
+        contentView.addSubview(userImage)
         contentView.addSubview(name)
         contentView.addSubview(username)
         contentView.addSubview(roadmapTitle)
         contentView.addSubview(addButton)
         contentView.addSubview(myRoadmapCollectionView)
+        contentView.addSubview(emptyStateTitle)
+        contentView.addSubview(emptyStateImage)
+        emptyStateTitle.isHidden = true
+        emptyStateImage.isHidden = true
         setupConstraints()
+        emptyState()
     }
     
     func setupConstraints() {
@@ -100,7 +137,7 @@ class ProfileView: UIView {
             make.left.right.equalTo(self)
         }
 
-        image.snp.makeConstraints { make in
+        userImage.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xxLargePositive)
             make.height.size.equalTo(64)
@@ -108,13 +145,13 @@ class ProfileView: UIView {
 
         name.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top).inset(designSystem.spacing.xLargePositive)
-            make.leading.equalTo(image.snp.trailing).inset(designSystem.spacing.largeNegative)
+            make.leading.equalTo(userImage.snp.trailing).inset(designSystem.spacing.largeNegative)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
         }
         
         username.snp.makeConstraints { make in
             make.top.equalTo(name.snp.bottom)
-            make.leading.equalTo(image.snp.trailing).inset(designSystem.spacing.largeNegative)
+            make.leading.equalTo(userImage.snp.trailing).inset(designSystem.spacing.largeNegative)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
         }
     
@@ -134,9 +171,37 @@ class ProfileView: UIView {
             make.top.equalTo(roadmapTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
-            make.height.equalTo(900)
             make.bottom.equalTo(scrollView.snp.bottom)
+            make.height.equalTo(self.snp.height)
         }
+        
+        emptyStateTitle.snp.makeConstraints { make in
+            make.top.equalTo(roadmapTitle.snp.bottom).inset(-70)
+            make.leading.equalTo(contentView.snp.leading).inset(70)
+            make.trailing.equalTo(contentView.snp.trailing).inset(70)
+
+        }
+        emptyStateImage.snp.makeConstraints { make in
+            make.top.equalTo(emptyStateTitle.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.height.equalTo(120)
+        }
+    }
+    
+    func getTable() -> UICollectionView {
+        return myRoadmapCollectionView
+    }
+    
+    func getName() -> UILabel {
+        return name
+    }
+    
+    func getUsernameApp() -> UILabel {
+        return username
+    }
+    
+    func getImage() -> UIImageView {
+        return userImage
     }
     
 }

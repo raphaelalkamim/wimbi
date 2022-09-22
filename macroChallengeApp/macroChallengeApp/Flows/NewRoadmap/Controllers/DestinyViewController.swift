@@ -20,7 +20,8 @@ class DestinyViewController: UIViewController {
     var searchedText: String = ""
     var subtitle: String = ""
     var selectedPin: MKPlacemark? = nil
-    
+    var placeTitle = ""
+    var placeCoords = ""
     var roadmap: Roadmaps
     
     init(roadmap: Roadmaps) {
@@ -71,7 +72,7 @@ class DestinyViewController: UIViewController {
     
     func setupToolbar() {
         let barItems = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelRoadmap))
-        barItems.tintColor = .systemRed
+        barItems.tintColor = .accent
         self.navigationItem.leftBarButtonItems = [barItems]
         
         let toolBar = UIToolbar()
@@ -88,7 +89,8 @@ class DestinyViewController: UIViewController {
     }
     
     @objc func nextPage() {
-        self.roadmap.location = subtitle
+        self.roadmap.name = placeTitle
+        self.roadmap.location = placeCoords
         coordinator?.startDays(roadmap: roadmap)
     }
     @objc func backPage() {
@@ -179,12 +181,20 @@ extension DestinyViewController: HandleMapSearch {
         
         destinyView.mapView.removeAnnotations(destinyView.mapView.annotations)
         let annotation = MKPointAnnotation()
+        
         annotation.coordinate = placemark.coordinate
-        annotation.title = placemark.name
+        placeCoords = "\(placemark.coordinate.latitude) \(placemark.coordinate.longitude)"
+
+        if let name = placemark.name {
+            annotation.title = name
+            placeTitle = name
+        }
+        
         if let city = placemark.locality, let state = placemark.administrativeArea {
             subtitle = "\(city) \(state)"
             annotation.subtitle = subtitle
         }
+        
         destinyView.mapView.addAnnotation(annotation)
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: placemark.coordinate, span: span)

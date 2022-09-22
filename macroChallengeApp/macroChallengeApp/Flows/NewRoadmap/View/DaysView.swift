@@ -126,19 +126,19 @@ class DaysView: UIView {
         
         publicTitle.snp.makeConstraints { make in
             make.top.equalTo(numberPickerTableView.snp.bottom).offset(26)
-            make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
+            make.leading.equalToSuperview().offset(designSystem.spacing.xLargePositive)
         }
         
         publicSwitch.snp.makeConstraints { make in
             make.centerY.equalTo(publicTitle.snp.centerY)
             make.leading.equalTo(publicTitle.snp.trailing).offset(70)
-            make.trailing.equalToSuperview().offset(designSystem.spacing.largeNegative)
+            make.trailing.equalToSuperview().offset(designSystem.spacing.xLargeNegative)
         }
         
         publicCaption.snp.makeConstraints { make in
             make.top.equalTo(publicTitle.snp.bottom).offset(designSystem.spacing.largePositive)
-            make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
-            make.trailing.equalToSuperview().offset(designSystem.spacing.largeNegative)
+            make.leading.equalToSuperview().offset(designSystem.spacing.xLargePositive)
+            make.trailing.equalToSuperview().offset(designSystem.spacing.xLargeNegative)
         }
     }
     

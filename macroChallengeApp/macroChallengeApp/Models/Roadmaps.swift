@@ -20,6 +20,7 @@ struct Roadmaps: Codable {
     var isPublic: Bool
     var shareKey: String
     var days: [Day]
+    var createdAt = Date()
     
     var dateInitial: Date
     var dateFinal: Date

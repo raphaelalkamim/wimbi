@@ -13,4 +13,9 @@ struct DefaultDesignSystemImages: DesignImages {
     var mountain: UIImage = .mountain
     var city: UIImage = .city
     var camp: UIImage = .camp
+    var binoculars: UIImage = .binoculars
+    var compass: UIImage = .compass
+    var flora: UIImage = .flora
+    var map: UIImage = .map
+
 }

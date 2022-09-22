@@ -12,6 +12,7 @@ class ReviewTravelViewController: UIViewController {
 
     let reviewTravelView = ReviewTravelView()
     let designSystem = DefaultDesignSystem.shared
+    var dataManager = DataManager.shared
     
     var roadmap: Roadmaps
     
@@ -60,6 +61,9 @@ class ReviewTravelViewController: UIViewController {
         self.navigationController?.setToolbarHidden(false, animated: false)
     }
     @objc func nextPage() {
+        roadmap.imageId = "beach0"
+        roadmap.createdAt = Date()
+        dataManager.postRoadmap(roadmap: roadmap)
         // save in Core Data
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
         RoadmapRepository.shared.saveContext()
@@ -76,20 +80,10 @@ class ReviewTravelViewController: UIViewController {
     func setupContent() {
         self.reviewTravelView.subtitle.text = self.roadmap.category
         self.reviewTravelView.title.text = self.roadmap.name
-        
-        self.setupCategory()
+        self.reviewTravelView.setupCategory(category: roadmap.category)
+        self.reviewTravelView.setupImage(category: roadmap.category)
     }
-    func setupCategory() {
-        if self.roadmap.category == "Beach" {
-            self.reviewTravelView.categoryImage.image = designSystem.images.beach
-        } else if self.roadmap.category == "Mountain" {
-            self.reviewTravelView.categoryImage.image = designSystem.images.mountain
-        } else if self.roadmap.category == "City" {
-            self.reviewTravelView.categoryImage.image = designSystem.images.city
-        } else {
-            self.reviewTravelView.categoryImage.image = designSystem.images.camp
-        }
-    }
+    
 }
 
 extension ReviewTravelViewController: UITableViewDelegate {
