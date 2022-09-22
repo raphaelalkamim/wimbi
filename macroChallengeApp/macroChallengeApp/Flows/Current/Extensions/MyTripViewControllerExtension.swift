@@ -40,19 +40,36 @@ extension MyTripViewController: UICollectionViewDataSource {
             switch indexPath.row {
             case 0:
                 cell.title.text = "CATEGORIA"
+                cell.circle.isHidden = false
+                cell.categoryTitle.isHidden = false
+                cell.categoryTitle.text = "Montanha"
+                cell.info.isHidden = true
+                cell.circle.snp.makeConstraints { make in
+                    make.height.width.equalTo(24)
+                }
+
             case 1:
                 cell.title.text = "VALOR TOTAL"
                 cell.info.isHidden = true
                 cell.infoTitle.isHidden = false
+                cell.infoTitle.text = "R$12.000"
             case 2:
                 cell.title.text = "VIAJANTES"
                 cell.info.setTitle(" 4", for: .normal)
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
             case 3:
                 cell.title.text = "CURTIDAS"
+                cell.info.setTitle(" 10k", for: .normal)
             case 4:
                 cell.title.text = "CRIADO POR"
                 cell.separator.isHidden = true
+                cell.circle.isHidden = false
+                cell.info.isHidden = true
+                cell.circle.layer.cornerRadius = 18
+                cell.circle.image = UIImage(named: "leisure")
+                cell.circle.snp.makeConstraints { make in
+                    make.height.width.equalTo(36)
+                }
             default:
                 break
             }
@@ -64,7 +81,25 @@ extension MyTripViewController: UICollectionViewDataSource {
             }
             return cell
         }
+    }
+}
 
+extension MyTripViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+}
+
+extension MyTripViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        4
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCell.identifier, for: indexPath) as? ActivityTableViewCell else {
+            fatalError("TableCell not found")
+            
+        }
+        return cell
+    }
 }

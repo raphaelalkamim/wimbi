@@ -30,7 +30,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
     }()
     
     lazy var separator: UIView = {
-       let separator = UIView()
+        let separator = UIView()
         separator.backgroundColor = .caption
         return separator
     }()
@@ -52,10 +52,26 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         btn.setTitle(" 10K", for: .normal)
         btn.setTitleColor(designSystem.palette.textPrimary, for: .normal)
         btn.titleLabel?.font = designSystem.text.infoTitle.font
-//        btn.titleLabel?.textColor = .textPrimary
+        //        btn.titleLabel?.textColor = .textPrimary
         btn.isUserInteractionEnabled = false
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
+    }()
+    
+    lazy var circle: UIImageView = {
+        let circle = UIImageView()
+        circle.backgroundColor = .redCity
+        circle.layer.cornerRadius = 12
+        return circle
+    }()
+    
+    lazy var categoryTitle: UILabel = {
+        let title = UILabel()
+        title.textColor = .textPrimary
+        title.font = UIFont(name: "Avenir-Light", size: 12)
+        title.textAlignment = .center
+        title.text = "Cidade"
+        return title
     }()
 }
 
@@ -65,9 +81,13 @@ extension InfoTripCollectionViewCell {
         contentView.addSubview(info)
         contentView.addSubview(infoTitle)
         contentView.addSubview(separator)
+        contentView.addSubview(circle)
+        contentView.addSubview(categoryTitle)
         self.backgroundColor = .backgroundPrimary
         self.layer.cornerRadius = 13
         infoTitle.isHidden = true
+        circle.isHidden = true
+        categoryTitle.isHidden = true
         setupConstraints()
     }
     
@@ -79,17 +99,17 @@ extension InfoTripCollectionViewCell {
         }
         info
             .snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
-            make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.smallNegative)
-        }
+                make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
+                make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
+                make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.mediumNegative)
+            }
         
         infoTitle
             .snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
-            make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.smallNegative)
-        }
+                make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
+                make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
+                make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.mediumNegative)
+            }
         
         separator.snp.makeConstraints { make in
             make.trailing.equalTo(contentView.snp.trailing)
@@ -97,6 +117,16 @@ extension InfoTripCollectionViewCell {
             make.top.equalTo(contentView.snp.topMargin).inset(designSystem.spacing.xSmallPositive)
             make.bottom.equalTo(contentView.snp.bottomMargin).inset(designSystem.spacing.xSmallPositive)
             make.width.equalTo(0.5)
+        }
+        
+        circle.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.centerX.equalToSuperview()
+        }
+        
+        categoryTitle.snp.makeConstraints { make in
+            make.top.equalTo(circle.snp.bottom).inset(designSystem.spacing.xSmallNegative)
+            make.centerX.equalToSuperview()
         }
         
     }

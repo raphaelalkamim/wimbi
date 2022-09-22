@@ -30,14 +30,16 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         return title
     }()
     
-    lazy var info: UIButton = {
+    lazy var dayButton: UIButton = {
         let btn = UIButton()
-        btn.tintColor = .accent
+//        btn.tintColor = .accent
         btn.setTitle("1", for: .normal)
+        btn.layer.cornerRadius = 16
+//        btn.backgroundColor = .accent
         btn.setTitleColor(designSystem.palette.textPrimary, for: .normal)
         btn.titleLabel?.font = designSystem.text.infoTitle.font
 //        btn.titleLabel?.textColor = .textPrimary
-        btn.isUserInteractionEnabled = false
+        btn.isUserInteractionEnabled = true
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -46,9 +48,11 @@ class CalendarCollectionViewCell: UICollectionViewCell {
 extension CalendarCollectionViewCell {
     func setup() {
         contentView.addSubview(day)
-        contentView.addSubview(info)
+        contentView.addSubview(dayButton)
         self.layer.cornerRadius = 13
+        self.dayButton.addTarget(self, action: #selector(dayAction), for: .touchDown)
         setupConstraints()
+        
     }
     
     func setupConstraints() {
@@ -57,7 +61,7 @@ extension CalendarCollectionViewCell {
             make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
             make.top.equalToSuperview()
         }
-        info.snp.makeConstraints { make in
+        dayButton.snp.makeConstraints { make in
 //            make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
 //            make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
             make.top.equalTo(day.snp.bottom).inset(designSystem.spacing.smallNegative)
@@ -66,5 +70,11 @@ extension CalendarCollectionViewCell {
             
         }
         
+    }
+    
+    @objc func dayAction() {
+        print("apertei")
+        dayButton.backgroundColor = .accent
+        dayButton.setTitleColor(.white, for: .normal)
     }
 }

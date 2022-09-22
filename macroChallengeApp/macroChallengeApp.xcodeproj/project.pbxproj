@@ -71,6 +71,7 @@
 		640CD5CCE40B36AB975231D2 /* Pods_macroChallengeApp_macroChallengeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D148866C3AA7A72395A6BDAC /* Pods_macroChallengeApp_macroChallengeAppUITests.framework */; };
 		8937FC4EB5BEAACC958B84A1 /* Pods_macroChallengeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */; };
 		90297BBF83D0A825FF081EB4 /* Pods_macroChallengeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */; };
+		A04959C628DCEC92009156C8 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04959C528DCEC92009156C8 /* ActivityTableViewCell.swift */; };
 		A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */; };
 		A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */; };
 		A0FD739928DA7EF00044E47C /* MyTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739828DA7EF00044E47C /* MyTripView.swift */; };
@@ -182,6 +183,7 @@
 		4842CC9B9D145281B17CEC0E /* Pods-macroChallengeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeAppTests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeAppTests/Pods-macroChallengeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macroChallengeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F3A7956A6476CF7C11EC092 /* Pods-macroChallengeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp/Pods-macroChallengeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		A04959C528DCEC92009156C8 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A0FD739828DA7EF00044E47C /* MyTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripView.swift; sourceTree = "<group>"; };
@@ -485,6 +487,9 @@
 		13F994F028D3953B00B077C0 /* Current */ = {
 			isa = PBXGroup;
 			children = (
+				A04959C128DCEC51009156C8 /* Extensions */,
+				A04959C228DCEC5F009156C8 /* UIViewCell */,
+				A04959C328DCEC6B009156C8 /* View */,
 				13F994F728D3959600B077C0 /* ViewController */,
 			);
 			path = Current;
@@ -493,6 +498,7 @@
 		13F994F128D3954300B077C0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				A04959C028DCEC36009156C8 /* UIViewCell */,
 				1379744E28D8E61100AEA662 /* View */,
 				13F994F628D3958E00B077C0 /* ViewController */,
 				1379745728D8E74100AEA662 /* Extensions */,
@@ -545,10 +551,6 @@
 			isa = PBXGroup;
 			children = (
 				1379744028D8E55000AEA662 /* CurrentViewController.swift */,
-				A0FD739C28DA7F780044E47C /* MyTripViewControllerExtension.swift */,
-				A0FD739828DA7EF00044E47C /* MyTripView.swift */,
-				A0FD739E28DA82250044E47C /* InfoTripCollectionViewCell.swift */,
-				A0FD73A428DBA76E0044E47C /* CalendarCollectionViewCell.swift */,
 				A0FD739A28DA7EF70044E47C /* MyTripViewController.swift */,
 			);
 			path = ViewController;
@@ -585,6 +587,41 @@
 				690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A04959C028DCEC36009156C8 /* UIViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */,
+				A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */,
+			);
+			path = UIViewCell;
+			sourceTree = "<group>";
+		};
+		A04959C128DCEC51009156C8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A0FD739C28DA7F780044E47C /* MyTripViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A04959C228DCEC5F009156C8 /* UIViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A0FD739E28DA82250044E47C /* InfoTripCollectionViewCell.swift */,
+				A0FD73A428DBA76E0044E47C /* CalendarCollectionViewCell.swift */,
+				A04959C528DCEC92009156C8 /* ActivityTableViewCell.swift */,
+			);
+			path = UIViewCell;
+			sourceTree = "<group>";
+		};
+		A04959C328DCEC6B009156C8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0FD739828DA7EF00044E47C /* MyTripView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B078F20928C27F2000D46F61 = {
@@ -652,8 +689,6 @@
 				DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */,
 				DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */,
 				B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */,
-				A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */,
-				A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */,
 				1467706628D2699D00D55098 /* LabelTableViewCell.swift */,
 			);
 			path = UIViewCell;
@@ -981,6 +1016,7 @@
 				13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */,
 				A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */,
 				13C8A12728CA693F00994196 /* DesignText.swift in Sources */,
+				A04959C628DCEC92009156C8 /* ActivityTableViewCell.swift in Sources */,
 				DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */,
 				13C8A12528CA693700994196 /* DesignSpacing.swift in Sources */,
 				DF57253D28D110E1005466D9 /* DaysView.swift in Sources */,

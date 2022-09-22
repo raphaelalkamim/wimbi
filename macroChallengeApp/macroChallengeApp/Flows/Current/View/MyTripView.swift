@@ -25,7 +25,7 @@ class MyTripView: UIView {
     
     lazy var infoTripCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 140, height: 82)
+        layout.itemSize = CGSize(width: 140, height: 90)
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
@@ -45,7 +45,6 @@ class MyTripView: UIView {
         let collection = UICollectionView(frame: frame, collectionViewLayout: layout)
         collection.register(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: CalendarCollectionViewCell.identifier)
         collection.isUserInteractionEnabled = true
-        collection.isScrollEnabled = true
         collection.isPagingEnabled = true
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
@@ -82,6 +81,47 @@ class MyTripView: UIView {
         return title
     }()
     
+    lazy var budgetView: UIView = {
+       let view = UIView()
+        view.backgroundColor = UIColor(named: "budget")
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    lazy var budgetLabel: UILabel = {
+        let title = UILabel()
+        title.text = "CUSTO DO DIA"
+        title.stylize(with: designSystem.text.caption)
+        return title
+    }()
+    
+    lazy var budgetValue: UILabel = {
+        let title = UILabel()
+        title.text = "R$2000.00"
+        title.font = designSystem.text.body.font
+        title.stylize(with: designSystem.text.body)
+        return title
+    }()
+    
+    lazy var addButton: UIButton = {
+        let btn = UIButton()
+        let img = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
+        btn.setImage(img, for: .normal)
+        btn.tintColor = .accent
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
+    }()
+    
+    lazy var activitiesTableView: UITableView = {
+        let table = UITableView()
+        table.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCell.identifier)
+        table.isScrollEnabled = false
+        table.separatorColor = .clear
+        table.allowsSelection = false
+        table.backgroundColor = .backgroundPrimary
+        return table
+    }()
+    
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)
@@ -92,6 +132,11 @@ class MyTripView: UIView {
         contentView.addSubview(calendarTitle)
         contentView.addSubview(roadmapTitle)
         contentView.addSubview(dayTitle)
+        contentView.addSubview(addButton)
+        contentView.addSubview(budgetView)
+        budgetView.addSubview(budgetLabel)
+        budgetView.addSubview(budgetValue)
+        scrollView.addSubview(activitiesTableView)
         setupConstraints()
     }
     
@@ -104,7 +149,7 @@ class MyTripView: UIView {
         
         contentView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top)
-//            make.bottom.equalTo(infoTripCollectionView.snp.bottom)
+            make.bottom.equalTo(calendarCollectionView.snp.bottom)
             make.left.right.equalTo(self)
         }
         
@@ -130,7 +175,7 @@ class MyTripView: UIView {
             
         }
         calendarCollectionView.snp.makeConstraints { make in
-            make.centerX.equalTo(calendarCollectionView.snp.centerX)
+            make.centerX.equalTo(contentView.snp.centerX)
             make.top.equalTo(calendarTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xxLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xxLargePositive)
@@ -147,15 +192,51 @@ class MyTripView: UIView {
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
 
         }
+        addButton.snp.makeConstraints { make in
+            make.top.equalTo(dayTitle.snp.top)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+            make.size.equalTo(40)
+        }
         
+        budgetView.snp.makeConstraints { make in
+            make.top.equalTo(dayTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.height.equalTo(40)
+            make.trailing.equalTo(budgetValue.snp.trailing).inset(designSystem.spacing.smallNegative)
+        }
+        
+        budgetLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(budgetView.snp.centerY)
+            make.leading.equalTo(budgetView.snp.leading).inset(designSystem.spacing.smallPositive)
+        }
+        
+        budgetValue.snp.makeConstraints { make in
+            make.centerY.equalTo(budgetView.snp.centerY)
+            make.leading.equalTo(budgetLabel.snp.trailing).inset(designSystem.spacing.xLargeNegative)
+        }
+        
+        activitiesTableView.snp.makeConstraints { make in
+            make.top.equalTo(budgetView.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.leading.equalTo(contentView.snp.leading)
+            make.trailing.equalTo(contentView.snp.trailing)
+            make.bottom.equalTo(scrollView.snp.bottom)
+            make.height.equalTo(400)
+        }
+
     }
 }
 
 extension MyTripView {
-    func bindTableView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+    func bindCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         infoTripCollectionView.delegate = delegate
         infoTripCollectionView.dataSource = dataSource
         calendarCollectionView.delegate = delegate
         calendarCollectionView.dataSource = dataSource
     }
+    func bindTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+        activitiesTableView.delegate = delegate
+        activitiesTableView.dataSource = dataSource
+        
+    }
+
 }
