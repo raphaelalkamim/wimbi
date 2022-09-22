@@ -11,10 +11,9 @@ import SnapKit
 class ProfileCollectionViewCell: UICollectionViewCell {
     static let identifier = "profileCell"
     let designSystem: DesignSystem = DefaultDesignSystem.shared
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setup(name: "Novo roteiro", image: "beach0", isNew: false)
     }
     
     required init?(coder: NSCoder) {
@@ -23,14 +22,12 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     
     lazy var title: UILabel = {
         let title = UILabel()
-        title.text = "Rio de Janeiro"
         title.stylize(with: designSystem.text.cellTitle)
         return title
     }()
     
     lazy var roadmapImage: UIImageView = {
         let img = UIImageView()
-        img.image = UIImage(named: "fundo") // adicionar foto de perfil
         img.clipsToBounds = true
         img.contentMode = .scaleAspectFill
         img.layer.cornerRadius = 16
@@ -42,7 +39,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         let tag = UILabel()
         tag.font = UIFont(name: "Avenir-Medium", size: 15)
         tag.textColor = .white
-        tag.text = "NOVO"
+        tag.text = "NEW"
         tag.textAlignment = .center
         tag.layer.masksToBounds = true
         tag.layer.cornerRadius = 10
@@ -69,14 +66,34 @@ class ProfileCollectionViewCell: UICollectionViewCell {
 }
 
 extension ProfileCollectionViewCell {
-    func setup() {
+    func setup(name: String, image: String, isNew: Bool ) {
         self.addSubview(title)
+        self.title.text = name
+        
         self.addSubview(roadmapImage)
+        self.roadmapImage.image = UIImage(named: image)
+        
         self.addSubview(newTag)
+        newTag.isHidden = true
+        
+        if isNew == true {
+            newTag.isHidden = false
+        }
         self.addSubview(likeImage)
         self.addSubview(likeLabel)
-
         setupConstraints()
+    }
+    
+    func setupImage(category: String) {
+        if category == "Beach" {
+            self.roadmapImage.image = designSystem.imagesDefault.beach[Int.random(in: 0..<designSystem.imagesDefault.beach.count)]
+        } else if category == "Montain" {
+            self.roadmapImage.image = designSystem.imagesDefault.mountain[Int.random(in: 0..<designSystem.imagesDefault.mountain.count)]
+        } else if category == "City" {
+            self.roadmapImage.image = designSystem.imagesDefault.city[Int.random(in: 0..<designSystem.imagesDefault.city.count)]
+        } else {
+            self.roadmapImage.image = designSystem.imagesDefault.camp[Int.random(in: 0..<designSystem.imagesDefault.camp.count)]
+        }
     }
     
     func setupConstraints() {

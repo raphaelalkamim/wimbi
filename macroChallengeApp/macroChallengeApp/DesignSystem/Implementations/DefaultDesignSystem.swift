@@ -14,5 +14,4 @@ struct DefaultDesignSystem: DesignSystem {
     let images: DesignImages = DefaultDesignSystemImages()
     static var shared: DesignSystem = DefaultDesignSystem()
     var imagesDefault: DesignDefaultImages = DefaultDesignDefaultSystemImages()
-
 }

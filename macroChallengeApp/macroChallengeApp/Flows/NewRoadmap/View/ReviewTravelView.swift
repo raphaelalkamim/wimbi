@@ -10,6 +10,8 @@ import UIKit
 
 class ReviewTravelView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
+    let scrollView = UIScrollView()
+    let contentView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -108,44 +110,77 @@ class ReviewTravelView: UIView {
 extension ReviewTravelView {
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
-        self.addSubview(coverImage)
-        self.addSubview(categoryImage)
-        self.addSubview(title)
-        self.addSubview(subtitle)
-        
-        self.addSubview(daysTitle)
-        self.addSubview(daysTable)
-        
-        self.addSubview(travelersTitle)
-        self.addSubview(travelersTable)
-        
-        self.addSubview(privacyTitle)
-        self.addSubview(privacyTable)
+        self.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(coverImage)
+        contentView.addSubview(categoryImage)
+        contentView.addSubview(title)
+        contentView.addSubview(subtitle)
+        contentView.addSubview(daysTitle)
+        contentView.addSubview(daysTable)
+        contentView.addSubview(travelersTitle)
+        contentView.addSubview(travelersTable)
+        contentView.addSubview(privacyTitle)
+        contentView.addSubview(privacyTable)
         
         setupConstraints()
     }
-    
+    func setupImage(category: String) {
+        if category == "Beach" {
+            self.coverImage.image = designSystem.imagesDefault.beach[Int.random(in: 0..<designSystem.imagesDefault.beach.count)]
+        } else if category == "Montain" {
+            self.coverImage.image = designSystem.imagesDefault.mountain[Int.random(in: 0..<designSystem.imagesDefault.mountain.count)]
+        } else if category == "City" {
+            self.coverImage.image = designSystem.imagesDefault.city[Int.random(in: 0..<designSystem.imagesDefault.city.count)]
+        } else {
+            self.coverImage.image = designSystem.imagesDefault.camp[Int.random(in: 0..<designSystem.imagesDefault.camp.count)]
+        }
+    }
+    func setupCategory(category: String) {
+        if category == "Beach" {
+            self.categoryImage.image = designSystem.images.beach
+        } else if category == "Mountain" {
+            self.categoryImage.image = designSystem.images.mountain
+        } else if category == "City" {
+            self.categoryImage.image = designSystem.images.city
+        } else {
+            self.categoryImage.image = designSystem.images.camp
+        }
+    }
     func setupConstraints() {
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(self.snp.top)
+            make.bottom.equalTo(self.snp.bottom)
+            make.left.right.equalTo(self)
+        }
+
+        contentView.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.top)
+            make.bottom.equalTo(privacyTable.snp.bottom).offset(50)
+            make.left.right.equalTo(self)
+        }
+        
         coverImage.snp.makeConstraints { make in
-            make.top.equalTo(self.snp.topMargin)
-            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.top.equalTo(contentView.snp.topMargin)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.height.equalTo(150)
         }
         
         categoryImage.snp.makeConstraints { make in
             make.top.equalTo(coverImage.snp.bottom).inset(designSystem.spacing.xLargeNegative)
-            make.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.height.width.equalTo(64)
         }
         title.snp.makeConstraints { make in
             make.top.equalTo(coverImage.snp.bottom).inset(designSystem.spacing.xLargeNegative)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(categoryImage.snp.trailing).inset(designSystem.spacing.xLargeNegative)
             make.height.equalTo(35)
         }
         subtitle.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.smallNegative)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(categoryImage.snp.trailing).inset(designSystem.spacing.xLargeNegative)
             make.height.equalTo(16)
         }
@@ -174,6 +209,7 @@ extension ReviewTravelView {
         privacyTable.snp.makeConstraints { make in
             make.top.equalTo(privacyTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.bottom.equalTo(scrollView.snp.bottom)
             make.height.equalTo(50)
         }
     }

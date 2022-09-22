@@ -20,7 +20,6 @@
 		1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744028D8E55000AEA662 /* CurrentViewController.swift */; };
 		1379744328D8E56700AEA662 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744228D8E56700AEA662 /* ProfileViewController.swift */; };
 		1379744828D8E57B00AEA662 /* ReviewTravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744428D8E57B00AEA662 /* ReviewTravelViewController.swift */; };
-		1379744928D8E57B00AEA662 /* NewRoadmapViewController+ReviewTravel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744528D8E57B00AEA662 /* NewRoadmapViewController+ReviewTravel.swift */; };
 		1379744A28D8E57B00AEA662 /* ProfileViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744628D8E57B00AEA662 /* ProfileViewControllerExtension.swift */; };
 		1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744728D8E57B00AEA662 /* ProfileViewController+Settings.swift */; };
 		1379744D28D8E5CA00AEA662 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744C28D8E5CA00AEA662 /* ExploreViewController.swift */; };
@@ -75,6 +74,17 @@
 		90297BBF83D0A825FF081EB4 /* Pods_macroChallengeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */; };
 		A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */; };
 		A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */; };
+		A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */; };
+		A0B9F4BF28D8FB5900F2DF06 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4BE28D8FB5900F2DF06 /* NotificationsView.swift */; };
+		A0B9F4C128D8FD5100F2DF06 /* SettingsViewController+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4C028D8FD5100F2DF06 /* SettingsViewController+Notifications.swift */; };
+		A0B9F4C328D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4C228D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift */; };
+		A0B9F4C528D90A7C00F2DF06 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4C428D90A7C00F2DF06 /* SwitchTableViewCell.swift */; };
+		A0B9F4C728DA2A4C00F2DF06 /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4C628DA2A4C00F2DF06 /* TermsView.swift */; };
+		A0B9F4C928DA2A5400F2DF06 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4C828DA2A5400F2DF06 /* TermsViewController.swift */; };
+		A0B9F4CB28DA2E3B00F2DF06 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CA28DA2E3B00F2DF06 /* EditProfileView.swift */; };
+		A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */; };
+		A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CE28DA342300F2DF06 /* LikedRoadmapsView.swift */; };
+		A0B9F4D128DA342B00F2DF06 /* LikedRoadmapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4D028DA342B00F2DF06 /* LikedRoadmapsViewController.swift */; };
 		B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21528C27F2000D46F61 /* AppDelegate.swift */; };
 		B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21728C27F2000D46F61 /* SceneDelegate.swift */; };
 		B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B078F21E28C27F2000D46F61 /* macroChallengeApp.xcdatamodeld */; };
@@ -129,7 +139,6 @@
 		1379744028D8E55000AEA662 /* CurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
 		1379744228D8E56700AEA662 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1379744428D8E57B00AEA662 /* ReviewTravelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTravelViewController.swift; sourceTree = "<group>"; };
-		1379744528D8E57B00AEA662 /* NewRoadmapViewController+ReviewTravel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewRoadmapViewController+ReviewTravel.swift"; sourceTree = "<group>"; };
 		1379744628D8E57B00AEA662 /* ProfileViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerExtension.swift; sourceTree = "<group>"; };
 		1379744728D8E57B00AEA662 /* ProfileViewController+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Settings.swift"; sourceTree = "<group>"; };
 		1379744C28D8E5CA00AEA662 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +194,17 @@
 		9F3A7956A6476CF7C11EC092 /* Pods-macroChallengeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp/Pods-macroChallengeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		A0B9F4BE28D8FB5900F2DF06 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		A0B9F4C028D8FD5100F2DF06 /* SettingsViewController+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Notifications.swift"; sourceTree = "<group>"; };
+		A0B9F4C228D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPickerTableViewCell.swift; sourceTree = "<group>"; };
+		A0B9F4C428D90A7C00F2DF06 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		A0B9F4C628DA2A4C00F2DF06 /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
+		A0B9F4C828DA2A5400F2DF06 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		A0B9F4CA28DA2E3B00F2DF06 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		A0B9F4CE28DA342300F2DF06 /* LikedRoadmapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedRoadmapsView.swift; sourceTree = "<group>"; };
+		A0B9F4D028DA342B00F2DF06 /* LikedRoadmapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedRoadmapsViewController.swift; sourceTree = "<group>"; };
 		A2717F6A055C734D418E1360 /* Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B078F21228C27F2000D46F61 /* macroChallengeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macroChallengeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B078F21528C27F2000D46F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -281,7 +301,11 @@
 			isa = PBXGroup;
 			children = (
 				1379745228D8E6B700AEA662 /* SettingsView.swift */,
+				A0B9F4CE28DA342300F2DF06 /* LikedRoadmapsView.swift */,
+				A0B9F4CA28DA2E3B00F2DF06 /* EditProfileView.swift */,
+				A0B9F4BE28D8FB5900F2DF06 /* NotificationsView.swift */,
 				1379744F28D8E61B00AEA662 /* ProfileView.swift */,
+				A0B9F4C628DA2A4C00F2DF06 /* TermsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				1379744728D8E57B00AEA662 /* ProfileViewController+Settings.swift */,
+				A0B9F4C028D8FD5100F2DF06 /* SettingsViewController+Notifications.swift */,
 				1379744628D8E57B00AEA662 /* ProfileViewControllerExtension.swift */,
 			);
 			path = Extensions;
@@ -464,7 +489,6 @@
 		13F994EE28D3941F00B077C0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1379744528D8E57B00AEA662 /* NewRoadmapViewController+ReviewTravel.swift */,
 				1379744428D8E57B00AEA662 /* ReviewTravelViewController.swift */,
 				13F994E828D393D900B077C0 /* DestinyViewController.swift */,
 				13F994E628D393CE00B077C0 /* CategoryViewController.swift */,
@@ -495,6 +519,7 @@
 		13F994F128D3954300B077C0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				A0B9F4BB28D8EB4D00F2DF06 /* UIViewCell */,
 				1379744E28D8E61100AEA662 /* View */,
 				13F994F628D3958E00B077C0 /* ViewController */,
 				1379745728D8E74100AEA662 /* Extensions */,
@@ -538,7 +563,11 @@
 			isa = PBXGroup;
 			children = (
 				1379745128D8E6B700AEA662 /* SettingsViewController.swift */,
+				A0B9F4D028DA342B00F2DF06 /* LikedRoadmapsViewController.swift */,
 				1379744228D8E56700AEA662 /* ProfileViewController.swift */,
+				A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */,
+				A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */,
+				A0B9F4C828DA2A5400F2DF06 /* TermsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -584,6 +613,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A0B9F4BB28D8EB4D00F2DF06 /* UIViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */,
+				A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */,
+				A0B9F4C228D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift */,
+				A0B9F4C428D90A7C00F2DF06 /* SwitchTableViewCell.swift */,
+			);
+			path = UIViewCell;
+			sourceTree = "<group>";
+		};
+		A0FD739728DA5CBD0044E47C /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		B078F20928C27F2000D46F61 = {
 			isa = PBXGroup;
 			children = (
@@ -594,6 +641,7 @@
 				B078F21328C27F2000D46F61 /* Products */,
 				4171B73C15A2C812F704D532 /* Pods */,
 				8873B324A12FFF3116531BEB /* Frameworks */,
+				A0FD739728DA5CBD0044E47C /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -649,8 +697,6 @@
 				DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */,
 				DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */,
 				B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */,
-				A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */,
-				A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */,
 				1467706628D2699D00D55098 /* LabelTableViewCell.swift */,
 			);
 			path = UIViewCell;
@@ -917,6 +963,7 @@
 				13F994EB28D393E500B077C0 /* DaysViewController.swift in Sources */,
 				13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */,
 				13C8A13628CA6C1100994196 /* TextStyle.swift in Sources */,
+				A0B9F4C528D90A7C00F2DF06 /* SwitchTableViewCell.swift in Sources */,
 				13C8A10F28C6829100994196 /* Day.swift in Sources */,
 				13C8A11628C68B7700994196 /* DataManager.swift in Sources */,
 				13BD500628DA28D600C0EA7C /* NewActivityViewController.swift in Sources */,
@@ -929,13 +976,17 @@
 				1379744328D8E56700AEA662 /* ProfileViewController.swift in Sources */,
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
 				13C8A14928CFA66200994196 /* DestinyView.swift in Sources */,
+				A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */,
+				A0B9F4C928DA2A5400F2DF06 /* TermsViewController.swift in Sources */,
 				DF2643AB28DB9CC500053180 /* UserRoadmap.swift in Sources */,
 				B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */,
 				13C8A12128CA690500994196 /* DesignSystem.swift in Sources */,
+				A0B9F4BF28D8FB5900F2DF06 /* NotificationsView.swift in Sources */,
 				DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */,
 				13C8A13828CA75EA00994196 /* DesignSystem+UIColor.swift in Sources */,
 				13F994E428D273EB00B077C0 /* NewRoadmapCoordinator.swift in Sources */,
 				13F994E928D393D900B077C0 /* DestinyViewController.swift in Sources */,
+				A0B9F4C128D8FD5100F2DF06 /* SettingsViewController+Notifications.swift in Sources */,
 				A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */,
 				1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */,
 				B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */,
@@ -948,10 +999,14 @@
 				13F994E728D393CE00B077C0 /* CategoryViewController.swift in Sources */,
 				13C8A11128C6833D00994196 /* Like.swift in Sources */,
 				1379745428D8E6B700AEA662 /* SettingsView.swift in Sources */,
+				A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */,
 				1467706728D2699D00D55098 /* LabelTableViewCell.swift in Sources */,
 				13BD501128DA297500C0EA7C /* LoginView.swift in Sources */,
 				13C8A12D28CA6A2500994196 /* ProfileCoordinator.swift in Sources */,
-				1379744928D8E57B00AEA662 /* NewRoadmapViewController+ReviewTravel.swift in Sources */,
+				A0B9F4D128DA342B00F2DF06 /* LikedRoadmapsViewController.swift in Sources */,
+				A0B9F4CB28DA2E3B00F2DF06 /* EditProfileView.swift in Sources */,
+				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
+				A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */,
 				13BD500128DA286600C0EA7C /* IconSubtitleComponentView.swift in Sources */,
 				1359F15228DA48D5009509DF /* ActivityRepositoryClass.swift in Sources */,
 				1359F15428DA48E5009509DF /* RoadmapRepositoryClass.swift in Sources */,
@@ -972,6 +1027,7 @@
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
 				13BD500828DA28E500C0EA7C /* NewActivitView.swift in Sources */,
 				1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */,
+				A0B9F4C328D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift in Sources */,
 				1379744D28D8E5CA00AEA662 /* ExploreViewController.swift in Sources */,
 				DFA30CAF28DA2E5A00F316EB /* TabBarController.swift in Sources */,
 				13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */,
@@ -990,6 +1046,7 @@
 				13BD4FFB28D90EF700C0EA7C /* DesignSystem+UIImage.swift in Sources */,
 				13C8A12B28CA6A0A00994196 /* CurrentCoordinator.swift in Sources */,
 				B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */,
+				A0B9F4C728DA2A4C00F2DF06 /* TermsView.swift in Sources */,
 				13BD501028DA297500C0EA7C /* LoginViewController.swift in Sources */,
 				1359F14B28DA489A009509DF /* DayRepository.swift in Sources */,
 				13EC5C5428DB902F005F7128 /* DefaultDesignDefaultImages.swift in Sources */,
@@ -1164,7 +1221,7 @@
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R87R6SW4Y7;
+				DEVELOPMENT_TEAM = 2A2JAGWQ62;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1193,7 +1250,7 @@
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R87R6SW4Y7;
+				DEVELOPMENT_TEAM = 2A2JAGWQ62;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
