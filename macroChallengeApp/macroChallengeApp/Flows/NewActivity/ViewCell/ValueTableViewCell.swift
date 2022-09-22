@@ -11,6 +11,7 @@ import UIKit
 class ValueTableViewCell: UITableViewCell {
     static let identifier = "valueCell"
     let designSystem = DefaultDesignSystem.shared
+    var currencyType: String = "R$"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -43,21 +44,6 @@ class ValueTableViewCell: UITableViewCell {
         textField.delegate = self
         return textField
     }()
-    
-    let formatterTextField: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.locale = Locale.current
-        formatter.minimumFractionDigits = 2
-        return formatter
-    }()
-    
-    let formatterNumber: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = Locale.current
-        return formatter
-    }()
 
 }
 
@@ -67,6 +53,7 @@ extension ValueTableViewCell {
         contentView.addSubview(title)
         contentView.addSubview(value)
         setupConstraints()
+        value.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
     }
     
     func setupConstraints() {
@@ -83,8 +70,40 @@ extension ValueTableViewCell {
     }
 }
 
-extension ValueTableViewCell: UITextFieldDelegate{
-    func textFieldDidChangeSelection(_ textField: UITextField) {
+extension ValueTableViewCell: UITextFieldDelegate {
+    @objc func myTextFieldDidChange(_ textField: UITextField) {
+        if let amountString = textField.text?.currencyInputFormatting(symbol: currencyType) {
+            textField.text = amountString
+        }
+    }
+}
+
+extension String {
+    func currencyInputFormatting(symbol: String) -> String {
+        var number: NSNumber!
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currencyAccounting
+        formatter.currencySymbol = symbol
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+    
+        var amountWithPrefix = self
+    
+        // remove from String: "$", ".", ","
+        do {
+            let regex = try NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+            amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
         
+            let double = (amountWithPrefix as NSString).doubleValue
+            number = NSNumber(value: (double / 100))
+        
+            // if first number is 0 or all numbers were deleted
+            guard number != 0 as NSNumber else {
+                return ""
+            }
+        } catch {
+            print(error)
+        }
+        return formatter.string(from: number)!
     }
 }

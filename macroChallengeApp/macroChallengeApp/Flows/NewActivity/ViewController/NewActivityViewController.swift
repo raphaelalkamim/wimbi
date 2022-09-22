@@ -12,6 +12,11 @@ class NewActivityViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let newActivityView = NewActivityView()
+    var currencyType: String = "R$" {
+        didSet {
+            newActivityView.valueTable.reloadData()
+        }
+    }
     var fonts: [UIFont]! {
         didSet {
             //tableView.reloadData()
@@ -94,13 +99,14 @@ extension NewActivityViewController: UITableViewDataSource {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Currency"
                 newCell.setupSeparator()
+                newCell.delegate = self
                 cell = newCell
-                
             } else {
                 if indexPath.row == 1 {
                     guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
                     
                     newCell.title.text = "Value"
+                    newCell.currencyType = self.currencyType
                     newCell.value.placeholder = "$ 0.00"
                     cell = newCell
                 }
@@ -154,5 +160,11 @@ extension NewActivityViewController {
     
     @objc func dissMissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+extension NewActivityViewController: CurrencyTableViewCellDelegate {
+    func didChangeFormatter(formatter: String) {
+        self.currencyType = formatter
     }
 }
