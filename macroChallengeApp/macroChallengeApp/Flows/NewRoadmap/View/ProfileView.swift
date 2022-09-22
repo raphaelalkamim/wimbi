@@ -201,7 +201,7 @@ class ProfileView: UIView {
     }
     
     func getImage() -> UIImageView {
-        return image
+        return userImage
     }
     
 }

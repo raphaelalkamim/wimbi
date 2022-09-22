@@ -13,10 +13,13 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let profileView = ProfileView()
     var roadmaps: [RoadmapLocal] = []
+    var isConected = false
     
     private lazy var fetchResultController: NSFetchedResultsController<RoadmapLocal> = {
         let request: NSFetchRequest<RoadmapLocal> = RoadmapLocal.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal.name, ascending: true)]
+        //request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal.createdAt, ascending: false)]
+        let sectionSortDescriptor = NSSortDescriptor(key: "createdAt", ascending: false)
+        request.sortDescriptors = [sectionSortDescriptor]
         let frc = NSFetchedResultsController(fetchRequest: request,
                                              managedObjectContext: RoadmapRepository.shared.context,
                                              sectionNameKeyPath: nil,
@@ -36,7 +39,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
         
         profileView.addButton.addTarget(self, action: #selector(addAction), for: .touchDown)
-        
+        profileView.myRoadmapCollectionView.reloadData()
         do {
             try fetchResultController.performFetch()
             self.roadmaps = fetchResultController.fetchedObjects ?? []
@@ -70,6 +73,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         let newRoadmaps = RoadmapRepository.shared.getRoadmap()
         self.roadmaps = newRoadmaps
+        self.roadmaps = newRoadmaps.reversed()
         profileView.roadmaps = newRoadmaps
         profileView.myRoadmapCollectionView.reloadData()
     }

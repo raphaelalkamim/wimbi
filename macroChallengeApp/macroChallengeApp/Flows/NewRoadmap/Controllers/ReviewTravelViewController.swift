@@ -62,6 +62,7 @@ class ReviewTravelViewController: UIViewController {
     }
     @objc func nextPage() {
         roadmap.imageId = "beach0"
+        roadmap.createdAt = Date()
         dataManager.postRoadmap(roadmap: roadmap)
         // save in Core Data
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)

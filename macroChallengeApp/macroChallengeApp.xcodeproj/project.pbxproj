@@ -196,7 +196,6 @@
 		9F3A7956A6476CF7C11EC092 /* Pods-macroChallengeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp/Pods-macroChallengeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
-		A0B9F4B928D8E97E00F2DF06 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		A0B9F4BE28D8FB5900F2DF06 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		A0B9F4C028D8FD5100F2DF06 /* SettingsViewController+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Notifications.swift"; sourceTree = "<group>"; };
@@ -631,7 +630,6 @@
 		A0FD739728DA5CBD0044E47C /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				A0B9F4B928D8E97E00F2DF06 /* TabBarController.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";

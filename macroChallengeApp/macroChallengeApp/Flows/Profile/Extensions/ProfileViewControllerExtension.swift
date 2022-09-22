@@ -39,8 +39,15 @@ extension ProfileViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else {
             preconditionFailure("Cell not find")
         }
-        cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: true)
-        
+        if isConected == false {
+            if indexPath.row == 0 {
+                cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: true)
+            }
+            else {
+                cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: false)
+            }
+            cell.setupImage(category: roadmaps[indexPath.row].category ?? "noCategory")
+        }
         cell.backgroundColor = designSystem.palette.backgroundCell
         cell.layer.cornerRadius = 16
         
