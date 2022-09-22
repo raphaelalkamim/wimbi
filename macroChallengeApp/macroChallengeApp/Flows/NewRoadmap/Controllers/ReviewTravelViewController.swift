@@ -12,6 +12,7 @@ class ReviewTravelViewController: UIViewController {
 
     let reviewTravelView = ReviewTravelView()
     let designSystem = DefaultDesignSystem.shared
+    var dataManager = DataManager.shared
     
     var roadmap: Roadmaps
     var category = ""
@@ -67,6 +68,14 @@ class ReviewTravelViewController: UIViewController {
         self.navigationController?.setToolbarHidden(false, animated: false)
     }
     @objc func nextPage() {
+        roadmap.imageId = "beach0"
+        roadmap.createdAt = Date()
+        dataManager.postRoadmap(roadmap: roadmap)
+        // save in Core Data
+        let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
+        RoadmapRepository.shared.saveContext()
+        print(newRoadmap)
+        
         coordinator?.dismiss()
     }
     @objc func backPage() {
@@ -75,28 +84,13 @@ class ReviewTravelViewController: UIViewController {
     @objc func cancelRoadmap() {
         coordinator?.dismiss()
     }
-    func setupCategory() {
-        if self.category == "Beach" {
-            self.reviewTravelView.categoryImage.image = designSystem.images.beach
-        } else if self.category == "Mountain" {
-            self.reviewTravelView.categoryImage.image = designSystem.images.mountain
-        } else if self.category == "City" {
-            self.reviewTravelView.categoryImage.image = designSystem.images.city
-        } else {
-            self.reviewTravelView.categoryImage.image = designSystem.images.camp
-        }
-    }
     func setupContent() {
-        self.category = roadmap.category
-        self.reviewTravelView.subtitle.text = self.category
-        self.location = roadmap.location
-        self.daysCount = roadmap.dayCount
-        self.start = roadmap.dateInitial
-        self.final = roadmap.dateFinal
-        self.peopleCount = roadmap.peopleCount
-        self.isPublic = roadmap.isPublic
-        self.setupCategory()
+        self.reviewTravelView.subtitle.text = self.roadmap.category
+        self.reviewTravelView.title.text = self.roadmap.name
+        self.reviewTravelView.setupCategory(category: roadmap.category)
+        self.reviewTravelView.setupImage(category: roadmap.category)
     }
+    
 }
 
 extension ReviewTravelViewController: UITableViewDelegate {

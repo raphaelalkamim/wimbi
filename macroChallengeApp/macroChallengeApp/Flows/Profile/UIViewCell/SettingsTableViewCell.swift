@@ -27,7 +27,7 @@ class SettingsTableViewCell: UITableViewCell {
     
     lazy var title: UILabel = {
         let title = UILabel()
-        title.text = "Rio de Janeiro"
+        title.text = ""
         title.stylize(with: designSystem.text.body)
         return title
     }()

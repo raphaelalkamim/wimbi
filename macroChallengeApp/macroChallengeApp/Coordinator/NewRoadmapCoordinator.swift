@@ -24,6 +24,7 @@ class NewRoadmapCoordinator: Coordinator {
         let viewController = CategoryViewController()
         viewController.coordinator = self
         viewController.navigationItem.title = "Category"
+        navigationController.navigationBar.prefersLargeTitles = true
         navigationController.pushViewController(viewController, animated: true)
     }
     

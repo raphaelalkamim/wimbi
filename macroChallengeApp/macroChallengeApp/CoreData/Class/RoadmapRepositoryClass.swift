@@ -53,6 +53,7 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.isShared = roadmap.isShared
         newRoadmap.isPublic = roadmap.isPublic
         newRoadmap.shareKey = roadmap.shareKey
+        newRoadmap.createdAt = roadmap.createdAt
         // newRoadmap.addToUser(user)
         
         self.saveContext()

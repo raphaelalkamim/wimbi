@@ -13,4 +13,9 @@ protocol DesignImages {
     var mountain: UIImage { get }
     var city: UIImage { get }
     var camp: UIImage { get }
+    var binoculars: UIImage { get }
+    var compass: UIImage { get }
+    var flora: UIImage { get }
+    var map: UIImage { get }
+
 }
