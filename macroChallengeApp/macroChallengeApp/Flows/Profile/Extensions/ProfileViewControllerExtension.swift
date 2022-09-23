@@ -36,9 +36,9 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
-        let vc = MyTripViewController()
-        vc.navigationItem.title = "Egito"
-        navigationController?.pushViewController(vc, animated: true)
+        let viewController = MyTripViewController()
+        viewController.navigationItem.title = "Egito"
+        navigationController?.pushViewController(viewController, animated: true)
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -48,8 +48,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         if isConected == false {
             if indexPath.row == 0 {
                 cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: true)
-            }
-            else {
+            } else {
                 cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: false)
             }
             cell.setupImage(category: roadmaps[indexPath.row].category ?? "noCategory")

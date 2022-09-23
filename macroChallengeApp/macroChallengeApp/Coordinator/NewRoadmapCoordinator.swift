@@ -47,13 +47,13 @@ class NewRoadmapCoordinator: Coordinator {
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
-    func dismiss() {
+    func dismiss(isNewRoadmap: Bool) {
         navigationController.dismiss(animated: true)
-        delegate?.didFinishPresent(of: self)
+        delegate?.didFinishPresent(of: self, isNewRoadmap: isNewRoadmap)
     }
     func back() {
         navigationController.popViewController(animated: true)
-        delegate?.didFinishPresent(of: self)
+        delegate?.didFinishPresent(of: self, isNewRoadmap: false)
     }
     func setupBarAppearence() {
         let designSystem: DesignSystem = DefaultDesignSystem.shared

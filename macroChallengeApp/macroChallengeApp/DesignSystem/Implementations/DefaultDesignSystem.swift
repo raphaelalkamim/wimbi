@@ -8,10 +8,11 @@
 import UIKit
 
 struct DefaultDesignSystem: DesignSystem {
+    static var shared: DesignSystem = DefaultDesignSystem()
     let text = DesignText()
     let palette: DesignPalette = DefaultDesignPalette()
     let spacing: DesignSpacing = DefaultDesignSpacing()
     let images: DesignImages = DefaultDesignSystemImages()
-    static var shared: DesignSystem = DefaultDesignSystem()
-    var imagesDefault: DesignDefaultImages = DefaultDesignDefaultSystemImages()
+    let imagesDefault: DesignDefaultImages = DefaultDesignDefaultSystemImages()
+    let imagesActivities: DesignImagesActivities = DefaultDesignActivitiesImages()
 }
