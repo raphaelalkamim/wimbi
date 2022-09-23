@@ -54,13 +54,14 @@ class ExploreCoordinator: Coordinator {
 }
 
 extension ExploreCoordinator: PresentationCoordinatorDelegate {
-    func didFinishPresent(of coordinator: Coordinator) {
-        print(childCoordinators)
+    func didFinishPresent(of coordinator: Coordinator, isNewRoadmap: Bool) {
         childCoordinators = childCoordinators.filter { $0 === coordinator }
-        print(childCoordinators)
+        if isNewRoadmap == true {
+            navigationController.tabBarController!.selectedIndex = 2
+        }
     }
 }
 
 protocol PresentationCoordinatorDelegate: AnyObject {
-    func didFinishPresent(of coordinator: Coordinator)
+    func didFinishPresent(of coordinator: Coordinator, isNewRoadmap: Bool)
 }

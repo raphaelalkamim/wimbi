@@ -97,7 +97,7 @@ class DestinyViewController: UIViewController {
         coordinator?.back()
     }
     @objc func cancelRoadmap() {
-        coordinator?.dismiss()
+        coordinator?.dismiss(isNewRoadmap: false)
     }
 }
 

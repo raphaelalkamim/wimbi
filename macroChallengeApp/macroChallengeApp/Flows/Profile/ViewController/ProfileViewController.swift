@@ -51,8 +51,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.roadmaps = RoadmapRepository.shared.getRoadmap()
-        profileView.roadmaps = self.roadmaps
         self.profileView.myRoadmapCollectionView.reloadData()
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!

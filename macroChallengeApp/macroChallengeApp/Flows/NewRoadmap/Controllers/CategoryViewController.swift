@@ -44,7 +44,7 @@ class CategoryViewController: UIViewController {
         coordinator?.startDestiny(roadmap: roadmap)
     }
     @objc func cancelRoadmap() {
-        coordinator?.dismiss()
+        coordinator?.dismiss(isNewRoadmap: false)
     }
     
     func setupToolbar() {

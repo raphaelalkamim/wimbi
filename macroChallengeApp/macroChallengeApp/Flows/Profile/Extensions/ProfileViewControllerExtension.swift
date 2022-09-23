@@ -42,9 +42,6 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        self.roadmaps = RoadmapRepository.shared.getRoadmap()
-        profileView.roadmaps = self.roadmaps
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else {
             preconditionFailure("Cell not find")
         }
