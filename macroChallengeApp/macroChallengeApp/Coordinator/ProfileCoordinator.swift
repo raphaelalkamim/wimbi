@@ -11,6 +11,7 @@ class ProfileCoordinator: Coordinator {
     var childCoordinators: [Coordinator]
     
     var navigationController: UINavigationController
+    weak var delegate: PresentationCoordinatorDelegate?
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -38,12 +39,21 @@ class ProfileCoordinator: Coordinator {
             print("OI")
         }
     }
-    
+    func startDestinyActivitie(roadmap: Roadmaps) {
+        let viewController = ActivityDestinyViewController(roadmap: roadmap)
+        viewController.coordinator = self
+        viewController.navigationItem.title = "Destiny"
+        navigationController.pushViewController(viewController, animated: true)
+    }
     func settings() {
         let viewController = SettingsViewController()
         viewController.coordinator = self
         viewController.navigationItem.title = "Settings"
         navigationController.pushViewController(viewController, animated: true)
+    }
+    func backPage() {
+        navigationController.popViewController(animated: true)
+        delegate?.didFinishPresent(of: self)
     }
     
     func setupBarAppearence() {
