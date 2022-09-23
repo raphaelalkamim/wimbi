@@ -102,6 +102,7 @@
 		B078F23A28C27F2500D46F61 /* macroChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */; };
 		B078F23C28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */; };
 		B0A8284A28DE254F007B746F /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8284928DE254F007B746F /* ExploreView.swift */; };
+		B0A8284C28DE5228007B746F /* RoadmapExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8284B28DE5228007B746F /* RoadmapExploreCollectionViewCell.swift */; };
 		B0CDF35028CFC7E90092A76C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CDF34F28CFC7E90092A76C /* Category.swift */; };
 		B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */; };
 		B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461628CFA85E00D62AF1 /* CategoryView.swift */; };
@@ -236,6 +237,7 @@
 		B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITests.swift; sourceTree = "<group>"; };
 		B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B0A8284928DE254F007B746F /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		B0A8284B28DE5228007B746F /* RoadmapExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapExploreCollectionViewCell.swift; sourceTree = "<group>"; };
 		B0CDF34F28CFC7E90092A76C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
 		B0E2461628CFA85E00D62AF1 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -746,6 +748,7 @@
 		B0A8284828DE2526007B746F /* ViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				B0A8284B28DE5228007B746F /* RoadmapExploreCollectionViewCell.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -1038,6 +1041,7 @@
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
 				13C8A14928CFA66200994196 /* DestinyView.swift in Sources */,
 				A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */,
+				B0A8284C28DE5228007B746F /* RoadmapExploreCollectionViewCell.swift in Sources */,
 				A0B9F4C928DA2A5400F2DF06 /* TermsViewController.swift in Sources */,
 				DF2643AB28DB9CC500053180 /* UserRoadmap.swift in Sources */,
 				B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */,
