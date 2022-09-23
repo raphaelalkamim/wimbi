@@ -119,6 +119,7 @@ class MyTripView: UIView {
         table.separatorColor = .clear
         table.allowsSelection = false
         table.backgroundColor = .backgroundPrimary
+        table.dragInteractionEnabled = true
         return table
     }()
     
@@ -233,10 +234,10 @@ extension MyTripView {
         calendarCollectionView.delegate = delegate
         calendarCollectionView.dataSource = dataSource
     }
-    func bindTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+    func bindTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource, dragDelegate: UITableViewDragDelegate) {
         activitiesTableView.delegate = delegate
         activitiesTableView.dataSource = dataSource
-        
+        activitiesTableView.dragDelegate = dragDelegate
     }
 
 }
