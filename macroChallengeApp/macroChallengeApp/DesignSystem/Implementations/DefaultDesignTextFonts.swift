@@ -84,3 +84,15 @@ struct CaptionTextStyle: TextStyle, CustomLabelDesignable {
         label.lineBreakMode = .byTruncatingHead
     }
 }
+
+
+struct SmallCaption: TextStyle, CustomLabelDesignable {
+    var color: UIColor = .caption
+    var alignment: NSTextAlignment = .natural
+    var font: UIFont = .smallCaption
+    
+    func custom(_ label: UILabel) {
+        label.numberOfLines = 0
+        label.lineBreakMode = .byTruncatingHead
+    }
+}

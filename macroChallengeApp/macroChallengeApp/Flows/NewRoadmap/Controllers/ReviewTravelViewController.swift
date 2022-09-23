@@ -15,6 +15,13 @@ class ReviewTravelViewController: UIViewController {
     var dataManager = DataManager.shared
     
     var roadmap: Roadmaps
+    var category = ""
+    var location = ""
+    var daysCount = 1
+    var start = Date()
+    var final = Date()
+    var peopleCount = 1
+    var isPublic = false
     
     init(roadmap: Roadmaps) {
         self.roadmap = roadmap
@@ -113,28 +120,28 @@ extension ReviewTravelViewController: UITableViewDataSource {
         if tableView == reviewTravelView.daysTable {
             if let newCell = tableView.dequeueReusableCell(withIdentifier: LabelTableViewCell.identifier, for: indexPath) as? LabelTableViewCell {
                 if indexPath.row == 0 {
-                    newCell.configureDays(indexPath: 0, value: String(self.roadmap.dayCount))
+                    newCell.configureDays(indexPath: 0, value: String(self.daysCount))
                     cell = newCell
                 }
                 if indexPath.row == 1 {
-                    newCell.configureDays(indexPath: 1, value: format.string(from: self.roadmap.dateInitial))
+                    newCell.configureDays(indexPath: 1, value: format.string(from: self.start))
                     cell = newCell
                 }
                 if indexPath.row == 2 {
-                    newCell.configureDays(indexPath: 2, value: format.string(from: self.roadmap.dateFinal))
+                    newCell.configureDays(indexPath: 2, value: format.string(from: self.final))
                     cell = newCell
                 }
             }
         }
         if tableView == reviewTravelView.travelersTable {
             if let newCell = tableView.dequeueReusableCell(withIdentifier: LabelTableViewCell.identifier, for: indexPath) as? LabelTableViewCell {
-                newCell.configureTravelers(daysValue: self.roadmap.peopleCount)
+                newCell.configureTravelers(daysValue: self.peopleCount)
                 cell = newCell
             }
         }
         if tableView == reviewTravelView.privacyTable {
             if let newCell = tableView.dequeueReusableCell(withIdentifier: LabelTableViewCell.identifier, for: indexPath) as? LabelTableViewCell {
-                newCell.configureTripStatus(isPublic: self.roadmap.isPublic)
+                newCell.configureTripStatus(isPublic: self.isPublic)
                 cell = newCell
             }
         }

@@ -25,6 +25,8 @@ class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
     }
     
+    
+    
     lazy var title: UITextField = {
         let textField = UITextField()
         textField.textColor = designSystem.palette.textPrimary
@@ -37,13 +39,15 @@ class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 extension TextFieldTableViewCell {
     func setup() {
+        self.backgroundColor = designSystem.palette.backgroundCell
         contentView.addSubview(title)
         setupConstraints()
     }
     
     func setupConstraints() {
         title.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.leading.equalToSuperview().inset(designSystem.spacing.largePositive)
+            make.top.bottom.trailing.equalToSuperview()
         }
     }
 }
