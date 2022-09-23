@@ -68,7 +68,7 @@ class ReviewTravelViewController: UIViewController {
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
         RoadmapRepository.shared.saveContext()
         print(newRoadmap)
-        
+        UIAccessibility.post(notification: .screenChanged, argument: coordinator?.navigationController)
         coordinator?.dismiss()
     }
     @objc func backPage() {

@@ -36,14 +36,16 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        self.roadmaps = RoadmapRepository.shared.getRoadmap()
+        profileView.roadmaps = self.roadmaps
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else {
             preconditionFailure("Cell not find")
         }
         if isConected == false {
             if indexPath.row == 0 {
                 cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: true)
-            }
-            else {
+            } else {
                 cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: false)
             }
             cell.setupImage(category: roadmaps[indexPath.row].category ?? "noCategory")

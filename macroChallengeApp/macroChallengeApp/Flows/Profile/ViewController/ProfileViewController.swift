@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     private lazy var fetchResultController: NSFetchedResultsController<RoadmapLocal> = {
         let request: NSFetchRequest<RoadmapLocal> = RoadmapLocal.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal.name, ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal.createdAt, ascending: false)]
         //let sectionSortDescriptor = NSSortDescriptor()
         //request.sortDescriptors = [sectionSortDescriptor]
         let frc = NSFetchedResultsController(fetchRequest: request,
@@ -30,16 +30,17 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     var user: User?
     
     override func viewDidLoad() {
+        self.roadmaps = RoadmapRepository.shared.getRoadmap()
+        profileView.roadmaps = self.roadmaps
+
         super.viewDidLoad()
+        profileView.myRoadmapCollectionView.reloadData()
         self.view.backgroundColor = .backgroundPrimary
         self.setupProfileView()
-        
         profileView.bindColletionView(delegate: self, dataSource: self)
-        profileView.myRoadmapCollectionView.reloadData()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
         
         profileView.addButton.addTarget(self, action: #selector(addAction), for: .touchDown)
-        profileView.myRoadmapCollectionView.reloadData()
         do {
             try fetchResultController.performFetch()
             self.roadmaps = fetchResultController.fetchedObjects ?? []
@@ -50,6 +51,8 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.roadmaps = RoadmapRepository.shared.getRoadmap()
+        profileView.roadmaps = self.roadmaps
         self.profileView.myRoadmapCollectionView.reloadData()
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
@@ -72,9 +75,10 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        let newRoadmaps = RoadmapRepository.shared.getRoadmap()
+        //let newRoadmaps = RoadmapRepository.shared.getRoadmap()
+        guard let newRoadmaps = controller.fetchedObjects as? [RoadmapLocal] else { return }
         self.roadmaps = newRoadmaps
-        self.roadmaps = newRoadmaps.reversed()
+        profileView.setup()
         profileView.roadmaps = newRoadmaps
         profileView.myRoadmapCollectionView.reloadData()
     }
