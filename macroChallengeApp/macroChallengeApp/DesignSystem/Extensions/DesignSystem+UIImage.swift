@@ -33,4 +33,28 @@ extension UIImage {
     static var map: UIImage {
         UIImage(named: "map")!
     }
+    static var accomodation: UIImage {
+        UIImage(named: "accomodation")!
+    }
+    static var accomodationSelected: UIImage {
+        UIImage(named: "accomodationSelected")!
+    }
+    static var food: UIImage {
+        UIImage(named: "food")!
+    }
+    static var foodSelected: UIImage {
+        UIImage(named: "foodSelected")!
+    }
+    static var leisure: UIImage {
+        UIImage(named: "leisure")!
+    }
+    static var leisureSelected: UIImage {
+        UIImage(named: "leisureSelected")!
+    }
+    static var transportation: UIImage {
+        UIImage(named: "transportation")!
+    }
+    static var transportationSelected: UIImage {
+        UIImage(named: "transportationSelected")!
+    }
 }

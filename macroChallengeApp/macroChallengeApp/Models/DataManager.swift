@@ -215,7 +215,7 @@ class DataManager {
         }
     }
     
-    func getUser(username: String, _ completion: @escaping ((_ user: User)->Void)) {
+    func getUser(username: String, _ completion: @escaping ((_ user: User) -> Void)) {
         var user: User?
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "users/\(username)")!
@@ -263,8 +263,7 @@ class DataManager {
     }
 }
 
-struct FailableDecodable<Base : Decodable> : Decodable {
-    
+struct FailableDecodable<Base: Decodable>: Decodable {
     let base: Base?
     
     init(from decoder: Decoder) throws {
