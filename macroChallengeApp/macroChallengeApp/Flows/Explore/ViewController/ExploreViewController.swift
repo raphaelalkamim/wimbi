@@ -10,11 +10,12 @@ import UIKit
 class ExploreViewController: UIViewController {
     weak var coordinator: ExploreCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
+    let explorerView = ExploreView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewRoadmap))        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewRoadmap))
     }
     
     @objc
@@ -22,4 +23,14 @@ class ExploreViewController: UIViewController {
         coordinator?.createNewRoadmap()
     }
     
+}
+
+extension ExploreViewController {
+    func setup() {
+        
+    }
+    
+    func setupConstraints() {
+        
+    }
 }
