@@ -34,6 +34,12 @@ extension ProfileViewController: UICollectionViewDataSource {
         }
         return 5
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
+        let vc = MyTripViewController()
+        vc.navigationItem.title = "Egito"
+        navigationController?.pushViewController(vc, animated: true)
+    }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         self.roadmaps = RoadmapRepository.shared.getRoadmap()
