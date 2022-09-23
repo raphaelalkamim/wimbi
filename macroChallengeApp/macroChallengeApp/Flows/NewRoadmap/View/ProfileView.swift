@@ -93,7 +93,7 @@ class ProfileView: UIView {
     }()
     
     func emptyState() {
-        if roadmaps.isEmpty {
+        if RoadmapRepository.shared.getRoadmap().isEmpty {
             myRoadmapCollectionView.isHidden = true
             emptyStateTitle.isHidden = false
             emptyStateImage.isHidden = false

@@ -71,9 +71,7 @@ class ProfileCoordinator: Coordinator {
 }
 
 extension ProfileCoordinator: PresentationCoordinatorDelegate {
-    func didFinishPresent(of coordinator: Coordinator) {
-        print(childCoordinators)
+    func didFinishPresent(of coordinator: Coordinator, isNewRoadmap isnewRoadmap: Bool) {
         childCoordinators = childCoordinators.filter { $0 === coordinator }
-        print(childCoordinators)
     }
 }

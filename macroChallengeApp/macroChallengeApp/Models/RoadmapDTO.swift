@@ -19,7 +19,6 @@ struct RoadmapDTO: Codable {
     var imageId: String
     var category: String
     
-    
     enum CodingKeys: String, CodingKey {
         case id
         case name

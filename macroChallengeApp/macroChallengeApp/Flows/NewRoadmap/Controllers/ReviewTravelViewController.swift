@@ -63,19 +63,20 @@ class ReviewTravelViewController: UIViewController {
     @objc func nextPage() {
         roadmap.imageId = "beach0"
         roadmap.createdAt = Date()
+        // save in Backend
         dataManager.postRoadmap(roadmap: roadmap)
         // save in Core Data
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
         RoadmapRepository.shared.saveContext()
         print(newRoadmap)
-        
-        coordinator?.dismiss()
+        UIAccessibility.post(notification: .screenChanged, argument: coordinator?.navigationController)
+        coordinator?.dismiss(isNewRoadmap: true)
     }
     @objc func backPage() {
         coordinator?.back()
     }
     @objc func cancelRoadmap() {
-        coordinator?.dismiss()
+        coordinator?.dismiss(isNewRoadmap: false)
     }
     func setupContent() {
         self.reviewTravelView.subtitle.text = self.roadmap.category
@@ -83,7 +84,6 @@ class ReviewTravelViewController: UIViewController {
         self.reviewTravelView.setupCategory(category: roadmap.category)
         self.reviewTravelView.setupImage(category: roadmap.category)
     }
-    
 }
 
 extension ReviewTravelViewController: UITableViewDelegate {

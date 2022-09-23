@@ -15,6 +15,8 @@
 		1359F15428DA48E5009509DF /* RoadmapRepositoryClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F15328DA48E5009509DF /* RoadmapRepositoryClass.swift */; };
 		1359F15628DA48F3009509DF /* DayRepositoryClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F15528DA48F3009509DF /* DayRepositoryClass.swift */; };
 		1359F15828DA48FD009509DF /* UserRepositoryClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F15728DA48FD009509DF /* UserRepositoryClass.swift */; };
+		135AC6A328DE1B01003E1CF3 /* DesignImagesActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135AC6A228DE1B01003E1CF3 /* DesignImagesActivities.swift */; };
+		135AC6A528DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */; };
 		1379743B28D5162C00AEA662 /* ReviewTravelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379743A28D5162C00AEA662 /* ReviewTravelView.swift */; };
 		1379743D28D5165200AEA662 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */; };
 		1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744028D8E55000AEA662 /* CurrentViewController.swift */; };
@@ -142,6 +144,8 @@
 		1359F15328DA48E5009509DF /* RoadmapRepositoryClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapRepositoryClass.swift; sourceTree = "<group>"; };
 		1359F15528DA48F3009509DF /* DayRepositoryClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepositoryClass.swift; sourceTree = "<group>"; };
 		1359F15728DA48FD009509DF /* UserRepositoryClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryClass.swift; sourceTree = "<group>"; };
+		135AC6A228DE1B01003E1CF3 /* DesignImagesActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImagesActivities.swift; sourceTree = "<group>"; };
+		135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignActivitiesImages.swift; sourceTree = "<group>"; };
 		1379743A28D5162C00AEA662 /* ReviewTravelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTravelView.swift; sourceTree = "<group>"; };
 		1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSearchTableViewController.swift; path = macroChallengeApp/Components/LocationSearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1379744028D8E55000AEA662 /* CurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
@@ -458,6 +462,7 @@
 				DF5F774628CA853000BA5F5F /* CustomLabelDesignable.swift */,
 				13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */,
 				13EC5C5128DB8FF0005F7128 /* DesignDefaultImages.swift */,
+				135AC6A228DE1B01003E1CF3 /* DesignImagesActivities.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				DF5F774228CA820200BA5F5F /* DefaultDesignTextFonts.swift */,
 				13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */,
 				13EC5C5328DB902F005F7128 /* DefaultDesignDefaultImages.swift */,
+				135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -1001,6 +1007,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13F994EB28D393E500B077C0 /* DaysViewController.swift in Sources */,
+				135AC6A528DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift in Sources */,
 				13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */,
 				13C8A13628CA6C1100994196 /* TextStyle.swift in Sources */,
 				A0B9F4C528D90A7C00F2DF06 /* SwitchTableViewCell.swift in Sources */,
@@ -1092,6 +1099,7 @@
 				13BD4FFB28D90EF700C0EA7C /* DesignSystem+UIImage.swift in Sources */,
 				13C8A12B28CA6A0A00994196 /* CurrentCoordinator.swift in Sources */,
 				A0FD739F28DA82250044E47C /* InfoTripCollectionViewCell.swift in Sources */,
+				135AC6A328DE1B01003E1CF3 /* DesignImagesActivities.swift in Sources */,
 				A0FD739928DA7EF00044E47C /* MyTripView.swift in Sources */,
 				B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */,
 				A0B9F4C728DA2A4C00F2DF06 /* TermsView.swift in Sources */,
