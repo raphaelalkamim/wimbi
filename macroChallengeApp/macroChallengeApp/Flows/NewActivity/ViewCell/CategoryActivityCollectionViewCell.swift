@@ -1,23 +1,21 @@
 //
-//  IconSubtitleViewComponent.swift
+//  StackTableViewCell.swift
 //  macroChallengeApp
 //
-//  Created by Raphael Alkamim on 16/09/22.
+//  Created by Raphael Alkamim on 15/09/22.
 //
 
 import Foundation
 import UIKit
+import SnapKit
 
-class IconSubtitleComponentView: UIButton {
-    let designSystem = DefaultDesignSystem.shared
+class CategoryActivityCollectionViewCell: UICollectionViewCell {
+    static let identifier = "categoryActivityCell"
     
-    var image: UIImage
-    var label: String = ""
+    let designSystem: DesignSystem = DefaultDesignSystem.shared
     
-    init(image: UIImage, label: String) {
-        self.image = image
-        self.label = label
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setup()
     }
     
@@ -27,29 +25,30 @@ class IconSubtitleComponentView: UIButton {
     
     lazy var icon: UIImageView = {
         let icon = UIImageView()
-        icon.image = self.image
+        icon.image = UIImage(named: "categoryBeach")
         return icon
     }()
 
     lazy var iconDescription: UILabel = {
         let description = UILabel()
-        description.text = self.label
+        description.text = "oi"
         description.stylize(with: designSystem.text.smallCaption)
         return description
     }()
-        
+    
 }
-extension IconSubtitleComponentView {
+
+extension CategoryActivityCollectionViewCell {
     func setup() {
         self.backgroundColor = .clear
-        self.addSubview(icon)
-        self.addSubview(iconDescription)
+        contentView.addSubview(icon)
+        contentView.addSubview(iconDescription)
         setupConstraints()
     }
     
     func setupConstraints() {
         icon.snp.makeConstraints { make in
-            make.topMargin.equalToSuperview()
+            make.topMargin.equalToSuperview().inset(designSystem.spacing.mediumPositive)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(60)
             
@@ -58,5 +57,15 @@ extension IconSubtitleComponentView {
             make.top.equalTo(icon.snp.bottom).offset(designSystem.spacing.xSmallPositive)
             make.centerX.equalTo(icon.snp.centerX)
         }
+    }
+    
+    func selectedBackgroundView() {
+        icon.layer.borderWidth = 1.5
+        icon.layer.borderColor = designSystem.palette.caption.cgColor
+    }
+    
+    func notSelectedBackgroundView() {
+        icon.layer.borderWidth = 0
+        
     }
 }

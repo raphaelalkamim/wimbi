@@ -29,14 +29,13 @@
 		13BD4FFB28D90EF700C0EA7C /* DesignSystem+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */; };
 		13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */; };
 		13BD4FFF28D90F9700C0EA7C /* DefaultDesignSystemImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */; };
-		13BD500128DA286600C0EA7C /* IconSubtitleComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500028DA286600C0EA7C /* IconSubtitleComponentView.swift */; };
 		13BD500628DA28D600C0EA7C /* NewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500528DA28D600C0EA7C /* NewActivityViewController.swift */; };
-		13BD500828DA28E500C0EA7C /* NewActivitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500728DA28E500C0EA7C /* NewActivitView.swift */; };
+		13BD500828DA28E500C0EA7C /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500728DA28E500C0EA7C /* NewActivityView.swift */; };
 		13BD500E28DA297500C0EA7C /* SignInWithAppleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500A28DA297500C0EA7C /* SignInWithAppleManager.swift */; };
 		13BD500F28DA297500C0EA7C /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500B28DA297500C0EA7C /* KeychainManager.swift */; };
 		13BD501028DA297500C0EA7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500C28DA297500C0EA7C /* LoginViewController.swift */; };
 		13BD501128DA297500C0EA7C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500D28DA297500C0EA7C /* LoginView.swift */; };
-		13BD501528DA2A8300C0EA7C /* StackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD501328DA2A8300C0EA7C /* StackTableViewCell.swift */; };
+		13BD501528DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD501328DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift */; };
 		13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */; };
 		13C8A10628C6698100994196 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 13C8A10528C6698100994196 /* .swiftlint.yml */; };
 		13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A10A28C6827800994196 /* Roadmaps.swift */; };
@@ -74,11 +73,6 @@
 		90297BBF83D0A825FF081EB4 /* Pods_macroChallengeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */; };
 		A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */; };
 		A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */; };
-		B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */; };
-		B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */; };
-		B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */; };
-		B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */; };
-		B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */; };
 		A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */; };
 		A0B9F4BF28D8FB5900F2DF06 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4BE28D8FB5900F2DF06 /* NotificationsView.swift */; };
 		A0B9F4C128D8FD5100F2DF06 /* SettingsViewController+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4C028D8FD5100F2DF06 /* SettingsViewController+Notifications.swift */; };
@@ -90,6 +84,11 @@
 		A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */; };
 		A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CE28DA342300F2DF06 /* LikedRoadmapsView.swift */; };
 		A0B9F4D128DA342B00F2DF06 /* LikedRoadmapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4D028DA342B00F2DF06 /* LikedRoadmapsViewController.swift */; };
+		B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */; };
+		B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */; };
+		B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */; };
+		B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */; };
+		B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */; };
 		B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21528C27F2000D46F61 /* AppDelegate.swift */; };
 		B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21728C27F2000D46F61 /* SceneDelegate.swift */; };
 		B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B078F21E28C27F2000D46F61 /* macroChallengeApp.xcdatamodeld */; };
@@ -153,14 +152,13 @@
 		13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+UIImage.swift"; sourceTree = "<group>"; };
 		13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImages.swift; sourceTree = "<group>"; };
 		13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignSystemImages.swift; sourceTree = "<group>"; };
-		13BD500028DA286600C0EA7C /* IconSubtitleComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSubtitleComponentView.swift; sourceTree = "<group>"; };
 		13BD500528DA28D600C0EA7C /* NewActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewController.swift; sourceTree = "<group>"; };
-		13BD500728DA28E500C0EA7C /* NewActivitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivitView.swift; sourceTree = "<group>"; };
+		13BD500728DA28E500C0EA7C /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
 		13BD500A28DA297500C0EA7C /* SignInWithAppleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleManager.swift; sourceTree = "<group>"; };
 		13BD500B28DA297500C0EA7C /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		13BD500C28DA297500C0EA7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		13BD500D28DA297500C0EA7C /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		13BD501328DA2A8300C0EA7C /* StackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTableViewCell.swift; sourceTree = "<group>"; };
+		13BD501328DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryActivityCollectionViewCell.swift; sourceTree = "<group>"; };
 		13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		13C8A10528C6698100994196 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		13C8A10A28C6827800994196 /* Roadmaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmaps.swift; sourceTree = "<group>"; };
@@ -352,7 +350,7 @@
 		13BD500428DA28CB00C0EA7C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				13BD500728DA28E500C0EA7C /* NewActivitView.swift */,
+				13BD500728DA28E500C0EA7C /* NewActivityView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -371,7 +369,7 @@
 		13BD501228DA2A2600C0EA7C /* ViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				13BD501328DA2A8300C0EA7C /* StackTableViewCell.swift */,
+				13BD501328DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift */,
 				13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */,
 				B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */,
 				B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */,
@@ -600,7 +598,6 @@
 			children = (
 				1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */,
 				13F994F928D3B21800B077C0 /* RoadmapToolbar.swift */,
-				13BD500028DA286600C0EA7C /* IconSubtitleComponentView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -982,7 +979,7 @@
 				13C8A10F28C6829100994196 /* Day.swift in Sources */,
 				13C8A11628C68B7700994196 /* DataManager.swift in Sources */,
 				13BD500628DA28D600C0EA7C /* NewActivityViewController.swift in Sources */,
-				13BD501528DA2A8300C0EA7C /* StackTableViewCell.swift in Sources */,
+				13BD501528DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift in Sources */,
 				13C8A11D28CA681C00994196 /* Coordinator.swift in Sources */,
 				13C8A13228CA6B0400994196 /* DefaultDesignPalette.swift in Sources */,
 				B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */,
@@ -1025,7 +1022,6 @@
 				A0B9F4CB28DA2E3B00F2DF06 /* EditProfileView.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
 				A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */,
-				13BD500128DA286600C0EA7C /* IconSubtitleComponentView.swift in Sources */,
 				1359F15228DA48D5009509DF /* ActivityRepositoryClass.swift in Sources */,
 				1359F15428DA48E5009509DF /* RoadmapRepositoryClass.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
@@ -1044,7 +1040,7 @@
 				13C8A11328C6835300994196 /* Activity.swift in Sources */,
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
-				13BD500828DA28E500C0EA7C /* NewActivitView.swift in Sources */,
+				13BD500828DA28E500C0EA7C /* NewActivityView.swift in Sources */,
 				1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */,
 				A0B9F4C328D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift in Sources */,
 				1379744D28D8E5CA00AEA662 /* ExploreViewController.swift in Sources */,

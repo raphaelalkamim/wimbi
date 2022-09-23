@@ -32,11 +32,11 @@ class NewActivityViewController: UIViewController {
 
 extension NewActivityViewController {
     func setupNewActivityView() {
-        navigationItem.title = "New Activitie"
+        navigationItem.title = "New Activity"
         view.addSubview(newActivityView)
         setupConstraints()
-        
-        newActivityView.bindColletionView(delegate: self, dataSource: self)
+        newActivityView.bindTableView(delegate: self, dataSource: self)
+        newActivityView.bindCollectionView(delegate: self, dataSource: self)
     }
     func setupConstraints() {
         newActivityView.snp.makeConstraints { make in
@@ -48,9 +48,7 @@ extension NewActivityViewController {
 extension NewActivityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rows: Int = 0
-        if tableView == newActivityView.categoryTable {
-            rows = 1
-        } else if tableView == newActivityView.localyTable {
+        if tableView == newActivityView.localyTable {
             rows = 2
         } else if tableView == newActivityView.dateTable {
             rows = 2
@@ -62,13 +60,7 @@ extension NewActivityViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        if tableView == newActivityView.categoryTable {
-            guard let newCell = tableView.dequeueReusableCell(withIdentifier: StackTableViewCell.identifier, for: indexPath) as? StackTableViewCell else { fatalError("TableCell not found") }
-            
-            newCell.title.text = "Category"
-            cell = newCell
-            
-        } else if tableView == newActivityView.localyTable {
+        if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Address"
@@ -167,4 +159,47 @@ extension NewActivityViewController: CurrencyTableViewCellDelegate {
     func didChangeFormatter(formatter: String) {
         self.currencyType = formatter
     }
+}
+
+extension NewActivityViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+}
+
+extension NewActivityViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryActivityCollectionViewCell.identifier, for: indexPath) as? CategoryActivityCollectionViewCell else {
+            preconditionFailure("Cell not find")
+        }
+        switch indexPath.row {
+        case 0:
+            cell.iconDescription.text = "Food"
+        case 1:
+            cell.iconDescription.text = "Accommodation"
+        case 2:
+            cell.iconDescription.text = "Leisure"
+        case 3:
+            cell.iconDescription.text = "Transportation"
+        default:
+            break
+        }
+        return cell
+
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryActivityCollectionViewCell {
+            cell.selectedBackgroundView()
+            print("oio")
+//            roadmap.category = cell.title.text ?? "Nova Categoria"
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryActivityCollectionViewCell {
+            cell.notSelectedBackgroundView()
+        }
+    }
+    
 }

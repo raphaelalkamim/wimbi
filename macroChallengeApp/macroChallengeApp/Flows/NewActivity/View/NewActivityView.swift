@@ -1,5 +1,5 @@
 //
-//  NewActivity.swift
+//  NewActivityView.swift
 //  macroChallengeApp
 //
 //  Created by Raphael Alkamim on 14/09/22.
@@ -29,15 +29,16 @@ class NewActivityView: UIView {
         return label
     }()
     
-    lazy var categoryTable: UITableView = {
-        let table = UITableView()
-        table.register(StackTableViewCell.self, forCellReuseIdentifier: StackTableViewCell.identifier)
-        table.layer.cornerRadius = 16
-        table.isScrollEnabled = false
-        table.separatorColor = .clear
-        table.allowsSelection = false
-        
-        return table
+    lazy var categoryCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 70, height: 100)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collectionView.register(CategoryActivityCollectionViewCell.self, forCellWithReuseIdentifier: CategoryActivityCollectionViewCell.identifier)
+        collectionView.backgroundColor = .backgroundCell
+        collectionView.isUserInteractionEnabled = true
+        collectionView.layer.cornerRadius = 16
+        return collectionView
     }()
     
     lazy var localyLabel: UILabel = {
@@ -105,7 +106,7 @@ extension NewActivityView {
         scrollView.addSubview(contentView)
         
         contentView.addSubview(categoryLabel)
-        contentView.addSubview(categoryTable)
+        contentView.addSubview(categoryCollectionView)
         
         contentView.addSubview(localyLabel)
         contentView.addSubview(localyTable)
@@ -138,7 +139,7 @@ extension NewActivityView {
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
         }
         
-        categoryTable.snp.makeConstraints { make in
+        categoryCollectionView.snp.makeConstraints { make in
             make.top.equalTo(categoryLabel.snp.bottom).offset(designSystem.spacing.xSmallPositive)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
@@ -146,7 +147,7 @@ extension NewActivityView {
         }
         
         localyLabel.snp.makeConstraints { make in
-            make.top.equalTo(categoryTable.snp.bottom).offset(designSystem.spacing.xLargePositive)
+            make.top.equalTo(categoryCollectionView.snp.bottom).offset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(contentView.snp.leading).inset(32)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
         }
@@ -188,10 +189,7 @@ extension NewActivityView {
 }
 
 extension NewActivityView {
-    func bindColletionView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
-        categoryTable.delegate = delegate
-        categoryTable.dataSource = dataSource
-        
+    func bindTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {        
         localyTable.delegate = delegate
         localyTable.dataSource = dataSource
         
@@ -200,5 +198,10 @@ extension NewActivityView {
         
         valueTable.delegate = delegate
         valueTable.dataSource = dataSource
+    }
+    
+    func bindCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+        categoryCollectionView.delegate = delegate
+        categoryCollectionView.dataSource = dataSource
     }
 }
