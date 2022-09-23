@@ -15,6 +15,8 @@
 		1359F15428DA48E5009509DF /* RoadmapRepositoryClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F15328DA48E5009509DF /* RoadmapRepositoryClass.swift */; };
 		1359F15628DA48F3009509DF /* DayRepositoryClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F15528DA48F3009509DF /* DayRepositoryClass.swift */; };
 		1359F15828DA48FD009509DF /* UserRepositoryClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F15728DA48FD009509DF /* UserRepositoryClass.swift */; };
+		135AC6A328DE1B01003E1CF3 /* DesignImagesActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135AC6A228DE1B01003E1CF3 /* DesignImagesActivities.swift */; };
+		135AC6A528DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */; };
 		1379743B28D5162C00AEA662 /* ReviewTravelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379743A28D5162C00AEA662 /* ReviewTravelView.swift */; };
 		1379743D28D5165200AEA662 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */; };
 		1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744028D8E55000AEA662 /* CurrentViewController.swift */; };
@@ -71,6 +73,7 @@
 		640CD5CCE40B36AB975231D2 /* Pods_macroChallengeApp_macroChallengeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D148866C3AA7A72395A6BDAC /* Pods_macroChallengeApp_macroChallengeAppUITests.framework */; };
 		8937FC4EB5BEAACC958B84A1 /* Pods_macroChallengeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */; };
 		90297BBF83D0A825FF081EB4 /* Pods_macroChallengeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */; };
+		A04959C628DCEC92009156C8 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04959C528DCEC92009156C8 /* ActivityTableViewCell.swift */; };
 		A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */; };
 		A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */; };
 		A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */; };
@@ -89,6 +92,11 @@
 		B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */; };
 		B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */; };
 		B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */; };
+		A0FD739928DA7EF00044E47C /* MyTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739828DA7EF00044E47C /* MyTripView.swift */; };
+		A0FD739B28DA7EF70044E47C /* MyTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739A28DA7EF70044E47C /* MyTripViewController.swift */; };
+		A0FD739D28DA7F780044E47C /* MyTripViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739C28DA7F780044E47C /* MyTripViewControllerExtension.swift */; };
+		A0FD739F28DA82250044E47C /* InfoTripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739E28DA82250044E47C /* InfoTripCollectionViewCell.swift */; };
+		A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD73A428DBA76E0044E47C /* CalendarCollectionViewCell.swift */; };
 		B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21528C27F2000D46F61 /* AppDelegate.swift */; };
 		B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21728C27F2000D46F61 /* SceneDelegate.swift */; };
 		B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B078F21E28C27F2000D46F61 /* macroChallengeApp.xcdatamodeld */; };
@@ -138,6 +146,8 @@
 		1359F15328DA48E5009509DF /* RoadmapRepositoryClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapRepositoryClass.swift; sourceTree = "<group>"; };
 		1359F15528DA48F3009509DF /* DayRepositoryClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepositoryClass.swift; sourceTree = "<group>"; };
 		1359F15728DA48FD009509DF /* UserRepositoryClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryClass.swift; sourceTree = "<group>"; };
+		135AC6A228DE1B01003E1CF3 /* DesignImagesActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImagesActivities.swift; sourceTree = "<group>"; };
+		135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignActivitiesImages.swift; sourceTree = "<group>"; };
 		1379743A28D5162C00AEA662 /* ReviewTravelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTravelView.swift; sourceTree = "<group>"; };
 		1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSearchTableViewController.swift; path = macroChallengeApp/Components/LocationSearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1379744028D8E55000AEA662 /* CurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +205,7 @@
 		4842CC9B9D145281B17CEC0E /* Pods-macroChallengeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeAppTests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeAppTests/Pods-macroChallengeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macroChallengeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F3A7956A6476CF7C11EC092 /* Pods-macroChallengeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp/Pods-macroChallengeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		A04959C528DCEC92009156C8 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +219,11 @@
 		A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		A0B9F4CE28DA342300F2DF06 /* LikedRoadmapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedRoadmapsView.swift; sourceTree = "<group>"; };
 		A0B9F4D028DA342B00F2DF06 /* LikedRoadmapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedRoadmapsViewController.swift; sourceTree = "<group>"; };
+		A0FD739828DA7EF00044E47C /* MyTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripView.swift; sourceTree = "<group>"; };
+		A0FD739A28DA7EF70044E47C /* MyTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripViewController.swift; sourceTree = "<group>"; };
+		A0FD739C28DA7F780044E47C /* MyTripViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripViewControllerExtension.swift; sourceTree = "<group>"; };
+		A0FD739E28DA82250044E47C /* InfoTripCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTripCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0FD73A428DBA76E0044E47C /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2717F6A055C734D418E1360 /* Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerTableViewCell.swift; sourceTree = "<group>"; };
 		B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
@@ -453,6 +469,7 @@
 				DF5F774628CA853000BA5F5F /* CustomLabelDesignable.swift */,
 				13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */,
 				13EC5C5128DB8FF0005F7128 /* DesignDefaultImages.swift */,
+				135AC6A228DE1B01003E1CF3 /* DesignImagesActivities.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -466,6 +483,7 @@
 				DF5F774228CA820200BA5F5F /* DefaultDesignTextFonts.swift */,
 				13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */,
 				13EC5C5328DB902F005F7128 /* DefaultDesignDefaultImages.swift */,
+				135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -524,6 +542,9 @@
 		13F994F028D3953B00B077C0 /* Current */ = {
 			isa = PBXGroup;
 			children = (
+				A04959C128DCEC51009156C8 /* Extensions */,
+				A04959C228DCEC5F009156C8 /* UIViewCell */,
+				A04959C328DCEC6B009156C8 /* View */,
 				13F994F728D3959600B077C0 /* ViewController */,
 			);
 			path = Current;
@@ -532,7 +553,7 @@
 		13F994F128D3954300B077C0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				A0B9F4BB28D8EB4D00F2DF06 /* UIViewCell */,
+				A04959C028DCEC36009156C8 /* UIViewCell */,
 				1379744E28D8E61100AEA662 /* View */,
 				13F994F628D3958E00B077C0 /* ViewController */,
 				1379745728D8E74100AEA662 /* Extensions */,
@@ -589,6 +610,7 @@
 			isa = PBXGroup;
 			children = (
 				1379744028D8E55000AEA662 /* CurrentViewController.swift */,
+				A0FD739A28DA7EF70044E47C /* MyTripViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -625,7 +647,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A0B9F4BB28D8EB4D00F2DF06 /* UIViewCell */ = {
+		A04959C028DCEC36009156C8 /* UIViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */,
@@ -636,11 +658,30 @@
 			path = UIViewCell;
 			sourceTree = "<group>";
 		};
-		A0FD739728DA5CBD0044E47C /* Recovered References */ = {
+		A04959C128DCEC51009156C8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A0FD739C28DA7F780044E47C /* MyTripViewControllerExtension.swift */,
 			);
-			name = "Recovered References";
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A04959C228DCEC5F009156C8 /* UIViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A0FD739E28DA82250044E47C /* InfoTripCollectionViewCell.swift */,
+				A0FD73A428DBA76E0044E47C /* CalendarCollectionViewCell.swift */,
+				A04959C528DCEC92009156C8 /* ActivityTableViewCell.swift */,
+			);
+			path = UIViewCell;
+			sourceTree = "<group>";
+		};
+		A04959C328DCEC6B009156C8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0FD739828DA7EF00044E47C /* MyTripView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B078F20928C27F2000D46F61 = {
@@ -653,7 +694,6 @@
 				B078F21328C27F2000D46F61 /* Products */,
 				4171B73C15A2C812F704D532 /* Pods */,
 				8873B324A12FFF3116531BEB /* Frameworks */,
-				A0FD739728DA5CBD0044E47C /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -973,6 +1013,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13F994EB28D393E500B077C0 /* DaysViewController.swift in Sources */,
+				135AC6A528DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift in Sources */,
 				13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */,
 				13C8A13628CA6C1100994196 /* TextStyle.swift in Sources */,
 				A0B9F4C528D90A7C00F2DF06 /* SwitchTableViewCell.swift in Sources */,
@@ -1002,8 +1043,10 @@
 				13F994E928D393D900B077C0 /* DestinyViewController.swift in Sources */,
 				A0B9F4C128D8FD5100F2DF06 /* SettingsViewController+Notifications.swift in Sources */,
 				A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */,
+				A0FD739D28DA7F780044E47C /* MyTripViewControllerExtension.swift in Sources */,
 				1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */,
 				B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */,
+				A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */,
 				13C8A13028CA6AF400994196 /* DefaultDesignSystem.swift in Sources */,
 				1379745328D8E6B700AEA662 /* SettingsViewController.swift in Sources */,
 				13BD500F28DA297500C0EA7C /* KeychainManager.swift in Sources */,
@@ -1013,6 +1056,7 @@
 				13F994E728D393CE00B077C0 /* CategoryViewController.swift in Sources */,
 				13C8A11128C6833D00994196 /* Like.swift in Sources */,
 				B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */,
+				A0FD739B28DA7EF70044E47C /* MyTripViewController.swift in Sources */,
 				1379745428D8E6B700AEA662 /* SettingsView.swift in Sources */,
 				A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */,
 				1467706728D2699D00D55098 /* LabelTableViewCell.swift in Sources */,
@@ -1048,6 +1092,7 @@
 				13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */,
 				A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */,
 				13C8A12728CA693F00994196 /* DesignText.swift in Sources */,
+				A04959C628DCEC92009156C8 /* ActivityTableViewCell.swift in Sources */,
 				DF2643AD28DB9EAD00053180 /* RoadmapDTO.swift in Sources */,
 				DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */,
 				13C8A12528CA693700994196 /* DesignSpacing.swift in Sources */,
@@ -1061,6 +1106,9 @@
 				13F994FA28D3B21900B077C0 /* RoadmapToolbar.swift in Sources */,
 				13BD4FFB28D90EF700C0EA7C /* DesignSystem+UIImage.swift in Sources */,
 				13C8A12B28CA6A0A00994196 /* CurrentCoordinator.swift in Sources */,
+				A0FD739F28DA82250044E47C /* InfoTripCollectionViewCell.swift in Sources */,
+				135AC6A328DE1B01003E1CF3 /* DesignImagesActivities.swift in Sources */,
+				A0FD739928DA7EF00044E47C /* MyTripView.swift in Sources */,
 				B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */,
 				A0B9F4C728DA2A4C00F2DF06 /* TermsView.swift in Sources */,
 				13BD501028DA297500C0EA7C /* LoginViewController.swift in Sources */,

@@ -11,6 +11,7 @@ struct DesignText {
     let mediumTitle: TextStyle = MediumTitleTextStyle()
     let title: TextStyle = TitleTextStyle()
     let cellTitle: TextStyle = CellTitleTextStyle()
+    let infoTitle: TextStyle = InfoTitleTextStyle()
     let body: TextStyle = BodyTextStyle()
     let caption: TextStyle = CaptionTextStyle()
     let smallCaption: TextStyle = SmallCaption()

@@ -17,6 +17,10 @@ extension UIFont {
     static var cellTitle: UIFont {
         UIFont(name: "Avenir-Medium", size: 18)!
     }
+    // Utilizada nas células da tela de minha viagem
+    static var infoTitle: UIFont {
+        UIFont(name: "Avenir-Medium", size: 22)!
+    }
     
     static var title: UIFont {
         UIFont(name: "Avenir-Black", size: 24)!
@@ -31,7 +35,7 @@ extension UIFont {
     }
     
     static var caption: UIFont {
-        UIFont(name: "Avenir-Roman", size: 14)!
+        UIFont(name: "Avenir-Light", size: 14)!
     }
     
     static var smallCaption: UIFont {

@@ -30,6 +30,17 @@ struct CellTitleTextStyle: TextStyle, CustomLabelDesignable {
     }
 }
 
+struct InfoTitleTextStyle: TextStyle, CustomLabelDesignable {
+    var color: UIColor = .titlePrimary
+    var alignment: NSTextAlignment = .natural
+    var font: UIFont = .infoTitle
+    
+    func custom(_ label: UILabel) {
+        label.numberOfLines = 0
+        label.lineBreakMode = .byTruncatingHead
+    }
+}
+
 struct TitleTextStyle: TextStyle, CustomLabelDesignable {
     var color: UIColor = .titlePrimary
     var alignment: NSTextAlignment = .natural

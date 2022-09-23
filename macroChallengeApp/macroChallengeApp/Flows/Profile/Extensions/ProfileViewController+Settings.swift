@@ -31,23 +31,23 @@ extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let vc = EditProfileViewController()
-            vc.navigationItem.title = "Edit profile"
-            navigationController?.pushViewController(vc, animated: true)
+            let viewController = EditProfileViewController()
+            viewController.navigationItem.title = "Edit profile"
+            navigationController?.pushViewController(viewController, animated: true)
             
         case 1:
-            let vc = LikedRoadmapsViewController()
-            vc.navigationItem.title = "Liked roadmaps"
-            navigationController?.pushViewController(vc, animated: true)
+            let viewController = LikedRoadmapsViewController()
+            viewController.navigationItem.title = "Liked roadmaps"
+            navigationController?.pushViewController(viewController, animated: true)
             
         case 2:
-            let vc = NotificationsViewController()
-            vc.navigationItem.title = "Notifications"
-            navigationController?.pushViewController(vc, animated: true)
+            let viewController = NotificationsViewController()
+            viewController.navigationItem.title = "Notifications"
+            navigationController?.pushViewController(viewController, animated: true)
         case 3:
-            let vc = TermsViewController()
-            vc.navigationItem.title = "Terms of privacy"
-            navigationController?.pushViewController(vc, animated: true)
+            let viewController = TermsViewController()
+            viewController.navigationItem.title = "Terms of privacy"
+            navigationController?.pushViewController(viewController, animated: true)
             
         case 4:
             let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
