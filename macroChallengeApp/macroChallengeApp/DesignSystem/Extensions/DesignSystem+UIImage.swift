@@ -26,7 +26,7 @@ extension UIImage {
     }
     
     static var compass: UIImage {
-        UIImage(named: "Bussola")!
+        UIImage(named: "bussola")!
     }
     
     static var flora: UIImage {
@@ -36,10 +36,10 @@ extension UIImage {
         UIImage(named: "map")!
     }
     static var accomodation: UIImage {
-        UIImage(named: "accomodation")!
+        UIImage(named: "accommodation")!
     }
     static var accomodationSelected: UIImage {
-        UIImage(named: "accomodationSelected")!
+        UIImage(named: "accommodationSelected")!
     }
     static var food: UIImage {
         UIImage(named: "food")!

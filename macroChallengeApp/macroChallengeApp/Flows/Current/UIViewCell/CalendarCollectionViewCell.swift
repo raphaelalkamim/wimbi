@@ -39,7 +39,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         btn.setTitleColor(designSystem.palette.textPrimary, for: .normal)
         btn.titleLabel?.font = designSystem.text.infoTitle.font
 //        btn.titleLabel?.textColor = .textPrimary
-        btn.isUserInteractionEnabled = true
+        btn.isUserInteractionEnabled = false
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -50,7 +50,6 @@ extension CalendarCollectionViewCell {
         contentView.addSubview(day)
         contentView.addSubview(dayButton)
         self.layer.cornerRadius = 13
-        self.dayButton.addTarget(self, action: #selector(dayAction), for: .touchDown)
         setupConstraints()
         
     }
@@ -67,14 +66,16 @@ extension CalendarCollectionViewCell {
             make.top.equalTo(day.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(32)
-            
         }
-        
+    }
+    func selectedBackgroundView() {
+        self.dayButton.backgroundColor = .accent
+        self.dayButton.setTitleColor(.white, for: .normal)
     }
     
-    @objc func dayAction() {
-        print("apertei")
-        dayButton.backgroundColor = .accent
-        dayButton.setTitleColor(.white, for: .normal)
+    func notSelectedBackgroundView() {
+        self.dayButton.backgroundColor = .clear
+        self.dayButton.setTitleColor(.textPrimary, for: .normal)
+
     }
 }
