@@ -229,7 +229,7 @@ class DataManager {
             request.setValue(token, forHTTPHeaderField: "Authorization")
             let task = session.dataTask(with: request) { data, response, error in
                 print(response)
-                guard let data = data else {return}
+                guard let data = data else { return }
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
                 }

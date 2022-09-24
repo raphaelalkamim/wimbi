@@ -19,7 +19,7 @@ class NewActivityViewController: UIViewController {
     }
     var fonts: [UIFont]! {
         didSet {
-            //tableView.reloadData()
+            // tableView.reloadData()
         }
     }
     

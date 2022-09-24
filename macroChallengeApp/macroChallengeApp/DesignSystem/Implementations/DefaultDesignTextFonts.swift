@@ -85,7 +85,6 @@ struct CaptionTextStyle: TextStyle, CustomLabelDesignable {
     }
 }
 
-
 struct SmallCaption: TextStyle, CustomLabelDesignable {
     var color: UIColor = .caption
     var alignment: NSTextAlignment = .natural
