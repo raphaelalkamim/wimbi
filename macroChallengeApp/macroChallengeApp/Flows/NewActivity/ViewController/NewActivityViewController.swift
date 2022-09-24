@@ -26,7 +26,7 @@ class NewActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNewActivityView()
-        setKeyboard()
+        
     }
 }
 
@@ -111,7 +111,7 @@ extension NewActivityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
-                //self.coordinator?.openLocationActivity()
+                // self.coordinator?.openLocationActivity()
                 self.present(LocationNewActivityViewController(), animated: true)
                 print("oi")
             }
@@ -175,12 +175,16 @@ extension NewActivityViewController: UICollectionViewDataSource {
         switch indexPath.row {
         case 0:
             cell.iconDescription.text = "Food"
+            cell.icon.image = designSystem.imagesActivities.food
         case 1:
             cell.iconDescription.text = "Accommodation"
+            cell.icon.image = designSystem.imagesActivities.accomodation
         case 2:
             cell.iconDescription.text = "Leisure"
+            cell.icon.image = designSystem.imagesActivities.leisure
         case 3:
             cell.iconDescription.text = "Transportation"
+            cell.icon.image = designSystem.imagesActivities.transportation
         default:
             break
         }
@@ -190,15 +194,35 @@ extension NewActivityViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryActivityCollectionViewCell {
-            cell.selectedBackgroundView()
-            print("oio")
-//            roadmap.category = cell.title.text ?? "Nova Categoria"
+            switch cell.iconDescription.text {
+            case "Accommodation":
+                cell.selectedBackgroundView(button: "accommodation")
+            case "Food":
+                cell.selectedBackgroundView(button: "food")
+            case "Leisure":
+                cell.selectedBackgroundView(button: "leisure")
+            case "Transportation":
+                cell.selectedBackgroundView(button: "transportation")
+            default:
+                break
+            }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryActivityCollectionViewCell {
-            cell.notSelectedBackgroundView()
+            switch cell.iconDescription.text {
+            case "Accommodation":
+                cell.notSelectedBackgroundView(button: "accommodation")
+            case "Food":
+                cell.notSelectedBackgroundView(button: "food")
+            case "Leisure":
+                cell.notSelectedBackgroundView(button: "leisure")
+            case "Transportation":
+                cell.notSelectedBackgroundView(button: "transportation")
+            default:
+                break
+            }
         }
     }
     
