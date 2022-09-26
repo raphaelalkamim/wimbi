@@ -13,10 +13,13 @@ class MyTripViewController: UIViewController {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let myTripView = MyTripView()
     
+    var roadmap = RoadmapLocal()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupMyTripView()
+        myTripView.setupContent(roadmap: roadmap)
         myTripView.bindCollectionView(delegate: self, dataSource: self)
         myTripView.bindTableView(delegate: self, dataSource: self)
     }

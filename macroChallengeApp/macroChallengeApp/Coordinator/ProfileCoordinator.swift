@@ -27,7 +27,6 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "Profile"
         navigationController.pushViewController(viewController, animated: true)
     }
-    
     func newRoadmap() {
         let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
         childCoordinators.append(coordinator)
@@ -38,7 +37,13 @@ class ProfileCoordinator: Coordinator {
             print("OI")
         }
     }
-    
+    func openRoadmap(roadmap: RoadmapLocal) {
+        let viewController = MyTripViewController()
+        viewController.coordinator = self
+        viewController.roadmap = roadmap
+        viewController.navigationItem.title = roadmap.name
+        navigationController.pushViewController(viewController, animated: true)
+    }
     func openLocationActivity() {
         let viewController = LocationNewActivityViewController()
         viewController.coordinator = self

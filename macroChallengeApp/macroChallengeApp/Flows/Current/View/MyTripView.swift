@@ -121,7 +121,7 @@ class MyTripView: UIView {
         table.backgroundColor = .backgroundPrimary
         return table
     }()
-    
+
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)
@@ -138,6 +138,10 @@ class MyTripView: UIView {
         budgetView.addSubview(budgetValue)
         scrollView.addSubview(activitiesTableView)
         setupConstraints()
+    }
+    
+    func setupContent(roadmap: RoadmapLocal) {
+        
     }
     
     func setupConstraints() {
