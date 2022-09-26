@@ -8,7 +8,12 @@
 import Foundation
 import UIKit
 
+protocol ChangeTextTableDelegate: AnyObject {
+    func changeText(address: String)
+}
+
 class NewActivityViewController: UIViewController {
+    
     weak var coordinator: ProfileCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let newActivityView = NewActivityView()
@@ -22,11 +27,34 @@ class NewActivityViewController: UIViewController {
             // tableView.reloadData()
         }
     }
+    var activity: Activity = Activity(id: 0, name: "Address", category: "", location: "", hour: "", budget: 0, day: Day())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNewActivityView()
         setKeyboard()
+        
+        let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelCreation))
+        cancelButton.tintColor = .systemRed
+        self.navigationItem.leftBarButtonItem = cancelButton
+        
+        let salvarButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveActivity))
+        self.navigationItem.rightBarButtonItem = salvarButton
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        newActivityView.localyTable.reloadData()
+        print(activity.name)
+
+    }
+    
+    @objc func cancelCreation() {
+        coordinator?.backPage()
+    }
+    
+    @objc func saveActivity() {
+        print("save")
     }
 }
 
@@ -63,7 +91,7 @@ extension NewActivityViewController: UITableViewDataSource {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = "Address"
+                newCell.label.text = activity.name
                 newCell.setupSeparator()
                 cell = newCell
                 
@@ -111,7 +139,7 @@ extension NewActivityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
-                self.coordinator?.openLocationActivity()
+                self.coordinator?.openLocationActivity(delegate: self)
                 print("oi")
             }
         }
@@ -140,16 +168,13 @@ extension NewActivityViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
+            newActivityView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            newActivityView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -keyboardSize.height, right: 0)}
     }
     
     @objc func dissMissKeyboard() {
@@ -228,4 +253,11 @@ extension NewActivityViewController: UICollectionViewDataSource {
         }
     }
     
+}
+
+extension NewActivityViewController: ChangeTextTableDelegate {
+    func changeText(address: String) {
+        activity.name = address
+        newActivityView.localyTable.reloadData()
+    }
 }

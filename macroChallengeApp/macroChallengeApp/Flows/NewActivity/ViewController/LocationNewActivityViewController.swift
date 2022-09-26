@@ -18,6 +18,7 @@ class LocationNewActivityViewController: UIViewController {
     var searchedText: String = ""
     var subtitle: String = ""
     var selectedPin: MKPlacemark? = nil
+    weak var delegate: ChangeTextTableDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,7 +139,13 @@ extension LocationNewActivityViewController: HandleMapSearch {
         destinyView.mapView.removeAnnotations(destinyView.mapView.annotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
-        annotation.title = placemark.name
+
+        if let name = placemark.name {
+            annotation.title = name
+            delegate?.changeText(address: name)
+        }
+        
+        
         if let city = placemark.locality, let state = placemark.administrativeArea {
             subtitle = "\(city) \(state)"
             annotation.subtitle = subtitle
