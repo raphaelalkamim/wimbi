@@ -47,10 +47,12 @@ class ExploreView: UIView {
     lazy var roadmapsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 350, height: 292)
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 10
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(RoadmapExploreCollectionViewCell.self, forCellWithReuseIdentifier: RoadmapExploreCollectionViewCell.identifier)
         collectionView.isUserInteractionEnabled = true
+        collectionView.isScrollEnabled = false
         collectionView.backgroundColor = .clear
         return collectionView
     }()
@@ -82,14 +84,14 @@ class ExploreView: UIView {
             make.top.equalTo(contentView.snp.topMargin)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
-            make.height.equalTo(1500)
+            make.height.equalTo(4000)
             make.bottom.equalTo(scrollView.snp.bottom)
         }
     }
     
     func addSearchBarNavigation(navigation: UINavigationItem) {
         navigation.searchController = searchController
-        navigation.title = "Explorer"
+        navigation.title = "Explore"
         self.searchController?.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
