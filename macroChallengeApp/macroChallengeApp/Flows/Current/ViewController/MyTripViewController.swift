@@ -23,6 +23,7 @@ class MyTripViewController: UIViewController {
         self.setupMyTripView()
         myTripView.bindCollectionView(delegate: self, dataSource: self)
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
+        myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,5 +33,9 @@ class MyTripViewController: UIViewController {
         }
         
         myTripView.budgetValue.text = "R$\(budgetDay)"
+    }
+
+    @objc func goToCreateActivity() {
+        coordinator?.startActivity()
     }
 }

@@ -108,7 +108,6 @@ class MyTripView: UIView {
         let img = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         btn.setImage(img, for: .normal)
         btn.tintColor = .accent
-        btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     
@@ -133,7 +132,7 @@ class MyTripView: UIView {
         contentView.addSubview(calendarTitle)
         contentView.addSubview(roadmapTitle)
         contentView.addSubview(dayTitle)
-        contentView.addSubview(addButton)
+        self.addSubview(addButton)
         contentView.addSubview(budgetView)
         budgetView.addSubview(budgetLabel)
         budgetView.addSubview(budgetValue)

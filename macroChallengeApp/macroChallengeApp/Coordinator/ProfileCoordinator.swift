@@ -39,6 +39,19 @@ class ProfileCoordinator: Coordinator {
             print("OI")
         }
     }
+    func startViewRoadmap() {
+        let viewController = MyTripViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "Egito"
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    func startActivity() {
+        let viewController = NewActivityViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "New Activity"
+        //navigationController.present(viewController, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
+    }
     func startDestinyActivitie(roadmap: Roadmaps) {
         let viewController = ActivityDestinyViewController(roadmap: roadmap)
         viewController.coordinator = self
@@ -53,7 +66,7 @@ class ProfileCoordinator: Coordinator {
     }
     func backPage() {
         navigationController.popViewController(animated: true)
-        delegate?.didFinishPresent(of: self)
+        delegate?.didFinishPresent(of: self, isNewRoadmap: false)
     }
     
     func setupBarAppearence() {

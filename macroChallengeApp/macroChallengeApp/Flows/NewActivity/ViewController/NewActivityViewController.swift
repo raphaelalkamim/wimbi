@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class NewActivityViewController: UIViewController {
+    weak var coordinator: ProfileCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let newActivityView = NewActivityView()
     

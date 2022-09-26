@@ -36,10 +36,10 @@ extension UIImage {
         UIImage(named: "map")!
     }
     static var accomodation: UIImage {
-        UIImage(named: "accomodation")!
+        UIImage(named: "accommodation")!
     }
     static var accomodationSelected: UIImage {
-        UIImage(named: "accomodationSelected")!
+        UIImage(named: "accommodationSelected")!
     }
     static var food: UIImage {
         UIImage(named: "food")!

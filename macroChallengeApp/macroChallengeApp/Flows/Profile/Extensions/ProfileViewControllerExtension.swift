@@ -36,9 +36,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
-        let viewController = MyTripViewController()
-        viewController.navigationItem.title = "Egito"
-        navigationController?.pushViewController(viewController, animated: true)
+        coordinator?.startViewRoadmap()
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
