@@ -87,16 +87,16 @@
 		A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */; };
 		A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CE28DA342300F2DF06 /* LikedRoadmapsView.swift */; };
 		A0B9F4D128DA342B00F2DF06 /* LikedRoadmapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4D028DA342B00F2DF06 /* LikedRoadmapsViewController.swift */; };
-		B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */; };
-		B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */; };
-		B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */; };
-		B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */; };
-		B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */; };
 		A0FD739928DA7EF00044E47C /* MyTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739828DA7EF00044E47C /* MyTripView.swift */; };
 		A0FD739B28DA7EF70044E47C /* MyTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739A28DA7EF70044E47C /* MyTripViewController.swift */; };
 		A0FD739D28DA7F780044E47C /* MyTripViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739C28DA7F780044E47C /* MyTripViewControllerExtension.swift */; };
 		A0FD739F28DA82250044E47C /* InfoTripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739E28DA82250044E47C /* InfoTripCollectionViewCell.swift */; };
 		A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD73A428DBA76E0044E47C /* CalendarCollectionViewCell.swift */; };
+		B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */; };
+		B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */; };
+		B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */; };
+		B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */; };
+		B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */; };
 		B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21528C27F2000D46F61 /* AppDelegate.swift */; };
 		B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21728C27F2000D46F61 /* SceneDelegate.swift */; };
 		B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B078F21E28C27F2000D46F61 /* macroChallengeApp.xcdatamodeld */; };
@@ -105,6 +105,8 @@
 		B078F23028C27F2500D46F61 /* macroChallengeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F22F28C27F2500D46F61 /* macroChallengeAppTests.swift */; };
 		B078F23A28C27F2500D46F61 /* macroChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */; };
 		B078F23C28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */; };
+		B0AC251628E21DEB00F38525 /* CurrentEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */; };
+		B0C5ACE128E22F5A0096B6A3 /* CurrentCountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5ACE028E22F5A0096B6A3 /* CurrentCountDown.swift */; };
 		B0CDF35028CFC7E90092A76C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CDF34F28CFC7E90092A76C /* Category.swift */; };
 		B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */; };
 		B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461628CFA85E00D62AF1 /* CategoryView.swift */; };
@@ -242,6 +244,8 @@
 		B078F23528C27F2500D46F61 /* macroChallengeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macroChallengeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITests.swift; sourceTree = "<group>"; };
 		B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentEmptyState.swift; sourceTree = "<group>"; };
+		B0C5ACE028E22F5A0096B6A3 /* CurrentCountDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrentCountDown.swift; path = ../../../../../../../../Downloads/CurrentCountDown.swift; sourceTree = "<group>"; };
 		B0CDF34F28CFC7E90092A76C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
 		B0E2461628CFA85E00D62AF1 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -680,6 +684,8 @@
 			isa = PBXGroup;
 			children = (
 				A0FD739828DA7EF00044E47C /* MyTripView.swift */,
+				B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */,
+				B0C5ACE028E22F5A0096B6A3 /* CurrentCountDown.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1046,6 +1052,7 @@
 				A0FD739D28DA7F780044E47C /* MyTripViewControllerExtension.swift in Sources */,
 				1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */,
 				B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */,
+				B0C5ACE128E22F5A0096B6A3 /* CurrentCountDown.swift in Sources */,
 				A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */,
 				13C8A13028CA6AF400994196 /* DefaultDesignSystem.swift in Sources */,
 				1379745328D8E6B700AEA662 /* SettingsViewController.swift in Sources */,
@@ -1081,6 +1088,7 @@
 				13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */,
 				1379743D28D5165200AEA662 /* LocationSearchTableViewController.swift in Sources */,
 				1379743B28D5162C00AEA662 /* ReviewTravelView.swift in Sources */,
+				B0AC251628E21DEB00F38525 /* CurrentEmptyState.swift in Sources */,
 				13C8A11328C6835300994196 /* Activity.swift in Sources */,
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
