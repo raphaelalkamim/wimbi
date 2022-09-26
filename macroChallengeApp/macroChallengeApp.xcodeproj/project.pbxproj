@@ -31,14 +31,13 @@
 		13BD4FFB28D90EF700C0EA7C /* DesignSystem+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */; };
 		13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */; };
 		13BD4FFF28D90F9700C0EA7C /* DefaultDesignSystemImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */; };
-		13BD500128DA286600C0EA7C /* IconSubtitleComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500028DA286600C0EA7C /* IconSubtitleComponentView.swift */; };
 		13BD500628DA28D600C0EA7C /* NewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500528DA28D600C0EA7C /* NewActivityViewController.swift */; };
-		13BD500828DA28E500C0EA7C /* NewActivitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500728DA28E500C0EA7C /* NewActivitView.swift */; };
+		13BD500828DA28E500C0EA7C /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500728DA28E500C0EA7C /* NewActivityView.swift */; };
 		13BD500E28DA297500C0EA7C /* SignInWithAppleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500A28DA297500C0EA7C /* SignInWithAppleManager.swift */; };
 		13BD500F28DA297500C0EA7C /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500B28DA297500C0EA7C /* KeychainManager.swift */; };
 		13BD501028DA297500C0EA7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500C28DA297500C0EA7C /* LoginViewController.swift */; };
 		13BD501128DA297500C0EA7C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500D28DA297500C0EA7C /* LoginView.swift */; };
-		13BD501528DA2A8300C0EA7C /* StackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD501328DA2A8300C0EA7C /* StackTableViewCell.swift */; };
+		13BD501528DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD501328DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift */; };
 		13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */; };
 		13C8A10628C6698100994196 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 13C8A10528C6698100994196 /* .swiftlint.yml */; };
 		13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A10A28C6827800994196 /* Roadmaps.swift */; };
@@ -88,6 +87,11 @@
 		A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */; };
 		A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CE28DA342300F2DF06 /* LikedRoadmapsView.swift */; };
 		A0B9F4D128DA342B00F2DF06 /* LikedRoadmapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4D028DA342B00F2DF06 /* LikedRoadmapsViewController.swift */; };
+		B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */; };
+		B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */; };
+		B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */; };
+		B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */; };
+		B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */; };
 		A0FD739928DA7EF00044E47C /* MyTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739828DA7EF00044E47C /* MyTripView.swift */; };
 		A0FD739B28DA7EF70044E47C /* MyTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739A28DA7EF70044E47C /* MyTripViewController.swift */; };
 		A0FD739D28DA7F780044E47C /* MyTripViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739C28DA7F780044E47C /* MyTripViewControllerExtension.swift */; };
@@ -160,14 +164,13 @@
 		13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+UIImage.swift"; sourceTree = "<group>"; };
 		13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImages.swift; sourceTree = "<group>"; };
 		13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignSystemImages.swift; sourceTree = "<group>"; };
-		13BD500028DA286600C0EA7C /* IconSubtitleComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSubtitleComponentView.swift; sourceTree = "<group>"; };
 		13BD500528DA28D600C0EA7C /* NewActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewController.swift; sourceTree = "<group>"; };
-		13BD500728DA28E500C0EA7C /* NewActivitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivitView.swift; sourceTree = "<group>"; };
+		13BD500728DA28E500C0EA7C /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
 		13BD500A28DA297500C0EA7C /* SignInWithAppleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleManager.swift; sourceTree = "<group>"; };
 		13BD500B28DA297500C0EA7C /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		13BD500C28DA297500C0EA7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		13BD500D28DA297500C0EA7C /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		13BD501328DA2A8300C0EA7C /* StackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTableViewCell.swift; sourceTree = "<group>"; };
+		13BD501328DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryActivityCollectionViewCell.swift; sourceTree = "<group>"; };
 		13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		13C8A10528C6698100994196 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		13C8A10A28C6827800994196 /* Roadmaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmaps.swift; sourceTree = "<group>"; };
@@ -224,6 +227,11 @@
 		A0FD739E28DA82250044E47C /* InfoTripCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTripCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0FD73A428DBA76E0044E47C /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2717F6A055C734D418E1360 /* Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerTableViewCell.swift; sourceTree = "<group>"; };
+		B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
+		B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
+		B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNewActivityViewController.swift; sourceTree = "<group>"; };
+		B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		B078F21228C27F2000D46F61 /* macroChallengeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macroChallengeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B078F21528C27F2000D46F61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B078F21728C27F2000D46F61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -355,6 +363,7 @@
 			children = (
 				13BD500528DA28D600C0EA7C /* NewActivityViewController.swift */,
 				DF2EA1BE28DE28C9002F12D8 /* ActivityDestinyViewController.swift */,
+				B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -362,8 +371,8 @@
 		13BD500428DA28CB00C0EA7C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				13BD500728DA28E500C0EA7C /* NewActivitView.swift */,
 				DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */,
+				13BD500728DA28E500C0EA7C /* NewActivityView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -382,8 +391,12 @@
 		13BD501228DA2A2600C0EA7C /* ViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				13BD501328DA2A8300C0EA7C /* StackTableViewCell.swift */,
+				13BD501328DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift */,
 				13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */,
+				B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */,
+				B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */,
+				B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */,
+				B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -613,7 +626,6 @@
 			children = (
 				1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */,
 				13F994F928D3B21800B077C0 /* RoadmapToolbar.swift */,
-				13BD500028DA286600C0EA7C /* IconSubtitleComponentView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1014,7 +1026,7 @@
 				13C8A10F28C6829100994196 /* Day.swift in Sources */,
 				13C8A11628C68B7700994196 /* DataManager.swift in Sources */,
 				13BD500628DA28D600C0EA7C /* NewActivityViewController.swift in Sources */,
-				13BD501528DA2A8300C0EA7C /* StackTableViewCell.swift in Sources */,
+				13BD501528DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift in Sources */,
 				13C8A11D28CA681C00994196 /* Coordinator.swift in Sources */,
 				13C8A13228CA6B0400994196 /* DefaultDesignPalette.swift in Sources */,
 				B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */,
@@ -1022,6 +1034,7 @@
 				B0CDF35028CFC7E90092A76C /* Category.swift in Sources */,
 				1379744328D8E56700AEA662 /* ProfileViewController.swift in Sources */,
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
+				B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */,
 				13C8A14928CFA66200994196 /* DestinyView.swift in Sources */,
 				A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */,
 				A0B9F4C928DA2A5400F2DF06 /* TermsViewController.swift in Sources */,
@@ -1030,6 +1043,7 @@
 				13C8A12128CA690500994196 /* DesignSystem.swift in Sources */,
 				A0B9F4BF28D8FB5900F2DF06 /* NotificationsView.swift in Sources */,
 				DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */,
+				B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */,
 				13C8A13828CA75EA00994196 /* DesignSystem+UIColor.swift in Sources */,
 				13F994E428D273EB00B077C0 /* NewRoadmapCoordinator.swift in Sources */,
 				13F994E928D393D900B077C0 /* DestinyViewController.swift in Sources */,
@@ -1047,6 +1061,7 @@
 				1359F15628DA48F3009509DF /* DayRepositoryClass.swift in Sources */,
 				13F994E728D393CE00B077C0 /* CategoryViewController.swift in Sources */,
 				13C8A11128C6833D00994196 /* Like.swift in Sources */,
+				B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */,
 				A0FD739B28DA7EF70044E47C /* MyTripViewController.swift in Sources */,
 				1379745428D8E6B700AEA662 /* SettingsView.swift in Sources */,
 				A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */,
@@ -1057,7 +1072,6 @@
 				A0B9F4CB28DA2E3B00F2DF06 /* EditProfileView.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
 				A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */,
-				13BD500128DA286600C0EA7C /* IconSubtitleComponentView.swift in Sources */,
 				1359F15228DA48D5009509DF /* ActivityRepositoryClass.swift in Sources */,
 				1359F15428DA48E5009509DF /* RoadmapRepositoryClass.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
@@ -1068,6 +1082,7 @@
 				1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */,
 				DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */,
 				13BD500E28DA297500C0EA7C /* SignInWithAppleManager.swift in Sources */,
+				B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */,
 				1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */,
 				13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */,
 				1379743D28D5165200AEA662 /* LocationSearchTableViewController.swift in Sources */,
@@ -1076,7 +1091,7 @@
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
 				DF2EA1BD28DE28BA002F12D8 /* ActivityDestinyView.swift in Sources */,
-				13BD500828DA28E500C0EA7C /* NewActivitView.swift in Sources */,
+				13BD500828DA28E500C0EA7C /* NewActivityView.swift in Sources */,
 				1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */,
 				A0B9F4C328D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift in Sources */,
 				1379744D28D8E5CA00AEA662 /* ExploreViewController.swift in Sources */,
@@ -1091,6 +1106,7 @@
 				DF57253D28D110E1005466D9 /* DaysView.swift in Sources */,
 				1379744A28D8E57B00AEA662 /* ProfileViewControllerExtension.swift in Sources */,
 				1379745028D8E61B00AEA662 /* ProfileView.swift in Sources */,
+				B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */,
 				13C8A11828C691F100994196 /* DataType.swift in Sources */,
 				DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */,
 				1379744828D8E57B00AEA662 /* ReviewTravelViewController.swift in Sources */,
@@ -1277,9 +1293,10 @@
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2A2JAGWQ62;
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1289,7 +1306,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm2022.macroChallengeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm.macroChallengeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1306,9 +1323,10 @@
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2A2JAGWQ62;
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1318,7 +1336,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm2022.macroChallengeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm.macroChallengeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1334,7 +1352,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R87R6SW4Y7;
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
@@ -1355,7 +1373,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R87R6SW4Y7;
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
@@ -1375,7 +1393,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R87R6SW4Y7;
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm2022.macroChallengeAppUITests;
@@ -1394,7 +1412,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R87R6SW4Y7;
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm2022.macroChallengeAppUITests;

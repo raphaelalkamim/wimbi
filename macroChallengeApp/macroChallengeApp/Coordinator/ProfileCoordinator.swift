@@ -58,6 +58,14 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "Destiny"
         navigationController.pushViewController(viewController, animated: true)
     }
+    
+    func openLocationActivity() {
+        let viewController = LocationNewActivityViewController()
+        viewController.coordinator = self
+        UIAccessibility.post(notification: .screenChanged, argument: viewController)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func settings() {
         let viewController = SettingsViewController()
         viewController.coordinator = self
