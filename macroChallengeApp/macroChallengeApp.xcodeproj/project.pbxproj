@@ -78,6 +78,9 @@
 		A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */; };
 		A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */; };
 		A0ADBA9328E21C9900A68638 /* ExploreViewController+Roadmaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADBA9228E21C9900A68638 /* ExploreViewController+Roadmaps.swift */; };
+		A0ADBA9628E2480300A68638 /* PreviewRoadmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADBA9528E2480300A68638 /* PreviewRoadmapView.swift */; };
+		A0ADBA9828E2481100A68638 /* PreviewRoadmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADBA9728E2481100A68638 /* PreviewRoadmapViewController.swift */; };
+		A0ADBA9A28E2482300A68638 /* ExploreViewController+PreviewRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADBA9928E2482300A68638 /* ExploreViewController+PreviewRoadmap.swift */; };
 		A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */; };
 		A0B9F4BF28D8FB5900F2DF06 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4BE28D8FB5900F2DF06 /* NotificationsView.swift */; };
 		A0B9F4C128D8FD5100F2DF06 /* SettingsViewController+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4C028D8FD5100F2DF06 /* SettingsViewController+Notifications.swift */; };
@@ -209,6 +212,9 @@
 		A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A0ADBA9228E21C9900A68638 /* ExploreViewController+Roadmaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreViewController+Roadmaps.swift"; sourceTree = "<group>"; };
+		A0ADBA9528E2480300A68638 /* PreviewRoadmapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRoadmapView.swift; sourceTree = "<group>"; };
+		A0ADBA9728E2481100A68638 /* PreviewRoadmapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRoadmapViewController.swift; sourceTree = "<group>"; };
+		A0ADBA9928E2482300A68638 /* ExploreViewController+PreviewRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreViewController+PreviewRoadmap.swift"; sourceTree = "<group>"; };
 		A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		A0B9F4BE28D8FB5900F2DF06 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		A0B9F4C028D8FD5100F2DF06 /* SettingsViewController+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Notifications.swift"; sourceTree = "<group>"; };
@@ -577,6 +583,7 @@
 			isa = PBXGroup;
 			children = (
 				1379744C28D8E5CA00AEA662 /* ExploreViewController.swift */,
+				A0ADBA9728E2481100A68638 /* PreviewRoadmapViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -685,6 +692,7 @@
 			isa = PBXGroup;
 			children = (
 				A0ADBA9228E21C9900A68638 /* ExploreViewController+Roadmaps.swift */,
+				A0ADBA9928E2482300A68638 /* ExploreViewController+PreviewRoadmap.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -752,6 +760,7 @@
 			isa = PBXGroup;
 			children = (
 				B0A8284928DE254F007B746F /* ExploreView.swift */,
+				A0ADBA9528E2480300A68638 /* PreviewRoadmapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1059,6 +1068,7 @@
 				13C8A12128CA690500994196 /* DesignSystem.swift in Sources */,
 				A0B9F4BF28D8FB5900F2DF06 /* NotificationsView.swift in Sources */,
 				DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */,
+				A0ADBA9628E2480300A68638 /* PreviewRoadmapView.swift in Sources */,
 				13C8A13828CA75EA00994196 /* DesignSystem+UIColor.swift in Sources */,
 				13F994E428D273EB00B077C0 /* NewRoadmapCoordinator.swift in Sources */,
 				13F994E928D393D900B077C0 /* DestinyViewController.swift in Sources */,
@@ -1090,6 +1100,8 @@
 				1359F15228DA48D5009509DF /* ActivityRepositoryClass.swift in Sources */,
 				1359F15428DA48E5009509DF /* RoadmapRepositoryClass.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
+				A0ADBA9A28E2482300A68638 /* ExploreViewController+PreviewRoadmap.swift in Sources */,
+				A0ADBA9828E2481100A68638 /* PreviewRoadmapViewController.swift in Sources */,
 				1359F15828DA48FD009509DF /* UserRepositoryClass.swift in Sources */,
 				1359F14F28DA48AF009509DF /* UserRepository.swift in Sources */,
 				B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */,

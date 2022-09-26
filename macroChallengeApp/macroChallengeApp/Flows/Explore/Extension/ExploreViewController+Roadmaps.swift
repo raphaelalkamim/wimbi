@@ -34,4 +34,9 @@ extension ExploreViewController: UICollectionViewDataSource {
             }
             return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        coordinator?.previewRoadmap()
+    }
+    
 }

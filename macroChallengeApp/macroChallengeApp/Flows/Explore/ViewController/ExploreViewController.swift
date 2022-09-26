@@ -20,9 +20,12 @@ class ExploreViewController: UIViewController {
         explorerView.bindCollectionView(delegate: self, dataSource: self)
     }
     
-    @objc
-    func addNewRoadmap() {
+    @objc func addNewRoadmap() {
         coordinator?.createNewRoadmap()
+    }
+    
+    @objc func previewRoadmap() {
+        coordinator?.previewRoadmap()
     }
     
 }
