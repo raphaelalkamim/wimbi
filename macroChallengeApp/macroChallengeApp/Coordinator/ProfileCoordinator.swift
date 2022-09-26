@@ -52,13 +52,7 @@ class ProfileCoordinator: Coordinator {
         //navigationController.present(viewController, animated: true)
         navigationController.pushViewController(viewController, animated: true)
     }
-    func startDestinyActivitie(roadmap: Roadmaps) {
-        let viewController = ActivityDestinyViewController(roadmap: roadmap)
-        viewController.coordinator = self
-        viewController.navigationItem.title = "Destiny"
-        navigationController.pushViewController(viewController, animated: true)
-    }
-    
+
     func openLocationActivity() {
         let viewController = LocationNewActivityViewController()
         viewController.coordinator = self

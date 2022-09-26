@@ -87,16 +87,16 @@
 		A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */; };
 		A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CE28DA342300F2DF06 /* LikedRoadmapsView.swift */; };
 		A0B9F4D128DA342B00F2DF06 /* LikedRoadmapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4D028DA342B00F2DF06 /* LikedRoadmapsViewController.swift */; };
-		B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */; };
-		B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */; };
-		B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */; };
-		B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */; };
-		B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */; };
 		A0FD739928DA7EF00044E47C /* MyTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739828DA7EF00044E47C /* MyTripView.swift */; };
 		A0FD739B28DA7EF70044E47C /* MyTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739A28DA7EF70044E47C /* MyTripViewController.swift */; };
 		A0FD739D28DA7F780044E47C /* MyTripViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739C28DA7F780044E47C /* MyTripViewControllerExtension.swift */; };
 		A0FD739F28DA82250044E47C /* InfoTripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739E28DA82250044E47C /* InfoTripCollectionViewCell.swift */; };
 		A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD73A428DBA76E0044E47C /* CalendarCollectionViewCell.swift */; };
+		B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */; };
+		B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */; };
+		B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */; };
+		B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */; };
+		B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5628DBA795004859F8 /* AddressTableViewCell.swift */; };
 		B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21528C27F2000D46F61 /* AppDelegate.swift */; };
 		B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F21728C27F2000D46F61 /* SceneDelegate.swift */; };
 		B078F22028C27F2000D46F61 /* macroChallengeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B078F21E28C27F2000D46F61 /* macroChallengeApp.xcdatamodeld */; };
@@ -111,7 +111,6 @@
 		DF2643AB28DB9CC500053180 /* UserRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AA28DB9CC500053180 /* UserRoadmap.swift */; };
 		DF2643AD28DB9EAD00053180 /* RoadmapDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */; };
 		DF2EA1BD28DE28BA002F12D8 /* ActivityDestinyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */; };
-		DF2EA1BF28DE28C9002F12D8 /* ActivityDestinyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2EA1BE28DE28C9002F12D8 /* ActivityDestinyViewController.swift */; };
 		DF57253D28D110E1005466D9 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57253C28D110E1005466D9 /* DaysView.swift */; };
 		DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */; };
 		DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */; };
@@ -253,7 +252,6 @@
 		DF2643AA28DB9CC500053180 /* UserRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoadmap.swift; sourceTree = "<group>"; };
 		DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapDTO.swift; sourceTree = "<group>"; };
 		DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDestinyView.swift; sourceTree = "<group>"; };
-		DF2EA1BE28DE28C9002F12D8 /* ActivityDestinyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDestinyViewController.swift; sourceTree = "<group>"; };
 		DF57253C28D110E1005466D9 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
 		DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -362,7 +360,6 @@
 			isa = PBXGroup;
 			children = (
 				13BD500528DA28D600C0EA7C /* NewActivityViewController.swift */,
-				DF2EA1BE28DE28C9002F12D8 /* ActivityDestinyViewController.swift */,
 				B05A9C5428DBA53D004859F8 /* LocationNewActivityViewController.swift */,
 			);
 			path = ViewController;
@@ -1111,7 +1108,6 @@
 				DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */,
 				1379744828D8E57B00AEA662 /* ReviewTravelViewController.swift in Sources */,
 				13F994FA28D3B21900B077C0 /* RoadmapToolbar.swift in Sources */,
-				DF2EA1BF28DE28C9002F12D8 /* ActivityDestinyViewController.swift in Sources */,
 				13BD4FFB28D90EF700C0EA7C /* DesignSystem+UIImage.swift in Sources */,
 				13C8A12B28CA6A0A00994196 /* CurrentCoordinator.swift in Sources */,
 				A0FD739F28DA82250044E47C /* InfoTripCollectionViewCell.swift in Sources */,

@@ -12,7 +12,7 @@ import MapKit
 
 class LocationNewActivityViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
-    let destinyView = DestinyView(frame: .zero)
+    let destinyView = ActivityDestinyView(frame: .zero)
     let locationManager = CLLocationManager()
     let locationSearchTable = LocationSearchTableViewController()
     var searchedText: String = ""
