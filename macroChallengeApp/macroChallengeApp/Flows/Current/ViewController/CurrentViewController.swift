@@ -10,6 +10,7 @@ import UIKit
 class CurrentViewController: UIViewController {
     weak var coordinator: CurrentCoordinator?
     let currentEmptyView = CurrentEmptyState()
+    let currentCountDownView = CurrentCountDown()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,11 +21,19 @@ class CurrentViewController: UIViewController {
 
 extension CurrentViewController {
     func setup() {
-        self.view.addSubview(currentEmptyView)
-        setupConstraints()
+        setupCountDownView()
+        //setupEmptyView()
     }
     
-    func setupConstraints() {
+    func setupCountDownView() {
+        self.view.addSubview(currentCountDownView)
+        currentCountDownView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    func setupEmptyView() {
+        self.view.addSubview(currentEmptyView)
         currentEmptyView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
