@@ -28,7 +28,7 @@ extension MyTripViewController: UICollectionViewDataSource {
         if collectionView == myTripView.infoTripCollectionView {
             return 5
         } else {
-            return 14
+            return Int(roadmap.dayCount)
         }
     }
     
@@ -43,6 +43,7 @@ extension MyTripViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell else {
                 preconditionFailure("Cell not find")
             }
+            cell.setupDays(startDay: roadmap.date ?? Date(), indexPath: indexPath.row)
             return cell
         }
     }
