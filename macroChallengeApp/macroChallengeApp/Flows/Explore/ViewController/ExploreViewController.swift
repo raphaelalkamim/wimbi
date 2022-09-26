@@ -16,6 +16,8 @@ class ExploreViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewRoadmap))
+        self.setupExplorerView()
+        explorerView.bindCollectionView(delegate: self, dataSource: self)
     }
     
     @objc
@@ -23,14 +25,4 @@ class ExploreViewController: UIViewController {
         coordinator?.createNewRoadmap()
     }
     
-}
-
-extension ExploreViewController {
-    func setup() {
-        
-    }
-    
-    func setupConstraints() {
-        
-    }
 }

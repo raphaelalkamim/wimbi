@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class ExploreView: UIView {
     let designSystem = DefaultDesignSystem.shared
@@ -17,7 +18,7 @@ class ExploreView: UIView {
         super.init(frame: frame)
         self.searchBar = UISearchBar()
         self.searchController = UISearchController()
-        setup()
+        self.setup()
     }
     
     required init?(coder: NSCoder) {
@@ -44,12 +45,16 @@ class ExploreView: UIView {
     }()
     
     lazy var roadmapsCollectionView: UICollectionView = {
-        let collectionView = UICollectionView()
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 350, height: 292)
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collectionView.register(RoadmapExploreCollectionViewCell.self, forCellWithReuseIdentifier: RoadmapExploreCollectionViewCell.identifier)
+        collectionView.isUserInteractionEnabled = true
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
-}
-
-extension ExploreView {
+    
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)
@@ -72,9 +77,17 @@ extension ExploreView {
             make.bottom.equalTo(roadmapsCollectionView.snp.bottom)
             make.left.right.equalTo(self)
         }
+        
+        roadmapsCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.topMargin)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.height.equalTo(1500)
+            make.bottom.equalTo(scrollView.snp.bottom)
+        }
     }
     
-    func addSearchBarNavigation(navigation:UINavigationItem) {
+    func addSearchBarNavigation(navigation: UINavigationItem) {
         navigation.searchController = searchController
         navigation.title = "Explorer"
         self.searchController?.navigationController?.navigationBar.prefersLargeTitles = true
@@ -83,9 +96,16 @@ extension ExploreView {
     func setupSearchController(roadmapsSearchTable: UITableViewController) {
         searchController = UISearchController(searchResultsController: roadmapsSearchTable)
         guard let searchController = searchController else { return }
-        //searchController.searchResultsUpdater = roadmapsSearchTable
+        //        searchController.searchResultsUpdater = roadmapsSearchTable
         searchBar = searchController.searchBar
     }
+    
 }
 
-
+extension ExploreView {
+    func bindCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+        roadmapsCollectionView.delegate = delegate
+        roadmapsCollectionView.dataSource = dataSource
+    }
+    
+}

@@ -14,10 +14,10 @@ class CategoryViewController: UIViewController {
     
     let categoryView = CategoryView()
     let categories: [Category] =
-    [Category(title: "Camp", subtitle: "Descrição aqui", icon: "categoryCamp"),
-     Category(title: "Beach", subtitle: "Descrição aqui", icon: "categoryBeach"),
-     Category(title: "Mountain", subtitle: "Descrição aqui", icon: "categoryMountain"),
-     Category(title: "City", subtitle: "Descrição aqui", icon: "categoryCity")]
+    [Category(title: "Camp", subtitle: "Uma viagem acolhedora com mais contato com a natureza.", icon: "categoryCamp"),
+     Category(title: "Beach", subtitle: "Uma viagem para aproveitar e se refrescar em um bom dia ensolarado.", icon: "categoryBeach"),
+     Category(title: "Mountain", subtitle: "Uma viagem aconchegante, com temperaturas mais baixas para aproveitar a vista.", icon: "categoryMountain"),
+     Category(title: "City", subtitle: "Uma viagem imersiva nos hábitos de outras cidades ou países.", icon: "categoryCity")]
     
     var roadmap = Roadmaps()
     
