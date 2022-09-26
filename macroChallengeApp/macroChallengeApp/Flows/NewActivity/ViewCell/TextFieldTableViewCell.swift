@@ -26,7 +26,6 @@ class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     
-    
     lazy var title: UITextField = {
         let textField = UITextField()
         textField.textColor = designSystem.palette.textPrimary

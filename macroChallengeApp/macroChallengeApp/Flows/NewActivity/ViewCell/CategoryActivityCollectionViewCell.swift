@@ -59,13 +59,11 @@ extension CategoryActivityCollectionViewCell {
         }
     }
     
-    func selectedBackgroundView() {
-        icon.layer.borderWidth = 1.5
-        icon.layer.borderColor = designSystem.palette.caption.cgColor
+    func selectedBackgroundView(button: String) {
+        icon.image = UIImage(named: "\(button)Selected")
     }
     
-    func notSelectedBackgroundView() {
-        icon.layer.borderWidth = 0
-        
+    func notSelectedBackgroundView(button: String) {
+        icon.image = UIImage(named: "\(button)")
     }
 }
