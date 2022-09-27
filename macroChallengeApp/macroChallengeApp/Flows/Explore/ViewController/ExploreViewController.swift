@@ -16,20 +16,18 @@ class ExploreViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         
-        let addRoadMap = UIAction(title: "New Trip") { (action) in
+        let addRoadMap = UIAction(title: "New trip", image: UIImage(named: "plus")) { _ in
             self.addNewRoadmap()
             print("Users action was tapped")
         }
         
-        let insertRoadMap = UIAction(title: "Existing Trip") { (action) in
-            
+        let insertRoadMap = UIAction(title: "Existing trip", image: UIImage(named: "heart")) { _ in
             print("Add User action was tapped")
         }
         
-        
         let menuBarButton = UIBarButtonItem(
             title: "Add",
-            image: UIImage(systemName:"plus"),
+            image: UIImage(systemName: "plus"),
             primaryAction: nil,
             menu: UIMenu(title: "", children: [addRoadMap, insertRoadMap])
         )
@@ -39,7 +37,7 @@ class ExploreViewController: UIViewController {
         explorerView.bindCollectionView(delegate: self, dataSource: self)
     }
     
-    @objc func addNewRoadmap() {
+    func addNewRoadmap() {
         coordinator?.createNewRoadmap()
     }
     
