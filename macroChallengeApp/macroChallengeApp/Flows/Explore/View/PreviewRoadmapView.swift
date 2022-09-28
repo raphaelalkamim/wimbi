@@ -63,7 +63,7 @@ class PreviewRoadmapView: UIView {
         collection.isPagingEnabled = true
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .backgroundCell
         collection.layer.cornerRadius = 20
@@ -109,6 +109,7 @@ class PreviewRoadmapView: UIView {
         contentView.addSubview(calendarCollectionView)
         contentView.addSubview(activitiesTableView)
         contentView.addSubview(cover)
+        cover.layer.cornerRadius = 16
         contentView.addSubview(title)
         contentView.addSubview(infoTitle)
         contentView.addSubview(calendarTitle)
@@ -130,16 +131,16 @@ class PreviewRoadmapView: UIView {
         }
         
         cover.snp.makeConstraints { make in
-            make.top.equalTo(scrollView.snp.top).inset(-150)
-            make.left.right.equalTo(self)
-            make.height.equalTo(270)
+            make.top.equalTo(scrollView.snp.top).inset(16)
+            make.left.right.equalTo(self).inset(16)
+            make.height.equalTo(200)
         }
         
         title.snp.makeConstraints { make in
             make.top.equalTo(cover.snp.bottom).inset(designSystem.spacing.xLargeNegative)
             make.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
             make.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
-
+            
         }
         
         infoTitle.snp.makeConstraints { make in
@@ -148,7 +149,7 @@ class PreviewRoadmapView: UIView {
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             
         }
-    
+        
         infoTripCollectionView.snp.makeConstraints { make in
             make.top.equalTo(infoTitle.snp.bottom)
             make.leading.equalTo(contentView.snp.leading)
@@ -181,9 +182,7 @@ class PreviewRoadmapView: UIView {
             make.trailing.equalTo(contentView.snp.trailing)
             make.height.equalTo(400)
             make.bottom.equalTo(scrollView.snp.bottom)
-
         }
-        
     }
 }
 
