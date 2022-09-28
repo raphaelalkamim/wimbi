@@ -30,13 +30,7 @@ class CategoryView: UIView {
     
     private lazy var flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 16
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(
-           top: verticalInset,
-           left: horizontalInset,
-           bottom: verticalInset,
-           right: horizontalInset)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         return layout
     }()
     
@@ -44,14 +38,14 @@ class CategoryView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.register(CategoryViewCell.self, forCellWithReuseIdentifier: CategoryViewCell.identifier)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.alwaysBounceHorizontal = true
+        collectionView.isScrollEnabled = false
         collectionView.backgroundColor = designSystem.palette.backgroundPrimary
         return collectionView
     }()
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let height = 80.0
+        let height = 120.0
         let width = collectionView.frame.width
         let itemSize = CGSize(width: width, height: height)
         flowLayout.itemSize = itemSize
@@ -69,6 +63,7 @@ extension CategoryView {
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.centerX.equalToSuperview()
+            make.topMargin.equalToSuperview()
         }
     }
     
