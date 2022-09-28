@@ -16,25 +16,9 @@ class ExploreViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         
-        let addRoadMap = UIAction(title: "New trip", image: UIImage(named: "plus")) { _ in
-            self.addNewRoadmap()
-            print("Users action was tapped")
-        }
-        
-        let insertRoadMap = UIAction(title: "Existing trip", image: UIImage(named: "heart")) { _ in
-            print("Add User action was tapped")
-        }
-        
-        let menuBarButton = UIBarButtonItem(
-            title: "Add",
-            image: UIImage(systemName: "plus"),
-            primaryAction: nil,
-            menu: UIMenu(title: "", children: [addRoadMap, insertRoadMap])
-        )
-        
-        self.navigationItem.rightBarButtonItem = menuBarButton
-        self.setupExplorerView()
         explorerView.bindCollectionView(delegate: self, dataSource: self)
+        self.setContextMenu()
+        self.setupExplorerView()
     }
     
     func addNewRoadmap() {
