@@ -31,8 +31,6 @@ class ExploreView: UIView {
     
     lazy var searchController: UISearchController? = {
         let searchController = UISearchController()
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.obscuresBackgroundDuringPresentation = true
         return searchController
     }()
     
@@ -103,9 +101,11 @@ class ExploreView: UIView {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = true
         
+        searchController.searchBar.showsBookmarkButton = true
+        searchController.searchBar.setImage(UIImage(systemName: "slider.horizontal.3"), for: .bookmark, state: .normal)
+        
         searchBar = searchController.searchBar
         searchBar.placeholder = "Para onde você vai?"
-        searchBar.sizeToFit()
     }
 }
 

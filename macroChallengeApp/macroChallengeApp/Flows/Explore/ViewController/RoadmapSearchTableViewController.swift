@@ -42,6 +42,12 @@ class RoadmapSearchTableViewController: UITableViewController {
 
 extension RoadmapSearchTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        if searchController.isActive {
+            searchController.searchBar.showsBookmarkButton = false
+        } else {
+            searchController.searchBar.showsBookmarkButton = true
+        }
+        
         guard let searchBarText = searchController.searchBar.text?.lowercased() else { return }
                 
         DataManager.shared.getPublicRoadmaps({ roadmaps in

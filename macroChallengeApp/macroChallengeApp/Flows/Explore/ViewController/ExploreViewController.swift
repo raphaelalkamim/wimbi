@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExploreViewController: UIViewController, UISearchBarDelegate {
+class ExploreViewController: UIViewController {
     weak var coordinator: ExploreCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let locationSearchTable = RoadmapSearchTableViewController()
@@ -63,4 +63,10 @@ class ExploreViewController: UIViewController, UISearchBarDelegate {
         coordinator?.previewRoadmap()
     }
     
+}
+
+extension ExploreViewController: UISearchBarDelegate {
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        print("filtro")
+    }
 }
