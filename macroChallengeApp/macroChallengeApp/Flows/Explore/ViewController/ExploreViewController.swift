@@ -19,10 +19,6 @@ class ExploreViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         
-        let addRoadMap = UIAction(title: "New trip", image: UIImage(named: "plus")) { _ in
-            self.addNewRoadmap()
-            print("Users action was tapped")
-        }
         
         let insertRoadMap = UIAction(title: "Existing trip", image: UIImage(named: "heart")) { _ in
             print("Add User action was tapped")
@@ -53,6 +49,9 @@ class ExploreViewController: UIViewController {
             self.roadmaps = roadmaps
             self.explorerView.roadmapsCollectionView.reloadData()
         })
+        explorerView.bindCollectionView(delegate: self, dataSource: self)
+        self.setContextMenu()
+        self.setupExplorerView()
     }
     
     func addNewRoadmap() {
