@@ -50,6 +50,7 @@ extension CalendarCollectionViewCell {
         contentView.addSubview(day)
         contentView.addSubview(dayButton)
         self.layer.cornerRadius = 13
+        //self.dayButton.addTarget(self, action: #selector(dayAction), for: .touchDown)
         setupConstraints()
         
     }
@@ -73,9 +74,39 @@ extension CalendarCollectionViewCell {
         self.dayButton.setTitleColor(.white, for: .normal)
     }
     
-    func notSelectedBackgroundView() {
-        self.dayButton.backgroundColor = .clear
-        self.dayButton.setTitleColor(.textPrimary, for: .normal)
+    func setupDays(startDay: Date, indexPath: Int) {
+        let calendar = Calendar.current
+        let startDay = calendar.startOfDay(for: startDay)
+        let dayOfWeek = setupDayWeek(day: calendar.component(.weekday, from: startDay), indexPath: indexPath)
+        
+        let dayNumber = setupDayNumber(day: calendar.component(.day, from: startDay), indexPath: indexPath)
 
+        dayButton.setTitle(String(dayNumber), for: .normal)
+        day.text = String(dayOfWeek)
+    }
+    func setupDayWeek(day: Int, indexPath: Int) -> String {
+        let weekDays = ["SUN", "TUE", "WED", "THUR", "FRI", "SAT", "SUN"]
+        for integer in 0..<weekDays.count {
+            if integer == indexPath {
+                return weekDays[integer]
+            }
+        }
+        return "SUN"
+    }
+    func setupDayNumber(day: Int, indexPath: Int) -> Int {
+        return day + indexPath
+    }
+    @objc func dayAction() {
+        print("apertei")
+        dayButton.backgroundColor = .accent
+        dayButton.setTitleColor(.white, for: .normal)
+    }
+    func selectedButton() {
+        dayButton.backgroundColor = designSystem.palette.accent
+        dayButton.setTitleColor(.white, for: .normal)
+    }
+    func disable() {
+        dayButton.backgroundColor = designSystem.palette.backgroundPrimary
+        dayButton.setTitleColor(designSystem.palette.textPrimary, for: .normal)
     }
 }

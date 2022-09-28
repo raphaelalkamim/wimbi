@@ -17,10 +17,18 @@ class MyTripViewController: UIViewController {
                                  Activity(id: 3, name: "Dormir", category: "Comida", location: "fdsa", hour: "12:00", budget: 123, day: Day()),
                                  Activity(id: 4, name: "Respirar", category: "Comida", location: "fdsa", hour: "14:00", budget: 123, day: Day())]
     
+    var roadmap = RoadmapLocal()
+    var selectedDays: [Bool] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupMyTripView()
+        
+        self.selectedDays = Array(repeating: false, count: Int(roadmap.dayCount))
+        self.selectedDays[0] = true
+        
+        myTripView.setupContent(roadmap: roadmap)
         myTripView.bindCollectionView(delegate: self, dataSource: self)
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
         myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
