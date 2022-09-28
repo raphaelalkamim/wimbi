@@ -67,19 +67,6 @@ extension MyTripViewController: UICollectionViewDataSource {
             return cell
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
-            cell.selectedBackgroundView()
-        }
-
-    }
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
-            cell.notSelectedBackgroundView()
-        }
-
-    }
 }
 // MARK: Table View Activities
 extension MyTripViewController: UITableViewDelegate {
