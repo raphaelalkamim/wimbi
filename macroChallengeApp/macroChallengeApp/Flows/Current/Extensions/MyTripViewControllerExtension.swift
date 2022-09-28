@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// MARK: Setup
 extension MyTripViewController {
     func setupMyTripView() {
         view.addSubview(myTripView)
@@ -20,17 +21,19 @@ extension MyTripViewController {
     }
 }
 
+// MARK: Collections
 extension MyTripViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
-            cell.selectedButton(indexPath: indexPath.row, daysNumber: Int(roadmap.dayCount))
+            cell.selectedButton()
+            // mudar a view de atividades
         }
         
+        // desabilita todas as celulas que nao sao a que recebeu o clique
         for index in 0..<roadmap.dayCount where index != indexPath.row {
             let newIndexPath = IndexPath(item: Int(index), section: 0)
             if let cell = collectionView.cellForItem(at: newIndexPath) as? CalendarCollectionViewCell {
-                cell.dayButton.backgroundColor = designSystem.palette.backgroundPrimary
-                cell.dayButton.setTitleColor(designSystem.palette.textPrimary, for: .normal)
+                cell.disable()
             }
         }
     }
@@ -58,12 +61,11 @@ extension MyTripViewController: UICollectionViewDataSource {
                 preconditionFailure("Cell not find")
             }
             cell.setupDays(startDay: roadmap.date ?? Date(), indexPath: indexPath.row)
-            //cell.desable(indexPath: indexPath.row, daysNumber: Int(roadmap.dayCount))
             return cell
         }
     }
 }
-
+// MARK: Table View Activities
 extension MyTripViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
@@ -78,7 +80,6 @@ extension MyTripViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCell.identifier, for: indexPath) as? ActivityTableViewCell else {
             fatalError("TableCell not found")
-            
         }
         return cell
     }

@@ -99,14 +99,12 @@ extension CalendarCollectionViewCell {
         dayButton.backgroundColor = .accent
         dayButton.setTitleColor(.white, for: .normal)
     }
-    func selectedButton(indexPath: Int, daysNumber: Int) {
+    func selectedButton() {
         dayButton.backgroundColor = designSystem.palette.accent
         dayButton.setTitleColor(.white, for: .normal)
     }
-    func desable(indexPath: Int, daysNumber: Int) {
-                for index in 0..<daysNumber where index == indexPath {
-                    dayButton.backgroundColor = designSystem.palette.backgroundPrimary
-                    dayButton.setTitleColor(designSystem.palette.textPrimary, for: .normal)
-                }
+    func disable() {
+        dayButton.backgroundColor = designSystem.palette.backgroundPrimary
+        dayButton.setTitleColor(designSystem.palette.textPrimary, for: .normal)
     }
 }
