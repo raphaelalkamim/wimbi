@@ -67,6 +67,19 @@ extension MyTripViewController: UICollectionViewDataSource {
             return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
+            cell.selectedBackgroundView()
+        }
+
+    }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
+            cell.notSelectedBackgroundView()
+        }
+
+    }
 }
 // MARK: Table View Activities
 extension MyTripViewController: UITableViewDelegate {
@@ -77,13 +90,38 @@ extension MyTripViewController: UITableViewDelegate {
 
 extension MyTripViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        return activites.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCell.identifier, for: indexPath) as? ActivityTableViewCell else {
             fatalError("TableCell not found")
         }
+        cell.activityTitle.text = activites[indexPath.row].name
+        cell.activityInfo.text = "\(activites[indexPath.row].hour)  •  \(activites[indexPath.row].budget)"
+        cell.activityTitle.text = activites[indexPath.row].name
+        
         return cell
+    }
+}
+
+extension MyTripViewController: UITableViewDragDelegate {
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let dragItem = UIDragItem(itemProvider: NSItemProvider())
+        dragItem.localObject = activites[indexPath.row]
+        return [dragItem]
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let copyArray = activites
+
+        let mover = activites.remove(at: sourceIndexPath.row)
+        activites.insert(mover, at: destinationIndexPath.row)
+
+        for index in 0..<activites.count {
+            activites[index].hour = copyArray[index].hour
+        }
+        
+        tableView.reloadData()
     }
 }

@@ -67,9 +67,11 @@ extension CalendarCollectionViewCell {
             make.top.equalTo(day.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(32)
-            
         }
-        
+    }
+    func selectedBackgroundView() {
+        self.dayButton.backgroundColor = .accent
+        self.dayButton.setTitleColor(.white, for: .normal)
     }
     
     func setupDays(startDay: Date, indexPath: Int) {

@@ -11,6 +11,7 @@ class ProfileCoordinator: Coordinator {
     var childCoordinators: [Coordinator]
     
     var navigationController: UINavigationController
+    weak var delegate: PresentationCoordinatorDelegate?
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -44,8 +45,23 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = roadmap.name
         navigationController.pushViewController(viewController, animated: true)
     }
-    func openLocationActivity() {
+    func startViewRoadmap() {
+        let viewController = MyTripViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "Egito"
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    func startActivity() {
+        let viewController = NewActivityViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "New Activity"
+        //navigationController.present(viewController, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func openLocationActivity(delegate: ChangeTextTableDelegate) {
         let viewController = LocationNewActivityViewController()
+        viewController.delegate = delegate
         viewController.coordinator = self
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
@@ -56,6 +72,10 @@ class ProfileCoordinator: Coordinator {
         viewController.coordinator = self
         viewController.navigationItem.title = "Settings"
         navigationController.pushViewController(viewController, animated: true)
+    }
+    func backPage() {
+        navigationController.popViewController(animated: true)
+        delegate?.didFinishPresent(of: self, isNewRoadmap: false)
     }
     
     func setupBarAppearence() {
