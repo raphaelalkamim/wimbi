@@ -1,5 +1,5 @@
 //
-//  ExploreViewController+ContextMenu.swift
+//  ProfileViewController+ContextMenu.swift
 //  macroChallengeApp
 //
 //  Created by Raphael Alkamim on 28/09/22.
@@ -8,26 +8,20 @@
 import Foundation
 import UIKit
 
-extension ExploreViewController {
-func setContextMenu() {
+extension ProfileViewController {
+    func setContextMenu() {
         let addRoadMap = UIAction(title: "New trip", image: UIImage(systemName: "pencil")) { _ in
-            self.addNewRoadmap()
+            self.coordinator?.newRoadmap()
         }
         
         let insertRoadMap = UIAction(title: "Existing trip", image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis")) { _ in
             self.setUIAlert()
         }
         
-        let menuBarButton = UIBarButtonItem(
-            title: "Add",
-            image: UIImage(systemName: "plus"),
-            primaryAction: nil,
-            menu: UIMenu(title: "", children: [addRoadMap, insertRoadMap])
-        )
-        
-        self.navigationItem.rightBarButtonItem = menuBarButton
+        profileView.addButton.showsMenuAsPrimaryAction = true
+        profileView.addButton.menu = UIMenu(title: "", children: [addRoadMap, insertRoadMap])
     }
-
+    
     func setUIAlert() {
         var textField = UITextField()
         
@@ -58,5 +52,4 @@ func setContextMenu() {
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
-
 }

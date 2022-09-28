@@ -16,6 +16,7 @@ class ExploreViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         
+        
         explorerView.bindCollectionView(delegate: self, dataSource: self)
         self.setContextMenu()
         self.setupExplorerView()
