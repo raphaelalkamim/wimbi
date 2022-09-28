@@ -106,7 +106,7 @@
 		B078F23A28C27F2500D46F61 /* macroChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */; };
 		B078F23C28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */; };
 		B0AC251628E21DEB00F38525 /* CurrentEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */; };
-		B0C5ACE128E22F5A0096B6A3 /* CurrentCountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5ACE028E22F5A0096B6A3 /* CurrentCountDown.swift */; };
+		B0B17FE528E4DABF0010B00C /* CurrentCountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */; };
 		B0CDF35028CFC7E90092A76C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CDF34F28CFC7E90092A76C /* Category.swift */; };
 		B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */; };
 		B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461628CFA85E00D62AF1 /* CategoryView.swift */; };
@@ -245,7 +245,7 @@
 		B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITests.swift; sourceTree = "<group>"; };
 		B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentEmptyState.swift; sourceTree = "<group>"; };
-		B0C5ACE028E22F5A0096B6A3 /* CurrentCountDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrentCountDown.swift; path = ../../../../../../../../Downloads/CurrentCountDown.swift; sourceTree = "<group>"; };
+		B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCountDown.swift; sourceTree = "<group>"; };
 		B0CDF34F28CFC7E90092A76C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
 		B0E2461628CFA85E00D62AF1 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -685,7 +685,7 @@
 			children = (
 				A0FD739828DA7EF00044E47C /* MyTripView.swift */,
 				B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */,
-				B0C5ACE028E22F5A0096B6A3 /* CurrentCountDown.swift */,
+				B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1019,6 +1019,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13F994EB28D393E500B077C0 /* DaysViewController.swift in Sources */,
+				B0B17FE528E4DABF0010B00C /* CurrentCountDown.swift in Sources */,
 				135AC6A528DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift in Sources */,
 				13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */,
 				13C8A13628CA6C1100994196 /* TextStyle.swift in Sources */,
@@ -1052,7 +1053,6 @@
 				A0FD739D28DA7F780044E47C /* MyTripViewControllerExtension.swift in Sources */,
 				1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */,
 				B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */,
-				B0C5ACE128E22F5A0096B6A3 /* CurrentCountDown.swift in Sources */,
 				A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */,
 				13C8A13028CA6AF400994196 /* DefaultDesignSystem.swift in Sources */,
 				1379745328D8E6B700AEA662 /* SettingsViewController.swift in Sources */,
