@@ -112,6 +112,8 @@
 		B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461628CFA85E00D62AF1 /* CategoryView.swift */; };
 		DF2643AB28DB9CC500053180 /* UserRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AA28DB9CC500053180 /* UserRoadmap.swift */; };
 		DF2643AD28DB9EAD00053180 /* RoadmapDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */; };
+		DF2AA89228E4C6B7005FFA03 /* RoadmapSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2AA89128E4C6B7005FFA03 /* RoadmapSearchTableViewController.swift */; };
+		DF2AA89428E4D6FF005FFA03 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2AA89328E4D6FF005FFA03 /* SearchResultTableViewCell.swift */; };
 		DF57253D28D110E1005466D9 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57253C28D110E1005466D9 /* DaysView.swift */; };
 		DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */; };
 		DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */; };
@@ -254,6 +256,8 @@
 		DB4996FD9467D4E74060F7D0 /* Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2643AA28DB9CC500053180 /* UserRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoadmap.swift; sourceTree = "<group>"; };
 		DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapDTO.swift; sourceTree = "<group>"; };
+		DF2AA89128E4C6B7005FFA03 /* RoadmapSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapSearchTableViewController.swift; sourceTree = "<group>"; };
+		DF2AA89328E4D6FF005FFA03 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		DF57253C28D110E1005466D9 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
 		DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -584,6 +588,7 @@
 			children = (
 				1379744C28D8E5CA00AEA662 /* ExploreViewController.swift */,
 				A0ADBA9728E2481100A68638 /* PreviewRoadmapViewController.swift */,
+				DF2AA89128E4C6B7005FFA03 /* RoadmapSearchTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -769,6 +774,7 @@
 			isa = PBXGroup;
 			children = (
 				B0A8284B28DE5228007B746F /* RoadmapExploreCollectionViewCell.swift */,
+				DF2AA89328E4D6FF005FFA03 /* SearchResultTableViewCell.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -1054,6 +1060,7 @@
 				13C8A11D28CA681C00994196 /* Coordinator.swift in Sources */,
 				13C8A13228CA6B0400994196 /* DefaultDesignPalette.swift in Sources */,
 				B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */,
+				DF2AA89228E4C6B7005FFA03 /* RoadmapSearchTableViewController.swift in Sources */,
 				13EC5C5228DB8FF0005F7128 /* DesignDefaultImages.swift in Sources */,
 				B0CDF35028CFC7E90092A76C /* Category.swift in Sources */,
 				B0A8284A28DE254F007B746F /* ExploreView.swift in Sources */,
@@ -1107,6 +1114,7 @@
 				B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */,
 				DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */,
 				1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */,
+				DF2AA89428E4D6FF005FFA03 /* SearchResultTableViewCell.swift in Sources */,
 				DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */,
 				13BD500E28DA297500C0EA7C /* SignInWithAppleManager.swift in Sources */,
 				1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */,

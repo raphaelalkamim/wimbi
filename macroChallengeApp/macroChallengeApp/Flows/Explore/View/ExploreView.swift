@@ -16,7 +16,6 @@ class ExploreView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.searchBar = UISearchBar()
         self.searchController = UISearchController()
         self.setup()
     }
@@ -27,8 +26,6 @@ class ExploreView: UIView {
     
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.placeholder = "Where are you want to go?"
-        searchBar.sizeToFit()
         return searchBar
     }()
     
@@ -41,6 +38,7 @@ class ExploreView: UIView {
     
     lazy var filterButton: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .red
         return button
     }()
     
@@ -84,24 +82,31 @@ class ExploreView: UIView {
             make.top.equalTo(contentView.snp.topMargin)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
-            make.height.equalTo(4000)
             make.bottom.equalTo(scrollView.snp.bottom)
+            make.height.equalTo(1000)
         }
     }
     
     func addSearchBarNavigation(navigation: UINavigationItem) {
         navigation.searchController = searchController
-        navigation.title = "Explore"
-        self.searchController?.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func setupSearchController(roadmapsSearchTable: UITableViewController) {
-        searchController = UISearchController(searchResultsController: roadmapsSearchTable)
-        guard let searchController = searchController else { return }
-        //        searchController.searchResultsUpdater = roadmapsSearchTable
+    func setupSearchController(locationTable: RoadmapSearchTableViewController) {
+        // searchBar
+        searchController = UISearchController(searchResultsController: locationTable)
+        guard let searchController = searchController else {
+            return
+        }
+        
+        searchController.searchResultsUpdater = locationTable
+        
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = true
+        
         searchBar = searchController.searchBar
+        searchBar.placeholder = "Para onde você vai?"
+        searchBar.sizeToFit()
     }
-    
 }
 
 extension ExploreView {

@@ -25,14 +25,24 @@ extension ExploreViewController: UICollectionViewDelegate {
 
 extension ExploreViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 13
+        return roadmaps.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoadmapExploreCollectionViewCell.identifier, for: indexPath) as? RoadmapExploreCollectionViewCell else {
-                preconditionFailure("Cell not find")
-            }
-            return cell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoadmapExploreCollectionViewCell.identifier, for: indexPath) as? RoadmapExploreCollectionViewCell else {
+            preconditionFailure("Cell not find")
+        }
+        
+        if !roadmaps.isEmpty {
+            let roadmap = roadmaps[indexPath.row]
+            cell.cover.image = UIImage(named: roadmap.imageId)
+            cell.title.text = roadmap.name
+            cell.subtitle.text = "\(roadmap.peopleCount) viajante  •  \(roadmap.dayCount) dias"
+            cell.costByPerson.text = "R$ \(roadmap.budget / 1000) mil por pessoa"
+            cell.categoryName.text = roadmap.category
+        }
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

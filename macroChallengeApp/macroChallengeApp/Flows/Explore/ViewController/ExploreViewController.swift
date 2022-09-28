@@ -7,10 +7,13 @@
 
 import UIKit
 
-class ExploreViewController: UIViewController {
+class ExploreViewController: UIViewController, UISearchBarDelegate {
     weak var coordinator: ExploreCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
+    let locationSearchTable = RoadmapSearchTableViewController()
+
     let explorerView = ExploreView()
+    var roadmaps: [RoadmapDTO] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +36,23 @@ class ExploreViewController: UIViewController {
         )
         
         self.navigationItem.rightBarButtonItem = menuBarButton
+        self.locationSearchTable.coordinator = coordinator
         self.setupExplorerView()
+        explorerView.setupSearchController(locationTable: locationSearchTable)
         explorerView.bindCollectionView(delegate: self, dataSource: self)
+        explorerView.addSearchBarNavigation(navigation: navigationItem)
+        
+        explorerView.searchBar.delegate = self
+
+        definesPresentationContext = true
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        DataManager.shared.getPublicRoadmaps({ roadmaps in
+            self.roadmaps = roadmaps
+            self.explorerView.roadmapsCollectionView.reloadData()
+        })
     }
     
     func addNewRoadmap() {
