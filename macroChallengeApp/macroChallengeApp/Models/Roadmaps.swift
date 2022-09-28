@@ -49,7 +49,7 @@ struct Roadmaps: Codable {
         self.dayCount = 1
         self.peopleCount = 1
         self.imageId = "ImageDefault"
-        self.category = "Beach"
+        self.category = "No category"
         self.isShared = false
         self.isPublic = false
         self.shareKey = "12345"

@@ -61,7 +61,7 @@ class DaysViewController: UIViewController {
         coordinator?.back()
     }
     @objc func cancelRoadmap() {
-        coordinator?.dismiss(isNewRoadmap: false)
+        coordinator?.dismissRoadmap(isNewRoadmap: false)
     }
     func countDays(datePickerInitial: UIDatePicker, datePickerFinal: UIDatePicker) -> Double {
         let initialDate = datePickerInitial.date

@@ -83,7 +83,7 @@ class ReviewTravelViewController: UIViewController {
         coordinator?.back()
     }
     @objc func cancelRoadmap() {
-        coordinator?.dismiss(isNewRoadmap: false)
+        coordinator?.dismissRoadmap(isNewRoadmap: false)
     }
     func setupContent() {
         self.reviewTravelView.subtitle.text = self.roadmap.category
