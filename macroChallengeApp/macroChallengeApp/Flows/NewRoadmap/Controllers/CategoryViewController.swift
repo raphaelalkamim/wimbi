@@ -20,7 +20,8 @@ class CategoryViewController: UIViewController {
      Category(title: "City", subtitle: "Descrição aqui", icon: "categoryCity")]
     
     var roadmap = Roadmaps()
-    
+    var nextButton = UIBarButtonItem()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryView.bindColletionView(delegate: self, dataSource: self)
@@ -44,7 +45,7 @@ class CategoryViewController: UIViewController {
         coordinator?.startDestiny(roadmap: roadmap)
     }
     @objc func cancelRoadmap() {
-        coordinator?.dismiss(isNewRoadmap: false)
+        coordinator?.dismissRoadmap(isNewRoadmap: false)
     }
     
     func setupToolbar() {
@@ -57,11 +58,18 @@ class CategoryViewController: UIViewController {
         toolBar.barStyle = .default
         toolBar.backgroundColor = designSystem.palette.backgroundCell
         
-        let next = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextPage))
+        nextButton = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextPage))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let items = [spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, next, spacer]
+        let items = [spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, nextButton, spacer]
         self.setToolbarItems(items, animated: false)
         self.navigationController?.setToolbarHidden(false, animated: false)
+//        self.navigationController?.navigationBar.topItem?.rightBarButtonItem?.isEnabled = false
+        
+        if roadmap.category == "No category" {
+            nextButton.isEnabled = false
+        } else {
+            nextButton.isEnabled = true
+        }
     }
 }
 
@@ -88,6 +96,8 @@ extension CategoryViewController: UICollectionViewDataSource {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryViewCell {
             cell.selectedBackgroundView()
             roadmap.category = cell.title.text ?? "Nova Categoria"
+            nextButton.isEnabled = true
+            
         }
     }
     
