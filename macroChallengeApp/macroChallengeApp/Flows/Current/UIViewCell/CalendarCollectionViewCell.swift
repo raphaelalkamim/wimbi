@@ -92,6 +92,7 @@ extension CalendarCollectionViewCell {
         return "SUN"
     }
     func setupDayNumber(day: Int, indexPath: Int) -> Int {
+        self.days[indexPath]
         return day + indexPath
     }
     @objc func dayAction() {

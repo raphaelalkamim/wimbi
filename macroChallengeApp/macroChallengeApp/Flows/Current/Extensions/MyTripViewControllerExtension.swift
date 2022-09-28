@@ -47,7 +47,7 @@ extension MyTripViewController: UICollectionViewDataSource {
         if collectionView == myTripView.infoTripCollectionView {
             return 5
         } else {
-            return Int(roadmap.dayCount)
+            return Int(days.count)
         }
     }
     

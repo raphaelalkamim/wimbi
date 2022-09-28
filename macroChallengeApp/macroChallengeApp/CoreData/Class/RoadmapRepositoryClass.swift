@@ -23,7 +23,7 @@ public class RoadmapRepository: NSManagedObject {
         return container
     }()
     
-    var context: NSManagedObjectContext {
+    public var context: NSManagedObjectContext {
         persistentContainer.viewContext
     }
     
@@ -56,7 +56,6 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.createdAt = roadmap.createdAt
         newRoadmap.date = roadmap.dateInitial
         // newRoadmap.addToUser(user)
-        
         self.saveContext()
         return newRoadmap
     }
