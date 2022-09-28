@@ -18,20 +18,8 @@ class ExploreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
-        
-        
-        let insertRoadMap = UIAction(title: "Existing trip", image: UIImage(named: "heart")) { _ in
-            print("Add User action was tapped")
-        }
-        
-        let menuBarButton = UIBarButtonItem(
-            title: "Add",
-            image: UIImage(systemName: "plus"),
-            primaryAction: nil,
-            menu: UIMenu(title: "", children: [addRoadMap, insertRoadMap])
-        )
-        
-        self.navigationItem.rightBarButtonItem = menuBarButton
+        self.setContextMenu()
+    
         self.locationSearchTable.coordinator = coordinator
         self.setupExplorerView()
         explorerView.setupSearchController(locationTable: locationSearchTable)
@@ -49,9 +37,7 @@ class ExploreViewController: UIViewController {
             self.roadmaps = roadmaps
             self.explorerView.roadmapsCollectionView.reloadData()
         })
-        explorerView.bindCollectionView(delegate: self, dataSource: self)
-        self.setContextMenu()
-        self.setupExplorerView()
+        //navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func addNewRoadmap() {
