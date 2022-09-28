@@ -51,22 +51,22 @@ extension CategoryViewCell {
     
     func setupConstraints() {
         title.snp.makeConstraints { make in
-            make.trailing.equalTo(icon.snp.leading).inset(designSystem.spacing.largeNegative)
-            make.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
-            make.top.equalToSuperview().inset(designSystem.spacing.mediumPositive)
+            make.leading.equalToSuperview().inset(16)
+            make.trailing.equalTo(icon.snp.leading).inset(-16)
+            make.top.equalToSuperview().inset(10)
         }
         
         subtitle.snp.makeConstraints { make in
-            make.trailing.equalTo(icon.snp.leading).inset(designSystem.spacing.largeNegative)
-            make.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
-            make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.xSmallNegative)
+            make.leading.equalToSuperview().inset(16)
+            make.trailing.equalTo(icon.snp.leading).inset(-16)
+            make.top.equalTo(title.snp.bottom).inset(-8)
         }
         
         icon.snp.makeConstraints { make in
             make.leading.equalTo(title.snp.trailing)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.largePositive)
+            make.trailing.equalToSuperview().inset(16)
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(75)
+            make.width.height.equalTo(self.snp.height).inset(10)
         }
     }
     
