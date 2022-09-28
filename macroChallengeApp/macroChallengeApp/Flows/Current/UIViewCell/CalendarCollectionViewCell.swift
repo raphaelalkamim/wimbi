@@ -86,10 +86,8 @@ extension CalendarCollectionViewCell {
     }
     func setupDayWeek(day: Int, indexPath: Int) -> String {
         let weekDays = ["SUN", "TUE", "WED", "THUR", "FRI", "SAT", "SUN"]
-        for integer in 0..<weekDays.count {
-            if integer == indexPath {
-                return weekDays[integer]
-            }
+        for integer in 0..<weekDays.count where integer == indexPath {
+            return weekDays[integer]
         }
         return "SUN"
     }
