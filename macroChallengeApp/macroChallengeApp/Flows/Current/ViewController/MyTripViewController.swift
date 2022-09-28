@@ -14,11 +14,16 @@ class MyTripViewController: UIViewController {
     let myTripView = MyTripView()
     
     var roadmap = RoadmapLocal()
+    var selectedDays: [Bool] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupMyTripView()
+        
+        self.selectedDays = Array(repeating: false, count: Int(roadmap.dayCount))
+        self.selectedDays[0] = true
+        
         myTripView.setupContent(roadmap: roadmap)
         myTripView.bindCollectionView(delegate: self, dataSource: self)
         myTripView.bindTableView(delegate: self, dataSource: self)

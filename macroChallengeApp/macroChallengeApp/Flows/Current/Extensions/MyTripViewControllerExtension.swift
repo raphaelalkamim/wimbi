@@ -24,6 +24,7 @@ extension MyTripViewController {
 // MARK: Collections
 extension MyTripViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedDays[indexPath.row] = true
         if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
             cell.selectedButton()
             // mudar a view de atividades
@@ -31,6 +32,7 @@ extension MyTripViewController: UICollectionViewDelegate {
         
         // desabilita todas as celulas que nao sao a que recebeu o clique
         for index in 0..<roadmap.dayCount where index != indexPath.row {
+            self.selectedDays[Int(index)] = false
             let newIndexPath = IndexPath(item: Int(index), section: 0)
             if let cell = collectionView.cellForItem(at: newIndexPath) as? CalendarCollectionViewCell {
                 cell.disable()
@@ -59,6 +61,7 @@ extension MyTripViewController: UICollectionViewDataSource {
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell else {
                 preconditionFailure("Cell not find")
+                
             }
             cell.setupDays(startDay: roadmap.date ?? Date(), indexPath: indexPath.row)
             return cell
