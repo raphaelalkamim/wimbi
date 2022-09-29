@@ -53,7 +53,7 @@ struct Roadmaps: Codable {
         self.isShared = false
         self.isPublic = false
         self.shareKey = "12345"
-        self.days = [Day()]
+        self.days = [Day(isSelected: false, date: Date())]
         self.dateFinal = Date()
         self.dateInitial = Date()
     }

@@ -24,7 +24,7 @@ extension RoadmapRepository {
     @NSManaged var day: NSSet?
     @NSManaged var user: NSSet?
     @NSManaged var createdAt: Date?
-
+    @NSManaged var date: Date?
 }
 
 // MARK: Generated accessors for day

@@ -108,7 +108,6 @@ class MyTripView: UIView {
         let img = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         btn.setImage(img, for: .normal)
         btn.tintColor = .accent
-        btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     
@@ -119,9 +118,10 @@ class MyTripView: UIView {
         table.separatorColor = .clear
         table.allowsSelection = false
         table.backgroundColor = .backgroundPrimary
+        table.dragInteractionEnabled = true
         return table
     }()
-    
+
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)
@@ -132,12 +132,16 @@ class MyTripView: UIView {
         contentView.addSubview(calendarTitle)
         contentView.addSubview(roadmapTitle)
         contentView.addSubview(dayTitle)
-        contentView.addSubview(addButton)
+        self.addSubview(addButton)
         contentView.addSubview(budgetView)
         budgetView.addSubview(budgetLabel)
         budgetView.addSubview(budgetValue)
         scrollView.addSubview(activitiesTableView)
         setupConstraints()
+    }
+    
+    func setupContent(roadmap: RoadmapLocal) {
+        
     }
     
     func setupConstraints() {
@@ -233,10 +237,10 @@ extension MyTripView {
         calendarCollectionView.delegate = delegate
         calendarCollectionView.dataSource = dataSource
     }
-    func bindTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+    func bindTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource, dragDelegate: UITableViewDragDelegate) {
         activitiesTableView.delegate = delegate
         activitiesTableView.dataSource = dataSource
-        
+        activitiesTableView.dragDelegate = dragDelegate
     }
 
 }

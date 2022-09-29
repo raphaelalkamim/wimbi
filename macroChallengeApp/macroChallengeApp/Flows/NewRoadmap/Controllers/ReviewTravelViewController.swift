@@ -70,14 +70,37 @@ class ReviewTravelViewController: UIViewController {
     @objc func nextPage() {
         roadmap.imageId = "beach0"
         roadmap.createdAt = Date()
+        
         // save in Backend
         dataManager.postRoadmap(roadmap: roadmap)
+        
         // save in Core Data
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
         RoadmapRepository.shared.saveContext()
-        print(newRoadmap)
+        
+        // save days in Roadmap
+        var isFirstDay = false
+        for index in 0..<roadmap.dayCount {
+            if index == 0 {
+                isFirstDay = true
+            } else {
+                isFirstDay = false
+            }
+            let newDay = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial,
+                                                                                            indexPath: index,
+                                                                                            isSelected: isFirstDay))
+            print(newDay)
+        }
+        
         UIAccessibility.post(notification: .screenChanged, argument: coordinator?.navigationController)
         coordinator?.dismiss(isNewRoadmap: true)
+    }
+    
+    func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {
+        let date = startDay.addingTimeInterval(Double(indexPath) * 24 * 3600)
+        var day = Day(isSelected: isSelected, date: date)
+        day.id = indexPath
+        return day
     }
     @objc func backPage() {
         coordinator?.back()
@@ -86,6 +109,11 @@ class ReviewTravelViewController: UIViewController {
         coordinator?.dismissRoadmap(isNewRoadmap: false)
     }
     func setupContent() {
+        self.daysCount = roadmap.dayCount
+        self.start = roadmap.dateInitial
+        self.final = roadmap.dateFinal
+        self.isPublic = roadmap.isPublic
+        self.peopleCount = roadmap.peopleCount
         self.reviewTravelView.subtitle.text = self.roadmap.category
         self.reviewTravelView.title.text = self.roadmap.name
         self.reviewTravelView.setupCategory(category: roadmap.category)

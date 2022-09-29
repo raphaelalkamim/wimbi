@@ -7,6 +7,11 @@
 
 import Foundation
 import UIKit
+import MapKit
+
+protocol ChangeTextTableDelegate: AnyObject {
+    func changeText(address: String)
+}
 
 class NewActivityViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
@@ -22,11 +27,37 @@ class NewActivityViewController: UIViewController {
             // tableView.reloadData()
         }
     }
+    var activity: Activity = Activity(id: 0, name: "Address", category: "", location: "", hour: "", budget: 0, day: Day(isSelected: true, date: Date()))
+    
+    var day = DayLocal()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNewActivityView()
+        setKeyboard()
+        let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelCreation))
+        cancelButton.tintColor = .systemRed
+        self.navigationItem.leftBarButtonItem = cancelButton
         
+        let salvarButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveActivity))
+        self.navigationItem.rightBarButtonItem = salvarButton
+        self.getData()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print(activity.name)
+    }
+    
+    @objc func cancelCreation() {
+        coordinator?.backPage()
+    }
+    
+    @objc func saveActivity() {
+        self.setData()
+        let newActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
+        print(newActivity)
+        coordinator?.backPage()
     }
 }
 
@@ -43,8 +74,48 @@ extension NewActivityViewController {
             make.edges.equalToSuperview()
         }
     }
-}
+    func getData() {
+    }
+    func setData() {
+        // local name
+        let tableView = newActivityView.localyTable
+        guard let cell = tableView.cellForRow(at: [0, 1]) as? TextFieldTableViewCell else { return }
+        activity.name = cell.title.text ?? "Nova atividade"
 
+        // date
+        let formater = DateFormatter()
+        formater.dateStyle = .short
+        formater.timeStyle = .none
+        activity.day = Day(isSelected: true, date: formater.date(from: self.day.date ?? "23/10/2000") ?? Date())
+        
+        // hour
+        let tableViewHour = newActivityView.dateTable
+        guard let cell = tableViewHour.cellForRow(at: [0, 1]) as? TimePickerTableViewCell else { return }
+        formater.dateStyle = .none
+        formater.timeStyle = .short
+        activity.hour = formater.string(from: cell.datePicker.date)
+        
+        // value
+        let tableViewValue = newActivityView.valueTable
+        guard let cell = tableViewValue.cellForRow(at: [0, 1]) as?
+                ValueTableViewCell else { return }
+        let newValue = getNumber(text: cell.value.text ?? "123")
+        activity.budget = Double(newValue) ?? 0.0
+    }
+    
+    func getNumber(text: String) -> String {
+        var number = ""
+        for index in 0..<text.count {
+            if text[index].isNumber {
+                number += String(text[index])
+            } else if text[index] == "," {
+                number += "."
+            }
+        }
+        return number
+    }
+}
+// MARK: Table View
 extension NewActivityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rows: Int = 0
@@ -63,7 +134,7 @@ extension NewActivityViewController: UITableViewDataSource {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = "Address"
+                newCell.label.text = activity.location
                 newCell.setupSeparator()
                 cell = newCell
                 
@@ -77,6 +148,7 @@ extension NewActivityViewController: UITableViewDataSource {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Date"
+                newCell.setupDate(date: day.date ?? "23/10/2022")
                 newCell.setupSeparator()
                 
                 cell = newCell
@@ -111,14 +183,8 @@ extension NewActivityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
-                // self.coordinator?.openLocationActivity()
-                self.present(LocationNewActivityViewController(), animated: true)
-                print("oi")
+                self.coordinator?.openLocationActivity(delegate: self)
             }
-        }
-        
-        else if tableView == newActivityView.valueTable {
-            if indexPath.row == 0 {}
         }
     }
 }
@@ -127,15 +193,18 @@ extension NewActivityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+
 }
 
+// MARK: Keyboard
 extension NewActivityViewController {
     fileprivate func setKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dissMissKeyboard))
-        view.addGestureRecognizer(tap)
+        
+        newActivityView.valueTable.addGestureRecognizer(tap)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -146,8 +215,7 @@ extension NewActivityViewController {
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            newActivityView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -keyboardSize.height, right: 0)
-        }
+            newActivityView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -keyboardSize.height, right: 0)}
     }
     
     @objc func dissMissKeyboard() {
@@ -155,18 +223,12 @@ extension NewActivityViewController {
     }
 }
 
-extension NewActivityViewController: CurrencyTableViewCellDelegate {
-    func didChangeFormatter(formatter: String) {
-        self.currencyType = formatter
-    }
-}
-
+// MARK: CollectionView
 extension NewActivityViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
 }
-
 extension NewActivityViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryActivityCollectionViewCell.identifier, for: indexPath) as? CategoryActivityCollectionViewCell else {
@@ -189,7 +251,7 @@ extension NewActivityViewController: UICollectionViewDataSource {
             break
         }
         return cell
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -197,12 +259,16 @@ extension NewActivityViewController: UICollectionViewDataSource {
             switch cell.iconDescription.text {
             case "Accommodation":
                 cell.selectedBackgroundView(button: "accommodation")
+                activity.category = "accommodation"
             case "Food":
                 cell.selectedBackgroundView(button: "food")
+                activity.category = "food"
             case "Leisure":
                 cell.selectedBackgroundView(button: "leisure")
+                activity.category = "leisure"
             case "Transportation":
                 cell.selectedBackgroundView(button: "transportation")
+                activity.category = "transportation"
             default:
                 break
             }
@@ -226,4 +292,18 @@ extension NewActivityViewController: UICollectionViewDataSource {
         }
     }
     
+}
+
+// MARK: Delegates
+extension NewActivityViewController: ChangeTextTableDelegate {
+    func changeText(address: String) {
+        activity.location = address
+        newActivityView.localyTable.reloadData()
+    }
+}
+
+extension NewActivityViewController: CurrencyTableViewCellDelegate {
+    func didChangeFormatter(formatter: String) {
+        self.currencyType = formatter
+    }
 }
