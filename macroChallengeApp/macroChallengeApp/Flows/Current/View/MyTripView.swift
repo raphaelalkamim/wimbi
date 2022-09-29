@@ -55,28 +55,28 @@ class MyTripView: UIView {
     
     lazy var infoTitle: UILabel = {
         let title = UILabel()
-        title.text = "SOBRE"
+        title.text = "ABOUT".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var calendarTitle: UILabel = {
         let title = UILabel()
-        title.text = "DIAS DE VIAGEM"
+        title.text = "TRAVEL DAYS".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var roadmapTitle: UILabel = {
         let title = UILabel()
-        title.text = "ROTEIRO"
+        title.text = "ROADMAP".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var dayTitle: UILabel = {
         let title = UILabel()
-        title.text = "Dia 1"
+        title.text = "Day".localized()
         title.stylize(with: designSystem.text.mediumTitle)
         return title
     }()
@@ -90,7 +90,7 @@ class MyTripView: UIView {
     
     lazy var budgetLabel: UILabel = {
         let title = UILabel()
-        title.text = "CUSTO DO DIA"
+        title.text = "DAILY COSTS".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
@@ -141,7 +141,6 @@ class MyTripView: UIView {
     }
     
     func setupContent(roadmap: RoadmapLocal) {
-        
     }
     
     func setupConstraints() {

@@ -40,7 +40,6 @@ class NewActivityViewController: UIViewController {
         let salvarButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveActivity))
         self.navigationItem.rightBarButtonItem = salvarButton
         self.getData()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +57,7 @@ class NewActivityViewController: UIViewController {
         coordinator?.backPage()
     }
 }
+
 // MARK: Keyboard
 extension NewActivityViewController {
     fileprivate func setKeyboard() {

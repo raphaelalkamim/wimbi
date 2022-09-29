@@ -22,7 +22,7 @@ class CurrentViewController: UIViewController {
 extension CurrentViewController {
     func setup() {
         setupCountDownView()
-        //setupEmptyView()
+        // setupEmptyView()
     }
     
     func setupCountDownView() {

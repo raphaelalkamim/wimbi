@@ -39,7 +39,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         let tag = UILabel()
         tag.font = UIFont(name: "Avenir-Medium", size: 15)
         tag.textColor = .white
-        tag.text = "NEW"
+        tag.text = "NEW".localized()
         tag.textAlignment = .center
         tag.layer.masksToBounds = true
         tag.layer.cornerRadius = 10
@@ -87,7 +87,7 @@ extension ProfileCollectionViewCell {
     func setupImage(category: String) {
         if category == "Beach" {
             self.roadmapImage.image = designSystem.imagesDefault.beach[Int.random(in: 0..<designSystem.imagesDefault.beach.count)]
-        } else if category == "Montain" {
+        } else if category == "Mountain" {
             self.roadmapImage.image = designSystem.imagesDefault.mountain[Int.random(in: 0..<designSystem.imagesDefault.mountain.count)]
         } else if category == "City" {
             self.roadmapImage.image = designSystem.imagesDefault.city[Int.random(in: 0..<designSystem.imagesDefault.city.count)]

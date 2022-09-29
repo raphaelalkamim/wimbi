@@ -1,0 +1,106 @@
+/* 
+  Localizable.strings
+  macroChallengeApp
+
+  Created by Carolina Ortega on 28/09/22.
+  
+*/
+
+// MARK: -  Login
+"By clicking on the button above, you agree to our terms of use and privacy policies" = "Clicando no botão acima, você concorda com nossos termos de uso e políticas de privacidade";
+
+// MARK: -  New Activity
+"TYPE" = "TIPO";
+"LOCATION" = "LOCAL";
+"TIME" = "HORÁRIO";
+"EXPENSE" = "CUSTO";
+"New activity" = "Nova atividade";
+"Address" = "Endereço";
+"Name" = "Nome";
+"Date" = "Data";
+"Hour" = "Hora";
+"Currency" = "Moeda";
+"Value" = "Valor";
+"Food" = "Alimentação";
+"Accommodation" = "Hospedagem";
+"Leisure" = "Lazer";
+"Transportation" = "Transporte";
+
+// MARK: -  Explore
+//ainda nao dei .localized
+"New trip" = "Nova viagem";
+"Join trip" = "????";
+
+// MARK: -  TabBar
+"Explore" = "Explorar";
+"Current" = "Atual";
+"Profile" = "Perfil";
+
+// MARK: -  Profile
+"My roadmaps" = "Meus roteiros";
+"NEW" = "NOVO";
+"Click on ”+” to create a new roadmap or to explore the existing ones." = "Clique no ”+” para criar um novo roteiro ou explore roteiros já existentes.";
+
+//Settings
+"Settings" = "Configurações";
+"Edit profile" = "Editar perfil";
+"Liked roadmaps" = "Roteiros curtidos";
+"Notifications" = "Notificações";
+"Terms of privacy" = "Termos de privacidade";
+"Sign out" = "Sair";
+"NAME" = "NOME";
+"USERNAME" = "NOME DO USUÁRIO";
+"Save" = "Salvar";
+"Turn on notification" = "Ativar notificação";
+"Frequency" = "Frequência";
+"minutes" = "minutos";
+"hours" = "horas";
+"days" = "dias";
+"By activating the notification you will configure the frequency of the reminders before every activity." = "Ao ativar a notificação você estará configurando a frequência em que receberá lembretes antes de cada atividade.";
+"Sign out of your account?" = "Sair da sua conta?";
+"Cancel" = "Cancelar";
+"Sign out" = "Sair";
+
+// MARK: -  Current
+"ABOUT" = "SOBRE";
+"CATEGORY" = "CATEGORIA";
+"Mountain" = "Montanha";
+"Countryside" = "Campo";
+"Beach" = "Praia";
+"City" = "Cidade";
+"TOTAL AMOUNT" = "VALOR TOTAL";
+"TRAVELERS" = "VIAJANTES";
+"LIKES" = "CURTIDAS";
+"CREATED BY" = "CRIADO POR";
+"TRAVEL DAYS" = "DIAS DE VIAGEM";
+"ROADMAP" = "ROTEIRO";
+"Day" = "Dia";
+"DAILY COSTS" = "CUSTOS DO DIA";
+"Free" = "Grátis";
+"Left" = "Faltam";
+
+// MARK: -  NewRoadmap
+"Category" = "Categoria";
+"Next" = "Próximo";
+"Previous" = "Anterior";
+"Destiny" = "Destino";
+"Where do you want to go?" = "Para onde você vai?";
+"Days and travelers" = "Dias e viajantes";
+"DATE" = "DATA";
+"Start date" = "Começa";
+"End date" = "Termina";
+"TRAVELERS" = "VIAJANTES";
+"Number of travelers" = "Número de viajantes";
+"Turn this trip public?" = "Deixar essa viagem pública?";
+"By turning your trip public, it will be published to all app users." = "Ao deixar sua viagem pública, ela será publicada para todos os usuários do aplicativo.";
+"My trip" = "Minha viagem";
+"Travel days" = "Dias de viagem";
+"PRIVACY" = "PRIVACIDADE";
+"Trip" = "Viagem";
+"Public" = "Pública";
+"Private" = "Privada";
+"Are you sure?" = "Tem certeza?";
+"By canceling you will lose all your progress" = "Cancelando você perderá todo o seu processo";
+"Back" = "Voltar";
+
+

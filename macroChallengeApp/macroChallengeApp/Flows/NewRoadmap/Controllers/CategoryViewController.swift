@@ -14,10 +14,10 @@ class CategoryViewController: UIViewController {
     
     let categoryView = CategoryView()
     let categories: [Category] =
-    [Category(title: "Camp", subtitle: "Descrição aqui", icon: "categoryCamp"),
-     Category(title: "Beach", subtitle: "Descrição aqui", icon: "categoryBeach"),
-     Category(title: "Mountain", subtitle: "Descrição aqui", icon: "categoryMountain"),
-     Category(title: "City", subtitle: "Descrição aqui", icon: "categoryCity")]
+    [Category(title: "Countryside".localized(), subtitle: "Descrição aqui", icon: "categoryCamp"),
+     Category(title: "Beach".localized(), subtitle: "Descrição aqui", icon: "categoryBeach"),
+     Category(title: "Mountain".localized(), subtitle: "Descrição aqui", icon: "categoryMountain"),
+     Category(title: "City".localized(), subtitle: "Descrição aqui", icon: "categoryCity")]
     
     var roadmap = Roadmaps()
     var nextButton = UIBarButtonItem()
@@ -58,7 +58,7 @@ class CategoryViewController: UIViewController {
         toolBar.barStyle = .default
         toolBar.backgroundColor = designSystem.palette.backgroundCell
         
-        nextButton = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextPage))
+        nextButton = UIBarButtonItem(title: "Next".localized(), style: .plain, target: self, action: #selector(nextPage))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let items = [spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, nextButton, spacer]
         self.setToolbarItems(items, animated: false)

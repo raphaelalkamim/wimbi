@@ -53,13 +53,13 @@ class ReviewTravelView: UIView {
         let subtitle = UILabel()
         subtitle.stylize(with: designSystem.text.caption)
         subtitle.textColor = designSystem.palette.textPrimary
-        subtitle.text = "Praia"
+        subtitle.text = "Beach".localized()
         return subtitle
     }()
     public lazy var daysTitle: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.caption)
-        label.text = "DATE"
+        label.text = "DATE".localized()
         return label
     }()
     public lazy var daysTable: UITableView = {
@@ -75,7 +75,7 @@ class ReviewTravelView: UIView {
     public lazy var travelersTitle: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.caption)
-        label.text = "TRAVELERS"
+        label.text = "TRAVELERS".localized()
         return label
     }()
     public lazy var travelersTable: UITableView = {
@@ -91,7 +91,7 @@ class ReviewTravelView: UIView {
     public lazy var privacyTitle: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.caption)
-        label.text = "PRIVACY"
+        label.text = "PRIVACY".localized()
         return label
     }()
     public lazy var privacyTable: UITableView = {
@@ -128,7 +128,7 @@ extension ReviewTravelView {
     func setupImage(category: String) {
         if category == "Beach" {
             self.coverImage.image = designSystem.imagesDefault.beach[Int.random(in: 0..<designSystem.imagesDefault.beach.count)]
-        } else if category == "Montain" {
+        } else if category == "Mountain" {
             self.coverImage.image = designSystem.imagesDefault.mountain[Int.random(in: 0..<designSystem.imagesDefault.mountain.count)]
         } else if category == "City" {
             self.coverImage.image = designSystem.imagesDefault.city[Int.random(in: 0..<designSystem.imagesDefault.city.count)]
