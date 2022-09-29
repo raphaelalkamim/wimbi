@@ -44,5 +44,23 @@
 "Sign out" = "Sair";
 
 // MARK: -  Current
+"ABOUT" = "SOBRE";
+"CATEGORY" = "CATEGORIA";
+"Montain" = "Montanha";
+"Camp" = "Campo";
+"Beach" = "Praia";
+"City" = "Cidade";
+"TOTAL AMOUNT" = "VALOR TOTAL";
+"TRAVELERS" = "VIAJANTES";
+"LIKES" = "CURTIDAS";
+"CREATED BY" = "CRIADO POR";
+"TRAVEL DAYS" = "DIAS DE VIAGEM";
+"ROADMAP" = "ROTEIRO";
+"Day" = "Dia";
+"DAILY COSTS" = "CUSTOS DO DIA";
+"Free" = "Grátis";
+
+
+
 
 // MARK: -  NewRoadmap

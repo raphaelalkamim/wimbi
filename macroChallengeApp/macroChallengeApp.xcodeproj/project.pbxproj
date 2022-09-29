@@ -430,7 +430,6 @@
 				13C8A11528C68B7700994196 /* DataManager.swift */,
 				13C8A11728C691F100994196 /* DataType.swift */,
 				B0CDF34F28CFC7E90092A76C /* Category.swift */,
-				B078F22328C27F2400D46F61 /* LaunchScreen.storyboard */,
 				DF2643AA28DB9CC500053180 /* UserRoadmap.swift */,
 				DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */,
 			);
@@ -742,6 +741,7 @@
 				13C8A10928C6826B00994196 /* Models */,
 				13C8A10728C6824F00994196 /* Flows */,
 				B078F22128C27F2400D46F61 /* Assets.xcassets */,
+				B078F22328C27F2400D46F61 /* LaunchScreen.storyboard */,
 				B078F22628C27F2400D46F61 /* Info.plist */,
 				B078F21E28C27F2000D46F61 /* macroChallengeApp.xcdatamodeld */,
 			);

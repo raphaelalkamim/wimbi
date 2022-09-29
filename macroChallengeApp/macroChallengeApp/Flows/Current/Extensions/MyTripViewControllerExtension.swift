@@ -39,29 +39,29 @@ extension MyTripViewController: UICollectionViewDataSource {
             }
             switch indexPath.row {
             case 0:
-                cell.title.text = "CATEGORY"
+                cell.title.text = "CATEGORY".localized()
                 cell.circle.isHidden = false
                 cell.categoryTitle.isHidden = false
-                cell.categoryTitle.text = "Montain"
+                cell.categoryTitle.text = "Montain".localized()
                 cell.info.isHidden = true
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(24)
                 }
 
             case 1:
-                cell.title.text = "TOTAL AMOUNT"
+                cell.title.text = "TOTAL AMOUNT".localized()
                 cell.info.isHidden = true
                 cell.infoTitle.isHidden = false
                 cell.infoTitle.text = "R$12.000"
             case 2:
-                cell.title.text = "TRAVELERS"
+                cell.title.text = "TRAVELERS".localized()
                 cell.info.setTitle(" 4", for: .normal)
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
             case 3:
-                cell.title.text = "LIKES"
+                cell.title.text = "LIKES".localized()
                 cell.info.setTitle(" 10k", for: .normal)
             case 4:
-                cell.title.text = "CREATED BY"
+                cell.title.text = "CREATED BY".localized()
                 cell.separator.isHidden = true
                 cell.circle.isHidden = false
                 cell.info.isHidden = true
