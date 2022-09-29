@@ -1,15 +1,15 @@
 //
-//  MyTripView.swift
+//  PreviewRoadmapView.swift
 //  macroChallengeApp
 //
-//  Created by Carolina Ortega on 20/09/22.
+//  Created by Carolina Ortega on 26/09/22.
 //
 
 import Foundation
 import UIKit
 import SnapKit
 
-class MyTripView: UIView {
+class PreviewRoadmapView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let scrollView = UIScrollView()
     let contentView = UIView()
@@ -22,6 +22,21 @@ class MyTripView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    lazy var cover: UIImageView = {
+        let img = UIImageView()
+        img.image = designSystem.imagesDefault.beach[3]
+        img.clipsToBounds = true
+        img.contentMode = .scaleAspectFill
+        return img
+    }()
+    
+    lazy var title: UILabel = {
+        let title = UILabel()
+        title.text = "Egito"
+        title.stylize(with: designSystem.text.largeTitle)
+        return title
+    }()
     
     lazy var infoTripCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -48,67 +63,32 @@ class MyTripView: UIView {
         collection.isPagingEnabled = true
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         collection.showsHorizontalScrollIndicator = false
-        collection.backgroundColor = .backgroundPrimary
+        collection.backgroundColor = .backgroundCell
+        collection.layer.cornerRadius = 20
         return collection
     }()
     
     lazy var infoTitle: UILabel = {
         let title = UILabel()
-        title.text = "ABOUT".localized()
+        title.text = "SOBRE"
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var calendarTitle: UILabel = {
         let title = UILabel()
-        title.text = "TRAVEL DAYS".localized()
+        title.text = "DIAS DE VIAGEM"
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var roadmapTitle: UILabel = {
         let title = UILabel()
-        title.text = "ROADMAP".localized()
+        title.text = "ROTEIRO"
         title.stylize(with: designSystem.text.caption)
         return title
-    }()
-    
-    lazy var dayTitle: UILabel = {
-        let title = UILabel()
-        title.text = "Day".localized()
-        title.stylize(with: designSystem.text.mediumTitle)
-        return title
-    }()
-    
-    lazy var budgetView: UIView = {
-       let view = UIView()
-        view.backgroundColor = UIColor(named: "budget")
-        view.layer.cornerRadius = 10
-        return view
-    }()
-    
-    lazy var budgetLabel: UILabel = {
-        let title = UILabel()
-        title.text = "DAILY COSTS".localized()
-        title.stylize(with: designSystem.text.caption)
-        return title
-    }()
-    
-    lazy var budgetValue: UILabel = {
-        let title = UILabel()
-        title.text = "R$2000.00"
-        title.font = designSystem.text.body.font
-        title.stylize(with: designSystem.text.body)
-        return title
-    }()
-    
-    lazy var addButton: UIButton = {
-        let btn = UIButton()
-        let img = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
-        btn.setImage(img, for: .normal)
-        btn.tintColor = .accent
-        return btn
     }()
     
     lazy var activitiesTableView: UITableView = {
@@ -118,30 +98,23 @@ class MyTripView: UIView {
         table.separatorColor = .clear
         table.allowsSelection = false
         table.backgroundColor = .backgroundPrimary
-        table.dragInteractionEnabled = true
         return table
     }()
-
+    
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        scrollView.addSubview(infoTripCollectionView)
-        scrollView.addSubview(calendarCollectionView)
+        contentView.addSubview(infoTripCollectionView)
+        contentView.addSubview(calendarCollectionView)
+        contentView.addSubview(activitiesTableView)
+        contentView.addSubview(cover)
+        cover.layer.cornerRadius = 16
+        contentView.addSubview(title)
         contentView.addSubview(infoTitle)
         contentView.addSubview(calendarTitle)
         contentView.addSubview(roadmapTitle)
-        contentView.addSubview(dayTitle)
-        self.addSubview(addButton)
-        contentView.addSubview(budgetView)
-        budgetView.addSubview(budgetLabel)
-        budgetView.addSubview(budgetValue)
-        scrollView.addSubview(activitiesTableView)
         setupConstraints()
-    }
-    
-    func setupContent(roadmap: RoadmapLocal) {
-        
     }
     
     func setupConstraints() {
@@ -153,23 +126,35 @@ class MyTripView: UIView {
         
         contentView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top)
-            make.bottom.equalTo(calendarCollectionView.snp.bottom)
+            make.bottom.equalTo(activitiesTableView)
             make.left.right.equalTo(self)
+        }
+        
+        cover.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.top).inset(16)
+            make.left.right.equalTo(self).inset(16)
+            make.height.equalTo(200)
+        }
+        
+        title.snp.makeConstraints { make in
+            make.top.equalTo(cover.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+            make.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            
+        }
+        
+        infoTitle.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.mediumNegative)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+            
         }
         
         infoTripCollectionView.snp.makeConstraints { make in
             make.top.equalTo(infoTitle.snp.bottom)
             make.leading.equalTo(contentView.snp.leading)
             make.trailing.equalTo(contentView.snp.trailing)
-//            make.bottom.equalTo(scrollView.snp.bottom)
             make.height.equalTo(100)
-        }
-        
-        infoTitle.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.topMargin)
-            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
-            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
-
         }
         
         calendarTitle.snp.makeConstraints { make in
@@ -181,66 +166,37 @@ class MyTripView: UIView {
         calendarCollectionView.snp.makeConstraints { make in
             make.centerX.equalTo(contentView.snp.centerX)
             make.top.equalTo(calendarTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
-            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xxLargePositive)
-            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xxLargePositive)
-            make.height.equalTo(60)
+            make.leading.equalTo(contentView.snp.leading).inset(40)
+            make.trailing.equalTo(contentView.snp.trailing).inset(40)
+            make.height.equalTo(40)
         }
         roadmapTitle.snp.makeConstraints { make in
             make.top.equalTo(calendarCollectionView.snp.bottom).inset(designSystem.spacing.xLargeNegative)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
         }
-        dayTitle.snp.makeConstraints { make in
-            make.top.equalTo(roadmapTitle.snp.bottom).inset(designSystem.spacing.mediumNegative)
-            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
-            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
-
-        }
-        addButton.snp.makeConstraints { make in
-            make.top.equalTo(dayTitle.snp.top)
-            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
-            make.size.equalTo(40)
-        }
-        
-        budgetView.snp.makeConstraints { make in
-            make.top.equalTo(dayTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
-            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
-            make.height.equalTo(40)
-            make.trailing.equalTo(budgetValue.snp.trailing).inset(designSystem.spacing.smallNegative)
-        }
-        
-        budgetLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(budgetView.snp.centerY)
-            make.leading.equalTo(budgetView.snp.leading).inset(designSystem.spacing.smallPositive)
-        }
-        
-        budgetValue.snp.makeConstraints { make in
-            make.centerY.equalTo(budgetView.snp.centerY)
-            make.leading.equalTo(budgetLabel.snp.trailing).inset(designSystem.spacing.xLargeNegative)
-        }
         
         activitiesTableView.snp.makeConstraints { make in
-            make.top.equalTo(budgetView.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.top.equalTo(roadmapTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.leading.equalTo(contentView.snp.leading)
             make.trailing.equalTo(contentView.snp.trailing)
-            make.bottom.equalTo(scrollView.snp.bottom)
             make.height.equalTo(400)
+            make.bottom.equalTo(scrollView.snp.bottom)
         }
-
     }
 }
 
-extension MyTripView {
+extension PreviewRoadmapView {
     func bindCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         infoTripCollectionView.delegate = delegate
         infoTripCollectionView.dataSource = dataSource
         calendarCollectionView.delegate = delegate
         calendarCollectionView.dataSource = dataSource
     }
-    func bindTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource, dragDelegate: UITableViewDragDelegate) {
+    func bindTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         activitiesTableView.delegate = delegate
         activitiesTableView.dataSource = dataSource
-        activitiesTableView.dragDelegate = dragDelegate
+        
     }
-
+    
 }

@@ -59,7 +59,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         let title = UILabel()
         title.textColor = .textPrimary
         title.font = UIFont(name: "Avenir-Light", size: 12)
-        title.text = "5.5k"
+        title.text = String(0)
         title.textAlignment = .center
         return title
     }()

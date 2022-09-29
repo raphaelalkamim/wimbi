@@ -22,8 +22,6 @@ class TimePickerTableViewCell: UITableViewCell {
         let datePicker = UIDatePicker()
         datePicker.preferredDatePickerStyle = .compact
         datePicker.datePickerMode = .time
-        let currentDate = Date()
-        datePicker.minimumDate = currentDate
         return datePicker
     }()
     
@@ -51,6 +49,7 @@ class TimePickerTableViewCell: UITableViewCell {
     
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundCell
+       
         contentView.addSubview(label)
         contentView.addSubview(datePicker)
         setupConstraints()

@@ -64,7 +64,11 @@ extension ActivityTableViewCell {
         setupConstraints()
         
     }
-    
+    func setupDaysActivities(hour: String, value: String, name: String) {
+        let hour = hour
+        self.activityInfo.text = hour + " • " + "R$" + value
+        self.activityTitle.text = name
+    }
     func setupConstraints() {
         activityIcon.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(designSystem.spacing.xxLargePositive)

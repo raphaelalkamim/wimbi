@@ -39,6 +39,13 @@ class ExploreCoordinator: Coordinator {
         }
     }
     
+    func previewRoadmap() {
+        let viewController = PreviewRoadmapViewController()
+        viewController.coordinator = self
+//        viewController.navigationItem.title = "Trip"
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func setupBarAppearence() {
         let designSystem: DesignSystem = DefaultDesignSystem.shared
         
