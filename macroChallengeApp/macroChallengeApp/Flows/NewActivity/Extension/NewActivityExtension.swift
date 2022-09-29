@@ -108,7 +108,7 @@ extension NewActivityViewController: UITableViewDataSource {
             } else if indexPath.row == 1 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
                 newCell.title.placeholder = "Name"
-                newCell.title.text = local
+                newCell.title.text = activity.name
                 cell = newCell
             }
             
@@ -238,7 +238,7 @@ extension NewActivityViewController: UICollectionViewDataSource {
 extension NewActivityViewController: ChangeTextTableDelegate {
     func changeText(coords: String, locationName: String, address: String) {
         activity.location = coords
-        local = locationName
+        activity.name = locationName
         self.address = address
         newActivityView.localyTable.reloadData()
     }
