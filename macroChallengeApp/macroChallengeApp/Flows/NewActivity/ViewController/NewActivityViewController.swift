@@ -32,7 +32,7 @@ class NewActivityViewController: UIViewController {
 
 extension NewActivityViewController {
     func setupNewActivityView() {
-        navigationItem.title = "New Activity"
+        navigationItem.title = "New Activity".localized()
         view.addSubview(newActivityView)
         setupConstraints()
         newActivityView.bindTableView(delegate: self, dataSource: self)
@@ -63,33 +63,33 @@ extension NewActivityViewController: UITableViewDataSource {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = "Address"
+                newCell.label.text = "Address".localized()
                 newCell.setupSeparator()
                 cell = newCell
                 
             } else if indexPath.row == 1 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
-                newCell.title.placeholder = "Name"
+                newCell.title.placeholder = "Name".localized()
                 cell = newCell
             }
             
         } else if tableView == newActivityView.dateTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = "Date"
+                newCell.label.text = "Date".localized()
                 newCell.setupSeparator()
                 
                 cell = newCell
             } else if indexPath.row == 1 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TimePickerTableViewCell.identifier, for: indexPath) as? TimePickerTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = "Hour"
+                newCell.label.text = "Hour".localized()
                 cell = newCell
             }
             
         } else if tableView == newActivityView.valueTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = "Currency"
+                newCell.label.text = "Currency".localized()
                 newCell.setupSeparator()
                 newCell.delegate = self
                 cell = newCell
@@ -97,7 +97,7 @@ extension NewActivityViewController: UITableViewDataSource {
                 if indexPath.row == 1 {
                     guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
                     
-                    newCell.title.text = "Value"
+                    newCell.title.text = "Value".localized()
                     newCell.currencyType = self.currencyType
                     newCell.value.placeholder = "$ 0.00"
                     cell = newCell
@@ -174,16 +174,16 @@ extension NewActivityViewController: UICollectionViewDataSource {
         }
         switch indexPath.row {
         case 0:
-            cell.iconDescription.text = "Food"
+            cell.iconDescription.text = "Food".localized()
             cell.icon.image = designSystem.imagesActivities.food
         case 1:
-            cell.iconDescription.text = "Accommodation"
+            cell.iconDescription.text = "Accommodation".localized()
             cell.icon.image = designSystem.imagesActivities.accomodation
         case 2:
-            cell.iconDescription.text = "Leisure"
+            cell.iconDescription.text = "Leisure".localized()
             cell.icon.image = designSystem.imagesActivities.leisure
         case 3:
-            cell.iconDescription.text = "Transportation"
+            cell.iconDescription.text = "Transportation".localized()
             cell.icon.image = designSystem.imagesActivities.transportation
         default:
             break

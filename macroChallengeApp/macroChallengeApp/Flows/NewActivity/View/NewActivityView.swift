@@ -24,7 +24,7 @@ class NewActivityView: UIView {
     
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
-        label.text = "TYPE"
+        label.text = "TYPE".localized()
         label.stylize(with: designSystem.text.caption)
         return label
     }()
@@ -43,7 +43,7 @@ class NewActivityView: UIView {
     
     lazy var localyLabel: UILabel = {
         let label = UILabel()
-        label.text = "LOCALY"
+        label.text = "LOCALLY".localized()
         label.stylize(with: designSystem.text.caption)
         return label
     }()
@@ -62,7 +62,7 @@ class NewActivityView: UIView {
     
     lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "TIME"
+        label.text = "TIME".localized()
         label.stylize(with: designSystem.text.caption)
         return label
     }()
@@ -81,7 +81,7 @@ class NewActivityView: UIView {
     
     lazy var valueLabel: UILabel = {
         let label = UILabel()
-        label.text = "EXPENSE"
+        label.text = "EXPENSE".localized()
         label.stylize(with: designSystem.text.caption)
         return label
     }()

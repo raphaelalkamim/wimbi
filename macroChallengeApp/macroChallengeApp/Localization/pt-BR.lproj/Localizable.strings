@@ -10,6 +10,21 @@
 "By clicking button above, you agree to our terms of use and privacy policies" = "Clicando no botão acima, você concorda com nossos termos de uso e políticas de privacidade";
 
 // MARK: -  New Activity
+"TYPE" = "TIPO";
+"LOCALLY" = "LOCAL";
+"TIME" = "HORÁRIO";
+"EXPENSE" = "CUSTO";
+"New activity" = "Nova atividade";
+"Address" = "Endereço";
+"Name" = "Nome";
+"Date" = "Data";
+"Hour" = "Hora";
+"Currency" = "Moeda";
+"Value" = "Valor";
+"Food" = "Alimentação";
+"Accommodation" = "Hospedagem";
+"Leisure" = "Lazer";
+"Transportation" = "Transporte";
 
 // MARK: -  Explore
 //ainda nao dei .localized
@@ -20,7 +35,6 @@
 "Explore" = "Explorar";
 "Current" = "Atual";
 "Profile" = "Perfil";
-
 
 // MARK: -  Profile
 "My roadmaps" = "Meus roteiros";
