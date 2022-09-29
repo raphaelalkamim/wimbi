@@ -28,6 +28,7 @@ class NewActivityViewController: UIViewController {
     var activity: Activity = Activity(id: 0, name: "Address", category: "", location: "", hour: "", budget: 0, day: Day(isSelected: true, date: Date()))
     
     var day = DayLocal()
+    var roadmap = RoadmapLocal()
     
     override func viewDidLoad() {
         super.viewDidLoad()

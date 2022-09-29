@@ -18,7 +18,7 @@ class MyTripViewController: UIViewController {
     var days: [DayLocal] = []
     
     var daySelected = 0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
@@ -33,16 +33,10 @@ class MyTripViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.getAllDays()
         self.activites = self.getAllActivities()
+        self.updateBudget()
+        self.updateTotalBudgetValue()
     }
-    func updateBudget() {
-        var budgetDay: Double = 0
-        for activite in activites {
-            budgetDay += activite.budget
-        }
-        guard let cell = myTripView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
-        cell.title.text = "R$\(budgetDay)"
-        myTripView.budgetValue.text = "R$\(budgetDay)"
-    }
+   
     func getAllDays() {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
@@ -60,11 +54,27 @@ class MyTripViewController: UIViewController {
             newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
             return newActivities
         }
-        self.updateBudget()
         return []
     }
     
-    @objc func goToCreateActivity() {
-        coordinator?.startActivity(day: self.days[daySelected], delegate: self)
+    func updateBudget() {
+        var budgetDay: Double = 0
+        for activite in activites {
+            budgetDay += activite.budget
+        }
+        myTripView.budgetValue.text = "R$\(budgetDay)"
     }
+    
+    func updateTotalBudgetValue() {
+        guard let cell = myTripView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
+        cell.infoTitle.text = "R$\(self.roadmap.budget)"
+    }
+    
+    @objc func goToCreateActivity() {
+        coordinator?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
+    }
+}
+
+extension Sequence {
+    func sum<T: AdditiveArithmetic>(_ predicate: (Element) -> T) -> T { reduce(.zero) { $0 + predicate($1) } }
 }

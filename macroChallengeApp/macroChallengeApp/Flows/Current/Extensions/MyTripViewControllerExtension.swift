@@ -35,6 +35,8 @@ extension MyTripViewController: UICollectionViewDelegate {
             
             // view updates
             self.myTripView.activitiesTableView.reloadData()
+            self.updateBudget()
+            self.updateTotalBudgetValue()
         }
         
         // desabilita todas as celulas que nao sao a que recebeu o clique
@@ -116,6 +118,7 @@ extension MyTripViewController: UICollectionViewDataSource {
         }
     }
 }
+
 // MARK: Table View Activities
 extension MyTripViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
