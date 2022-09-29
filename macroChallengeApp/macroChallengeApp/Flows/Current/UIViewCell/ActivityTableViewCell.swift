@@ -67,7 +67,7 @@ extension ActivityTableViewCell {
     func setupDaysActivities(hour: String, value: String, name: String) {
         let hour = hour
         let price = value
-        self.activityInfo.text = hour + " • " + price
+        self.activityInfo.text = hour + " • " + "R$" + price
         self.activityTitle.text = name
     }
     func setupConstraints() {

@@ -10,16 +10,21 @@ import Foundation
 struct Day: Codable {
     var id: Int
     var date: String
+    var isSelected: Bool
     
     enum CodingKeys: String, CodingKey {
         case id
         case date
+        case isSelected
     }
 
-    init() {
+    init(isSelected: Bool, date: Date) {
         self.id = 1
         let format = DateFormatter()
-        self.date = format.string(from: Date())
+        format.timeStyle = .none
+        format.dateStyle = .short
+        self.date = format.string(from: date)
+        self.isSelected = isSelected
     }
 }
 

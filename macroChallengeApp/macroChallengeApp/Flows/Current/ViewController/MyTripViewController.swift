@@ -12,26 +12,17 @@ class MyTripViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let myTripView = MyTripView()
-//    var activites: [Activity] = [Activity(id: 1, name: "Comer", category: "Comida", location: "fdsa", hour: "8:00", budget: 123, day: Day()),
-//                                 Activity(id: 2, name: "Chorar", category: "Comida", location: "fdsa", hour: "10:00", budget: 123, day: Day()),
-//                                 Activity(id: 3, name: "Dormir", category: "Comida", location: "fdsa", hour: "12:00", budget: 123, day: Day()),
-//                                 Activity(id: 4, name: "Respirar", category: "Comida", location: "fdsa", hour: "14:00", budget: 123, day: Day())]
     
     var roadmap = RoadmapLocal()
     var activites: [ActivityLocal] = []
     var days: [DayLocal] = []
     
-    var selectedDays: [Bool] = []
+    var daySelected = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupMyTripView()
-        
-        self.selectedDays = Array(repeating: false, count: Int(roadmap.dayCount))
-        self.selectedDays[0] = true
-        
-        self.activites = ActivityRepository.shared.getActivity()
         
         myTripView.setupContent(roadmap: roadmap)
         myTripView.bindCollectionView(delegate: self, dataSource: self)
@@ -45,16 +36,30 @@ class MyTripViewController: UIViewController {
             budgetDay += activite.budget
         }
         self.getAllDays()
+        self.activites = self.getAllActivities()
         myTripView.budgetValue.text = "R$\(budgetDay)"
     }
     
     func getAllDays() {
-        if let newDays = roadmap.day?.allObjects as? [DayLocal] {
+        if var newDays = roadmap.day?.allObjects as? [DayLocal] {
+            newDays.sort { $0.id < $1.id }
             self.days = newDays
+            print(days)
+        }
+        for index in 0..<days.count where days[index].isSelected == true {
+            self.daySelected = index
         }
     }
     
+    func getAllActivities() -> [ActivityLocal] {
+        if let newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] {
+            print("oi",newActivities)
+            return newActivities
+        }
+        return []
+    }
+    
     @objc func goToCreateActivity() {
-        coordinator?.startActivity()
+        coordinator?.startActivity(day: self.days[daySelected])
     }
 }

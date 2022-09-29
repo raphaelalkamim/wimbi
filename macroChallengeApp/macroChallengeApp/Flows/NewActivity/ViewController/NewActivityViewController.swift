@@ -13,7 +13,6 @@ protocol ChangeTextTableDelegate: AnyObject {
 }
 
 class NewActivityViewController: UIViewController {
-    
     weak var coordinator: ProfileCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let newActivityView = NewActivityView()
@@ -27,7 +26,9 @@ class NewActivityViewController: UIViewController {
             // tableView.reloadData()
         }
     }
-    var activity: Activity = Activity(id: 0, name: "Address", category: "", location: "", hour: "", budget: 0, day: Day())
+    var activity: Activity = Activity(id: 0, name: "Address", category: "", location: "", hour: "", budget: 0, day: Day(isSelected: true, date: Date()))
+    
+    var day = DayLocal()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +55,36 @@ class NewActivityViewController: UIViewController {
     }
     
     @objc func saveActivity() {
-        print("save")
+        self.getData()
+        let newActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
+        print(newActivity)
+        coordinator?.backPage()
+    }
+    
+    func getData() {
+        // local name
+        let tableView = newActivityView.localyTable
+        guard let cell = tableView.cellForRow(at: [0, 1]) as? TextFieldTableViewCell else { return }
+        activity.name = cell.title.text ?? "Nova atividade"
+
+        // date
+        let formater = DateFormatter()
+        formater.dateStyle = .short
+        formater.timeStyle = .none
+        activity.day = Day(isSelected: true, date: formater.date(from: self.day.date ?? "23/10/2000") ?? Date())
+        
+        // hour
+        let tableViewHour = newActivityView.dateTable
+        guard let cell = tableViewHour.cellForRow(at: [0, 1]) as? TimePickerTableViewCell else { return }
+        formater.dateStyle = .none
+        formater.timeStyle = .short
+        activity.hour = formater.string(from: cell.datePicker.date)
+        
+        // value
+        let tableViewValue = newActivityView.valueTable
+        guard let cell = tableViewValue.cellForRow(at: [0, 1]) as?
+                ValueTableViewCell else { return }
+        activity.budget = (cell.value.text as? NSString)?.doubleValue ?? 150.00
     }
 }
 
@@ -140,12 +170,14 @@ extension NewActivityViewController: UITableViewDataSource {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 self.coordinator?.openLocationActivity(delegate: self)
-                print("oi")
             }
-        }
-        
-        else if tableView == newActivityView.valueTable {
-            if indexPath.row == 0 {}
+            if indexPath.row == 1 {
+                
+            }
+        } else if tableView == newActivityView.valueTable {
+            if indexPath.row == 1 {
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
+            }
         }
     }
 }
@@ -154,6 +186,7 @@ extension NewActivityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+
 }
 
 extension NewActivityViewController {
@@ -224,12 +257,16 @@ extension NewActivityViewController: UICollectionViewDataSource {
             switch cell.iconDescription.text {
             case "Accommodation":
                 cell.selectedBackgroundView(button: "accommodation")
+                activity.category = "accommodation"
             case "Food":
                 cell.selectedBackgroundView(button: "food")
+                activity.category = "food"
             case "Leisure":
                 cell.selectedBackgroundView(button: "leisure")
+                activity.category = "leisure"
             case "Transportation":
                 cell.selectedBackgroundView(button: "transportation")
+                activity.category = "transportation"
             default:
                 break
             }
@@ -257,7 +294,7 @@ extension NewActivityViewController: UICollectionViewDataSource {
 
 extension NewActivityViewController: ChangeTextTableDelegate {
     func changeText(address: String) {
-        activity.name = address
+        activity.location = address
         newActivityView.localyTable.reloadData()
     }
 }

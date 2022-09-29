@@ -51,9 +51,10 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "Egito"
         navigationController.pushViewController(viewController, animated: true)
     }
-    func startActivity() {
+    func startActivity(day: DayLocal) {
         let viewController = NewActivityViewController()
         viewController.coordinator = self
+        viewController.day = day
         viewController.navigationItem.title = "New Activity"
         //navigationController.present(viewController, animated: true)
         navigationController.pushViewController(viewController, animated: true)

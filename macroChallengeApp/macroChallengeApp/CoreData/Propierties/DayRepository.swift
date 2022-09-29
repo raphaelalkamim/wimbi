@@ -14,7 +14,7 @@ extension DayRepository {
     @NSManaged var id: Int32
     @NSManaged var activity: NSSet?
     @NSManaged var roadmap: RoadmapLocal?
-
+    @NSManaged var isSelected: Bool
 }
 
 // MARK: Generated accessors for activity

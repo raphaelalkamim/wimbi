@@ -79,15 +79,28 @@ class ReviewTravelViewController: UIViewController {
         RoadmapRepository.shared.saveContext()
         
         // save days in Roadmap
-        for _ in 0..<roadmap.dayCount {
-            let newDay = DayRepository.shared.createDay(roadmap: newRoadmap, day: Day())
+        var isFirstDay = false
+        for index in 0..<roadmap.dayCount {
+            if index == 0 {
+                isFirstDay = true
+            } else {
+                isFirstDay = false
+            }
+            let newDay = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial,
+                                                                                            indexPath: index,
+                                                                                            isSelected: isFirstDay))
             print(newDay)
         }
         
-        print(newRoadmap)
-        
         UIAccessibility.post(notification: .screenChanged, argument: coordinator?.navigationController)
         coordinator?.dismiss(isNewRoadmap: true)
+    }
+    
+    func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {
+        let date = startDay.addingTimeInterval(Double(indexPath) * 24 * 3600)
+        var day = Day(isSelected: isSelected, date: date)
+        day.id = indexPath
+        return day
     }
     @objc func backPage() {
         coordinator?.back()

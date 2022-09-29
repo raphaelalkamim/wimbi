@@ -32,13 +32,10 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     lazy var dayButton: UIButton = {
         let btn = UIButton()
-//        btn.tintColor = .accent
         btn.setTitle("1", for: .normal)
         btn.layer.cornerRadius = 16
-//        btn.backgroundColor = .accent
         btn.setTitleColor(designSystem.palette.textPrimary, for: .normal)
         btn.titleLabel?.font = designSystem.text.infoTitle.font
-//        btn.titleLabel?.textColor = .textPrimary
         btn.isUserInteractionEnabled = false
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
@@ -50,7 +47,6 @@ extension CalendarCollectionViewCell {
         contentView.addSubview(day)
         contentView.addSubview(dayButton)
         self.layer.cornerRadius = 13
-        //self.dayButton.addTarget(self, action: #selector(dayAction), for: .touchDown)
         setupConstraints()
         
     }
@@ -62,8 +58,6 @@ extension CalendarCollectionViewCell {
             make.top.equalToSuperview()
         }
         dayButton.snp.makeConstraints { make in
-//            make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
-//            make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
             make.top.equalTo(day.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(32)
@@ -73,28 +67,27 @@ extension CalendarCollectionViewCell {
         self.dayButton.backgroundColor = .accent
         self.dayButton.setTitleColor(.white, for: .normal)
     }
-    
-    func setupDays(startDay: Date, indexPath: Int) {
+    func setDay(date: String) {
         let calendar = Calendar.current
-        let startDay = calendar.startOfDay(for: startDay)
-        let dayOfWeek = setupDayWeek(day: calendar.component(.weekday, from: startDay), indexPath: indexPath)
+        let format = DateFormatter()
+        format.dateFormat = "dd/MM/yy"
+        let newDate = format.date(from: date)
+                
+        let weekday = (calendar.component(.weekday, from: newDate ?? Date()) - calendar.firstWeekday + 7) % 7 + 1
+        print(weekday)
         
-        let dayNumber = setupDayNumber(day: calendar.component(.day, from: startDay), indexPath: indexPath)
-
-        dayButton.setTitle(String(dayNumber), for: .normal)
-        day.text = String(dayOfWeek)
+        format.dateFormat = "d"
+        day.text = self.setupDayWeek(day: weekday)
+        dayButton.setTitle(format.string(from: newDate ?? Date()), for: .normal)
     }
-    func setupDayWeek(day: Int, indexPath: Int) -> String {
+    func setupDayWeek(day: Int) -> String {
         let weekDays = ["SUN", "TUE", "WED", "THUR", "FRI", "SAT", "SUN"]
-        for integer in 0..<weekDays.count where integer == indexPath {
+        for integer in 0..<weekDays.count where integer == day {
             return weekDays[integer]
         }
         return "SUN"
     }
-    func setupDayNumber(day: Int, indexPath: Int) -> Int {
-        self.days[indexPath]
-        return day + indexPath
-    }
+   
     @objc func dayAction() {
         print("apertei")
         dayButton.backgroundColor = .accent
