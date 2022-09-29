@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		131272B828E610AC000B7968 /* StringProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272B728E610AC000B7968 /* StringProtocol.swift */; };
 		131272BB28E61B0D000B7968 /* NewActivityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272BA28E61B0D000B7968 /* NewActivityExtension.swift */; };
+		131272D728E6249E000B7968 /* RoadmapSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272D428E6249E000B7968 /* RoadmapSearchTableViewController.swift */; };
+		131272D828E6249E000B7968 /* PreviewRoadmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272D528E6249E000B7968 /* PreviewRoadmapViewController.swift */; };
+		131272D928E6249E000B7968 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272D628E6249E000B7968 /* ExploreViewController.swift */; };
+		131272DA28E624CC000B7968 /* ExploreViewController+PreviewRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272C028E62440000B7968 /* ExploreViewController+PreviewRoadmap.swift */; };
+		131272DB28E624CC000B7968 /* ExploreViewController+Roadmaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272C128E62440000B7968 /* ExploreViewController+Roadmaps.swift */; };
+		131272DC28E624CE000B7968 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272CA28E62441000B7968 /* ExploreView.swift */; };
+		131272DD28E624CE000B7968 /* PreviewRoadmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272CB28E62441000B7968 /* PreviewRoadmapView.swift */; };
+		131272DE28E624D1000B7968 /* RoadmapExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272C328E62441000B7968 /* RoadmapExploreCollectionViewCell.swift */; };
+		131272DF28E624D1000B7968 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272C428E62441000B7968 /* SearchResultTableViewCell.swift */; };
+		131272E028E624F4000B7968 /* ExploreViewController+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272BF28E62440000B7968 /* ExploreViewController+ContextMenu.swift */; };
 		1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14728DA4869009509DF /* ActivityRepository.swift */; };
 		1359F14B28DA489A009509DF /* DayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14A28DA489A009509DF /* DayRepository.swift */; };
 		1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14C28DA48A8009509DF /* RoadmapRepository.swift */; };
@@ -26,7 +36,6 @@
 		1379744828D8E57B00AEA662 /* ReviewTravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744428D8E57B00AEA662 /* ReviewTravelViewController.swift */; };
 		1379744A28D8E57B00AEA662 /* ProfileViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744628D8E57B00AEA662 /* ProfileViewControllerExtension.swift */; };
 		1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744728D8E57B00AEA662 /* ProfileViewController+Settings.swift */; };
-		1379744D28D8E5CA00AEA662 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744C28D8E5CA00AEA662 /* ExploreViewController.swift */; };
 		1379745028D8E61B00AEA662 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744F28D8E61B00AEA662 /* ProfileView.swift */; };
 		1379745328D8E6B700AEA662 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379745128D8E6B700AEA662 /* SettingsViewController.swift */; };
 		1379745428D8E6B700AEA662 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379745228D8E6B700AEA662 /* SettingsView.swift */; };
@@ -145,6 +154,16 @@
 /* Begin PBXFileReference section */
 		131272B728E610AC000B7968 /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
 		131272BA28E61B0D000B7968 /* NewActivityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityExtension.swift; sourceTree = "<group>"; };
+		131272BF28E62440000B7968 /* ExploreViewController+ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreViewController+ContextMenu.swift"; sourceTree = "<group>"; };
+		131272C028E62440000B7968 /* ExploreViewController+PreviewRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreViewController+PreviewRoadmap.swift"; sourceTree = "<group>"; };
+		131272C128E62440000B7968 /* ExploreViewController+Roadmaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreViewController+Roadmaps.swift"; sourceTree = "<group>"; };
+		131272C328E62441000B7968 /* RoadmapExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapExploreCollectionViewCell.swift; sourceTree = "<group>"; };
+		131272C428E62441000B7968 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		131272CA28E62441000B7968 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		131272CB28E62441000B7968 /* PreviewRoadmapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRoadmapView.swift; sourceTree = "<group>"; };
+		131272D428E6249E000B7968 /* RoadmapSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoadmapSearchTableViewController.swift; sourceTree = "<group>"; };
+		131272D528E6249E000B7968 /* PreviewRoadmapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewRoadmapViewController.swift; sourceTree = "<group>"; };
+		131272D628E6249E000B7968 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		1359F14728DA4869009509DF /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
 		1359F14A28DA489A009509DF /* DayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepository.swift; sourceTree = "<group>"; };
 		1359F14C28DA48A8009509DF /* RoadmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapRepository.swift; sourceTree = "<group>"; };
@@ -162,7 +181,6 @@
 		1379744428D8E57B00AEA662 /* ReviewTravelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTravelViewController.swift; sourceTree = "<group>"; };
 		1379744628D8E57B00AEA662 /* ProfileViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerExtension.swift; sourceTree = "<group>"; };
 		1379744728D8E57B00AEA662 /* ProfileViewController+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Settings.swift"; sourceTree = "<group>"; };
-		1379744C28D8E5CA00AEA662 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		1379744F28D8E61B00AEA662 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = macroChallengeApp/Flows/NewRoadmap/View/ProfileView.swift; sourceTree = SOURCE_ROOT; };
 		1379745128D8E6B700AEA662 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = macroChallengeApp/Flows/Profile/ViewController/SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
 		1379745228D8E6B700AEA662 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = macroChallengeApp/Flows/NewRoadmap/View/SettingsView.swift; sourceTree = SOURCE_ROOT; };
@@ -306,6 +324,45 @@
 				131272BA28E61B0D000B7968 /* NewActivityExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		131272BE28E62440000B7968 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				131272BF28E62440000B7968 /* ExploreViewController+ContextMenu.swift */,
+				131272C028E62440000B7968 /* ExploreViewController+PreviewRoadmap.swift */,
+				131272C128E62440000B7968 /* ExploreViewController+Roadmaps.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		131272C228E62441000B7968 /* ViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				131272C328E62441000B7968 /* RoadmapExploreCollectionViewCell.swift */,
+				131272C428E62441000B7968 /* SearchResultTableViewCell.swift */,
+			);
+			path = ViewCell;
+			sourceTree = "<group>";
+		};
+		131272C528E62441000B7968 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				131272D628E6249E000B7968 /* ExploreViewController.swift */,
+				131272D528E6249E000B7968 /* PreviewRoadmapViewController.swift */,
+				131272D428E6249E000B7968 /* RoadmapSearchTableViewController.swift */,
+			);
+			name = ViewController;
+			path = Explore/ViewController;
+			sourceTree = "<group>";
+		};
+		131272C928E62441000B7968 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				131272CA28E62441000B7968 /* ExploreView.swift */,
+				131272CB28E62441000B7968 /* PreviewRoadmapView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		1359F14928DA4873009509DF /* CoreData */ = {
@@ -593,17 +650,12 @@
 		13F994F328D3956100B077C0 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				13F994F428D3957500B077C0 /* ViewController */,
+				131272BE28E62440000B7968 /* Extension */,
+				131272C928E62441000B7968 /* View */,
+				131272C228E62441000B7968 /* ViewCell */,
+				131272C528E62441000B7968 /* ViewController */,
 			);
 			path = Explore;
-			sourceTree = "<group>";
-		};
-		13F994F428D3957500B077C0 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1379744C28D8E5CA00AEA662 /* ExploreViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		13F994F528D3957F00B077C0 /* ViewController */ = {
@@ -1039,6 +1091,7 @@
 				B0B17FE528E4DABF0010B00C /* CurrentCountDown.swift in Sources */,
 				135AC6A528DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift in Sources */,
 				13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */,
+				131272DD28E624CE000B7968 /* PreviewRoadmapView.swift in Sources */,
 				13C8A13628CA6C1100994196 /* TextStyle.swift in Sources */,
 				A0B9F4C528D90A7C00F2DF06 /* SwitchTableViewCell.swift in Sources */,
 				13C8A10F28C6829100994196 /* Day.swift in Sources */,
@@ -1074,9 +1127,11 @@
 				B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */,
 				A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */,
 				13C8A13028CA6AF400994196 /* DefaultDesignSystem.swift in Sources */,
+				131272E028E624F4000B7968 /* ExploreViewController+ContextMenu.swift in Sources */,
 				1379745328D8E6B700AEA662 /* SettingsViewController.swift in Sources */,
 				13BD500F28DA297500C0EA7C /* KeychainManager.swift in Sources */,
 				13C8A12328CA692500994196 /* DesignPalette.swift in Sources */,
+				131272D928E6249E000B7968 /* ExploreViewController.swift in Sources */,
 				13BD4FFF28D90F9700C0EA7C /* DefaultDesignSystemImages.swift in Sources */,
 				1359F15628DA48F3009509DF /* DayRepositoryClass.swift in Sources */,
 				13F994E728D393CE00B077C0 /* CategoryViewController.swift in Sources */,
@@ -1101,6 +1156,7 @@
 				DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */,
 				1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */,
 				DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */,
+				131272D728E6249E000B7968 /* RoadmapSearchTableViewController.swift in Sources */,
 				13BD500E28DA297500C0EA7C /* SignInWithAppleManager.swift in Sources */,
 				B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */,
 				1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */,
@@ -1110,12 +1166,13 @@
 				B0AC251628E21DEB00F38525 /* CurrentEmptyState.swift in Sources */,
 				13C8A11328C6835300994196 /* Activity.swift in Sources */,
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
+				131272DC28E624CE000B7968 /* ExploreView.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
 				DF2EA1BD28DE28BA002F12D8 /* ActivityDestinyView.swift in Sources */,
 				13BD500828DA28E500C0EA7C /* NewActivityView.swift in Sources */,
+				131272DF28E624D1000B7968 /* SearchResultTableViewCell.swift in Sources */,
 				1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */,
 				A0B9F4C328D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift in Sources */,
-				1379744D28D8E5CA00AEA662 /* ExploreViewController.swift in Sources */,
 				DFA30CAF28DA2E5A00F316EB /* TabBarController.swift in Sources */,
 				13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */,
 				A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */,
@@ -1139,10 +1196,14 @@
 				A0FD739928DA7EF00044E47C /* MyTripView.swift in Sources */,
 				B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */,
 				A0B9F4C728DA2A4C00F2DF06 /* TermsView.swift in Sources */,
+				131272D828E6249E000B7968 /* PreviewRoadmapViewController.swift in Sources */,
 				13BD501028DA297500C0EA7C /* LoginViewController.swift in Sources */,
 				1359F14B28DA489A009509DF /* DayRepository.swift in Sources */,
+				131272DE28E624D1000B7968 /* RoadmapExploreCollectionViewCell.swift in Sources */,
 				13EC5C5428DB902F005F7128 /* DefaultDesignDefaultImages.swift in Sources */,
+				131272DA28E624CC000B7968 /* ExploreViewController+PreviewRoadmap.swift in Sources */,
 				DF5F774128CA7E1600BA5F5F /* DesignSystem+UIFont.swift in Sources */,
+				131272DB28E624CC000B7968 /* ExploreViewController+Roadmaps.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
