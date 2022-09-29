@@ -77,6 +77,7 @@
 "Day" = "Dia";
 "DAILY COSTS" = "CUSTOS DO DIA";
 "Free" = "Grátis";
+"Left" = "Faltam";
 
 // MARK: -  NewRoadmap
 "Category" = "Categoria";
