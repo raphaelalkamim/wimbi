@@ -251,6 +251,37 @@ class DataManager {
         }
     }
     
+    func getPublicRoadmaps(_ completion: @escaping ((_ roadmaps: [RoadmapDTO]) -> Void)) {
+        var roadmaps: [RoadmapDTO] = []
+        let session: URLSession = URLSession.shared
+        let url: URL = URL(string: baseURL + "roadmaps")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            print(response)
+            guard let data = data else {return}
+            if error != nil {
+                print(String(describing: error?.localizedDescription))
+            }
+            
+            do {
+                roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
+                
+                DispatchQueue.main.async {
+                    completion(roadmaps)
+                }
+            } catch {
+                // FIXME: tratar o erro do decoder
+                print("DEU RUIM NO PARSE")
+            }
+        }
+        task.resume()
+    }
+    
 #warning("Corrigir essa funcao para utilizar no codigo")
     func decodeType<T: Codable>(_ class: T, data: Data) -> T? {
         do {
