@@ -100,11 +100,11 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == daysView.daysTableView {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as? DatePickerTableViewCell {
                 if indexPath.row == 0 {
-                    cell.label.text = "Starts on".localized()
+                    cell.label.text = "Start date".localized()
                     cell.setupSeparator()
                     self.initialDate = cell.datePicker
                 } else {
-                    cell.label.text = "Ends on".localized()
+                    cell.label.text = "End date".localized()
                     self.finalDate = cell.datePicker
                 }
                 cellTable = cell

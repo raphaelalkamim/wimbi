@@ -62,7 +62,7 @@ class DestinyView: UIView {
         searchController.obscuresBackgroundDuringPresentation = true
         
         searchBar = searchController.searchBar
-        searchBar.placeholder = "Where are you going?".localized()
+        searchBar.placeholder = "Where do you want to go?".localized()
         searchBar.sizeToFit()
     }
     @objc func clicou() {

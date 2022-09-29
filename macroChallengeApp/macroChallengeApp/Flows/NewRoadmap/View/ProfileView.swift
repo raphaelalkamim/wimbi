@@ -55,7 +55,7 @@ class ProfileView: UIView {
     
     private lazy var emptyStateTitle: UILabel = {
         let title = UILabel()
-        title.text = "Click on ”+” to create a new roadmap or explore already created roadmaps.".localized()
+        title.text = "Click on ”+” to create a new roadmap or to explore the existing ones.".localized()
         title.numberOfLines = 0
         title.font = designSystem.text.body.font
         title.textAlignment = .center

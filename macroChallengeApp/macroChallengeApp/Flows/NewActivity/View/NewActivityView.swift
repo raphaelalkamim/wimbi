@@ -43,7 +43,7 @@ class NewActivityView: UIView {
     
     lazy var localyLabel: UILabel = {
         let label = UILabel()
-        label.text = "LOCALLY".localized()
+        label.text = "LOCATION".localized()
         label.stylize(with: designSystem.text.caption)
         return label
     }()

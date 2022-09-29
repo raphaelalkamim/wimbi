@@ -7,11 +7,11 @@
 */
 
 // MARK: -  Login
-"By clicking button above, you agree to our terms of use and privacy policies" = "Clicando no botão acima, você concorda com nossos termos de uso e políticas de privacidade";
+"By clicking on the button above, you agree to our terms of use and privacy policies" = "Clicando no botão acima, você concorda com nossos termos de uso e políticas de privacidade";
 
 // MARK: -  New Activity
 "TYPE" = "TIPO";
-"LOCALLY" = "LOCAL";
+"LOCATION" = "LOCAL";
 "TIME" = "HORÁRIO";
 "EXPENSE" = "CUSTO";
 "New activity" = "Nova atividade";
@@ -29,7 +29,7 @@
 // MARK: -  Explore
 //ainda nao dei .localized
 "New trip" = "Nova viagem";
-"Existing trip" = "????";
+"Join trip" = "????";
 
 // MARK: -  TabBar
 "Explore" = "Explorar";
@@ -39,7 +39,7 @@
 // MARK: -  Profile
 "My roadmaps" = "Meus roteiros";
 "NEW" = "NOVO";
-"Click on ”+” to create a new roadmap or explore already created roadmaps." = "Clique no ”+” para criar um novo roteiro ou explore roteiros já existentes.";
+"Click on ”+” to create a new roadmap or to explore the existing ones." = "Clique no ”+” para criar um novo roteiro ou explore roteiros já existentes.";
 
 //Settings
 "Settings" = "Configurações";
@@ -51,12 +51,12 @@
 "NAME" = "NOME";
 "USERNAME" = "NOME DO USUÁRIO";
 "Save" = "Salvar";
-"Turn notification on?" = "Ativar notificação?";
+"Turn on notification" = "Ativar notificação";
 "Frequency" = "Frequência";
 "minutes" = "minutos";
 "hours" = "horas";
 "days" = "dias";
-"By activating the notification you will be configuring the frequency at which you will receive messages before each trip activity." = "Ao ativar a notificação você estará configurando a frequência em que receberá as mensagens antes de cada atividade da viagem.";
+"By activating the notification you will configure the frequency of the reminders before every activity." = "Ao ativar a notificação você estará configurando a frequência em que receberá lembretes antes de cada atividade.";
 "Sign out of your account?" = "Sair da sua conta?";
 "Cancel" = "Cancelar";
 "Sign out" = "Sair";
@@ -65,7 +65,7 @@
 "ABOUT" = "SOBRE";
 "CATEGORY" = "CATEGORIA";
 "Mountain" = "Montanha";
-"Camp" = "Campo";
+"Countryside" = "Campo";
 "Beach" = "Praia";
 "City" = "Cidade";
 "TOTAL AMOUNT" = "VALOR TOTAL";
@@ -83,15 +83,15 @@
 "Next" = "Próximo";
 "Previous" = "Anterior";
 "Destiny" = "Destino";
-"Where are you going?" = "Para onde você vai?";
+"Where do you want to go?" = "Para onde você vai?";
 "Days and travelers" = "Dias e viajantes";
 "DATE" = "DATA";
-"Starts on" = "Começa";
-"Ends on" = "Termina";
+"Start date" = "Começa";
+"End date" = "Termina";
 "TRAVELERS" = "VIAJANTES";
 "Number of travelers" = "Número de viajantes";
-"Leave this trip public?" = "Deixar essa viagem pública?";
-"When you make your trip public, it will be published to all app users." = "Ao deixar sua viagem pública, ela será publicada para todos os usuários do aplicativo.";
+"Turn this trip public?" = "Deixar essa viagem pública?";
+"By turning your trip public, it will be published to all app users." = "Ao deixar sua viagem pública, ela será publicada para todos os usuários do aplicativo.";
 "My trip" = "Minha viagem";
 "Travel days" = "Dias de viagem";
 "PRIVACY" = "PRIVACIDADE";
@@ -99,7 +99,7 @@
 "Public" = "Pública";
 "Private" = "Privada";
 "Are you sure?" = "Tem certeza?";
-"By canceling you will lose all information" = "Cancelando você perderá todas as informações inseridas";
+"By canceling you will lose all your progress" = "Cancelando você perderá todo o seu processo";
 "Back" = "Voltar";
 
 

@@ -76,7 +76,7 @@ class LabelTableViewCell: UITableViewCell {
             }
         }
         if indexPath == 1 {
-            self.title.text = "Starts on".localized()
+            self.title.text = "Start date".localized()
             self.value.text = value
             let separator = UIView()
             self.addSubview(separator)
@@ -90,7 +90,7 @@ class LabelTableViewCell: UITableViewCell {
             }
         }
         if indexPath == 2 {
-            self.title.text = "Ends on".localized()
+            self.title.text = "End date".localized()
             self.value.text = value
         }
     }

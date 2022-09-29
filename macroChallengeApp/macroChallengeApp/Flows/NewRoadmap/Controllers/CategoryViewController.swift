@@ -14,7 +14,7 @@ class CategoryViewController: UIViewController {
     
     let categoryView = CategoryView()
     let categories: [Category] =
-    [Category(title: "Camp".localized(), subtitle: "Descrição aqui", icon: "categoryCamp"),
+    [Category(title: "Countryside".localized(), subtitle: "Descrição aqui", icon: "categoryCamp"),
      Category(title: "Beach".localized(), subtitle: "Descrição aqui", icon: "categoryBeach"),
      Category(title: "Mountain".localized(), subtitle: "Descrição aqui", icon: "categoryMountain"),
      Category(title: "City".localized(), subtitle: "Descrição aqui", icon: "categoryCity")]

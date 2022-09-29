@@ -31,7 +31,7 @@ class LoginView: UIView {
     
     lazy var agreeText: UILabel = {
         let label = UILabel()
-        label.text = "By clicking button above, you agree to our terms of use and privacy policies".localized()
+        label.text = "By clicking on the button above, you agree to our terms of use and privacy policies".localized()
         return label
     }()
     
