@@ -106,6 +106,8 @@
 		B078F23028C27F2500D46F61 /* macroChallengeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F22F28C27F2500D46F61 /* macroChallengeAppTests.swift */; };
 		B078F23A28C27F2500D46F61 /* macroChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */; };
 		B078F23C28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */; };
+		B0AC251628E21DEB00F38525 /* CurrentEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */; };
+		B0B17FE528E4DABF0010B00C /* CurrentCountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */; };
 		B0CDF35028CFC7E90092A76C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CDF34F28CFC7E90092A76C /* Category.swift */; };
 		B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */; };
 		B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461628CFA85E00D62AF1 /* CategoryView.swift */; };
@@ -245,6 +247,8 @@
 		B078F23528C27F2500D46F61 /* macroChallengeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macroChallengeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITests.swift; sourceTree = "<group>"; };
 		B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentEmptyState.swift; sourceTree = "<group>"; };
+		B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCountDown.swift; sourceTree = "<group>"; };
 		B0CDF34F28CFC7E90092A76C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
 		B0E2461628CFA85E00D62AF1 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -686,6 +690,8 @@
 			isa = PBXGroup;
 			children = (
 				A0FD739828DA7EF00044E47C /* MyTripView.swift */,
+				B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */,
+				B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1019,6 +1025,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13F994EB28D393E500B077C0 /* DaysViewController.swift in Sources */,
+				B0B17FE528E4DABF0010B00C /* CurrentCountDown.swift in Sources */,
 				135AC6A528DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift in Sources */,
 				13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */,
 				13C8A13628CA6C1100994196 /* TextStyle.swift in Sources */,
@@ -1088,6 +1095,7 @@
 				13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */,
 				1379743D28D5165200AEA662 /* LocationSearchTableViewController.swift in Sources */,
 				1379743B28D5162C00AEA662 /* ReviewTravelView.swift in Sources */,
+				B0AC251628E21DEB00F38525 /* CurrentEmptyState.swift in Sources */,
 				13C8A11328C6835300994196 /* Activity.swift in Sources */,
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
