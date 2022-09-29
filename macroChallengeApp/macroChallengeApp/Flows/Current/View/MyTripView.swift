@@ -141,7 +141,6 @@ class MyTripView: UIView {
     }
     
     func setupContent(roadmap: RoadmapLocal) {
-        
     }
     
     func setupConstraints() {

@@ -57,7 +57,7 @@ class ProfileCoordinator: Coordinator {
         viewController.coordinator = self
         viewController.day = day
         viewController.navigationItem.title = "New Activity"
-        //navigationController.present(viewController, animated: true)
+        // navigationController.present(viewController, animated: true)
         navigationController.pushViewController(viewController, animated: true)
     }
 
