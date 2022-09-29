@@ -13,7 +13,7 @@ protocol AddNewActivityDelegate: AnyObject {
     func attTable()
 }
 protocol ChangeTextTableDelegate: AnyObject {
-    func changeText(address: String)
+    func changeText(coords: String, locationName: String, address: String)
 }
 
 extension NewActivityViewController {
@@ -97,10 +97,10 @@ extension NewActivityViewController: UITableViewDataSource {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
-                if activity.location.isEmpty {
-                    newCell.label.text = "Adress"
+                if address.isEmpty {
+                    newCell.label.text = "Address"
                 } else {
-                    newCell.label.text = activity.location
+                    newCell.label.text = address
                 }
                 newCell.setupSeparator()
                 cell = newCell
@@ -108,6 +108,7 @@ extension NewActivityViewController: UITableViewDataSource {
             } else if indexPath.row == 1 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
                 newCell.title.placeholder = "Name"
+                newCell.title.text = local
                 cell = newCell
             }
             
@@ -235,8 +236,10 @@ extension NewActivityViewController: UICollectionViewDataSource {
 
 // MARK: Delegates
 extension NewActivityViewController: ChangeTextTableDelegate {
-    func changeText(address: String) {
-        activity.location = address
+    func changeText(coords: String, locationName: String, address: String) {
+        activity.location = coords
+        local = locationName
+        self.address = address
         newActivityView.localyTable.reloadData()
     }
 }
