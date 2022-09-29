@@ -39,8 +39,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         self.setupProfileView()
         profileView.bindColletionView(delegate: self, dataSource: self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
-        
-        profileView.addButton.addTarget(self, action: #selector(addAction), for: .touchDown)
+        self.setContextMenu()
         do {
             try fetchResultController.performFetch()
             self.roadmaps = fetchResultController.fetchedObjects ?? []
@@ -57,10 +56,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     @objc func profileSettings() {
         coordinator?.settings()
     }
-    
-    @objc func addAction() {
-        coordinator?.newRoadmap()
-    }
+
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         // let newRoadmaps = RoadmapRepository.shared.getRoadmap()
