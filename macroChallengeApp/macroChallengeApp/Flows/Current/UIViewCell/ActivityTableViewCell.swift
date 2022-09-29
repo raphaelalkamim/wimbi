@@ -7,11 +7,13 @@
 
 import Foundation
 import UIKit
+import MapKit
+import CoreLocation
 
 class ActivityTableViewCell: UITableViewCell {
     static let identifier = "activityCell"
     let designSystem: DesignSystem = DefaultDesignSystem.shared
-    
+    let myTripViewController = MyTripViewController()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -64,6 +66,7 @@ extension ActivityTableViewCell {
         setupConstraints()
         
     }
+    
     
     func setupConstraints() {
         activityIcon.snp.makeConstraints { make in

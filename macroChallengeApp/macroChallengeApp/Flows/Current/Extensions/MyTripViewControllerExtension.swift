@@ -18,6 +18,24 @@ extension MyTripViewController {
             make.edges.equalToSuperview()
         }
     }
+    
+    @objc func addRoute() {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        alert.view.tintColor = .accent
+        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
+        let string = NSAttributedString(string: "Are you sure you want to do this?", attributes: titleAtt)
+        alert.setValue(string, forKey: "attributedTitle")
+        
+        alert.addAction(UIAlertAction(title: "Open on Maps", style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+       
+        }))
+        alert.addAction(UIAlertAction(title: "Open on Waze", style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+        }))
+        present(alert, animated: true)
+    }
 }
 
 extension MyTripViewController: UICollectionViewDelegate {
@@ -98,8 +116,8 @@ extension MyTripViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCell.identifier, for: indexPath) as? ActivityTableViewCell else {
             fatalError("TableCell not found")
-            
         }
+        cell.localButton.addTarget(self, action: #selector(addRoute), for: .touchUpInside)
         return cell
     }
 }
