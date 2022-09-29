@@ -40,95 +40,6 @@ class NewActivityViewController: UIViewController {
         let salvarButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveActivity))
         self.navigationItem.rightBarButtonItem = salvarButton
         self.getData()
-
-extension NewActivityViewController {
-    func setupNewActivityView() {
-        navigationItem.title = "New Activity".localized()
-        view.addSubview(newActivityView)
-        setupConstraints()
-        newActivityView.bindTableView(delegate: self, dataSource: self)
-        newActivityView.bindCollectionView(delegate: self, dataSource: self)
-    }
-    func setupConstraints() {
-        newActivityView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
-}
-
-extension NewActivityViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rows: Int = 0
-        if tableView == newActivityView.localyTable {
-            rows = 2
-        } else if tableView == newActivityView.dateTable {
-            rows = 2
-        } else if tableView == newActivityView.valueTable {
-            rows = 2
-        }
-        return rows
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        if tableView == newActivityView.localyTable {
-            if indexPath.row == 0 {
-                guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = "Address".localized()
-                newCell.setupSeparator()
-                cell = newCell
-                
-            } else if indexPath.row == 1 {
-                guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
-                newCell.title.placeholder = "Name".localized()
-                cell = newCell
-            }
-            
-        } else if tableView == newActivityView.dateTable {
-            if indexPath.row == 0 {
-                guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = "Date".localized()
-                newCell.setupSeparator()
-                
-                cell = newCell
-            } else if indexPath.row == 1 {
-                guard let newCell = tableView.dequeueReusableCell(withIdentifier: TimePickerTableViewCell.identifier, for: indexPath) as? TimePickerTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = "Hour".localized()
-                cell = newCell
-            }
-            
-        } else if tableView == newActivityView.valueTable {
-            if indexPath.row == 0 {
-                guard let newCell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = "Currency".localized()
-                newCell.setupSeparator()
-                newCell.delegate = self
-                cell = newCell
-            } else {
-                if indexPath.row == 1 {
-                    guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
-                    
-                    newCell.title.text = "Value".localized()
-                    newCell.currencyType = self.currencyType
-                    newCell.value.placeholder = "$ 0.00"
-                    cell = newCell
-                }
-                
-            }
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == newActivityView.localyTable {
-            if indexPath.row == 0 {
-                // self.coordinator?.openLocationActivity()
-                self.present(LocationNewActivityViewController(), animated: true)
-                print("oi")
-            }
-        } else if tableView == newActivityView.valueTable {
-            if indexPath.row == 0 {}
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,6 +57,7 @@ extension NewActivityViewController: UITableViewDataSource {
         coordinator?.backPage()
     }
 }
+
 // MARK: Keyboard
 extension NewActivityViewController {
     fileprivate func setKeyboard() {
@@ -171,77 +83,4 @@ extension NewActivityViewController {
     @objc func dissMissKeyboard() {
         view.endEditing(true)
     }
-}
-
-extension NewActivityViewController: CurrencyTableViewCellDelegate {
-    func didChangeFormatter(formatter: String) {
-        self.currencyType = formatter
-    }
-}
-
-extension NewActivityViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-    }
-}
-
-extension NewActivityViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryActivityCollectionViewCell.identifier, for: indexPath) as? CategoryActivityCollectionViewCell else {
-            preconditionFailure("Cell not find")
-        }
-        switch indexPath.row {
-        case 0:
-            cell.iconDescription.text = "Food".localized()
-            cell.icon.image = designSystem.imagesActivities.food
-        case 1:
-            cell.iconDescription.text = "Accommodation".localized()
-            cell.icon.image = designSystem.imagesActivities.accomodation
-        case 2:
-            cell.iconDescription.text = "Leisure".localized()
-            cell.icon.image = designSystem.imagesActivities.leisure
-        case 3:
-            cell.iconDescription.text = "Transportation".localized()
-            cell.icon.image = designSystem.imagesActivities.transportation
-        default:
-            break
-        }
-        return cell
-
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryActivityCollectionViewCell {
-            switch cell.iconDescription.text {
-            case "Accommodation":
-                cell.selectedBackgroundView(button: "accommodation")
-            case "Food":
-                cell.selectedBackgroundView(button: "food")
-            case "Leisure":
-                cell.selectedBackgroundView(button: "leisure")
-            case "Transportation":
-                cell.selectedBackgroundView(button: "transportation")
-            default:
-                break
-            }
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryActivityCollectionViewCell {
-            switch cell.iconDescription.text {
-            case "Accommodation":
-                cell.notSelectedBackgroundView(button: "accommodation")
-            case "Food":
-                cell.notSelectedBackgroundView(button: "food")
-            case "Leisure":
-                cell.notSelectedBackgroundView(button: "leisure")
-            case "Transportation":
-                cell.notSelectedBackgroundView(button: "transportation")
-            default:
-                break
-            }
-        }
-    }
-    
 }
