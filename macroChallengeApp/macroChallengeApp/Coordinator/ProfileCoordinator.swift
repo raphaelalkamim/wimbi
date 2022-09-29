@@ -23,9 +23,9 @@ class ProfileCoordinator: Coordinator {
         let viewController = ProfileViewController()
         viewController.coordinator = self
         
-        let tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        let tabBarItem = UITabBarItem(title: "Profile".localized(), image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
         viewController.tabBarItem = tabBarItem
-        viewController.navigationItem.title = "Profile"
+        viewController.navigationItem.title = "Profile".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
     func newRoadmap() {
@@ -72,7 +72,7 @@ class ProfileCoordinator: Coordinator {
     func settings() {
         let viewController = SettingsViewController()
         viewController.coordinator = self
-        viewController.navigationItem.title = "Settings"
+        viewController.navigationItem.title = "Settings".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
     func backPage() {

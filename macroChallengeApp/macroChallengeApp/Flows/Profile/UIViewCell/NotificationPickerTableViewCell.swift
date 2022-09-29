@@ -12,7 +12,7 @@ import SnapKit
 class NotificationPickerTableViewCell: UITableViewCell {
     static let identifier = "notificationPickerCell"
     let designSystem: DesignSystem = DefaultDesignSystem.shared
-    let dataArray = ["minutes", "hours", "days"]
+    let dataArray = ["minutes".localized(), "hours".localized(), "days".localized()]
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()

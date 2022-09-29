@@ -52,13 +52,13 @@ extension NotificationsViewController: UITableViewDataSource {
 
         switch indexPath.row {
         case 0:
-            cellSwitch.title.text = "Turn notification on?"
+            cellSwitch.title.text = "Turn on notification".localized()
             cellSwitch.backgroundColor = designSystem.palette.backgroundCell
             cell = cellSwitch
 
         case 1:
             cellPicker.setup()
-            cellPicker.title.text = "Frequency"
+            cellPicker.title.text = "Frequency".localized()
             cellPicker.backgroundColor = designSystem.palette.backgroundCell
             cell = cellPicker
 

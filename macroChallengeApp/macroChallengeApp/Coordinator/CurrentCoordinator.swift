@@ -21,10 +21,10 @@ class CurrentCoordinator: Coordinator {
     func start() {
         let viewController = CurrentViewController()
         viewController.coordinator = self
-        let tabBarItem = UITabBarItem(title: "Current", image: UIImage(systemName: "map"), tag: 0)
+        let tabBarItem = UITabBarItem(title: "Current".localized(), image: UIImage(systemName: "map"), tag: 0)
         tabBarItem.selectedImage = UIImage(systemName: "map.fill")
         viewController.tabBarItem = tabBarItem
-        viewController.navigationItem.title = "Current"
+        viewController.navigationItem.title = "Current".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
     

@@ -40,7 +40,7 @@ class ReviewTravelViewController: UIViewController {
     }
     
     func setupReviewTravelView() {
-        navigationItem.title = "Minha Viagem"
+        navigationItem.title = "My trip".localized()
         self.view.addSubview(reviewTravelView)
         setupReviewConstraints()
         reviewTravelView.bindTableView(delegate: self, dataSource: self)
@@ -60,8 +60,8 @@ class ReviewTravelViewController: UIViewController {
         toolBar.barStyle = .default
         toolBar.backgroundColor = designSystem.palette.backgroundCell
         
-        let previous = UIBarButtonItem(title: "Previous", style: .plain, target: self, action: #selector(backPage))
-        let next = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextPage))
+        let previous = UIBarButtonItem(title: "Previous".localized(), style: .plain, target: self, action: #selector(backPage))
+        let next = UIBarButtonItem(title: "Next".localized(), style: .plain, target: self, action: #selector(nextPage))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let items = [spacer, previous, spacer, spacer, spacer, spacer, spacer, spacer, spacer, next, spacer]
         self.setToolbarItems(items, animated: false)

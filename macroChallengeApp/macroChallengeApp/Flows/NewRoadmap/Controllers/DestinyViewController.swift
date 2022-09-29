@@ -80,8 +80,8 @@ class DestinyViewController: UIViewController {
         toolBar.barStyle = .default
         toolBar.backgroundColor = designSystem.palette.backgroundCell
         
-        let previous = UIBarButtonItem(title: "Previous", style: .plain, target: self, action: #selector(backPage))
-        let next = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextPage))
+        let previous = UIBarButtonItem(title: "Previous".localized(), style: .plain, target: self, action: #selector(backPage))
+        let next = UIBarButtonItem(title: "Next".localized(), style: .plain, target: self, action: #selector(nextPage))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let items = [spacer, previous, spacer, spacer, spacer, spacer, spacer, spacer, spacer, next, spacer]
         self.setToolbarItems(items, animated: false)

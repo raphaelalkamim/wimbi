@@ -56,7 +56,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     @objc func profileSettings() {
         coordinator?.settings()
     }
-
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         // let newRoadmaps = RoadmapRepository.shared.getRoadmap()

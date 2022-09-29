@@ -46,13 +46,13 @@ class CurrentCountDown: UIView {
         let label = UILabel()
         label.stylize(with: designSystem.text.body)
         label.textAlignment = .left
-        label.text = "Left"
+        label.text = "Left".localized()
         return label
     }()
     
     lazy var timer: UILabel = {
         let label = UILabel()
-        label.font =  UIFont(name: "Avenir-Black", size: 70)
+        label.font = UIFont(name: "Avenir-Black", size: 70)
         label.numberOfLines = 0
         label.textColor = .textPrimary
         label.textAlignment = .left
@@ -64,7 +64,7 @@ class CurrentCountDown: UIView {
         let label = UILabel()
         label.stylize(with: designSystem.text.body)
         label.textAlignment = .left
-        label.text = "days"
+        label.text = "days".localized()
         return label
     }()
 }
@@ -95,8 +95,8 @@ extension CurrentCountDown {
         image.snp.makeConstraints { make in
             make.top.equalTo(date.snp.bottom).offset(designSystem.spacing.xxLargePositive)
             make.trailing.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.height/2.5)
-            make.width.equalTo(UIScreen.main.bounds.width/1.5)
+            make.height.equalTo(UIScreen.main.bounds.height / 2.5)
+            make.width.equalTo(UIScreen.main.bounds.width / 1.5)
         }
         
         subtitle.snp.makeConstraints { make in
