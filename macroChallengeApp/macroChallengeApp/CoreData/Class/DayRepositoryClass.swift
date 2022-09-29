@@ -23,12 +23,9 @@ class DayRepository: NSManagedObject {
         return container
     }()
     
-    var context: NSManagedObjectContext {
-        persistentContainer.viewContext
-    }
-    
+    var context = RoadmapRepository.shared.context
+
     func saveContext() {
-        let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
@@ -44,6 +41,7 @@ class DayRepository: NSManagedObject {
         
         newDay.id = Int32(day.id)
         newDay.date = day.date
+        newDay.isSelected = day.isSelected
         
         roadmap.addToDay(newDay)
         

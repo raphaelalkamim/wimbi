@@ -25,34 +25,20 @@ extension ProfileViewController: UICollectionViewDelegate {
 
 extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isConected == false {
-            return roadmaps.count
-
-        }
-        if let user = user {
-            return user.userRoadmap.count
-        }
-        return 5
+        return roadmaps.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
-        let viewController = MyTripViewController()
-        viewController.navigationItem.title = "Egito"
-        navigationController?.pushViewController(viewController, animated: true)
+        coordinator?.openRoadmap(roadmap: roadmaps[indexPath.row] )
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else {
             preconditionFailure("Cell not find")
         }
-        if isConected == false {
-            if indexPath.row == 0 {
-                cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: true)
-            } else {
-                cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: false)
-            }
-            cell.setupImage(category: roadmaps[indexPath.row].category ?? "noCategory")
-        }
+        let isNew = false
+        cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: isNew)
+        cell.setupImage(category: roadmaps[indexPath.row].category ?? "noCategory")
         cell.backgroundColor = designSystem.palette.backgroundCell
         cell.layer.cornerRadius = 16
         
@@ -62,9 +48,6 @@ extension ProfileViewController: UICollectionViewDataSource {
             cell.title.text = user.userRoadmap[indexPath.row].roadmap.name
             cell.roadmapImage.image = UIImage(named: user.userRoadmap[indexPath.row].roadmap.imageId)
         }
-        
         return cell
-
     }
-    
 }

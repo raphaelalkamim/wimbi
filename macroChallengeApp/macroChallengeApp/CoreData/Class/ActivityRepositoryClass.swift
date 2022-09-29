@@ -23,12 +23,9 @@ class ActivityRepository {
         return container
     }()
     
-    var context: NSManagedObjectContext {
-        persistentContainer.viewContext
-    }
+    var context = RoadmapRepository.shared.context
     
     func saveContext() {
-        let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
@@ -39,7 +36,7 @@ class ActivityRepository {
         }
     }
     
-    func createActivity(day: DayLocal, activity: ActivityLocal) -> ActivityLocal {
+    func createActivity(day: DayLocal, activity: Activity) -> ActivityLocal {
         guard let newActivity = NSEntityDescription.insertNewObject(forEntityName: "ActivityLocal", into: context) as? ActivityLocal else { preconditionFailure() }
         
         newActivity.id = Int32(activity.id)
@@ -50,7 +47,7 @@ class ActivityRepository {
         newActivity.budget = activity.budget
         
         day.addToActivity(newActivity)
-        
+
         self.saveContext()
         return newActivity
     }

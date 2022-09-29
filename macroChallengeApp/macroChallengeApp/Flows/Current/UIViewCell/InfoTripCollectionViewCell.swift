@@ -73,6 +73,58 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         title.text = "Cidade"
         return title
     }()
+    
+    func setupContent(roadmap: RoadmapLocal, indexPath: Int) {
+        switch indexPath {
+        case 0:
+            title.text = "CATEGORIA"
+            circle.isHidden = false
+            categoryTitle.isHidden = false
+            categoryTitle.text = roadmap.category
+            info.isHidden = true
+            setupCircleColor(category: roadmap.category ?? "Mountain")
+            circle.snp.makeConstraints { make in
+                make.height.width.equalTo(24)
+            }
+        case 1:
+            title.text = "VALOR TOTAL"
+            info.isHidden = true
+            infoTitle.isHidden = false
+            infoTitle.text = "R$" + String(roadmap.budget)
+        case 2:
+            title.text = "VIAJANTES"
+            let viajantesCount = roadmap.peopleCount
+            info.setTitle(String(viajantesCount), for: .normal)
+            info.setImage(UIImage(systemName: "person.fill"), for: .normal)
+        case 3:
+            title.text = "CURTIDAS"
+            let countLikes = 0
+            info.setTitle(String(countLikes), for: .normal)
+        case 4:
+            title.text = "CRIADO POR"
+            separator.isHidden = true
+            circle.isHidden = false
+            info.isHidden = true
+            circle.layer.cornerRadius = 18
+            circle.image = UIImage(named: "leisure")
+            circle.snp.makeConstraints { make in
+                make.height.width.equalTo(36)
+            }
+        default:
+            break
+        }
+    }
+    func setupCircleColor(category: String) {
+        if category == "Camp" {
+            circle.backgroundColor = designSystem.palette.greenCamp
+        } else if category == "Beach" {
+            circle.backgroundColor = designSystem.palette.blueBeach
+        } else if category == "City" {
+            circle.backgroundColor = designSystem.palette.redCity
+        } else {
+            circle.backgroundColor = designSystem.palette.yellowMontain
+        }
+    }
 }
 
 extension InfoTripCollectionViewCell {

@@ -55,6 +55,13 @@ class DatePickerTableViewCell: UITableViewCell {
         setupConstraints()
     }
     
+    func setupDate(date: String) {
+        let format = DateFormatter()
+        format.timeStyle = .none
+        format.dateStyle = .short
+        self.datePicker.minimumDate = format.date(from: date)
+    }
+    
     func setupConstraints() {
         label.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)

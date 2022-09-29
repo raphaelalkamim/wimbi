@@ -12,6 +12,7 @@
     <entity name="DayLocal" representedClassName="DayLocal" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="activity" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ActivityLocal" inverseName="day" inverseEntity="ActivityLocal"/>
         <relationship name="roadmap" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RoadmapLocal" inverseName="day" inverseEntity="RoadmapLocal"/>
     </entity>
@@ -19,6 +20,7 @@
         <attribute name="budget" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dayCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="imageId" optional="YES" attributeType="String"/>
@@ -37,8 +39,8 @@
     </entity>
     <elements>
         <element name="ActivityLocal" positionX="296.9360961914063" positionY="-224.9982452392578" width="128" height="148"/>
-        <element name="DayLocal" positionX="-25.946533203125" positionY="-114.9786682128906" width="128" height="103"/>
-        <element name="RoadmapLocal" positionX="204.8248901367188" positionY="39.0375671386719" width="128" height="239"/>
+        <element name="DayLocal" positionX="-25.946533203125" positionY="-114.9786682128906" width="128" height="104"/>
+        <element name="RoadmapLocal" positionX="204.8248901367188" positionY="39.0375671386719" width="128" height="254"/>
         <element name="UserLocal" positionX="485.9014282226562" positionY="130.62060546875" width="128" height="59"/>
     </elements>
 </model>

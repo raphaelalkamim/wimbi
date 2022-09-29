@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131272B828E610AC000B7968 /* StringProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272B728E610AC000B7968 /* StringProtocol.swift */; };
 		1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14728DA4869009509DF /* ActivityRepository.swift */; };
 		1359F14B28DA489A009509DF /* DayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14A28DA489A009509DF /* DayRepository.swift */; };
 		1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14C28DA48A8009509DF /* RoadmapRepository.swift */; };
@@ -112,6 +113,7 @@
 		B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461628CFA85E00D62AF1 /* CategoryView.swift */; };
 		DF2643AB28DB9CC500053180 /* UserRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AA28DB9CC500053180 /* UserRoadmap.swift */; };
 		DF2643AD28DB9EAD00053180 /* RoadmapDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */; };
+		DF2EA1BD28DE28BA002F12D8 /* ActivityDestinyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */; };
 		DF57253D28D110E1005466D9 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57253C28D110E1005466D9 /* DaysView.swift */; };
 		DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */; };
 		DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */; };
@@ -140,6 +142,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		131272B728E610AC000B7968 /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
 		1359F14728DA4869009509DF /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
 		1359F14A28DA489A009509DF /* DayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepository.swift; sourceTree = "<group>"; };
 		1359F14C28DA48A8009509DF /* RoadmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapRepository.swift; sourceTree = "<group>"; };
@@ -254,6 +257,7 @@
 		DB4996FD9467D4E74060F7D0 /* Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2643AA28DB9CC500053180 /* UserRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoadmap.swift; sourceTree = "<group>"; };
 		DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapDTO.swift; sourceTree = "<group>"; };
+		DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDestinyView.swift; sourceTree = "<group>"; };
 		DF57253C28D110E1005466D9 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
 		DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -370,6 +374,7 @@
 		13BD500428DA28CB00C0EA7C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */,
 				13BD500728DA28E500C0EA7C /* NewActivityView.swift */,
 			);
 			path = View;
@@ -507,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				13C8A15128CFC29500994196 /* HandleMapSearch.swift */,
+				131272B728E610AC000B7968 /* StringProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1033,6 +1039,7 @@
 				B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */,
 				13EC5C5228DB8FF0005F7128 /* DesignDefaultImages.swift in Sources */,
 				B0CDF35028CFC7E90092A76C /* Category.swift in Sources */,
+				131272B828E610AC000B7968 /* StringProtocol.swift in Sources */,
 				1379744328D8E56700AEA662 /* ProfileViewController.swift in Sources */,
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
 				B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */,
@@ -1092,6 +1099,7 @@
 				13C8A11328C6835300994196 /* Activity.swift in Sources */,
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
+				DF2EA1BD28DE28BA002F12D8 /* ActivityDestinyView.swift in Sources */,
 				13BD500828DA28E500C0EA7C /* NewActivityView.swift in Sources */,
 				1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */,
 				A0B9F4C328D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift in Sources */,
