@@ -60,6 +60,6 @@ class MyTripViewController: UIViewController {
     }
     
     @objc func goToCreateActivity() {
-        coordinator?.startActivity(day: self.days[daySelected])
+        coordinator?.startActivity(day: self.days[daySelected], delegate: self)
     }
 }

@@ -21,13 +21,15 @@ extension MyTripViewController {
     }
 }
 
-// MARK: Collections
+// MARK: Collections - Delegate
 extension MyTripViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
             cell.selectedButton()
             self.daySelected = indexPath.row
             self.days[daySelected].isSelected = true
+            self.activites = getAllActivities()
+            print(self.days[daySelected])
             self.myTripView.activitiesTableView.reloadData()
         }
         
@@ -43,6 +45,7 @@ extension MyTripViewController: UICollectionViewDelegate {
    
 }
 
+// MARK: Collections - Data Source
 extension MyTripViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == myTripView.infoTripCollectionView {
@@ -97,6 +100,7 @@ extension MyTripViewController: UITableViewDataSource {
     }
 }
 
+// MARK: Drag and drop
 extension MyTripViewController: UITableViewDragDelegate {
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let dragItem = UIDragItem(itemProvider: NSItemProvider())
@@ -114,5 +118,13 @@ extension MyTripViewController: UITableViewDragDelegate {
         }
         
         tableView.reloadData()
+    }
+}
+
+// MARK: Delegate
+extension MyTripViewController: AddNewActivityDelegate {
+    func attTable() {
+        self.activites = getAllActivities()
+        myTripView.activitiesTableView.reloadData()
     }
 }

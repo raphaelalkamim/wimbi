@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		131272B828E610AC000B7968 /* StringProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272B728E610AC000B7968 /* StringProtocol.swift */; };
+		131272BB28E61B0D000B7968 /* NewActivityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272BA28E61B0D000B7968 /* NewActivityExtension.swift */; };
 		1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14728DA4869009509DF /* ActivityRepository.swift */; };
 		1359F14B28DA489A009509DF /* DayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14A28DA489A009509DF /* DayRepository.swift */; };
 		1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14C28DA48A8009509DF /* RoadmapRepository.swift */; };
@@ -143,6 +144,7 @@
 
 /* Begin PBXFileReference section */
 		131272B728E610AC000B7968 /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
+		131272BA28E61B0D000B7968 /* NewActivityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityExtension.swift; sourceTree = "<group>"; };
 		1359F14728DA4869009509DF /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
 		1359F14A28DA489A009509DF /* DayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepository.swift; sourceTree = "<group>"; };
 		1359F14C28DA48A8009509DF /* RoadmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapRepository.swift; sourceTree = "<group>"; };
@@ -298,6 +300,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		131272B928E61AED000B7968 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				131272BA28E61B0D000B7968 /* NewActivityExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		1359F14928DA4873009509DF /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +365,7 @@
 		13BD500228DA28B600C0EA7C /* NewActivity */ = {
 			isa = PBXGroup;
 			children = (
+				131272B928E61AED000B7968 /* Extension */,
 				13BD501228DA2A2600C0EA7C /* ViewCell */,
 				13BD500428DA28CB00C0EA7C /* View */,
 				13BD500328DA28BC00C0EA7C /* ViewController */,
@@ -1037,6 +1048,7 @@
 				13C8A11D28CA681C00994196 /* Coordinator.swift in Sources */,
 				13C8A13228CA6B0400994196 /* DefaultDesignPalette.swift in Sources */,
 				B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */,
+				131272BB28E61B0D000B7968 /* NewActivityExtension.swift in Sources */,
 				13EC5C5228DB8FF0005F7128 /* DesignDefaultImages.swift in Sources */,
 				B0CDF35028CFC7E90092A76C /* Category.swift in Sources */,
 				131272B828E610AC000B7968 /* StringProtocol.swift in Sources */,
