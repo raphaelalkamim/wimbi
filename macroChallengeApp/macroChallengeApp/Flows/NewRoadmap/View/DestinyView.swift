@@ -45,7 +45,7 @@ class DestinyView: UIView {
     
     func addSearchBarNavigation(navigation: UINavigationItem) {
         navigation.searchController = searchController
-        navigation.title = "Destiny"
+        navigation.title = "Destiny".localized()
         self.searchController?.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -62,7 +62,7 @@ class DestinyView: UIView {
         searchController.obscuresBackgroundDuringPresentation = true
         
         searchBar = searchController.searchBar
-        searchBar.placeholder = "Para onde você vai?"
+        searchBar.placeholder = "Where do you want to go?".localized()
         searchBar.sizeToFit()
     }
     @objc func clicou() {

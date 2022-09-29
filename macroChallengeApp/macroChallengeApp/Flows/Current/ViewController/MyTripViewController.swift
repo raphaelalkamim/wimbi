@@ -18,7 +18,7 @@ class MyTripViewController: UIViewController {
     var days: [DayLocal] = []
     
     var daySelected = 0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
@@ -31,15 +31,12 @@ class MyTripViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        var budgetDay: Double = 0
-        for activite in activites {
-            budgetDay += activite.budget
-        }
         self.getAllDays()
         self.activites = self.getAllActivities()
-        myTripView.budgetValue.text = "R$\(budgetDay)"
+        self.updateBudget()
+        self.updateTotalBudgetValue()
     }
-    
+   
     func getAllDays() {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
@@ -48,6 +45,7 @@ class MyTripViewController: UIViewController {
         }
         for index in 0..<days.count where days[index].isSelected == true {
             self.daySelected = index
+            myTripView.dayTitle.text = "Dia " + String(daySelected + 1)
         }
     }
     
@@ -59,7 +57,24 @@ class MyTripViewController: UIViewController {
         return []
     }
     
-    @objc func goToCreateActivity() {
-        coordinator?.startActivity(day: self.days[daySelected])
+    func updateBudget() {
+        var budgetDay: Double = 0
+        for activite in activites {
+            budgetDay += activite.budget
+        }
+        myTripView.budgetValue.text = "R$\(budgetDay)"
     }
+    
+    func updateTotalBudgetValue() {
+        guard let cell = myTripView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
+        cell.infoTitle.text = "R$\(self.roadmap.budget)"
+    }
+    
+    @objc func goToCreateActivity() {
+        coordinator?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
+    }
+}
+
+extension Sequence {
+    func sum<T: AdditiveArithmetic>(_ predicate: (Element) -> T) -> T { reduce(.zero) { $0 + predicate($1) } }
 }

@@ -69,14 +69,22 @@ extension MyTripViewController {
     }
 }
 
-// MARK: Collections
+// MARK: Collections - Delegate
 extension MyTripViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
+            // button status
             cell.selectedButton()
+            
+            // select a day
             self.daySelected = indexPath.row
             self.days[daySelected].isSelected = true
+            self.activites = getAllActivities()
+            
+            // view updates
             self.myTripView.activitiesTableView.reloadData()
+            self.updateBudget()
+            self.updateTotalBudgetValue()
         }
         
         // desabilita todas as celulas que nao sao a que recebeu o clique
@@ -91,6 +99,7 @@ extension MyTripViewController: UICollectionViewDelegate {
     
 }
 
+// MARK: Collections - Data Source
 extension MyTripViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == myTripView.infoTripCollectionView {
@@ -105,6 +114,43 @@ extension MyTripViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfoTripCollectionViewCell.identifier, for: indexPath) as? InfoTripCollectionViewCell else {
                 preconditionFailure("Cell not find")
             }
+            switch indexPath.row {
+            case 0:
+                cell.title.text = "CATEGORY".localized()
+                cell.circle.isHidden = false
+                cell.categoryTitle.isHidden = false
+                cell.categoryTitle.text = "Mountain".localized()
+                cell.info.isHidden = true
+                cell.circle.snp.makeConstraints { make in
+                    make.height.width.equalTo(24)
+                }
+
+            case 1:
+                cell.title.text = "TOTAL AMOUNT".localized()
+                cell.info.isHidden = true
+                cell.infoTitle.isHidden = false
+                cell.infoTitle.text = "R$12.000"
+            case 2:
+                cell.title.text = "TRAVELERS".localized()
+                cell.info.setTitle(" 4", for: .normal)
+                cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
+            case 3:
+                cell.title.text = "LIKES".localized()
+                cell.info.setTitle(" 10k", for: .normal)
+            case 4:
+                cell.title.text = "CREATED BY".localized()
+                cell.separator.isHidden = true
+                cell.circle.isHidden = false
+                cell.info.isHidden = true
+                cell.circle.layer.cornerRadius = 18
+                cell.circle.image = UIImage(named: "leisure")
+                cell.circle.snp.makeConstraints { make in
+                    make.height.width.equalTo(36)
+                }
+            default:
+                break
+            }
+            
             cell.setupContent(roadmap: roadmap, indexPath: indexPath.row)
             return cell
         } else {
@@ -120,6 +166,7 @@ extension MyTripViewController: UICollectionViewDataSource {
         }
     }
 }
+
 // MARK: Table View Activities
 extension MyTripViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -147,6 +194,7 @@ extension MyTripViewController: UITableViewDataSource {
     }
 }
 
+// MARK: Drag and drop
 extension MyTripViewController: UITableViewDragDelegate {
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let dragItem = UIDragItem(itemProvider: NSItemProvider())
@@ -164,5 +212,13 @@ extension MyTripViewController: UITableViewDragDelegate {
         }
         
         tableView.reloadData()
+    }
+}
+
+// MARK: Delegate
+extension MyTripViewController: AddNewActivityDelegate {
+    func attTable() {
+        self.activites = getAllActivities()
+        myTripView.activitiesTableView.reloadData()
     }
 }

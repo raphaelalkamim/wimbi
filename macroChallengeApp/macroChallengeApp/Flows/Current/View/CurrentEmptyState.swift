@@ -60,8 +60,8 @@ extension CurrentEmptyState {
         image.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(designSystem.spacing.xxLargePositive)
             make.trailing.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.height/2.5)
-            make.width.equalTo(UIScreen.main.bounds.width/1.5)
+            make.height.equalTo(UIScreen.main.bounds.height / 2.5)
+            make.width.equalTo(UIScreen.main.bounds.width / 1.5)
         }
         subtitle.snp.makeConstraints { make in
             make.top.equalTo(image.snp.bottom).offset(designSystem.spacing.xxLargePositive)
