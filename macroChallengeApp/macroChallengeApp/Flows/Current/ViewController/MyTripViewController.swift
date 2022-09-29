@@ -52,8 +52,8 @@ class MyTripViewController: UIViewController {
     }
     
     func getAllActivities() -> [ActivityLocal] {
-        if let newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] {
-            print("oi",newActivities)
+        if var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] {
+            newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
             return newActivities
         }
         return []

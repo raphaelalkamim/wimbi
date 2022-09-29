@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131272B828E610AC000B7968 /* StringProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272B728E610AC000B7968 /* StringProtocol.swift */; };
 		1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14728DA4869009509DF /* ActivityRepository.swift */; };
 		1359F14B28DA489A009509DF /* DayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14A28DA489A009509DF /* DayRepository.swift */; };
 		1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14C28DA48A8009509DF /* RoadmapRepository.swift */; };
@@ -139,6 +140,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		131272B728E610AC000B7968 /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
 		1359F14728DA4869009509DF /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
 		1359F14A28DA489A009509DF /* DayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepository.swift; sourceTree = "<group>"; };
 		1359F14C28DA48A8009509DF /* RoadmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapRepository.swift; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				13C8A15128CFC29500994196 /* HandleMapSearch.swift */,
+				131272B728E610AC000B7968 /* StringProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1029,6 +1032,7 @@
 				B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */,
 				13EC5C5228DB8FF0005F7128 /* DesignDefaultImages.swift in Sources */,
 				B0CDF35028CFC7E90092A76C /* Category.swift in Sources */,
+				131272B828E610AC000B7968 /* StringProtocol.swift in Sources */,
 				1379744328D8E56700AEA662 /* ProfileViewController.swift in Sources */,
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
 				B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */,

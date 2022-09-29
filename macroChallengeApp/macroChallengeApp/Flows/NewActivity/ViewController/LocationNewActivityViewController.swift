@@ -144,8 +144,6 @@ extension LocationNewActivityViewController: HandleMapSearch {
             annotation.title = name
             delegate?.changeText(address: name)
         }
-        
-        
         if let city = placemark.locality, let state = placemark.administrativeArea {
             subtitle = "\(city) \(state)"
             annotation.subtitle = subtitle

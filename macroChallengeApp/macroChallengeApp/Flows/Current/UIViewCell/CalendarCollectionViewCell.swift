@@ -81,7 +81,7 @@ extension CalendarCollectionViewCell {
         dayButton.setTitle(format.string(from: newDate ?? Date()), for: .normal)
     }
     func setupDayWeek(day: Int) -> String {
-        let weekDays = ["SUN", "TUE", "WED", "THUR", "FRI", "SAT", "SUN"]
+        let weekDays = ["SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"]
         for integer in 0..<weekDays.count where integer == day {
             return weekDays[integer]
         }

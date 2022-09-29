@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 protocol ChangeTextTableDelegate: AnyObject {
     func changeText(address: String)
@@ -34,20 +35,18 @@ class NewActivityViewController: UIViewController {
         super.viewDidLoad()
         setupNewActivityView()
         setKeyboard()
-        
         let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelCreation))
         cancelButton.tintColor = .systemRed
         self.navigationItem.leftBarButtonItem = cancelButton
         
         let salvarButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveActivity))
         self.navigationItem.rightBarButtonItem = salvarButton
+        self.getData()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        newActivityView.localyTable.reloadData()
         print(activity.name)
-
     }
     
     @objc func cancelCreation() {
@@ -55,13 +54,29 @@ class NewActivityViewController: UIViewController {
     }
     
     @objc func saveActivity() {
-        self.getData()
+        self.setData()
         let newActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
         print(newActivity)
         coordinator?.backPage()
     }
-    
+}
+
+extension NewActivityViewController {
+    func setupNewActivityView() {
+        navigationItem.title = "New Activity"
+        view.addSubview(newActivityView)
+        setupConstraints()
+        newActivityView.bindTableView(delegate: self, dataSource: self)
+        newActivityView.bindCollectionView(delegate: self, dataSource: self)
+    }
+    func setupConstraints() {
+        newActivityView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
     func getData() {
+    }
+    func setData() {
         // local name
         let tableView = newActivityView.localyTable
         guard let cell = tableView.cellForRow(at: [0, 1]) as? TextFieldTableViewCell else { return }
@@ -84,25 +99,23 @@ class NewActivityViewController: UIViewController {
         let tableViewValue = newActivityView.valueTable
         guard let cell = tableViewValue.cellForRow(at: [0, 1]) as?
                 ValueTableViewCell else { return }
-        activity.budget = (cell.value.text as? NSString)?.doubleValue ?? 150.00
+        let newValue = getNumber(text: cell.value.text ?? "123")
+        activity.budget = Double(newValue) ?? 0.0
     }
-}
-
-extension NewActivityViewController {
-    func setupNewActivityView() {
-        navigationItem.title = "New Activity"
-        view.addSubview(newActivityView)
-        setupConstraints()
-        newActivityView.bindTableView(delegate: self, dataSource: self)
-        newActivityView.bindCollectionView(delegate: self, dataSource: self)
-    }
-    func setupConstraints() {
-        newActivityView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+    
+    func getNumber(text: String) -> String {
+        var number = ""
+        for index in 0..<text.count {
+            if text[index].isNumber {
+                number += String(text[index])
+            } else if text[index] == "," {
+                number += "."
+            }
         }
+        return number
     }
 }
-
+// MARK: Table View
 extension NewActivityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rows: Int = 0
@@ -121,7 +134,7 @@ extension NewActivityViewController: UITableViewDataSource {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = activity.name
+                newCell.label.text = activity.location
                 newCell.setupSeparator()
                 cell = newCell
                 
@@ -135,6 +148,7 @@ extension NewActivityViewController: UITableViewDataSource {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Date"
+                newCell.setupDate(date: day.date ?? "23/10/2022")
                 newCell.setupSeparator()
                 
                 cell = newCell
@@ -171,13 +185,6 @@ extension NewActivityViewController: UITableViewDataSource {
             if indexPath.row == 0 {
                 self.coordinator?.openLocationActivity(delegate: self)
             }
-            if indexPath.row == 1 {
-                
-            }
-        } else if tableView == newActivityView.valueTable {
-            if indexPath.row == 1 {
-                guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
-            }
         }
     }
 }
@@ -189,6 +196,7 @@ extension NewActivityViewController: UITableViewDelegate {
 
 }
 
+// MARK: Keyboard
 extension NewActivityViewController {
     fileprivate func setKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -215,18 +223,12 @@ extension NewActivityViewController {
     }
 }
 
-extension NewActivityViewController: CurrencyTableViewCellDelegate {
-    func didChangeFormatter(formatter: String) {
-        self.currencyType = formatter
-    }
-}
-
+// MARK: CollectionView
 extension NewActivityViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
 }
-
 extension NewActivityViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryActivityCollectionViewCell.identifier, for: indexPath) as? CategoryActivityCollectionViewCell else {
@@ -292,9 +294,16 @@ extension NewActivityViewController: UICollectionViewDataSource {
     
 }
 
+// MARK: Delegates
 extension NewActivityViewController: ChangeTextTableDelegate {
     func changeText(address: String) {
         activity.location = address
         newActivityView.localyTable.reloadData()
+    }
+}
+
+extension NewActivityViewController: CurrencyTableViewCellDelegate {
+    func didChangeFormatter(formatter: String) {
+        self.currencyType = formatter
     }
 }

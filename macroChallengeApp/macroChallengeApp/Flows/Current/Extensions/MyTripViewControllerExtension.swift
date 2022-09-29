@@ -28,9 +28,7 @@ extension MyTripViewController: UICollectionViewDelegate {
             cell.selectedButton()
             self.daySelected = indexPath.row
             self.days[daySelected].isSelected = true
-            self.activites = self.getAllActivities()
             self.myTripView.activitiesTableView.reloadData()
-            // mudar a view de atividades
         }
         
         // desabilita todas as celulas que nao sao a que recebeu o clique
@@ -83,7 +81,6 @@ extension MyTripViewController: UITableViewDelegate {
 
 extension MyTripViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.activites = self.getAllActivities()
         return activites.count
     }
     
@@ -94,7 +91,7 @@ extension MyTripViewController: UITableViewDataSource {
         cell.setupDaysActivities(hour: self.activites[indexPath.row].hour ?? "10h00",
                                  value: String(self.activites[indexPath.row].budget),
                                  name: self.activites[indexPath.row].name ?? "Nova atividade")
-        cell.activityIcon.image = UIImage(named: self.activites[indexPath.row].category ?? "no image")
+        cell.activityIcon.image = UIImage(named: self.activites[indexPath.row].category ?? "leisure")
         
         return cell
     }
@@ -109,7 +106,6 @@ extension MyTripViewController: UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let copyArray = activites
-
         let mover = activites.remove(at: sourceIndexPath.row)
         activites.insert(mover, at: destinationIndexPath.row)
 
