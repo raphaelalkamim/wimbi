@@ -15,6 +15,7 @@ class LocationSearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
     }
     
@@ -24,10 +25,22 @@ class LocationSearchTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell")!
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "DefaultCell")
+        
         let selectedItem = matchingItems[indexPath.row].placemark
         cell.textLabel?.text = selectedItem.name
-        let address = "\(selectedItem.thoroughfare ?? ""), \(selectedItem.locality ?? ""), \(selectedItem.subLocality ?? ""), \(selectedItem.administrativeArea ?? ""), \(selectedItem.postalCode ?? ""), \(selectedItem.country ?? "")"
+        let addressInformation: [String] = [selectedItem.thoroughfare ?? "", selectedItem.subThoroughfare ?? "", selectedItem.locality ?? "", selectedItem.subLocality ?? "", selectedItem.administrativeArea ?? "", selectedItem.country ?? ""]
+        
+        var address = ""
+        for index in 0..<addressInformation.count {
+            if !addressInformation[index].isEmpty {
+                if index == addressInformation.count - 1 {
+                    address += "\(addressInformation[index])"
+                } else {
+                    address += "\(addressInformation[index]), "
+                }
+            }
+        }
         cell.detailTextLabel?.text = address
         return cell
     }

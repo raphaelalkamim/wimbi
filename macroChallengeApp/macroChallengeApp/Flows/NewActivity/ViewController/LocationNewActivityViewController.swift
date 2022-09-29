@@ -141,9 +141,22 @@ extension LocationNewActivityViewController: HandleMapSearch {
         annotation.coordinate = placemark.coordinate
         let placeCoords = "\(placemark.coordinate.latitude) \(placemark.coordinate.longitude)"
         
+        let addressInformation: [String] = [placemark.thoroughfare ?? "", placemark.subThoroughfare ?? "", placemark.locality ?? "", placemark.subLocality ?? "", placemark.administrativeArea ?? "", placemark.country ?? ""]
+        
+        var address = ""
+        for index in 0..<addressInformation.count {
+            if !addressInformation[index].isEmpty {
+                if index == addressInformation.count - 1 {
+                    address += "\(addressInformation[index])"
+                } else {
+                    address += "\(addressInformation[index]), "
+                }
+            }
+        }
+        
         if let name = placemark.name {
             annotation.title = name
-            delegate?.changeText(coords: placeCoords, locationName: name)
+            delegate?.changeText(coords: placeCoords, locationName: name, address: address)
         }
         if let city = placemark.locality, let state = placemark.administrativeArea {
             subtitle = "\(city) \(state)"

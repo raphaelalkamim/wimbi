@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 protocol ChangeTextTableDelegate: AnyObject {
-    func changeText(coords: String, locationName: String)
+    func changeText(coords: String, locationName: String, address: String)
 }
 
 class NewActivityViewController: UIViewController {
@@ -31,6 +31,7 @@ class NewActivityViewController: UIViewController {
     
     var day = DayLocal()
     var local: String = ""
+    var address: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,10 +136,10 @@ extension NewActivityViewController: UITableViewDataSource {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
-                if local == "" {
+                if address == "" {
                     newCell.label.text = "Address"
                 } else {
-                    newCell.label.text = local
+                    newCell.label.text = address
                 }
                 newCell.setupSeparator()
                 cell = newCell
@@ -146,6 +147,7 @@ extension NewActivityViewController: UITableViewDataSource {
             } else if indexPath.row == 1 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
                 newCell.title.placeholder = "Name"
+                newCell.title.text = local
                 cell = newCell
             }
             
@@ -301,9 +303,10 @@ extension NewActivityViewController: UICollectionViewDataSource {
 
 // MARK: Delegates
 extension NewActivityViewController: ChangeTextTableDelegate {
-    func changeText(coords: String, locationName: String) {
+    func changeText(coords: String, locationName: String, address: String) {
         activity.location = coords
         local = locationName
+        self.address = address
         newActivityView.localyTable.reloadData()
     }
 }
