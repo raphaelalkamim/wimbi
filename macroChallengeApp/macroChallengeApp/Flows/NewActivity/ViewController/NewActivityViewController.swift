@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 protocol ChangeTextTableDelegate: AnyObject {
-    func changeText(address: String)
+    func changeText(coords: String, locationName: String)
 }
 
 class NewActivityViewController: UIViewController {
@@ -30,6 +30,7 @@ class NewActivityViewController: UIViewController {
     var activity: Activity = Activity(id: 0, name: "Address", category: "", location: "", hour: "", budget: 0, day: Day(isSelected: true, date: Date()))
     
     var day = DayLocal()
+    var local: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,7 +135,11 @@ extension NewActivityViewController: UITableViewDataSource {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = activity.location
+                if local == "" {
+                    newCell.label.text = "Address"
+                } else {
+                    newCell.label.text = local
+                }
                 newCell.setupSeparator()
                 cell = newCell
                 
@@ -296,8 +301,9 @@ extension NewActivityViewController: UICollectionViewDataSource {
 
 // MARK: Delegates
 extension NewActivityViewController: ChangeTextTableDelegate {
-    func changeText(address: String) {
-        activity.location = address
+    func changeText(coords: String, locationName: String) {
+        activity.location = coords
+        local = locationName
         newActivityView.localyTable.reloadData()
     }
 }

@@ -139,10 +139,11 @@ extension LocationNewActivityViewController: HandleMapSearch {
         destinyView.mapView.removeAnnotations(destinyView.mapView.annotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
-
+        let placeCoords = "\(placemark.coordinate.latitude) \(placemark.coordinate.longitude)"
+        
         if let name = placemark.name {
             annotation.title = name
-            delegate?.changeText(address: name)
+            delegate?.changeText(coords: placeCoords, locationName: name)
         }
         if let city = placemark.locality, let state = placemark.administrativeArea {
             subtitle = "\(city) \(state)"

@@ -21,46 +21,51 @@ extension MyTripViewController {
     }
     
     @objc func addRoute(sender: UIButton) {
-        print(sender.tag)
         
-        let latitude = "-23.556561336801465"
-        let longitude = "-46.68658866633385"
+        let activity = activites[sender.tag]
+        let coordsSeparated = activity.location?.split(separator: " ")
         
-        let appleURL = "http://maps.apple.com/?daddr=\(latitude),\(longitude)"
-        let googleURL = "comgooglemaps://?daddr=\(latitude),\(longitude)&directionsmode=driving"
-        let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
-        
-        let googleItem = ("Google Maps", URL(string: googleURL)!)
-        let wazeItem = ("Waze", URL(string: wazeURL)!)
-        var installedNavigationApps = [("Apple Maps", URL(string: appleURL)!)]
-        
-        if UIApplication.shared.canOpenURL(googleItem.1) {
-            installedNavigationApps.append(googleItem)
+        if let coordsSeparated = coordsSeparated {
+            let latitude = String(coordsSeparated[0])
+            let longitude = String(coordsSeparated[1])
+            
+            let appleURL = "http://maps.apple.com/?daddr=\(latitude),\(longitude)"
+            let googleURL = "comgooglemaps://?daddr=\(latitude),\(longitude)&directionsmode=driving"
+            let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
+            
+            let googleItem = ("Google Maps", URL(string: googleURL)!)
+            let wazeItem = ("Waze", URL(string: wazeURL)!)
+            var installedNavigationApps = [("Apple Maps", URL(string: appleURL)!)]
+            
+            if UIApplication.shared.canOpenURL(googleItem.1) {
+                installedNavigationApps.append(googleItem)
+            }
+            
+            if UIApplication.shared.canOpenURL(wazeItem.1) {
+                installedNavigationApps.append(wazeItem)
+            }
+            
+            let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+            alert.view.tintColor = .accent
+            
+            let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
+            let string = NSAttributedString(string: "Are you sure you want to do this?", attributes: titleAtt)
+            
+            alert.setValue(string, forKey: "attributedTitle")
+            
+            for app in installedNavigationApps {
+                let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+                    UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
+                })
+                alert.addAction(button)
+            }
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+            }))
+            
+            present(alert, animated: true)
         }
         
-        if UIApplication.shared.canOpenURL(wazeItem.1) {
-            installedNavigationApps.append(wazeItem)
-        }
-        
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
-        alert.view.tintColor = .accent
-        
-        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
-        let string = NSAttributedString(string: "Are you sure you want to do this?", attributes: titleAtt)
-        
-        alert.setValue(string, forKey: "attributedTitle")
-        
-        for app in installedNavigationApps {
-            let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
-                UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
-            })
-            alert.addAction(button)
-        }
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
-        }))
-        
-        present(alert, animated: true)
     }
 }
 
