@@ -51,13 +51,13 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "Egito"
         navigationController.pushViewController(viewController, animated: true)
     }
-    func startActivity(day: DayLocal, delegate: MyTripViewController) {
+    func startActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController) {
         let viewController = NewActivityViewController()
         viewController.delegate = delegate
         viewController.coordinator = self
         viewController.day = day
+        viewController.roadmap = roadmap
         viewController.navigationItem.title = "New Activity"
-        //navigationController.present(viewController, animated: true)
         navigationController.pushViewController(viewController, animated: true)
     }
 

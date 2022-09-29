@@ -35,6 +35,8 @@ extension MyTripViewController: UICollectionViewDelegate {
             
             // view updates
             self.myTripView.activitiesTableView.reloadData()
+            self.updateBudget()
+            self.updateTotalBudgetValue()
         }
         
         // desabilita todas as celulas que nao sao a que recebeu o clique

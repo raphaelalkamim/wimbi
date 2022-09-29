@@ -56,6 +56,7 @@ extension NewActivityViewController {
                 ValueTableViewCell else { return }
         let newValue = getNumber(text: cell.value.text ?? "123")
         activity.budget = Double(newValue) ?? 0.0
+        self.updateBudgetRoadmap(budget: Double(newValue) ?? 0.0)
     }
     
     func getNumber(text: String) -> String {
@@ -68,6 +69,10 @@ extension NewActivityViewController {
             }
         }
         return number
+    }
+    func updateBudgetRoadmap(budget: Double) {
+        self.roadmap.budget += budget
+        RoadmapRepository.shared.saveContext()
     }
 }
 
@@ -90,7 +95,11 @@ extension NewActivityViewController: UITableViewDataSource {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = activity.location
+                if activity.location.isEmpty {
+                    newCell.label.text = "Adress"
+                } else {
+                    newCell.label.text = activity.location
+                }
                 newCell.setupSeparator()
                 cell = newCell
                 

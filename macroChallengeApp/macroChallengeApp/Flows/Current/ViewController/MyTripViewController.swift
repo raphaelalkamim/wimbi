@@ -34,6 +34,7 @@ class MyTripViewController: UIViewController {
         self.getAllDays()
         self.activites = self.getAllActivities()
         self.updateBudget()
+        self.updateTotalBudgetValue()
     }
    
     func getAllDays() {
@@ -55,6 +56,7 @@ class MyTripViewController: UIViewController {
         }
         return []
     }
+    
     func updateBudget() {
         var budgetDay: Double = 0
         for activite in activites {
@@ -63,7 +65,16 @@ class MyTripViewController: UIViewController {
         myTripView.budgetValue.text = "R$\(budgetDay)"
     }
     
-    @objc func goToCreateActivity() {
-        coordinator?.startActivity(day: self.days[daySelected], delegate: self)
+    func updateTotalBudgetValue() {
+        guard let cell = myTripView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
+        cell.infoTitle.text = "R$\(self.roadmap.budget)"
     }
+    
+    @objc func goToCreateActivity() {
+        coordinator?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
+    }
+}
+
+extension Sequence {
+    func sum<T: AdditiveArithmetic>(_ predicate: (Element) -> T) -> T { reduce(.zero) { $0 + predicate($1) } }
 }
