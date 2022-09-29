@@ -62,7 +62,7 @@ class LabelTableViewCell: UITableViewCell {
     }
     func configureDays(indexPath: Int, value: String) {
         if indexPath == 0 {
-            self.title.text = "Travel days"
+            self.title.text = "Travel days".localized()
             self.value.text = value
             let separator = UIView()
             self.addSubview(separator)
@@ -76,7 +76,7 @@ class LabelTableViewCell: UITableViewCell {
             }
         }
         if indexPath == 1 {
-            self.title.text = "Starts on"
+            self.title.text = "Starts on".localized()
             self.value.text = value
             let separator = UIView()
             self.addSubview(separator)
@@ -90,21 +90,21 @@ class LabelTableViewCell: UITableViewCell {
             }
         }
         if indexPath == 2 {
-            self.title.text = "Ends on"
+            self.title.text = "Ends on".localized()
             self.value.text = value
         }
     }
     
     func configureTravelers(daysValue: Int) {
-        self.title.text = "Number of travelers"
+        self.title.text = "Number of travelers".localized()
         self.value.text = String(daysValue)
     }
     func configureTripStatus(isPublic: Bool) {
-        self.title.text = "Trip"
+        self.title.text = "Trip".localized()
         if isPublic == true {
-            self.value.text = "Public"
+            self.value.text = "Public".localized()
         } else {
-            self.value.text = "Private"
+            self.value.text = "Private".localized()
         }
     }
 }

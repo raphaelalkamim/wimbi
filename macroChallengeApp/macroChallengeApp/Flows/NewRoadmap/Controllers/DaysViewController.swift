@@ -40,8 +40,8 @@ class DaysViewController: UIViewController {
         toolBar.barStyle = .default
         toolBar.backgroundColor = designSystem.palette.backgroundCell
         
-        let previous = UIBarButtonItem(title: "Previous", style: .plain, target: self, action: #selector(backPage))
-        let next = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextPage))
+        let previous = UIBarButtonItem(title: "Previous".localized(), style: .plain, target: self, action: #selector(backPage))
+        let next = UIBarButtonItem(title: "Next".localized(), style: .plain, target: self, action: #selector(nextPage))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let items = [spacer, previous, spacer, spacer, spacer, spacer, spacer, spacer, spacer, next, spacer]
         self.setToolbarItems(items, animated: false)
@@ -73,7 +73,7 @@ class DaysViewController: UIViewController {
 extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
     func setupDaysView() {
         view.addSubview(daysView)
-        navigationItem.title = "Days and travelers"
+        navigationItem.title = "Days and travelers".localized()
         
         daysView.daysTableView.delegate = self
         daysView.daysTableView.dataSource = self
@@ -100,18 +100,18 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == daysView.daysTableView {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as? DatePickerTableViewCell {
                 if indexPath.row == 0 {
-                    cell.label.text = "Starts on"
+                    cell.label.text = "Starts on".localized()
                     cell.setupSeparator()
                     self.initialDate = cell.datePicker
                 } else {
-                    cell.label.text = "Ends on"
+                    cell.label.text = "Ends on".localized()
                     self.finalDate = cell.datePicker
                 }
                 cellTable = cell
             }
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "NumberCell", for: indexPath) as? NumberPickerTableViewCell {
-                cell.label.text = "Number of travelers"
+                cell.label.text = "Number of travelers".localized()
                 self.travelersCount = cell.numberPicker
                 cellTable = cell
             }

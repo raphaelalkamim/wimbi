@@ -42,7 +42,7 @@ extension MyTripViewController: UICollectionViewDataSource {
                 cell.title.text = "CATEGORY".localized()
                 cell.circle.isHidden = false
                 cell.categoryTitle.isHidden = false
-                cell.categoryTitle.text = "Montain".localized()
+                cell.categoryTitle.text = "Mountain".localized()
                 cell.info.isHidden = true
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(24)

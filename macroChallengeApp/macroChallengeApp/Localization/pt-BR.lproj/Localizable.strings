@@ -7,10 +7,14 @@
 */
 
 // MARK: -  Login
+"By clicking button above, you agree to our terms of use and privacy policies" = "Clicando no botão acima, você concorda com nossos termos de uso e políticas de privacidade";
 
 // MARK: -  New Activity
 
 // MARK: -  Explore
+//ainda nao dei .localized
+"New trip" = "Nova viagem";
+"Existing trip" = "????";
 
 // MARK: -  TabBar
 "Explore" = "Explorar";
@@ -46,7 +50,7 @@
 // MARK: -  Current
 "ABOUT" = "SOBRE";
 "CATEGORY" = "CATEGORIA";
-"Montain" = "Montanha";
+"Mountain" = "Montanha";
 "Camp" = "Campo";
 "Beach" = "Praia";
 "City" = "Cidade";
@@ -60,7 +64,28 @@
 "DAILY COSTS" = "CUSTOS DO DIA";
 "Free" = "Grátis";
 
-
-
-
 // MARK: -  NewRoadmap
+"Category" = "Categoria";
+"Next" = "Próximo";
+"Previous" = "Anterior";
+"Destiny" = "Destino";
+"Where are you going?" = "Para onde você vai?";
+"Days and travelers" = "Dias e viajantes";
+"DATE" = "DATA";
+"Starts on" = "Começa";
+"Ends on" = "Termina";
+"TRAVELERS" = "VIAJANTES";
+"Number of travelers" = "Número de viajantes";
+"Leave this trip public?" = "Deixar essa viagem pública?";
+"When you make your trip public, it will be published to all app users." = "Ao deixar sua viagem pública, ela será publicada para todos os usuários do aplicativo.";
+"My trip" = "Minha viagem";
+"Travel days" = "Dias de viagem";
+"PRIVACY" = "PRIVACIDADE";
+"Trip" = "Viagem";
+"Public" = "Pública";
+"Private" = "Privada";
+"Are you sure?" = "Tem certeza?";
+"By canceling you will lose all information" = "Cancelando você perderá todas as informações inseridas";
+"Back" = "Voltar";
+
+
