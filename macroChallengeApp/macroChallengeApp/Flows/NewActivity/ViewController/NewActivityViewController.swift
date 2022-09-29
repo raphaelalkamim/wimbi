@@ -115,9 +115,7 @@ extension NewActivityViewController: UITableViewDataSource {
                 self.present(LocationNewActivityViewController(), animated: true)
                 print("oi")
             }
-        }
-        
-        else if tableView == newActivityView.valueTable {
+        } else if tableView == newActivityView.valueTable {
             if indexPath.row == 0 {}
         }
     }
