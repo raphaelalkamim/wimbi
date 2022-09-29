@@ -37,7 +37,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
         let viewController = MyTripViewController()
-        viewController.navigationItem.title = "Egito"
+        viewController.navigationItem.title = "Trip"
         navigationController?.pushViewController(viewController, animated: true)
     }
         

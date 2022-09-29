@@ -73,7 +73,7 @@ class DaysViewController: UIViewController {
 extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
     func setupDaysView() {
         view.addSubview(daysView)
-        navigationItem.title = "Dias e viajantes"
+        navigationItem.title = "Days and travelers"
         
         daysView.daysTableView.delegate = self
         daysView.daysTableView.dataSource = self
@@ -100,18 +100,18 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == daysView.daysTableView {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as? DatePickerTableViewCell {
                 if indexPath.row == 0 {
-                    cell.label.text = "Começa"
+                    cell.label.text = "Starts on"
                     cell.setupSeparator()
                     self.initialDate = cell.datePicker
                 } else {
-                    cell.label.text = "Termina"
+                    cell.label.text = "Ends on"
                     self.finalDate = cell.datePicker
                 }
                 cellTable = cell
             }
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "NumberCell", for: indexPath) as? NumberPickerTableViewCell {
-                cell.label.text = "Quantidade de viajantes"
+                cell.label.text = "Number of travelers"
                 self.travelersCount = cell.numberPicker
                 cellTable = cell
             }

@@ -1,0 +1,48 @@
+/* 
+  Localizable.strings
+  macroChallengeApp
+
+  Created by Carolina Ortega on 28/09/22.
+  
+*/
+
+// MARK: -  Login
+
+// MARK: -  New Activity
+
+// MARK: -  Explore
+
+// MARK: -  TabBar
+"Explore" = "Explorar";
+"Current" = "Atual";
+"Profile" = "Perfil";
+
+
+// MARK: -  Profile
+"My roadmaps" = "Meus roteiros";
+"NEW" = "NOVO";
+"Click on ”+” to create a new roadmap or explore already created roadmaps." = "Clique no ”+” para criar um novo roteiro ou explore roteiros já existentes.";
+
+//Settings
+"Settings" = "Configurações";
+"Edit profile" = "Editar perfil";
+"Liked roadmaps" = "Roteiros curtidos";
+"Notifications" = "Notificações";
+"Terms of privacy" = "Termos de privacidade";
+"Sign out" = "Sair";
+"NAME" = "NOME";
+"USERNAME" = "NOME DO USUÁRIO";
+"Save" = "Salvar";
+"Turn notification on?" = "Ativar notificação?";
+"Frequency" = "Frequência";
+"minutes" = "minutos";
+"hours" = "horas";
+"days" = "dias";
+"By activating the notification you will be configuring the frequency at which you will receive messages before each trip activity." = "Ao ativar a notificação você estará configurando a frequência em que receberá as mensagens antes de cada atividade da viagem.";
+"Sign out of your account?" = "Sair da sua conta?";
+"Cancel" = "Cancelar";
+"Sign out" = "Sair";
+
+// MARK: -  Current
+
+// MARK: -  NewRoadmap

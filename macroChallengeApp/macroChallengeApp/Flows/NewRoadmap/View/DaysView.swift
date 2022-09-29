@@ -14,7 +14,7 @@ class DaysView: UIView {
     lazy var dataTitleLabel: UILabel = {
         let dataTitleLabel = UILabel()
         dataTitleLabel.stylize(with: designSystem.text.caption)
-        dataTitleLabel.text = "DATA"
+        dataTitleLabel.text = "DATE"
         return dataTitleLabel
     }()
     
@@ -30,7 +30,7 @@ class DaysView: UIView {
     
     lazy var viajantesTitleLabel: UILabel = {
         let viajantesTitleLabel = UILabel()
-        viajantesTitleLabel.text = "VIAJANTES"
+        viajantesTitleLabel.text = "TRAVELERS"
         return viajantesTitleLabel
     }()
     lazy var numberPickerTableView: UITableView = {
@@ -45,13 +45,13 @@ class DaysView: UIView {
     
     lazy var publicTitle: UILabel = {
         let publicTitle = UILabel()
-        publicTitle.text = "Deixar essa viagem pública"
+        publicTitle.text = "Leave this trip public?"
         return publicTitle
     }()
     
     lazy var publicCaption: UILabel = {
         let publicCaption = UILabel()
-        publicCaption.text = "Ao deixar sua viagem pública, ela será publicada para todos os usuários do aplicativo."
+        publicCaption.text = "When you make your trip public, it will be published to all app users."
         return publicCaption
     }()
     

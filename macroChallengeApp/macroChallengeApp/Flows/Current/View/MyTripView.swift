@@ -55,28 +55,28 @@ class MyTripView: UIView {
     
     lazy var infoTitle: UILabel = {
         let title = UILabel()
-        title.text = "SOBRE"
+        title.text = "ABOUT"
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var calendarTitle: UILabel = {
         let title = UILabel()
-        title.text = "DIAS DE VIAGEM"
+        title.text = "TRAVEL DAYS"
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var roadmapTitle: UILabel = {
         let title = UILabel()
-        title.text = "ROTEIRO"
+        title.text = "ROADMAP"
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var dayTitle: UILabel = {
         let title = UILabel()
-        title.text = "Dia 1"
+        title.text = "Day 1"
         title.stylize(with: designSystem.text.mediumTitle)
         return title
     }()
@@ -90,7 +90,7 @@ class MyTripView: UIView {
     
     lazy var budgetLabel: UILabel = {
         let title = UILabel()
-        title.text = "CUSTO DO DIA"
+        title.text = "DAILY COSTS"
         title.stylize(with: designSystem.text.caption)
         return title
     }()

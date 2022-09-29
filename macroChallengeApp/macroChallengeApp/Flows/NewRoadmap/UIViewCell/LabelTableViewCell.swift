@@ -62,7 +62,7 @@ class LabelTableViewCell: UITableViewCell {
     }
     func configureDays(indexPath: Int, value: String) {
         if indexPath == 0 {
-            self.title.text = "Dias de viagem"
+            self.title.text = "Travel days"
             self.value.text = value
             let separator = UIView()
             self.addSubview(separator)
@@ -76,7 +76,7 @@ class LabelTableViewCell: UITableViewCell {
             }
         }
         if indexPath == 1 {
-            self.title.text = "Começa"
+            self.title.text = "Starts on"
             self.value.text = value
             let separator = UIView()
             self.addSubview(separator)
@@ -90,13 +90,13 @@ class LabelTableViewCell: UITableViewCell {
             }
         }
         if indexPath == 2 {
-            self.title.text = "Termina"
+            self.title.text = "Ends on"
             self.value.text = value
         }
     }
     
     func configureTravelers(daysValue: Int) {
-        self.title.text = "Quantidade de viajantes"
+        self.title.text = "Number of travelers"
         self.value.text = String(daysValue)
     }
     func configureTripStatus(isPublic: Bool) {

@@ -40,7 +40,7 @@ class ReviewTravelViewController: UIViewController {
     }
     
     func setupReviewTravelView() {
-        navigationItem.title = "Minha Viagem"
+        navigationItem.title = "My trip"
         self.view.addSubview(reviewTravelView)
         setupReviewConstraints()
         reviewTravelView.bindTableView(delegate: self, dataSource: self)

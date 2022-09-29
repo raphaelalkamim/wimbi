@@ -32,7 +32,7 @@ class ActivityTableViewCell: UITableViewCell {
         let title = UILabel()
         title.stylize(with: designSystem.text.caption)
         title.textColor = .textPrimary
-        title.text = "08h00  •  Grátis"
+        title.text = "08h00  •  Free"
         return title
     }()
     
@@ -40,7 +40,7 @@ class ActivityTableViewCell: UITableViewCell {
         let title = UILabel()
         title.stylize(with: designSystem.text.cellTitle)
         title.textColor = .textPrimary
-        title.text = "Praia Lopes Mendes"
+        title.text = "Malibu Beach"
         return title
     }()
     

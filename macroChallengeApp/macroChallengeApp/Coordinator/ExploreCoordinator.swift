@@ -21,10 +21,10 @@ class ExploreCoordinator: Coordinator {
     func start() {
         let viewController = ExploreViewController()
         viewController.coordinator = self
-        let tabBarItem = UITabBarItem(title: "Explore", image: UIImage(systemName: "globe.americas"), tag: 0)
+        let tabBarItem = UITabBarItem(title: "Explore".localized(), image: UIImage(systemName: "globe.americas"), tag: 0)
         tabBarItem.selectedImage = UIImage(systemName: "globe.americas.fill")
         viewController.tabBarItem = tabBarItem
-        viewController.navigationItem.title = "Explore"
+        viewController.navigationItem.title = "Explore".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
     

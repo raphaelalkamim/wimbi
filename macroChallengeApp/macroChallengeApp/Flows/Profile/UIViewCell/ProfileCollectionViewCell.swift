@@ -39,7 +39,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         let tag = UILabel()
         tag.font = UIFont(name: "Avenir-Medium", size: 15)
         tag.textColor = .white
-        tag.text = "NEW"
+        tag.text = "NEW".localized()
         tag.textAlignment = .center
         tag.layer.masksToBounds = true
         tag.layer.cornerRadius = 10

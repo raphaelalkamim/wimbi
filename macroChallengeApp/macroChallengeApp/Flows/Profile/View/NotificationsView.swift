@@ -36,7 +36,7 @@ class NotificationsView: UIView {
     
     lazy var descriptionTitle: UILabel = {
         let title = UILabel()
-        title.text = "Descrever a notificação"
+        title.text = "By activating the notification you will be configuring the frequency at which you will receive messages before each trip activity.".localized()
         title.textColor = .caption
         title.stylize(with: designSystem.text.caption)
         return title
