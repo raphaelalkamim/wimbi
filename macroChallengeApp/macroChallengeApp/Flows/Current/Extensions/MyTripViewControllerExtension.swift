@@ -20,21 +20,46 @@ extension MyTripViewController {
         }
     }
     
-    @objc func addRoute() {
+    @objc func addRoute(sender: UIButton) {
+        print(sender.tag)
+        
+        let latitude = "-23.556561336801465"
+        let longitude = "-46.68658866633385"
+        
+        let appleURL = "http://maps.apple.com/?daddr=\(latitude),\(longitude)"
+        let googleURL = "comgooglemaps://?daddr=\(latitude),\(longitude)&directionsmode=driving"
+        let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
+        
+        let googleItem = ("Google Maps", URL(string: googleURL)!)
+        let wazeItem = ("Waze", URL(string: wazeURL)!)
+        var installedNavigationApps = [("Apple Maps", URL(string: appleURL)!)]
+        
+        if UIApplication.shared.canOpenURL(googleItem.1) {
+            installedNavigationApps.append(googleItem)
+        }
+        
+        if UIApplication.shared.canOpenURL(wazeItem.1) {
+            installedNavigationApps.append(wazeItem)
+        }
+        
         let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         alert.view.tintColor = .accent
+        
         let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
         let string = NSAttributedString(string: "Are you sure you want to do this?", attributes: titleAtt)
+        
         alert.setValue(string, forKey: "attributedTitle")
         
-        alert.addAction(UIAlertAction(title: "Open on Maps", style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-       
-        }))
-        alert.addAction(UIAlertAction(title: "Open on Waze", style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-
-        }))
+        for app in installedNavigationApps {
+            let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+                UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
+            })
+            alert.addAction(button)
+        }
+        
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
         }))
+        
         present(alert, animated: true)
     }
 }
@@ -58,7 +83,7 @@ extension MyTripViewController: UICollectionViewDelegate {
             }
         }
     }
-   
+    
 }
 
 extension MyTripViewController: UICollectionViewDataSource {
@@ -106,7 +131,8 @@ extension MyTripViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCell.identifier, for: indexPath) as? ActivityTableViewCell else {
             fatalError("TableCell not found")
         }
-        cell.localButton.addTarget(self, action: #selector(addRoute), for: .touchUpInside)
+        cell.localButton.tag = indexPath.row
+        cell.localButton.addTarget(self, action: #selector(addRoute(sender:)), for: .touchUpInside)
         cell.setupDaysActivities(hour: self.activites[indexPath.row].hour ?? "10h00",
                                  value: String(self.activites[indexPath.row].budget),
                                  name: self.activites[indexPath.row].name ?? "Nova atividade")
@@ -127,7 +153,7 @@ extension MyTripViewController: UITableViewDragDelegate {
         let copyArray = activites
         let mover = activites.remove(at: sourceIndexPath.row)
         activites.insert(mover, at: destinationIndexPath.row)
-
+        
         for index in 0..<activites.count {
             activites[index].hour = copyArray[index].hour
         }

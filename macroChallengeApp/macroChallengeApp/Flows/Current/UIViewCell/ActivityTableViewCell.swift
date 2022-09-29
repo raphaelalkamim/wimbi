@@ -49,6 +49,7 @@ class ActivityTableViewCell: UITableViewCell {
     lazy var localButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(systemName: "location.circle.fill"), for: .normal)
+        btn.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 24), forImageIn: .normal)
         btn.tintColor = .accent
         btn.isUserInteractionEnabled = true
         return btn
@@ -92,7 +93,6 @@ extension ActivityTableViewCell {
         localButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
             make.centerY.equalToSuperview().inset(designSystem.spacing.smallNegative)
-            
         }
 
     }
