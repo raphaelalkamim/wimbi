@@ -25,11 +25,15 @@ extension MyTripViewController {
 extension MyTripViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
+            // button status
             cell.selectedButton()
+            
+            // select a day
             self.daySelected = indexPath.row
             self.days[daySelected].isSelected = true
             self.activites = getAllActivities()
-            print(self.days[daySelected])
+            
+            // view updates
             self.myTripView.activitiesTableView.reloadData()
         }
         

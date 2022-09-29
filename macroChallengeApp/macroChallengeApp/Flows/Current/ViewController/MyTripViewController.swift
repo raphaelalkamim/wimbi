@@ -31,15 +31,18 @@ class MyTripViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.getAllDays()
+        self.activites = self.getAllActivities()
+    }
+    func updateBudget() {
         var budgetDay: Double = 0
         for activite in activites {
             budgetDay += activite.budget
         }
-        self.getAllDays()
-        self.activites = self.getAllActivities()
+        guard let cell = myTripView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
+        cell.title.text = "R$\(budgetDay)"
         myTripView.budgetValue.text = "R$\(budgetDay)"
     }
-    
     func getAllDays() {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
@@ -48,6 +51,7 @@ class MyTripViewController: UIViewController {
         }
         for index in 0..<days.count where days[index].isSelected == true {
             self.daySelected = index
+            myTripView.dayTitle.text = "Dia "+String(daySelected + 1)
         }
     }
     
@@ -56,6 +60,7 @@ class MyTripViewController: UIViewController {
             newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
             return newActivities
         }
+        self.updateBudget()
         return []
     }
     
