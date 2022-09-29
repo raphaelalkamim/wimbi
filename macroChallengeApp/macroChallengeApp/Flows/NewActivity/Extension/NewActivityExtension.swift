@@ -29,6 +29,8 @@ extension NewActivityViewController {
             make.edges.equalToSuperview()
         }
     }
+    
+    // MARK: Save new Activity functions
     func getData() {
     }
     func setData() {

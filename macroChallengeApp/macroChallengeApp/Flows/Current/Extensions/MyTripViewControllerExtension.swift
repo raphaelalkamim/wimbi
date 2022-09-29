@@ -81,6 +81,7 @@ extension MyTripViewController: UICollectionViewDataSource {
         }
     }
 }
+
 // MARK: Table View Activities
 extension MyTripViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
