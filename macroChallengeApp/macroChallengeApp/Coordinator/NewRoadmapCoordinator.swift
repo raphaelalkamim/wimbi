@@ -28,6 +28,17 @@ class NewRoadmapCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    func startEditing(editRoadmap: RoadmapLocal) {
+        navigationController.modalPresentationStyle = .fullScreen
+        let viewController = CategoryViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "Category".localized()
+        viewController.edit = true
+        viewController.editRoadmap = editRoadmap
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func startDestiny(roadmap: Roadmaps) {
         let viewController = DestinyViewController(roadmap: roadmap)
         viewController.coordinator = self
@@ -76,6 +87,33 @@ class NewRoadmapCoordinator: Coordinator {
         navigationController.popViewController(animated: true)
         delegate?.didFinishPresent(of: self, isNewRoadmap: false)
     }
+    
+    // MARK: Edit Functions
+    func startEditDestiny( roadmap: Roadmaps, editRoadmap: RoadmapLocal) {
+        let viewController = DestinyViewController(roadmap: roadmap)
+        viewController.coordinator = self
+        viewController.editRoadmap = editRoadmap
+        viewController.edit = true
+        UIAccessibility.post(notification: .screenChanged, argument: viewController)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    func startEditDays(roadmap: Roadmaps, editRoadmap: RoadmapLocal) {
+        let viewController = DaysViewController(roadmap: roadmap)
+        viewController.coordinator = self
+        viewController.editRoadmap = editRoadmap
+        viewController.edit = true
+        UIAccessibility.post(notification: .screenChanged, argument: viewController)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    func startEditReview(roadmap: Roadmaps, editRoadmap: RoadmapLocal) {
+        let viewController = ReviewTravelViewController(roadmap: roadmap)
+        viewController.coordinator = self
+        viewController.editRoadmap = editRoadmap
+        viewController.edit = true
+        UIAccessibility.post(notification: .screenChanged, argument: viewController)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func setupBarAppearence() {
         let designSystem: DesignSystem = DefaultDesignSystem.shared
         navigationController.navigationBar.prefersLargeTitles = true

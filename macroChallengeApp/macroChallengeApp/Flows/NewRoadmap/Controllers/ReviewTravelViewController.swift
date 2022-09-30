@@ -23,6 +23,9 @@ class ReviewTravelViewController: UIViewController {
     var peopleCount = 1
     var isPublic = false
     
+    var editRoadmap = RoadmapLocal()
+    var edit = false
+    
     init(roadmap: Roadmaps) {
         self.roadmap = roadmap
         super.init(nibName: nil, bundle: nil)
@@ -68,28 +71,29 @@ class ReviewTravelViewController: UIViewController {
         self.navigationController?.setToolbarHidden(false, animated: false)
     }
     @objc func nextPage() {
-        roadmap.imageId = "beach0"
-        roadmap.createdAt = Date()
-        
-        // save in Backend
-        dataManager.postRoadmap(roadmap: roadmap)
-        
-        // save in Core Data
-        let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
-        RoadmapRepository.shared.saveContext()
-        
-        // save days in Roadmap
-        var isFirstDay = false
-        for index in 0..<roadmap.dayCount {
-            if index == 0 {
-                isFirstDay = true
-            } else {
-                isFirstDay = false
+        if edit {
+            let _: () = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.editRoadmap, roadmap: self.roadmap)
+        } else {
+            roadmap.imageId = "beach0"
+            roadmap.createdAt = Date()
+            
+            // save in Backend
+            dataManager.postRoadmap(roadmap: roadmap)
+            
+            // save in Core Data
+            let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
+            RoadmapRepository.shared.saveContext()
+            
+            // save days in Roadmap
+            var isFirstDay = false
+            for index in 0..<roadmap.dayCount {
+                if index == 0 {
+                    isFirstDay = true
+                } else {
+                    isFirstDay = false
+                }
+                let _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial, indexPath: index, isSelected: isFirstDay))
             }
-            let newDay = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial,
-                                                                                            indexPath: index,
-                                                                                            isSelected: isFirstDay))
-            print(newDay)
         }
         
         UIAccessibility.post(notification: .screenChanged, argument: coordinator?.navigationController)

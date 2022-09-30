@@ -73,6 +73,9 @@ class MyTripViewController: UIViewController {
     @objc func goToCreateActivity() {
         coordinator?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
     }
+    @objc func editMyTrip() {
+        coordinator?.editRoadmap(editRoadmap: self.roadmap)
+    }
 }
 
 extension Sequence {

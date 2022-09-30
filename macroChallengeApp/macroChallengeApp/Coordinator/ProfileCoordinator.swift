@@ -28,6 +28,7 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "Profile".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
+    
     func newRoadmap() {
         let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
         childCoordinators.append(coordinator)
@@ -35,9 +36,9 @@ class ProfileCoordinator: Coordinator {
         coordinator.start()
         
         navigationController.present(coordinator.navigationController, animated: true) {
-            print("OI")
         }
     }
+    
     func openRoadmap(roadmap: RoadmapLocal) {
         let viewController = MyTripViewController()
         viewController.coordinator = self
@@ -45,12 +46,16 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = roadmap.name
         navigationController.pushViewController(viewController, animated: true)
     }
-    func startViewRoadmap() {
-        let viewController = MyTripViewController()
-        viewController.coordinator = self
-        viewController.navigationItem.title = "Egito"
-        navigationController.pushViewController(viewController, animated: true)
+    
+    func editRoadmap(editRoadmap: RoadmapLocal) {
+        let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
+        childCoordinators.append(coordinator)
+        coordinator.delegate = self
+        coordinator.startEditing(editRoadmap: editRoadmap)
+        navigationController.present(coordinator.navigationController, animated: true) {
+        }
     }
+    
     func startActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController) {
         let viewController = NewActivityViewController()
         viewController.delegate = delegate
@@ -75,6 +80,7 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "Settings".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
+    
     func backPage() {
         navigationController.popViewController(animated: true)
         delegate?.didFinishPresent(of: self, isNewRoadmap: false)

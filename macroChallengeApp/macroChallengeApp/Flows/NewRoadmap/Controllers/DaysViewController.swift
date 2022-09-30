@@ -17,6 +17,9 @@ class DaysViewController: UIViewController {
     var finalDate = UIDatePicker()
     var travelersCount = UIPickerView()
     
+    var editRoadmap = RoadmapLocal()
+    var edit = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupDaysView()
@@ -55,7 +58,11 @@ class DaysViewController: UIViewController {
         self.roadmap.peopleCount = (self.travelersCount.selectedRow(inComponent: 0)) + 1
         self.roadmap.isPublic = daysView.isPublic
         
-        coordinator?.startReview(roadmap: self.roadmap)
+        if edit {
+            coordinator?.startEditReview(roadmap: self.roadmap, editRoadmap: self.editRoadmap)
+        } else {
+            coordinator?.startReview(roadmap: self.roadmap)
+        }
     }
     @objc func backPage() {
         coordinator?.back()
@@ -84,6 +91,12 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
         daysView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        if edit {
+            if roadmap.isPublic {
+                daysView.publicSwitch.isOn = true
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -102,16 +115,27 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
                 if indexPath.row == 0 {
                     cell.label.text = "Start date".localized()
                     cell.setupSeparator()
+                    if edit {
+                        cell.datePicker.minimumDate = editRoadmap.date
+                    }
                     self.initialDate = cell.datePicker
                 } else {
                     cell.label.text = "End date".localized()
+                    if edit {
+                        let modifiedDate = Calendar.current.date(byAdding: .day, value: Int(editRoadmap.dayCount) - 1, to: editRoadmap.date ?? Date())
+                        cell.datePicker.minimumDate = modifiedDate
+                    }
                     self.finalDate = cell.datePicker
+
                 }
                 cellTable = cell
             }
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "NumberCell", for: indexPath) as? NumberPickerTableViewCell {
                 cell.label.text = "Number of travelers".localized()
+                if edit {
+                    cell.numberPicker.selectRow(Int(editRoadmap.peopleCount) - 1, inComponent: 0, animated: true)
+                }
                 self.travelersCount = cell.numberPicker
                 cellTable = cell
             }

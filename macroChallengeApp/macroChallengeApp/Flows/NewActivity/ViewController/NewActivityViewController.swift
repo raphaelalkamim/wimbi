@@ -59,7 +59,7 @@ class NewActivityViewController: UIViewController {
     }
 }
 
-// MARK: Keyboard
+// MARK: Keyboard extension
 extension NewActivityViewController {
     fileprivate func setKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
