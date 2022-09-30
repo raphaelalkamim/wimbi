@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import CoreLocation
+import MapKit
 
 // MARK: Setup
 extension MyTripViewController {
@@ -21,7 +23,6 @@ extension MyTripViewController {
     }
     
     @objc func addRoute(sender: UIButton) {
-        
         let activity = activites[sender.tag]
         let coordsSeparated = activity.location?.split(separator: " ")
         
@@ -29,13 +30,12 @@ extension MyTripViewController {
             let latitude = String(coordsSeparated[0])
             let longitude = String(coordsSeparated[1])
             
-            let appleURL = "http://maps.apple.com/?daddr=\(latitude),\(longitude)"
             let googleURL = "comgooglemaps://?daddr=\(latitude),\(longitude)&directionsmode=driving"
-            let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
+            let wazeURL = String(format: "waze://?ll=%f,%f&navigate=yes", latitude, longitude)
             
             let googleItem = ("Google Maps", URL(string: googleURL)!)
             let wazeItem = ("Waze", URL(string: wazeURL)!)
-            var installedNavigationApps = [("Apple Maps", URL(string: appleURL)!)]
+            var installedNavigationApps: [(String, URL)] = []
             
             if UIApplication.shared.canOpenURL(googleItem.1) {
                 installedNavigationApps.append(googleItem)
@@ -44,7 +44,7 @@ extension MyTripViewController {
             if UIApplication.shared.canOpenURL(wazeItem.1) {
                 installedNavigationApps.append(wazeItem)
             }
-            
+        
             let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
             alert.view.tintColor = .accent
             
@@ -59,6 +59,14 @@ extension MyTripViewController {
                 })
                 alert.addAction(button)
             }
+            
+            alert.addAction(UIAlertAction(title: "Maps", style: .default, handler: { _ in
+                let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
+                let placemark = MKPlacemark(coordinate: coords)
+                let mapItem = MKMapItem(placemark: placemark)
+                mapItem.name = "Target Location"
+                mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+            }))
             
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
             }))
