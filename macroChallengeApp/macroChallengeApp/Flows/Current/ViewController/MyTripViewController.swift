@@ -45,7 +45,7 @@ class MyTripViewController: UIViewController {
         }
         for index in 0..<days.count where days[index].isSelected == true {
             self.daySelected = index
-            myTripView.dayTitle.text = "Dia " + String(daySelected + 1)
+            myTripView.dayTitle.text = "Dia ".localized() + String(daySelected + 1)
         }
     }
     

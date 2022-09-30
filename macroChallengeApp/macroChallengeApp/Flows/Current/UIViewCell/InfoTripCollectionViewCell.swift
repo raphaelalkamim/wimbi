@@ -68,7 +68,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
     lazy var categoryTitle: UILabel = {
         let title = UILabel()
         title.textColor = .textPrimary
-        title.font = UIFont(name: "Avenir-Light", size: 12)
+        title.font = UIFont(name: "Avenir-Book", size: 12)
         title.textAlignment = .center
         title.text = "Cidade"
         return title
@@ -77,7 +77,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
     func setupContent(roadmap: RoadmapLocal, indexPath: Int) {
         switch indexPath {
         case 0:
-            title.text = "CATEGORIA"
+            title.text = "CATEGORY".localized()
             circle.isHidden = false
             categoryTitle.isHidden = false
             categoryTitle.text = roadmap.category
@@ -87,21 +87,21 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
                 make.height.width.equalTo(24)
             }
         case 1:
-            title.text = "VALOR TOTAL"
+            title.text = "TOTAL AMOUNT".localized()
             info.isHidden = true
             infoTitle.isHidden = false
             infoTitle.text = "R$" + String(roadmap.budget)
         case 2:
-            title.text = "VIAJANTES"
+            title.text = "TRAVELERS".localized()
             let viajantesCount = roadmap.peopleCount
             info.setTitle(String(viajantesCount), for: .normal)
             info.setImage(UIImage(systemName: "person.fill"), for: .normal)
         case 3:
-            title.text = "CURTIDAS"
+            title.text = "LIKES".localized()
             let countLikes = 0
             info.setTitle(String(countLikes), for: .normal)
         case 4:
-            title.text = "CRIADO POR"
+            title.text = "CREATED BY".localized()
             separator.isHidden = true
             circle.isHidden = false
             info.isHidden = true

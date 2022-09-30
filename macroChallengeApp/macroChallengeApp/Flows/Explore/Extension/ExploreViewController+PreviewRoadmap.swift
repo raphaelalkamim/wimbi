@@ -39,29 +39,29 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
             }
             switch indexPath.row {
             case 0:
-                cell.title.text = "CATEGORIA"
+                cell.title.text = "CATEGORY".localized()
                 cell.circle.isHidden = false
                 cell.categoryTitle.isHidden = false
-                cell.categoryTitle.text = "Montanha"
+                cell.categoryTitle.text = "Mountain".localized()
                 cell.info.isHidden = true
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(24)
                 }
 
             case 1:
-                cell.title.text = "VALOR TOTAL"
+                cell.title.text = "TOTAL AMOUNT".localized()
                 cell.info.isHidden = true
                 cell.infoTitle.isHidden = false
                 cell.infoTitle.text = "R$12.000"
             case 2:
-                cell.title.text = "VIAJANTES"
+                cell.title.text = "TRAVELERS".localized()
                 cell.info.setTitle(" 4", for: .normal)
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
             case 3:
-                cell.title.text = "CURTIDAS"
+                cell.title.text = "LIKES".localized()
                 cell.info.setTitle(" 10k", for: .normal)
             case 4:
-                cell.title.text = "CRIADO POR"
+                cell.title.text = "CREATED BY".localized()
                 cell.separator.isHidden = true
                 cell.circle.isHidden = false
                 cell.info.isHidden = true

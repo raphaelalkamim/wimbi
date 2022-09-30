@@ -66,7 +66,7 @@ class RoadmapExploreCollectionViewCell: UICollectionViewCell {
     lazy var totalLikes: UILabel = {
         let title = UILabel()
         title.textColor = .textPrimary
-        title.font = UIFont(name: "Avenir-Light", size: 12)
+        title.font = UIFont(name: "Avenir-Book", size: 12)
         title.text = "5.5k"
         return title
     }()
@@ -81,7 +81,7 @@ class RoadmapExploreCollectionViewCell: UICollectionViewCell {
     lazy var categoryName: UILabel = {
         let title = UILabel()
         title.textColor = .textPrimary
-        title.font = UIFont(name: "Avenir-Light", size: 12)
+        title.font = UIFont(name: "Avenir-Book", size: 12)
         title.text = "Praia"
         return title
     }()

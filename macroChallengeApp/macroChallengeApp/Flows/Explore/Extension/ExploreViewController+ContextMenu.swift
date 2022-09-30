@@ -10,11 +10,11 @@ import UIKit
 
 extension ExploreViewController {
 func setContextMenu() {
-        let addRoadMap = UIAction(title: "New trip", image: UIImage(systemName: "pencil")) { _ in
+    let addRoadMap = UIAction(title: "New trip".localized(), image: UIImage(systemName: "pencil")) { _ in
             self.addNewRoadmap()
         }
         
-        let insertRoadMap = UIAction(title: "Existing trip", image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis")) { _ in
+    let insertRoadMap = UIAction(title: "Join trip".localized(), image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis")) { _ in
             self.setUIAlert()
         }
         
@@ -35,22 +35,22 @@ func setContextMenu() {
         alert.view.tintColor = .accent
         
         let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
-        let stringTitle = NSAttributedString(string: "Join in a trip", attributes: titleAtt)
+        let stringTitle = NSAttributedString(string: "Join trip".localized(), attributes: titleAtt)
         alert.setValue(stringTitle, forKey: "attributedTitle")
         
         let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
-        let stringSub = NSAttributedString(string: "Add the code to have access to the trip", attributes: subtitleAtt)
+        let stringSub = NSAttributedString(string: "Add the code to have access to the trip".localized(), attributes: subtitleAtt)
         alert.setValue(stringSub, forKey: "attributedMessage")
         
         alert.addTextField { alertTextField in
             textField = alertTextField
         }
         
-        let action = UIAlertAction(title: "Join", style: .default) { _ in
+        let action = UIAlertAction(title: "Join".localized(), style: .default) { _ in
             print(textField.text ?? "Error")
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive) { _ in
+        let cancel = UIAlertAction(title: "Cancel".localized(), style: .destructive) { _ in
             print("Cancel")
         }
         

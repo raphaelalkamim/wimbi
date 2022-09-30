@@ -46,7 +46,7 @@ extension SettingsViewController: UITableViewDataSource {
             navigationController?.pushViewController(viewController, animated: true)
         case 3:
             let viewController = TermsViewController()
-            viewController.navigationItem.title = "Terms of privacy".localized()
+            viewController.navigationItem.title = "Privacy policies".localized()
             navigationController?.pushViewController(viewController, animated: true)
             
         case 4:
@@ -88,7 +88,7 @@ extension SettingsViewController: UITableViewDataSource {
             cell.icon.setImage(UIImage(systemName: "bell.fill"), for: .normal)
             
         case 3:
-            cell.title.text = "Terms of privacy".localized()
+            cell.title.text = "Privacy policies".localized()
             cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
             
         case 4:

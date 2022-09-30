@@ -236,6 +236,8 @@
 		A04959C528DCEC92009156C8 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		A06E39CC28E7648200FE6B98 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		A06E39CD28E7648300FE6B98 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A0A8BAB528E4E824006A8BDD /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		A0A8BABB28E4E8C0006A8BDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0A8BABD28E4E8CE006A8BDD /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -941,6 +943,7 @@
 				en,
 				Base,
 				"pt-BR",
+				"es-419",
 			);
 			mainGroup = B078F20928C27F2000D46F61;
 			productRefGroup = B078F21328C27F2000D46F61 /* Products */;
@@ -1268,6 +1271,7 @@
 			children = (
 				A0A8BABB28E4E8C0006A8BDD /* en */,
 				A0A8BABE28E4E8CE006A8BDD /* pt-BR */,
+				A06E39CD28E7648300FE6B98 /* es-419 */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1277,6 +1281,7 @@
 			children = (
 				B078F22428C27F2400D46F61 /* Base */,
 				A0A8BABD28E4E8CE006A8BDD /* pt-BR */,
+				A06E39CC28E7648200FE6B98 /* es-419 */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
