@@ -18,6 +18,7 @@ class LocationNewActivityViewController: UIViewController {
     var searchedText: String = ""
     var subtitle: String = ""
     var selectedPin: MKPlacemark? = nil
+    var coordsMap = ""
     weak var delegate: ChangeTextTableDelegate?
     
     override func viewDidLoad() {
@@ -84,6 +85,7 @@ extension LocationNewActivityViewController: UISearchBarDelegate {
                     self.destinyView.mapView.addAnnotation(pin)
                 }
             }
+            
         })
         
         searchBar.resignFirstResponder()
@@ -100,7 +102,17 @@ extension LocationNewActivityViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            
+            let coordsSeparated = self.coordsMap.split(separator: " ")
+            
+            var region = MKCoordinateRegion()
+            if let latitude = CLLocationDegrees(coordsSeparated[0]), let longitude = CLLocationDegrees(coordsSeparated[1]) {
+                let locationRoadmap = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                region = MKCoordinateRegion(center: locationRoadmap, span: span)
+            } else {
+                region = MKCoordinateRegion(center: location.coordinate, span: span)
+            }
+            
             destinyView.mapView.setRegion(region, animated: true)
         }
     }

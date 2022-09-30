@@ -151,7 +151,8 @@ extension NewActivityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
-                self.coordinator?.openLocationActivity(delegate: self)
+                self.coordinator?.openLocationActivity(delegate: self, roadmap: roadmap)
+                print(roadmap)
             }
         }
     }

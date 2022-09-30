@@ -61,8 +61,11 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
 
-    func openLocationActivity(delegate: ChangeTextTableDelegate) {
+    func openLocationActivity(delegate: ChangeTextTableDelegate, roadmap: RoadmapLocal) {
         let viewController = LocationNewActivityViewController()
+        if let location = roadmap.location {
+            viewController.coordsMap = location
+        }
         viewController.delegate = delegate
         viewController.coordinator = self
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
