@@ -212,14 +212,21 @@ extension MyTripViewController: UITableViewDragDelegate {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let copyArray = activites
+        var hoursBefore: [String] = []
+        for activity in activites {
+            if let hour = activity.hour {
+                hoursBefore.append(hour)
+            }
+        }
+        
         let mover = activites.remove(at: sourceIndexPath.row)
         activites.insert(mover, at: destinationIndexPath.row)
         
         for index in 0..<activites.count {
-            activites[index].hour = copyArray[index].hour
+            activites[index].hour = hoursBefore[index]
         }
         
+        ActivityRepository.shared.saveContext()
         tableView.reloadData()
     }
 }
