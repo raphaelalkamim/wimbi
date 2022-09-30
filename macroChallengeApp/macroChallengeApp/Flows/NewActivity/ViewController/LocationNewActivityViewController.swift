@@ -21,6 +21,10 @@ class LocationNewActivityViewController: UIViewController {
     var coordsMap = ""
     weak var delegate: ChangeTextTableDelegate?
     
+    var placeCoords = ""
+    var name = ""
+    var address = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupDestinyView()
@@ -36,6 +40,13 @@ class LocationNewActivityViewController: UIViewController {
     
     func setupDestinyView() {
         view.addSubview(destinyView)
+        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddress))
+        cancelButton.tintColor = .systemRed
+        self.navigationItem.leftBarButtonItems = [cancelButton]
+        
+        let confirmButton = UIBarButtonItem(title: "Confirm", style: .plain, target: self, action: #selector(confirmAddress))
+        self.navigationItem.rightBarButtonItem = confirmButton
         
         destinyView.setupSearchController(locationTable: locationSearchTable)
         
@@ -56,6 +67,15 @@ class LocationNewActivityViewController: UIViewController {
         
         locationSearchTable.mapView = destinyView.mapView
         locationSearchTable.handleMapSearchDelegate = self
+    }
+    
+    @objc func cancelAddress() {
+        coordinator?.backPage()
+    }
+    
+    @objc func confirmAddress() {
+        delegate?.changeText(coords: placeCoords, locationName: name, address: address)
+        coordinator?.backPage()
     }
 }
 
@@ -151,11 +171,10 @@ extension LocationNewActivityViewController: HandleMapSearch {
         destinyView.mapView.removeAnnotations(destinyView.mapView.annotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
-        let placeCoords = "\(placemark.coordinate.latitude) \(placemark.coordinate.longitude)"
+        placeCoords = "\(placemark.coordinate.latitude) \(placemark.coordinate.longitude)"
         
         let addressInformation: [String] = [placemark.thoroughfare ?? "", placemark.subThoroughfare ?? "", placemark.locality ?? "", placemark.subLocality ?? "", placemark.administrativeArea ?? "", placemark.country ?? ""]
         
-        var address = ""
         for index in 0..<addressInformation.count {
             if !addressInformation[index].isEmpty {
                 if index == addressInformation.count - 1 {
@@ -168,7 +187,7 @@ extension LocationNewActivityViewController: HandleMapSearch {
         
         if let name = placemark.name {
             annotation.title = name
-            delegate?.changeText(coords: placeCoords, locationName: name, address: address)
+            self.name = name
         }
         if let city = placemark.locality, let state = placemark.administrativeArea {
             subtitle = "\(city) \(state)"
