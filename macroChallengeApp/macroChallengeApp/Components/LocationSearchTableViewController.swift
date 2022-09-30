@@ -12,6 +12,7 @@ class LocationSearchTableViewController: UITableViewController {
     var matchingItems: [MKMapItem] = []
     var mapView: MKMapView?
     var handleMapSearchDelegate: HandleMapSearch?
+    let designSystem = DefaultDesignSystem.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,10 @@ class LocationSearchTableViewController: UITableViewController {
             }
         }
         cell.detailTextLabel?.text = address
+        
+        cell.textLabel?.stylize(with: designSystem.text.body)
+        cell.detailTextLabel?.stylize(with: designSystem.text.caption)
+
         return cell
     }
     
