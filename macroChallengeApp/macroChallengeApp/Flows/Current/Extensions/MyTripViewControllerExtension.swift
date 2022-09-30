@@ -29,9 +29,10 @@ extension MyTripViewController {
         if let coordsSeparated = coordsSeparated {
             let latitude = String(coordsSeparated[0])
             let longitude = String(coordsSeparated[1])
-            
-            let googleURL = "comgooglemaps://?daddr=\(latitude),\(longitude)&directionsmode=driving"
-            let wazeURL = String(format: "waze://?ll=%f,%f&navigate=yes", latitude, longitude)
+            print(latitude, longitude)
+            let googleURL = "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)&directionsmode=driving"
+
+            let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
             
             let googleItem = ("Google Maps", URL(string: googleURL)!)
             let wazeItem = ("Waze", URL(string: wazeURL)!)
@@ -53,13 +54,6 @@ extension MyTripViewController {
             
             alert.setValue(string, forKey: "attributedTitle")
             
-            for app in installedNavigationApps {
-                let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
-                    UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
-                })
-                alert.addAction(button)
-            }
-            
             alert.addAction(UIAlertAction(title: "Maps", style: .default, handler: { _ in
                 let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
                 let placemark = MKPlacemark(coordinate: coords)
@@ -67,6 +61,13 @@ extension MyTripViewController {
                 mapItem.name = "Target Location"
                 mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
             }))
+            
+            for app in installedNavigationApps {
+                let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+                    UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
+                })
+                alert.addAction(button)
+            }
             
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
             }))
