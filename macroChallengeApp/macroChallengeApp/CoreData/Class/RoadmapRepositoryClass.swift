@@ -63,7 +63,7 @@ public class RoadmapRepository: NSManagedObject {
         if editRoadmap.dayCount < roadmap.dayCount {
             let dif = Int(editRoadmap.dayCount) - roadmap.dayCount
             for index in stride(from: 0, to: dif, by: 1) {
-                let newDay = DayRepository.shared.createDay(roadmap: editRoadmap, day: setupDays(startDay: roadmap.dateFinal,indexPath: index, isSelected: false))
+                let newDay = DayRepository.shared.createDay(roadmap: editRoadmap, day: setupDays(startDay: roadmap.dateFinal, indexPath: index, isSelected: false))
             }
         }
         if editRoadmap.dayCount > roadmap.dayCount {

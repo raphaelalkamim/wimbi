@@ -100,7 +100,7 @@ extension CategoryViewController: UICollectionViewDataSource {
         cell.backgroundColor = designSystem.palette.backgroundCell
         cell.layer.cornerRadius = 16
         
-        if edit == true {
+        if edit {
             if categories[indexPath.row].title == editRoadmap.category ?? "NoCategory" {
                 self.categorySelected = categories[indexPath.row].title
                 cell.selectedBackgroundView()
@@ -112,7 +112,8 @@ extension CategoryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryViewCell {
             cell.selectedBackgroundView()
-            self.categorySelected = cell.title.text ?? "Nova Categoria"
+            self.roadmap.category = categories[indexPath.row].title
+            self.categorySelected = categories[indexPath.row].title
             nextButton.isEnabled = true
         }
         for index in 0..<categories.count where index != indexPath.row {
