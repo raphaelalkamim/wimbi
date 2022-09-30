@@ -29,7 +29,7 @@ extension MyTripViewController {
         if let coordsSeparated = coordsSeparated {
             let latitude = String(coordsSeparated[0])
             let longitude = String(coordsSeparated[1])
-            print(latitude, longitude)
+            
             let googleURL = "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)&directionsmode=driving"
 
             let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
