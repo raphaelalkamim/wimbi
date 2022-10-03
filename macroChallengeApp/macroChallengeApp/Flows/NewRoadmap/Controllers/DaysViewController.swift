@@ -20,7 +20,7 @@ class DaysViewController: UIViewController {
     var editRoadmap = RoadmapLocal()
     var edit = false
     
-    weak var delegateRoadmap:  MyTripViewController?
+    weak var delegateRoadmap: MyTripViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()

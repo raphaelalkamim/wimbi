@@ -73,12 +73,12 @@ public class RoadmapRepository: NSManagedObject {
                 } else {
                     isFirstDay = false
                 }
-                let _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial, indexPath: Int(index), isSelected: isFirstDay))
+                _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial, indexPath: Int(index), isSelected: isFirstDay))
             }
             
             // atualiza as atividades dos novos dia
             if var newDays = newRoadmap.day?.allObjects as? [DayLocal] {
-                newDays.sort {  $0.id < $1.id }
+                newDays.sort { $0.id < $1.id }
                 for index in 0..<oldDays.count {
                     // pegando atividades dos dias antigos
                     if var oldActivities = oldDays[index].activity?.allObjects as? [ActivityLocal] {

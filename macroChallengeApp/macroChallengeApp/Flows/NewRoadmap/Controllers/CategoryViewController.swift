@@ -25,7 +25,7 @@ class CategoryViewController: UIViewController {
     var nextButton = UIBarButtonItem()
     var categorySelected = ""
     
-    weak var delegateRoadmap:  MyTripViewController?
+    weak var delegateRoadmap: MyTripViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()

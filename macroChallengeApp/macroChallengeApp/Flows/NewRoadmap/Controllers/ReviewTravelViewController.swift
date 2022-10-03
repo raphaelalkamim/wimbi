@@ -26,7 +26,7 @@ class ReviewTravelViewController: UIViewController {
     var editRoadmap = RoadmapLocal()
     var edit = false
     
-    weak var delegateRoadmap:  ReviewTravelDelegate?
+    weak var delegateRoadmap: ReviewTravelDelegate?
     
     init(roadmap: Roadmaps) {
         self.roadmap = roadmap
@@ -106,7 +106,7 @@ class ReviewTravelViewController: UIViewController {
             } else {
                 isFirstDay = false
             }
-            let _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial, indexPath: index, isSelected: isFirstDay))
+            _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial, indexPath: index, isSelected: isFirstDay))
         }
     }
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {

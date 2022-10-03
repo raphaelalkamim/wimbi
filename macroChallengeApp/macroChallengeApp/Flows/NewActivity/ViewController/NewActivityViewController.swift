@@ -55,7 +55,7 @@ class NewActivityViewController: UIViewController {
     
     @objc func saveActivity() {
         self.setData()
-        let newActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
+        _ = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
         self.delegate?.attTable()
         coordinator?.backPage()
     }

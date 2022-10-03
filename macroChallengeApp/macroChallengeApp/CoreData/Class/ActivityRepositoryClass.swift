@@ -47,7 +47,7 @@ class ActivityRepository {
         newActivity.budget = activity.budget
         
         day.addToActivity(newActivity)
-
+        
         self.saveContext()
         return newActivity
     }
@@ -62,7 +62,7 @@ class ActivityRepository {
         newActivity.budget = activity.budget
         
         day.addToActivity(newActivity)
-
+        
         self.saveContext()
     }
     func getActivity() -> [ActivityLocal] {
@@ -77,14 +77,13 @@ class ActivityRepository {
     
     func deleteActivity(activity: ActivityLocal) throws {
         guard let context = activity.managedObjectContext else { return }
-
         if context == self.persistentContainer.viewContext {
-          context.delete(activity)
+            context.delete(activity)
         } else {
             self.persistentContainer.performBackgroundTask { context in
-          context.delete(activity)
+                context.delete(activity)
+            }
         }
-      }
-      try? self.persistentContainer.viewContext.save()
+        try? self.persistentContainer.viewContext.save()
     }
 }
