@@ -52,28 +52,34 @@ class DaysViewController: UIViewController {
     }
     
     @objc func nextPage() {
-        self.roadmap.dateFinal = finalDate.date
-        self.roadmap.dateInitial = initialDate.date
-        self.roadmap.dayCount = Int(self.countDays(datePickerInitial: self.initialDate, datePickerFinal: self.finalDate))
-        self.roadmap.peopleCount = (self.travelersCount.selectedRow(inComponent: 0)) + 1
-        self.roadmap.isPublic = daysView.isPublic
-        
+        self.setupEdition()
         if edit {
             coordinator?.startEditReview(roadmap: self.roadmap, editRoadmap: self.editRoadmap)
         } else {
             coordinator?.startReview(roadmap: self.roadmap)
         }
     }
+    
     @objc func backPage() {
         coordinator?.back()
     }
+    
     @objc func cancelRoadmap() {
         coordinator?.dismissRoadmap(isNewRoadmap: false)
     }
+    
     func countDays(datePickerInitial: UIDatePicker, datePickerFinal: UIDatePicker) -> Double {
         let initialDate = datePickerInitial.date
         let finalDate = datePickerFinal.date
         return ( finalDate.timeIntervalSince(initialDate) / (60 * 60 * 24) ) + 2
+    }
+    
+    func setupEdition() {
+        self.roadmap.dateFinal = finalDate.date
+        self.roadmap.dateInitial = initialDate.date
+        self.roadmap.dayCount = Int(self.countDays(datePickerInitial: self.initialDate, datePickerFinal: self.finalDate))
+        self.roadmap.peopleCount = (self.travelersCount.selectedRow(inComponent: 0)) + 1
+        self.roadmap.isPublic = daysView.isPublic
     }
 }
 
@@ -116,6 +122,8 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.label.text = "Start date".localized()
                     cell.setupSeparator()
                     if edit {
+                        cell.datePicker.minimumDate = Date()
+                        cell.datePicker.date = editRoadmap.date ?? Date()
                         cell.datePicker.minimumDate = editRoadmap.date
                     }
                     self.initialDate = cell.datePicker
@@ -123,7 +131,8 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.label.text = "End date".localized()
                     if edit {
                         let modifiedDate = Calendar.current.date(byAdding: .day, value: Int(editRoadmap.dayCount) - 1, to: editRoadmap.date ?? Date())
-                        cell.datePicker.minimumDate = modifiedDate
+                        cell.datePicker.minimumDate = Date()
+                        cell.datePicker.date = modifiedDate ?? Date()
                     }
                     self.finalDate = cell.datePicker
 

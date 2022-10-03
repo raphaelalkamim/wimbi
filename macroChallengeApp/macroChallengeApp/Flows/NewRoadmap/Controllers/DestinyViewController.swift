@@ -106,9 +106,11 @@ class DestinyViewController: UIViewController {
             coordinator?.startDays(roadmap: roadmap)
         }
     }
+    
     @objc func backPage() {
         coordinator?.back()
     }
+    
     @objc func cancelRoadmap() {
         coordinator?.dismissRoadmap(isNewRoadmap: false)
     }

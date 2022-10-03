@@ -60,32 +60,67 @@ public class RoadmapRepository: NSManagedObject {
         return newRoadmap
     }
     func updateRoadmap(editRoadmap: RoadmapLocal, roadmap: Roadmaps) {
-        if editRoadmap.dayCount < roadmap.dayCount {
-            let dif = Int(editRoadmap.dayCount) - roadmap.dayCount
-            for index in stride(from: 0, to: dif, by: 1) {
-                let newDay = DayRepository.shared.createDay(roadmap: editRoadmap, day: setupDays(startDay: roadmap.dateFinal, indexPath: index, isSelected: false))
+        guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
+        // guarda os dias antigos
+        if var oldDays = editRoadmap.day?.allObjects as? [DayLocal] {
+            oldDays.sort { $0.id < $1.id }
+            
+            // apaga os dias antigos
+//            let oldDaysAux = oldDays
+//            for day in oldDaysAux {
+//                do {
+//                   try DayRepository.shared.deleteDay(day: day)
+//                } catch {
+//                    print("Erro ao deletar dia")
+//                }
+//            }
+            
+            // adiciona os novos dias no roteiro
+            var isFirstDay = false
+            for index in 0..<editRoadmap.dayCount {
+                if index == 0 {
+                    isFirstDay = true
+                } else {
+                    isFirstDay = false
+                }
+                let _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial, indexPath: Int(index), isSelected: isFirstDay))
             }
-        }
-        if editRoadmap.dayCount > roadmap.dayCount {
-            if var newDays = editRoadmap.day?.allObjects as? [DayLocal] {
-                newDays.sort { $0.id < $1.id }
-                let dif = roadmap.dayCount - Int(editRoadmap.dayCount)
-                for index in stride(from: 0, to: dif, by: 1) {
-                    guard let newDay = try? DayRepository.shared.deleteDay(day: newDays[index]) else { return }
+            
+            // atualiza as atividades dos novos dia
+            if var newDays = newRoadmap.day?.allObjects as? [DayLocal] {
+                newDays.sort {  $0.id < $1.id }
+                for index in 0..<oldDays.count {
+                    // pegando atividades dos dias antigos
+                    if var oldActivities = oldDays[index].activity?.allObjects as? [ActivityLocal] {
+                        oldActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
+                        // criando as atividades nos novos dias
+                        for activity in oldActivities {
+                            ActivityRepository.shared.copyActivity(day: newDays[index], activity: activity)
+                        }
+                    }
                 }
             }
+            
         }
-        editRoadmap.name = roadmap.name
-        editRoadmap.location = roadmap.location
-        editRoadmap.dayCount = Int32(roadmap.dayCount)
-        editRoadmap.peopleCount = Int32(roadmap.peopleCount)
-        editRoadmap.imageId = roadmap.imageId
-        editRoadmap.category = roadmap.category
-        editRoadmap.isShared = roadmap.isShared
-        editRoadmap.isPublic = roadmap.isPublic
-        editRoadmap.shareKey = roadmap.shareKey
-        editRoadmap.createdAt = roadmap.createdAt
-        editRoadmap.date = roadmap.dateInitial
+        
+        // cria os novos dias
+        newRoadmap.name = roadmap.name
+        newRoadmap.location = roadmap.location
+        newRoadmap.dayCount = Int32(roadmap.dayCount)
+        newRoadmap.peopleCount = Int32(roadmap.peopleCount)
+        newRoadmap.imageId = roadmap.imageId
+        newRoadmap.category = roadmap.category
+        newRoadmap.isShared = roadmap.isShared
+        newRoadmap.isPublic = roadmap.isPublic
+        newRoadmap.shareKey = roadmap.shareKey
+        newRoadmap.createdAt = roadmap.createdAt
+        newRoadmap.date = roadmap.dateInitial
+        
+        do {
+            try RoadmapRepository.shared.deleteRoadmap(roadmap: editRoadmap)
+        } catch {
+            print("erro")
+        }
         self.saveContext()
     }
     
