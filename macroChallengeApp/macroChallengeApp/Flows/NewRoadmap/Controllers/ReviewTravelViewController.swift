@@ -26,6 +26,8 @@ class ReviewTravelViewController: UIViewController {
     var editRoadmap = RoadmapLocal()
     var edit = false
     
+    weak var delegateRoadmap:  ReviewTravelDelegate?
+    
     init(roadmap: Roadmaps) {
         self.roadmap = roadmap
         super.init(nibName: nil, bundle: nil)
@@ -81,7 +83,8 @@ class ReviewTravelViewController: UIViewController {
     }
     
     func updateCoreData() {
-        let _: () = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.editRoadmap, roadmap: self.roadmap)
+        let newRoadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.editRoadmap, roadmap: self.roadmap)
+        delegateRoadmap?.updateRoadmapScreen(roadmap: newRoadmap)
     }
     
     func saveCoreData() {
@@ -185,4 +188,8 @@ extension ReviewTravelViewController: UITableViewDataSource {
         }
         return cell
     }
+}
+
+protocol ReviewTravelDelegate: AnyObject {
+    func updateRoadmapScreen(roadmap: RoadmapLocal)
 }

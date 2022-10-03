@@ -27,18 +27,7 @@ class NewRoadmapCoordinator: Coordinator {
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.pushViewController(viewController, animated: true)
     }
-    
-    func startEditing(editRoadmap: RoadmapLocal) {
-        navigationController.modalPresentationStyle = .fullScreen
-        let viewController = CategoryViewController()
-        viewController.coordinator = self
-        viewController.navigationItem.title = "Category".localized()
-        viewController.edit = true
-        viewController.editRoadmap = editRoadmap
-        navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.pushViewController(viewController, animated: true)
-    }
-    
+
     func startDestiny(roadmap: Roadmaps) {
         let viewController = DestinyViewController(roadmap: roadmap)
         viewController.coordinator = self
@@ -89,27 +78,42 @@ class NewRoadmapCoordinator: Coordinator {
     }
     
     // MARK: Edit Functions
-    func startEditDestiny( roadmap: Roadmaps, editRoadmap: RoadmapLocal) {
+    func startEditing(editRoadmap: RoadmapLocal, delegate: MyTripViewController) {
+        navigationController.modalPresentationStyle = .fullScreen
+        let viewController = CategoryViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "Category".localized()
+        viewController.edit = true
+        viewController.editRoadmap = editRoadmap
+        viewController.delegateRoadmap = delegate
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func startEditDestiny( roadmap: Roadmaps, editRoadmap: RoadmapLocal, delegate: MyTripViewController) {
         let viewController = DestinyViewController(roadmap: roadmap)
         viewController.coordinator = self
         viewController.editRoadmap = editRoadmap
         viewController.edit = true
+        viewController.delegateRoadmap = delegate
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
-    func startEditDays(roadmap: Roadmaps, editRoadmap: RoadmapLocal) {
+    func startEditDays(roadmap: Roadmaps, editRoadmap: RoadmapLocal, delegate: MyTripViewController) {
         let viewController = DaysViewController(roadmap: roadmap)
         viewController.coordinator = self
         viewController.editRoadmap = editRoadmap
         viewController.edit = true
+        viewController.delegateRoadmap = delegate
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
-    func startEditReview(roadmap: Roadmaps, editRoadmap: RoadmapLocal) {
+    func startEditReview(roadmap: Roadmaps, editRoadmap: RoadmapLocal, delegate: MyTripViewController) {
         let viewController = ReviewTravelViewController(roadmap: roadmap)
         viewController.coordinator = self
         viewController.editRoadmap = editRoadmap
         viewController.edit = true
+        viewController.delegateRoadmap = delegate
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }

@@ -25,6 +25,8 @@ class CategoryViewController: UIViewController {
     var nextButton = UIBarButtonItem()
     var categorySelected = ""
     
+    weak var delegateRoadmap:  MyTripViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryView.bindColletionView(delegate: self, dataSource: self)
@@ -47,7 +49,7 @@ class CategoryViewController: UIViewController {
     @objc func nextPage() {
         if edit {
             setupEdition()
-            coordinator?.startEditDestiny(roadmap: self.roadmap, editRoadmap: self.editRoadmap)
+            coordinator?.startEditDestiny(roadmap: self.roadmap, editRoadmap: self.editRoadmap, delegate: delegateRoadmap!)
         } else {
             coordinator?.startDestiny(roadmap: self.roadmap)
         }

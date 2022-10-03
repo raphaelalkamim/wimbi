@@ -27,6 +27,8 @@ class DestinyViewController: UIViewController {
     var editRoadmap = RoadmapLocal()
     var edit = false
     
+    weak var delegateRoadmap:  MyTripViewController?
+
     init(roadmap: Roadmaps) {
         self.roadmap = roadmap
         super.init(nibName: nil, bundle: nil)
@@ -101,7 +103,7 @@ class DestinyViewController: UIViewController {
         
         if edit {
             setupEdition()
-            coordinator?.startEditDays(roadmap: self.roadmap, editRoadmap: self.editRoadmap)
+            coordinator?.startEditDays(roadmap: self.roadmap, editRoadmap: self.editRoadmap, delegate: delegateRoadmap!)
         } else {
             coordinator?.startDays(roadmap: roadmap)
         }

@@ -59,7 +59,7 @@ public class RoadmapRepository: NSManagedObject {
         self.saveContext()
         return newRoadmap
     }
-    func updateRoadmap(editRoadmap: RoadmapLocal, roadmap: Roadmaps) {
+    func updateRoadmap(editRoadmap: RoadmapLocal, roadmap: Roadmaps) -> RoadmapLocal {
         guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         // guarda os dias antigos
         if var oldDays = editRoadmap.day?.allObjects as? [DayLocal] {
@@ -117,11 +117,12 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.date = roadmap.dateInitial
         
         do {
-            try RoadmapRepository.shared.deleteRoadmap(roadmap: editRoadmap)
+            try self.deleteRoadmap(roadmap: editRoadmap)
         } catch {
             print("erro")
         }
         self.saveContext()
+        return newRoadmap
     }
     
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {

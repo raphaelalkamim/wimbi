@@ -23,7 +23,6 @@ class MyTripViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupMyTripView()
-        
         myTripView.setupContent(roadmap: roadmap)
         myTripView.bindCollectionView(delegate: self, dataSource: self)
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
@@ -75,10 +74,16 @@ class MyTripViewController: UIViewController {
         coordinator?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
     }
     @objc func editMyTrip() {
-        coordinator?.editRoadmap(editRoadmap: self.roadmap)
+        coordinator?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
     }
 }
 
 extension Sequence {
     func sum<T: AdditiveArithmetic>(_ predicate: (Element) -> T) -> T { reduce(.zero) { $0 + predicate($1) } }
+}
+
+extension MyTripViewController: ReviewTravelDelegate {
+    func updateRoadmapScreen(roadmap: RoadmapLocal) {
+        coordinator?.backPage()
+    }
 }

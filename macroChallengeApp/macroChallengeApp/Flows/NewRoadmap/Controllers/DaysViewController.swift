@@ -20,6 +20,8 @@ class DaysViewController: UIViewController {
     var editRoadmap = RoadmapLocal()
     var edit = false
     
+    weak var delegateRoadmap:  MyTripViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupDaysView()
@@ -54,7 +56,7 @@ class DaysViewController: UIViewController {
     @objc func nextPage() {
         self.setupEdition()
         if edit {
-            coordinator?.startEditReview(roadmap: self.roadmap, editRoadmap: self.editRoadmap)
+            coordinator?.startEditReview(roadmap: self.roadmap, editRoadmap: self.editRoadmap, delegate: delegateRoadmap!)
         } else {
             coordinator?.startReview(roadmap: self.roadmap)
         }

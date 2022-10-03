@@ -47,11 +47,11 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func editRoadmap(editRoadmap: RoadmapLocal) {
+    func editRoadmap(editRoadmap: RoadmapLocal, delegate: MyTripViewController) {
         let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
         childCoordinators.append(coordinator)
         coordinator.delegate = self
-        coordinator.startEditing(editRoadmap: editRoadmap)
+        coordinator.startEditing(editRoadmap: editRoadmap, delegate: delegate)
         navigationController.present(coordinator.navigationController, animated: true) {
         }
     }
