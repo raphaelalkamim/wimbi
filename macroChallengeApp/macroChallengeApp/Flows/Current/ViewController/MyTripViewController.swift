@@ -27,7 +27,7 @@ class MyTripViewController: UIViewController {
         myTripView.bindCollectionView(delegate: self, dataSource: self)
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
         myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
-        print("oi",roadmap.dayCount)
+        print("oi",roadmap.category)
     }
     
     override func viewWillAppear(_ animated: Bool) {
