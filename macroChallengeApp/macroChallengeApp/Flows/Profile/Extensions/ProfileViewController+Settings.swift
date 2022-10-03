@@ -58,6 +58,9 @@ extension SettingsViewController: UITableViewDataSource {
             alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
             }))
             alert.addAction(UIAlertAction(title: "Sign out".localized(), style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
+                KeychainManager.shared.delete(service: "username", account: "explorer")
+                UserDefaults.standard.setValue("", forKey: "authorization")
+                UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
                 // Ação Cancelar
             }))
             present(alert, animated: true)
