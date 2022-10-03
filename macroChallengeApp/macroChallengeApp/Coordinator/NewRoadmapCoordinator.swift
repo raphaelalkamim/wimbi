@@ -69,7 +69,7 @@ class NewRoadmapCoordinator: Coordinator {
             self.navigationController.dismiss(animated: true)
             self.delegate?.didFinishPresent(of: self, isNewRoadmap: isNewRoadmap)
         }))
-        self.navigationController.present(alert, animated: true)
+        navigationController.present(alert, animated: true)
     }
     
     func back() {

@@ -18,7 +18,12 @@ class LocationNewActivityViewController: UIViewController {
     var searchedText: String = ""
     var subtitle: String = ""
     var selectedPin: MKPlacemark? = nil
+    var coordsMap = ""
     weak var delegate: ChangeTextTableDelegate?
+    
+    var placeCoords = ""
+    var name = ""
+    var address = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +40,13 @@ class LocationNewActivityViewController: UIViewController {
     
     func setupDestinyView() {
         view.addSubview(destinyView)
+        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddress))
+        cancelButton.tintColor = .systemRed
+        self.navigationItem.leftBarButtonItems = [cancelButton]
+        
+        let confirmButton = UIBarButtonItem(title: "Confirm", style: .plain, target: self, action: #selector(confirmAddress))
+        self.navigationItem.rightBarButtonItem = confirmButton
         
         destinyView.setupSearchController(locationTable: locationSearchTable)
         
@@ -55,6 +67,15 @@ class LocationNewActivityViewController: UIViewController {
         
         locationSearchTable.mapView = destinyView.mapView
         locationSearchTable.handleMapSearchDelegate = self
+    }
+    
+    @objc func cancelAddress() {
+        coordinator?.backPage()
+    }
+    
+    @objc func confirmAddress() {
+        delegate?.changeText(coords: placeCoords, locationName: name, address: address)
+        coordinator?.backPage()
     }
 }
 
@@ -84,6 +105,7 @@ extension LocationNewActivityViewController: UISearchBarDelegate {
                     self.destinyView.mapView.addAnnotation(pin)
                 }
             }
+            
         })
         
         searchBar.resignFirstResponder()
@@ -100,7 +122,17 @@ extension LocationNewActivityViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            
+            let coordsSeparated = self.coordsMap.split(separator: " ")
+            
+            var region = MKCoordinateRegion()
+            if let latitude = CLLocationDegrees(coordsSeparated[0]), let longitude = CLLocationDegrees(coordsSeparated[1]) {
+                let locationRoadmap = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                region = MKCoordinateRegion(center: locationRoadmap, span: span)
+            } else {
+                region = MKCoordinateRegion(center: location.coordinate, span: span)
+            }
+            
             destinyView.mapView.setRegion(region, animated: true)
         }
     }
@@ -139,10 +171,23 @@ extension LocationNewActivityViewController: HandleMapSearch {
         destinyView.mapView.removeAnnotations(destinyView.mapView.annotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
-
+        placeCoords = "\(placemark.coordinate.latitude) \(placemark.coordinate.longitude)"
+        
+        let addressInformation: [String] = [placemark.thoroughfare ?? "", placemark.subThoroughfare ?? "", placemark.locality ?? "", placemark.subLocality ?? "", placemark.administrativeArea ?? "", placemark.country ?? ""]
+        
+        for index in 0..<addressInformation.count {
+            if !addressInformation[index].isEmpty {
+                if index == addressInformation.count - 1 {
+                    address += "\(addressInformation[index])"
+                } else {
+                    address += "\(addressInformation[index]), "
+                }
+            }
+        }
+        
         if let name = placemark.name {
             annotation.title = name
-            delegate?.changeText(address: name)
+            self.name = name
         }
         if let city = placemark.locality, let state = placemark.administrativeArea {
             subtitle = "\(city) \(state)"

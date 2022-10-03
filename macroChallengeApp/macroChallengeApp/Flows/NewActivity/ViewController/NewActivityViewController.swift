@@ -25,9 +25,11 @@ class NewActivityViewController: UIViewController {
             // tableView.reloadData()
         }
     }
-    var activity: Activity = Activity(id: 0, name: "Address", category: "", location: "", hour: "", budget: 0, day: Day(isSelected: true, date: Date()))
+    var activity: Activity = Activity(id: 0, name: "", category: "", location: "", hour: "", budget: 0, day: Day(isSelected: true, date: Date()))
     
     var day = DayLocal()
+    var local: String = ""
+    var address: String = ""
     var roadmap = RoadmapLocal()
     
     override func viewDidLoad() {
