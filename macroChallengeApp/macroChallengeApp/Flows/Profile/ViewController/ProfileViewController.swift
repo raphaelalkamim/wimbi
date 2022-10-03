@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let profileView = ProfileView()
     var roadmaps: [RoadmapLocal] = []
-    
+    var dataManager = DataManager.shared
     // MARK: Cloud User
     var user: User?
     
@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     override func viewDidLoad() {
         self.roadmaps = RoadmapRepository.shared.getRoadmap()
         profileView.roadmaps = self.roadmaps
-
+        
         super.viewDidLoad()
         profileView.myRoadmapCollectionView.reloadData()
         self.view.backgroundColor = .backgroundPrimary
@@ -46,10 +46,24 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         } catch {
             fatalError("Não foi possível atualizar conteúdo")
         }
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if let data = UserDefaults.standard.data(forKey: "user") {
+            do {
+                let decoder = JSONDecoder()
+                self.user = try decoder.decode(User.self, from: data)
+                if let user = self.user {
+                    self.changeToUserInfo(user: user)
+                }
+                
+            } catch {
+                print("Unable to decode")
+            }
+        } else {
+            getDataCloud()
+        }
+        
         self.profileView.myRoadmapCollectionView.reloadData()
     }
     
@@ -64,21 +78,36 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         profileView.setup()
         profileView.roadmaps = newRoadmaps
         profileView.myRoadmapCollectionView.reloadData()
-        if let user = user {
-            // criar funcao para alimentar coreData com os dados da nuvem
-        }
+        
     }
+    
     // MARK: Manage Data Cloud
     func getDataCloud() {
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
             DataManager.shared.getUser(username: userID, { user in
                 self.user = user
-                self.profileView.getName().text = user.name
-                self.profileView.getUsernameApp().text = "@\(user.usernameApp)"
-                self.profileView.getTable().reloadData()
-                self.profileView.getImage().image = UIImage(named: user.photoId)
+                if let user = self.user {
+                    self.changeToUserInfo(user: user)
+                    do {
+                        let encoder = JSONEncoder()
+
+                        let data = try encoder.encode(user)
+
+                        UserDefaults.standard.set(data, forKey: "user")
+                    } catch {
+                        print("Unable to Encode")
+                    }
+                }
+                
             })
         }
+    }
+    
+    func changeToUserInfo(user: User) {
+        self.profileView.getName().text = user.name
+        self.profileView.getUsernameApp().text = "@\(user.usernameApp)"
+        self.profileView.getTable().reloadData()
+        self.profileView.getImage().image = UIImage(named: user.photoId)
     }
 }

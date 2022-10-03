@@ -61,6 +61,7 @@ extension SettingsViewController: UITableViewDataSource {
                 KeychainManager.shared.delete(service: "username", account: "explorer")
                 UserDefaults.standard.setValue("", forKey: "authorization")
                 UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+                UserDefaults.standard.set(nil, forKey: "user")
                 // Ação Cancelar
             }))
             present(alert, animated: true)

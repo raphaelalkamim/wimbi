@@ -14,15 +14,16 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
     weak var coordinatorExplore: ExploreCoordinator?
     weak var coordinatorProfile: ProfileCoordinator?
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(loginView)
         DataManager.shared.delegate = self
         
-        let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelCreation))
-        cancelButton.tintColor = .systemRed
-        self.navigationItem.leftBarButtonItem = cancelButton
+        if coordinatorExplore != nil {
+            let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelCreation))
+            cancelButton.tintColor = .systemRed
+            self.navigationItem.leftBarButtonItem = cancelButton
+        }
         
         loginView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -49,6 +50,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         } else {
             coordinatorProfile?.backPage()
         }
+        
     }
 }
 

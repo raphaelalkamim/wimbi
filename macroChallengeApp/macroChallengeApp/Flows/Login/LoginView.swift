@@ -74,9 +74,9 @@ class LoginView: UIView {
         }
         
         agreeText.snp.makeConstraints { make in
-            make.top.equalTo(buttonAppleSignIn.snp.bottom).offset(designSystem.spacing.xxLargePositive)
-            make.leading.equalToSuperview().offset(87)
-            make.trailing.equalToSuperview().offset(-87)
+            make.top.equalTo(buttonAppleSignIn.snp.bottom).offset(designSystem.spacing.xLargePositive)
+            make.leading.equalToSuperview().offset(designSystem.spacing.xxLargePositive)
+            make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
             
         }
     }
