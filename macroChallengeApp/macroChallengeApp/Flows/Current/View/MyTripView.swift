@@ -23,6 +23,24 @@ class MyTripView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    lazy var emptyStateImage: UIImageView = {
+        let img = UIImageView()
+        img.image = designSystem.images.map
+        img.clipsToBounds = true
+        img.contentMode = .scaleAspectFit
+        return img
+    }()
+    
+    lazy var emptyStateTitle: UILabel = {
+        let title = UILabel()
+        title.text = "Click ”+” to add an activity to your day"
+        title.numberOfLines = 0
+        title.font = designSystem.text.body.font
+        title.textAlignment = .center
+        title.textColor = .textPrimary
+        return title
+    }()
+    
     lazy var infoTripCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 140, height: 90)
@@ -82,7 +100,7 @@ class MyTripView: UIView {
     }()
     
     lazy var budgetView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = UIColor(named: "budget")
         view.layer.cornerRadius = 10
         return view
@@ -128,6 +146,8 @@ class MyTripView: UIView {
         scrollView.addSubview(contentView)
         scrollView.addSubview(infoTripCollectionView)
         scrollView.addSubview(calendarCollectionView)
+        contentView.addSubview(emptyStateImage)
+        contentView.addSubview(emptyStateTitle)
         contentView.addSubview(infoTitle)
         contentView.addSubview(calendarTitle)
         contentView.addSubview(roadmapTitle)
@@ -137,6 +157,9 @@ class MyTripView: UIView {
         budgetView.addSubview(budgetLabel)
         budgetView.addSubview(budgetValue)
         scrollView.addSubview(activitiesTableView)
+        activitiesTableView.isHidden = true
+        budgetView.isHidden = true
+        scrollView.isScrollEnabled = false
         setupConstraints()
     }
     
@@ -160,7 +183,6 @@ class MyTripView: UIView {
             make.top.equalTo(infoTitle.snp.bottom)
             make.leading.equalTo(contentView.snp.leading)
             make.trailing.equalTo(contentView.snp.trailing)
-//            make.bottom.equalTo(scrollView.snp.bottom)
             make.height.equalTo(100)
         }
         
@@ -218,6 +240,17 @@ class MyTripView: UIView {
             make.leading.equalTo(budgetLabel.snp.trailing).inset(designSystem.spacing.xLargeNegative)
         }
         
+        emptyStateTitle.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(dayTitle.snp.bottom).inset(-40)
+        }
+        
+        emptyStateImage.snp.makeConstraints { make in
+            make.height.equalTo(130)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(emptyStateTitle.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
+        }
+        
         activitiesTableView.snp.makeConstraints { make in
             make.top.equalTo(budgetView.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.leading.equalTo(contentView.snp.leading)
@@ -225,7 +258,6 @@ class MyTripView: UIView {
             make.bottom.equalTo(scrollView.snp.bottom)
             make.height.equalTo(400)
         }
-
     }
 }
 
@@ -236,10 +268,10 @@ extension MyTripView {
         calendarCollectionView.delegate = delegate
         calendarCollectionView.dataSource = dataSource
     }
+    
     func bindTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource, dragDelegate: UITableViewDragDelegate) {
         activitiesTableView.delegate = delegate
         activitiesTableView.dataSource = dataSource
         activitiesTableView.dragDelegate = dragDelegate
     }
-
 }

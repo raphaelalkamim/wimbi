@@ -52,6 +52,8 @@ class MyTripViewController: UIViewController {
     func getAllActivities() -> [ActivityLocal] {
         if var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] {
             newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
+            self.emptyState(activities: newActivities)
+            myTripView.activitiesTableView.reloadData()
             return newActivities
         }
         return []
@@ -70,6 +72,22 @@ class MyTripViewController: UIViewController {
         cell.infoTitle.text = "R$\(self.roadmap.budget)"
     }
     
+    func emptyState(activities: [ActivityLocal]) {
+        if activities.isEmpty {
+            myTripView.activitiesTableView.isHidden = true
+            myTripView.budgetView.isHidden = true
+            myTripView.emptyStateTitle.isHidden = false
+            myTripView.emptyStateImage.isHidden = false
+            myTripView.scrollView.isScrollEnabled = false
+        } else {
+            myTripView.activitiesTableView.isHidden = false
+            myTripView.budgetView.isHidden = false
+            myTripView.emptyStateTitle.isHidden = true
+            myTripView.emptyStateImage.isHidden = true
+            myTripView.scrollView.isScrollEnabled = true
+        }
+    }
+        
     @objc func goToCreateActivity() {
         coordinator?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
     }

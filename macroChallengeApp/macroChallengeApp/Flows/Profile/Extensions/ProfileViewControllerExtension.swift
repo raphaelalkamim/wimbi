@@ -44,6 +44,15 @@ extension ProfileViewController: UICollectionViewDataSource {
         
         cell.title.translatesAutoresizingMaskIntoConstraints = false
         
+        if cell.title.text!.count < 15 {
+            cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.xLargePositive).isActive = true
+            cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.smallPositive).isActive = false
+        } else {
+            cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.xLargePositive).isActive = false
+            cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.smallPositive).isActive = true
+
+        }
+        
         if let user = user {
             cell.title.text = user.userRoadmap[indexPath.row].roadmap.name
             cell.roadmapImage.image = UIImage(named: user.userRoadmap[indexPath.row].roadmap.imageId)
