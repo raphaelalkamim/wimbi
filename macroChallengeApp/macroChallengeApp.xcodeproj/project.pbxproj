@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131272B828E610AC000B7968 /* StringProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272B728E610AC000B7968 /* StringProtocol.swift */; };
+		131272BB28E61B0D000B7968 /* NewActivityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272BA28E61B0D000B7968 /* NewActivityExtension.swift */; };
+		131272D728E6249E000B7968 /* RoadmapSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272D428E6249E000B7968 /* RoadmapSearchTableViewController.swift */; };
+		131272D828E6249E000B7968 /* PreviewRoadmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272D528E6249E000B7968 /* PreviewRoadmapViewController.swift */; };
+		131272D928E6249E000B7968 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272D628E6249E000B7968 /* ExploreViewController.swift */; };
+		131272DA28E624CC000B7968 /* ExploreViewController+PreviewRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272C028E62440000B7968 /* ExploreViewController+PreviewRoadmap.swift */; };
+		131272DB28E624CC000B7968 /* ExploreViewController+Roadmaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272C128E62440000B7968 /* ExploreViewController+Roadmaps.swift */; };
+		131272DC28E624CE000B7968 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272CA28E62441000B7968 /* ExploreView.swift */; };
+		131272DD28E624CE000B7968 /* PreviewRoadmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272CB28E62441000B7968 /* PreviewRoadmapView.swift */; };
+		131272DE28E624D1000B7968 /* RoadmapExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272C328E62441000B7968 /* RoadmapExploreCollectionViewCell.swift */; };
+		131272DF28E624D1000B7968 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272C428E62441000B7968 /* SearchResultTableViewCell.swift */; };
+		131272E028E624F4000B7968 /* ExploreViewController+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272BF28E62440000B7968 /* ExploreViewController+ContextMenu.swift */; };
 		1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14728DA4869009509DF /* ActivityRepository.swift */; };
 		1359F14B28DA489A009509DF /* DayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14A28DA489A009509DF /* DayRepository.swift */; };
 		1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14C28DA48A8009509DF /* RoadmapRepository.swift */; };
@@ -24,7 +36,6 @@
 		1379744828D8E57B00AEA662 /* ReviewTravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744428D8E57B00AEA662 /* ReviewTravelViewController.swift */; };
 		1379744A28D8E57B00AEA662 /* ProfileViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744628D8E57B00AEA662 /* ProfileViewControllerExtension.swift */; };
 		1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744728D8E57B00AEA662 /* ProfileViewController+Settings.swift */; };
-		1379744D28D8E5CA00AEA662 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744C28D8E5CA00AEA662 /* ExploreViewController.swift */; };
 		1379745028D8E61B00AEA662 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744F28D8E61B00AEA662 /* ProfileView.swift */; };
 		1379745328D8E6B700AEA662 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379745128D8E6B700AEA662 /* SettingsViewController.swift */; };
 		1379745428D8E6B700AEA662 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379745228D8E6B700AEA662 /* SettingsView.swift */; };
@@ -76,6 +87,8 @@
 		A04959C628DCEC92009156C8 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04959C528DCEC92009156C8 /* ActivityTableViewCell.swift */; };
 		A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */; };
 		A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */; };
+		A0A8BAB628E4E824006A8BDD /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A8BAB528E4E824006A8BDD /* String+Localization.swift */; };
+		A0A8BABA28E4E8C0006A8BDD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0A8BABC28E4E8C0006A8BDD /* Localizable.strings */; };
 		A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */; };
 		A0B9F4BF28D8FB5900F2DF06 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4BE28D8FB5900F2DF06 /* NotificationsView.swift */; };
 		A0B9F4C128D8FD5100F2DF06 /* SettingsViewController+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4C028D8FD5100F2DF06 /* SettingsViewController+Notifications.swift */; };
@@ -92,6 +105,7 @@
 		A0FD739D28DA7F780044E47C /* MyTripViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739C28DA7F780044E47C /* MyTripViewControllerExtension.swift */; };
 		A0FD739F28DA82250044E47C /* InfoTripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739E28DA82250044E47C /* InfoTripCollectionViewCell.swift */; };
 		A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD73A428DBA76E0044E47C /* CalendarCollectionViewCell.swift */; };
+		B04777DA28E62B130023540D /* ProfileViewController+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04777D928E62B130023540D /* ProfileViewController+ContextMenu.swift */; };
 		B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */; };
 		B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */; };
 		B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */; };
@@ -112,6 +126,7 @@
 		B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461628CFA85E00D62AF1 /* CategoryView.swift */; };
 		DF2643AB28DB9CC500053180 /* UserRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AA28DB9CC500053180 /* UserRoadmap.swift */; };
 		DF2643AD28DB9EAD00053180 /* RoadmapDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */; };
+		DF2EA1BD28DE28BA002F12D8 /* ActivityDestinyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */; };
 		DF57253D28D110E1005466D9 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57253C28D110E1005466D9 /* DaysView.swift */; };
 		DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */; };
 		DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */; };
@@ -140,6 +155,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		131272B728E610AC000B7968 /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
+		131272BA28E61B0D000B7968 /* NewActivityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityExtension.swift; sourceTree = "<group>"; };
+		131272BF28E62440000B7968 /* ExploreViewController+ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreViewController+ContextMenu.swift"; sourceTree = "<group>"; };
+		131272C028E62440000B7968 /* ExploreViewController+PreviewRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreViewController+PreviewRoadmap.swift"; sourceTree = "<group>"; };
+		131272C128E62440000B7968 /* ExploreViewController+Roadmaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreViewController+Roadmaps.swift"; sourceTree = "<group>"; };
+		131272C328E62441000B7968 /* RoadmapExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapExploreCollectionViewCell.swift; sourceTree = "<group>"; };
+		131272C428E62441000B7968 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		131272CA28E62441000B7968 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		131272CB28E62441000B7968 /* PreviewRoadmapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRoadmapView.swift; sourceTree = "<group>"; };
+		131272D428E6249E000B7968 /* RoadmapSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoadmapSearchTableViewController.swift; sourceTree = "<group>"; };
+		131272D528E6249E000B7968 /* PreviewRoadmapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewRoadmapViewController.swift; sourceTree = "<group>"; };
+		131272D628E6249E000B7968 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		1359F14728DA4869009509DF /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
 		1359F14A28DA489A009509DF /* DayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepository.swift; sourceTree = "<group>"; };
 		1359F14C28DA48A8009509DF /* RoadmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapRepository.swift; sourceTree = "<group>"; };
@@ -157,7 +184,6 @@
 		1379744428D8E57B00AEA662 /* ReviewTravelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTravelViewController.swift; sourceTree = "<group>"; };
 		1379744628D8E57B00AEA662 /* ProfileViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerExtension.swift; sourceTree = "<group>"; };
 		1379744728D8E57B00AEA662 /* ProfileViewController+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Settings.swift"; sourceTree = "<group>"; };
-		1379744C28D8E5CA00AEA662 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		1379744F28D8E61B00AEA662 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = macroChallengeApp/Flows/NewRoadmap/View/ProfileView.swift; sourceTree = SOURCE_ROOT; };
 		1379745128D8E6B700AEA662 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = macroChallengeApp/Flows/Profile/ViewController/SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
 		1379745228D8E6B700AEA662 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = macroChallengeApp/Flows/NewRoadmap/View/SettingsView.swift; sourceTree = SOURCE_ROOT; };
@@ -210,6 +236,10 @@
 		A04959C528DCEC92009156C8 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		A0A8BAB528E4E824006A8BDD /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		A0A8BABB28E4E8C0006A8BDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A0A8BABD28E4E8CE006A8BDD /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		A0A8BABE28E4E8CE006A8BDD /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A0B9F4BC28D8FB5000F2DF06 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		A0B9F4BE28D8FB5900F2DF06 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		A0B9F4C028D8FD5100F2DF06 /* SettingsViewController+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Notifications.swift"; sourceTree = "<group>"; };
@@ -227,6 +257,7 @@
 		A0FD739E28DA82250044E47C /* InfoTripCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTripCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0FD73A428DBA76E0044E47C /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2717F6A055C734D418E1360 /* Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B04777D928E62B130023540D /* ProfileViewController+ContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+ContextMenu.swift"; sourceTree = "<group>"; };
 		B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerTableViewCell.swift; sourceTree = "<group>"; };
 		B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
 		B05A9C5228DB860F004859F8 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
@@ -254,6 +285,7 @@
 		DB4996FD9467D4E74060F7D0 /* Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2643AA28DB9CC500053180 /* UserRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoadmap.swift; sourceTree = "<group>"; };
 		DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapDTO.swift; sourceTree = "<group>"; };
+		DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDestinyView.swift; sourceTree = "<group>"; };
 		DF57253C28D110E1005466D9 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
 		DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -294,6 +326,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		131272B928E61AED000B7968 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				131272BA28E61B0D000B7968 /* NewActivityExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		131272BE28E62440000B7968 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				131272BF28E62440000B7968 /* ExploreViewController+ContextMenu.swift */,
+				131272C028E62440000B7968 /* ExploreViewController+PreviewRoadmap.swift */,
+				131272C128E62440000B7968 /* ExploreViewController+Roadmaps.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		131272C228E62441000B7968 /* ViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				131272C328E62441000B7968 /* RoadmapExploreCollectionViewCell.swift */,
+				131272C428E62441000B7968 /* SearchResultTableViewCell.swift */,
+			);
+			path = ViewCell;
+			sourceTree = "<group>";
+		};
+		131272C528E62441000B7968 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				131272D628E6249E000B7968 /* ExploreViewController.swift */,
+				131272D528E6249E000B7968 /* PreviewRoadmapViewController.swift */,
+				131272D428E6249E000B7968 /* RoadmapSearchTableViewController.swift */,
+			);
+			name = ViewController;
+			path = Explore/ViewController;
+			sourceTree = "<group>";
+		};
+		131272C928E62441000B7968 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				131272CA28E62441000B7968 /* ExploreView.swift */,
+				131272CB28E62441000B7968 /* PreviewRoadmapView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1359F14928DA4873009509DF /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +420,7 @@
 		1379745728D8E74100AEA662 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B04777D928E62B130023540D /* ProfileViewController+ContextMenu.swift */,
 				1379744728D8E57B00AEA662 /* ProfileViewController+Settings.swift */,
 				A0B9F4C028D8FD5100F2DF06 /* SettingsViewController+Notifications.swift */,
 				1379744628D8E57B00AEA662 /* ProfileViewControllerExtension.swift */,
@@ -351,6 +431,7 @@
 		13BD500228DA28B600C0EA7C /* NewActivity */ = {
 			isa = PBXGroup;
 			children = (
+				131272B928E61AED000B7968 /* Extension */,
 				13BD501228DA2A2600C0EA7C /* ViewCell */,
 				13BD500428DA28CB00C0EA7C /* View */,
 				13BD500328DA28BC00C0EA7C /* ViewController */,
@@ -370,6 +451,7 @@
 		13BD500428DA28CB00C0EA7C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */,
 				13BD500728DA28E500C0EA7C /* NewActivityView.swift */,
 			);
 			path = View;
@@ -424,7 +506,6 @@
 				13C8A11528C68B7700994196 /* DataManager.swift */,
 				13C8A11728C691F100994196 /* DataType.swift */,
 				B0CDF34F28CFC7E90092A76C /* Category.swift */,
-				B078F22328C27F2400D46F61 /* LaunchScreen.storyboard */,
 				DF2643AA28DB9CC500053180 /* UserRoadmap.swift */,
 				DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */,
 			);
@@ -507,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				13C8A15128CFC29500994196 /* HandleMapSearch.swift */,
+				131272B728E610AC000B7968 /* StringProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -576,17 +658,12 @@
 		13F994F328D3956100B077C0 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				13F994F428D3957500B077C0 /* ViewController */,
+				131272BE28E62440000B7968 /* Extension */,
+				131272C928E62441000B7968 /* View */,
+				131272C228E62441000B7968 /* ViewCell */,
+				131272C528E62441000B7968 /* ViewController */,
 			);
 			path = Explore;
-			sourceTree = "<group>";
-		};
-		13F994F428D3957500B077C0 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1379744C28D8E5CA00AEA662 /* ExploreViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		13F994F528D3957F00B077C0 /* ViewController */ = {
@@ -690,6 +767,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A0A8BAB728E4E835006A8BDD /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				A0A8BAB528E4E824006A8BDD /* String+Localization.swift */,
+				A0A8BABC28E4E8C0006A8BDD /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		B078F20928C27F2000D46F61 = {
 			isa = PBXGroup;
 			children = (
@@ -716,6 +802,7 @@
 		B078F21428C27F2000D46F61 /* macroChallengeApp */ = {
 			isa = PBXGroup;
 			children = (
+				A0A8BAB728E4E835006A8BDD /* Localization */,
 				1359F14928DA4873009509DF /* CoreData */,
 				DFA30CB028DA2F0900F316EB /* macroChallengeApp.entitlements */,
 				13C8A11B28CA66A800994196 /* Coordinator */,
@@ -726,6 +813,7 @@
 				13C8A10928C6826B00994196 /* Models */,
 				13C8A10728C6824F00994196 /* Flows */,
 				B078F22128C27F2400D46F61 /* Assets.xcassets */,
+				B078F22328C27F2400D46F61 /* LaunchScreen.storyboard */,
 				B078F22628C27F2400D46F61 /* Info.plist */,
 				B078F21E28C27F2000D46F61 /* macroChallengeApp.xcdatamodeld */,
 			);
@@ -852,6 +940,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = B078F20928C27F2000D46F61;
 			productRefGroup = B078F21328C27F2000D46F61 /* Products */;
@@ -871,6 +960,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13C8A10628C6698100994196 /* .swiftlint.yml in Resources */,
+				A0A8BABA28E4E8C0006A8BDD /* Localizable.strings in Resources */,
 				B078F22528C27F2400D46F61 /* LaunchScreen.storyboard in Resources */,
 				B078F22228C27F2400D46F61 /* Assets.xcassets in Resources */,
 			);
@@ -1022,6 +1112,7 @@
 				B0B17FE528E4DABF0010B00C /* CurrentCountDown.swift in Sources */,
 				135AC6A528DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift in Sources */,
 				13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */,
+				131272DD28E624CE000B7968 /* PreviewRoadmapView.swift in Sources */,
 				13C8A13628CA6C1100994196 /* TextStyle.swift in Sources */,
 				A0B9F4C528D90A7C00F2DF06 /* SwitchTableViewCell.swift in Sources */,
 				13C8A10F28C6829100994196 /* Day.swift in Sources */,
@@ -1031,8 +1122,10 @@
 				13C8A11D28CA681C00994196 /* Coordinator.swift in Sources */,
 				13C8A13228CA6B0400994196 /* DefaultDesignPalette.swift in Sources */,
 				B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */,
+				131272BB28E61B0D000B7968 /* NewActivityExtension.swift in Sources */,
 				13EC5C5228DB8FF0005F7128 /* DesignDefaultImages.swift in Sources */,
 				B0CDF35028CFC7E90092A76C /* Category.swift in Sources */,
+				131272B828E610AC000B7968 /* StringProtocol.swift in Sources */,
 				1379744328D8E56700AEA662 /* ProfileViewController.swift in Sources */,
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
 				B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */,
@@ -1055,9 +1148,11 @@
 				B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */,
 				A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */,
 				13C8A13028CA6AF400994196 /* DefaultDesignSystem.swift in Sources */,
+				131272E028E624F4000B7968 /* ExploreViewController+ContextMenu.swift in Sources */,
 				1379745328D8E6B700AEA662 /* SettingsViewController.swift in Sources */,
 				13BD500F28DA297500C0EA7C /* KeychainManager.swift in Sources */,
 				13C8A12328CA692500994196 /* DesignPalette.swift in Sources */,
+				131272D928E6249E000B7968 /* ExploreViewController.swift in Sources */,
 				13BD4FFF28D90F9700C0EA7C /* DefaultDesignSystemImages.swift in Sources */,
 				1359F15628DA48F3009509DF /* DayRepositoryClass.swift in Sources */,
 				13F994E728D393CE00B077C0 /* CategoryViewController.swift in Sources */,
@@ -1074,6 +1169,7 @@
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
 				A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */,
 				1359F15228DA48D5009509DF /* ActivityRepositoryClass.swift in Sources */,
+				B04777DA28E62B130023540D /* ProfileViewController+ContextMenu.swift in Sources */,
 				1359F15428DA48E5009509DF /* RoadmapRepositoryClass.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
 				1359F15828DA48FD009509DF /* UserRepositoryClass.swift in Sources */,
@@ -1082,6 +1178,7 @@
 				DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */,
 				1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */,
 				DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */,
+				131272D728E6249E000B7968 /* RoadmapSearchTableViewController.swift in Sources */,
 				13BD500E28DA297500C0EA7C /* SignInWithAppleManager.swift in Sources */,
 				B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */,
 				1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */,
@@ -1091,11 +1188,13 @@
 				B0AC251628E21DEB00F38525 /* CurrentEmptyState.swift in Sources */,
 				13C8A11328C6835300994196 /* Activity.swift in Sources */,
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
+				131272DC28E624CE000B7968 /* ExploreView.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
+				DF2EA1BD28DE28BA002F12D8 /* ActivityDestinyView.swift in Sources */,
 				13BD500828DA28E500C0EA7C /* NewActivityView.swift in Sources */,
+				131272DF28E624D1000B7968 /* SearchResultTableViewCell.swift in Sources */,
 				1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */,
 				A0B9F4C328D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift in Sources */,
-				1379744D28D8E5CA00AEA662 /* ExploreViewController.swift in Sources */,
 				DFA30CAF28DA2E5A00F316EB /* TabBarController.swift in Sources */,
 				13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */,
 				A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */,
@@ -1119,10 +1218,15 @@
 				A0FD739928DA7EF00044E47C /* MyTripView.swift in Sources */,
 				B078F21828C27F2000D46F61 /* SceneDelegate.swift in Sources */,
 				A0B9F4C728DA2A4C00F2DF06 /* TermsView.swift in Sources */,
+				131272D828E6249E000B7968 /* PreviewRoadmapViewController.swift in Sources */,
 				13BD501028DA297500C0EA7C /* LoginViewController.swift in Sources */,
 				1359F14B28DA489A009509DF /* DayRepository.swift in Sources */,
+				A0A8BAB628E4E824006A8BDD /* String+Localization.swift in Sources */,
+				131272DE28E624D1000B7968 /* RoadmapExploreCollectionViewCell.swift in Sources */,
 				13EC5C5428DB902F005F7128 /* DefaultDesignDefaultImages.swift in Sources */,
+				131272DA28E624CC000B7968 /* ExploreViewController+PreviewRoadmap.swift in Sources */,
 				DF5F774128CA7E1600BA5F5F /* DesignSystem+UIFont.swift in Sources */,
+				131272DB28E624CC000B7968 /* ExploreViewController+Roadmaps.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1159,10 +1263,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A0A8BABC28E4E8C0006A8BDD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A0A8BABB28E4E8C0006A8BDD /* en */,
+				A0A8BABE28E4E8CE006A8BDD /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		B078F22328C27F2400D46F61 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B078F22428C27F2400D46F61 /* Base */,
+				A0A8BABD28E4E8CE006A8BDD /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1174,6 +1288,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1234,6 +1349,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1296,9 +1412,12 @@
 				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1326,9 +1445,12 @@
 				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

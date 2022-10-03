@@ -32,32 +32,32 @@ extension SettingsViewController: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let viewController = EditProfileViewController()
-            viewController.navigationItem.title = "Edit profile"
+            viewController.navigationItem.title = "Edit profile".localized()
             navigationController?.pushViewController(viewController, animated: true)
             
         case 1:
             let viewController = LikedRoadmapsViewController()
-            viewController.navigationItem.title = "Liked roadmaps"
+            viewController.navigationItem.title = "Liked roadmaps".localized()
             navigationController?.pushViewController(viewController, animated: true)
             
         case 2:
             let viewController = NotificationsViewController()
-            viewController.navigationItem.title = "Notifications"
+            viewController.navigationItem.title = "Notifications".localized()
             navigationController?.pushViewController(viewController, animated: true)
         case 3:
             let viewController = TermsViewController()
-            viewController.navigationItem.title = "Terms of privacy"
+            viewController.navigationItem.title = "Terms of privacy".localized()
             navigationController?.pushViewController(viewController, animated: true)
             
         case 4:
             let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
             alert.view.tintColor = .accent
             let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
-            let string = NSAttributedString(string: "Sign out of your account?", attributes: titleAtt)
+            let string = NSAttributedString(string: "Sign out of your account?".localized(), attributes: titleAtt)
             alert.setValue(string, forKey: "attributedTitle")
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+            alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
             }))
-            alert.addAction(UIAlertAction(title: "Sign out", style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
+            alert.addAction(UIAlertAction(title: "Sign out".localized(), style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
                 // Ação Cancelar
             }))
             present(alert, animated: true)
@@ -76,23 +76,23 @@ extension SettingsViewController: UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            cell.title.text = "Edit profile"
+            cell.title.text = "Edit profile".localized()
             cell.icon.setImage(UIImage(systemName: "person.fill"), for: .normal)
             
         case 1:
-            cell.title.text = "Liked roadmaps"
+            cell.title.text = "Liked roadmaps".localized()
             cell.icon.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             
         case 2:
-            cell.title.text = "Notifications"
+            cell.title.text = "Notifications".localized()
             cell.icon.setImage(UIImage(systemName: "bell.fill"), for: .normal)
             
         case 3:
-            cell.title.text = "Terms of privacy"
+            cell.title.text = "Terms of privacy".localized()
             cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
             
         case 4:
-            cell.title.text = "Sign out"
+            cell.title.text = "Sign out".localized()
             cell.title.textColor = .redCity
             cell.icon.isHidden = true
             cell.chevron.isHidden = true

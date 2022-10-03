@@ -19,7 +19,7 @@ class EditProfileViewController: UIViewController {
         self.view.backgroundColor = .backgroundPrimary
         self.setupEditProfileView()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveProfile))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save".localized(), style: .plain, target: self, action: #selector(saveProfile))
     }
     
     @objc func saveProfile() {

@@ -23,7 +23,7 @@ class NewRoadmapCoordinator: Coordinator {
         navigationController.modalPresentationStyle = .fullScreen
         let viewController = CategoryViewController()
         viewController.coordinator = self
-        viewController.navigationItem.title = "Category"
+        viewController.navigationItem.title = "Category".localized()
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -56,20 +56,20 @@ class NewRoadmapCoordinator: Coordinator {
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alert.view.tintColor = .accent
         let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
-        let string = NSAttributedString(string: "Tem certeza?", attributes: titleAtt)
+        let string = NSAttributedString(string: "Are you sure?".localized(), attributes: titleAtt)
         alert.setValue(string, forKey: "attributedTitle")
         
         let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
-        let subtitleString = NSAttributedString(string: "Cancelando você perderá todas as informações", attributes: subtitleAtt)
+        let subtitleString = NSAttributedString(string: "By canceling you will lose all your progress".localized(), attributes: subtitleAtt)
         alert.setValue(subtitleString, forKey: "attributedMessage")
         
-        alert.addAction(UIAlertAction(title: "Back", style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Back".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
             self.navigationController.dismiss(animated: true)
             self.delegate?.didFinishPresent(of: self, isNewRoadmap: isNewRoadmap)
         }))
-        self.navigationController.present(alert, animated: true)
+        navigationController.present(alert, animated: true)
     }
     
     func back() {

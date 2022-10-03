@@ -55,28 +55,28 @@ class MyTripView: UIView {
     
     lazy var infoTitle: UILabel = {
         let title = UILabel()
-        title.text = "SOBRE"
+        title.text = "ABOUT".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var calendarTitle: UILabel = {
         let title = UILabel()
-        title.text = "DIAS DE VIAGEM"
+        title.text = "TRAVEL DAYS".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var roadmapTitle: UILabel = {
         let title = UILabel()
-        title.text = "ROTEIRO"
+        title.text = "ROADMAP".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var dayTitle: UILabel = {
         let title = UILabel()
-        title.text = "Dia 1"
+        title.text = "Day".localized()
         title.stylize(with: designSystem.text.mediumTitle)
         return title
     }()
@@ -90,7 +90,7 @@ class MyTripView: UIView {
     
     lazy var budgetLabel: UILabel = {
         let title = UILabel()
-        title.text = "CUSTO DO DIA"
+        title.text = "DAILY COSTS".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
@@ -108,7 +108,6 @@ class MyTripView: UIView {
         let img = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         btn.setImage(img, for: .normal)
         btn.tintColor = .accent
-        btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     
@@ -119,9 +118,10 @@ class MyTripView: UIView {
         table.separatorColor = .clear
         table.allowsSelection = false
         table.backgroundColor = .backgroundPrimary
+        table.dragInteractionEnabled = true
         return table
     }()
-    
+
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)
@@ -132,12 +132,15 @@ class MyTripView: UIView {
         contentView.addSubview(calendarTitle)
         contentView.addSubview(roadmapTitle)
         contentView.addSubview(dayTitle)
-        contentView.addSubview(addButton)
+        self.addSubview(addButton)
         contentView.addSubview(budgetView)
         budgetView.addSubview(budgetLabel)
         budgetView.addSubview(budgetValue)
         scrollView.addSubview(activitiesTableView)
         setupConstraints()
+    }
+    
+    func setupContent(roadmap: RoadmapLocal) {
     }
     
     func setupConstraints() {
@@ -233,10 +236,10 @@ extension MyTripView {
         calendarCollectionView.delegate = delegate
         calendarCollectionView.dataSource = dataSource
     }
-    func bindTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+    func bindTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource, dragDelegate: UITableViewDragDelegate) {
         activitiesTableView.delegate = delegate
         activitiesTableView.dataSource = dataSource
-        
+        activitiesTableView.dragDelegate = dragDelegate
     }
 
 }

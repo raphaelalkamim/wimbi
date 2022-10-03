@@ -24,9 +24,11 @@ extension UIImage {
     static var binoculars: UIImage {
         UIImage(named: "binoculo")!
     }
+    
     static var compass: UIImage {
         UIImage(named: "bussola")!
     }
+    
     static var flora: UIImage {
         UIImage(named: "flora")!
     }

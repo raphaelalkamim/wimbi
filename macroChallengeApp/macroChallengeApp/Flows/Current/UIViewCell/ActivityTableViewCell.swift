@@ -7,11 +7,13 @@
 
 import Foundation
 import UIKit
+import MapKit
+import CoreLocation
 
 class ActivityTableViewCell: UITableViewCell {
     static let identifier = "activityCell"
     let designSystem: DesignSystem = DefaultDesignSystem.shared
-    
+    let myTripViewController = MyTripViewController()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -32,7 +34,7 @@ class ActivityTableViewCell: UITableViewCell {
         let title = UILabel()
         title.stylize(with: designSystem.text.caption)
         title.textColor = .textPrimary
-        title.text = "08h00  •  Grátis"
+        title.text = "08h00  •  Free"
         return title
     }()
     
@@ -40,13 +42,14 @@ class ActivityTableViewCell: UITableViewCell {
         let title = UILabel()
         title.stylize(with: designSystem.text.cellTitle)
         title.textColor = .textPrimary
-        title.text = "Praia Lopes Mendes"
+        title.text = "Malibu Beach"
         return title
     }()
     
     lazy var localButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(systemName: "location.circle.fill"), for: .normal)
+        btn.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 24), forImageIn: .normal)
         btn.tintColor = .accent
         btn.isUserInteractionEnabled = true
         return btn
@@ -64,7 +67,11 @@ extension ActivityTableViewCell {
         setupConstraints()
         
     }
-    
+    func setupDaysActivities(hour: String, value: String, name: String) {
+        let hour = hour
+        self.activityInfo.text = hour + " • " + "R$" + value
+        self.activityTitle.text = name
+    }
     func setupConstraints() {
         activityIcon.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
@@ -86,7 +93,6 @@ extension ActivityTableViewCell {
         localButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
             make.centerY.equalToSuperview().inset(designSystem.spacing.smallNegative)
-            
         }
 
     }

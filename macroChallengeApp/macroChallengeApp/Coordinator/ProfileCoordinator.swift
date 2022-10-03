@@ -11,6 +11,7 @@ class ProfileCoordinator: Coordinator {
     var childCoordinators: [Coordinator]
     
     var navigationController: UINavigationController
+    weak var delegate: PresentationCoordinatorDelegate?
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -22,12 +23,11 @@ class ProfileCoordinator: Coordinator {
         let viewController = ProfileViewController()
         viewController.coordinator = self
         
-        let tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        let tabBarItem = UITabBarItem(title: "Profile".localized(), image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
         viewController.tabBarItem = tabBarItem
-        viewController.navigationItem.title = "Profile"
+        viewController.navigationItem.title = "Profile".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
-    
     func newRoadmap() {
         let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
         childCoordinators.append(coordinator)
@@ -38,9 +38,35 @@ class ProfileCoordinator: Coordinator {
             print("OI")
         }
     }
-    
-    func openLocationActivity() {
+    func openRoadmap(roadmap: RoadmapLocal) {
+        let viewController = MyTripViewController()
+        viewController.coordinator = self
+        viewController.roadmap = roadmap
+        viewController.navigationItem.title = roadmap.name
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    func startViewRoadmap() {
+        let viewController = MyTripViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "Egito"
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    func startActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController) {
+        let viewController = NewActivityViewController()
+        viewController.delegate = delegate
+        viewController.coordinator = self
+        viewController.day = day
+        viewController.roadmap = roadmap
+        viewController.navigationItem.title = "New Activity"
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func openLocationActivity(delegate: ChangeTextTableDelegate, roadmap: RoadmapLocal) {
         let viewController = LocationNewActivityViewController()
+        if let location = roadmap.location {
+            viewController.coordsMap = location
+        }
+        viewController.delegate = delegate
         viewController.coordinator = self
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
@@ -49,8 +75,12 @@ class ProfileCoordinator: Coordinator {
     func settings() {
         let viewController = SettingsViewController()
         viewController.coordinator = self
-        viewController.navigationItem.title = "Settings"
+        viewController.navigationItem.title = "Settings".localized()
         navigationController.pushViewController(viewController, animated: true)
+    }
+    func backPage() {
+        navigationController.popViewController(animated: true)
+        delegate?.didFinishPresent(of: self, isNewRoadmap: false)
     }
     
     func setupBarAppearence() {
