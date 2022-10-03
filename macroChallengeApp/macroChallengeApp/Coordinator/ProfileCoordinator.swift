@@ -20,14 +20,19 @@ class ProfileCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = ProfileViewController()
-        viewController.coordinator = self
-        
-        let tabBarItem = UITabBarItem(title: "Profile".localized(), image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
-        viewController.tabBarItem = tabBarItem
-        viewController.navigationItem.title = "Profile".localized()
-        navigationController.pushViewController(viewController, animated: true)
+        if UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
+            let viewController = ProfileViewController()
+            viewController.coordinator = self
+            
+            let tabBarItem = UITabBarItem(title: "Profile".localized(), image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+            viewController.tabBarItem = tabBarItem
+            viewController.navigationItem.title = "Profile".localized()
+            navigationController.pushViewController(viewController, animated: true)
+        } else {
+            startLogin()
+        }
     }
+    
     func newRoadmap() {
         let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
         childCoordinators.append(coordinator)
@@ -38,6 +43,17 @@ class ProfileCoordinator: Coordinator {
             print("OI")
         }
     }
+    
+    func startLogin() {
+        let viewController = LoginViewController()
+        viewController.coordinatorProfile = self
+        viewController.navigationItem.title = "Login"
+        let tabBarItem = UITabBarItem(title: "Profile".localized(), image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        viewController.tabBarItem = tabBarItem
+        viewController.navigationItem.title = "Profile".localized()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func openRoadmap(roadmap: RoadmapLocal) {
         let viewController = MyTripViewController()
         viewController.coordinator = self
@@ -60,7 +76,7 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "New Activity"
         navigationController.pushViewController(viewController, animated: true)
     }
-
+    
     func openLocationActivity(delegate: ChangeTextTableDelegate, roadmap: RoadmapLocal) {
         let viewController = LocationNewActivityViewController()
         if let location = roadmap.location {

@@ -19,6 +19,7 @@ class DataManager {
     var activity: Activity?
     var day: Day?
     var like: Like?
+    var delegate: UserLoggedInDelegate?
     
     // MARK: - Load Data
     public func loadData(_ completion: @escaping (() -> Void), dataURL: String, dataType: DataType) {
@@ -149,6 +150,10 @@ class DataManager {
                         let jwtToken = httpResponse.value(forHTTPHeaderField: "Authorization")
                         UserDefaults.standard.setValue(jwtToken, forKey: "authorization")
                         UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                        
+                        DispatchQueue.main.async {
+                            self.delegate?.finishLogin()
+                        }
                     }
                 }
             } else {
