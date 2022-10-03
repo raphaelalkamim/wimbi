@@ -65,7 +65,4 @@ class ActivityDestinyView: UIView {
         searchBar.placeholder = "Para onde você vai?"
         searchBar.sizeToFit()
     }
-    @objc func clicou() {
-        print("clicou")
-    }
 }

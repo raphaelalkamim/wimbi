@@ -67,7 +67,7 @@ public class RoadmapRepository: NSManagedObject {
             
             // adiciona os novos dias no roteiro
             var isFirstDay = false
-            for index in 0...editRoadmap.dayCount {
+            for index in 0..<editRoadmap.dayCount {
                 if index == 0 {
                     isFirstDay = true
                 } else {

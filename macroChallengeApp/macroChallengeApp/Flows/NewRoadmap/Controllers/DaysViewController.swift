@@ -73,14 +73,13 @@ class DaysViewController: UIViewController {
     func countDays(datePickerInitial: UIDatePicker, datePickerFinal: UIDatePicker) -> Double {
         let initialDate = datePickerInitial.date
         let finalDate = datePickerFinal.date
-        return ( finalDate.timeIntervalSince(initialDate) / (60 * 60 * 24) ) + 2
+        return ( finalDate.timeIntervalSince(initialDate) / (60 * 60 * 24) ) + 1
     }
     
     func setupEdition() {
         self.roadmap.dateFinal = finalDate.date
         self.roadmap.dateInitial = initialDate.date
         self.roadmap.dayCount = Int(self.countDays(datePickerInitial: self.initialDate, datePickerFinal: self.finalDate))
-        print("count",roadmap.dayCount)
         self.roadmap.peopleCount = (self.travelersCount.selectedRow(inComponent: 0)) + 1
         self.roadmap.isPublic = daysView.isPublic
     }
@@ -125,21 +124,19 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.label.text = "Start date".localized()
                     cell.setupSeparator()
                     if edit {
-                        cell.datePicker.minimumDate = Date()
                         cell.datePicker.date = editRoadmap.date ?? Date()
-                        cell.datePicker.minimumDate = editRoadmap.date
                     }
                     self.initialDate = cell.datePicker
                 } else {
                     cell.label.text = "End date".localized()
                     if edit {
                         let modifiedDate = Calendar.current.date(byAdding: .day, value: Int(editRoadmap.dayCount) - 1, to: editRoadmap.date ?? Date())
-                        cell.datePicker.minimumDate = Date()
                         cell.datePicker.date = modifiedDate ?? Date()
                     }
                     self.finalDate = cell.datePicker
 
                 }
+                cell.datePicker.minimumDate = Date()
                 cellTable = cell
             }
         } else {

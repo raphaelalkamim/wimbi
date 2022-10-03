@@ -27,7 +27,6 @@ class MyTripViewController: UIViewController {
         myTripView.bindCollectionView(delegate: self, dataSource: self)
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
         myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
-        print("oi",roadmap.category)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +40,6 @@ class MyTripViewController: UIViewController {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
             self.days = newDays
-            print(days)
         }
         for index in 0..<days.count where days[index].isSelected == true {
             self.daySelected = index

@@ -85,11 +85,11 @@ extension ProfileCollectionViewCell {
     }
     
     func setupImage(category: String) {
-        if category == "Beach" {
+        if category == "Beach".localized() {
             self.roadmapImage.image = designSystem.imagesDefault.beach[Int.random(in: 0..<designSystem.imagesDefault.beach.count)]
-        } else if category == "Mountain" {
+        } else if category == "Mountain".localized() {
             self.roadmapImage.image = designSystem.imagesDefault.mountain[Int.random(in: 0..<designSystem.imagesDefault.mountain.count)]
-        } else if category == "City" {
+        } else if category == "City".localized() {
             self.roadmapImage.image = designSystem.imagesDefault.city[Int.random(in: 0..<designSystem.imagesDefault.city.count)]
         } else {
             self.roadmapImage.image = designSystem.imagesDefault.camp[Int.random(in: 0..<designSystem.imagesDefault.camp.count)]
