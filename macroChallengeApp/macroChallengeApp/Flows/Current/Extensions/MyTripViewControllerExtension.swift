@@ -94,6 +94,7 @@ extension MyTripViewController: UICollectionViewDelegate {
             self.daySelected = indexPath.row
             self.days[daySelected].isSelected = true
             self.activites = getAllActivities()
+            self.emptyState(activities: activites)
             
             // view updates
             self.myTripView.activitiesTableView.reloadData()

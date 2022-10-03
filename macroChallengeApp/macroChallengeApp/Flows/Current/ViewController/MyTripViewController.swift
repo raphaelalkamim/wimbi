@@ -32,6 +32,7 @@ class MyTripViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.getAllDays()
         self.activites = self.getAllActivities()
+        self.emptyState(activities: activites)
         self.updateBudget()
         self.updateTotalBudgetValue()
     }
@@ -50,7 +51,6 @@ class MyTripViewController: UIViewController {
     func getAllActivities() -> [ActivityLocal] {
         if var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] {
             newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
-            self.emptyState(activities: newActivities)
             myTripView.dayTitle.text = "Dia " + String(daySelected + 1)
             myTripView.activitiesTableView.reloadData()
             return newActivities
