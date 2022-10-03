@@ -135,7 +135,6 @@ class DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request) { data, response, error in
-            print(response)
             if let error = error {
                 print(error)
             } else if data == data {
@@ -267,7 +266,6 @@ class DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request) { data, response, error in
-            print(response)
             guard let data = data else {return}
             if error != nil {
                 print(String(describing: error?.localizedDescription))
