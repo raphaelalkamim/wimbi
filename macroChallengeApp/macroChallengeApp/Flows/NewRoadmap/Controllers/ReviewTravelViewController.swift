@@ -23,6 +23,11 @@ class ReviewTravelViewController: UIViewController {
     var peopleCount = 1
     var isPublic = false
     
+    var editRoadmap = RoadmapLocal()
+    var edit = false
+    
+    weak var delegateRoadmap:  ReviewTravelDelegate?
+    
     init(roadmap: Roadmaps) {
         self.roadmap = roadmap
         super.init(nibName: nil, bundle: nil)
@@ -68,6 +73,21 @@ class ReviewTravelViewController: UIViewController {
         self.navigationController?.setToolbarHidden(false, animated: false)
     }
     @objc func nextPage() {
+        if edit {
+            self.updateCoreData()
+        } else {
+            self.saveCoreData()
+        }
+        UIAccessibility.post(notification: .screenChanged, argument: coordinator?.navigationController)
+        coordinator?.dismiss(isNewRoadmap: true)
+    }
+    
+    func updateCoreData() {
+        let newRoadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.editRoadmap, roadmap: self.roadmap)
+        delegateRoadmap?.updateRoadmapScreen(roadmap: newRoadmap)
+    }
+    
+    func saveCoreData() {
         roadmap.imageId = "beach0"
         roadmap.createdAt = Date()
         
@@ -86,16 +106,9 @@ class ReviewTravelViewController: UIViewController {
             } else {
                 isFirstDay = false
             }
-            let newDay = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial,
-                                                                                            indexPath: index,
-                                                                                            isSelected: isFirstDay))
-            print(newDay)
+            let _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial, indexPath: index, isSelected: isFirstDay))
         }
-        
-        UIAccessibility.post(notification: .screenChanged, argument: coordinator?.navigationController)
-        coordinator?.dismiss(isNewRoadmap: true)
     }
-    
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {
         let date = startDay.addingTimeInterval(Double(indexPath) * 24 * 3600)
         var day = Day(isSelected: isSelected, date: date)
@@ -175,4 +188,8 @@ extension ReviewTravelViewController: UITableViewDataSource {
         }
         return cell
     }
+}
+
+protocol ReviewTravelDelegate: AnyObject {
+    func updateRoadmapScreen(roadmap: RoadmapLocal)
 }

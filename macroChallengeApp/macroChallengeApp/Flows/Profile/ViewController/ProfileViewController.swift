@@ -29,7 +29,12 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         frc.delegate = self
         return frc
     }()
+
     override func viewDidLoad() {
+        // long press gesture
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        profileView.myRoadmapCollectionView.addGestureRecognizer(longPress)
+
         self.roadmaps = RoadmapRepository.shared.getRoadmap()
         profileView.roadmaps = self.roadmaps
 

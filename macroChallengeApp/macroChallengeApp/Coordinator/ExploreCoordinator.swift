@@ -34,9 +34,7 @@ class ExploreCoordinator: Coordinator {
         coordinator.delegate = self
         coordinator.start()
         
-        navigationController.present(coordinator.navigationController, animated: true) {
-            print("OI")
-        }
+        navigationController.present(coordinator.navigationController, animated: true)
     }
     
     func previewRoadmap() {

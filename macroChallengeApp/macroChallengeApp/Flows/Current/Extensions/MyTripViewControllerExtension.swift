@@ -15,6 +15,11 @@ extension MyTripViewController {
     func setupMyTripView() {
         view.addSubview(myTripView)
         setupConstraints()
+        
+        let barItems = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMyTrip))
+        barItems.tintColor = .accent
+        self.navigationItem.rightBarButtonItem = barItems
+        
     }
     func setupConstraints() {
         myTripView.snp.makeConstraints { make in
@@ -89,6 +94,7 @@ extension MyTripViewController: UICollectionViewDelegate {
             self.daySelected = indexPath.row
             self.days[daySelected].isSelected = true
             self.activites = getAllActivities()
+            self.emptyState(activities: activites)
             
             // view updates
             self.myTripView.activitiesTableView.reloadData()

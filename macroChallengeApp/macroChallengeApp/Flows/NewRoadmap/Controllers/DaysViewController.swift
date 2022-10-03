@@ -17,6 +17,11 @@ class DaysViewController: UIViewController {
     var finalDate = UIDatePicker()
     var travelersCount = UIPickerView()
     
+    var editRoadmap = RoadmapLocal()
+    var edit = false
+    
+    weak var delegateRoadmap:  MyTripViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupDaysView()
@@ -49,24 +54,34 @@ class DaysViewController: UIViewController {
     }
     
     @objc func nextPage() {
+        self.setupEdition()
+        if edit {
+            coordinator?.startEditReview(roadmap: self.roadmap, editRoadmap: self.editRoadmap, delegate: delegateRoadmap!)
+        } else {
+            coordinator?.startReview(roadmap: self.roadmap)
+        }
+    }
+    
+    @objc func backPage() {
+        coordinator?.back()
+    }
+    
+    @objc func cancelRoadmap() {
+        coordinator?.dismissRoadmap(isNewRoadmap: false)
+    }
+    
+    func countDays(datePickerInitial: UIDatePicker, datePickerFinal: UIDatePicker) -> Double {
+        let initialDate = datePickerInitial.date
+        let finalDate = datePickerFinal.date
+        return ( finalDate.timeIntervalSince(initialDate) / (60 * 60 * 24) ) + 1
+    }
+    
+    func setupEdition() {
         self.roadmap.dateFinal = finalDate.date
         self.roadmap.dateInitial = initialDate.date
         self.roadmap.dayCount = Int(self.countDays(datePickerInitial: self.initialDate, datePickerFinal: self.finalDate))
         self.roadmap.peopleCount = (self.travelersCount.selectedRow(inComponent: 0)) + 1
         self.roadmap.isPublic = daysView.isPublic
-        
-        coordinator?.startReview(roadmap: self.roadmap)
-    }
-    @objc func backPage() {
-        coordinator?.back()
-    }
-    @objc func cancelRoadmap() {
-        coordinator?.dismissRoadmap(isNewRoadmap: false)
-    }
-    func countDays(datePickerInitial: UIDatePicker, datePickerFinal: UIDatePicker) -> Double {
-        let initialDate = datePickerInitial.date
-        let finalDate = datePickerFinal.date
-        return ( finalDate.timeIntervalSince(initialDate) / (60 * 60 * 24) ) + 2
     }
 }
 
@@ -83,6 +98,12 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
 
         daysView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        if edit {
+            if roadmap.isPublic {
+                daysView.publicSwitch.isOn = true
+            }
         }
     }
     
@@ -102,16 +123,28 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
                 if indexPath.row == 0 {
                     cell.label.text = "Start date".localized()
                     cell.setupSeparator()
+                    if edit {
+                        cell.datePicker.date = editRoadmap.date ?? Date()
+                    }
                     self.initialDate = cell.datePicker
                 } else {
                     cell.label.text = "End date".localized()
+                    if edit {
+                        let modifiedDate = Calendar.current.date(byAdding: .day, value: Int(editRoadmap.dayCount) - 1, to: editRoadmap.date ?? Date())
+                        cell.datePicker.date = modifiedDate ?? Date()
+                    }
                     self.finalDate = cell.datePicker
+
                 }
+                cell.datePicker.minimumDate = Date()
                 cellTable = cell
             }
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "NumberCell", for: indexPath) as? NumberPickerTableViewCell {
                 cell.label.text = "Number of travelers".localized()
+                if edit {
+                    cell.numberPicker.selectRow(Int(editRoadmap.peopleCount) - 1, inComponent: 0, animated: true)
+                }
                 self.travelersCount = cell.numberPicker
                 cellTable = cell
             }

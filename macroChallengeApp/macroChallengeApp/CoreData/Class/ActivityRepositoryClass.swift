@@ -51,7 +51,20 @@ class ActivityRepository {
         self.saveContext()
         return newActivity
     }
-    
+    func copyActivity(day: DayLocal, activity: ActivityLocal) {
+        guard let newActivity = NSEntityDescription.insertNewObject(forEntityName: "ActivityLocal", into: context) as? ActivityLocal else { preconditionFailure() }
+        
+        newActivity.id = activity.id
+        newActivity.name = activity.name
+        newActivity.category = activity.category
+        newActivity.location = activity.location
+        newActivity.hour = activity.hour
+        newActivity.budget = activity.budget
+        
+        day.addToActivity(newActivity)
+
+        self.saveContext()
+    }
     func getActivity() -> [ActivityLocal] {
         let fetchRequest = NSFetchRequest<ActivityLocal>(entityName: "ActivityLocal")
         do {
@@ -63,7 +76,15 @@ class ActivityRepository {
     }
     
     func deleteActivity(activity: ActivityLocal) throws {
-        self.persistentContainer.viewContext.delete(activity)
-        self.saveContext()
+        guard let context = activity.managedObjectContext else { return }
+
+        if context == self.persistentContainer.viewContext {
+          context.delete(activity)
+        } else {
+            self.persistentContainer.performBackgroundTask { context in
+          context.delete(activity)
+        }
+      }
+      try? self.persistentContainer.viewContext.save()
     }
 }

@@ -24,6 +24,11 @@ class DestinyViewController: UIViewController {
     var placeCoords = ""
     var roadmap: Roadmaps
     
+    var editRoadmap = RoadmapLocal()
+    var edit = false
+    
+    weak var delegateRoadmap:  MyTripViewController?
+
     init(roadmap: Roadmaps) {
         self.roadmap = roadmap
         super.init(nibName: nil, bundle: nil)
@@ -60,6 +65,10 @@ class DestinyViewController: UIViewController {
         
         locationSearchTable.mapView = destinyView.mapView
         locationSearchTable.handleMapSearchDelegate = self
+        
+        if edit {
+            destinyView.searchBar.searchTextField.text = self.editRoadmap.name
+        }
     }
 
     func createPin(title: String, coordinate: CLLocationCoordinate2D) -> MKPointAnnotation {
@@ -91,13 +100,28 @@ class DestinyViewController: UIViewController {
     @objc func nextPage() {
         self.roadmap.name = placeTitle
         self.roadmap.location = placeCoords
-        coordinator?.startDays(roadmap: roadmap)
+        
+        if edit {
+            setupEdition()
+            coordinator?.startEditDays(roadmap: self.roadmap, editRoadmap: self.editRoadmap, delegate: delegateRoadmap!)
+        } else {
+            coordinator?.startDays(roadmap: roadmap)
+        }
     }
+    
     @objc func backPage() {
         coordinator?.back()
     }
+    
     @objc func cancelRoadmap() {
         coordinator?.dismissRoadmap(isNewRoadmap: false)
+    }
+    
+    func setupEdition() {
+        if placeTitle.isEmpty {
+            self.roadmap.name = self.editRoadmap.name ?? "Novo Roteiro"
+            self.roadmap.location = self.editRoadmap.location ?? "Nova localizacao"
+        }
     }
 }
 
@@ -142,9 +166,20 @@ extension DestinyViewController: CLLocationManagerDelegate {
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
+            var region = MKCoordinateRegion()
             let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+
+            if edit {
+                let coordsSeparator = self.roadmap.location.split(separator: " ")
+                if let latitude = CLLocationDegrees(coordsSeparator[0]), let longitude = CLLocationDegrees(coordsSeparator[1]) {
+                    let locationRoadmap = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    region = MKCoordinateRegion(center: locationRoadmap, span: span)
+                }
+            } else {
+                region = MKCoordinateRegion(center: location.coordinate, span: span)
+            }
             destinyView.mapView.setRegion(region, animated: true)
+            
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

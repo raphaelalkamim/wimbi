@@ -23,7 +23,6 @@ class MyTripViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupMyTripView()
-        
         myTripView.setupContent(roadmap: roadmap)
         myTripView.bindCollectionView(delegate: self, dataSource: self)
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
@@ -33,6 +32,7 @@ class MyTripViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.getAllDays()
         self.activites = self.getAllActivities()
+        self.emptyState(activities: activites)
         self.updateBudget()
         self.updateTotalBudgetValue()
     }
@@ -41,7 +41,6 @@ class MyTripViewController: UIViewController {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
             self.days = newDays
-            print(days)
         }
         for index in 0..<days.count where days[index].isSelected == true {
             self.daySelected = index
@@ -52,7 +51,7 @@ class MyTripViewController: UIViewController {
     func getAllActivities() -> [ActivityLocal] {
         if var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] {
             newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
-            self.emptyState(activities: newActivities)
+            myTripView.dayTitle.text = "Dia " + String(daySelected + 1)
             myTripView.activitiesTableView.reloadData()
             return newActivities
         }
@@ -91,8 +90,17 @@ class MyTripViewController: UIViewController {
     @objc func goToCreateActivity() {
         coordinator?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
     }
+    @objc func editMyTrip() {
+        coordinator?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
+    }
 }
 
 extension Sequence {
     func sum<T: AdditiveArithmetic>(_ predicate: (Element) -> T) -> T { reduce(.zero) { $0 + predicate($1) } }
+}
+
+extension MyTripViewController: ReviewTravelDelegate {
+    func updateRoadmapScreen(roadmap: RoadmapLocal) {
+        coordinator?.backPage()
+    }
 }

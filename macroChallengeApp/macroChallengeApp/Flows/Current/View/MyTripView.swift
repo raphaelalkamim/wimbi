@@ -256,7 +256,7 @@ class MyTripView: UIView {
             make.leading.equalTo(contentView.snp.leading)
             make.trailing.equalTo(contentView.snp.trailing)
             make.bottom.equalTo(scrollView.snp.bottom)
-            make.height.equalTo(400)
+            make.height.equalTo(self.scrollView.snp.height)
         }
     }
 }
