@@ -7,11 +7,11 @@
 */
 
 // MARK: -  Login
-"By clicking on the button above, you agree to our privacy policies" = "Al hacer clic en el botón de arriba, usted acepta nuestras políticas de privacidad";
+"By clicking on the button above, you agree to our privacy policies" = "Al hacer clic en el botón de arriba, tu aceptas nuestras políticas de privacidad";
 
 // MARK: -  New Activity
 "TYPE" = "TIPO";
-"LOCATION" = "LOCALIZACIÓN";
+"LOCATION" = "UBICACIÓN";
 "TIME" = "HORARIO";
 "EXPENSE" = "GASTO";
 "New activity" = "Nueva actividad";
@@ -28,7 +28,7 @@
 
 // MARK: -  Explore
 //ainda nao dei .localized
-"New trip" = "Nueva viaje";
+"New trip" = "Nuevo viaje";
 "Join trip" = "Unirse al viaje";
 "Add the code to have access to the trip" = "Añade el código para tener acceso al viaje";
 "Join" = "Unirse";
@@ -39,14 +39,14 @@
 "Profile" = "Perfil";
 
 // MARK: -  Profile
-"My roadmaps" = "Mis hojas de ruta";
+"My roadmaps" = "Mis guias de viaje";
 "NEW" = "NUEVO";
-"Click on ”+” to create a new roadmap or to explore the existing ones." = "Haga clic en ”+” para crear una nueva hoja de ruta o para explorar las existentes.";
+"Click on ”+” to create a new roadmap or to explore the existing ones." = "Hagas clic en ”+” para crear una nueva hoja de ruta o para explorar las existentes.";
 
 //Settings
 "Settings" = "Configuración";
 "Edit profile" = "Editar perfil";
-"Liked roadmaps" = "Hojas de ruta que me gustaron";
+"Liked roadmaps" = "Guias de viaje que me gustaron";
 "Notifications" = "Notificaciones";
 "Privacy policies" = "Políticas de privacidad";
 "Sign out" = "Cerrar sesión";
@@ -59,7 +59,7 @@
 "hours" = "horas";
 "days" = "días";
 "By activating the notification you will configure the frequency of the reminders before every activity." = "Al activar la notificación, establecerás la frecuencia con la que recibirás recordatorios antes de cada actividad.";
-"Sign out of your account?" = "Cerrar sesión en su cuenta?";
+"Sign out of your account?" = "Cerrar sesión en tu cuenta?";
 "Cancel" = "Cancelar";
 "Sign out" = "Salir";
 
@@ -72,7 +72,7 @@
 "City" = "Ciudad";
 "TOTAL AMOUNT" = "IMPORTE TOTAL";
 "TRAVELERS" = "VIAJEROS";
-"LIKES" = "LE GUSTA";
+"LIKES" = "ME GUSTA"; //confirmar
 "CREATED BY" = "CREADO POR";
 "TRAVEL DAYS" = "DÍAS DE VIAJE";
 "ROADMAP" = "HOJA DE RUTA";
@@ -101,7 +101,7 @@
 "TRAVELERS" = "VIAJEROS";
 "Number of travelers" = "Número de viajeros";
 "Turn this trip public?" = "¿Hacer público este viaje?";
-"By turning your trip public, it will be published to all app users." = "Al hacer público su viaje, se publicará para todos los usuarios de la aplicación.";
+"By turning your trip public, it will be published to all app users." = "Al hacer público tu viaje, se publicará para todos los usuarios de la aplicación.";
 "My trip" = "Mi viaje";
 "Travel days" = "Días de viaje";
 "PRIVACY" = "PRIVACIDAD";
