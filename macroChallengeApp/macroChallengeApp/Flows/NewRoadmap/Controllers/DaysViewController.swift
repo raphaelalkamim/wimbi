@@ -80,6 +80,7 @@ class DaysViewController: UIViewController {
         self.roadmap.dateFinal = finalDate.date
         self.roadmap.dateInitial = initialDate.date
         self.roadmap.dayCount = Int(self.countDays(datePickerInitial: self.initialDate, datePickerFinal: self.finalDate))
+        print("count",roadmap.dayCount)
         self.roadmap.peopleCount = (self.travelersCount.selectedRow(inComponent: 0)) + 1
         self.roadmap.isPublic = daysView.isPublic
     }

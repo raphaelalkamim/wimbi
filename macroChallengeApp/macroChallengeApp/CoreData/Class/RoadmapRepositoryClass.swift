@@ -65,19 +65,9 @@ public class RoadmapRepository: NSManagedObject {
         if var oldDays = editRoadmap.day?.allObjects as? [DayLocal] {
             oldDays.sort { $0.id < $1.id }
             
-            // apaga os dias antigos
-//            let oldDaysAux = oldDays
-//            for day in oldDaysAux {
-//                do {
-//                   try DayRepository.shared.deleteDay(day: day)
-//                } catch {
-//                    print("Erro ao deletar dia")
-//                }
-//            }
-            
             // adiciona os novos dias no roteiro
             var isFirstDay = false
-            for index in 0..<editRoadmap.dayCount {
+            for index in 0...editRoadmap.dayCount {
                 if index == 0 {
                     isFirstDay = true
                 } else {
