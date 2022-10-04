@@ -31,57 +31,59 @@ extension MyTripViewController {
     
     @objc func addRoute(sender: UIButton) {
         let activity = activites[sender.tag]
-        let coordsSeparated = activity.location?.split(separator: " ")
-        
-        if let coordsSeparated = coordsSeparated {
-            let latitude = String(coordsSeparated[0])
-            let longitude = String(coordsSeparated[1])
-            
-            let googleURL = "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)&directionsmode=driving"
-
-            let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
-            
-            let googleItem = ("Google Maps", URL(string: googleURL)!)
-            let wazeItem = ("Waze", URL(string: wazeURL)!)
-            var installedNavigationApps: [(String, URL)] = []
-            
-            if UIApplication.shared.canOpenURL(googleItem.1) {
-                installedNavigationApps.append(googleItem)
+        print("oi",activity.location)
+        if (activity.location != "") {
+            let coordsSeparated = activity.location?.split(separator: " ")
+            if let coordsSeparated = coordsSeparated {
+                let latitude = String(coordsSeparated[0])
+                let longitude = String(coordsSeparated[1])
+                
+                let googleURL = "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)&directionsmode=driving"
+                
+                let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
+                
+                let googleItem = ("Google Maps", URL(string: googleURL)!)
+                let wazeItem = ("Waze", URL(string: wazeURL)!)
+                var installedNavigationApps: [(String, URL)] = []
+                
+                if UIApplication.shared.canOpenURL(googleItem.1) {
+                    installedNavigationApps.append(googleItem)
+                }
+                
+                if UIApplication.shared.canOpenURL(wazeItem.1) {
+                    installedNavigationApps.append(wazeItem)
+                }
+                
+                let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+                alert.view.tintColor = .accent
+                
+                let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
+                let string = NSAttributedString(string: "Are you sure you want to do this?", attributes: titleAtt)
+                
+                alert.setValue(string, forKey: "attributedTitle")
+                
+                alert.addAction(UIAlertAction(title: "Maps", style: .default, handler: { _ in
+                    let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
+                    let placemark = MKPlacemark(coordinate: coords)
+                    let mapItem = MKMapItem(placemark: placemark)
+                    mapItem.name = "Target Location"
+                    mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+                }))
+                
+                for app in installedNavigationApps {
+                    let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+                        UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
+                    })
+                    alert.addAction(button)
+                }
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+                }))
+                
+                present(alert, animated: true)
             }
             
-            if UIApplication.shared.canOpenURL(wazeItem.1) {
-                installedNavigationApps.append(wazeItem)
-            }
-        
-            let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
-            alert.view.tintColor = .accent
-            
-            let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
-            let string = NSAttributedString(string: "Are you sure you want to do this?", attributes: titleAtt)
-            
-            alert.setValue(string, forKey: "attributedTitle")
-            
-            alert.addAction(UIAlertAction(title: "Maps", style: .default, handler: { _ in
-                let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
-                let placemark = MKPlacemark(coordinate: coords)
-                let mapItem = MKMapItem(placemark: placemark)
-                mapItem.name = "Target Location"
-                mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
-            }))
-            
-            for app in installedNavigationApps {
-                let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
-                    UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
-                })
-                alert.addAction(button)
-            }
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
-            }))
-            
-            present(alert, animated: true)
         }
-        
     }
 }
 
@@ -141,7 +143,7 @@ extension MyTripViewController: UICollectionViewDataSource {
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(24)
                 }
-
+                
             case 1:
                 cell.title.text = "TOTAL AMOUNT".localized()
                 cell.info.isHidden = true
@@ -203,6 +205,9 @@ extension MyTripViewController: UITableViewDelegate {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selecionou")
+    }
 }
 
 extension MyTripViewController: UITableViewDataSource {
@@ -223,7 +228,7 @@ extension MyTripViewController: UITableViewDataSource {
         
         return cell
     }
-  
+    
 }
 
 // MARK: Drag and drop
