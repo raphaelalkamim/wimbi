@@ -12,6 +12,8 @@ import MapKit
 
 class LocationNewActivityViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
+    weak var coordinatorCurrent: CurrentCoordinator?
+
     let destinyView = ActivityDestinyView(frame: .zero)
     let locationManager = CLLocationManager()
     let locationSearchTable = LocationSearchTableViewController()
@@ -71,11 +73,13 @@ class LocationNewActivityViewController: UIViewController {
     
     @objc func cancelAddress() {
         coordinator?.backPage()
+        coordinatorCurrent?.backPage()
     }
     
     @objc func confirmAddress() {
         delegate?.changeText(coords: placeCoords, locationName: name, address: address)
         coordinator?.backPage()
+        coordinatorCurrent?.backPage()
     }
 }
 

@@ -47,7 +47,7 @@ class ActivityRepository {
         newActivity.budget = activity.budget
         
         day.addToActivity(newActivity)
-
+        
         self.saveContext()
         return newActivity
     }
@@ -62,7 +62,7 @@ class ActivityRepository {
         newActivity.budget = activity.budget
         
         day.addToActivity(newActivity)
-
+        
         self.saveContext()
     }
     func getActivity() -> [ActivityLocal] {

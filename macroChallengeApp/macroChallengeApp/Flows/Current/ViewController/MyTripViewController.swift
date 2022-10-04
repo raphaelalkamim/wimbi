@@ -10,6 +10,8 @@ import UIKit
 
 class MyTripViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
+    weak var coordinatorCurrent: CurrentCoordinator?
+
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let myTripView = MyTripView()
     
@@ -89,9 +91,13 @@ class MyTripViewController: UIViewController {
         
     @objc func goToCreateActivity() {
         coordinator?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
+        coordinatorCurrent?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
+
     }
     @objc func editMyTrip() {
         coordinator?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
+        coordinatorCurrent?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
+
     }
 }
 
@@ -101,6 +107,17 @@ extension Sequence {
 
 extension MyTripViewController: ReviewTravelDelegate {
     func updateRoadmapScreen(roadmap: RoadmapLocal) {
+        self.roadmap = roadmap
+        self.getAllDays()
+        self.activites = self.getAllActivities()
+        self.emptyState(activities: activites)
+        self.updateBudget()
+        self.updateTotalBudgetValue()
+        
+        myTripView.infoTripCollectionView.reloadItems(at: [IndexPath(item: 0, section: 0)])
+        myTripView.infoTripCollectionView.reloadItems(at: [IndexPath(item: 0, section: 2)])
+        myTripView.calendarCollectionView.reloadData()
         coordinator?.backPage()
+        coordinatorCurrent?.backPage()
     }
 }

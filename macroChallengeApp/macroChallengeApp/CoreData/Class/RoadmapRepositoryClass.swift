@@ -68,17 +68,17 @@ public class RoadmapRepository: NSManagedObject {
             // adiciona os novos dias no roteiro
             var isFirstDay = false
             for index in 0..<editRoadmap.dayCount {
-                if index == 0 {
+                if oldDays[Int(index)].isSelected == true {
                     isFirstDay = true
                 } else {
                     isFirstDay = false
                 }
-                let _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial, indexPath: Int(index), isSelected: isFirstDay))
+                _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial, indexPath: Int(index), isSelected: isFirstDay))
             }
             
             // atualiza as atividades dos novos dia
             if var newDays = newRoadmap.day?.allObjects as? [DayLocal] {
-                newDays.sort {  $0.id < $1.id }
+                newDays.sort { $0.id < $1.id }
                 for index in 0..<oldDays.count {
                     // pegando atividades dos dias antigos
                     if var oldActivities = oldDays[index].activity?.allObjects as? [ActivityLocal] {
@@ -105,6 +105,7 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.shareKey = roadmap.shareKey
         newRoadmap.createdAt = roadmap.createdAt
         newRoadmap.date = roadmap.dateInitial
+        newRoadmap.budget = roadmap.budget
         
         do {
             try self.deleteRoadmap(roadmap: editRoadmap)

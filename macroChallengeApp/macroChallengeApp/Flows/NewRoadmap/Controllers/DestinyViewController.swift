@@ -27,7 +27,7 @@ class DestinyViewController: UIViewController {
     var editRoadmap = RoadmapLocal()
     var edit = false
     
-    weak var delegateRoadmap:  MyTripViewController?
+    weak var delegateRoadmap: MyTripViewController?
 
     init(roadmap: Roadmaps) {
         self.roadmap = roadmap

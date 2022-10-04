@@ -20,7 +20,7 @@ class DaysViewController: UIViewController {
     var editRoadmap = RoadmapLocal()
     var edit = false
     
-    weak var delegateRoadmap:  MyTripViewController?
+    weak var delegateRoadmap: MyTripViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +73,9 @@ class DaysViewController: UIViewController {
     func countDays(datePickerInitial: UIDatePicker, datePickerFinal: UIDatePicker) -> Double {
         let initialDate = datePickerInitial.date
         let finalDate = datePickerFinal.date
-        return ( finalDate.timeIntervalSince(initialDate) / (60 * 60 * 24) ) + 1
+        var sum = 1
+        if edit { sum = 2 }
+        return ( finalDate.timeIntervalSince(initialDate) / (60 * 60 * 24) ) + Double(sum)
     }
     
     func setupEdition() {
