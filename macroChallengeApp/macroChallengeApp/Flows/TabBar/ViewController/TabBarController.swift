@@ -40,12 +40,14 @@ class TabBarController: UITabBarController {
             let time = configCountDown()
             if time <= 0 {
                 current.startCurrent(roadmap: roadmap)
-            } 
+            } else {
+                current.start()
+            }
         } else {
             current.start()
         }
         profile.start()
-
+        
     }
     func setupNavigators() {
         viewControllers = [explore.navigationController, current.navigationController, profile.navigationController]
