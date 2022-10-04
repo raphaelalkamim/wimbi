@@ -31,8 +31,6 @@ extension NewActivityViewController {
     }
     
     // MARK: Save new Activity functions
-    func getData() {
-    }
     func setData() {
         // local name
         let tableView = newActivityView.localyTable
@@ -97,6 +95,9 @@ extension NewActivityViewController: UITableViewDataSource {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
+                if edit {
+                    newCell.label.text = activityEdit.location
+                }
                 if address.isEmpty {
                     newCell.label.text = "Address"
                 } else {
@@ -109,6 +110,9 @@ extension NewActivityViewController: UITableViewDataSource {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
                 newCell.title.placeholder = "Name"
                 newCell.title.text = activity.name
+                if edit {
+                    newCell.title.text = activityEdit.name
+                }
                 cell = newCell
             }
             
@@ -123,6 +127,12 @@ extension NewActivityViewController: UITableViewDataSource {
             } else if indexPath.row == 1 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TimePickerTableViewCell.identifier, for: indexPath) as? TimePickerTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Hour"
+                if edit {
+                    let format = DateFormatter()
+                    format.dateStyle = .none
+                    format.timeStyle = .short
+                    newCell.datePicker.date = format.date(from: activityEdit.hour ?? "16h00") ?? Date()
+                }
                 cell = newCell
             }
             
@@ -140,6 +150,9 @@ extension NewActivityViewController: UITableViewDataSource {
                     newCell.title.text = "Value"
                     newCell.currencyType = self.currencyType
                     newCell.value.placeholder = "$ 0.00"
+                    if edit {
+                        newCell.value.text = String(activityEdit.budget)
+                    }
                     cell = newCell
                 }
                 

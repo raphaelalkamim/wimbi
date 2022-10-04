@@ -135,8 +135,9 @@ class MyTripView: UIView {
         table.isScrollEnabled = false
         table.separatorColor = .clear
         table.allowsSelection = false
-        table.backgroundColor = .backgroundPrimary
+        table.backgroundColor = designSystem.palette.backgroundPrimary
         table.dragInteractionEnabled = true
+        table.isUserInteractionEnabled = true
         return table
     }()
 

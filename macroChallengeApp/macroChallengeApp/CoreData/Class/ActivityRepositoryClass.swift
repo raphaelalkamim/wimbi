@@ -65,6 +65,22 @@ class ActivityRepository {
         
         self.saveContext()
     }
+    func updateActivity(day: DayLocal, oldActivity: ActivityLocal, activity: Activity) {
+        guard let newActivity = NSEntityDescription.insertNewObject(forEntityName: "ActivityLocal", into: context) as? ActivityLocal else { preconditionFailure() }
+        
+        newActivity.id = Int32(activity.id)
+        newActivity.name = activity.name
+        newActivity.category = activity.category
+        if activity.category == ""{
+            newActivity.category = oldActivity.category
+        }
+        newActivity.location = activity.location
+        newActivity.hour = activity.hour
+        newActivity.budget = activity.budget
+        day.addToActivity(newActivity)
+        
+        self.saveContext()
+    }
     func getActivity() -> [ActivityLocal] {
         let fetchRequest = NSFetchRequest<ActivityLocal>(entityName: "ActivityLocal")
         do {
@@ -75,8 +91,13 @@ class ActivityRepository {
         return []
     }
     
-    func deleteActivity(activity: ActivityLocal) throws {
-        context.delete(activity)
-        try saveContext()
+    func deleteActivity(activity: ActivityLocal, roadmap: RoadmapLocal) throws {
+        roadmap.budget -= activity.budget
+        do {
+            context.delete(activity)
+            try saveContext()
+        } catch {
+            print("erro ao deletar")
+        }
     }
 }

@@ -63,7 +63,7 @@ extension ActivityTableViewCell {
         contentView.addSubview(activityInfo)
         contentView.addSubview(activityTitle)
         contentView.addSubview(localButton)
-        self.backgroundColor = .backgroundPrimary
+        self.backgroundColor = designSystem.palette.backgroundPrimary
         setupConstraints()
         
     }
