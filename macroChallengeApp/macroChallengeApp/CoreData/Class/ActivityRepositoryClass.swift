@@ -76,14 +76,7 @@ class ActivityRepository {
     }
     
     func deleteActivity(activity: ActivityLocal) throws {
-        guard let context = activity.managedObjectContext else { return }
-        if context == self.persistentContainer.viewContext {
-            context.delete(activity)
-        } else {
-            self.persistentContainer.performBackgroundTask { context in
-                context.delete(activity)
-            }
-        }
-        try? self.persistentContainer.viewContext.save()
+        context.delete(activity)
+        try saveContext()
     }
 }

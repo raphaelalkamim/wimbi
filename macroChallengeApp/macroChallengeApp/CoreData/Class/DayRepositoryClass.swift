@@ -60,8 +60,8 @@ class DayRepository: NSManagedObject {
     }
     
     func deleteDay(day: DayLocal) throws {
-        self.persistentContainer.viewContext.delete(day)
-        self.saveContext()
+        context.delete(day)
+        try saveContext()
     }
     
 }
