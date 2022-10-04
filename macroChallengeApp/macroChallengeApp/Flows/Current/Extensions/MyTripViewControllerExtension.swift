@@ -31,7 +31,6 @@ extension MyTripViewController {
     
     @objc func addRoute(sender: UIButton) {
         let activity = activites[sender.tag]
-        print("oi",activity.location)
         if (activity.location != "") {
             let coordsSeparated = activity.location?.split(separator: " ")
             if let coordsSeparated = coordsSeparated {
@@ -191,22 +190,30 @@ extension MyTripViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            do {
-                try ActivityRepository.shared.deleteActivity(activity: activites[indexPath.row])
-                activites.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            } catch {
-                print("erro ao deletar")
-            }
-            
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal,
+                                            title: "Edit") { [weak self] _, _, completionHandler in
+            self!.coordinator?.editActivity(roadmap: self!.roadmap, day: self!.days[self!.daySelected], delegate: self!, activity: self!.activites[indexPath.row])
+            completionHandler(true)
         }
+        let deleteAction = UIContextualAction(style: .normal,
+                                              title: "Delete") { [weak self] _, _, completionHandler in
+            self?.deleteItem(indexPath: indexPath, tableView: tableView)
+            completionHandler(true)
+        }
+        editAction.backgroundColor = .systemBlue
+        deleteAction.backgroundColor = .systemRed
+        return UISwipeActionsConfiguration(actions: [editAction, deleteAction])
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selecionou")
+    func deleteItem(indexPath: IndexPath, tableView: UITableView) {
+        do {
+            try ActivityRepository.shared.deleteActivity(activity: activites[indexPath.row], roadmap: self.roadmap)
+            activites.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } catch {
+            print("erro ao deletar")
+        }
+        myTripView.infoTripCollectionView.reloadItems(at: [IndexPath(item: 0, section: 1)])
     }
 }
 

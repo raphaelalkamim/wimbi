@@ -33,6 +33,9 @@ class NewActivityViewController: UIViewController {
     var address: String = ""
     var roadmap = RoadmapLocal()
     
+    var activityEdit = ActivityLocal()
+    var edit = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNewActivityView()
@@ -43,7 +46,6 @@ class NewActivityViewController: UIViewController {
         
         let salvarButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveActivity))
         self.navigationItem.rightBarButtonItem = salvarButton
-        self.getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,10 +59,17 @@ class NewActivityViewController: UIViewController {
     
     @objc func saveActivity() {
         self.setData()
-        _ = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
-        
+        if edit {
+            ActivityRepository.shared.updateActivity(day: self.day, oldActivity: self.activityEdit, activity: self.activity)
+            do {
+                try ActivityRepository.shared.deleteActivity(activity: self.activityEdit, roadmap: self.roadmap)
+            } catch {
+                "erro ao deletar atividade"
+            }
+        } else {
+            _ = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
+        }
         self.delegate?.attTable()
-        
         coordinator?.backPage()
         coordinatorCurrent?.backPage()
     }
