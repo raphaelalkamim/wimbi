@@ -68,7 +68,7 @@ public class RoadmapRepository: NSManagedObject {
             // adiciona os novos dias no roteiro
             var isFirstDay = false
             for index in 0..<editRoadmap.dayCount {
-                if index == 0 {
+                if oldDays[Int(index)].isSelected == true {
                     isFirstDay = true
                 } else {
                     isFirstDay = false
@@ -105,6 +105,7 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.shareKey = roadmap.shareKey
         newRoadmap.createdAt = roadmap.createdAt
         newRoadmap.date = roadmap.dateInitial
+        newRoadmap.budget = roadmap.budget
         
         do {
             try self.deleteRoadmap(roadmap: editRoadmap)

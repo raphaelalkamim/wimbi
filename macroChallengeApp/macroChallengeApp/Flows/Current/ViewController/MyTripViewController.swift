@@ -108,8 +108,15 @@ extension Sequence {
 extension MyTripViewController: ReviewTravelDelegate {
     func updateRoadmapScreen(roadmap: RoadmapLocal) {
         self.roadmap = roadmap
-        myTripView.infoTripCollectionView.reloadData()
+        self.getAllDays()
+        self.activites = self.getAllActivities()
+        self.emptyState(activities: activites)
+        self.updateBudget()
+        self.updateTotalBudgetValue()
         
+        myTripView.infoTripCollectionView.reloadItems(at: [IndexPath(item: 0, section: 0)])
+        myTripView.infoTripCollectionView.reloadItems(at: [IndexPath(item: 0, section: 2)])
+        myTripView.calendarCollectionView.reloadData()
         coordinator?.backPage()
         coordinatorCurrent?.backPage()
     }
