@@ -187,6 +187,20 @@ extension MyTripViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            do {
+                try ActivityRepository.shared.deleteActivity(activity: activites[indexPath.row])
+                activites.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } catch {
+                print("erro ao deletar")
+            }
+            
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
 }
 
 extension MyTripViewController: UITableViewDataSource {
@@ -207,6 +221,7 @@ extension MyTripViewController: UITableViewDataSource {
         
         return cell
     }
+  
 }
 
 // MARK: Drag and drop
