@@ -37,7 +37,25 @@ class EditProfileViewController: UIViewController {
     }
     
     @objc func saveProfile() {
-        print("Ação salvar")
+        if let newName = editProfileView.nameTextField.text, let newUsernameApp = editProfileView.usernameTextField.text {
+            self.user?.name = newName
+            self.user?.usernameApp = newUsernameApp
+            if let user = user {
+                DataManager.shared.putUser(userObj: user) { user in
+                    do {
+                        let encoder = JSONEncoder()
+
+                        let data = try encoder.encode(user)
+
+                        UserDefaults.standard.set(data, forKey: "user")
+                    } catch {
+                        print("Unable to Encode")
+                    }
+                }
+            }
+        }
+        
+        coordinator?.backPage()
     }
     
     func changeToUserInfo(user: User) {

@@ -285,6 +285,52 @@ class DataManager {
         task.resume()
     }
     
+    func putUser(userObj: User, _ completion: @escaping ((_ user: User) -> Void)) {
+        let user: [String: Any] = [
+            "usernameApp": userObj.usernameApp,
+            "name": userObj.name
+        ]
+        
+        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+            let userID = String(data: data, encoding: .utf8)!
+            
+            let session = URLSession.shared
+            guard let url = URL(string: baseURL + "users/\(userID)") else { return }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "PUT"
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: user, options: .prettyPrinted)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            if let token = UserDefaults.standard.string(forKey: "authorization") {
+                request.setValue(token, forHTTPHeaderField: "Authorization")
+                let task = session.dataTask(with: request) { data, response, error in
+                    if let error = error {
+                        print(error)
+                    } else if data != nil {
+                        if let httpResponse = response as? HTTPURLResponse {
+                            if httpResponse.statusCode == 200 {
+                                DispatchQueue.main.async {
+                                    completion(userObj)
+                                }
+                            }
+                        }
+                    } else {
+                        // Handle unexpected error
+                    }
+                }
+                task.resume()
+            }
+        }
+    }
+    
 #warning("Corrigir essa funcao para utilizar no codigo")
     func decodeType<T: Codable>(_ class: T, data: Data) -> T? {
         do {
@@ -295,7 +341,10 @@ class DataManager {
         }
         return nil
     }
+    
 }
+
+
 
 struct FailableDecodable<Base: Decodable>: Decodable {
     let base: Base?
