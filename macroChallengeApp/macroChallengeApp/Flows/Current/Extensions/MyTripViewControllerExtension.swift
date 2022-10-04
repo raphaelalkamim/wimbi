@@ -203,7 +203,7 @@ extension MyTripViewController: UITableViewDelegate {
         }
         editAction.backgroundColor = .systemBlue
         deleteAction.backgroundColor = .systemRed
-        return UISwipeActionsConfiguration(actions: [editAction, deleteAction])
+        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }
     func deleteItem(indexPath: IndexPath, tableView: UITableView) {
         do {
