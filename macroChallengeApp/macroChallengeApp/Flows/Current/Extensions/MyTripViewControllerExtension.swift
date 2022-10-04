@@ -16,9 +16,11 @@ extension MyTripViewController {
         view.addSubview(myTripView)
         setupConstraints()
         
-        let barItems = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMyTrip))
-        barItems.tintColor = .accent
-        self.navigationItem.rightBarButtonItem = barItems
+        if (coordinator != nil) {
+            let barItems = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMyTrip))
+            barItems.tintColor = .accent
+            self.navigationItem.rightBarButtonItem = barItems
+        }
         
     }
     func setupConstraints() {
