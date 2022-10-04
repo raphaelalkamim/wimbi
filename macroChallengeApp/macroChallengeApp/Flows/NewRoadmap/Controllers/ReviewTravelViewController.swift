@@ -83,6 +83,7 @@ class ReviewTravelViewController: UIViewController {
     }
     
     func updateCoreData() {
+        roadmap.budget = editRoadmap.budget
         let newRoadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.editRoadmap, roadmap: self.roadmap)
         delegateRoadmap?.updateRoadmapScreen(roadmap: newRoadmap)
     }

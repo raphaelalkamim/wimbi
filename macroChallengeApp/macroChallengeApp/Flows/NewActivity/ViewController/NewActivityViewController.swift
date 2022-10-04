@@ -12,6 +12,7 @@ import MapKit
 class NewActivityViewController: UIViewController {
     weak var delegate: AddNewActivityDelegate?
     weak var coordinator: ProfileCoordinator?
+    weak var coordinatorCurrent: CurrentCoordinator?
     
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let newActivityView = NewActivityView()
@@ -51,13 +52,17 @@ class NewActivityViewController: UIViewController {
     
     @objc func cancelCreation() {
         coordinator?.backPage()
+        coordinatorCurrent?.backPage()
     }
     
     @objc func saveActivity() {
         self.setData()
         _ = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
+        
         self.delegate?.attTable()
+        
         coordinator?.backPage()
+        coordinatorCurrent?.backPage()
     }
 }
 
