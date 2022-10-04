@@ -17,12 +17,8 @@ class TabBarController: UITabBarController {
     var roadmap: RoadmapLocal = RoadmapLocal()
     
     override func viewDidLoad() {
-        roadmaps.sort {
-            $0.date ?? Date() < $1.date ?? Date()
-        }
-        roadmap = roadmaps[0]
-        self.setup()
-        viewControllers = [explore.navigationController, current.navigationController, profile.navigationController]
+        self.setupCoordnators()
+        self.setupNavigators()
         tabBar.barTintColor = designSystem.palette.backgroundPrimary
         
         if #available(iOS 15.0, *) {
@@ -34,18 +30,27 @@ class TabBarController: UITabBarController {
         }
     }
     
-    func setup() {
+    func setupCoordnators() {
         explore.start()
         if !roadmaps.isEmpty {
+            roadmaps.sort {
+                $0.date ?? Date() < $1.date ?? Date()
+            }
+            roadmap = roadmaps[0]
             let time = configCountDown()
             if time <= 0 {
                 current.startCurrent(roadmap: roadmap)
             } else {
                 current.start()
             }
+        } else {
+            current.start()
         }
         profile.start()
-
+        
+    }
+    func setupNavigators() {
+        viewControllers = [explore.navigationController, current.navigationController, profile.navigationController]
     }
     func configCountDown() -> Int {
         var time = Int((roadmap.date?.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24))

@@ -20,7 +20,6 @@ class CurrentViewController: UIViewController {
         roadmaps.sort {
             $0.date ?? Date() < $1.date ?? Date()
         }
-        roadmap = roadmaps[0]
         setup()
     }
 }
@@ -28,6 +27,7 @@ class CurrentViewController: UIViewController {
 extension CurrentViewController {
     func setup() {
         if !roadmaps.isEmpty {
+            roadmap = roadmaps[0]
             configCountDown()
             setupCountDownView()
 
