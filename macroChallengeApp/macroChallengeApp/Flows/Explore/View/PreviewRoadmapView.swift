@@ -94,8 +94,7 @@ class PreviewRoadmapView: UIView {
         table.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCell.identifier)
         table.isScrollEnabled = false
         table.separatorColor = .clear
-        table.allowsSelection = true
-        table.dragInteractionEnabled = true
+        table.allowsSelection = false
         table.backgroundColor = .backgroundPrimary
         return table
     }()

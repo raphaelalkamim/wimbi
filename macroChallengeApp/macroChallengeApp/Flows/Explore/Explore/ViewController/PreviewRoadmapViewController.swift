@@ -16,6 +16,7 @@ class PreviewRoadmapViewController: UIViewController {
     var duplicate = UIBarButtonItem()
     var roadmapId: Int = 0
     var roadmap: Roadmaps = Roadmaps()
+    var daySelected = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +43,13 @@ class PreviewRoadmapViewController: UIViewController {
             self.roadmap.days.sort {
                 $0.id < $1.id
             }
+            self.roadmap.days[0].isSelected = true
+            
             self.previewView.infoTripCollectionView.reloadData()
             self.previewView.calendarCollectionView.reloadData()
         })
     }
-    
+
     @objc func likeRoadmap() {
         print("LIKE")
     }

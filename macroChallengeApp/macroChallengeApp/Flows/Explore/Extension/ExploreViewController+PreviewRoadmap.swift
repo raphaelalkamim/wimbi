@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import CoreLocation
+import MapKit
 
 extension PreviewRoadmapViewController {
     func setupPreviewRoadmapView() {
@@ -47,7 +49,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(24)
                 }
-
+                
             case 1:
                 cell.title.text = "VALOR TOTAL"
                 cell.info.isHidden = true
@@ -92,6 +94,29 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
             return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
+            // button status
+            cell.selectedButton()
+            
+            // select a day
+            self.daySelected = indexPath.row
+            self.roadmap.days[daySelected].isSelected = true
+            
+            // view updates
+            self.previewView.activitiesTableView.reloadData()
+        }
+        
+        // desabilita todas as celulas que nao sao a que recebeu o clique
+        for index in 0..<roadmap.dayCount where index != indexPath.row {
+            let newIndexPath = IndexPath(item: Int(index), section: 0)
+            if let cell = collectionView.cellForItem(at: newIndexPath) as? CalendarCollectionViewCell {
+                self.roadmap.days[Int(index)].isSelected = false
+                cell.disable()
+            }
+        }
+    }
 }
 
 extension PreviewRoadmapViewController: UITableViewDelegate {
@@ -102,7 +127,7 @@ extension PreviewRoadmapViewController: UITableViewDelegate {
 
 extension PreviewRoadmapViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        return roadmap.days[self.daySelected].activity.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,6 +135,13 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
             fatalError("TableCell not found")
             
         }
+        
+        let activity = roadmap.days[self.daySelected].activity[indexPath.row]
+        cell.setupDaysActivities(hour: activity.hour,
+                                 value: String(activity.budget),
+                                 name: activity.name)
+        cell.activityIcon.image = UIImage(named: activity.category)
+        
         return cell
     }
     
