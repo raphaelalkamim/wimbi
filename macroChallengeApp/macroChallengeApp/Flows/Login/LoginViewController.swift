@@ -19,6 +19,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         view.addSubview(loginView)
         DataManager.shared.delegate = self
         
+        navigationItem.hidesBackButton = true
         if coordinatorExplore != nil {
             let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelCreation))
             cancelButton.tintColor = .systemRed
@@ -29,11 +30,6 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
             make.edges.equalToSuperview()
         }
         
-        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
-            let userID = String(data: data, encoding: .utf8)!
-            print(userID)
-            print(UserDefaults.standard.string(forKey: "authorization"))
-        }
     }
     
     @objc func cancelCreation() {
@@ -46,6 +42,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
     
     func finishLogin() {
         if let coordinatorExplore = coordinatorExplore {
+            coordinatorExplore.back()
             coordinatorExplore.createNewRoadmap()
         } else {
             coordinatorProfile?.backPage()

@@ -20,17 +20,13 @@ class ProfileCoordinator: Coordinator {
     }
     
     func start() {
-        if UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
-            let viewController = ProfileViewController()
-            viewController.coordinator = self
-            
-            let tabBarItem = UITabBarItem(title: "Profile".localized(), image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
-            viewController.tabBarItem = tabBarItem
-            viewController.navigationItem.title = "Profile".localized()
-            navigationController.pushViewController(viewController, animated: true)
-        } else {
-            startLogin()
-        }
+        let viewController = ProfileViewController()
+        viewController.coordinator = self
+        
+        let tabBarItem = UITabBarItem(title: "Profile".localized(), image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        viewController.tabBarItem = tabBarItem
+        viewController.navigationItem.title = "Profile".localized()
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func newRoadmap() {

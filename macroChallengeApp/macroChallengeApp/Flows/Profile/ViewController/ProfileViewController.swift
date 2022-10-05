@@ -34,6 +34,11 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         profileView.roadmaps = self.roadmaps
         
         super.viewDidLoad()
+        
+        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
+            coordinator?.startLogin()
+        }
+        
         profileView.myRoadmapCollectionView.reloadData()
         self.view.backgroundColor = .backgroundPrimary
         self.setupProfileView()

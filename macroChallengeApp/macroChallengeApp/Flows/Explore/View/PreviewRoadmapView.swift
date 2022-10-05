@@ -124,7 +124,7 @@ class PreviewRoadmapView: UIView {
         
         contentView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top)
-            make.bottom.equalTo(calendarCollectionView.snp.bottom)
+            make.bottom.equalTo(activitiesTableView)
             make.left.right.equalTo(self)
         }
         

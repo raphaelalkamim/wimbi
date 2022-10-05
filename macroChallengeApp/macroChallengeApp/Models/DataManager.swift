@@ -338,27 +338,25 @@ class DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        if let token = UserDefaults.standard.string(forKey: "authorization") {
-            request.setValue(token, forHTTPHeaderField: "Authorization")
-            let task = session.dataTask(with: request) { data, response, error in
-                guard let data = data else {return}
-                if error != nil {
-                    print(String(describing: error?.localizedDescription))
-                }
-                
-                do {
-                    roadmap = try JSONDecoder().decode(Roadmaps.self, from: data)
-                    DispatchQueue.main.async {
-                        completion(roadmap)
-                    }
-                } catch {
-                    // FIXME: tratar o erro do decoder
-                    print(error)
-                    print("DEU RUIM NO PARSE")
-                }
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data else {return}
+            if error != nil {
+                print(String(describing: error?.localizedDescription))
             }
-            task.resume()
+            
+            do {
+                roadmap = try JSONDecoder().decode(Roadmaps.self, from: data)
+                DispatchQueue.main.async {
+                    completion(roadmap)
+                }
+            } catch {
+                // FIXME: tratar o erro do decoder
+                print(error)
+                print("DEU RUIM NO PARSE")
+            }
         }
+        task.resume()
+        
     }
     
 #warning("Corrigir essa funcao para utilizar no codigo")

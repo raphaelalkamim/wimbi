@@ -20,6 +20,59 @@ extension PreviewRoadmapViewController {
             make.edges.equalToSuperview()
         }
     }
+    
+    @objc func addRoute(sender: UIButton) {
+        let activity = self.roadmap.days[self.daySelected].activity[sender.tag]
+        let coordsSeparated = activity.location.split(separator: " ")
+        
+        let latitude = String(coordsSeparated[0])
+        let longitude = String(coordsSeparated[1])
+        
+        let googleURL = "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)"
+        
+        let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
+        
+        let googleItem = ("Google Maps", URL(string: googleURL)!)
+        let wazeItem = ("Waze", URL(string: wazeURL)!)
+        var installedNavigationApps: [(String, URL)] = []
+        
+        if UIApplication.shared.canOpenURL(googleItem.1) {
+            installedNavigationApps.append(googleItem)
+        }
+        
+        if UIApplication.shared.canOpenURL(wazeItem.1) {
+            installedNavigationApps.append(wazeItem)
+        }
+        
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        alert.view.tintColor = .accent
+        
+        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
+        let string = NSAttributedString(string: "Do you want to open the address in which app?", attributes: titleAtt)
+        
+        alert.setValue(string, forKey: "attributedTitle")
+        
+        alert.addAction(UIAlertAction(title: "Maps", style: .default, handler: { _ in
+            let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
+            let placemark = MKPlacemark(coordinate: coords)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = "Target Location"
+            mapItem.openInMaps(launchOptions: [:])
+        }))
+        
+        for app in installedNavigationApps {
+            let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+                UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
+            })
+            alert.addAction(button)
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+        }))
+        
+        present(alert, animated: true)
+        
+    }
 }
 
 extension PreviewRoadmapViewController: UICollectionViewDelegate {
@@ -137,6 +190,8 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
         }
         
         let activity = roadmap.days[self.daySelected].activity[indexPath.row]
+        cell.localButton.tag = indexPath.row
+        cell.localButton.addTarget(self, action: #selector(addRoute(sender:)), for: .touchUpInside)
         cell.setupDaysActivities(hour: activity.hour,
                                  value: String(activity.budget),
                                  name: activity.name)
