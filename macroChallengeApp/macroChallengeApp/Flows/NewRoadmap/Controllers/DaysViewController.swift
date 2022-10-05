@@ -50,12 +50,12 @@ class DaysViewController: UIViewController {
     
     @objc func nextPage() {
         let dateFormat = DateFormatter()
-        
+        dateFormat.dateFormat = "d/M/y"
         let date = dateFormat.string(from: initialDate.date)
         let dateFinal = dateFormat.string(from: finalDate.date)
         
-        self.roadmap.dateFinal = date
-        self.roadmap.dateInitial = dateFinal
+        self.roadmap.dateFinal = dateFinal
+        self.roadmap.dateInitial = date
         self.roadmap.dayCount = Int(self.countDays(datePickerInitial: self.initialDate, datePickerFinal: self.finalDate))
         self.roadmap.peopleCount = (self.travelersCount.selectedRow(inComponent: 0)) + 1
         self.roadmap.isPublic = daysView.isPublic

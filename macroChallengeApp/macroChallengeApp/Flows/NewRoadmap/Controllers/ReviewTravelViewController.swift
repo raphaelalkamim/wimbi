@@ -114,6 +114,7 @@ class ReviewTravelViewController: UIViewController {
     func setupContent() {
         self.daysCount = roadmap.dayCount
         let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "d/M/y"
         let date = dateFormat.date(from: roadmap.dateInitial)
         let dateFinal = dateFormat.date(from: roadmap.dateFinal)
 
