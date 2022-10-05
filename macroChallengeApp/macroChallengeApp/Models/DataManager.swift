@@ -163,16 +163,13 @@ class DataManager {
     }
     
     func postRoadmap(roadmap: Roadmaps) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let roadmap: [String: Any] = [
             "name": roadmap.name,
             "location": roadmap.location,
             "budget": 0,
             "dayCount": roadmap.dayCount,
-            "dateInitial": dateFormatter.string(from: roadmap.dateInitial),
-            "dateFinal": dateFormatter.string(from: roadmap.dateFinal),
+            "dateInitial": roadmap.dateInitial,
+            "dateFinal": roadmap.dateFinal,
             "peopleCount": roadmap.peopleCount,
             "imageId": roadmap.imageId,
             "category": roadmap.category,
@@ -328,6 +325,39 @@ class DataManager {
                 }
                 task.resume()
             }
+        }
+    }
+    
+    func getRoadmapById(roadmapId: Int, _ completion: @escaping ((_ roadmap: Roadmaps) -> Void)) {
+        var roadmap: Roadmaps = Roadmaps()
+        let session: URLSession = URLSession.shared
+        let url: URL = URL(string: baseURL + "roadmaps/\(roadmapId)")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            let task = session.dataTask(with: request) { data, response, error in
+                guard let data = data else {return}
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                
+                do {
+                    roadmap = try JSONDecoder().decode(Roadmaps.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(roadmap)
+                    }
+                } catch {
+                    // FIXME: tratar o erro do decoder
+                    print(error)
+                    print("DEU RUIM NO PARSE")
+                }
+            }
+            task.resume()
         }
     }
     

@@ -69,7 +69,6 @@ class ReviewTravelViewController: UIViewController {
     }
     @objc func nextPage() {
         roadmap.imageId = "beach0"
-        roadmap.createdAt = Date()
         
         // save in Backend
         dataManager.postRoadmap(roadmap: roadmap)
@@ -86,7 +85,11 @@ class ReviewTravelViewController: UIViewController {
             } else {
                 isFirstDay = false
             }
-            let newDay = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial,
+            
+            let dateFormat = DateFormatter()
+            let date = dateFormat.date(from: roadmap.dateInitial)
+            
+            let newDay = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: date ?? Date(),
                                                                                             indexPath: index,
                                                                                             isSelected: isFirstDay))
             print(newDay)
@@ -110,8 +113,13 @@ class ReviewTravelViewController: UIViewController {
     }
     func setupContent() {
         self.daysCount = roadmap.dayCount
-        self.start = roadmap.dateInitial
-        self.final = roadmap.dateFinal
+        let dateFormat = DateFormatter()
+        let date = dateFormat.date(from: roadmap.dateInitial)
+        let dateFinal = dateFormat.date(from: roadmap.dateFinal)
+
+        self.start = date ?? Date()
+        self.final = dateFinal ?? Date()
+        
         self.isPublic = roadmap.isPublic
         self.peopleCount = roadmap.peopleCount
         self.reviewTravelView.subtitle.text = self.roadmap.category

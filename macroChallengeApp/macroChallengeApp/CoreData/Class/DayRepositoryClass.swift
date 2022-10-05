@@ -41,7 +41,7 @@ class DayRepository: NSManagedObject {
         
         newDay.id = Int32(day.id)
         newDay.date = day.date
-        newDay.isSelected = day.isSelected
+        newDay.isSelected = day.isSelected ?? false
         
         roadmap.addToDay(newDay)
         

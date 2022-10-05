@@ -10,12 +10,11 @@ import Foundation
 struct Day: Codable {
     var id: Int
     var date: String
-    var isSelected: Bool
+    var isSelected: Bool?
     
     enum CodingKeys: String, CodingKey {
         case id
         case date
-        case isSelected
     }
 
     init(isSelected: Bool, date: Date) {

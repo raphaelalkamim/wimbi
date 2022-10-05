@@ -28,7 +28,8 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
         if collectionView == previewView.infoTripCollectionView {
             return 5
         } else {
-            return 14
+            print(self.roadmap.days)
+            return self.roadmap.days.count
         }
     }
     
@@ -42,7 +43,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.title.text = "CATEGORIA"
                 cell.circle.isHidden = false
                 cell.categoryTitle.isHidden = false
-                cell.categoryTitle.text = "Montanha"
+                cell.categoryTitle.text = self.roadmap.category
                 cell.info.isHidden = true
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(24)
@@ -52,10 +53,14 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.title.text = "VALOR TOTAL"
                 cell.info.isHidden = true
                 cell.infoTitle.isHidden = false
-                cell.infoTitle.text = "R$12.000"
+                cell.circle.isHidden = true
+                cell.categoryTitle.isHidden = true
+                cell.infoTitle.text = "\(self.roadmap.budget)"
             case 2:
                 cell.title.text = "VIAJANTES"
-                cell.info.setTitle(" 4", for: .normal)
+                cell.info.isHidden = false
+                cell.infoTitle.isHidden = true
+                cell.info.setTitle(" \(self.roadmap.peopleCount)", for: .normal)
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
             case 3:
                 cell.title.text = "CURTIDAS"
@@ -78,12 +83,12 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell else {
                 preconditionFailure("Cell not find")
+                
             }
-            cell.day.isHidden = true
-            cell.dayButton.setTitle("1º", for: .normal)
-            cell.dayButton.snp.makeConstraints { make in
-                make.centerY.equalToSuperview()
-                make.centerX.equalToSuperview()
+            
+            cell.setDay(date: self.roadmap.days[indexPath.row].date ?? "1")
+            if self.roadmap.days[indexPath.row].isSelected == true {
+                cell.selectedButton()
             }
             return cell
         }
@@ -107,5 +112,9 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
             
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("fsfs")
     }
 }

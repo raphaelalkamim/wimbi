@@ -51,9 +51,10 @@ class ExploreCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func previewRoadmap() {
+    func previewRoadmap(roadmapId: Int) {
         let viewController = PreviewRoadmapViewController()
         viewController.coordinator = self
+        viewController.roadmapId = roadmapId
 //        viewController.navigationItem.title = "Trip"
         navigationController.pushViewController(viewController, animated: true)
     }
