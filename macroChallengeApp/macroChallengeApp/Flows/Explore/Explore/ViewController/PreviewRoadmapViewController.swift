@@ -39,6 +39,9 @@ class PreviewRoadmapViewController: UIViewController {
             self.previewView.cover.image = UIImage(named: roadmap.imageId)
             self.previewView.title.text = roadmap.name
             self.roadmap = roadmap
+            self.roadmap.days.sort {
+                $0.id < $1.id
+            }
             self.previewView.infoTripCollectionView.reloadData()
             self.previewView.calendarCollectionView.reloadData()
         })

@@ -28,7 +28,6 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
         if collectionView == previewView.infoTripCollectionView {
             return 5
         } else {
-            print(self.roadmap.days)
             return self.roadmap.days.count
         }
     }
