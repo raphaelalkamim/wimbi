@@ -230,6 +230,7 @@ extension MyTripViewController: UITableViewDataSource {
         cell.localButton.tag = indexPath.row
         cell.localButton.addTarget(self, action: #selector(addRoute(sender:)), for: .touchUpInside)
         cell.setupDaysActivities(hour: self.activites[indexPath.row].hour ?? "10h00",
+                                 currency: self.activites[indexPath.row].currencyType ?? "R$",
                                  value: String(self.activites[indexPath.row].budget),
                                  name: self.activites[indexPath.row].name ?? "Nova atividade")
         cell.activityIcon.image = UIImage(named: self.activites[indexPath.row].category ?? "leisure")
