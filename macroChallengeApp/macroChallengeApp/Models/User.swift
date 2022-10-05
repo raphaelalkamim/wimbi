@@ -12,6 +12,7 @@ struct User: Codable {
     var usernameApp: String
     var name: String
     var photoId: String
+    var currencyType: String
     var userRoadmap: [UserRoadmap]
     
     enum CodingKeys: String, CodingKey {
@@ -20,11 +21,12 @@ struct User: Codable {
         case name
         case photoId
         case userRoadmap
+        case currencyType
     }
 }
 
 extension User: CustomStringConvertible {
     var description: String {
-        return "{id:\(id), usernameApp:\(usernameApp), name:\(name), photoId:\(photoId), userRoadmaps:\(userRoadmap)}"
+        return "{id:\(id), usernameApp:\(usernameApp), name:\(name), photoId:\(photoId), currencyType:\(currencyType), userRoadmaps:\(userRoadmap)}"
     }
 }

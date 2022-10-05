@@ -45,6 +45,7 @@ class ActivityRepository {
         newActivity.location = activity.location
         newActivity.hour = activity.hour
         newActivity.budget = activity.budget
+        newActivity.currencyType = activity.currencyType
         
         day.addToActivity(newActivity)
         
@@ -60,6 +61,7 @@ class ActivityRepository {
         newActivity.location = activity.location
         newActivity.hour = activity.hour
         newActivity.budget = activity.budget
+        newActivity.currencyType = activity.currencyType
         
         day.addToActivity(newActivity)
         
@@ -71,12 +73,13 @@ class ActivityRepository {
         newActivity.id = Int32(activity.id)
         newActivity.name = activity.name
         newActivity.category = activity.category
-        if activity.category == ""{
+        if activity.category == "" {
             newActivity.category = oldActivity.category
         }
         newActivity.location = activity.location
         newActivity.hour = activity.hour
         newActivity.budget = activity.budget
+        newActivity.currencyType = activity.currencyType
         day.addToActivity(newActivity)
         
         self.saveContext()

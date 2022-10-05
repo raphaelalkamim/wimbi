@@ -26,13 +26,12 @@ class NewActivityViewController: UIViewController {
             // tableView.reloadData()
         }
     }
-    var activity: Activity = Activity(id: 0, name: "", category: "", location: "", hour: "", budget: 0, day: Day(isSelected: true, date: Date()))
+    var activity: Activity = Activity(id: 0, name: "", category: "", location: "", hour: "", budget: 0, currencyType: "", day: Day(isSelected: true, date: Date()))
     
     var day = DayLocal()
-    var local: String = ""
     var address: String = ""
     var roadmap = RoadmapLocal()
-    
+    var currency = ""
     var activityEdit = ActivityLocal()
     var edit = false
 
@@ -49,7 +48,9 @@ class NewActivityViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(activity.name)
+        if edit {
+            getData()
+        }
     }
     
     @objc func cancelCreation() {
@@ -72,6 +73,7 @@ class NewActivityViewController: UIViewController {
         self.delegate?.attTable()
         coordinator?.backPage()
         coordinatorCurrent?.backPage()
+        print(activity)
     }
 }
 

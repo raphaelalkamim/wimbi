@@ -11,6 +11,7 @@ import CoreData
 
 extension ActivityRepository {
     @NSManaged var budget: Double
+    @NSManaged var currencyType: String?
     @NSManaged var category: String?
     @NSManaged var hour: Date?
     @NSManaged var id: Int32

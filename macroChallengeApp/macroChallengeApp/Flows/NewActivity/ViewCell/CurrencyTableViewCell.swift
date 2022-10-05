@@ -48,7 +48,7 @@ class CurrencyTableViewCell: UITableViewCell {
     
     lazy var buttonCurrency: UIButton = {
         let button = UIButton()
-        button.setTitle("Real  ", for: .normal)
+        button.setTitle("Dollar  ", for: .normal)
         button.setImage(UIImage(systemName: "chevron.up.chevron.down"), for: .normal)
         button.semanticContentAttribute = .forceRightToLeft
         button.showsMenuAsPrimaryAction = true
@@ -122,7 +122,7 @@ extension CurrencyTableViewCell {
         
         let renminbi = UIAction(title: NSLocalizedString("CNY", comment: "Chinese currency Renminbi"), image: UIImage(systemName: "yensign.circle.fill")) { _ in
             self.setCurrencyLabel(currency: "Renminbi  ")
-            self.delegate?.didChangeFormatter(formatter: "¥")
+            self.delegate?.didChangeFormatter(formatter: "元")
         }
         buttonCurrency.menu = UIMenu(title: "", options: .displayInline, children: [real, dollar, euro, yen, swiss, renminbi])
     }

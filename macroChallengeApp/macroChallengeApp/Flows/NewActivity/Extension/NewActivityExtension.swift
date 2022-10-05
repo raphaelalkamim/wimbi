@@ -30,6 +30,14 @@ extension NewActivityViewController {
         }
     }
     
+    func getData() {
+        self.currency = activityEdit.currencyType ?? "R$"
+        self.activity.location = activityEdit.location ?? "Adress"
+        self.activity.hour = activityEdit.hour ?? "23/10/2000"
+        self.activity.name = activityEdit.name ?? "No name"
+        self.activity.budget = activityEdit.budget
+    }
+    
     // MARK: Save new Activity functions
     func setData() {
         // local name
@@ -57,6 +65,8 @@ extension NewActivityViewController {
         let newValue = getNumber(text: cell.value.text ?? "123")
         activity.budget = Double(newValue) ?? 0.0
         self.updateBudgetRoadmap(budget: Double(newValue) ?? 0.0)
+        
+        activity.currencyType = self.currencyType
     }
     
     func getNumber(text: String) -> String {
@@ -95,13 +105,10 @@ extension NewActivityViewController: UITableViewDataSource {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
-                if edit {
-                    newCell.label.text = activityEdit.location
-                }
                 if address.isEmpty {
                     newCell.label.text = "Address"
                 } else {
-                    newCell.label.text = address
+                    newCell.label.text = activity.location
                 }
                 newCell.setupSeparator()
                 cell = newCell
@@ -110,9 +117,6 @@ extension NewActivityViewController: UITableViewDataSource {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
                 newCell.title.placeholder = "Name"
                 newCell.title.text = activity.name
-                if edit {
-                    newCell.title.text = activityEdit.name
-                }
                 cell = newCell
             }
             
@@ -127,12 +131,10 @@ extension NewActivityViewController: UITableViewDataSource {
             } else if indexPath.row == 1 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TimePickerTableViewCell.identifier, for: indexPath) as? TimePickerTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Hour"
-                if edit {
-                    let format = DateFormatter()
-                    format.dateStyle = .none
-                    format.timeStyle = .short
-                    newCell.datePicker.date = format.date(from: activityEdit.hour ?? "16h00") ?? Date()
-                }
+                let format = DateFormatter()
+                format.dateStyle = .none
+                format.timeStyle = .short
+                newCell.datePicker.date = format.date(from: activity.hour ?? "16h00") ?? Date()
                 cell = newCell
             }
             
@@ -142,6 +144,27 @@ extension NewActivityViewController: UITableViewDataSource {
                 newCell.label.text = "Currency"
                 newCell.setupSeparator()
                 newCell.delegate = self
+                newCell.currency.text = activity.currencyType
+                switch activity.currencyType {
+                case "R$":
+                    newCell.setCurrencyLabel(currency: "Real  ")
+                case "U$":
+                    newCell.setCurrencyLabel(currency: "Dollar  ")
+                    
+                case "€":
+                    newCell.setCurrencyLabel(currency: "Euro")
+
+                case "¥":
+                    newCell.setCurrencyLabel(currency: "Yen  ")
+
+                case "Fr":
+                    newCell.setCurrencyLabel(currency: "Swiss Franc  ")
+
+                case "元":
+                    newCell.setCurrencyLabel(currency: "Renminbi  ")
+                default:
+                    break
+                }
                 cell = newCell
             } else {
                 if indexPath.row == 1 {
@@ -149,10 +172,8 @@ extension NewActivityViewController: UITableViewDataSource {
                     
                     newCell.title.text = "Value"
                     newCell.currencyType = self.currencyType
-                    newCell.value.placeholder = "$ 0.00"
-                    if edit {
-                        newCell.value.text = String(activityEdit.budget)
-                    }
+                    newCell.value.placeholder = "\(self.currencyType) 0.00"
+                    newCell.value.text = "\(activity.currencyType ?? "") \(activity.budget)"
                     cell = newCell
                 }
                 
