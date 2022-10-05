@@ -31,7 +31,8 @@ extension NewActivityViewController {
     }
     
     func getData() {
-        self.currency = activityEdit.currencyType ?? "R$"
+        self.activity.currencyType = activityEdit.currencyType ?? "R$"
+        self.currencyType = self.activity.currencyType
         self.activity.location = activityEdit.location ?? "Adress"
         self.activity.hour = activityEdit.hour ?? "23/10/2000"
         self.activity.name = activityEdit.name ?? "No name"
@@ -74,8 +75,8 @@ extension NewActivityViewController {
         for index in 0..<text.count {
             if text[index].isNumber {
                 number += String(text[index])
-            } else if text[index] == "," {
-                number += "."
+            } else if text[index] == "," || text[index] == "." {
+                return number
             }
         }
         return number
@@ -144,8 +145,11 @@ extension NewActivityViewController: UITableViewDataSource {
                 newCell.label.text = "Currency"
                 newCell.setupSeparator()
                 newCell.delegate = self
-                newCell.currency.text = activity.currencyType
-                switch activity.currencyType {
+                
+                
+                newCell.currency.text = self.currencyType
+                
+                switch self.currencyType {
                 case "R$":
                     newCell.setCurrencyLabel(currency: "Real  ")
                 case "U$":
@@ -173,7 +177,8 @@ extension NewActivityViewController: UITableViewDataSource {
                     newCell.title.text = "Value"
                     newCell.currencyType = self.currencyType
                     newCell.value.placeholder = "\(self.currencyType) 0.00"
-                    newCell.value.text = "\(activity.currencyType ?? "") \(activity.budget)"
+                    newCell.value.text = "\(self.currencyType) \(activity.budget)"
+                    self.activity.currencyType = self.currencyType
                     cell = newCell
                 }
                 

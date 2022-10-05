@@ -16,6 +16,11 @@ class NewActivityViewController: UIViewController {
     
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let newActivityView = NewActivityView()
+    
+    lazy var userCurrency = {
+        let userC = self.getUserCurrency()
+        return userC
+    }()
     var currencyType: String = "R$" {
         didSet {
             newActivityView.valueTable.reloadData()
@@ -31,7 +36,6 @@ class NewActivityViewController: UIViewController {
     var day = DayLocal()
     var address: String = ""
     var roadmap = RoadmapLocal()
-    var currency = ""
     var activityEdit = ActivityLocal()
     var edit = false
 
@@ -50,6 +54,9 @@ class NewActivityViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if edit {
             getData()
+        }
+        if !edit {
+            self.currencyType = userCurrency
         }
     }
     
@@ -74,6 +81,13 @@ class NewActivityViewController: UIViewController {
         coordinator?.backPage()
         coordinatorCurrent?.backPage()
         print(activity)
+    }
+    
+    func getUserCurrency() -> String {
+        let locale = Locale.current
+        let currencySymbol = locale.currencySymbol
+        
+        return currencySymbol ?? "$"
     }
 }
 
