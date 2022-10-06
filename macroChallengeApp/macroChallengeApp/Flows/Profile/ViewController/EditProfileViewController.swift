@@ -54,7 +54,6 @@ class EditProfileViewController: UIViewController {
                 }
             }
         }
-        
         coordinator?.backPage()
     }
     

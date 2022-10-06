@@ -32,6 +32,12 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let coordinatorProfile = coordinatorProfile, UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
+            coordinatorProfile.backPage()
+        }
+    }
+    
     @objc func cancelCreation() {
         if let coordinatorExplore = coordinatorExplore {
             coordinatorExplore.back()

@@ -8,6 +8,10 @@
 import UIKit
 import CoreData
 
+protocol SignOutDelegate: AnyObject {
+    func reloadScreenStatus()
+}
+
 class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegate {
     weak var coordinator: ProfileCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
@@ -35,10 +39,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         
         super.viewDidLoad()
         
-        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
-            coordinator?.startLogin()
-        }
-        
         profileView.myRoadmapCollectionView.reloadData()
         self.view.backgroundColor = .backgroundPrimary
         self.setupProfileView()
@@ -54,6 +54,10 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
+            coordinator?.startLogin()
+        }
+        
         if let data = UserDefaults.standard.data(forKey: "user") {
             do {
                 let decoder = JSONDecoder()
@@ -73,7 +77,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     @objc func profileSettings() {
-        coordinator?.settings()
+        coordinator?.settings(profileVC: self)
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -114,5 +118,11 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         self.profileView.getUsernameApp().text = "@\(user.usernameApp)"
         self.profileView.getTable().reloadData()
         self.profileView.getImage().image = UIImage(named: user.photoId)
+    }
+}
+
+extension ProfileViewController: SignOutDelegate {
+    func reloadScreenStatus() {
+        self.coordinator?.backPage()
     }
 }

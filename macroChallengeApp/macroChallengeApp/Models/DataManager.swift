@@ -244,7 +244,7 @@ class DataManager {
                     }
                 } catch {
                     // FIXME: tratar o erro do decoder
-                    print("DEU RUIM NO PARSE")
+                    print(error)
                 }
             }
             task.resume()
@@ -285,7 +285,8 @@ class DataManager {
     func putUser(userObj: User, _ completion: @escaping ((_ user: User) -> Void)) {
         let user: [String: Any] = [
             "usernameApp": userObj.usernameApp,
-            "name": userObj.name
+            "name": userObj.name,
+            "photoId": userObj.photoId
         ]
         
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
