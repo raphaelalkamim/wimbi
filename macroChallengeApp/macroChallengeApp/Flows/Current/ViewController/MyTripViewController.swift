@@ -22,6 +22,7 @@ class MyTripViewController: UIViewController {
     var daySelected = 0
 
     override func viewDidLoad() {
+        print("oi", ActivityRepository.shared.getActivity())
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupMyTripView()
