@@ -16,6 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = TabBarController()
         self.window = window
         window.makeKeyAndVisible()
+        NotificationManager.shared.registerLocalNotifications()
     }
     func sceneDidDisconnect(_ scene: UIScene) {
     }
