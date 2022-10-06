@@ -36,7 +36,6 @@ class ProfileCoordinator: Coordinator {
         coordinator.start()
         
         navigationController.present(coordinator.navigationController, animated: true) {
-            print("OI")
         }
     }
     
@@ -57,12 +56,16 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = roadmap.name
         navigationController.pushViewController(viewController, animated: true)
     }
-    func startViewRoadmap() {
-        let viewController = MyTripViewController()
-        viewController.coordinator = self
-        viewController.navigationItem.title = "Egito"
-        navigationController.pushViewController(viewController, animated: true)
+    
+    func editRoadmap(editRoadmap: RoadmapLocal, delegate: MyTripViewController) {
+        let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
+        childCoordinators.append(coordinator)
+        coordinator.delegate = self
+        coordinator.startEditing(editRoadmap: editRoadmap, delegate: delegate)
+        navigationController.present(coordinator.navigationController, animated: true) {
+        }
     }
+    
     func startActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController) {
         let viewController = NewActivityViewController()
         viewController.delegate = delegate
@@ -72,7 +75,17 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "New Activity"
         navigationController.pushViewController(viewController, animated: true)
     }
-    
+    func editActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController, activity: ActivityLocal){
+        let viewController = NewActivityViewController()
+        viewController.delegate = delegate
+        viewController.coordinator = self
+        viewController.day = day
+        viewController.edit = true
+        viewController.activityEdit = activity
+        viewController.roadmap = roadmap
+        viewController.navigationItem.title = "New Activity"
+        navigationController.pushViewController(viewController, animated: true)
+    }
     func openLocationActivity(delegate: ChangeTextTableDelegate, roadmap: RoadmapLocal) {
         let viewController = LocationNewActivityViewController()
         if let location = roadmap.location {

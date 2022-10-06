@@ -12,6 +12,7 @@ import MapKit
 class NewActivityViewController: UIViewController {
     weak var delegate: AddNewActivityDelegate?
     weak var coordinator: ProfileCoordinator?
+    weak var coordinatorCurrent: CurrentCoordinator?
     
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let newActivityView = NewActivityView()
@@ -32,6 +33,9 @@ class NewActivityViewController: UIViewController {
     var address: String = ""
     var roadmap = RoadmapLocal()
     
+    var activityEdit = ActivityLocal()
+    var edit = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNewActivityView()
@@ -42,7 +46,6 @@ class NewActivityViewController: UIViewController {
         
         let salvarButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveActivity))
         self.navigationItem.rightBarButtonItem = salvarButton
-        self.getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,17 +54,28 @@ class NewActivityViewController: UIViewController {
     
     @objc func cancelCreation() {
         coordinator?.backPage()
+        coordinatorCurrent?.backPage()
     }
     
     @objc func saveActivity() {
         self.setData()
-        let newActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
+        if edit {
+            ActivityRepository.shared.updateActivity(day: self.day, oldActivity: self.activityEdit, activity: self.activity)
+            do {
+                try ActivityRepository.shared.deleteActivity(activity: self.activityEdit, roadmap: self.roadmap)
+            } catch {
+                "erro ao deletar atividade"
+            }
+        } else {
+            _ = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
+        }
         self.delegate?.attTable()
         coordinator?.backPage()
+        coordinatorCurrent?.backPage()
     }
 }
 
-// MARK: Keyboard
+// MARK: Keyboard extension
 extension NewActivityViewController {
     fileprivate func setKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

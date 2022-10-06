@@ -11,7 +11,7 @@ import SnapKit
 class CategoryViewController: UIViewController {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     weak var coordinator: NewRoadmapCoordinator?
-    
+
     let categoryView = CategoryView()
     let categories: [Category] =
     [Category(title: "Countryside".localized(), subtitle: "Descrição aqui", icon: "categoryCamp"),
@@ -20,7 +20,12 @@ class CategoryViewController: UIViewController {
      Category(title: "City".localized(), subtitle: "Descrição aqui", icon: "categoryCity")]
     
     var roadmap = Roadmaps()
+    var editRoadmap = RoadmapLocal()
+    var edit = false
     var nextButton = UIBarButtonItem()
+    var categorySelected = ""
+    
+    weak var delegateRoadmap: MyTripViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +47,19 @@ class CategoryViewController: UIViewController {
         }
     }
     @objc func nextPage() {
-        coordinator?.startDestiny(roadmap: roadmap)
+        if edit {
+            setupEdition()
+            coordinator?.startEditDestiny(roadmap: self.roadmap, editRoadmap: self.editRoadmap, delegate: delegateRoadmap!)
+        } else {
+            coordinator?.startDestiny(roadmap: self.roadmap)
+        }
     }
     @objc func cancelRoadmap() {
         coordinator?.dismissRoadmap(isNewRoadmap: false)
+    }
+    
+    func setupEdition() {
+        roadmap.category = self.categorySelected
     }
     
     func setupToolbar() {
@@ -63,9 +77,8 @@ class CategoryViewController: UIViewController {
         let items = [spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, spacer, nextButton, spacer]
         self.setToolbarItems(items, animated: false)
         self.navigationController?.setToolbarHidden(false, animated: false)
-//        self.navigationController?.navigationBar.topItem?.rightBarButtonItem?.isEnabled = false
-        
-        if roadmap.category == "No category" {
+
+        if roadmap.category == "No category" && edit == false {
             nextButton.isEnabled = false
         } else {
             nextButton.isEnabled = true
@@ -89,21 +102,26 @@ extension CategoryViewController: UICollectionViewDataSource {
         cell.backgroundColor = designSystem.palette.backgroundCell
         cell.layer.cornerRadius = 16
         
+        if edit {
+            if categories[indexPath.row].title == editRoadmap.category ?? "NoCategory" {
+                self.categorySelected = categories[indexPath.row].title
+                cell.selectedBackgroundView()
+            }
+        } 
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryViewCell {
             cell.selectedBackgroundView()
-            roadmap.category = cell.title.text ?? "Nova Categoria"
+            self.roadmap.category = categories[indexPath.row].title
+            self.categorySelected = categories[indexPath.row].title
             nextButton.isEnabled = true
-            
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryViewCell {
-            cell.notSelectedBackgroundView()
+        for index in 0..<categories.count where index != indexPath.row {
+            if let cell = collectionView.cellForItem(at: [0, index]) as? CategoryViewCell {
+                cell.notSelectedBackgroundView()
+            }
         }
     }
 }

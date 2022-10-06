@@ -18,6 +18,37 @@ extension ProfileViewController {
             make.edges.equalToSuperview()
         }
     }
+    // MARK: Long press
+    @objc public func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: profileView.myRoadmapCollectionView)
+            if let indexPath = profileView.myRoadmapCollectionView.indexPathForItem(at: touchPoint) {
+                if roadmaps.isEmpty {
+                    let action = UIAlertController(title: "Não é possível deletar", message: nil, preferredStyle: .actionSheet)
+                    action.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { [weak self] _ in
+                        self?.profileView.myRoadmapCollectionView.reloadData()
+                    }))
+                    present(action, animated: true)
+                } else {
+                    let action = UIAlertController(title: "Deletar todo o conteúdo de '\(roadmaps[indexPath.item].name ?? "NONE")'", message: "O conteúdo não poderá ser recuperado.", preferredStyle: .actionSheet)
+                    
+                    action.addAction(UIAlertAction(title: "Deletar", style: .destructive, handler: { [weak self] _ in
+                            do {
+                                try RoadmapRepository.shared.deleteRoadmap(roadmap: self!.roadmaps[indexPath.row])
+                            } catch {
+                                print(error)
+                            }
+                        
+                        self?.profileView.myRoadmapCollectionView.reloadData()
+                    }))
+                    action.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+                    present(action, animated: true)
+                    
+                }
+                navigationController?.navigationBar.prefersLargeTitles = true
+            }
+        }
+    }
 }
 
 extension ProfileViewController: UICollectionViewDelegate {
@@ -28,10 +59,10 @@ extension ProfileViewController: UICollectionViewDataSource {
         return roadmaps.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         coordinator?.openRoadmap(roadmap: roadmaps[indexPath.row] )
     }
-        
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else {
             preconditionFailure("Cell not find")
@@ -43,6 +74,15 @@ extension ProfileViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 16
         
         cell.title.translatesAutoresizingMaskIntoConstraints = false
+        
+        if cell.title.text!.count < 15 {
+            cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.xLargePositive).isActive = true
+            cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.smallPositive).isActive = false
+        } else {
+            cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.xLargePositive).isActive = false
+            cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.smallPositive).isActive = true
+            
+        }
         
         return cell
     }

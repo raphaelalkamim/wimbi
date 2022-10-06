@@ -15,6 +15,13 @@ extension MyTripViewController {
     func setupMyTripView() {
         view.addSubview(myTripView)
         setupConstraints()
+        
+        if (coordinator != nil) {
+            let barItems = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMyTrip))
+            barItems.tintColor = .accent
+            self.navigationItem.rightBarButtonItem = barItems
+        }
+        
     }
     func setupConstraints() {
         myTripView.snp.makeConstraints { make in
@@ -24,57 +31,58 @@ extension MyTripViewController {
     
     @objc func addRoute(sender: UIButton) {
         let activity = activites[sender.tag]
-        let coordsSeparated = activity.location?.split(separator: " ")
-        
-        if let coordsSeparated = coordsSeparated {
-            let latitude = String(coordsSeparated[0])
-            let longitude = String(coordsSeparated[1])
-            
-            let googleURL = "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)&directionsmode=driving"
-
-            let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
-            
-            let googleItem = ("Google Maps", URL(string: googleURL)!)
-            let wazeItem = ("Waze", URL(string: wazeURL)!)
-            var installedNavigationApps: [(String, URL)] = []
-            
-            if UIApplication.shared.canOpenURL(googleItem.1) {
-                installedNavigationApps.append(googleItem)
+        if (activity.location != "") {
+            let coordsSeparated = activity.location?.split(separator: " ")
+            if let coordsSeparated = coordsSeparated {
+                let latitude = String(coordsSeparated[0])
+                let longitude = String(coordsSeparated[1])
+                
+                let googleURL = "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)&directionsmode=driving"
+                
+                let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
+                
+                let googleItem = ("Google Maps", URL(string: googleURL)!)
+                let wazeItem = ("Waze", URL(string: wazeURL)!)
+                var installedNavigationApps: [(String, URL)] = []
+                
+                if UIApplication.shared.canOpenURL(googleItem.1) {
+                    installedNavigationApps.append(googleItem)
+                }
+                
+                if UIApplication.shared.canOpenURL(wazeItem.1) {
+                    installedNavigationApps.append(wazeItem)
+                }
+                
+                let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+                alert.view.tintColor = .accent
+                
+                let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
+                let string = NSAttributedString(string: "Are you sure you want to do this?", attributes: titleAtt)
+                
+                alert.setValue(string, forKey: "attributedTitle")
+                
+                alert.addAction(UIAlertAction(title: "Maps", style: .default, handler: { _ in
+                    let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
+                    let placemark = MKPlacemark(coordinate: coords)
+                    let mapItem = MKMapItem(placemark: placemark)
+                    mapItem.name = "Target Location"
+                    mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+                }))
+                
+                for app in installedNavigationApps {
+                    let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+                        UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
+                    })
+                    alert.addAction(button)
+                }
+                
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+                }))
+                
+                present(alert, animated: true)
             }
             
-            if UIApplication.shared.canOpenURL(wazeItem.1) {
-                installedNavigationApps.append(wazeItem)
-            }
-        
-            let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
-            alert.view.tintColor = .accent
-            
-            let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
-            let string = NSAttributedString(string: "Are you sure you want to do this?", attributes: titleAtt)
-            
-            alert.setValue(string, forKey: "attributedTitle")
-            
-            alert.addAction(UIAlertAction(title: "Maps", style: .default, handler: { _ in
-                let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
-                let placemark = MKPlacemark(coordinate: coords)
-                let mapItem = MKMapItem(placemark: placemark)
-                mapItem.name = "Target Location"
-                mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
-            }))
-            
-            for app in installedNavigationApps {
-                let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
-                    UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
-                })
-                alert.addAction(button)
-            }
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
-            }))
-            
-            present(alert, animated: true)
         }
-        
     }
 }
 
@@ -89,6 +97,7 @@ extension MyTripViewController: UICollectionViewDelegate {
             self.daySelected = indexPath.row
             self.days[daySelected].isSelected = true
             self.activites = getAllActivities()
+            self.emptyState(activities: activites)
             
             // view updates
             self.myTripView.activitiesTableView.reloadData()
@@ -133,7 +142,7 @@ extension MyTripViewController: UICollectionViewDataSource {
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(24)
                 }
-
+                
             case 1:
                 cell.title.text = "TOTAL AMOUNT".localized()
                 cell.info.isHidden = true
@@ -181,6 +190,32 @@ extension MyTripViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal,
+                                            title: "Edit") { [weak self] _, _, completionHandler in
+            self!.coordinator?.editActivity(roadmap: self!.roadmap, day: self!.days[self!.daySelected], delegate: self!, activity: self!.activites[indexPath.row])
+            self!.coordinatorCurrent?.editActivity(roadmap: self!.roadmap, day: self!.days[self!.daySelected], delegate: self!, activity: self!.activites[indexPath.row])
+            completionHandler(true)
+        }
+        let deleteAction = UIContextualAction(style: .normal,
+                                              title: "Delete") { [weak self] _, _, completionHandler in
+            self?.deleteItem(indexPath: indexPath, tableView: tableView)
+            completionHandler(true)
+        }
+        editAction.backgroundColor = .systemBlue
+        deleteAction.backgroundColor = .systemRed
+        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+    }
+    func deleteItem(indexPath: IndexPath, tableView: UITableView) {
+        do {
+            try ActivityRepository.shared.deleteActivity(activity: activites[indexPath.row], roadmap: self.roadmap)
+            activites.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } catch {
+            print("erro ao deletar")
+        }
+        myTripView.infoTripCollectionView.reloadItems(at: [IndexPath(item: 0, section: 1)])
+    }
 }
 
 extension MyTripViewController: UITableViewDataSource {
@@ -201,6 +236,7 @@ extension MyTripViewController: UITableViewDataSource {
         
         return cell
     }
+    
 }
 
 // MARK: Drag and drop

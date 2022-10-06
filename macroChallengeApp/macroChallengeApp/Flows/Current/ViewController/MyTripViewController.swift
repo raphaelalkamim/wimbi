@@ -10,6 +10,8 @@ import UIKit
 
 class MyTripViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
+    weak var coordinatorCurrent: CurrentCoordinator?
+
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let myTripView = MyTripView()
     
@@ -23,7 +25,6 @@ class MyTripViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupMyTripView()
-        
         myTripView.setupContent(roadmap: roadmap)
         myTripView.bindCollectionView(delegate: self, dataSource: self)
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
@@ -33,6 +34,7 @@ class MyTripViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.getAllDays()
         self.activites = self.getAllActivities()
+        self.emptyState(activities: activites)
         self.updateBudget()
         self.updateTotalBudgetValue()
     }
@@ -41,7 +43,6 @@ class MyTripViewController: UIViewController {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
             self.days = newDays
-            print(days)
         }
         for index in 0..<days.count where days[index].isSelected == true {
             self.daySelected = index
@@ -52,6 +53,8 @@ class MyTripViewController: UIViewController {
     func getAllActivities() -> [ActivityLocal] {
         if var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] {
             newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
+            myTripView.dayTitle.text = "Dia " + String(daySelected + 1)
+            myTripView.activitiesTableView.reloadData()
             return newActivities
         }
         return []
@@ -70,11 +73,51 @@ class MyTripViewController: UIViewController {
         cell.infoTitle.text = "R$\(self.roadmap.budget)"
     }
     
+    func emptyState(activities: [ActivityLocal]) {
+        if activities.isEmpty {
+            myTripView.activitiesTableView.isHidden = true
+            myTripView.budgetView.isHidden = true
+            myTripView.emptyStateTitle.isHidden = false
+            myTripView.emptyStateImage.isHidden = false
+            myTripView.scrollView.isScrollEnabled = false
+        } else {
+            myTripView.activitiesTableView.isHidden = false
+            myTripView.budgetView.isHidden = false
+            myTripView.emptyStateTitle.isHidden = true
+            myTripView.emptyStateImage.isHidden = true
+            myTripView.scrollView.isScrollEnabled = true
+        }
+    }
+        
     @objc func goToCreateActivity() {
         coordinator?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
+        coordinatorCurrent?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
+
+    }
+    @objc func editMyTrip() {
+        coordinator?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
+        coordinatorCurrent?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
+
     }
 }
 
 extension Sequence {
     func sum<T: AdditiveArithmetic>(_ predicate: (Element) -> T) -> T { reduce(.zero) { $0 + predicate($1) } }
+}
+
+extension MyTripViewController: ReviewTravelDelegate {
+    func updateRoadmapScreen(roadmap: RoadmapLocal) {
+        self.roadmap = roadmap
+        self.getAllDays()
+        self.activites = self.getAllActivities()
+        self.emptyState(activities: activites)
+        self.updateBudget()
+        self.updateTotalBudgetValue()
+        
+        myTripView.infoTripCollectionView.reloadItems(at: [IndexPath(item: 0, section: 0)])
+        myTripView.infoTripCollectionView.reloadItems(at: [IndexPath(item: 0, section: 2)])
+        myTripView.calendarCollectionView.reloadData()
+        coordinator?.backPage()
+        coordinatorCurrent?.backPage()
+    }
 }
