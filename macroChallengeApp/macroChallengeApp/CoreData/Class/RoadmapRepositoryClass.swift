@@ -55,9 +55,13 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.shareKey = roadmap.shareKey
         
         let dateFormat = DateFormatter()
-        let date = dateFormat.date(from: roadmap.dateInitial)
-        newRoadmap.date = date
-        
+        dateFormat.dateStyle = .short
+        dateFormat.timeStyle = .none
+        let dateInitial = dateFormat.date(from: roadmap.dateInitial)
+        let dateFinal = dateFormat.date(from: roadmap.dateFinal)
+        newRoadmap.date = dateInitial
+        newRoadmap.dateFinal = dateFinal
+
         // newRoadmap.addToUser(user)
         self.saveContext()
         return newRoadmap
@@ -69,35 +73,31 @@ public class RoadmapRepository: NSManagedObject {
             oldDays.sort { $0.id < $1.id }
             
             // adiciona os novos dias no roteiro
-            var isFirstDay = false
-            for index in 0..<editRoadmap.dayCount {
-                if oldDays[Int(index)].isSelected == true {
-                    isFirstDay = true
-                } else {
-                    isFirstDay = false
-                }
-                
+            for index in 0..<roadmap.dayCount {
                 let dateFormat = DateFormatter()
                 dateFormat.dateFormat = "d/M/y"
-                
-                _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: dateFormat.date(from: roadmap.dateInitial) ?? Date(), indexPath: Int(index), isSelected: isFirstDay))
+                _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: dateFormat.date(from: roadmap.dateInitial) ?? Date(), indexPath: Int(index), isSelected: false))
             }
             
+            var range = roadmap.dayCount
+            if roadmap.dayCount > oldDays.count {
+                range = oldDays.count
+            }
             // atualiza as atividades dos novos dia
             if var newDays = newRoadmap.day?.allObjects as? [DayLocal] {
                 newDays.sort { $0.id < $1.id }
-                for index in 0..<oldDays.count {
+                newDays[0].isSelected = true
+                for index in 0..<range {
                     // pegando atividades dos dias antigos
                     if var oldActivities = oldDays[index].activity?.allObjects as? [ActivityLocal] {
                         oldActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
                         // criando as atividades nos novos dias
-                        for activity in oldActivities {
-                            ActivityRepository.shared.copyActivity(day: newDays[index], activity: activity)
+                        for newActivity in 0..<oldActivities.count {
+                            ActivityRepository.shared.copyActivity(day: newDays[index], activity: oldActivities[newActivity])
                         }
                     }
                 }
             }
-            
         }
         
         let dateFormat = DateFormatter()
@@ -114,6 +114,7 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.isPublic = roadmap.isPublic
         newRoadmap.shareKey = roadmap.shareKey
         newRoadmap.date = dateFormat.date(from: roadmap.dateInitial)
+        newRoadmap.dateFinal = dateFormat.date(from: roadmap.dateFinal)
         newRoadmap.budget = roadmap.budget
         
         do {
