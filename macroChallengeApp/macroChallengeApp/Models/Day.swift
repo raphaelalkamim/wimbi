@@ -10,12 +10,13 @@ import Foundation
 struct Day: Codable {
     var id: Int
     var date: String
-    var isSelected: Bool
+    var activity: [Activity]
+    var isSelected: Bool?
     
     enum CodingKeys: String, CodingKey {
         case id
         case date
-        case isSelected
+        case activity
     }
 
     init(isSelected: Bool, date: Date) {
@@ -25,6 +26,7 @@ struct Day: Codable {
         format.dateStyle = .short
         self.date = format.string(from: date)
         self.isSelected = isSelected
+        self.activity = []
     }
 }
 

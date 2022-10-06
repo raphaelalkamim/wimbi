@@ -54,9 +54,12 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.isPublic = roadmap.isPublic
         newRoadmap.shareKey = roadmap.shareKey
         newRoadmap.createdAt = roadmap.createdAt
-        newRoadmap.date = roadmap.dateInitial
-        newRoadmap.dateFinal = roadmap.dateFinal
-
+        
+        let dateFormat = DateFormatter()
+        let dateInitial = dateFormat.date(from: roadmap.dateInitial)
+        let dateFinal = dateFormat.date(from: roadmap.dateFinal)
+        newRoadmap.date = date
+        
         // newRoadmap.addToUser(user)
         self.saveContext()
         return newRoadmap
@@ -69,7 +72,9 @@ public class RoadmapRepository: NSManagedObject {
             
             // adiciona os novos dias no roteiro
             for index in 0..<roadmap.dayCount {
-                _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial, indexPath: Int(index), isSelected: false))
+                let dateFormat = DateFormatter()
+                dateFormat.dateFormat = "d/M/y"
+                _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: dateFormat.date(from: roadmap.dateInitial) ?? Date(), indexPath: Int(index), isSelected: isFirstDay))
             }
             
             var range = roadmap.dayCount
@@ -93,6 +98,9 @@ public class RoadmapRepository: NSManagedObject {
             }
         }
         
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "d/M/y"
+        
         // cria os novos dias
         newRoadmap.name = roadmap.name
         newRoadmap.location = roadmap.location
@@ -104,8 +112,8 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.isPublic = roadmap.isPublic
         newRoadmap.shareKey = roadmap.shareKey
         newRoadmap.createdAt = roadmap.createdAt
-        newRoadmap.date = roadmap.dateInitial
-        newRoadmap.dateFinal = roadmap.dateFinal
+        newRoadmap.date = dateFormat.date(from: roadmap.dateInitial)
+        newRoadmap.dateFinal = dateFormat.date(from: roadmap.dateFinal)
         newRoadmap.budget = roadmap.budget
         
         do {

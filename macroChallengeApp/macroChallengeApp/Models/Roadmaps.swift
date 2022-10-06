@@ -13,6 +13,8 @@ struct Roadmaps: Codable {
     var location: String
     var budget: Double
     var dayCount: Int
+    var dateInitial: String
+    var dateFinal: String
     var peopleCount: Int
     var imageId: String
     var category: String
@@ -20,10 +22,6 @@ struct Roadmaps: Codable {
     var isPublic: Bool
     var shareKey: String
     var days: [Day]
-    var createdAt = Date()
-    
-    var dateInitial: Date
-    var dateFinal: Date
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -37,7 +35,7 @@ struct Roadmaps: Codable {
         case isShared
         case isPublic
         case shareKey
-        case days
+        case days = "day"
         case dateInitial
         case dateFinal
     }
@@ -54,8 +52,8 @@ struct Roadmaps: Codable {
         self.isPublic = false
         self.shareKey = "12345"
         self.days = [Day(isSelected: false, date: Date())]
-        self.dateFinal = Date()
-        self.dateInitial = Date()
+        self.dateFinal = ""
+        self.dateInitial = ""
     }
 }
 
