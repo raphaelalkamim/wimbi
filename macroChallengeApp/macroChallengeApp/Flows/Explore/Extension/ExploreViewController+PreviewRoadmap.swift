@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import CoreLocation
+import MapKit
 
 extension PreviewRoadmapViewController {
     func setupPreviewRoadmapView() {
@@ -18,6 +20,59 @@ extension PreviewRoadmapViewController {
             make.edges.equalToSuperview()
         }
     }
+    
+    @objc func addRoute(sender: UIButton) {
+        let activity = self.roadmap.days[self.daySelected].activity[sender.tag]
+        let coordsSeparated = activity.location.split(separator: " ")
+        
+        let latitude = String(coordsSeparated[0])
+        let longitude = String(coordsSeparated[1])
+        
+        let googleURL = "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)"
+        
+        let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
+        
+        let googleItem = ("Google Maps", URL(string: googleURL)!)
+        let wazeItem = ("Waze", URL(string: wazeURL)!)
+        var installedNavigationApps: [(String, URL)] = []
+        
+        if UIApplication.shared.canOpenURL(googleItem.1) {
+            installedNavigationApps.append(googleItem)
+        }
+        
+        if UIApplication.shared.canOpenURL(wazeItem.1) {
+            installedNavigationApps.append(wazeItem)
+        }
+        
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        alert.view.tintColor = .accent
+        
+        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
+        let string = NSAttributedString(string: "Do you want to open the address in which app?", attributes: titleAtt)
+        
+        alert.setValue(string, forKey: "attributedTitle")
+        
+        alert.addAction(UIAlertAction(title: "Maps", style: .default, handler: { _ in
+            let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
+            let placemark = MKPlacemark(coordinate: coords)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = "Target Location"
+            mapItem.openInMaps(launchOptions: [:])
+        }))
+        
+        for app in installedNavigationApps {
+            let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+                UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
+            })
+            alert.addAction(button)
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+        }))
+        
+        present(alert, animated: true)
+        
+    }
 }
 
 extension PreviewRoadmapViewController: UICollectionViewDelegate {
@@ -28,7 +83,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
         if collectionView == previewView.infoTripCollectionView {
             return 5
         } else {
-            return 14
+            return self.roadmap.days.count
         }
     }
     
@@ -42,20 +97,24 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.title.text = "CATEGORIA"
                 cell.circle.isHidden = false
                 cell.categoryTitle.isHidden = false
-                cell.categoryTitle.text = "Montanha"
+                cell.categoryTitle.text = self.roadmap.category
                 cell.info.isHidden = true
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(24)
                 }
-
+                
             case 1:
                 cell.title.text = "VALOR TOTAL"
                 cell.info.isHidden = true
                 cell.infoTitle.isHidden = false
-                cell.infoTitle.text = "R$12.000"
+                cell.circle.isHidden = true
+                cell.categoryTitle.isHidden = true
+                cell.infoTitle.text = "\(self.roadmap.budget)"
             case 2:
                 cell.title.text = "VIAJANTES"
-                cell.info.setTitle(" 4", for: .normal)
+                cell.info.isHidden = false
+                cell.infoTitle.isHidden = true
+                cell.info.setTitle(" \(self.roadmap.peopleCount)", for: .normal)
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
             case 3:
                 cell.title.text = "CURTIDAS"
@@ -78,14 +137,37 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell else {
                 preconditionFailure("Cell not find")
+                
             }
-            cell.day.isHidden = true
-            cell.dayButton.setTitle("1º", for: .normal)
-            cell.dayButton.snp.makeConstraints { make in
-                make.centerY.equalToSuperview()
-                make.centerX.equalToSuperview()
+            
+            cell.setDay(date: self.roadmap.days[indexPath.row].date ?? "1")
+            if self.roadmap.days[indexPath.row].isSelected == true {
+                cell.selectedButton()
             }
             return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
+            // button status
+            cell.selectedButton()
+            
+            // select a day
+            self.daySelected = indexPath.row
+            self.roadmap.days[daySelected].isSelected = true
+            
+            // view updates
+            self.previewView.activitiesTableView.reloadData()
+        }
+        
+        // desabilita todas as celulas que nao sao a que recebeu o clique
+        for index in 0..<roadmap.dayCount where index != indexPath.row {
+            let newIndexPath = IndexPath(item: Int(index), section: 0)
+            if let cell = collectionView.cellForItem(at: newIndexPath) as? CalendarCollectionViewCell {
+                self.roadmap.days[Int(index)].isSelected = false
+                cell.disable()
+            }
         }
     }
 }
@@ -98,7 +180,7 @@ extension PreviewRoadmapViewController: UITableViewDelegate {
 
 extension PreviewRoadmapViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        return roadmap.days[self.daySelected].activity.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,6 +188,19 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
             fatalError("TableCell not found")
             
         }
+        
+        let activity = roadmap.days[self.daySelected].activity[indexPath.row]
+        cell.localButton.tag = indexPath.row
+        cell.localButton.addTarget(self, action: #selector(addRoute(sender:)), for: .touchUpInside)
+        cell.setupDaysActivities(hour: activity.hour,
+                                 value: String(activity.budget),
+                                 name: activity.name)
+        cell.activityIcon.image = UIImage(named: activity.category)
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("fsfs")
     }
 }

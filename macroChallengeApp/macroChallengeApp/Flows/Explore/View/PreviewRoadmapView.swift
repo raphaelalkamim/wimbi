@@ -63,10 +63,8 @@ class PreviewRoadmapView: UIView {
         collection.isPagingEnabled = true
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         collection.showsHorizontalScrollIndicator = false
-        collection.backgroundColor = .backgroundCell
-        collection.layer.cornerRadius = 20
+        collection.backgroundColor = .backgroundPrimary
         return collection
     }()
     
@@ -140,7 +138,6 @@ class PreviewRoadmapView: UIView {
             make.top.equalTo(cover.snp.bottom).inset(designSystem.spacing.xLargeNegative)
             make.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
             make.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
-            
         }
         
         infoTitle.snp.makeConstraints { make in
@@ -166,10 +163,11 @@ class PreviewRoadmapView: UIView {
         calendarCollectionView.snp.makeConstraints { make in
             make.centerX.equalTo(contentView.snp.centerX)
             make.top.equalTo(calendarTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
-            make.leading.equalTo(contentView.snp.leading).inset(40)
-            make.trailing.equalTo(contentView.snp.trailing).inset(40)
-            make.height.equalTo(40)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xxLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xxLargePositive)
+            make.height.equalTo(60)
         }
+        
         roadmapTitle.snp.makeConstraints { make in
             make.top.equalTo(calendarCollectionView.snp.bottom).inset(designSystem.spacing.xLargeNegative)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)

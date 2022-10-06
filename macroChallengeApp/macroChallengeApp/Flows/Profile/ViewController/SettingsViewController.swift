@@ -12,6 +12,7 @@ class SettingsViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let settingsView = SettingsView()
+    weak var delegate: SignOutDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

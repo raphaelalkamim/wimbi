@@ -49,9 +49,9 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
                 let delimiter = "@"
                 let username = emailId?.components(separatedBy: delimiter)
                 
-                guard let usernameApp = username?[0] else { return }
-                guard let fullName = fullName else { return }
-                dataManager.postUser(username: userId, usernameApp: usernameApp, name: "\(fullName.givenName ?? "user") \(fullName.familyName ?? "name")", photoId: "teste1", password: code)
+                if let usernameApp = username?[0], let fullName = fullName {
+                    dataManager.postUser(username: userId, usernameApp: usernameApp, name: "\(fullName.givenName ?? "user") \(fullName.familyName ?? "name")", photoId: "categoryCamp", password: code)
+                }
                 dataManager.postLogin(username: userId, password: code)
             }
             
