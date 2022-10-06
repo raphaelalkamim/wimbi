@@ -11,7 +11,7 @@ import UIKit
 class MyTripViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
     weak var coordinatorCurrent: CurrentCoordinator?
-
+    
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let myTripView = MyTripView()
     
@@ -20,7 +20,7 @@ class MyTripViewController: UIViewController {
     var days: [DayLocal] = []
     
     var daySelected = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
@@ -38,7 +38,7 @@ class MyTripViewController: UIViewController {
         self.updateBudget()
         self.updateTotalBudgetValue()
     }
-   
+    
     func getAllDays() {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
@@ -60,12 +60,80 @@ class MyTripViewController: UIViewController {
         return []
     }
     
+    
+    
     func updateBudget() {
+        let userCurrency = "R$"
         var budgetDay: Double = 0
+        
+        var totalReal: Double = 0
+        var totalDollar: Double = 0
+        var totalEuro: Double = 0
+        var totalYen: Double = 0
+        var totalSwiss: Double = 0
+        var totalRenminbi: Double = 0
+        
         for activite in activites {
-            budgetDay += activite.budget
+            switch activite.currencyType {
+            case "R$":
+                totalReal += activite.budget
+                if userCurrency == "R$" {
+                    budgetDay += activite.budget
+                } else {
+                    budgetDay += activite.budget * 5
+                }
+  
+            case "U$":
+                totalDollar += activite.budget
+                if userCurrency == "U$" {
+                    budgetDay += activite.budget
+                } else {
+                    budgetDay += activite.budget * 5
+                }
+             
+            case "€":
+                totalEuro += activite.budget
+                if userCurrency == "€" {
+                    budgetDay += activite.budget
+                } else {
+                    budgetDay += activite.budget * 5
+                }
+                
+            case "¥":
+                totalYen += activite.budget
+                if userCurrency == "¥" {
+                    budgetDay += activite.budget
+                } else {
+                    budgetDay += activite.budget * 5
+                }
+                
+            case "Fr":
+                totalSwiss += activite.budget
+                if userCurrency == "Fr" {
+                    budgetDay += activite.budget
+                } else {
+                    budgetDay += activite.budget * 5
+                }
+                
+            case "元":
+                totalRenminbi += activite.budget
+                if userCurrency == "元" {
+                    budgetDay += activite.budget
+                } else {
+                    budgetDay += activite.budget * 5
+                }
+                
+            default:
+                break
+            }
+            print(totalReal)
+            print(totalDollar)
+            print(totalEuro)
+            print(totalYen)
+            print(totalSwiss)
+            print(totalRenminbi)
         }
-        myTripView.budgetValue.text = "R$\(budgetDay)"
+        myTripView.budgetValue.text = "\(userCurrency) \(budgetDay)"
     }
     
     func updateTotalBudgetValue() {
@@ -88,16 +156,16 @@ class MyTripViewController: UIViewController {
             myTripView.scrollView.isScrollEnabled = true
         }
     }
-        
+    
     @objc func goToCreateActivity() {
         coordinator?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
         coordinatorCurrent?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
-
+        
     }
     @objc func editMyTrip() {
         coordinator?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
         coordinatorCurrent?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
-
+        
     }
 }
 
