@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import MapKit
+import UserNotifications
 
 class NewActivityViewController: UIViewController {
     weak var delegate: AddNewActivityDelegate?
@@ -35,7 +36,7 @@ class NewActivityViewController: UIViewController {
     
     var activityEdit = ActivityLocal()
     var edit = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNewActivityView()
@@ -59,6 +60,7 @@ class NewActivityViewController: UIViewController {
     
     @objc func saveActivity() {
         self.setData()
+        var createdActivity: ActivityLocal?
         if edit {
             ActivityRepository.shared.updateActivity(day: self.day, oldActivity: self.activityEdit, activity: self.activity)
             do {
@@ -67,11 +69,19 @@ class NewActivityViewController: UIViewController {
                 "erro ao deletar atividade"
             }
         } else {
-            _ = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
+            createdActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
         }
         self.delegate?.attTable()
         coordinator?.backPage()
         coordinatorCurrent?.backPage()
+        
+        if UserDefaults.standard.bool(forKey: "switch") == true {
+            print("registrou")
+            if let safeActivity = createdActivity {
+                NotificationManager.shared.registerNotification(createdActivity: safeActivity)
+            }
+            
+        }
     }
 }
 

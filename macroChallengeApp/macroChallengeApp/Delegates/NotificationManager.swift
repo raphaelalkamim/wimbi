@@ -16,6 +16,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     var days: [DayLocal] = []
     var activities: [ActivityLocal] = []
     var daySelected = 0
+    var notificationPhrases = ["wimbi", "Bom dia!", "Boa tarde!", "Boa noite!", "Olá, explorador!"]
     
     override init() {
         super.init()
@@ -32,7 +33,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         }
     }
     func registerCategories() {
-        let show = UNNotificationAction(identifier: "show", title: "Vamos lá!".localized(), options: .foreground)
+        let show = UNNotificationAction(identifier: "show", title: "Vamos lá!", options: .foreground)
         let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
         center.setNotificationCategories([category])
     }
@@ -40,30 +41,65 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     func changeNotificationStatus(isEnabled: Bool) {
         if UserDefaults.standard.bool(forKey: "switch") != true {
             print("registrou")
-            registerNotification(identifier: "alarm")
+            //            registerNotification()
         } else {
             self.center.removeAllPendingNotificationRequests()
             print("removeu")
             
         }
     }
-    @objc func createLocalNotification(hour: Int, min: Int) {
+    @objc func createLocalNotification(hour: Int, min: Int, day: Int, month: Int, year: Int, activityName: String, number: Int, interval: Int) {
         registerCategories()
-        
         let content = UNMutableNotificationContent()
-        content.title = "Tá chegando"
-        content.body = "Sua atividade é daqui tantos mins"
+        var intervalType: String = ""
+
+        if interval == 1 {
+            if number == 1 {
+                intervalType = "minuto"
+            } else {
+                intervalType = "minutos"
+            }
+        } else if interval == 2 {
+            if number == 1 {
+                intervalType = "hora"
+            } else {
+                intervalType = "horas"
+            }
+        } else {
+            if number == 1 {
+                intervalType = "dia"
+            } else {
+                intervalType = "dias"
+            }
+        }
+        
+        content.title = "wimbi"
+        content.body = "A atividade \(activityName) começa em \(number) \(intervalType)."
         content.categoryIdentifier = "alarm"
         content.userInfo = ["customData": "fizzbuzz"]
         content.sound = .default
         
         var dateComponents = DateComponents()
-        dateComponents.hour = hour
-        dateComponents.minute = min
+        if interval == 1 { // minuto
+            dateComponents.minute = min - number
+            dateComponents.hour = hour
+            dateComponents.day = day
+            
+        } else if interval == 2 { // hora
+            dateComponents.hour = hour - number
+            dateComponents.minute = min
+            dateComponents.day = day
+        } else { // dia
+            dateComponents.day = day - number
+            dateComponents.hour = hour
+            dateComponents.minute = min
+        }
+        dateComponents.year = year + 2000
         
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
+        print(request)
         center.add(request) { error in
             if let error = error {
                 print(error)
@@ -93,18 +129,39 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
-    func registerNotification(identifier: String) {
-        roadmaps.sort {
-            $0.date ?? Date() < $1.date ?? Date()
-        }
-        roadmap = roadmaps[0]
-        getAllDays()
-        for day in days {
-            self.activities = getAllActivities(day: day)
-            for activity in activities {
-//                createLocalNotification(hour: activity.hour, min: 36)
-            }
-        }
+    func registerNotification(createdActivity: ActivityLocal) {
+        //        if !roadmaps.isEmpty {
+        //            roadmaps.sort {
+        //                $0.date ?? Date() < $1.date ?? Date()
+        //            }
+        //            roadmap = roadmaps[0]
+        //            getAllDays()
+        //            self.activities = getAllActivities(day: day)
+        //            let createdActivityIndex = self.activities.count - 1
+        let delimiter = ":"
+        let hour = createdActivity.hour?.components(separatedBy: delimiter)
+        
+        let delimiterDay = "/"
+        let date = createdActivity.day?.date?.components(separatedBy: delimiterDay)
+        
+        let activityHour = hour?[0] ?? "0"
+        let activityMinute = hour?[1] ?? "0"
+        let activityDay = date?[0] ?? "0"
+        let activityMonth = date?[1] ?? "0"
+        let activityYear = date?[2] ?? "0"
+        
+        createLocalNotification(hour: Int(activityHour) ?? 0,
+                                min: Int(activityMinute) ?? 0,
+                                day: Int(activityDay) ?? 0,
+                                month: Int(activityMonth) ?? 0,
+                                year: Int(activityYear) ?? 0,
+                                activityName: createdActivity.name ?? "Atividade",
+                                number: UserDefaults.standard.integer(forKey: "number") + 1,
+                                interval: UserDefaults.standard.integer(forKey: "interval") + 1)
+        
+        //        } else {
+        //            print("Sem roteiros")
+        //        }
         
     }
     
