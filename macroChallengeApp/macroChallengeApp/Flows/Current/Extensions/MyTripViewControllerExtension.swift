@@ -194,6 +194,7 @@ extension MyTripViewController: UITableViewDelegate {
         let editAction = UIContextualAction(style: .normal,
                                             title: "Edit") { [weak self] _, _, completionHandler in
             self!.coordinator?.editActivity(roadmap: self!.roadmap, day: self!.days[self!.daySelected], delegate: self!, activity: self!.activites[indexPath.row])
+            self!.coordinatorCurrent?.editActivity(roadmap: self!.roadmap, day: self!.days[self!.daySelected], delegate: self!, activity: self!.activites[indexPath.row])
             completionHandler(true)
         }
         let deleteAction = UIContextualAction(style: .normal,

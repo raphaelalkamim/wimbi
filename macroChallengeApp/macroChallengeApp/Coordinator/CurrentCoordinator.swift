@@ -73,7 +73,19 @@ class CurrentCoordinator: Coordinator {
         viewController.navigationItem.title = "New Activity"
         navigationController.pushViewController(viewController, animated: true)
     }
-
+    
+    func editActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController, activity: ActivityLocal){
+        let viewController = NewActivityViewController()
+        viewController.delegate = delegate
+        viewController.coordinatorCurrent = self
+        viewController.day = day
+        viewController.edit = true
+        viewController.activityEdit = activity
+        viewController.roadmap = roadmap
+        viewController.navigationItem.title = "New Activity"
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func openLocationActivity(delegate: ChangeTextTableDelegate, roadmap: RoadmapLocal) {
         let viewController = LocationNewActivityViewController()
         if let location = roadmap.location {

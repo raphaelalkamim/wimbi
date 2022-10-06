@@ -31,7 +31,7 @@ class RoadmapSearchTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.previewRoadmap()
+        coordinator?.previewRoadmap(roadmapId: roadmaps[indexPath.row].id)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

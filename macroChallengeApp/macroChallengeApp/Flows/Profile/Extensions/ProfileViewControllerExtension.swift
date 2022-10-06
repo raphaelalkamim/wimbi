@@ -84,10 +84,6 @@ extension ProfileViewController: UICollectionViewDataSource {
             
         }
         
-        if let user = user {
-            cell.title.text = user.userRoadmap[indexPath.row].roadmap.name
-            cell.roadmapImage.image = UIImage(named: user.userRoadmap[indexPath.row].roadmap.imageId)
-        }
         return cell
     }
 }
