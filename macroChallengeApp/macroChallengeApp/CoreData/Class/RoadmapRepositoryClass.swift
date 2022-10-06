@@ -55,10 +55,13 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.shareKey = roadmap.shareKey
         
         let dateFormat = DateFormatter()
+        dateFormat.dateStyle = .short
+        dateFormat.timeStyle = .none
         let dateInitial = dateFormat.date(from: roadmap.dateInitial)
         let dateFinal = dateFormat.date(from: roadmap.dateFinal)
-        newRoadmap.date = date
-        
+        newRoadmap.date = dateInitial
+        newRoadmap.dateFinal = dateFinal
+
         // newRoadmap.addToUser(user)
         self.saveContext()
         return newRoadmap

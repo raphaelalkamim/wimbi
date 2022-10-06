@@ -59,9 +59,9 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
-            coordinator?.startLogin()
-        }
+//        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
+//            coordinator?.startLogin()
+//        }
         
         if let data = UserDefaults.standard.data(forKey: "user") {
             do {

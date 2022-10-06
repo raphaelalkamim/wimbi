@@ -73,7 +73,8 @@ class DaysViewController: UIViewController {
     func countDays(datePickerInitial: UIDatePicker, datePickerFinal: UIDatePicker) -> Double {
         let initialDate = datePickerInitial.date
         let finalDate = datePickerFinal.date
-        return ( finalDate.timeIntervalSince(initialDate) / (60 * 60 * 24) ) + 2
+        let count = ( finalDate.timeIntervalSince(initialDate) / (60 * 60 * 24) ) + 1
+        return ceil(count)
     }
     
     func setupRoadmapContent() {
