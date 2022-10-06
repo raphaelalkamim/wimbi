@@ -53,7 +53,6 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.isShared = roadmap.isShared
         newRoadmap.isPublic = roadmap.isPublic
         newRoadmap.shareKey = roadmap.shareKey
-        newRoadmap.createdAt = roadmap.createdAt
         
         let dateFormat = DateFormatter()
         let dateInitial = dateFormat.date(from: roadmap.dateInitial)
@@ -74,7 +73,7 @@ public class RoadmapRepository: NSManagedObject {
             for index in 0..<roadmap.dayCount {
                 let dateFormat = DateFormatter()
                 dateFormat.dateFormat = "d/M/y"
-                _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: dateFormat.date(from: roadmap.dateInitial) ?? Date(), indexPath: Int(index), isSelected: isFirstDay))
+                _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: dateFormat.date(from: roadmap.dateInitial) ?? Date(), indexPath: Int(index), isSelected: false))
             }
             
             var range = roadmap.dayCount
@@ -111,7 +110,6 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.isShared = roadmap.isShared
         newRoadmap.isPublic = roadmap.isPublic
         newRoadmap.shareKey = roadmap.shareKey
-        newRoadmap.createdAt = roadmap.createdAt
         newRoadmap.date = dateFormat.date(from: roadmap.dateInitial)
         newRoadmap.dateFinal = dateFormat.date(from: roadmap.dateFinal)
         newRoadmap.budget = roadmap.budget
