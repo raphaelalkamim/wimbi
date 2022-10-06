@@ -90,10 +90,7 @@ class ReviewTravelViewController: UIViewController {
     
     func saveCoreData() {
         roadmap.imageId = "beach0"
-        
-        // save in Backend
-        dataManager.postRoadmap(roadmap: roadmap)
-        
+                
         // save in Core Data
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
         RoadmapRepository.shared.saveContext()

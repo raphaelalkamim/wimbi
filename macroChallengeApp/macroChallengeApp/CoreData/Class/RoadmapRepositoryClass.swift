@@ -40,9 +40,11 @@ public class RoadmapRepository: NSManagedObject {
     }
     
     func createRoadmap(roadmap: Roadmaps) -> RoadmapLocal {
-        guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
+        let dateFormat = DateFormatter()
+        dateFormat.dateStyle = .short
+        dateFormat.timeStyle = .none
         
-        newRoadmap.id = Int32(roadmap.id)
+        guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         newRoadmap.name = roadmap.name
         newRoadmap.location = roadmap.location
         newRoadmap.budget = roadmap.budget
@@ -53,20 +55,22 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.isShared = roadmap.isShared
         newRoadmap.isPublic = roadmap.isPublic
         newRoadmap.shareKey = roadmap.shareKey
-        
-        let dateFormat = DateFormatter()
-        dateFormat.dateStyle = .short
-        dateFormat.timeStyle = .none
         let dateInitial = dateFormat.date(from: roadmap.dateInitial)
         let dateFinal = dateFormat.date(from: roadmap.dateFinal)
         newRoadmap.date = dateInitial
         newRoadmap.dateFinal = dateFinal
-
+        newRoadmap.createdAt = roadmap.createdAt
         // newRoadmap.addToUser(user)
+        self.postInBackend(newRoadmap: newRoadmap, roadmap: roadmap)
         self.saveContext()
+        
         return newRoadmap
     }
     func updateRoadmap(editRoadmap: RoadmapLocal, roadmap: Roadmaps) -> RoadmapLocal {
+        let dateFormat = DateFormatter()
+        dateFormat.dateStyle = .short
+        dateFormat.timeStyle = .none
+        
         guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         // guarda os dias antigos
         if var oldDays = editRoadmap.day?.allObjects as? [DayLocal] {
@@ -99,11 +103,8 @@ public class RoadmapRepository: NSManagedObject {
                 }
             }
         }
-        
-        let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "d/M/y"
-        
-        // cria os novos dias
+        // cria o novo roadmap
+        newRoadmap.id = editRoadmap.id
         newRoadmap.name = roadmap.name
         newRoadmap.location = roadmap.location
         newRoadmap.dayCount = Int32(roadmap.dayCount)
@@ -116,6 +117,7 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.date = dateFormat.date(from: roadmap.dateInitial)
         newRoadmap.dateFinal = dateFormat.date(from: roadmap.dateFinal)
         newRoadmap.budget = roadmap.budget
+        newRoadmap.createdAt = roadmap.createdAt
         
         do {
             try self.deleteRoadmap(roadmap: editRoadmap)
@@ -123,6 +125,7 @@ public class RoadmapRepository: NSManagedObject {
             print("erro")
         }
         self.saveContext()
+        self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id))
         return newRoadmap
     }
     
@@ -147,4 +150,11 @@ public class RoadmapRepository: NSManagedObject {
         self.saveContext()
     }
     
+    func postInBackend(newRoadmap: RoadmapLocal, roadmap: Roadmaps) {
+        DataManager.shared.postRoadmap(roadmap: roadmap, roadmapCore: newRoadmap)
+    }
+    
+    func updateBackend(roadmap: Roadmaps, id: Int) {
+        DataManager.shared.putRoadmap(roadmap: roadmap, roadmapId: id)
+    }
 }
