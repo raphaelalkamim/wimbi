@@ -72,7 +72,7 @@ class DataManager {
         }
     }
     
-    func postUser(username: String, usernameApp: String, name: String, photoId: String, password: String) {
+    func postUser(username: String, usernameApp: String, name: String, photoId: String, password: String, _ completion: @escaping (() -> Void)) {
         let user: [String: Any] = [
             "username": username,
             "usernameApp": usernameApp,
@@ -104,6 +104,9 @@ class DataManager {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
                         print("Criou")
+                        DispatchQueue.main.async {
+                            completion()
+                        }
                     }
                 }
             } else {
@@ -135,6 +138,7 @@ class DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request) { data, response, error in
+            print(response)
             if let error = error {
                 print(error)
             } else if data == data {

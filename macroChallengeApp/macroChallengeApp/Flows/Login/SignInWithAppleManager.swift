@@ -46,13 +46,27 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
                 let username = String(data: data, encoding: .utf8)!
                 dataManager.postLogin(username: username, password: code)
             } else {
-                let delimiter = "@"
-                let username = emailId?.components(separatedBy: delimiter)
+                var username = ""
                 
-                if let usernameApp = username?[0], let fullName = fullName {
-                    dataManager.postUser(username: userId, usernameApp: usernameApp, name: "\(fullName.givenName ?? "user") \(fullName.familyName ?? "name")", photoId: "categoryCamp", password: code)
+                if emailId == nil {
+                    let usernamesTags = ["explorer", "traveler", "passenger", "tourist", "visitor"]
+                    username = (usernamesTags.randomElement() ?? "stranger") + "\(Int.random(in: 100000...900000))"
+                } else {
+                    let delimiter = "@"
+                    let usernameComps = emailId?.components(separatedBy: delimiter)
+                    if let usernameOk = usernameComps?[0] {
+                        username = usernameOk
+                    }
+                    
                 }
-                dataManager.postLogin(username: userId, password: code)
+                
+                if let fullName = fullName {
+                    dataManager.postUser(username: userId, usernameApp: username, name: "\(fullName.givenName ?? "user") \(fullName.familyName ?? "name")", photoId: "categoryCamp", password: code, {
+                        self.dataManager.postLogin(username: userId, password: code)
+                    })
+                } else {
+                    dataManager.postLogin(username: userId, password: code)
+                }
             }
             
         }
