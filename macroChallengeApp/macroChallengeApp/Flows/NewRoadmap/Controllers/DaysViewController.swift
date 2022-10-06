@@ -54,7 +54,7 @@ class DaysViewController: UIViewController {
     }
     
     @objc func nextPage() {
-        self.setupEdition()
+        self.setupRoadmapContent()
         if edit {
             coordinator?.startEditReview(roadmap: self.roadmap, editRoadmap: self.editRoadmap, delegate: delegateRoadmap!)
         } else {
@@ -73,12 +73,10 @@ class DaysViewController: UIViewController {
     func countDays(datePickerInitial: UIDatePicker, datePickerFinal: UIDatePicker) -> Double {
         let initialDate = datePickerInitial.date
         let finalDate = datePickerFinal.date
-        var sum = 1
-        if edit { sum = 2 }
-        return ( finalDate.timeIntervalSince(initialDate) / (60 * 60 * 24) ) + Double(sum)
+        return ( finalDate.timeIntervalSince(initialDate) / (60 * 60 * 24) ) + 2
     }
     
-    func setupEdition() {
+    func setupRoadmapContent() {
         self.roadmap.dateFinal = finalDate.date
         self.roadmap.dateInitial = initialDate.date
         self.roadmap.dayCount = Int(self.countDays(datePickerInitial: self.initialDate, datePickerFinal: self.finalDate))
@@ -124,19 +122,17 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as? DatePickerTableViewCell {
                 if indexPath.row == 0 {
                     cell.label.text = "Start date".localized()
-                    cell.setupSeparator()
+                    self.initialDate = cell.datePicker
                     if edit {
                         cell.datePicker.date = editRoadmap.date ?? Date()
                     }
-                    self.initialDate = cell.datePicker
+                    cell.setupSeparator()
                 } else {
                     cell.label.text = "End date".localized()
-                    if edit {
-                        let modifiedDate = Calendar.current.date(byAdding: .day, value: Int(editRoadmap.dayCount) - 1, to: editRoadmap.date ?? Date())
-                        cell.datePicker.date = modifiedDate ?? Date()
-                    }
                     self.finalDate = cell.datePicker
-
+                    if edit {
+                        cell.datePicker.date = editRoadmap.dateFinal ?? Date()
+                    }
                 }
                 cell.datePicker.minimumDate = Date()
                 cellTable = cell
