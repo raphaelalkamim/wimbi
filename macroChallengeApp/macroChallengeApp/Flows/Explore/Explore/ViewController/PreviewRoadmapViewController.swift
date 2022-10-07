@@ -14,9 +14,15 @@ class PreviewRoadmapViewController: UIViewController {
     let previewView = PreviewRoadmapView()
     var like = UIBarButtonItem()
     var duplicate = UIBarButtonItem()
-
+    var roadmapId: Int = 0
+    var roadmap: Roadmaps = Roadmaps()
+    var daySelected = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getRoadmapById(roadmapId: self.roadmapId)
+        
         self.view.backgroundColor = .backgroundPrimary
         self.setupPreviewRoadmapView()
         previewView.bindCollectionView(delegate: self, dataSource: self)
@@ -27,6 +33,21 @@ class PreviewRoadmapViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.backgroundColor = .backgroundPrimary
         navigationController?.navigationBar.barTintColor = .backgroundPrimary
+    }
+    
+    func getRoadmapById(roadmapId: Int) {
+        DataManager.shared.getRoadmapById(roadmapId: roadmapId, { roadmap in
+            self.previewView.cover.image = UIImage(named: roadmap.imageId)
+            self.previewView.title.text = roadmap.name
+            self.roadmap = roadmap
+            self.roadmap.days.sort {
+                $0.id < $1.id
+            }
+            self.roadmap.days[0].isSelected = true
+            
+            self.previewView.infoTripCollectionView.reloadData()
+            self.previewView.calendarCollectionView.reloadData()
+        })
     }
 
     @objc func likeRoadmap() {

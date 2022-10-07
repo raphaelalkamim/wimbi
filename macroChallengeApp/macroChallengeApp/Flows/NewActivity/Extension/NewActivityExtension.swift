@@ -13,7 +13,7 @@ protocol AddNewActivityDelegate: AnyObject {
     func attTable()
 }
 protocol ChangeTextTableDelegate: AnyObject {
-    func changeText(address: String)
+    func changeText(coords: String, locationName: String, address: String)
 }
 
 extension NewActivityViewController {
@@ -31,8 +31,6 @@ extension NewActivityViewController {
     }
     
     // MARK: Save new Activity functions
-    func getData() {
-    }
     func setData() {
         // local name
         let tableView = newActivityView.localyTable
@@ -97,10 +95,13 @@ extension NewActivityViewController: UITableViewDataSource {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else { fatalError("TableCell not found") }
-                if activity.location.isEmpty {
-                    newCell.label.text = "Adress"
+                if edit {
+                    newCell.label.text = activityEdit.location
+                }
+                if address.isEmpty {
+                    newCell.label.text = "Address"
                 } else {
-                    newCell.label.text = activity.location
+                    newCell.label.text = address
                 }
                 newCell.setupSeparator()
                 cell = newCell
@@ -108,6 +109,10 @@ extension NewActivityViewController: UITableViewDataSource {
             } else if indexPath.row == 1 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
                 newCell.title.placeholder = "Name"
+                newCell.title.text = activity.name
+                if edit {
+                    newCell.title.text = activityEdit.name
+                }
                 cell = newCell
             }
             
@@ -122,6 +127,12 @@ extension NewActivityViewController: UITableViewDataSource {
             } else if indexPath.row == 1 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TimePickerTableViewCell.identifier, for: indexPath) as? TimePickerTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Hour"
+                if edit {
+                    let format = DateFormatter()
+                    format.dateStyle = .none
+                    format.timeStyle = .short
+                    newCell.datePicker.date = format.date(from: activityEdit.hour ?? "16h00") ?? Date()
+                }
                 cell = newCell
             }
             
@@ -139,6 +150,9 @@ extension NewActivityViewController: UITableViewDataSource {
                     newCell.title.text = "Value"
                     newCell.currencyType = self.currencyType
                     newCell.value.placeholder = "$ 0.00"
+                    if edit {
+                        newCell.value.text = String(activityEdit.budget)
+                    }
                     cell = newCell
                 }
                 
@@ -150,7 +164,8 @@ extension NewActivityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == newActivityView.localyTable {
             if indexPath.row == 0 {
-                self.coordinator?.openLocationActivity(delegate: self)
+                self.coordinator?.openLocationActivity(delegate: self, roadmap: roadmap)
+                print(roadmap)
             }
         }
     }
@@ -235,8 +250,10 @@ extension NewActivityViewController: UICollectionViewDataSource {
 
 // MARK: Delegates
 extension NewActivityViewController: ChangeTextTableDelegate {
-    func changeText(address: String) {
-        activity.location = address
+    func changeText(coords: String, locationName: String, address: String) {
+        activity.location = coords
+        activity.name = locationName
+        self.address = address
         newActivityView.localyTable.reloadData()
     }
 }

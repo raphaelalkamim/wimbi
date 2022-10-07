@@ -46,7 +46,7 @@ extension ExploreViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.previewRoadmap()
+        coordinator?.previewRoadmap(roadmapId: roadmaps[indexPath.row].id)
     }
     
 }

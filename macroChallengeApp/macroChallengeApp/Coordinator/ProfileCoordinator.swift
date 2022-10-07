@@ -28,6 +28,7 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "Profile".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
+    
     func newRoadmap() {
         let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
         childCoordinators.append(coordinator)
@@ -35,9 +36,19 @@ class ProfileCoordinator: Coordinator {
         coordinator.start()
         
         navigationController.present(coordinator.navigationController, animated: true) {
-            print("OI")
         }
     }
+    
+    func startLogin() {
+        let viewController = LoginViewController()
+        viewController.coordinatorProfile = self
+        viewController.navigationItem.title = "Login"
+        let tabBarItem = UITabBarItem(title: "Profile".localized(), image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        viewController.tabBarItem = tabBarItem
+        viewController.navigationItem.title = "Profile".localized()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func openRoadmap(roadmap: RoadmapLocal) {
         let viewController = MyTripViewController()
         viewController.coordinator = self
@@ -45,12 +56,16 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = roadmap.name
         navigationController.pushViewController(viewController, animated: true)
     }
-    func startViewRoadmap() {
-        let viewController = MyTripViewController()
-        viewController.coordinator = self
-        viewController.navigationItem.title = "Egito"
-        navigationController.pushViewController(viewController, animated: true)
+    
+    func editRoadmap(editRoadmap: RoadmapLocal, delegate: MyTripViewController) {
+        let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
+        childCoordinators.append(coordinator)
+        coordinator.delegate = self
+        coordinator.startEditing(editRoadmap: editRoadmap, delegate: delegate)
+        navigationController.present(coordinator.navigationController, animated: true) {
+        }
     }
+    
     func startActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController) {
         let viewController = NewActivityViewController()
         viewController.delegate = delegate
@@ -60,19 +75,40 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "New Activity"
         navigationController.pushViewController(viewController, animated: true)
     }
-
-    func openLocationActivity(delegate: ChangeTextTableDelegate) {
+    func editActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController, activity: ActivityLocal){
+        let viewController = NewActivityViewController()
+        viewController.delegate = delegate
+        viewController.coordinator = self
+        viewController.day = day
+        viewController.edit = true
+        viewController.activityEdit = activity
+        viewController.roadmap = roadmap
+        viewController.navigationItem.title = "New Activity"
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    func openLocationActivity(delegate: ChangeTextTableDelegate, roadmap: RoadmapLocal) {
         let viewController = LocationNewActivityViewController()
+        if let location = roadmap.location {
+            viewController.coordsMap = location
+        }
         viewController.delegate = delegate
         viewController.coordinator = self
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func settings() {
+    func settings(profileVC : ProfileViewController) {
         let viewController = SettingsViewController()
         viewController.coordinator = self
+        viewController.delegate = profileVC
         viewController.navigationItem.title = "Settings".localized()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func startEditProfile() {
+        let viewController = EditProfileViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "Edit profile".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
     func backPage() {

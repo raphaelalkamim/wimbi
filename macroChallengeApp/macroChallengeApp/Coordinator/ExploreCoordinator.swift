@@ -11,6 +11,7 @@ class ExploreCoordinator: Coordinator {
     var childCoordinators: [Coordinator]
     
     var navigationController: UINavigationController
+    weak var delegate: PresentationCoordinatorDelegate?
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -29,21 +30,36 @@ class ExploreCoordinator: Coordinator {
     }
     
     func createNewRoadmap() {
-        let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
-        childCoordinators.append(coordinator)
-        coordinator.delegate = self
-        coordinator.start()
-        
-        navigationController.present(coordinator.navigationController, animated: true) {
-            print("OI")
+        if UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
+            let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
+            childCoordinators.append(coordinator)
+            coordinator.delegate = self
+            coordinator.start()
+            
+            navigationController.present(coordinator.navigationController, animated: true)
+        } else {
+            startLogin()
         }
     }
     
-    func previewRoadmap() {
+    func startLogin() {
+        let viewController = LoginViewController()
+        viewController.coordinatorExplore = self
+        viewController.navigationItem.title = "Login"
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func previewRoadmap(roadmapId: Int) {
         let viewController = PreviewRoadmapViewController()
         viewController.coordinator = self
+        viewController.roadmapId = roadmapId
 //        viewController.navigationItem.title = "Trip"
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func back() {
+        navigationController.popViewController(animated: true)
+        delegate?.didFinishPresent(of: self, isNewRoadmap: false)
     }
     
     func setupBarAppearence() {

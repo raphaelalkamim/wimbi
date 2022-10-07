@@ -44,10 +44,6 @@ class ExploreViewController: UIViewController {
         coordinator?.createNewRoadmap()
     }
     
-    @objc func previewRoadmap() {
-        coordinator?.previewRoadmap()
-    }
-    
 }
 
 extension ExploreViewController: UISearchBarDelegate {

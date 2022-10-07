@@ -31,9 +31,7 @@ extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let viewController = EditProfileViewController()
-            viewController.navigationItem.title = "Edit profile".localized()
-            navigationController?.pushViewController(viewController, animated: true)
+            coordinator?.startEditProfile()
             
         case 1:
             let viewController = LikedRoadmapsViewController()
@@ -57,8 +55,14 @@ extension SettingsViewController: UITableViewDataSource {
             alert.setValue(string, forKey: "attributedTitle")
             alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
             }))
+            
             alert.addAction(UIAlertAction(title: "Sign out".localized(), style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
-                // Ação Cancelar
+                KeychainManager.shared.delete(service: "username", account: "explorer")
+                UserDefaults.standard.setValue("", forKey: "authorization")
+                UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+                UserDefaults.standard.set(nil, forKey: "user")
+                
+                self.coordinator?.backPage()
             }))
             present(alert, animated: true)
             

@@ -7,11 +7,13 @@
 
 import Foundation
 import UIKit
+import MapKit
+import CoreLocation
 
 class ActivityTableViewCell: UITableViewCell {
     static let identifier = "activityCell"
     let designSystem: DesignSystem = DefaultDesignSystem.shared
-    
+    let myTripViewController = MyTripViewController()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -47,6 +49,7 @@ class ActivityTableViewCell: UITableViewCell {
     lazy var localButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(systemName: "location.circle.fill"), for: .normal)
+        btn.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 24), forImageIn: .normal)
         btn.tintColor = .accent
         btn.isUserInteractionEnabled = true
         return btn
@@ -60,7 +63,7 @@ extension ActivityTableViewCell {
         contentView.addSubview(activityInfo)
         contentView.addSubview(activityTitle)
         contentView.addSubview(localButton)
-        self.backgroundColor = .backgroundPrimary
+        self.backgroundColor = designSystem.palette.backgroundPrimary
         setupConstraints()
         
     }
@@ -90,7 +93,6 @@ extension ActivityTableViewCell {
         localButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
             make.centerY.equalToSuperview().inset(designSystem.spacing.smallNegative)
-            
         }
 
     }

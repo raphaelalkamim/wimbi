@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import UserNotifications
 
 class SwitchTableViewCell: UITableViewCell {
     static let identifier = "notificationSwitchCell"
@@ -45,6 +46,11 @@ extension SwitchTableViewCell {
     func setup() {
         contentView.addSubview(title)
         contentView.addSubview(switchButton)
+        if UserDefaults.standard.bool(forKey: "switch") == true {
+            switchButton.isOn = true
+        } else {
+            switchButton.isOn = false
+        }
         setupConstraints()
     }
     
@@ -65,9 +71,12 @@ extension SwitchTableViewCell {
     
     @objc func turnNotification(_ sender: UISwitch!) {
         if sender.isOn {
-            print("on")
+            NotificationManager.shared.changeNotificationStatus(isEnabled: true)
+            UserDefaults.standard.set(true, forKey: "switch")
         } else {
-            print("off")
+            NotificationManager.shared.changeNotificationStatus(isEnabled: false)
+            UserDefaults.standard.set(false, forKey: "switch")
+
         }
     }
 }

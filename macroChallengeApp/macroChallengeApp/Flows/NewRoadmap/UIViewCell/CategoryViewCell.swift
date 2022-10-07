@@ -85,6 +85,5 @@ extension CategoryViewCell {
     
     func notSelectedBackgroundView() {
         self.layer.borderWidth = 0
-        
     }
 }

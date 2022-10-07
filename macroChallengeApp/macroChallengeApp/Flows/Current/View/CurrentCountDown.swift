@@ -84,12 +84,12 @@ extension CurrentCountDown {
     func setupConstraints() {
         title.snp.makeConstraints { make in
             make.topMargin.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
+            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
         }
         
         date.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(designSystem.spacing.smallPositive)
-            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
+            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
         }
         
         image.snp.makeConstraints { make in
@@ -100,14 +100,14 @@ extension CurrentCountDown {
         }
         
         subtitle.snp.makeConstraints { make in
-            make.top.equalTo(image.snp.bottom).offset(designSystem.spacing.xxLargePositive)
+            make.top.equalTo(image.snp.bottom).offset(designSystem.spacing.xLargePositive)
             make.trailing.leading.equalToSuperview().inset(designSystem
                 .spacing.xxLargePositive)
         }
         
         timer.snp.makeConstraints { make in
             make.top.equalTo(subtitle.snp.bottom)
-            make.leading.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
+            make.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
         }
         
         timerType.snp.makeConstraints { make in

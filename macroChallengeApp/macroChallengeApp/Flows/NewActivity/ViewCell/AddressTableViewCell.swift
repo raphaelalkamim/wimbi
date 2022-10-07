@@ -47,7 +47,7 @@ extension AddressTableViewCell {
         label.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
-  
+            make.trailing.equalToSuperview().offset(designSystem.spacing.largeNegative)
         }
     }
     

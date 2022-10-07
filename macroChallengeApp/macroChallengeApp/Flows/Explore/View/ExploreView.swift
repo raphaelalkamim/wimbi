@@ -11,8 +11,6 @@ import SnapKit
 
 class ExploreView: UIView {
     let designSystem = DefaultDesignSystem.shared
-//    let scrollView = UIScrollView()
-//    let contentView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,31 +55,14 @@ class ExploreView: UIView {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(searchBar)
         self.addSubview(roadmapsCollectionView)
-//        scrollView.addSubview(contentView)
-//        contentView.addSubview(searchBar)
-//        contentView.addSubview(filterButton)
-//        contentView.addSubview(roadmapsCollectionView)
         setupConstraints()
     }
     
     func setupConstraints() {
-//        scrollView.snp.makeConstraints { make in
-//            make.top.equalTo(self.snp.top)
-//            make.bottom.equalTo(self.snp.bottom)
-//            make.left.right.equalTo(self)
-//        }
-//
-//        contentView.snp.makeConstraints { make in
-//            make.top.equalTo(scrollView.snp.top)
-//            make.bottom.equalTo(scrollView.snp.bottom)
-//            make.left.right.equalTo(self)
-//        }
-//
         roadmapsCollectionView.snp.makeConstraints { make in
             make.topMargin.equalToSuperview()
             make.trailing.leading.equalToSuperview()
             make.bottom.equalToSuperview()
-//            make.height.equalTo(self)
         }
     }
     

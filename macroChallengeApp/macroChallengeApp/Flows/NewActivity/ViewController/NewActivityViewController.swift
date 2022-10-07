@@ -8,10 +8,12 @@
 import Foundation
 import UIKit
 import MapKit
+import UserNotifications
 
 class NewActivityViewController: UIViewController {
     weak var delegate: AddNewActivityDelegate?
     weak var coordinator: ProfileCoordinator?
+    weak var coordinatorCurrent: CurrentCoordinator?
     
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let newActivityView = NewActivityView()
@@ -25,10 +27,15 @@ class NewActivityViewController: UIViewController {
             // tableView.reloadData()
         }
     }
-    var activity: Activity = Activity(id: 0, name: "Address", category: "", location: "", hour: "", budget: 0, day: Day(isSelected: true, date: Date()))
+    var activity: Activity = Activity(id: 0, name: "", category: "", location: "", hour: "", budget: 0, day: Day(isSelected: true, date: Date()))
     
     var day = DayLocal()
+    var local: String = ""
+    var address: String = ""
     var roadmap = RoadmapLocal()
+    
+    var activityEdit = ActivityLocal()
+    var edit = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +47,6 @@ class NewActivityViewController: UIViewController {
         
         let salvarButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveActivity))
         self.navigationItem.rightBarButtonItem = salvarButton
-        self.getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,17 +55,37 @@ class NewActivityViewController: UIViewController {
     
     @objc func cancelCreation() {
         coordinator?.backPage()
+        coordinatorCurrent?.backPage()
     }
     
     @objc func saveActivity() {
         self.setData()
-        let newActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
+        var createdActivity: ActivityLocal?
+        if edit {
+            ActivityRepository.shared.updateActivity(day: self.day, oldActivity: self.activityEdit, activity: self.activity)
+            do {
+                try ActivityRepository.shared.deleteActivity(activity: self.activityEdit, roadmap: self.roadmap)
+            } catch {
+                "erro ao deletar atividade"
+            }
+        } else {
+            createdActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
+        }
         self.delegate?.attTable()
         coordinator?.backPage()
+        coordinatorCurrent?.backPage()
+        
+        if UserDefaults.standard.bool(forKey: "switch") == true {
+            print("registrou")
+            if let safeActivity = createdActivity {
+                NotificationManager.shared.registerNotification(createdActivity: safeActivity)
+            }
+            
+        }
     }
 }
 
-// MARK: Keyboard
+// MARK: Keyboard extension
 extension NewActivityViewController {
     fileprivate func setKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

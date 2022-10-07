@@ -115,11 +115,11 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         }
     }
     func setupCircleColor(category: String) {
-        if category == "Camp" {
+        if category == "Countryside".localized() {
             circle.backgroundColor = designSystem.palette.greenCamp
-        } else if category == "Beach" {
+        } else if category == "Beach".localized() {
             circle.backgroundColor = designSystem.palette.blueBeach
-        } else if category == "City" {
+        } else if category == "City".localized() {
             circle.backgroundColor = designSystem.palette.redCity
         } else {
             circle.backgroundColor = designSystem.palette.yellowMontain

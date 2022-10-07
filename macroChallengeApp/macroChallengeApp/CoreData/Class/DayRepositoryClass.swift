@@ -41,7 +41,7 @@ class DayRepository: NSManagedObject {
         
         newDay.id = Int32(day.id)
         newDay.date = day.date
-        newDay.isSelected = day.isSelected
+        newDay.isSelected = day.isSelected ?? false
         
         roadmap.addToDay(newDay)
         
@@ -60,8 +60,8 @@ class DayRepository: NSManagedObject {
     }
     
     func deleteDay(day: DayLocal) throws {
-        self.persistentContainer.viewContext.delete(day)
-        self.saveContext()
+        context.delete(day)
+        try saveContext()
     }
     
 }
