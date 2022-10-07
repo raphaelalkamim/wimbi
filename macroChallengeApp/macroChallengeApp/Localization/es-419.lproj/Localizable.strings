@@ -40,6 +40,7 @@
 "Join trip" = "Unirse al viaje";
 "Add the code to have access to the trip" = "Añade el código para tener acceso al viaje";
 "Join" = "Unirse";
+"No internet connection" = "Sin conexión a Internet";
 
 // MARK: -  TabBar
 "Explore" = "Explorar";
@@ -70,6 +71,11 @@
 "minutes" = "minutos";
 "hours" = "horas";
 "days" = "días";
+"Faltam" = "Le faltan";
+"Falta" = "Le falta";
+"days left" = "días";
+"day left" = "día";
+"Your trip is \ntomorrow!" = "Su viaje es \nmañana!";
 "By activating the notification you will configure the frequency of the reminders before every activity." = "Al activar la notificación, establecerá la frecuencia con la que recibirá recordatorios antes de cada actividad.";
 "Sign out of your account?" = "¿Usted desea salir?";
 "Cancel" = "Cancelar";
@@ -91,7 +97,6 @@
 "Day " = "Día ";
 "DAILY COSTS" = "COSTOS DIARIOS";
 "Free" = "Gratis";
-"Left" = "Le faltan";
 "SUN" = "DOM";
 "MON" = "LUN";
 "TUE" = "MAR";
@@ -99,11 +104,13 @@
 "THU" = "JUE";
 "FRI" = "VIE";
 "SAT" = "SÁB";
-"How about exploring and booking a new trip?" = "¿Qué tal explorar y reservar un nuevo viaje?";
+"What do you think about exploring and booking a new trip?" = "¿Qué tal explorar y reservar un nuevo viaje?";
 "Go to Explore and find a new trip or create your own." = "Vaya a Explorar y busque itinerarios sugeridos o cree el suyo propio.";
-"Do you want to open the address in which app?" = "¿Quiere abrir la dirección en qué aplicación?";
+"Which app would you like to use to access the address?" = "¿Quiere abrir la dirección en qué aplicación?";
 "Open on Maps" = "Abrir en Mapas";
 "Open on Waze" = "Abrir en Waze";
+"Open on Google Maps" = "Abrir en Google Maps";
+"Open on" = "Abrir en";
 
 // MARK: -  NewRoadmap
 "Category" = "Categoría";
@@ -122,8 +129,8 @@
 "End date" = "Fecha final";
 "TRAVELERS" = "VIAJEROS";
 "Number of travelers" = "Número de viajeros";
-"Turn this trip public?" = "¿Hacer público este viaje?";
-"By turning your trip public, it will be published to all app users." = "Al hacer público el viaje, se publicará para todos los usuarios de la aplicación.";
+"Would you like to make this trip public?" = "¿Hacer público este viaje?";
+"By making your trip public, it’ll be viewed to all the app’s users." = "Al hacer público el viaje, se publicará para todos los usuarios de la aplicación.";
 "My trip" = "Mi viaje";
 "Travel days" = "Días de viaje";
 "PRIVACY" = "PRIVACIDAD";
@@ -131,7 +138,7 @@
 "Public" = "Público";
 "Private" = "Privado";
 "Are you sure?" = "¿Está seguro?";
-"By canceling you will lose all your progress." = "Al cancelar su progreso será perdido.";
+"By canceling you’ll lose your entire progress." = "Al cancelar su progreso será perdido.";
 "Back" = "Atrás";
 "Continue" = "Continuar";
 

@@ -23,7 +23,7 @@ class CurrentEmptyState: UIView {
     lazy var title: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.title)
-        label.text = "How about exploring and booking a new trip?".localized()
+        label.text = "What do you think about exploring and booking a new trip?".localized()
         return label
     }()
     
