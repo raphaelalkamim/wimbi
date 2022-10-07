@@ -30,19 +30,29 @@ extension ProfileViewController {
                     }))
                     present(action, animated: true)
                 } else {
-                    let title = "Delete all content from".localized()
-                    let action = UIAlertController(title: "\(title) '\(roadmaps[indexPath.item].name ?? "NONE")'", message: "The content cannot be recovered.".localized(), preferredStyle: .actionSheet)
+                    let action = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+                    
+                    let roadmapName = "'\(roadmaps[indexPath.item].name ?? "NONE")'"
+                    
+                    let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 16)]
+                    let string = NSAttributedString(string: "Delete all content from \(roadmapName)".localized(), attributes: titleAtt)
+                    action.setValue(string, forKey: "attributedTitle")
+                    
+                    let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 16)]
+                    let subtitleString = NSAttributedString(string: "The content cannot be recovered.".localized(), attributes: subtitleAtt)
+                    action.setValue(subtitleString, forKey: "attributedMessage")
                     
                     action.addAction(UIAlertAction(title: "Delete".localized(), style: .destructive, handler: { [weak self] _ in
-                            do {
-                                try RoadmapRepository.shared.deleteRoadmap(roadmap: self!.roadmaps[indexPath.row])
-                            } catch {
-                                print(error)
-                            }
+                        do {
+                            try RoadmapRepository.shared.deleteRoadmap(roadmap: self!.roadmaps[indexPath.row])
+                        } catch {
+                            print(error)
+                        }
                         
                         self?.profileView.myRoadmapCollectionView.reloadData()
                     }))
                     action.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil))
+                    action.view.tintColor = .accent
                     present(action, animated: true)
                     
                 }
