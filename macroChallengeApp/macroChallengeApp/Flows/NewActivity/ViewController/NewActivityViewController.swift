@@ -42,7 +42,7 @@ class NewActivityViewController: UIViewController {
         setupNewActivityView()
         setKeyboard()
         let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelCreation))
-        cancelButton.tintColor = .systemRed
+        cancelButton.tintColor = .accent
         self.navigationItem.leftBarButtonItem = cancelButton
         
         let salvarButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveActivity))

@@ -22,7 +22,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         navigationItem.hidesBackButton = true
         if coordinatorExplore != nil {
             let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelCreation))
-            cancelButton.tintColor = .systemRed
+            cancelButton.tintColor = .accent
             self.navigationItem.leftBarButtonItem = cancelButton
         }
         
