@@ -139,7 +139,7 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.createdAt = roadmap.createdAt
         
         do {
-            try self.deleteRoadmap(roadmap: editRoadmap)
+            try self.deleteOldRoadmap(roadmap: editRoadmap)
         } catch {
             print("erro")
         }
@@ -168,6 +168,11 @@ public class RoadmapRepository: NSManagedObject {
         DataManager.shared.deleteObjectBack(objectID: Int(roadmap.id), urlPrefix: "roadmaps", {
             print("deleted roadmap")
         })
+        self.persistentContainer.viewContext.delete(roadmap)
+        self.saveContext()
+    }
+    
+    func deleteOldRoadmap(roadmap: RoadmapLocal) throws {
         self.persistentContainer.viewContext.delete(roadmap)
         self.saveContext()
     }
