@@ -47,7 +47,7 @@ extension PreviewRoadmapViewController {
         let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         alert.view.tintColor = .accent
         
-        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
+        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 15)]
         let string = NSAttributedString(string: "Do you want to open the address in which app?".localized(), attributes: titleAtt)
         
         alert.setValue(string, forKey: "attributedTitle")
@@ -61,7 +61,8 @@ extension PreviewRoadmapViewController {
         }))
         
         for app in installedNavigationApps {
-            let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+            let title = "Open on".localized()
+            let button = UIAlertAction(title: "\(title) \(app.0)", style: .default, handler: { _ in
                 UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
             })
             alert.addAction(button)

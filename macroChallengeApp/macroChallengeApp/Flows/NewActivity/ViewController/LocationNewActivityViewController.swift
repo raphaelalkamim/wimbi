@@ -43,9 +43,9 @@ class LocationNewActivityViewController: UIViewController {
     func setupDestinyView() {
         view.addSubview(destinyView)
         
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddress))
-        cancelButton.tintColor = .systemRed
-        self.navigationItem.leftBarButtonItems = [cancelButton]
+//        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddress))
+//        cancelButton.tintColor = .accent
+//        self.navigationItem.leftBarButtonItems = [cancelButton]
         
         let confirmButton = UIBarButtonItem(title: "Confirm".localized(), style: .plain, target: self, action: #selector(confirmAddress))
         self.navigationItem.rightBarButtonItem = confirmButton

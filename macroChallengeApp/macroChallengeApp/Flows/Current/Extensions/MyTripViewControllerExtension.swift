@@ -56,12 +56,12 @@ extension MyTripViewController {
                 let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
                 alert.view.tintColor = .accent
                 
-                let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
-                let string = NSAttributedString(string: "Are you sure you want to do this?", attributes: titleAtt)
+                let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 16)]
+                let string = NSAttributedString(string: "Do you want to open the address in which app?".localized(), attributes: titleAtt)
                 
                 alert.setValue(string, forKey: "attributedTitle")
                 
-                alert.addAction(UIAlertAction(title: "Maps", style: .default, handler: { _ in
+                alert.addAction(UIAlertAction(title: "Open on Maps".localized(), style: .default, handler: { _ in
                     let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
                     let placemark = MKPlacemark(coordinate: coords)
                     let mapItem = MKMapItem(placemark: placemark)
@@ -70,7 +70,8 @@ extension MyTripViewController {
                 }))
                 
                 for app in installedNavigationApps {
-                    let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+                    let title = "Open on".localized()
+                    let button = UIAlertAction(title: "\(title) \(app.0)", style: .default, handler: { _ in
                         UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
                     })
                     alert.addAction(button)
@@ -202,8 +203,8 @@ extension MyTripViewController: UITableViewDelegate {
             self?.deleteItem(indexPath: indexPath, tableView: tableView)
             completionHandler(true)
         }
-        editAction.backgroundColor = .systemBlue
-        deleteAction.backgroundColor = .systemRed
+        editAction.backgroundColor = .blueBeach
+        deleteAction.backgroundColor = .redCity
         return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }
     func deleteItem(indexPath: IndexPath, tableView: UITableView) {

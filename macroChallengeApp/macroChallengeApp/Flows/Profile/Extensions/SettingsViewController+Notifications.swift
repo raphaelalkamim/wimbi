@@ -53,6 +53,7 @@ extension NotificationsViewController: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             cellSwitch.title.text = "Turn on notification".localized()
+            cellSwitch.switchButton.onTintColor = .accent
             cellSwitch.backgroundColor = designSystem.palette.backgroundCell
             cell = cellSwitch
 
