@@ -24,15 +24,16 @@ extension ProfileViewController {
             let touchPoint = sender.location(in: profileView.myRoadmapCollectionView)
             if let indexPath = profileView.myRoadmapCollectionView.indexPathForItem(at: touchPoint) {
                 if roadmaps.isEmpty {
-                    let action = UIAlertController(title: "Não é possível deletar", message: nil, preferredStyle: .actionSheet)
+                    let action = UIAlertController(title: "Can't delete", message: nil, preferredStyle: .actionSheet)
                     action.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { [weak self] _ in
                         self?.profileView.myRoadmapCollectionView.reloadData()
                     }))
                     present(action, animated: true)
                 } else {
-                    let action = UIAlertController(title: "Deletar todo o conteúdo de '\(roadmaps[indexPath.item].name ?? "NONE")'", message: "O conteúdo não poderá ser recuperado.", preferredStyle: .actionSheet)
+                    let title = "Delete all content from".localized()
+                    let action = UIAlertController(title: "\(title) '\(roadmaps[indexPath.item].name ?? "NONE")'", message: "The content cannot be recovered.".localized(), preferredStyle: .actionSheet)
                     
-                    action.addAction(UIAlertAction(title: "Deletar", style: .destructive, handler: { [weak self] _ in
+                    action.addAction(UIAlertAction(title: "Delete".localized(), style: .destructive, handler: { [weak self] _ in
                             do {
                                 try RoadmapRepository.shared.deleteRoadmap(roadmap: self!.roadmaps[indexPath.row])
                             } catch {
@@ -41,7 +42,7 @@ extension ProfileViewController {
                         
                         self?.profileView.myRoadmapCollectionView.reloadData()
                     }))
-                    action.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+                    action.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil))
                     present(action, animated: true)
                     
                 }

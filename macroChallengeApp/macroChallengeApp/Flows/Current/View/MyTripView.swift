@@ -33,7 +33,7 @@ class MyTripView: UIView {
     
     lazy var emptyStateTitle: UILabel = {
         let title = UILabel()
-        title.text = "Click ”+” to add an activity to your day".localized()
+        title.text = "Click ”+” to add an activity to your day.".localized()
         title.numberOfLines = 0
         title.font = designSystem.text.body.font
         title.textAlignment = .center

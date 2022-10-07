@@ -25,6 +25,16 @@
 "Accommodation" = "Hospedagem";
 "Leisure" = "Lazer";
 "Transportation" = "Transporte";
+"Click ”+” to add an activity to your day." = "Clique em ”+” para adicionar uma atividade no seu dia.";
+"Confirm" = "Confirmar";
+"Real  " = "Real  ";
+"Dollar  " = "Dólar  ";
+"Euro  " = "Euro  ";
+"Yen  " = "Iene  ";
+"Swiss Franc  " = "Franco suiço  ";
+"Renminbi  " = "Renmimbi  ";
+"Edit" = "Editar";
+
 
 // MARK: -  Explore
 "New trip" = "Nova viagem";
@@ -40,7 +50,11 @@
 // MARK: -  Profile
 "My roadmaps" = "Meus roteiros";
 "NEW" = "NOVO";
-"Click on ”+” to create a new roadmap or to explore the existing ones." = "Clique no ”+” para criar um novo roteiro ou explore roteiros já existentes.";
+"Click on ”+” to create a new roadmap or to explore the existing ones." = "Clique em ”+” para criar um novo roteiro ou explore roteiros já existentes.";
+"The content cannot be recovered." = "O conteúdo não poderá ser recuperado.";
+"Delete" = "Deletar";
+"Delete all content from" = "Deletar todo o conteúdo de";
+"Can't delete" = "Não é possível deletar";
 
 //Settings
 "Settings" = "Ajustes";
@@ -88,6 +102,9 @@
 "SAT" = "SÁB";
 "How about exploring and booking a new trip?" = "Que tal desbravar e marcar uma nova viagem?";
 "Go to Explore and find a new trip or create your own." = "Vá em Explorar e encontre roteiros sugeridos ou crie o seu.";
+"Do you want to open the address in which app?" = "Você deseja abrir o endereço em qual aplicativo?";
+"Open on Maps" = "Abrir em Mapas";
+"Open on Waze" = "Abrir no Waze";
 
 // MARK: -  NewRoadmap
 "Category" = "Categoria";
@@ -95,8 +112,6 @@
 "A trip to enjoy and refresh yourself on a nice sunny day." = "Uma viagem para aproveitar e se refrescar em um bom dia ensolarado.";
 "A cozy trip, with cooler temperatures to enjoy the view." = "Uma viagem aconchegante, com temperaturas mais baixas para aproveitar a vista.";
 "An immersive journey into the habits of other cities or countries." = "Uma viagem imersiva nos hábitos de outras cidades ou países.";
-
-
 
 "Next" = "Próximo";
 "Previous" = "Anterior";
@@ -117,7 +132,8 @@
 "Public" = "Pública";
 "Private" = "Privada";
 "Are you sure?" = "Tem certeza?";
-"By canceling you will lose all your progress" = "Cancelando você perderá todo o seu processo";
+"By canceling you will lose all your progress." = "Cancelando você perderá todo o seu processo.";
 "Back" = "Voltar";
+"Continue" = "Continuar";
 
 

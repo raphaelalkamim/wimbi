@@ -192,13 +192,13 @@ extension MyTripViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editAction = UIContextualAction(style: .normal,
-                                            title: "Edit") { [weak self] _, _, completionHandler in
+                                            title: "Edit".localized()) { [weak self] _, _, completionHandler in
             self!.coordinator?.editActivity(roadmap: self!.roadmap, day: self!.days[self!.daySelected], delegate: self!, activity: self!.activites[indexPath.row])
             self!.coordinatorCurrent?.editActivity(roadmap: self!.roadmap, day: self!.days[self!.daySelected], delegate: self!, activity: self!.activites[indexPath.row])
             completionHandler(true)
         }
         let deleteAction = UIContextualAction(style: .normal,
-                                              title: "Delete") { [weak self] _, _, completionHandler in
+                                              title: "Delete".localized()) { [weak self] _, _, completionHandler in
             self?.deleteItem(indexPath: indexPath, tableView: tableView)
             completionHandler(true)
         }

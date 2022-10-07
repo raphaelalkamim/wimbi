@@ -81,7 +81,6 @@ class DaysView: UIView {
         self.addSubview(publicCaption)
         self.addSubview(publicSwitch)
 
-        publicSwitch.isOn = true
         viajantesTitleLabel.stylize(with: designSystem.text.caption)
         publicTitle.stylize(with: designSystem.text.body)
         publicCaption.stylize(with: designSystem.text.caption)

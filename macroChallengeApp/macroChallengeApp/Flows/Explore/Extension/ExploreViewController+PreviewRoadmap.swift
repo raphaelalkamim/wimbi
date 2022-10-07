@@ -48,11 +48,11 @@ extension PreviewRoadmapViewController {
         alert.view.tintColor = .accent
         
         let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
-        let string = NSAttributedString(string: "Do you want to open the address in which app?", attributes: titleAtt)
+        let string = NSAttributedString(string: "Do you want to open the address in which app?".localized(), attributes: titleAtt)
         
         alert.setValue(string, forKey: "attributedTitle")
         
-        alert.addAction(UIAlertAction(title: "Maps", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Open on Maps".localized(), style: .default, handler: { _ in
             let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
             let placemark = MKPlacemark(coordinate: coords)
             let mapItem = MKMapItem(placemark: placemark)
@@ -67,7 +67,7 @@ extension PreviewRoadmapViewController {
             alert.addAction(button)
         }
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
         }))
         
         present(alert, animated: true)

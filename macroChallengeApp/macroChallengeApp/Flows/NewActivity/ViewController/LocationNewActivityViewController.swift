@@ -47,7 +47,7 @@ class LocationNewActivityViewController: UIViewController {
         cancelButton.tintColor = .systemRed
         self.navigationItem.leftBarButtonItems = [cancelButton]
         
-        let confirmButton = UIBarButtonItem(title: "Confirm", style: .plain, target: self, action: #selector(confirmAddress))
+        let confirmButton = UIBarButtonItem(title: "Confirm".localized(), style: .plain, target: self, action: #selector(confirmAddress))
         self.navigationItem.rightBarButtonItem = confirmButton
         
         destinyView.setupSearchController(locationTable: locationSearchTable)
