@@ -166,7 +166,7 @@ class DataManager {
         task.resume()
     }
     
-    func postRoadmap(roadmap: Roadmaps, roadmapCore: RoadmapLocal) {
+    func postRoadmap(roadmap: Roadmaps, roadmapCore: RoadmapLocal, daysCore: [DayLocal]) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
         
@@ -216,9 +216,8 @@ class DataManager {
                             do {
                                 // tentar transformar os dados no tipo Cohort
                                 let roadmapResponse = try JSONDecoder().decode(RoadmapDTO.self, from: data)
-                                #warning("FAZER CRIACAO DE DIA")
                                 
-                                self.postDays(roadmapId: roadmapResponse.id)
+                                self.postDays(roadmapId: roadmapResponse.id, daysCore: daysCore)
                                 
                                 roadmapCore.id = Int32(roadmapResponse.id)
                                 RoadmapRepository.shared.saveContext()
@@ -425,7 +424,7 @@ class DataManager {
                     }
                     if let httpResponse = response as? HTTPURLResponse {
                         if httpResponse.statusCode == 200 {
-                           print("Atualizou")
+                            print("Atualizou")
                         }
                     }
                 }
@@ -434,30 +433,178 @@ class DataManager {
         }
     }
     
-    func postDays(roadmapId: Int) {
+    func postDays(roadmapId: Int, daysCore: [DayLocal]) {
         let session = URLSession.shared
-            guard let url = URL(string: baseURL + "roadmaps/\(roadmapId)/days") else { return }
+        guard let url = URL(string: baseURL + "roadmaps/\(roadmapId)/days") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
             
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            if let token = UserDefaults.standard.string(forKey: "authorization") {
-                request.setValue(token, forHTTPHeaderField: "Authorization")
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.addValue("application/json", forHTTPHeaderField: "Accept")
-                
-                let task = session.dataTask(with: request) { data, response, error in
-                    print(response)
-                    guard let data = data else { return }
-                    if error != nil {
-                        print(String(describing: error?.localizedDescription))
-                    }
-                    if let httpResponse = response as? HTTPURLResponse {
-                        if httpResponse.statusCode == 200 {
-                            print("Crio DIAS")
+            let task = session.dataTask(with: request) { data, response, error in
+                print(response)
+                guard let data = data else { return }
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        do {
+                            // tentar transformar os dados no tipo Cohort
+                            var daysResponse = try JSONDecoder().decode([DayDTO].self, from: data)
+                            
+                            daysResponse.sort { $0.id < $1.id }
+                            
+                            for index in 0..<daysResponse.count {
+                                daysCore[index].id = Int32(daysResponse[index].id)
+                                DayRepository.shared.saveContext()
+                            }
+                            
+                        } catch {
+                            // FIXME: tratar o erro do decoder
+                            print(error)
                         }
                     }
                 }
-                task.resume()
+            }
+            task.resume()
+        }
+    }
+    
+    func postActivity(activity: Activity, dayId: Int, activityCore: ActivityLocal) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d/M/y"
+        
+        let activity: [String: Any] = [
+            "name": activity.name,
+            "category": activity.category,
+            "location": activity.location,
+            "hour": activity.hour,
+            "budget": activity.budget
+        ]
+        
+        let session = URLSession.shared
+        guard let url = URL(string: baseURL + "days/\(dayId)/activities") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: activity, options: .prettyPrinted)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                print(response)
+                guard let data = data else { return }
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        do {
+                            let activityResponse = try JSONDecoder().decode(Activity.self, from: data)
+                            
+                            activityCore.id = Int32(activityResponse.id)
+                            ActivityRepository.shared.saveContext()
+                        } catch {
+                            // FIXME: tratar o erro do decoder
+                            print(error)
+                        }
+                    }
+                    
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func putActivity(activity: Activity, dayId: Int) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d/M/y"
+        
+        let activityNew: [String: Any] = [
+            "name": activity.name,
+            "category": activity.category,
+            "location": activity.location,
+            "hour": activity.hour,
+            "budget": activity.budget
+        ]
+        
+        let session = URLSession.shared
+        
+        guard let url = URL(string: baseURL + "days/\(dayId)/activities/\(activity.id)") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: activityNew, options: .prettyPrinted)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                print(response)
+                guard let data = data else { return }
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        do {
+                            
+                        } catch {
+                            // FIXME: tratar o erro do decoder
+                            print(error)
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func deleteObjectBack(objectID: Int, urlPrefix: String, _ completion: @escaping (() -> Void)) {
+        let session: URLSession = URLSession.shared
+        let url: URL = URL(string: baseURL + "\(urlPrefix)/\(objectID)")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            let task = session.dataTask(with: request) { data, response, error in
+                guard let data = data else {return}
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        DispatchQueue.main.async {
+                            completion()
+                        }
+                    }
+                }
+            }
+            task.resume()
         }
     }
     
@@ -471,10 +618,7 @@ class DataManager {
         }
         return nil
     }
-    
 }
-
-
 
 struct FailableDecodable<Base: Decodable>: Decodable {
     let base: Base?

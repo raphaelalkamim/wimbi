@@ -134,6 +134,7 @@
 		DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774228CA820200BA5F5F /* DefaultDesignTextFonts.swift */; };
 		DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774428CA846C00BA5F5F /* UILabel+Font.swift */; };
 		DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F774628CA853000BA5F5F /* CustomLabelDesignable.swift */; };
+		DF66658228F0991100E37429 /* DayDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66658128F0991100E37429 /* DayDTO.swift */; };
 		DFA30CAF28DA2E5A00F316EB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA30CAE28DA2E5A00F316EB /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -293,6 +294,7 @@
 		DF5F774228CA820200BA5F5F /* DefaultDesignTextFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignTextFonts.swift; sourceTree = "<group>"; };
 		DF5F774428CA846C00BA5F5F /* UILabel+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Font.swift"; sourceTree = "<group>"; };
 		DF5F774628CA853000BA5F5F /* CustomLabelDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelDesignable.swift; sourceTree = "<group>"; };
+		DF66658128F0991100E37429 /* DayDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDTO.swift; sourceTree = "<group>"; };
 		DFA30CAE28DA2E5A00F316EB /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		DFA30CB028DA2F0900F316EB /* macroChallengeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macroChallengeApp.entitlements; sourceTree = "<group>"; };
 		F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macroChallengeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -508,6 +510,7 @@
 				B0CDF34F28CFC7E90092A76C /* Category.swift */,
 				DF2643AA28DB9CC500053180 /* UserRoadmap.swift */,
 				DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */,
+				DF66658128F0991100E37429 /* DayDTO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1128,6 +1131,7 @@
 				131272B828E610AC000B7968 /* StringProtocol.swift in Sources */,
 				1379744328D8E56700AEA662 /* ProfileViewController.swift in Sources */,
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
+				DF66658228F0991100E37429 /* DayDTO.swift in Sources */,
 				B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */,
 				13C8A14928CFA66200994196 /* DestinyView.swift in Sources */,
 				A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */,

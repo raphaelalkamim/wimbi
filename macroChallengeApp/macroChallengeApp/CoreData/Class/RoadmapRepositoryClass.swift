@@ -61,9 +61,28 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.dateFinal = dateFinal
         newRoadmap.createdAt = roadmap.createdAt
         // newRoadmap.addToUser(user)
-        self.postInBackend(newRoadmap: newRoadmap, roadmap: roadmap)
-        self.saveContext()
         
+        // save days in Roadmap
+        var isFirstDay = false
+        for index in 0..<roadmap.dayCount {
+            if index == 0 {
+                isFirstDay = true
+            } else {
+                isFirstDay = false
+            }
+            
+            let dateFormat = DateFormatter()
+            dateFormat.dateStyle = .short
+            dateFormat.timeStyle = .none
+            
+            let date = dateFormat.date(from: roadmap.dateInitial)
+            let newDay = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: date ?? Date(), indexPath: index, isSelected: isFirstDay))
+        }
+        if var createdDays = newRoadmap.day?.allObjects as? [DayLocal] {
+            createdDays.sort { $0.id < $1.id }
+            self.postInBackend(newRoadmap: newRoadmap, roadmap: roadmap, newDays: createdDays)
+        }
+        self.saveContext()
         return newRoadmap
     }
     func updateRoadmap(editRoadmap: RoadmapLocal, roadmap: Roadmaps) -> RoadmapLocal {
@@ -146,12 +165,15 @@ public class RoadmapRepository: NSManagedObject {
     }
     
     func deleteRoadmap(roadmap: RoadmapLocal) throws {
+        DataManager.shared.deleteObjectBack(objectID: Int(roadmap.id), urlPrefix: "roadmaps", {
+            print("deleted roadmap")
+        })
         self.persistentContainer.viewContext.delete(roadmap)
         self.saveContext()
     }
     
-    func postInBackend(newRoadmap: RoadmapLocal, roadmap: Roadmaps) {
-        DataManager.shared.postRoadmap(roadmap: roadmap, roadmapCore: newRoadmap)
+    func postInBackend(newRoadmap: RoadmapLocal, roadmap: Roadmaps, newDays: [DayLocal]) {
+        DataManager.shared.postRoadmap(roadmap: roadmap, roadmapCore: newRoadmap, daysCore: newDays)
     }
     
     func updateBackend(roadmap: Roadmaps, id: Int) {

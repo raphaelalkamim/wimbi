@@ -90,28 +90,11 @@ class ReviewTravelViewController: UIViewController {
     
     func saveCoreData() {
         roadmap.imageId = "beach0"
-                
         // save in Core Data
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
         RoadmapRepository.shared.saveContext()
-        
-        // save days in Roadmap
-        var isFirstDay = false
-        for index in 0..<roadmap.dayCount {
-            if index == 0 {
-                isFirstDay = true
-            } else {
-                isFirstDay = false
-            }
-            
-            let dateFormat = DateFormatter()
-            dateFormat.dateStyle = .short
-            dateFormat.timeStyle = .none
-            
-            let date = dateFormat.date(from: roadmap.dateInitial)
-            let newDay = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: date ?? Date(), indexPath: index, isSelected: isFirstDay))
-        }
     }
+    
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {
         let date = startDay.addingTimeInterval(Double(indexPath) * 24 * 3600)
         var day = Day(isSelected: isSelected, date: date)
