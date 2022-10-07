@@ -86,12 +86,21 @@
 "THU" = "QUI";
 "FRI" = "SEX";
 "SAT" = "SÁB";
+"How about exploring and booking a new trip?" = "Que tal desbravar e marcar uma nova viagem?";
+"Go to Explore and find a new trip or create your own." = "Vá em Explorar e encontre roteiros sugeridos ou crie o seu.";
 
 // MARK: -  NewRoadmap
 "Category" = "Categoria";
+"A welcoming journey with more contact with nature." = "Uma viagem acolhedora com mais contato com a natureza.";
+"A trip to enjoy and refresh yourself on a nice sunny day." = "Uma viagem para aproveitar e se refrescar em um bom dia ensolarado.";
+"A cozy trip, with cooler temperatures to enjoy the view." = "Uma viagem aconchegante, com temperaturas mais baixas para aproveitar a vista.";
+"An immersive journey into the habits of other cities or countries." = "Uma viagem imersiva nos hábitos de outras cidades ou países.";
+
+
+
 "Next" = "Próximo";
 "Previous" = "Anterior";
-"Destiny" = "Destino";
+"Destination" = "Destino";
 "Where do you want to go?" = "Para onde você vai?";
 "Days and travelers" = "Dias e viajantes";
 "DATE" = "DATA";

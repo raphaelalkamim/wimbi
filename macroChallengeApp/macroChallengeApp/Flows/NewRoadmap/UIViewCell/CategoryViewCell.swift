@@ -30,7 +30,7 @@ class CategoryViewCell: UICollectionViewCell {
     
     lazy var subtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.stylize(with: designSystem.text.caption)
+        subtitle.stylize(with: designSystem.text.smallCaption)
         return subtitle
     }()
     
@@ -59,14 +59,14 @@ extension CategoryViewCell {
         subtitle.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(16)
             make.trailing.equalTo(icon.snp.leading).inset(-16)
-            make.top.equalTo(title.snp.bottom).inset(-8)
+            make.top.equalTo(title.snp.bottom)
         }
         
         icon.snp.makeConstraints { make in
             make.leading.equalTo(title.snp.trailing)
             make.trailing.equalToSuperview().inset(16)
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(self.snp.height).inset(10)
+            make.width.height.equalTo(70)
         }
     }
     

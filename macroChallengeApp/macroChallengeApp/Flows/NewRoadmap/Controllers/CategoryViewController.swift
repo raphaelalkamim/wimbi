@@ -14,10 +14,10 @@ class CategoryViewController: UIViewController {
     
     let categoryView = CategoryView()
     let categories: [Category] =
-    [Category(title: "Countryside".localized(), subtitle: "Descrição aqui", icon: "categoryCamp"),
-     Category(title: "Beach".localized(), subtitle: "Descrição aqui", icon: "categoryBeach"),
-     Category(title: "Mountain".localized(), subtitle: "Descrição aqui", icon: "categoryMountain"),
-     Category(title: "City".localized(), subtitle: "Descrição aqui", icon: "categoryCity")]
+    [Category(title: "Countryside".localized(), subtitle: "A welcoming journey with more contact with nature.".localized(), icon: "categoryCamp"),
+     Category(title: "Beach".localized(), subtitle: "A trip to enjoy and refresh yourself on a nice sunny day.".localized(), icon: "categoryBeach"),
+     Category(title: "Mountain".localized(), subtitle: "A cozy trip, with cooler temperatures to enjoy the view.".localized(), icon: "categoryMountain"),
+     Category(title: "City".localized(), subtitle: "An immersive journey into the habits of other cities or countries.".localized(), icon: "categoryCity")]
     
     var roadmap = Roadmaps()
     var nextButton = UIBarButtonItem()
