@@ -78,7 +78,9 @@ class NewActivityViewController: UIViewController {
         if UserDefaults.standard.bool(forKey: "switch") == true {
             print("registrou")
             if let safeActivity = createdActivity {
-                NotificationManager.shared.registerNotification(createdActivity: safeActivity)
+                NotificationManager.shared.registerActivityNotification(createdActivity: safeActivity)
+                NotificationManager.shared.registerTripNotification(roadmap: roadmap)
+
             }
             
         }
