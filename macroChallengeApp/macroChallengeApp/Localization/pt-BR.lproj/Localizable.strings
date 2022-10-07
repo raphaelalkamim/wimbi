@@ -31,7 +31,7 @@
 "Dollar  " = "Dólar  ";
 "Euro  " = "Euro  ";
 "Yen  " = "Iene  ";
-"Swiss Franc  " = "Franco suiço  ";
+"Swiss Franc  " = "Franco suíço  ";
 "Renminbi  " = "Renmimbi  ";
 "Edit" = "Editar";
 
@@ -41,6 +41,7 @@
 "Join trip" = "Junte-se à viagem";
 "Add the code to have access to the trip" = "Adicione o código para juntar-se à viagem";
 "Join" = "Junte-se";
+"No internet connection" = "Sem conexão com a internet";
 
 // MARK: -  TabBar
 "Explore" = "Explorar";
@@ -71,6 +72,9 @@
 "minutes" = "minutos";
 "hours" = "horas";
 "days" = "dias";
+"days left" = "dias";
+"day left" = "dia";
+"Your trip is \ntomorrow!" = "Sua viagem é \namanhã!";
 "By activating the notification you will configure the frequency of the reminders before every activity." = "Ao ativar a notificação você estará configurando a frequência em que receberá lembretes antes de cada atividade.";
 "Sign out of your account?" = "Sair da sua conta?";
 "Cancel" = "Cancelar";
@@ -92,7 +96,6 @@
 "Day " = "Dia ";
 "DAILY COSTS" = "CUSTOS DO DIA";
 "Free" = "Grátis";
-"Left" = "Faltam";
 "SUN" = "DOM";
 "MON" = "SEG";
 "TUE" = "TER";
@@ -103,9 +106,10 @@
 "How about exploring and booking a new trip?" = "Que tal desbravar e marcar uma nova viagem?";
 "Go to Explore and find a new trip or create your own." = "Vá em Explorar e encontre roteiros sugeridos ou crie o seu.";
 "Do you want to open the address in which app?" = "Você deseja abrir o endereço em qual aplicativo?";
-"Open on Maps" = "Abrir em Mapas";
+"Open on Maps" = "Abrir no Mapas";
 "Open on Waze" = "Abrir no Waze";
-
+"Open on Google Maps" = "Abrir no Google Maps";
+"Open on" = "Abrir no";
 // MARK: -  NewRoadmap
 "Category" = "Categoria";
 "A welcoming journey with more contact with nature." = "Uma viagem acolhedora com mais contato com a natureza.";

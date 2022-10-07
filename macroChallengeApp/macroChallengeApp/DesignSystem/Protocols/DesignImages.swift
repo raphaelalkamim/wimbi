@@ -17,5 +17,6 @@ protocol DesignImages {
     var compass: UIImage { get }
     var flora: UIImage { get }
     var map: UIImage { get }
+    var lostConnection: UIImage { get }
 
 }

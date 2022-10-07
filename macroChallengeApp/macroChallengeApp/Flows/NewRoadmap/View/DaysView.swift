@@ -58,6 +58,7 @@ class DaysView: UIView {
     lazy var publicSwitch: UISwitch = {
         let publicSwitch = UISwitch()
         publicSwitch.addTarget(self, action: #selector(turnRoadmapPublic(_:)), for: .valueChanged)
+        publicSwitch.onTintColor = .accent
         return publicSwitch
     }()
     
