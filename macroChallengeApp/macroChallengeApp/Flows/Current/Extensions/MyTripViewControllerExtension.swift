@@ -101,7 +101,9 @@ extension MyTripViewController: UICollectionViewDelegate {
             
             // view updates
             self.myTripView.activitiesTableView.reloadData()
-            self.updateBudget()
+            Task {
+                await self.updateBudget()
+            }
             self.updateTotalBudgetValue()
         }
         

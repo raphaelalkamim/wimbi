@@ -10,33 +10,27 @@ import UIKit
 
 class CurrencyAPI {
     public static var shared = CurrencyAPI()
-    var currency: Currency?
+    var currency: DecodedCurrency?
     let baseURL: String = "https://economia.awesomeapi.com.br/last/"
     
-    func getCurrency(incomingCurrency: String, outgoingCurrency: String, _ completion: @escaping ((_ currency: Currency) -> Void)) {
-        let session: URLSession = URLSession.shared
-        
+    func getCurrency(incomingCurrency: String, outgoingCurrency: String) async -> DecodedCurrency? {
         let convertedIncomingCurrency = convertCurrency(currency: incomingCurrency)
         let convertedOutgoingCurrency = convertCurrency(currency: outgoingCurrency)
         
         let url = URL(string: baseURL + convertedOutgoingCurrency + "-" + convertedIncomingCurrency)!
         
-        let task = session.dataTask(with: url) { data, response, error in
-            guard let data = data else { return }
-            if error != nil {
-                print(String(describing: error?.localizedDescription))
-            }
-            let resp: String = String(data: data, encoding: .utf8) ?? "Error"
-            do {
-                self.currency = try JSONDecoder().decode(Currency.self, from: data)
-            } catch {
-                print("PARSE ERROR")
-            }
-        }
-        task.resume()
         
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            self.currency = try JSONDecoder().decode(DecodedCurrency.self, from: data)
+        } catch {
+            print(String(describing: error.localizedDescription))
+        }
+        print("Currencyyyyyyyyyyy")
+        print(self.currency)
+        return self.currency
     }
-
+    
     private func convertCurrency(currency: String) -> String {
         var currencyConverted = ""
         

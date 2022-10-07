@@ -35,7 +35,9 @@ class MyTripViewController: UIViewController {
         self.getAllDays()
         self.activites = self.getAllActivities()
         self.emptyState(activities: activites)
-        self.updateBudget()
+        Task {
+            await self.updateBudget()
+        }
         self.updateTotalBudgetValue()
     }
     
@@ -60,18 +62,19 @@ class MyTripViewController: UIViewController {
         return []
     }
     
-    func getCurrencyFromAPI(userCurrency: String, outgoinCurrency: String) -> Double {
-        CurrencyAPI.shared.getCurrency(incomingCurrency: userCurrency, outgoingCurrency: outgoinCurrency) { currency in
-        print(currency.high)
-        print(currency.name)
-    }
+    func getCurrencyFromAPI(userCurrency: String, outgoinCurrency: String) async -> Double {
+        var total: Double = 0
+        let currency = await CurrencyAPI.shared.getCurrency(incomingCurrency: userCurrency, outgoingCurrency: outgoinCurrency)
         
-        let currencyValue = CurrencyAPI.shared.currency?.high ?? ""
-        return Double(currencyValue) ?? 0
+        if let currency = currency {
+            let value = currency.array[0].high
+            let currencyToDouble = Double(value) ?? 0
+            total = currencyToDouble
+        }
+        return total
     }
     
-    
-    func updateBudget() {
+    func updateBudget() async {
         let userCurrency = "R$"
         var budgetDay: Double = 0
         
@@ -89,7 +92,9 @@ class MyTripViewController: UIViewController {
                 if userCurrency == "R$" {
                     budgetDay += activite.budget
                 } else {
-                    budgetDay += activite.budget * getCurrencyFromAPI( userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    
+                    let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    budgetDay += activite.budget * value
                 }
                 
             case "U$":
@@ -97,7 +102,8 @@ class MyTripViewController: UIViewController {
                 if userCurrency == "U$" {
                     budgetDay += activite.budget
                 } else {
-                    budgetDay += activite.budget * getCurrencyFromAPI( userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    budgetDay += activite.budget * value
                 }
                 
             case "€":
@@ -105,7 +111,8 @@ class MyTripViewController: UIViewController {
                 if userCurrency == "€" {
                     budgetDay += activite.budget
                 } else {
-                    budgetDay += activite.budget * getCurrencyFromAPI( userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    budgetDay += activite.budget * value
                 }
                 
             case "¥":
@@ -113,7 +120,8 @@ class MyTripViewController: UIViewController {
                 if userCurrency == "¥" {
                     budgetDay += activite.budget
                 } else {
-                    budgetDay += activite.budget * getCurrencyFromAPI( userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    budgetDay += activite.budget * value
                 }
                 
             case "Fr":
@@ -121,7 +129,8 @@ class MyTripViewController: UIViewController {
                 if userCurrency == "Fr" {
                     budgetDay += activite.budget
                 } else {
-                    budgetDay += activite.budget * getCurrencyFromAPI( userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    budgetDay += activite.budget * value
                 }
                 
             case "元":
@@ -129,7 +138,8 @@ class MyTripViewController: UIViewController {
                 if userCurrency == "元" {
                     budgetDay += activite.budget
                 } else {
-                    budgetDay += activite.budget * getCurrencyFromAPI( userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    budgetDay += activite.budget * value
                 }
                 
             default:
@@ -188,7 +198,9 @@ extension MyTripViewController: ReviewTravelDelegate {
         self.getAllDays()
         self.activites = self.getAllActivities()
         self.emptyState(activities: activites)
-        self.updateBudget()
+        Task {
+            await self.updateBudget()
+        }
         self.updateTotalBudgetValue()
         
         myTripView.infoTripCollectionView.reloadItems(at: [IndexPath(item: 0, section: 0)])
