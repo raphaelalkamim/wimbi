@@ -59,10 +59,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
-//            coordinator?.startLogin()
-//        }
-        
         if let data = UserDefaults.standard.data(forKey: "user") {
             do {
                 let decoder = JSONDecoder()
@@ -123,6 +119,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         self.profileView.getUsernameApp().text = "@\(user.usernameApp)"
         self.profileView.getTable().reloadData()
         self.profileView.getImage().image = UIImage(named: user.photoId)
+        _ = UserRepository.shared.createUser(user: user)
     }
 }
 
