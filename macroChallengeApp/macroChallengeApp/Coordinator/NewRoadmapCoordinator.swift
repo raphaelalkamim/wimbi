@@ -63,11 +63,11 @@ class NewRoadmapCoordinator: Coordinator {
         let subtitleString = NSAttributedString(string: "By canceling you will lose all your progress".localized(), attributes: subtitleAtt)
         alert.setValue(subtitleString, forKey: "attributedMessage")
         
-        alert.addAction(UIAlertAction(title: "Back".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-        }))
         alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
             self.navigationController.dismiss(animated: true)
             self.delegate?.didFinishPresent(of: self, isNewRoadmap: isNewRoadmap)
+        }))
+        alert.addAction(UIAlertAction(title: "Continue".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
         }))
         navigationController.present(alert, animated: true)
     }
