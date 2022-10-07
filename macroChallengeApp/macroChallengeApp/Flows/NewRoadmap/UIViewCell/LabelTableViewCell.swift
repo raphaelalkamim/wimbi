@@ -100,6 +100,7 @@ class LabelTableViewCell: UITableViewCell {
         self.value.text = String(daysValue)
     }
     func configureTripStatus(isPublic: Bool) {
+        self.layer.cornerRadius = 16
         self.title.text = "Trip".localized()
         if isPublic == true {
             self.value.text = "Public".localized()
