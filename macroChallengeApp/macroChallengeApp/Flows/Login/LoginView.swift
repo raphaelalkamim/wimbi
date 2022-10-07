@@ -23,11 +23,11 @@ class LoginView: UIView {
     
     lazy var agreeText: UILabel = {
         let label = UILabel()
+        label.text = "By clicking on the button above, you agree to our privacy policies".localized()
         label.textAlignment = .center
         label.font = UIFont(name: "Avenir-Roman", size: 14)!
         label.numberOfLines = 0
         label.textColor = .textPrimary
-        label.text = "By clicking on the button above, you agree to our terms of use and privacy policies".localized()
         return label
     }()
     

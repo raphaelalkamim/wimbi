@@ -48,11 +48,11 @@ extension PreviewRoadmapViewController {
         alert.view.tintColor = .accent
         
         let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
-        let string = NSAttributedString(string: "Do you want to open the address in which app?", attributes: titleAtt)
+        let string = NSAttributedString(string: "Do you want to open the address in which app?".localized(), attributes: titleAtt)
         
         alert.setValue(string, forKey: "attributedTitle")
         
-        alert.addAction(UIAlertAction(title: "Maps", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Open on Maps".localized(), style: .default, handler: { _ in
             let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
             let placemark = MKPlacemark(coordinate: coords)
             let mapItem = MKMapItem(placemark: placemark)
@@ -67,7 +67,7 @@ extension PreviewRoadmapViewController {
             alert.addAction(button)
         }
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
         }))
         
         present(alert, animated: true)
@@ -94,7 +94,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
             }
             switch indexPath.row {
             case 0:
-                cell.title.text = "CATEGORIA"
+                cell.title.text = "CATEGORY".localized()
                 cell.circle.isHidden = false
                 cell.categoryTitle.isHidden = false
                 cell.categoryTitle.text = self.roadmap.category
@@ -104,23 +104,23 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 }
                 
             case 1:
-                cell.title.text = "VALOR TOTAL"
+                cell.title.text = "TOTAL AMOUNT".localized()
                 cell.info.isHidden = true
                 cell.infoTitle.isHidden = false
                 cell.circle.isHidden = true
                 cell.categoryTitle.isHidden = true
                 cell.infoTitle.text = "\(self.roadmap.budget)"
             case 2:
-                cell.title.text = "VIAJANTES"
+                cell.title.text = "TRAVELERS".localized()
                 cell.info.isHidden = false
                 cell.infoTitle.isHidden = true
                 cell.info.setTitle(" \(self.roadmap.peopleCount)", for: .normal)
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
             case 3:
-                cell.title.text = "CURTIDAS"
+                cell.title.text = "LIKES".localized()
                 cell.info.setTitle(" 10k", for: .normal)
             case 4:
-                cell.title.text = "CRIADO POR"
+                cell.title.text = "CREATED BY".localized()
                 cell.separator.isHidden = true
                 cell.circle.isHidden = false
                 cell.info.isHidden = true
@@ -140,7 +140,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 
             }
             
-            cell.setDay(date: self.roadmap.days[indexPath.row].date ?? "1")
+            cell.setDay(date: self.roadmap.days[indexPath.row].date )
             if self.roadmap.days[indexPath.row].isSelected == true {
                 cell.selectedButton()
             }

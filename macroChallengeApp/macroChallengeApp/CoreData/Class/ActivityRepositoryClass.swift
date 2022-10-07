@@ -71,7 +71,7 @@ class ActivityRepository {
         newActivity.id = Int32(activity.id)
         newActivity.name = activity.name
         newActivity.category = activity.category
-        if activity.category == ""{
+        if activity.category.isEmpty {
             newActivity.category = oldActivity.category
         }
         newActivity.location = activity.location

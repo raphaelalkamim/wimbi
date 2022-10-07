@@ -60,8 +60,6 @@ extension NotificationsViewController: UITableViewDataSource {
             cellPicker.setup()
             cellPicker.title.text = "Frequency".localized()
             cellPicker.backgroundColor = designSystem.palette.backgroundCell
-            print(cellPicker.picker.selectedRow(inComponent: 0)+1) // numero
-            print(cellPicker.picker.selectedRow(inComponent: 1)+1) // minuto, hora, dia
             cell = cellPicker
             
         default:

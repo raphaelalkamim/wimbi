@@ -72,10 +72,10 @@ class ProfileCoordinator: Coordinator {
         viewController.coordinator = self
         viewController.day = day
         viewController.roadmap = roadmap
-        viewController.navigationItem.title = "New Activity"
+        viewController.navigationItem.title = "New activity".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
-    func editActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController, activity: ActivityLocal){
+    func editActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController, activity: ActivityLocal) {
         let viewController = NewActivityViewController()
         viewController.delegate = delegate
         viewController.coordinator = self
@@ -83,7 +83,7 @@ class ProfileCoordinator: Coordinator {
         viewController.edit = true
         viewController.activityEdit = activity
         viewController.roadmap = roadmap
-        viewController.navigationItem.title = "New Activity"
+        viewController.navigationItem.title = "New activity".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
     func openLocationActivity(delegate: ChangeTextTableDelegate, roadmap: RoadmapLocal) {
@@ -97,7 +97,7 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func settings(profileVC : ProfileViewController) {
+    func settings(profileVC: ProfileViewController) {
         let viewController = SettingsViewController()
         viewController.coordinator = self
         viewController.delegate = profileVC

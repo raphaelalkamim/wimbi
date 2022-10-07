@@ -26,7 +26,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         title.textColor = .textPrimary
         title.font = UIFont(name: "Avenir-Roman", size: 10)
         title.textAlignment = .center
-        title.text = "SUN"
+        title.text = "SUN".localized()
         return title
     }()
     
@@ -81,11 +81,11 @@ extension CalendarCollectionViewCell {
         dayButton.setTitle(format.string(from: newDate ?? Date()), for: .normal)
     }
     func setupDayWeek(day: Int) -> String {
-        let weekDays = ["SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"]
+        let weekDays = ["SUN".localized(), "MON".localized(), "TUE".localized(), "WED".localized(), "THU".localized(), "FRI".localized(), "SAT".localized()]
         for integer in 0..<weekDays.count where integer == day {
             return weekDays[integer]
         }
-        return "SUN"
+        return "SUN".localized()
     }
    
     @objc func dayAction() {

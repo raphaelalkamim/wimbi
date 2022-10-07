@@ -93,6 +93,7 @@ class DaysView: UIView {
             print("on")
             isPublic = true
         } else {
+            print("off")
             isPublic = false
         }
     }

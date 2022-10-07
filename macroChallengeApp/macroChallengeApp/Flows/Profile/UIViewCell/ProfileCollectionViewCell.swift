@@ -60,7 +60,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     lazy var likeLabel: UILabel = {
         let title = UILabel()
         title.textColor = .textPrimary
-        title.font = UIFont(name: "Avenir-Light", size: 12)
+        title.font = UIFont(name: "Avenir-Book", size: 12)
         title.text = String(0)
         title.textAlignment = .center
         return title

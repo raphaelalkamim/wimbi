@@ -7,7 +7,7 @@
 */
 
 // MARK: -  Login
-"By clicking on the button above, you agree to our terms of use and privacy policies" = "Clicando no botão acima, você concorda com nossos termos de uso e políticas de privacidade";
+"By clicking on the button above, you agree to our privacy policies" = "Clicando no botão acima, você concorda com nossas políticas de privacidade";
 
 // MARK: -  New Activity
 "TYPE" = "TIPO";
@@ -25,11 +25,22 @@
 "Accommodation" = "Hospedagem";
 "Leisure" = "Lazer";
 "Transportation" = "Transporte";
+"Click ”+” to add an activity to your day." = "Clique em ”+” para adicionar uma atividade no seu dia.";
+"Confirm" = "Confirmar";
+"Real  " = "Real  ";
+"Dollar  " = "Dólar  ";
+"Euro  " = "Euro  ";
+"Yen  " = "Iene  ";
+"Swiss Franc  " = "Franco suiço  ";
+"Renminbi  " = "Renmimbi  ";
+"Edit" = "Editar";
+
 
 // MARK: -  Explore
-//ainda nao dei .localized
 "New trip" = "Nova viagem";
-"Join trip" = "????";
+"Join trip" = "Junte-se à viagem";
+"Add the code to have access to the trip" = "Adicione o código para juntar-se à viagem";
+"Join" = "Junte-se";
 
 // MARK: -  TabBar
 "Explore" = "Explorar";
@@ -39,14 +50,18 @@
 // MARK: -  Profile
 "My roadmaps" = "Meus roteiros";
 "NEW" = "NOVO";
-"Click on ”+” to create a new roadmap or to explore the existing ones." = "Clique no ”+” para criar um novo roteiro ou explore roteiros já existentes.";
+"Click on ”+” to create a new roadmap or to explore the existing ones." = "Clique em ”+” para criar um novo roteiro ou explore roteiros já existentes.";
+"The content cannot be recovered." = "O conteúdo não poderá ser recuperado.";
+"Delete" = "Deletar";
+"Delete all content from" = "Deletar todo o conteúdo de";
+"Can't delete" = "Não é possível deletar";
 
 //Settings
-"Settings" = "Configurações";
+"Settings" = "Ajustes";
 "Edit profile" = "Editar perfil";
 "Liked roadmaps" = "Roteiros curtidos";
 "Notifications" = "Notificações";
-"Terms of privacy" = "Termos de privacidade";
+"Privacy policies" = "Políticas de privacidade";
 "Sign out" = "Sair";
 "NAME" = "NOME";
 "USERNAME" = "NOME DO USUÁRIO";
@@ -74,16 +89,33 @@
 "CREATED BY" = "CRIADO POR";
 "TRAVEL DAYS" = "DIAS DE VIAGEM";
 "ROADMAP" = "ROTEIRO";
-"Day" = "Dia";
+"Day " = "Dia ";
 "DAILY COSTS" = "CUSTOS DO DIA";
 "Free" = "Grátis";
 "Left" = "Faltam";
+"SUN" = "DOM";
+"MON" = "SEG";
+"TUE" = "TER";
+"WED" = "QUA";
+"THU" = "QUI";
+"FRI" = "SEX";
+"SAT" = "SÁB";
+"How about exploring and booking a new trip?" = "Que tal desbravar e marcar uma nova viagem?";
+"Go to Explore and find a new trip or create your own." = "Vá em Explorar e encontre roteiros sugeridos ou crie o seu.";
+"Do you want to open the address in which app?" = "Você deseja abrir o endereço em qual aplicativo?";
+"Open on Maps" = "Abrir em Mapas";
+"Open on Waze" = "Abrir no Waze";
 
 // MARK: -  NewRoadmap
 "Category" = "Categoria";
+"A welcoming journey with more contact with nature." = "Uma viagem acolhedora com mais contato com a natureza.";
+"A trip to enjoy and refresh yourself on a nice sunny day." = "Uma viagem para aproveitar e se refrescar em um bom dia ensolarado.";
+"A cozy trip, with cooler temperatures to enjoy the view." = "Uma viagem aconchegante, com temperaturas mais baixas para aproveitar a vista.";
+"An immersive journey into the habits of other cities or countries." = "Uma viagem imersiva nos hábitos de outras cidades ou países.";
+
 "Next" = "Próximo";
 "Previous" = "Anterior";
-"Destiny" = "Destino";
+"Destination" = "Destino";
 "Where do you want to go?" = "Para onde você vai?";
 "Days and travelers" = "Dias e viajantes";
 "DATE" = "DATA";
@@ -100,7 +132,8 @@
 "Public" = "Pública";
 "Private" = "Privada";
 "Are you sure?" = "Tem certeza?";
-"By canceling you will lose all your progress" = "Cancelando você perderá todo o seu processo";
+"By canceling you will lose all your progress." = "Cancelando você perderá todo o seu processo.";
 "Back" = "Voltar";
+"Continue" = "Continuar";
 
 

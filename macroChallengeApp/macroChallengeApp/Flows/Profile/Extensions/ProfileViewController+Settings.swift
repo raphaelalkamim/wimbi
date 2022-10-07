@@ -25,7 +25,7 @@ extension SettingsViewController: UITableViewDelegate {
 
 extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -42,12 +42,12 @@ extension SettingsViewController: UITableViewDataSource {
             let viewController = NotificationsViewController()
             viewController.navigationItem.title = "Notifications".localized()
             navigationController?.pushViewController(viewController, animated: true)
-        case 3:
-            let viewController = TermsViewController()
-            viewController.navigationItem.title = "Terms of privacy".localized()
-            navigationController?.pushViewController(viewController, animated: true)
+//        case 3:
+//            let viewController = TermsViewController()
+//            viewController.navigationItem.title = "Privacy policies".localized()
+//            navigationController?.pushViewController(viewController, animated: true)
             
-        case 4:
+        case 3:
             let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
             alert.view.tintColor = .accent
             let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
@@ -91,11 +91,11 @@ extension SettingsViewController: UITableViewDataSource {
             cell.title.text = "Notifications".localized()
             cell.icon.setImage(UIImage(systemName: "bell.fill"), for: .normal)
             
-        case 3:
-            cell.title.text = "Terms of privacy".localized()
-            cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
+//        case 3:
+//            cell.title.text = "Privacy policies".localized()
+//            cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
             
-        case 4:
+        case 3:
             cell.title.text = "Sign out".localized()
             cell.title.textColor = .redCity
             cell.icon.isHidden = true

@@ -1,0 +1,137 @@
+/* 
+  Localizable.strings
+  macroChallengeApp
+
+  Created by Carolina Ortega on 28/09/22.
+  
+*/
+
+// MARK: -  Login
+"By clicking on the button above, you agree to our privacy policies" = "Al hacer clic en el botón de arriba, usted acepta nuestras políticas de privacidad";
+
+// MARK: -  New Activity
+"TYPE" = "TIPO";
+"LOCATION" = "UBICACIÓN";
+"TIME" = "HORARIO";
+"EXPENSE" = "GASTO";
+"New activity" = "Nueva actividad";
+"Address" = "Dirección";
+"Name" = "Nombre";
+"Date" = "Fecha";
+"Hour" = "Hora";
+"Currency" = "Moneda";
+"Value" = "Valor";
+"Food" = "Alimentación";
+"Accommodation" = "Habitacíon";
+"Leisure" = "Ocio";
+"Transportation" = "Transporte";
+"Click ”+” to add an activity to your day." = "Haz clic en ”+” para agregar una actividad a su día.";
+"Confirm" = "Confirmar";
+"Real  " = "Real  ";
+"Dollar  " = "Dolar  ";
+"Euro  " = "Euro  ";
+"Yen  " = "Yen  ";
+"Swiss Franc  " = "Franco suizo  ";
+"Renminbi  " = "Renmimbi  ";
+"Edit" = "Editar";
+
+// MARK: -  Explore
+"New trip" = "Nuevo viaje";
+"Join trip" = "Unirse al viaje";
+"Add the code to have access to the trip" = "Añade el código para tener acceso al viaje";
+"Join" = "Unirse";
+
+// MARK: -  TabBar
+"Explore" = "Explorar";
+"Current" = "Actual";
+"Profile" = "Perfil";
+
+// MARK: -  Profile
+"My roadmaps" = "Mis guias de viaje";
+"NEW" = "NUEVO";
+"Click on ”+” to create a new roadmap or to explore the existing ones." = "Haz clic en ”+” para crear una nueva guia de viaje o para explorar las existentes.";
+"The content cannot be recovered." = "El contenido no se puede recuperar.";
+"Delete" = "Eliminar";
+"Delete all content from" = "Eliminar todo el contenido de";
+"Can't delete" = "No se puede eliminar";
+
+//Settings
+"Settings" = "Configuración";
+"Edit profile" = "Editar perfil";
+"Liked roadmaps" = "Guias de viaje que me gustaron";
+"Notifications" = "Notificaciones";
+"Privacy policies" = "Políticas de privacidad";
+"Sign out" = "Salir";
+"NAME" = "NOMBRE";
+"USERNAME" = "NOMBRE DE USUARIO";
+"Save" = "Salvar";
+"Turn on notification" = "Activar notificaciones";
+"Frequency" = "Frecuencia";
+"minutes" = "minutos";
+"hours" = "horas";
+"days" = "días";
+"By activating the notification you will configure the frequency of the reminders before every activity." = "Al activar la notificación, establecerá la frecuencia con la que recibirá recordatorios antes de cada actividad.";
+"Sign out of your account?" = "¿Usted desea salir?";
+"Cancel" = "Cancelar";
+"Sign out" = "Salir";
+
+// MARK: -  Current
+"ABOUT" = "ACERCA";
+"CATEGORY" = "CATEGORÍA";
+"Mountain" = "Montaña";
+"Countryside" = "Campo";
+"Beach" = "Playa";
+"City" = "Ciudad";
+"TOTAL AMOUNT" = "IMPORTE TOTAL";
+"TRAVELERS" = "VIAJEROS";
+"LIKES" = "ME GUSTA"; //confirmar
+"CREATED BY" = "CREADO POR";
+"TRAVEL DAYS" = "DÍAS DE VIAJE";
+"ROADMAP" = "GUIA DE VIAJE";
+"Day " = "Día ";
+"DAILY COSTS" = "COSTOS DIARIOS";
+"Free" = "Gratis";
+"Left" = "Le faltan";
+"SUN" = "DOM";
+"MON" = "LUN";
+"TUE" = "MAR";
+"WED" = "MIÉ";
+"THU" = "JUE";
+"FRI" = "VIE";
+"SAT" = "SÁB";
+"How about exploring and booking a new trip?" = "¿Qué tal explorar y reservar un nuevo viaje?";
+"Go to Explore and find a new trip or create your own." = "Vaya a Explorar y busque itinerarios sugeridos o cree el suyo propio.";
+"Do you want to open the address in which app?" = "¿Quiere abrir la dirección en qué aplicación?";
+"Open on Maps" = "Abrir en Mapas";
+"Open on Waze" = "Abrir en Waze";
+
+// MARK: -  NewRoadmap
+"Category" = "Categoría";
+"A welcoming journey with more contact with nature." = "Un viaje acogedor con más contacto con la naturaleza.";
+"A trip to enjoy and refresh yourself on a nice sunny day." = "Un viaje para disfrutar y refrescarse en un lindo día soleado.";
+"A cozy trip, with cooler temperatures to enjoy the view." = "Un viaje agradable, con temperaturas más bajas para disfrutar de la vista.";
+"An immersive journey into the habits of other cities or countries." = "Un viaje inmersivo a los hábitos de otras ciudades o países.";
+
+"Next" = "Próximo";
+"Previous" = "Anterior";
+"Destination" = "Destino";
+"Where do you want to go?" = "¿Donde le gustaria ir?";
+"Days and travelers" = "Días y viajeros";
+"DATE" = "FECHA";
+"Start date" = "Fecha de inicio";
+"End date" = "Fecha final";
+"TRAVELERS" = "VIAJEROS";
+"Number of travelers" = "Número de viajeros";
+"Turn this trip public?" = "¿Hacer público este viaje?";
+"By turning your trip public, it will be published to all app users." = "Al hacer público el viaje, se publicará para todos los usuarios de la aplicación.";
+"My trip" = "Mi viaje";
+"Travel days" = "Días de viaje";
+"PRIVACY" = "PRIVACIDAD";
+"Trip" = "Viaje";
+"Public" = "Público";
+"Private" = "Privado";
+"Are you sure?" = "¿Está seguro?";
+"By canceling you will lose all your progress." = "Al cancelar su progreso será perdido.";
+"Back" = "Atrás";
+"Continue" = "Continuar";
+

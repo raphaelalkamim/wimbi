@@ -16,7 +16,7 @@ extension MyTripViewController {
         view.addSubview(myTripView)
         setupConstraints()
         
-        if (coordinator != nil) {
+        if coordinator != nil {
             let barItems = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMyTrip))
             barItems.tintColor = .accent
             self.navigationItem.rightBarButtonItem = barItems
@@ -31,7 +31,7 @@ extension MyTripViewController {
     
     @objc func addRoute(sender: UIButton) {
         let activity = activites[sender.tag]
-        if (activity.location != "") {
+        if activity.location != "" {
             let coordsSeparated = activity.location?.split(separator: " ")
             if let coordsSeparated = coordsSeparated {
                 let latitude = String(coordsSeparated[0])
@@ -192,13 +192,13 @@ extension MyTripViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editAction = UIContextualAction(style: .normal,
-                                            title: "Edit") { [weak self] _, _, completionHandler in
+                                            title: "Edit".localized()) { [weak self] _, _, completionHandler in
             self!.coordinator?.editActivity(roadmap: self!.roadmap, day: self!.days[self!.daySelected], delegate: self!, activity: self!.activites[indexPath.row])
             self!.coordinatorCurrent?.editActivity(roadmap: self!.roadmap, day: self!.days[self!.daySelected], delegate: self!, activity: self!.activites[indexPath.row])
             completionHandler(true)
         }
         let deleteAction = UIContextualAction(style: .normal,
-                                              title: "Delete") { [weak self] _, _, completionHandler in
+                                              title: "Delete".localized()) { [weak self] _, _, completionHandler in
             self?.deleteItem(indexPath: indexPath, tableView: tableView)
             completionHandler(true)
         }
