@@ -242,17 +242,17 @@ class MyTripView: UIView {
         }
         
         emptyStateTitle.snp.makeConstraints { make in
+            make.top.equalTo(emptyStateImage.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
             make.centerX.equalToSuperview()
-            make.top.equalTo(dayTitle.snp.bottom).inset(-40)
-            make.leading.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
+            make.leading.equalToSuperview().inset(70)
+            make.trailing.equalToSuperview().inset(70)
 
         }
         
         emptyStateImage.snp.makeConstraints { make in
-            make.height.equalTo(130)
+            make.height.equalTo(120)
             make.centerX.equalToSuperview()
-            make.top.equalTo(emptyStateTitle.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
+            make.top.equalTo(dayTitle.snp.bottom).inset(-40)
         }
         
         activitiesTableView.snp.makeConstraints { make in
