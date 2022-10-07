@@ -16,7 +16,7 @@ extension MyTripViewController {
         view.addSubview(myTripView)
         setupConstraints()
         
-        if (coordinator != nil) {
+        if coordinator != nil {
             let barItems = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMyTrip))
             barItems.tintColor = .accent
             self.navigationItem.rightBarButtonItem = barItems
@@ -31,7 +31,7 @@ extension MyTripViewController {
     
     @objc func addRoute(sender: UIButton) {
         let activity = activites[sender.tag]
-        if (activity.location != "") {
+        if activity.location != "" {
             let coordsSeparated = activity.location?.split(separator: " ")
             if let coordsSeparated = coordsSeparated {
                 let latitude = String(coordsSeparated[0])

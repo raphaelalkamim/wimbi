@@ -9,12 +9,12 @@ import Foundation
 import UIKit
 
 extension ExploreViewController {
-func setContextMenu() {
-    let addRoadMap = UIAction(title: "New trip".localized(), image: UIImage(systemName: "pencil")) { _ in
+    func setContextMenu() {
+        let addRoadMap = UIAction(title: "New trip".localized(), image: UIImage(systemName: "pencil")) { _ in
             self.addNewRoadmap()
         }
         
-    let insertRoadMap = UIAction(title: "Join trip".localized(), image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis")) { _ in
+        let insertRoadMap = UIAction(title: "Join trip".localized(), image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis")) { _ in
             self.setUIAlert()
         }
         
@@ -27,7 +27,7 @@ func setContextMenu() {
         
         self.navigationItem.rightBarButtonItem = menuBarButton
     }
-
+    
     func setUIAlert() {
         var textField = UITextField()
         
@@ -58,5 +58,5 @@ func setContextMenu() {
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
-
+    
 }

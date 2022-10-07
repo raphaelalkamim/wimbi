@@ -112,7 +112,7 @@ class ReviewTravelViewController: UIViewController {
             dateFormat.timeStyle = .none
             
             let date = dateFormat.date(from: roadmap.dateInitial)
-            let newDay = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: date ?? Date(), indexPath: index, isSelected: isFirstDay))
+            _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: date ?? Date(), indexPath: index, isSelected: isFirstDay))
         }
     }
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {

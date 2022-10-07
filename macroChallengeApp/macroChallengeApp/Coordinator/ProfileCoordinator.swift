@@ -75,7 +75,7 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "New activity".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
-    func editActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController, activity: ActivityLocal){
+    func editActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController, activity: ActivityLocal) {
         let viewController = NewActivityViewController()
         viewController.delegate = delegate
         viewController.coordinator = self
@@ -97,7 +97,7 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func settings(profileVC : ProfileViewController) {
+    func settings(profileVC: ProfileViewController) {
         let viewController = SettingsViewController()
         viewController.coordinator = self
         viewController.delegate = profileVC

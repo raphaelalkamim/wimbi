@@ -140,7 +140,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 
             }
             
-            cell.setDay(date: self.roadmap.days[indexPath.row].date ?? "1")
+            cell.setDay(date: self.roadmap.days[indexPath.row].date )
             if self.roadmap.days[indexPath.row].isSelected == true {
                 cell.selectedButton()
             }

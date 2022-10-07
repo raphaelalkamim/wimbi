@@ -64,8 +64,6 @@ class EditProfileViewController: UIViewController {
     }
 }
 
-
-
 extension EditProfileViewController {
     func setupEditProfileView() {
         view.addSubview(editProfileView)
