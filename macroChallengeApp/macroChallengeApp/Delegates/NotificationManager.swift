@@ -118,8 +118,8 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         content.sound = .default
         
         var dateComponents = DateComponents()
-        dateComponents.hour = 18
-        dateComponents.minute = 27
+        dateComponents.hour = 00
+        dateComponents.minute = 00
         dateComponents.month = month
         dateComponents.day = day
         dateComponents.year = year + 2000
