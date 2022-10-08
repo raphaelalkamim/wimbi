@@ -17,9 +17,10 @@ extension MyTripViewController {
         setupConstraints()
         
         if coordinator != nil {
-            let barItems = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMyTrip))
-            barItems.tintColor = .accent
-            self.navigationItem.rightBarButtonItem = barItems
+            let editItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMyTrip))
+            editItem.tintColor = .accent
+            let shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action:  #selector(shareMyTrip))
+            self.navigationItem.rightBarButtonItems = [shareItem, editItem]
         }
         
     }
