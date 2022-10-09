@@ -23,7 +23,7 @@ class CurrentEmptyState: UIView {
     lazy var title: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.title)
-        label.text = "How about exploring and booking a new trip?".localized()
+        label.text = "What do you think about exploring and booking a new trip?".localized()
         return label
     }()
     
@@ -55,7 +55,7 @@ extension CurrentEmptyState {
     func setupConstraints() {
         title.snp.makeConstraints { make in
             make.topMargin.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
+            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
         }
         image.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(designSystem.spacing.xxLargePositive)

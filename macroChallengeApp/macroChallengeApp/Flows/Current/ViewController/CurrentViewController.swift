@@ -54,12 +54,22 @@ extension CurrentViewController {
         var time = Int((roadmap.date?.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24))
         if time <= 0 {
             time = 0
+            currentCountDownView.timer.text = "Your trip is \ntomorrow!".localized()
+            currentCountDownView.timer.font = UIFont(name: "Avenir-Black", size: 40)
+            currentCountDownView.timer.numberOfLines = 2
+            currentCountDownView.timerType.isHidden = true
+            currentCountDownView.subtitle.isHidden = true
+        } else {
+            currentCountDownView.timer.text = String(time)
+            if time == 1 {
+                currentCountDownView.subtitle.text = "Falta".localized()
+                currentCountDownView.timerType.text = "day left".localized()
+            }
         }
         let formatt = DateFormatter()
         formatt.timeStyle = .none
         formatt.dateStyle = .short
         currentCountDownView.title.text = roadmap.name
         currentCountDownView.date.text = formatt.string(from: roadmap.date ?? Date())
-        currentCountDownView.timer.text = String(time)
     }
 }

@@ -48,11 +48,11 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
             
         }
     }
-    @objc func createLocalNotification(hour: Int, min: Int, day: Int, month: Int, year: Int, activityName: String, number: Int, interval: Int) {
+    @objc func createActivityNotification(hour: Int, min: Int, day: Int, month: Int, year: Int, activityName: String, number: Int, interval: Int) {
         registerCategories()
         let content = UNMutableNotificationContent()
         var intervalType: String = ""
-
+        
         if interval == 1 {
             if number == 1 {
                 intervalType = "minuto"
@@ -106,6 +106,34 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
             }
         }
     }
+        
+    @objc func createTripNotification(day: Int, month: Int, year: Int, tripName: String) {
+        registerCategories()
+        let content = UNMutableNotificationContent()
+        
+        content.title = "wimbi"
+        content.body = "Sua viagem para \(tripName) começa agora!"
+        content.categoryIdentifier = "alarm"
+        content.userInfo = ["customData": "fizzbuzz"]
+        content.sound = .default
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = 00
+        dateComponents.minute = 00
+        dateComponents.month = month
+        dateComponents.day = day
+        dateComponents.year = year + 2000
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        print(request)
+        center.add(request) { error in
+            if let error = error {
+                print(error)
+            }
+        }
+    }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
@@ -129,15 +157,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
-    func registerNotification(createdActivity: ActivityLocal) {
-        //        if !roadmaps.isEmpty {
-        //            roadmaps.sort {
-        //                $0.date ?? Date() < $1.date ?? Date()
-        //            }
-        //            roadmap = roadmaps[0]
-        //            getAllDays()
-        //            self.activities = getAllActivities(day: day)
-        //            let createdActivityIndex = self.activities.count - 1
+    func registerActivityNotification(createdActivity: ActivityLocal) {
         let delimiter = ":"
         let hour = createdActivity.hour?.components(separatedBy: delimiter)
         
@@ -150,18 +170,34 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         let activityMonth = date?[1] ?? "0"
         let activityYear = date?[2] ?? "0"
         
-        createLocalNotification(hour: Int(activityHour) ?? 0,
-                                min: Int(activityMinute) ?? 0,
-                                day: Int(activityDay) ?? 0,
-                                month: Int(activityMonth) ?? 0,
-                                year: Int(activityYear) ?? 0,
-                                activityName: createdActivity.name ?? "Atividade",
-                                number: UserDefaults.standard.integer(forKey: "number") + 1,
-                                interval: UserDefaults.standard.integer(forKey: "interval") + 1)
+        createActivityNotification(hour: Int(activityHour) ?? 0,
+                                   min: Int(activityMinute) ?? 0,
+                                   day: Int(activityDay) ?? 0,
+                                   month: Int(activityMonth) ?? 0,
+                                   year: Int(activityYear) ?? 0,
+                                   activityName: createdActivity.name ?? "Atividade",
+                                   number: UserDefaults.standard.integer(forKey: "number") + 1,
+                                   interval: UserDefaults.standard.integer(forKey: "interval") + 1)
+    }
+    
+    func registerTripNotification(roadmap: RoadmapLocal) {
+        let delimiter = "/"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "dd/MM/yy"
         
-        //        } else {
-        //            print("Sem roteiros")
-        //        }
+        let newDate = dateFormatter.string(from: roadmap.date ?? Date())
+        let new = newDate.components(separatedBy: delimiter)
+        
+        let roadmapDay = new[0]
+        let roadmapMonth = new[1]
+        let roadmapYear = new[2]
+        
+        createTripNotification(day: Int(String(roadmapDay))!,
+                               month: Int(String(roadmapMonth)) ?? 0,
+                               year: Int(String(roadmapYear)) ?? 0,
+                               tripName: roadmap.name ?? "Destino")
         
     }
     

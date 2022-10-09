@@ -45,19 +45,20 @@ class DaysView: UIView {
     
     lazy var publicTitle: UILabel = {
         let publicTitle = UILabel()
-        publicTitle.text = "Turn this trip public?".localized()
+        publicTitle.text = "Would you like to make this trip public?".localized()
         return publicTitle
     }()
     
     lazy var publicCaption: UILabel = {
         let publicCaption = UILabel()
-        publicCaption.text = "By turning your trip public, it will be published to all app users.".localized()
+        publicCaption.text = "By making your trip public, it’ll be viewed to all the app’s users.".localized()
         return publicCaption
     }()
     
     lazy var publicSwitch: UISwitch = {
         let publicSwitch = UISwitch()
         publicSwitch.addTarget(self, action: #selector(turnRoadmapPublic(_:)), for: .valueChanged)
+        publicSwitch.onTintColor = .accent
         return publicSwitch
     }()
     

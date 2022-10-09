@@ -42,7 +42,7 @@ class NewActivityViewController: UIViewController {
         setupNewActivityView()
         setKeyboard()
         let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelCreation))
-        cancelButton.tintColor = .systemRed
+        cancelButton.tintColor = .accent
         self.navigationItem.leftBarButtonItem = cancelButton
         
         let salvarButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveActivity))
@@ -78,7 +78,9 @@ class NewActivityViewController: UIViewController {
         if UserDefaults.standard.bool(forKey: "switch") == true {
             print("registrou")
             if let safeActivity = createdActivity {
-                NotificationManager.shared.registerNotification(createdActivity: safeActivity)
+                NotificationManager.shared.registerActivityNotification(createdActivity: safeActivity)
+                NotificationManager.shared.registerTripNotification(roadmap: roadmap)
+
             }
             
         }

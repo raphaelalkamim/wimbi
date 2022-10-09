@@ -60,7 +60,7 @@ class NewRoadmapCoordinator: Coordinator {
         alert.setValue(string, forKey: "attributedTitle")
         
         let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
-        let subtitleString = NSAttributedString(string: "By canceling you will lose all your progress.".localized(), attributes: subtitleAtt)
+        let subtitleString = NSAttributedString(string: "By canceling you’ll lose your entire progress.".localized(), attributes: subtitleAtt)
         alert.setValue(subtitleString, forKey: "attributedMessage")
         
         alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in

@@ -96,11 +96,11 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
             let viajantesCount = roadmap.peopleCount
             info.setTitle(String(viajantesCount), for: .normal)
             info.setImage(UIImage(systemName: "person.fill"), for: .normal)
+//        case 3:
+//            title.text = "LIKES".localized()
+//            let countLikes = 0
+//            info.setTitle(String(countLikes), for: .normal)
         case 3:
-            title.text = "LIKES".localized()
-            let countLikes = 0
-            info.setTitle(String(countLikes), for: .normal)
-        case 4:
             title.text = "CREATED BY".localized()
             separator.isHidden = true
             circle.isHidden = false

@@ -57,12 +57,12 @@ extension MyTripViewController {
                 let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
                 alert.view.tintColor = .accent
                 
-                let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
-                let string = NSAttributedString(string: "Are you sure you want to do this?", attributes: titleAtt)
+                let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 16)]
+                let string = NSAttributedString(string: "Which app would you like to use to access the address?".localized(), attributes: titleAtt)
                 
                 alert.setValue(string, forKey: "attributedTitle")
                 
-                alert.addAction(UIAlertAction(title: "Maps", style: .default, handler: { _ in
+                alert.addAction(UIAlertAction(title: "Open on Maps".localized(), style: .default, handler: { _ in
                     let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
                     let placemark = MKPlacemark(coordinate: coords)
                     let mapItem = MKMapItem(placemark: placemark)
@@ -71,7 +71,8 @@ extension MyTripViewController {
                 }))
                 
                 for app in installedNavigationApps {
-                    let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+                    let title = "Open on".localized()
+                    let button = UIAlertAction(title: "\(title) \(app.0)", style: .default, handler: { _ in
                         UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
                     })
                     alert.addAction(button)
@@ -122,7 +123,7 @@ extension MyTripViewController: UICollectionViewDelegate {
 extension MyTripViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == myTripView.infoTripCollectionView {
-            return 5
+            return 4
         } else {
             return Int(days.count)
         }
@@ -153,10 +154,10 @@ extension MyTripViewController: UICollectionViewDataSource {
                 cell.title.text = "TRAVELERS".localized()
                 cell.info.setTitle(" 4", for: .normal)
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
+//            case 3:
+//                cell.title.text = "LIKES".localized()
+//                cell.info.setTitle(" 10k", for: .normal)
             case 3:
-                cell.title.text = "LIKES".localized()
-                cell.info.setTitle(" 10k", for: .normal)
-            case 4:
                 cell.title.text = "CREATED BY".localized()
                 cell.separator.isHidden = true
                 cell.circle.isHidden = false
@@ -203,8 +204,8 @@ extension MyTripViewController: UITableViewDelegate {
             self?.deleteItem(indexPath: indexPath, tableView: tableView)
             completionHandler(true)
         }
-        editAction.backgroundColor = .systemBlue
-        deleteAction.backgroundColor = .systemRed
+        editAction.backgroundColor = .blueBeach
+        deleteAction.backgroundColor = .redCity
         return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }
     func deleteItem(indexPath: IndexPath, tableView: UITableView) {

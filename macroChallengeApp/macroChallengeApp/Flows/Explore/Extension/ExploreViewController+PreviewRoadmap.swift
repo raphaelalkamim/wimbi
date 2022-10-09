@@ -47,8 +47,8 @@ extension PreviewRoadmapViewController {
         let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         alert.view.tintColor = .accent
         
-        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 13)]
-        let string = NSAttributedString(string: "Do you want to open the address in which app?".localized(), attributes: titleAtt)
+        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 15)]
+        let string = NSAttributedString(string: "Which app would you like to use to access the address?".localized(), attributes: titleAtt)
         
         alert.setValue(string, forKey: "attributedTitle")
         
@@ -61,7 +61,8 @@ extension PreviewRoadmapViewController {
         }))
         
         for app in installedNavigationApps {
-            let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+            let title = "Open on".localized()
+            let button = UIAlertAction(title: "\(title) \(app.0)", style: .default, handler: { _ in
                 UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
             })
             alert.addAction(button)
@@ -81,7 +82,7 @@ extension PreviewRoadmapViewController: UICollectionViewDelegate {
 extension PreviewRoadmapViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == previewView.infoTripCollectionView {
-            return 5
+            return 4
         } else {
             return self.roadmap.days.count
         }
@@ -116,10 +117,10 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.infoTitle.isHidden = true
                 cell.info.setTitle(" \(self.roadmap.peopleCount)", for: .normal)
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
+//            case 3:
+//                cell.title.text = "LIKES".localized()
+//                cell.info.setTitle(" 10k", for: .normal)
             case 3:
-                cell.title.text = "LIKES".localized()
-                cell.info.setTitle(" 10k", for: .normal)
-            case 4:
                 cell.title.text = "CREATED BY".localized()
                 cell.separator.isHidden = true
                 cell.circle.isHidden = false
