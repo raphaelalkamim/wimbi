@@ -10,6 +10,8 @@ import UIKit
 class InfoTripCollectionViewCell: UICollectionViewCell {
     static let identifier = "infoCell"
     let designSystem: DesignSystem = DefaultDesignSystem.shared
+    //TODO: Pegar currency user...
+    var userCurrency =  "R$"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,7 +92,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
             title.text = "VALOR TOTAL"
             info.isHidden = true
             infoTitle.isHidden = false
-            infoTitle.text = "R$" + String(roadmap.budget)
+            infoTitle.text = self.userCurrency + String(roadmap.budget)
         case 2:
             title.text = "VIAJANTES"
             let viajantesCount = roadmap.peopleCount

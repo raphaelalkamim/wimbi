@@ -75,6 +75,7 @@ class MyTripViewController: UIViewController {
     }
     
     func updateBudget() async {
+        //TODO: Pegar currency user...
         let userCurrency = "R$"
         var budgetDay: Double = 0
         
@@ -92,7 +93,6 @@ class MyTripViewController: UIViewController {
                 if userCurrency == "R$" {
                     budgetDay += activite.budget
                 } else {
-                    
                     let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
                     budgetDay += activite.budget * value
                 }
