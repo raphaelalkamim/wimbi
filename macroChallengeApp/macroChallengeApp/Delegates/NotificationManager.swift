@@ -34,7 +34,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         }
     }
     func registerCategories() {
-        let show = UNNotificationAction(identifier: "show", title: "Vamos lá!", options: .foreground)
+        let show = UNNotificationAction(identifier: "show", title: "Let's go!".localized(), options: .foreground)
         let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
         center.setNotificationCategories([category])
     }
