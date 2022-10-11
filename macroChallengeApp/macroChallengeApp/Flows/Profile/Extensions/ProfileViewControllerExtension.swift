@@ -35,7 +35,8 @@ extension ProfileViewController {
                     let roadmapName = "'\(roadmaps[indexPath.item].name ?? "NONE")'"
                     
                     let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 16)]
-                    let string = NSAttributedString(string: "Delete all content from \(roadmapName)".localized(), attributes: titleAtt)
+                    let title = "Delete all content from".localized()
+                    let string = NSAttributedString(string: "\(title) \(roadmapName)", attributes: titleAtt)
                     action.setValue(string, forKey: "attributedTitle")
                     
                     let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 16)]

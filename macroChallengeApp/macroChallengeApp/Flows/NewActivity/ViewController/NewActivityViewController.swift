@@ -79,7 +79,6 @@ class NewActivityViewController: UIViewController {
             print("registrou")
             if let safeActivity = createdActivity {
                 NotificationManager.shared.registerActivityNotification(createdActivity: safeActivity)
-                NotificationManager.shared.registerTripNotification(roadmap: roadmap)
 
             }
             

@@ -6,6 +6,14 @@
   
 */
 
+//MARK: - Notifications
+"Your trip to" = "Sua viagem para";
+"starts now!" = "começa agora!";
+"The" = "A atividade";
+"activity" = "";
+"starts in" = "começa em";
+"Let's go!" = "Vamos lá!";
+
 // MARK: -  Login
 "By clicking on the button above, you agree to our privacy policies" = "Clicando no botão acima, você concorda com nossas políticas de privacidade";
 
@@ -70,8 +78,11 @@
 "Turn on notification" = "Ativar notificação";
 "Frequency" = "Frequência";
 "minutes" = "minutos";
+"minute" = "minuto";
 "hours" = "horas";
+"hour" = "hora";
 "days" = "dias";
+"day" = "dia";
 "days left" = "dias";
 "day left" = "dia";
 "Your trip is \ntomorrow!" = "Sua viagem é \namanhã!";
