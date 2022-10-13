@@ -21,6 +21,7 @@ struct Roadmaps: Codable {
     var isShared: Bool
     var isPublic: Bool
     var shareKey: String
+    var createdAt = Date()
     var days: [Day]
     
     enum CodingKeys: String, CodingKey {

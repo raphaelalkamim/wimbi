@@ -62,12 +62,8 @@ class NewActivityViewController: UIViewController {
         self.setData()
         var createdActivity: ActivityLocal?
         if edit {
+            self.activity.id = Int(self.activityEdit.id)
             ActivityRepository.shared.updateActivity(day: self.day, oldActivity: self.activityEdit, activity: self.activity)
-            do {
-                try ActivityRepository.shared.deleteActivity(activity: self.activityEdit, roadmap: self.roadmap)
-            } catch {
-                "erro ao deletar atividade"
-            }
         } else {
             createdActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
         }
