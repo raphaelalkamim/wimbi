@@ -36,6 +36,7 @@ class ExploreViewController: UIViewController {
         DataManager.shared.getPublicRoadmaps({ roadmaps in
             self.roadmaps = roadmaps
             self.explorerView.roadmapsCollectionView.reloadData()
+            self.emptyState()
         })
         navigationController?.navigationBar.prefersLargeTitles = true
         emptyState()

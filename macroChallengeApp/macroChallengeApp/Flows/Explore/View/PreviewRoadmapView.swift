@@ -178,7 +178,7 @@ class PreviewRoadmapView: UIView {
             make.top.equalTo(roadmapTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.leading.equalTo(contentView.snp.leading)
             make.trailing.equalTo(contentView.snp.trailing)
-            make.height.equalTo(400)
+            make.height.equalTo(900)
             make.bottom.equalTo(scrollView.snp.bottom)
         }
     }
