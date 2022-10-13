@@ -16,6 +16,8 @@
 
 // MARK: -  Login
 "By clicking on the button above, you agree to our privacy policies" = "Al hacer clic en el botón de arriba, usted acepta nuestras políticas de privacidad";
+"User" = "Usuario";
+"@user" = "@usuario";
 
 // MARK: -  New Activity
 "TYPE" = "TIPO";
