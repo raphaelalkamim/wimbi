@@ -49,6 +49,16 @@ class ExploreCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    func startProfile() {
+        let viewController = ProfileViewController()
+        viewController.exploreCoordinator = self
+        viewController.navigationItem.title = "Profile".localized()
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.backItem?.setHidesBackButton(true, animated: false)
+        
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func previewRoadmap(roadmapId: Int) {
         let viewController = PreviewRoadmapViewController()
         viewController.coordinator = self

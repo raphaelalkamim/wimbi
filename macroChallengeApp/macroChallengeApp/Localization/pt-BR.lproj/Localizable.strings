@@ -50,6 +50,8 @@
 "Add the code to have access to the trip" = "Adicione o código para juntar-se à viagem";
 "Join" = "Junte-se";
 "No internet connection" = "Sem conexão com a internet";
+"Successfully duplicated!" = "Duplicado com sucesso!";
+"The roadmap is now available on your profile." = "O roteiro já está disponível em seu perfil.";
 
 // MARK: -  TabBar
 "Explore" = "Explorar";

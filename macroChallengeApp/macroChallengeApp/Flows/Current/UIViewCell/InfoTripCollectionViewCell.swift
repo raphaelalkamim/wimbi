@@ -106,7 +106,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
             circle.isHidden = false
             info.isHidden = true
             circle.layer.cornerRadius = 18
-            circle.image = UIImage(named: "leisure")
+            circle.image = UIImage(named: "icon")
             circle.snp.makeConstraints { make in
                 make.height.width.equalTo(36)
             }

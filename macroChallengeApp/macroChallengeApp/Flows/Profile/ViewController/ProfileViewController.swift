@@ -14,6 +14,7 @@ protocol SignOutDelegate: AnyObject {
 
 class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegate {
     weak var coordinator: ProfileCoordinator?
+    weak var exploreCoordinator: ExploreCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let profileView = ProfileView()
     var roadmaps: [RoadmapLocal] = []
