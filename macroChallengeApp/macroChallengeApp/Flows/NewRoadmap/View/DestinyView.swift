@@ -45,7 +45,7 @@ class DestinyView: UIView {
     
     func addSearchBarNavigation(navigation: UINavigationItem) {
         navigation.searchController = searchController
-        navigation.title = "Destiny".localized()
+        navigation.title = "Destination".localized()
         self.searchController?.navigationController?.navigationBar.prefersLargeTitles = true
     }
     

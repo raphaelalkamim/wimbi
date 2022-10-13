@@ -53,7 +53,7 @@ class ProfileView: UIView {
         return title
     }()
     
-    private lazy var emptyStateTitle: UILabel = {
+    lazy var emptyStateTitle: UILabel = {
         let title = UILabel()
         title.text = "Click on ”+” to create a new roadmap or to explore the existing ones.".localized()
         title.numberOfLines = 0
@@ -63,7 +63,7 @@ class ProfileView: UIView {
         return title
     }()
     
-    private lazy var emptyStateImage: UIImageView = {
+    lazy var emptyStateImage: UIImageView = {
         let img = UIImageView()
         img.image = designSystem.images.binoculars
         img.clipsToBounds = true
@@ -176,15 +176,15 @@ class ProfileView: UIView {
         }
         
         emptyStateTitle.snp.makeConstraints { make in
-            make.top.equalTo(roadmapTitle.snp.bottom).inset(-70)
+            make.top.equalTo(emptyStateImage.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
             make.leading.equalTo(contentView.snp.leading).inset(70)
             make.trailing.equalTo(contentView.snp.trailing).inset(70)
 
         }
         emptyStateImage.snp.makeConstraints { make in
-            make.top.equalTo(emptyStateTitle.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
+            make.top.equalTo(roadmapTitle.snp.bottom).inset(-140)
             make.centerX.equalTo(contentView.snp.centerX)
-            make.height.equalTo(120)
+            make.height.equalTo(100)
         }
     }
     

@@ -51,7 +51,7 @@ class CategoryView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let height = 80.0
+        let height = 100.0
         let width = collectionView.frame.width
         let itemSize = CGSize(width: width, height: height)
         flowLayout.itemSize = itemSize

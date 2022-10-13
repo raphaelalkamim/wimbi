@@ -17,5 +17,6 @@ struct DefaultDesignSystemImages: DesignImages {
     var compass: UIImage = .compass
     var flora: UIImage = .flora
     var map: UIImage = .map
+    var lostConnection: UIImage = .lostConnection
 
 }

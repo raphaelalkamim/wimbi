@@ -24,8 +24,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     private lazy var fetchResultController: NSFetchedResultsController<RoadmapLocal> = {
         let request: NSFetchRequest<RoadmapLocal> = RoadmapLocal.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal.createdAt, ascending: false)]
-        // let sectionSortDescriptor = NSSortDescriptor()
-        // request.sortDescriptors = [sectionSortDescriptor]
         let frc = NSFetchedResultsController(fetchRequest: request,
                                              managedObjectContext: RoadmapRepository.shared.context,
                                              sectionNameKeyPath: nil,
@@ -44,6 +42,8 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         
         super.viewDidLoad()
         
+        print("oi", ActivityRepository.shared.getActivity())
+
         profileView.myRoadmapCollectionView.reloadData()
         self.view.backgroundColor = .backgroundPrimary
         self.setupProfileView()
@@ -59,10 +59,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
-            coordinator?.startLogin()
-        }
-        
         if let data = UserDefaults.standard.data(forKey: "user") {
             do {
                 let decoder = JSONDecoder()
@@ -123,6 +119,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         self.profileView.getUsernameApp().text = "@\(user.usernameApp)"
         self.profileView.getTable().reloadData()
         self.profileView.getImage().image = UIImage(named: user.photoId)
+        _ = UserRepository.shared.createUser(user: user)
     }
 }
 

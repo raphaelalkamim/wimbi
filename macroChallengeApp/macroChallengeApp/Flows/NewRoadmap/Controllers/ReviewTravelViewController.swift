@@ -75,6 +75,7 @@ class ReviewTravelViewController: UIViewController {
     @objc func nextPage() {
         if edit {
             self.updateCoreData()
+            NotificationManager.shared.registerTripNotification(roadmap: self.editRoadmap)
         } else {
             self.saveCoreData()
         }
@@ -93,6 +94,25 @@ class ReviewTravelViewController: UIViewController {
         // save in Core Data
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
         RoadmapRepository.shared.saveContext()
+        
+        NotificationManager.shared.registerTripNotification(roadmap: newRoadmap)
+
+        // save days in Roadmap
+        var isFirstDay = false
+        for index in 0..<roadmap.dayCount {
+            if index == 0 {
+                isFirstDay = true
+            } else {
+                isFirstDay = false
+            }
+            
+            let dateFormat = DateFormatter()
+            dateFormat.dateStyle = .short
+            dateFormat.timeStyle = .none
+            
+            let date = dateFormat.date(from: roadmap.dateInitial)
+            _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: date ?? Date(), indexPath: index, isSelected: isFirstDay))
+        }
     }
     
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {

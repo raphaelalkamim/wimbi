@@ -13,7 +13,7 @@
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <relationship name="activity" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ActivityLocal" inverseName="day" inverseEntity="ActivityLocal"/>
+        <relationship name="activity" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ActivityLocal" inverseName="day" inverseEntity="ActivityLocal"/>
         <relationship name="roadmap" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RoadmapLocal" inverseName="day" inverseEntity="RoadmapLocal"/>
     </entity>
     <entity name="RoadmapLocal" representedClassName="RoadmapLocal" syncable="YES" codeGenerationType="class">
@@ -31,7 +31,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="peopleCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="shareKey" optional="YES" attributeType="String"/>
-        <relationship name="day" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DayLocal" inverseName="roadmap" inverseEntity="DayLocal"/>
+        <relationship name="day" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DayLocal" inverseName="roadmap" inverseEntity="DayLocal"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserLocal" inverseName="roadmap" inverseEntity="UserLocal"/>
     </entity>
     <entity name="UserLocal" representedClassName="UserLocal" syncable="YES" codeGenerationType="class">

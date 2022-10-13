@@ -11,7 +11,7 @@ import UIKit
 class MyTripViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
     weak var coordinatorCurrent: CurrentCoordinator?
-
+    
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let myTripView = MyTripView()
     
@@ -20,7 +20,7 @@ class MyTripViewController: UIViewController {
     var days: [DayLocal] = []
     
     var daySelected = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
@@ -38,7 +38,7 @@ class MyTripViewController: UIViewController {
         self.updateBudget()
         self.updateTotalBudgetValue()
     }
-   
+    
     func getAllDays() {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
@@ -47,14 +47,14 @@ class MyTripViewController: UIViewController {
         }
         for index in 0..<days.count where days[index].isSelected == true {
             self.daySelected = index
-            myTripView.dayTitle.text = "Dia " + String(daySelected + 1)
+            myTripView.dayTitle.text = "Day ".localized() + String(daySelected + 1)
         }
     }
     
     func getAllActivities() -> [ActivityLocal] {
         if var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] {
             newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
-            myTripView.dayTitle.text = "Dia " + String(daySelected + 1)
+            myTripView.dayTitle.text = "Day ".localized() + String(daySelected + 1)
             myTripView.activitiesTableView.reloadData()
             return newActivities
         }
@@ -89,21 +89,31 @@ class MyTripViewController: UIViewController {
             myTripView.scrollView.isScrollEnabled = true
         }
     }
-        
+    
     @objc func goToCreateActivity() {
         coordinator?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
         coordinatorCurrent?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
-
+        
     }
     @objc func editMyTrip() {
         coordinator?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
         coordinatorCurrent?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
-
+        
     }
-}
-
-extension Sequence {
-    func sum<T: AdditiveArithmetic>(_ predicate: (Element) -> T) -> T { reduce(.zero) { $0 + predicate($1) } }
+    @objc func shareMyTrip() {
+        let user = UserRepository.shared.getUser()
+        let keySort = Int.random(in: 0..<1000)
+        if !user.isEmpty {
+            let codeTrip = "\(user[0].id)\(keySort)"
+            let introduction = "Hey! Join my trip in Wimbi app using the code: " + codeTrip
+            let activityItem = MyActivityItemSource(title: "Share your code trip!", text: introduction)
+            
+            let activityViewController = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            activityViewController.excludedActivityTypes = []
+            self.present(activityViewController, animated: true, completion: nil)
+        }
+    }
 }
 
 extension MyTripViewController: ReviewTravelDelegate {

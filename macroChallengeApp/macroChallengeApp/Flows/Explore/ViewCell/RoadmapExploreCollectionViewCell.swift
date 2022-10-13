@@ -66,7 +66,7 @@ class RoadmapExploreCollectionViewCell: UICollectionViewCell {
     lazy var totalLikes: UILabel = {
         let title = UILabel()
         title.textColor = .textPrimary
-        title.font = UIFont(name: "Avenir-Light", size: 12)
+        title.font = UIFont(name: "Avenir-Book", size: 12)
         title.text = "5.5k"
         return title
     }()
@@ -81,7 +81,7 @@ class RoadmapExploreCollectionViewCell: UICollectionViewCell {
     lazy var categoryName: UILabel = {
         let title = UILabel()
         title.textColor = .textPrimary
-        title.font = UIFont(name: "Avenir-Light", size: 12)
+        title.font = UIFont(name: "Avenir-Book", size: 12)
         title.text = "Praia"
         return title
     }()
@@ -103,8 +103,8 @@ extension RoadmapExploreCollectionViewCell {
         contentView.addSubview(title)
         contentView.addSubview(subtitle)
         contentView.addSubview(costByPerson)
-        contentView.addSubview(heart)
-        contentView.addSubview(totalLikes)
+//        contentView.addSubview(heart)
+//        contentView.addSubview(totalLikes)
         contentView.addSubview(category)
         category.addSubview(categoryColor)
         category.addSubview(categoryName)
@@ -132,14 +132,14 @@ extension RoadmapExploreCollectionViewCell {
             make.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
             make.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
         }
-        heart.snp.makeConstraints { make in
-            make.top.equalTo(cover.snp.bottom).inset(-40)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
-        }
-        totalLikes.snp.makeConstraints { make in
-            make.top.equalTo(heart.snp.bottom).inset(designSystem.spacing.smallNegative)
-            make.centerX.equalTo(heart.snp.centerX)
-        }
+//        heart.snp.makeConstraints { make in
+//            make.top.equalTo(cover.snp.bottom).inset(-40)
+//            make.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+//        }
+//        totalLikes.snp.makeConstraints { make in
+//            make.top.equalTo(heart.snp.bottom).inset(designSystem.spacing.smallNegative)
+//            make.centerX.equalTo(heart.snp.centerX)
+//        }
         category.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(designSystem.spacing.mediumPositive)
             make.trailing.equalTo(categoryName.snp.trailing).inset(designSystem.spacing.mediumNegative)

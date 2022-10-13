@@ -59,4 +59,7 @@ extension UIImage {
     static var transportationSelected: UIImage {
         UIImage(named: "transportationSelected")!
     }
+    static var lostConnection: UIImage {
+        UIImage(named: "lostConnection")!
+    }
 }
