@@ -169,7 +169,7 @@ class DataManager {
     func postRoadmap(roadmap: Roadmaps, roadmapCore: RoadmapLocal, daysCore: [DayLocal]) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
-        
+                
         let roadmap: [String: Any] = [
             "name": roadmap.name,
             "location": roadmap.location,
@@ -178,7 +178,7 @@ class DataManager {
             "dateInitial": roadmap.dateInitial,
             "dateFinal": roadmap.dateFinal,
             "peopleCount": roadmap.peopleCount,
-            "imageId": roadmap.imageId,
+            "imageId": setupImage(category: roadmap.category),
             "category": roadmap.category,
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
@@ -618,6 +618,22 @@ class DataManager {
             print("Parse Error")
         }
         return nil
+    }
+    
+    func setupImage(category: String) -> String {
+        if category == "Beach".localized() {
+            let beachImages = ["beach0", "beach1", "beach2", "beach3", "beach4"]
+            return beachImages[Int.random(in: 0..<beachImages.count)]
+        } else if category == "Mountain".localized() {
+            let mountainImages = ["montain0", "montain1", "montain2", "montain3", "montain4"]
+            return mountainImages[Int.random(in: 0..<mountainImages.count)]
+        } else if category == "City".localized() {
+            let cityImages = ["city0", "city1", "city2", "city3"]
+            return cityImages[Int.random(in: 0..<cityImages.count)]
+        } else {
+            let campImages = ["camp0", "camp1", "camp2", "camp3", "camp4"]
+            return campImages[Int.random(in: 0..<campImages.count)]
+        }
     }
 }
 
