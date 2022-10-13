@@ -46,6 +46,12 @@ class PreviewRoadmapViewController: UIViewController {
             }
             self.roadmap.days[0].isSelected = true
             
+            for index in 0..<self.roadmap.days.count {
+                self.roadmap.days[index].activity.sort {
+                    $0.id < $1.id
+                }
+            }
+            
             self.previewView.infoTripCollectionView.reloadData()
             self.previewView.calendarCollectionView.reloadData()
             self.previewView.activitiesTableView.reloadData()
