@@ -58,7 +58,7 @@ class EditProfileViewController: UIViewController {
     }
     
     func changeToUserInfo(user: User) {
-        self.editProfileView.imageProfile.image = UIImage(named: user.photoId)
+        self.editProfileView.imageProfile.image = UIImage(named: "icon")
         self.editProfileView.nameTextField.text = user.name
         self.editProfileView.usernameTextField.text = user.usernameApp
     }

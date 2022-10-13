@@ -26,14 +26,14 @@ class ProfileView: UIView {
     
     private lazy var name: UILabel = {
         let title = UILabel()
-        title.text = "Malcon Cardoso" // adicionar nome
+        title.text = "User".localized() // adicionar nome
         title.stylize(with: designSystem.text.title)
         return title
     }()
     
     private lazy var username: UILabel = {
         let title = UILabel()
-        title.text = "@malcon" // adicionar username
+        title.text = "@user".localized() // adicionar username
         title.stylize(with: designSystem.text.body)
         title.textColor = .caption
         return title
@@ -41,7 +41,7 @@ class ProfileView: UIView {
     
     private lazy var userImage: UIImageView = {
         let img = UIImageView()
-        img.image = UIImage(named: "categoryBeach") // adicionar foto de perfil
+        img.image = UIImage(named: "icon") // adicionar foto de perfil
         img.clipsToBounds = true
         return img
     }()

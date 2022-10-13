@@ -43,6 +43,8 @@ class ActivityTableViewCell: UITableViewCell {
         title.stylize(with: designSystem.text.cellTitle)
         title.textColor = .textPrimary
         title.text = "Malibu Beach"
+        title.numberOfLines = 1
+        title.lineBreakMode = .byTruncatingTail
         return title
     }()
     
@@ -87,12 +89,14 @@ extension ActivityTableViewCell {
         
         activityTitle.snp.makeConstraints { make in
             make.leading.equalTo(activityIcon.snp.trailing).inset(designSystem.spacing.xLargeNegative)
+            make.trailing.equalTo(localButton.snp.leading).inset(designSystem.spacing.xxLargeNegative)
             make.top.equalTo(activityInfo.snp.bottom)
         }
 
         localButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
-            make.centerY.equalToSuperview().inset(designSystem.spacing.smallNegative)
+            make.leading.equalToSuperview().inset(330)
+            make.centerY.equalToSuperview().inset(designSystem.spacing.smallPositive)
         }
 
     }

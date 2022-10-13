@@ -40,6 +40,7 @@ extension ExploreViewController: UICollectionViewDataSource {
             cell.subtitle.text = "\(roadmap.peopleCount) viajante  •  \(roadmap.dayCount) dias"
             cell.costByPerson.text = "R$ \(roadmap.budget / 1000) mil por pessoa"
             cell.categoryName.text = roadmap.category
+            cell.setupColor(category: roadmap.category)
         }
         
         return cell

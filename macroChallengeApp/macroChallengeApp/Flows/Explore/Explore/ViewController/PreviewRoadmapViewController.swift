@@ -10,6 +10,7 @@ import UIKit
 
 class PreviewRoadmapViewController: UIViewController {
     weak var coordinator: ExploreCoordinator?
+    weak var profileCoordinator: ProfileCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let previewView = PreviewRoadmapView()
     var like = UIBarButtonItem()
@@ -27,7 +28,7 @@ class PreviewRoadmapViewController: UIViewController {
         self.setupPreviewRoadmapView()
         previewView.bindCollectionView(delegate: self, dataSource: self)
         previewView.bindTableView(delegate: self, dataSource: self)
-//        like = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(likeRoadmap))
+        //        like = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(likeRoadmap))
         duplicate = UIBarButtonItem(image: UIImage(systemName: "plus.square.on.square"), style: .plain, target: self, action: #selector(duplicateRoadmap))
         navigationItem.rightBarButtonItems = [duplicate]
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -56,12 +57,26 @@ class PreviewRoadmapViewController: UIViewController {
             self.previewView.activitiesTableView.reloadData()
         })
     }
-
+    
     @objc func likeRoadmap() {
         print("LIKE")
     }
     
     @objc func duplicateRoadmap() {
+        print("DUPLICA")
+        
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.view.tintColor = .accent
+        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
+        let string = NSAttributedString(string: "Successfully duplicated!".localized(), attributes: titleAtt)
+        alert.setValue(string, forKey: "attributedTitle")
+        let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
+        let subtitleString = NSAttributedString(string: "The roadmap is now available on your profile.".localized(), attributes: subtitleAtt)
+        alert.setValue(subtitleString, forKey: "attributedMessage")
+        
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+        }))
+        present(alert, animated: true)
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
         let days = newRoadmap.day?.allObjects as [DayLocal]
         let roadmapDays = self.roadmap.days

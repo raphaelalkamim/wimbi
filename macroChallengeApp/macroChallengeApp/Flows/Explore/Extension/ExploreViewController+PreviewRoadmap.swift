@@ -126,7 +126,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.circle.isHidden = false
                 cell.info.isHidden = true
                 cell.circle.layer.cornerRadius = 18
-                cell.circle.image = UIImage(named: "leisure")
+                cell.circle.image = UIImage(named: "icon")
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(36)
                 }

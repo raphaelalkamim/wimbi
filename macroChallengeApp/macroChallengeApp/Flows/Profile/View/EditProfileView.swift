@@ -24,7 +24,7 @@ class EditProfileView: UIView {
     
     lazy var imageProfile: UIImageView = {
         let img = UIImageView()
-        img.image = UIImage(named: "categoryBeach")
+        img.image = UIImage(named: "icon")
         img.clipsToBounds = true
         return img
     }()

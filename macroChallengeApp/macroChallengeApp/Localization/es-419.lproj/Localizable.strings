@@ -5,9 +5,19 @@
   Created by Carolina Ortega on 28/09/22.
   
 */
+//MARK: - Notifications
+"Your trip to" = "¡Tu viaje a";
+"starts now!" = "empieza ahora!";
+"The" = "La actividad";
+"activity" = "";
+"starts in" = "empieza en";
+"Let's go!" = "¡Vamos allá!";
+
 
 // MARK: -  Login
 "By clicking on the button above, you agree to our privacy policies" = "Al hacer clic en el botón de arriba, usted acepta nuestras políticas de privacidad";
+"User" = "Usuario";
+"@user" = "@usuario";
 
 // MARK: -  New Activity
 "TYPE" = "TIPO";
@@ -20,7 +30,7 @@
 "Date" = "Fecha";
 "Hour" = "Hora";
 "Currency" = "Moneda";
-"Value" = "Valor";
+"Value" = "Monto";
 "Food" = "Alimentación";
 "Accommodation" = "Habitacíon";
 "Leisure" = "Ocio";
@@ -41,6 +51,9 @@
 "Add the code to have access to the trip" = "Añade el código para tener acceso al viaje";
 "Join" = "Unirse";
 "No internet connection" = "Sin conexión a Internet";
+"Successfully duplicated!" = "¡Duplicado con éxito!";
+"The roadmap is now available on your profile." = "El guia de viaje ya está disponible en su perfil.";
+
 
 // MARK: -  TabBar
 "Explore" = "Explorar";
@@ -69,7 +82,10 @@
 "Turn on notification" = "Activar notificaciones";
 "Frequency" = "Frecuencia";
 "minutes" = "minutos";
+"minute" = "minuto";
 "hours" = "horas";
+"hour" = "hora";
+"day" = "día";
 "days" = "días";
 "Faltam" = "Le faltan";
 "Falta" = "Le falta";

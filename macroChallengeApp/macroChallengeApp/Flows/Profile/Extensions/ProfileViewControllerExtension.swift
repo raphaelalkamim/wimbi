@@ -35,7 +35,8 @@ extension ProfileViewController {
                     let roadmapName = "'\(roadmaps[indexPath.item].name ?? "NONE")'"
                     
                     let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 16)]
-                    let string = NSAttributedString(string: "Delete all content from \(roadmapName)".localized(), attributes: titleAtt)
+                    let title = "Delete all content from".localized()
+                    let string = NSAttributedString(string: "\(title) \(roadmapName)", attributes: titleAtt)
                     action.setValue(string, forKey: "attributedTitle")
                     
                     let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 16)]
@@ -86,7 +87,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         
         cell.title.translatesAutoresizingMaskIntoConstraints = false
         
-        if cell.title.text!.count < 15 {
+        if cell.title.text!.count < 18 {
             cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.xLargePositive).isActive = true
             cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.smallPositive).isActive = false
         } else {

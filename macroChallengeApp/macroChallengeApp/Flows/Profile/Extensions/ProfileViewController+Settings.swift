@@ -39,10 +39,9 @@ extension SettingsViewController: UITableViewDataSource {
 //            navigationController?.pushViewController(viewController, animated: true)
 //
         case 1:
-            let viewController = NotificationsViewController()
-            viewController.navigationItem.title = "Notifications".localized()
-            navigationController?.pushViewController(viewController, animated: true)
-//        case 3:
+            coordinator?.startNotifications()
+
+            //        case 3:
 //            let viewController = TermsViewController()
 //            viewController.navigationItem.title = "Privacy policies".localized()
 //            navigationController?.pushViewController(viewController, animated: true)
