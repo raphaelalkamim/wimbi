@@ -166,7 +166,10 @@ class DataManager {
         task.resume()
     }
     
-    func postRoadmap(roadmap: Roadmaps) {
+    func postRoadmap(roadmap: Roadmaps, roadmapCore: RoadmapLocal, daysCore: [DayLocal]) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d/M/y"
+                
         let roadmap: [String: Any] = [
             "name": roadmap.name,
             "location": roadmap.location,
@@ -175,11 +178,12 @@ class DataManager {
             "dateInitial": roadmap.dateInitial,
             "dateFinal": roadmap.dateFinal,
             "peopleCount": roadmap.peopleCount,
-            "imageId": roadmap.imageId,
+            "imageId": setupImage(category: roadmap.category),
             "category": roadmap.category,
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
-            "shareKey": "ABC123"
+            "shareKey": "ABC123",
+            "createdAt": dateFormatter.string(from: Date())
         ]
         
         let session = URLSession.shared
@@ -203,16 +207,25 @@ class DataManager {
                 
                 let task = session.dataTask(with: request) { data, response, error in
                     print(response)
-                    if let error = error {
-                        print(error)
-                    } else if data == data {
-                        if let httpResponse = response as? HTTPURLResponse {
-                            if httpResponse.statusCode == 200 {
-                                print("Criou Roadmap")
+                    guard let data = data else { return }
+                    if error != nil {
+                        print(String(describing: error?.localizedDescription))
+                    }
+                    if let httpResponse = response as? HTTPURLResponse {
+                        if httpResponse.statusCode == 200 {
+                            do {
+                                // tentar transformar os dados no tipo Cohort
+                                let roadmapResponse = try JSONDecoder().decode(RoadmapDTO.self, from: data)
+                                
+                                self.postDays(roadmapId: roadmapResponse.id, daysCore: daysCore)
+                                
+                                roadmapCore.id = Int32(roadmapResponse.id)
+                                RoadmapRepository.shared.saveContext()
+                            } catch {
+                                // FIXME: tratar o erro do decoder
+                                print(error)
                             }
                         }
-                    } else {
-                        // Handle unexpected error
                     }
                 }
                 task.resume()
@@ -364,6 +377,238 @@ class DataManager {
         
     }
     
+    func putRoadmap(roadmap: Roadmaps, roadmapId: Int, newDaysCore: [DayLocal]) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d/M/y"
+        
+        let roadmapJson: [String: Any] = [
+            "name": roadmap.name,
+            "location": roadmap.location,
+            "budget": 0,
+            "dayCount": roadmap.dayCount,
+            "dateInitial": roadmap.dateInitial,
+            "dateFinal": roadmap.dateFinal,
+            "peopleCount": roadmap.peopleCount,
+            "imageId": roadmap.imageId,
+            "category": roadmap.category,
+            "isShared": roadmap.isShared,
+            "isPublic": roadmap.isPublic,
+            "shareKey": "ABC123",
+            "createdAt": dateFormatter.string(from: Date())
+        ]
+        
+        let session = URLSession.shared
+        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+            let userID = String(data: data, encoding: .utf8)!
+            guard let url = URL(string: baseURL + "roadmaps/\(roadmapId)") else { return }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "PUT"
+            if let token = UserDefaults.standard.string(forKey: "authorization") {
+                request.setValue(token, forHTTPHeaderField: "Authorization")
+                
+                do {
+                    request.httpBody = try JSONSerialization.data(withJSONObject: roadmapJson, options: .prettyPrinted)
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                
+                let task = session.dataTask(with: request) { data, response, error in
+                    print(response)
+                    guard let data = data else { return }
+                    if error != nil {
+                        print(String(describing: error?.localizedDescription))
+                    }
+                    if let httpResponse = response as? HTTPURLResponse {
+                        if httpResponse.statusCode == 200 {
+                            self.postDays(roadmapId: roadmapId, daysCore: newDaysCore)
+                            print("Atualizou")
+                        }
+                    }
+                }
+                task.resume()
+            }
+        }
+    }
+    
+    func postDays(roadmapId: Int, daysCore: [DayLocal]) {
+        let session = URLSession.shared
+        guard let url = URL(string: baseURL + "roadmaps/\(roadmapId)/days") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                print(response)
+                guard let data = data else { return }
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        do {
+                            // tentar transformar os dados no tipo Cohort
+                            var daysResponse = try JSONDecoder().decode([DayDTO].self, from: data)
+                            
+                            daysResponse.sort { $0.id < $1.id }
+                            
+                            for index in 0..<daysResponse.count {
+                                daysCore[index].id = Int32(daysResponse[index].id)
+                                DayRepository.shared.saveContext()
+                            }
+                            
+                        } catch {
+                            // FIXME: tratar o erro do decoder
+                            print(error)
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func postActivity(activity: Activity, dayId: Int, activityCore: ActivityLocal) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d/M/y"
+        
+        let activity: [String: Any] = [
+            "name": activity.name,
+            "category": activity.category,
+            "location": activity.location,
+            "hour": activity.hour,
+            "budget": activity.budget
+        ]
+        
+        let session = URLSession.shared
+        guard let url = URL(string: baseURL + "days/\(dayId)/activities") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: activity, options: .prettyPrinted)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                print(response)
+                guard let data = data else { return }
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        do {
+                            let activityResponse = try JSONDecoder().decode(Activity.self, from: data)
+                            
+                            activityCore.id = Int32(activityResponse.id)
+                            ActivityRepository.shared.saveContext()
+                        } catch {
+                            // FIXME: tratar o erro do decoder
+                            print(error)
+                        }
+                    }
+                    
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func putActivity(activity: Activity, dayId: Int) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d/M/y"
+        
+        let activityNew: [String: Any] = [
+            "name": activity.name,
+            "category": activity.category,
+            "location": activity.location,
+            "hour": activity.hour,
+            "budget": activity.budget
+        ]
+        
+        let session = URLSession.shared
+        
+        guard let url = URL(string: baseURL + "days/\(dayId)/activities/\(activity.id)") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: activityNew, options: .prettyPrinted)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                print(response)
+                guard let data = data else { return }
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        do {
+                            
+                        } catch {
+                            // FIXME: tratar o erro do decoder
+                            print(error)
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func deleteObjectBack(objectID: Int, urlPrefix: String, _ completion: @escaping (() -> Void)) {
+        let session: URLSession = URLSession.shared
+        let url: URL = URL(string: baseURL + "\(urlPrefix)/\(objectID)")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            let task = session.dataTask(with: request) { data, response, error in
+                guard let data = data else {return}
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        DispatchQueue.main.async {
+                            completion()
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
 #warning("Corrigir essa funcao para utilizar no codigo")
     func decodeType<T: Codable>(_ class: T, data: Data) -> T? {
         do {
@@ -375,6 +620,21 @@ class DataManager {
         return nil
     }
     
+    func setupImage(category: String) -> String {
+        if category == "Beach".localized() {
+            let beachImages = ["beach0", "beach1", "beach2", "beach3", "beach4"]
+            return beachImages[Int.random(in: 0..<beachImages.count)]
+        } else if category == "Mountain".localized() {
+            let mountainImages = ["montain0", "montain1", "montain2", "montain3", "montain4"]
+            return mountainImages[Int.random(in: 0..<mountainImages.count)]
+        } else if category == "City".localized() {
+            let cityImages = ["city0", "city1", "city2", "city3"]
+            return cityImages[Int.random(in: 0..<cityImages.count)]
+        } else {
+            let campImages = ["camp0", "camp1", "camp2", "camp3", "camp4"]
+            return campImages[Int.random(in: 0..<campImages.count)]
+        }
+    }
 }
 
 struct FailableDecodable<Base: Decodable>: Decodable {

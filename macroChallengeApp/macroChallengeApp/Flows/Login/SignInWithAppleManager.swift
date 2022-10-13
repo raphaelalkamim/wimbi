@@ -61,11 +61,11 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
                 }
                 
                 if let fullName = fullName {
-                    dataManager.postUser(username: userId, usernameApp: username, name: "\(fullName.givenName ?? "user") \(fullName.familyName ?? "name")", photoId: "categoryCamp", password: code, {
+                    dataManager.postUser(username: userId, usernameApp: username, name: "\(fullName.givenName ?? "Strange") \(fullName.familyName ?? "Stranger")", photoId: "categoryCamp", password: code, {
                         self.dataManager.postLogin(username: userId, password: code)
                     })
                 } else {
-                    dataManager.postLogin(username: userId, password: code)
+                    self.dataManager.postLogin(username: userId, password: code)
                 }
             }
             

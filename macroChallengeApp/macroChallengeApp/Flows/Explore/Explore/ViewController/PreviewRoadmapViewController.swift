@@ -48,6 +48,7 @@ class PreviewRoadmapViewController: UIViewController {
             
             self.previewView.infoTripCollectionView.reloadData()
             self.previewView.calendarCollectionView.reloadData()
+            self.previewView.activitiesTableView.reloadData()
         })
     }
     
@@ -70,6 +71,14 @@ class PreviewRoadmapViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
         }))
         present(alert, animated: true)
+        let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
+        let days = newRoadmap.day?.allObjects as [DayLocal]
+        let roadmapDays = self.roadmap.days
+        for index in 0..<roadmapDays.count {
+            let activiyArray = roadmapDays[index].activity
+            for activity in activiyArray {
+                _ = ActivityRepository.shared.createActivity(day: days[index], activity: activity)
+            }
+        }
     }
-    
 }
