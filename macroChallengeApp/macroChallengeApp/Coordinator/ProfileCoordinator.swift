@@ -111,6 +111,13 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "Edit profile".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
+    func startNotifications() {
+        let viewController = NotificationsViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "Notifications".localized()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func backPage() {
         navigationController.popViewController(animated: true)
         delegate?.didFinishPresent(of: self, isNewRoadmap: false)

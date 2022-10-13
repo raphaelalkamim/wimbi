@@ -41,7 +41,7 @@ class ProfileView: UIView {
     
     private lazy var userImage: UIImageView = {
         let img = UIImageView()
-        img.image = UIImage(named: "categoryBeach") // adicionar foto de perfil
+        img.image = UIImage(named: "icon") // adicionar foto de perfil
         img.clipsToBounds = true
         return img
     }()

@@ -116,7 +116,7 @@ extension ProfileCollectionViewCell {
         title.snp.makeConstraints { make in
 //            make.top.equalTo(roadmapImage.snp.bottom).inset(designSystem.spacing.largeNegative)
             make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.mediumNegative)
+            make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
 //            make.bottom.equalToSuperview()
         }
 
