@@ -144,7 +144,10 @@ public class RoadmapRepository: NSManagedObject {
             print("erro")
         }
         self.saveContext()
-        self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id))
+        if var newDaysCore = newRoadmap.day?.allObjects as? [DayLocal] {
+            newDaysCore.sort { $0.id < $1.id }
+            self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDaysCore: newDaysCore)
+        }
         return newRoadmap
     }
     
@@ -181,7 +184,7 @@ public class RoadmapRepository: NSManagedObject {
         DataManager.shared.postRoadmap(roadmap: roadmap, roadmapCore: newRoadmap, daysCore: newDays)
     }
     
-    func updateBackend(roadmap: Roadmaps, id: Int) {
-        DataManager.shared.putRoadmap(roadmap: roadmap, roadmapId: id)
+    func updateBackend(roadmap: Roadmaps, id: Int, newDaysCore: [DayLocal]) {
+        DataManager.shared.putRoadmap(roadmap: roadmap, roadmapId: id, newDaysCore: newDaysCore)
     }
 }

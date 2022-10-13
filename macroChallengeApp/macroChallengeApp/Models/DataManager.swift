@@ -377,7 +377,7 @@ class DataManager {
         
     }
     
-    func putRoadmap(roadmap: Roadmaps, roadmapId: Int) {
+    func putRoadmap(roadmap: Roadmaps, roadmapId: Int, newDaysCore: [DayLocal]) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
         
@@ -424,6 +424,7 @@ class DataManager {
                     }
                     if let httpResponse = response as? HTTPURLResponse {
                         if httpResponse.statusCode == 200 {
+                            self.postDays(roadmapId: roadmapId, daysCore: newDaysCore)
                             print("Atualizou")
                         }
                     }
