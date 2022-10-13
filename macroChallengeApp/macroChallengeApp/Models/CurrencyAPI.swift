@@ -19,14 +19,12 @@ class CurrencyAPI {
         
         let url = URL(string: baseURL + convertedOutgoingCurrency + "-" + convertedIncomingCurrency)!
         
-        
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             self.currency = try JSONDecoder().decode(DecodedCurrency.self, from: data)
         } catch {
             print(String(describing: error.localizedDescription))
         }
-        print("Currencyyyyyyyyyyy")
         print(self.currency)
         return self.currency
     }
@@ -37,7 +35,7 @@ class CurrencyAPI {
         switch currency {
         case "R$":
             currencyConverted = "BRL"
-        case "U$":
+        case "$":
             currencyConverted = "USD"
         case "€":
             currencyConverted = "EUR"

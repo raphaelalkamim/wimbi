@@ -115,7 +115,7 @@ class MyTripView: UIView {
     
     lazy var budgetValue: UILabel = {
         let title = UILabel()
-        title.text = "R$2000.00"
+        title.text = ""
         title.font = designSystem.text.body.font
         title.stylize(with: designSystem.text.body)
         return title

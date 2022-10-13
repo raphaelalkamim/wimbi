@@ -65,7 +65,7 @@ extension NewActivityViewController {
                 ValueTableViewCell else { return }
         let newValue = getNumber(text: cell.value.text ?? "123")
         activity.budget = Double(newValue) ?? 0.0
-        self.updateBudgetRoadmap(budget: Double(newValue) ?? 0.0)
+        //self.updateBudgetRoadmap(budget: Double(newValue) ?? 0.0)
         
         activity.currencyType = self.currencyType
     }
@@ -81,10 +81,11 @@ extension NewActivityViewController {
         }
         return number
     }
-    func updateBudgetRoadmap(budget: Double) {
-        self.roadmap.budget += budget
-        RoadmapRepository.shared.saveContext()
-    }
+//    func updateBudgetRoadmap(budget: Double) {
+//
+//        self.roadmap.budget += budget
+//        RoadmapRepository.shared.saveContext()
+//    }
 }
 
 // MARK: Table View
