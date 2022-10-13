@@ -22,7 +22,7 @@ extension ExploreViewController {
             title: "Add",
             image: UIImage(systemName: "plus"),
             primaryAction: nil,
-            menu: UIMenu(title: "", children: [addRoadMap, insertRoadMap])
+            menu: UIMenu(title: "", children: [addRoadMap])
         )
         
         self.navigationItem.rightBarButtonItem = menuBarButton

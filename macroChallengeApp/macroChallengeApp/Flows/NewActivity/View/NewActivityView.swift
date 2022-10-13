@@ -182,7 +182,7 @@ extension NewActivityView {
             make.top.equalTo(valueLabel.snp.bottom).offset(designSystem.spacing.xSmallPositive)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
-            make.height.equalTo(50)
+            make.height.equalTo(100)
             make.bottom.equalTo(scrollView.snp.bottom)
         }
     }

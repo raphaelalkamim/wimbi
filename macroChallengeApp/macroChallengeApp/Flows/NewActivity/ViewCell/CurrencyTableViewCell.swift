@@ -124,7 +124,7 @@ extension CurrencyTableViewCell {
             self.setCurrencyLabel(currency: "Renminbi  ")
             self.delegate?.didChangeFormatter(formatter: "元")
         }
-        buttonCurrency.menu = UIMenu(title: "", options: .displayInline, children: [real, dollar, euro, yen, swiss, renminbi])
+        buttonCurrency.menu = UIMenu(title: "", options: .displayInline, children: [real])
     }
     
     func setCurrencyLabel(currency: String) {

@@ -36,7 +36,7 @@ extension NewActivityViewController {
         let tableView = newActivityView.localyTable
         guard let cell = tableView.cellForRow(at: [0, 1]) as? TextFieldTableViewCell else { return }
         activity.name = cell.title.text ?? "Nova atividade"
-        
+
         // date
         let formater = DateFormatter()
         formater.dateStyle = .short
@@ -85,9 +85,7 @@ extension NewActivityViewController: UITableViewDataSource {
         } else if tableView == newActivityView.dateTable {
             rows = 2
         } else if tableView == newActivityView.valueTable {
-            //            rows = 2
-            rows = 1
-            
+            rows = 2
         }
         return rows
     }
@@ -139,45 +137,45 @@ extension NewActivityViewController: UITableViewDataSource {
             }
             
         } else if tableView == newActivityView.valueTable {
-            //            if indexPath.row == 0 {
-            //                guard let newCell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell else { fatalError("TableCell not found") }
-            //                newCell.label.text = "Currency".localized()
-            //                newCell.setupSeparator()
-            //                newCell.delegate = self
-            //                cell = newCell
-            //            } else {
-            //                if indexPath.row == 1 {
-            guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
-            
-            newCell.title.text = "Value".localized()
-            newCell.currencyType = self.currencyType
-            newCell.value.placeholder = "R$ 0,00"
-            if edit {
-                newCell.value.text = String(activityEdit.budget)
+            if indexPath.row == 0 {
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell else { fatalError("TableCell not found") }
+                newCell.label.text = "Currency".localized()
+                newCell.setupSeparator()
+                newCell.delegate = self
+                cell = newCell
+            } else {
+                if indexPath.row == 1 {
+                    guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
+                    
+                    newCell.title.text = "Value".localized()
+                    newCell.currencyType = self.currencyType
+                    newCell.value.placeholder = "$ 0.00"
+                    if edit {
+                        newCell.value.text = String(activityEdit.budget)
+                    }
+                    cell = newCell
+                }
+                
             }
-            cell = newCell
-
-            //                }
-            
         }
         return cell
     }
-
-func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if tableView == newActivityView.localyTable {
-        if indexPath.row == 0 {
-            self.coordinator?.openLocationActivity(delegate: self, roadmap: roadmap)
-            print(roadmap)
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == newActivityView.localyTable {
+            if indexPath.row == 0 {
+                self.coordinator?.openLocationActivity(delegate: self, roadmap: roadmap)
+                print(roadmap)
+            }
         }
     }
-}
 }
 
 extension NewActivityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    
+
 }
 // MARK: CollectionView
 extension NewActivityViewController: UICollectionViewDelegate {
