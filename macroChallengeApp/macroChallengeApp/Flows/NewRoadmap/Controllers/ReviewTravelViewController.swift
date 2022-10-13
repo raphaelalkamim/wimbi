@@ -75,6 +75,7 @@ class ReviewTravelViewController: UIViewController {
     @objc func nextPage() {
         if edit {
             self.updateCoreData()
+            NotificationManager.shared.registerTripNotification(roadmap: self.editRoadmap)
         } else {
             self.saveCoreData()
         }
@@ -90,15 +91,12 @@ class ReviewTravelViewController: UIViewController {
     
     func saveCoreData() {
         roadmap.imageId = "beach0"
-        roadmap.createdAt = Date()
-        
-        // save in Backend
-        dataManager.postRoadmap(roadmap: roadmap)
-        
         // save in Core Data
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
         RoadmapRepository.shared.saveContext()
         
+        NotificationManager.shared.registerTripNotification(roadmap: newRoadmap)
+
         // save days in Roadmap
         var isFirstDay = false
         for index in 0..<roadmap.dayCount {
@@ -107,9 +105,16 @@ class ReviewTravelViewController: UIViewController {
             } else {
                 isFirstDay = false
             }
-            _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: roadmap.dateInitial, indexPath: index, isSelected: isFirstDay))
+            
+            let dateFormat = DateFormatter()
+            dateFormat.dateStyle = .short
+            dateFormat.timeStyle = .none
+            
+            let date = dateFormat.date(from: roadmap.dateInitial)
+            _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: date ?? Date(), indexPath: index, isSelected: isFirstDay))
         }
     }
+    
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {
         let date = startDay.addingTimeInterval(Double(indexPath) * 24 * 3600)
         var day = Day(isSelected: isSelected, date: date)
@@ -124,8 +129,14 @@ class ReviewTravelViewController: UIViewController {
     }
     func setupContent() {
         self.daysCount = roadmap.dayCount
-        self.start = roadmap.dateInitial
-        self.final = roadmap.dateFinal
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "d/M/y"
+        let date = dateFormat.date(from: roadmap.dateInitial)
+        let dateFinal = dateFormat.date(from: roadmap.dateFinal)
+
+        self.start = date ?? Date()
+        self.final = dateFinal ?? Date()
+        
         self.isPublic = roadmap.isPublic
         self.peopleCount = roadmap.peopleCount
         self.reviewTravelView.subtitle.text = self.roadmap.category

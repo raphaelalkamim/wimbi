@@ -25,31 +25,29 @@ extension SettingsViewController: UITableViewDelegate {
 
 extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let viewController = EditProfileViewController()
-            viewController.navigationItem.title = "Edit profile".localized()
-            navigationController?.pushViewController(viewController, animated: true)
+            coordinator?.startEditProfile()
             
+//        case 1:
+//            let viewController = LikedRoadmapsViewController()
+//            viewController.navigationItem.title = "Liked roadmaps".localized()
+//            navigationController?.pushViewController(viewController, animated: true)
+//
         case 1:
-            let viewController = LikedRoadmapsViewController()
-            viewController.navigationItem.title = "Liked roadmaps".localized()
-            navigationController?.pushViewController(viewController, animated: true)
-            
-        case 2:
             let viewController = NotificationsViewController()
             viewController.navigationItem.title = "Notifications".localized()
             navigationController?.pushViewController(viewController, animated: true)
-        case 3:
-            let viewController = TermsViewController()
-            viewController.navigationItem.title = "Terms of privacy".localized()
-            navigationController?.pushViewController(viewController, animated: true)
+//        case 3:
+//            let viewController = TermsViewController()
+//            viewController.navigationItem.title = "Privacy policies".localized()
+//            navigationController?.pushViewController(viewController, animated: true)
             
-        case 4:
+        case 2:
             let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
             alert.view.tintColor = .accent
             let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
@@ -57,8 +55,14 @@ extension SettingsViewController: UITableViewDataSource {
             alert.setValue(string, forKey: "attributedTitle")
             alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
             }))
+            
             alert.addAction(UIAlertAction(title: "Sign out".localized(), style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
-                // Ação Cancelar
+                KeychainManager.shared.delete(service: "username", account: "explorer")
+                UserDefaults.standard.setValue("", forKey: "authorization")
+                UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+                UserDefaults.standard.set(nil, forKey: "user")
+                
+                self.coordinator?.backPage()
             }))
             present(alert, animated: true)
             
@@ -79,19 +83,19 @@ extension SettingsViewController: UITableViewDataSource {
             cell.title.text = "Edit profile".localized()
             cell.icon.setImage(UIImage(systemName: "person.fill"), for: .normal)
             
-        case 1:
-            cell.title.text = "Liked roadmaps".localized()
-            cell.icon.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//        case 1:
+//            cell.title.text = "Liked roadmaps".localized()
+//            cell.icon.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             
-        case 2:
+        case 1:
             cell.title.text = "Notifications".localized()
             cell.icon.setImage(UIImage(systemName: "bell.fill"), for: .normal)
             
-        case 3:
-            cell.title.text = "Terms of privacy".localized()
-            cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
+//        case 3:
+//            cell.title.text = "Privacy policies".localized()
+//            cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
             
-        case 4:
+        case 2:
             cell.title.text = "Sign out".localized()
             cell.title.textColor = .redCity
             cell.icon.isHidden = true

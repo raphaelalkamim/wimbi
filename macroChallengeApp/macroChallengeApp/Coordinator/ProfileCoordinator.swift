@@ -39,6 +39,16 @@ class ProfileCoordinator: Coordinator {
         }
     }
     
+    func startLogin() {
+        let viewController = LoginViewController()
+        viewController.coordinatorProfile = self
+        viewController.navigationItem.title = "Login"
+        let tabBarItem = UITabBarItem(title: "Profile".localized(), image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        viewController.tabBarItem = tabBarItem
+        viewController.navigationItem.title = "Profile".localized()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func openRoadmap(roadmap: RoadmapLocal) {
         let viewController = MyTripViewController()
         viewController.coordinator = self
@@ -62,10 +72,10 @@ class ProfileCoordinator: Coordinator {
         viewController.coordinator = self
         viewController.day = day
         viewController.roadmap = roadmap
-        viewController.navigationItem.title = "New Activity"
+        viewController.navigationItem.title = "New activity".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
-    func editActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController, activity: ActivityLocal){
+    func editActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController, activity: ActivityLocal) {
         let viewController = NewActivityViewController()
         viewController.delegate = delegate
         viewController.coordinator = self
@@ -73,7 +83,7 @@ class ProfileCoordinator: Coordinator {
         viewController.edit = true
         viewController.activityEdit = activity
         viewController.roadmap = roadmap
-        viewController.navigationItem.title = "New Activity"
+        viewController.navigationItem.title = "New activity".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
     func openLocationActivity(delegate: ChangeTextTableDelegate, roadmap: RoadmapLocal) {
@@ -87,13 +97,20 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func settings() {
+    func settings(profileVC: ProfileViewController) {
         let viewController = SettingsViewController()
         viewController.coordinator = self
+        viewController.delegate = profileVC
         viewController.navigationItem.title = "Settings".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    func startEditProfile() {
+        let viewController = EditProfileViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "Edit profile".localized()
+        navigationController.pushViewController(viewController, animated: true)
+    }
     func backPage() {
         navigationController.popViewController(animated: true)
         delegate?.didFinishPresent(of: self, isNewRoadmap: false)

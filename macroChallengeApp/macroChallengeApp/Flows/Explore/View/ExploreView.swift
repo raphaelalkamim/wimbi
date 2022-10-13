@@ -22,6 +22,24 @@ class ExploreView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    lazy var emptyStateTitle: UILabel = {
+        let title = UILabel()
+        title.text = "No internet connection".localized()
+        title.numberOfLines = 0
+        title.font = designSystem.text.body.font
+        title.textAlignment = .center
+        title.textColor = .textPrimary
+        return title
+    }()
+    
+    lazy var emptyStateImage: UIImageView = {
+        let img = UIImageView()
+        img.image = designSystem.images.lostConnection
+        img.clipsToBounds = true
+        img.contentMode = .scaleAspectFit
+        return img
+    }()
+    
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         return searchBar
@@ -55,6 +73,10 @@ class ExploreView: UIView {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(searchBar)
         self.addSubview(roadmapsCollectionView)
+        self.addSubview(emptyStateImage)
+        self.addSubview(emptyStateTitle)
+        emptyStateTitle.isHidden = true
+        emptyStateImage.isHidden = true
         setupConstraints()
     }
     
@@ -63,6 +85,17 @@ class ExploreView: UIView {
             make.topMargin.equalToSuperview()
             make.trailing.leading.equalToSuperview()
             make.bottom.equalToSuperview()
+        }
+        emptyStateTitle.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(emptyStateImage.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+
+        }
+        emptyStateImage.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(200)
+            make.top.equalToSuperview().inset(330)
+
         }
     }
     
@@ -82,11 +115,12 @@ class ExploreView: UIView {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = true
         
-        searchController.searchBar.showsBookmarkButton = true
-        searchController.searchBar.setImage(UIImage(systemName: "slider.horizontal.3"), for: .bookmark, state: .normal)
+        // Filtro
+//        searchController.searchBar.showsBookmarkButton = true
+//        searchController.searchBar.setImage(UIImage(systemName: "slider.horizontal.3"), for: .bookmark, state: .normal)
         
         searchBar = searchController.searchBar
-        searchBar.placeholder = "Para onde você vai?"
+        searchBar.placeholder = "Where do you want to go?".localized()
     }
 }
 

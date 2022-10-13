@@ -27,7 +27,7 @@ class ExploreViewController: UIViewController {
         explorerView.addSearchBarNavigation(navigation: navigationItem)
         
         explorerView.searchBar.delegate = self
-        
+        emptyState()
         definesPresentationContext = true
         
     }
@@ -38,14 +38,25 @@ class ExploreViewController: UIViewController {
             self.explorerView.roadmapsCollectionView.reloadData()
         })
         navigationController?.navigationBar.prefersLargeTitles = true
+        emptyState()
     }
     
     func addNewRoadmap() {
         coordinator?.createNewRoadmap()
     }
     
-    @objc func previewRoadmap() {
-        coordinator?.previewRoadmap()
+    func emptyState() {
+        if roadmaps.isEmpty {
+            explorerView.roadmapsCollectionView.isHidden = true
+            explorerView.emptyStateTitle.isHidden = false
+            explorerView.emptyStateImage.isHidden = false
+            explorerView.roadmapsCollectionView.isScrollEnabled = false
+        } else {
+            explorerView.roadmapsCollectionView.isHidden = false
+            explorerView.emptyStateTitle.isHidden = true
+            explorerView.emptyStateImage.isHidden = true
+            explorerView.roadmapsCollectionView.isScrollEnabled = true
+        }
     }
     
 }

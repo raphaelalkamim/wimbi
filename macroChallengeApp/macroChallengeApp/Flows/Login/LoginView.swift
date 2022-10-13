@@ -14,29 +14,25 @@ class LoginView: UIView {
     let isLogged = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
     
     lazy var imageLogin: UIImageView = {
-        let image = UIImageView()
-        if isLogged {
-            image.backgroundColor = .green
-        } else {
-            image.backgroundColor = .red
-        }
-        return image
-    }()
-    
-    lazy var loginText: UILabel = {
-        let label = UILabel()
-        label.text = "FAZER TEXTIN"
-        return label
+        let img = UIImageView()
+        img.image = UIImage(named: "login")
+        img.contentMode = .scaleAspectFit
+        img.clipsToBounds = true
+        return img
     }()
     
     lazy var agreeText: UILabel = {
         let label = UILabel()
-        label.text = "By clicking on the button above, you agree to our terms of use and privacy policies".localized()
+        label.text = "By clicking on the button above, you agree to our privacy policies".localized()
+        label.textAlignment = .center
+        label.font = UIFont(name: "Avenir-Roman", size: 14)!
+        label.numberOfLines = 0
+        label.textColor = .textPrimary
         return label
     }()
     
     lazy var buttonAppleSignIn: ASAuthorizationAppleIDButton = {
-        let button = ASAuthorizationAppleIDButton()
+        let button = ASAuthorizationAppleIDButton(authorizationButtonType: .default, authorizationButtonStyle: UITraitCollection.current.userInterfaceStyle == .dark ? .white : .black)
         button.cornerRadius = 108
         button.addTarget(self, action: #selector(actionButtonSignIn), for: .touchUpInside)
         return button
@@ -56,44 +52,31 @@ class LoginView: UIView {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         
         self.addSubview(imageLogin)
-        self.addSubview(loginText)
         self.addSubview(buttonAppleSignIn)
         self.addSubview(agreeText)
         
         setupConstraints()
-        
-        loginText.stylize(with: designSystem.text.caption)
-        agreeText.stylize(with: designSystem.text.caption)
-        
-        agreeText.textAlignment = .center
-        agreeText.textColor = .black
-        agreeText.font = UIFont(name: "Avenir-Roman", size: 12)!
     }
     
     func setupConstraints() {
         imageLogin.snp.makeConstraints { make in
-            make.top.equalTo(self.snp.topMargin).offset(60)
-            make.height.width.equalTo(282)
-            make.leading.equalToSuperview().offset(54)
-            make.trailing.equalToSuperview().offset(-54)
-        }
-        
-        loginText.snp.makeConstraints { make in
-            make.top.equalTo(imageLogin.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
+            make.top.equalTo(self.snp.topMargin)
+            make.height.equalTo(400)
+            make.centerX.equalTo(self.snp.centerX)
+
         }
         
         buttonAppleSignIn.snp.makeConstraints { make in
-            make.top.equalTo(loginText.snp.bottom).offset(70)
+            make.top.equalTo(imageLogin.snp.bottom).offset(70)
             make.leading.equalToSuperview().offset(50)
             make.trailing.equalToSuperview().offset(-50)
             make.height.equalTo(51)
         }
         
         agreeText.snp.makeConstraints { make in
-            make.top.equalTo(buttonAppleSignIn.snp.bottom).offset(designSystem.spacing.xxLargePositive)
-            make.leading.equalToSuperview().offset(87)
-            make.trailing.equalToSuperview().offset(-87)
+            make.top.equalTo(buttonAppleSignIn.snp.bottom).offset(designSystem.spacing.xLargePositive)
+            make.leading.equalToSuperview().offset(designSystem.spacing.xxLargePositive)
+            make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
             
         }
     }
@@ -101,5 +84,4 @@ class LoginView: UIView {
     @objc func actionButtonSignIn() {
         signInWithAppleManager.signIn()
     }
-    
 }

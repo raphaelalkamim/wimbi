@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import MapKit
+import UserNotifications
 
 class NewActivityViewController: UIViewController {
     weak var delegate: AddNewActivityDelegate?
@@ -38,13 +39,13 @@ class NewActivityViewController: UIViewController {
     var roadmap = RoadmapLocal()
     var activityEdit = ActivityLocal()
     var edit = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNewActivityView()
         setKeyboard()
         let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelCreation))
-        cancelButton.tintColor = .systemRed
+        cancelButton.tintColor = .accent
         self.navigationItem.leftBarButtonItem = cancelButton
         
         let salvarButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveActivity))
@@ -67,20 +68,27 @@ class NewActivityViewController: UIViewController {
     
     @objc func saveActivity() {
         self.setData()
+        var createdActivity: ActivityLocal?
         if edit {
+            self.activity.id = Int(self.activityEdit.id)
             ActivityRepository.shared.updateActivity(day: self.day, oldActivity: self.activityEdit, activity: self.activity)
-            do {
-                try ActivityRepository.shared.deleteActivity(activity: self.activityEdit, roadmap: self.roadmap)
-            } catch {
-                "erro ao deletar atividade"
-            }
         } else {
-            _ = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
+            createdActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
         }
         self.delegate?.attTable()
         coordinator?.backPage()
         coordinatorCurrent?.backPage()
         print(activity)
+        
+        if UserDefaults.standard.bool(forKey: "switch") == true {
+            print("registrou")
+            if let safeActivity = createdActivity {
+                NotificationManager.shared.registerActivityNotification(createdActivity: safeActivity)
+                NotificationManager.shared.registerTripNotification(roadmap: roadmap)
+
+            }
+            
+        }
     }
     
     func getUserCurrency() -> String {

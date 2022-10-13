@@ -33,7 +33,7 @@ class MyTripView: UIView {
     
     lazy var emptyStateTitle: UILabel = {
         let title = UILabel()
-        title.text = "Click ”+” to add an activity to your day"
+        title.text = "Click ”+” to add an activity to your day.".localized()
         title.numberOfLines = 0
         title.font = designSystem.text.body.font
         title.textAlignment = .center
@@ -242,14 +242,17 @@ class MyTripView: UIView {
         }
         
         emptyStateTitle.snp.makeConstraints { make in
+            make.top.equalTo(emptyStateImage.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
             make.centerX.equalToSuperview()
-            make.top.equalTo(dayTitle.snp.bottom).inset(-40)
+            make.leading.equalToSuperview().inset(70)
+            make.trailing.equalToSuperview().inset(70)
+
         }
         
         emptyStateImage.snp.makeConstraints { make in
-            make.height.equalTo(130)
+            make.height.equalTo(120)
             make.centerX.equalToSuperview()
-            make.top.equalTo(emptyStateTitle.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
+            make.top.equalTo(dayTitle.snp.bottom).inset(-40)
         }
         
         activitiesTableView.snp.makeConstraints { make in

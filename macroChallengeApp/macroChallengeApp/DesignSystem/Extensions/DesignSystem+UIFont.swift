@@ -35,7 +35,7 @@ extension UIFont {
     }
     
     static var caption: UIFont {
-        UIFont(name: "Avenir-Light", size: 14)!
+        UIFont(name: "Avenir-Book", size: 14)!
     }
     
     static var smallCaption: UIFont {

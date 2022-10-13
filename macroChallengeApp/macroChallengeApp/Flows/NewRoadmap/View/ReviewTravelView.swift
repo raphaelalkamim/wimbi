@@ -101,7 +101,7 @@ class ReviewTravelView: UIView {
         table.isScrollEnabled = false
         table.separatorColor = .clear
         table.allowsSelection = false
-        table.backgroundColor = designSystem.palette.backgroundCell
+        table.backgroundColor = .clear
         return table
     }()
     
@@ -156,7 +156,7 @@ extension ReviewTravelView {
 
         contentView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top)
-            make.bottom.equalTo(privacyTable.snp.bottom).offset(50)
+            make.bottom.equalTo(privacyTable.snp.bottom)
             make.left.right.equalTo(self)
         }
         
@@ -210,7 +210,7 @@ extension ReviewTravelView {
             make.top.equalTo(privacyTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
             make.bottom.equalTo(scrollView.snp.bottom)
-            make.height.equalTo(50)
+            make.height.equalTo(100)
         }
     }
     

@@ -24,24 +24,35 @@ extension ProfileViewController {
             let touchPoint = sender.location(in: profileView.myRoadmapCollectionView)
             if let indexPath = profileView.myRoadmapCollectionView.indexPathForItem(at: touchPoint) {
                 if roadmaps.isEmpty {
-                    let action = UIAlertController(title: "Não é possível deletar", message: nil, preferredStyle: .actionSheet)
+                    let action = UIAlertController(title: "Can't delete", message: nil, preferredStyle: .actionSheet)
                     action.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { [weak self] _ in
                         self?.profileView.myRoadmapCollectionView.reloadData()
                     }))
                     present(action, animated: true)
                 } else {
-                    let action = UIAlertController(title: "Deletar todo o conteúdo de '\(roadmaps[indexPath.item].name ?? "NONE")'", message: "O conteúdo não poderá ser recuperado.", preferredStyle: .actionSheet)
+                    let action = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
                     
-                    action.addAction(UIAlertAction(title: "Deletar", style: .destructive, handler: { [weak self] _ in
-                            do {
-                                try RoadmapRepository.shared.deleteRoadmap(roadmap: self!.roadmaps[indexPath.row])
-                            } catch {
-                                print(error)
-                            }
+                    let roadmapName = "'\(roadmaps[indexPath.item].name ?? "NONE")'"
+                    
+                    let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 16)]
+                    let string = NSAttributedString(string: "Delete all content from \(roadmapName)".localized(), attributes: titleAtt)
+                    action.setValue(string, forKey: "attributedTitle")
+                    
+                    let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 16)]
+                    let subtitleString = NSAttributedString(string: "The content cannot be recovered.".localized(), attributes: subtitleAtt)
+                    action.setValue(subtitleString, forKey: "attributedMessage")
+                    
+                    action.addAction(UIAlertAction(title: "Delete".localized(), style: .destructive, handler: { [weak self] _ in
+                        do {
+                            try RoadmapRepository.shared.deleteRoadmap(roadmap: self!.roadmaps[indexPath.row])
+                        } catch {
+                            print(error)
+                        }
                         
                         self?.profileView.myRoadmapCollectionView.reloadData()
                     }))
-                    action.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+                    action.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil))
+                    action.view.tintColor = .accent
                     present(action, animated: true)
                     
                 }
@@ -84,10 +95,6 @@ extension ProfileViewController: UICollectionViewDataSource {
             
         }
         
-        if let user = user {
-            cell.title.text = user.userRoadmap[indexPath.row].roadmap.name
-            cell.roadmapImage.image = UIImage(named: user.userRoadmap[indexPath.row].roadmap.imageId)
-        }
         return cell
     }
 }

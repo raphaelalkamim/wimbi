@@ -46,7 +46,7 @@ class CurrentCountDown: UIView {
         let label = UILabel()
         label.stylize(with: designSystem.text.body)
         label.textAlignment = .left
-        label.text = "Left".localized()
+        label.text = "Faltam".localized()
         return label
     }()
     
@@ -64,7 +64,7 @@ class CurrentCountDown: UIView {
         let label = UILabel()
         label.stylize(with: designSystem.text.body)
         label.textAlignment = .left
-        label.text = "days".localized()
+        label.text = "days left".localized()
         return label
     }()
 }

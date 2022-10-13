@@ -48,7 +48,7 @@ class CurrencyTableViewCell: UITableViewCell {
     
     lazy var buttonCurrency: UIButton = {
         let button = UIButton()
-        button.setTitle("Dollar  ", for: .normal)
+        button.setTitle("Real  ".localized(), for: .normal)
         button.setImage(UIImage(systemName: "chevron.up.chevron.down"), for: .normal)
         button.semanticContentAttribute = .forceRightToLeft
         button.showsMenuAsPrimaryAction = true
@@ -96,27 +96,27 @@ extension CurrencyTableViewCell {
 extension CurrencyTableViewCell {
     func setContextViewCurrency() {
         let real = UIAction(title: NSLocalizedString("BRL", comment: "Brazilian currency Real"), image: UIImage(systemName: "brazilianrealsign.circle.fill")) { _ in
-            self.setCurrencyLabel(currency: "Real  ")
+            self.setCurrencyLabel(currency: "Real  ".localized())
             self.delegate?.didChangeFormatter(formatter: "R$")
         }
         
         let dollar = UIAction(title: NSLocalizedString("USD", comment: "United States currency Dollar"), image: UIImage(systemName: "dollarsign.circle.fill")) { _ in
-            self.setCurrencyLabel(currency: "Dollar  ")
+            self.setCurrencyLabel(currency: "Dollar  ".localized())
             self.delegate?.didChangeFormatter(formatter: "U$")
         }
         
         let euro = UIAction(title: NSLocalizedString("EUR", comment: "European currency Euro"), image: UIImage(systemName: "eurosign.circle.fill")) { _ in
-            self.setCurrencyLabel(currency: "Euro  ")
+            self.setCurrencyLabel(currency: "Euro  ".localized())
             self.delegate?.didChangeFormatter(formatter: "€")
         }
         
         let yen = UIAction(title: NSLocalizedString("JPY", comment: " Japonese currency Yen"), image: UIImage(systemName: "yensign.circle.fill")) { _ in
-            self.setCurrencyLabel(currency: "Yen  ")
+            self.setCurrencyLabel(currency: "Yen  ".localized())
             self.delegate?.didChangeFormatter(formatter: "¥")
         }
         
         let swiss = UIAction(title: NSLocalizedString("CHF", comment: "Swiss currency Swiss Franc"), image: UIImage(systemName: "francsign.circle.fill")) { _ in
-            self.setCurrencyLabel(currency: "Swiss Franc  ")
+            self.setCurrencyLabel(currency: "Swiss Franc  ".localized())
             self.delegate?.didChangeFormatter(formatter: "Fr")
         }
         
