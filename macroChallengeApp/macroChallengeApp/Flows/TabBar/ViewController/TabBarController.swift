@@ -43,11 +43,14 @@ class TabBarController: UITabBarController {
             dateFormatter.timeStyle = .none
             dateFormatter.dateFormat = "dd/MM/yy"
             
-            if dateFormatter.string(from: date) == dateFormatter.string(from: roadmap.date ?? Date()) {
-                current.startCurrent(roadmap: roadmap)
-            } else {
+            if configCountDown() > 0 {
                 // abre o countdown
                 current.start()
+            } else if configCountDown() == 0 {
+                current.start()
+
+            } else {
+                current.startCurrent(roadmap: roadmap)
             }
         } else {
             // abre o countdown mas vai pra empty view
@@ -58,5 +61,9 @@ class TabBarController: UITabBarController {
     }
     func setupNavigators() {
         viewControllers = [explore.navigationController, current.navigationController, profile.navigationController]
+    }
+    func configCountDown() -> Int {
+        var time = Int((roadmap.date?.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24))
+        return time
     }
 }
