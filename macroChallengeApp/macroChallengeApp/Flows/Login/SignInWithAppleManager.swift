@@ -42,33 +42,26 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
             let codeComponents = userId.components(separatedBy: delimiter2)
             let code = codeComponents[1] + codeComponents[0]
             
-            if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
-                let username = String(data: data, encoding: .utf8)!
-                dataManager.postLogin(username: username, password: code)
+            KeychainManager.shared.delete(service: "username", account: "explorer")
+            var username = ""
+            
+            if emailId == nil {
+                let usernamesTags = ["explorer", "traveler", "passenger", "tourist", "visitor"]
+                username = (usernamesTags.randomElement() ?? "stranger") + "\(Int.random(in: 100000...900000))"
             } else {
-                var username = ""
-                
-                if emailId == nil {
-                    let usernamesTags = ["explorer", "traveler", "passenger", "tourist", "visitor"]
-                    username = (usernamesTags.randomElement() ?? "stranger") + "\(Int.random(in: 100000...900000))"
-                } else {
-                    let delimiter = "@"
-                    let usernameComps = emailId?.components(separatedBy: delimiter)
-                    if let usernameOk = usernameComps?[0] {
-                        username = usernameOk
-                    }
-                    
+                let delimiter = "@"
+                let usernameComps = emailId?.components(separatedBy: delimiter)
+                if let usernameOk = usernameComps?[0] {
+                    username = usernameOk
                 }
                 
-                if let fullName = fullName {
-                    dataManager.postUser(username: userId, usernameApp: username, name: "\(fullName.givenName ?? "Strange") \(fullName.familyName ?? "Stranger")", photoId: "categoryCamp", password: code, {
-                        self.dataManager.postLogin(username: userId, password: code)
-                    })
-                } else {
-                    self.dataManager.postLogin(username: userId, password: code)
-                }
             }
             
+            if let fullName = fullName {
+                dataManager.postUser(username: userId, usernameApp: username, name: "\(fullName.givenName ?? "Strange") \(fullName.familyName ?? "Stranger")", photoId: "categoryCamp", password: code, {
+                    self.dataManager.postLogin(username: userId, password: code)
+                })
+            }
         }
     }
     
