@@ -176,9 +176,9 @@ class ProfileView: UIView {
         }
         
         emptyStateTitle.snp.makeConstraints { make in
-            make.top.equalTo(emptyStateImage.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
-            make.leading.equalTo(contentView.snp.leading).inset(70)
-            make.trailing.equalTo(contentView.snp.trailing).inset(70)
+            make.top.equalTo(emptyStateImage.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+            make.leading.equalTo(contentView.snp.leading).inset(40)
+            make.trailing.equalTo(contentView.snp.trailing).inset(40)
 
         }
         emptyStateImage.snp.makeConstraints { make in

@@ -70,21 +70,21 @@ class PreviewRoadmapView: UIView {
     
     lazy var infoTitle: UILabel = {
         let title = UILabel()
-        title.text = "SOBRE"
+        title.text = "ABOUT".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var calendarTitle: UILabel = {
         let title = UILabel()
-        title.text = "DIAS DE VIAGEM"
+        title.text = "TRAVEL DAYS".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var roadmapTitle: UILabel = {
         let title = UILabel()
-        title.text = "ROTEIRO"
+        title.text = "ROADMAP".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()

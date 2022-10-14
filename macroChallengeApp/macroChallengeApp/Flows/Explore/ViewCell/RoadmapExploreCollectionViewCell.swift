@@ -160,11 +160,11 @@ extension RoadmapExploreCollectionViewCell {
     }
     
     func setupColor(category: String) {
-        if category == "Beach".localized() {
+        if category == "Praia".localized() {
             self.categoryColor.tintColor = .blueBeach
-        } else if category == "Mountain".localized() {
+        } else if category == "Montanha".localized() {
             self.categoryColor.tintColor = .yellowMontain
-        } else if category == "City".localized() {
+        } else if category == "Cidade".localized() {
             self.categoryColor.tintColor = .redCity
         } else {
             self.categoryColor.tintColor = .greenCamp

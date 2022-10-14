@@ -19,7 +19,7 @@ extension MyTripViewController {
         if coordinator != nil {
             let editItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMyTrip))
             editItem.tintColor = .accent
-            let shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action:  #selector(shareMyTrip))
+            let shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareMyTrip))
             self.navigationItem.rightBarButtonItems = [shareItem, editItem]
         }
         
