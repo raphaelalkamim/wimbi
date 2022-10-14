@@ -24,6 +24,7 @@ struct Day: Codable {
         let format = DateFormatter()
         format.timeStyle = .none
         format.dateStyle = .short
+        format.dateFormat = "dd/MM/yyyy"
         self.date = format.string(from: date)
         self.isSelected = isSelected
         self.activity = []
