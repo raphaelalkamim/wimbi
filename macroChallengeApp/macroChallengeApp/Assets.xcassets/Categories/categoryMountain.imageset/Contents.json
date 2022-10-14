@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "categoryMountainL.png",
+      "filename" : "montainLight.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,11 +12,12 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Group 296.png",
+      "filename" : "montainDark.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "montainLight@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -27,10 +28,12 @@
           "value" : "dark"
         }
       ],
+      "filename" : "montainDark@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "montainLight@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -41,6 +44,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "montainDark@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

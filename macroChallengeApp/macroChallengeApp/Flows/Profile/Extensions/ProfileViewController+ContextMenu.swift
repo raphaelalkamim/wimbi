@@ -19,7 +19,7 @@ extension ProfileViewController {
         }
         
         profileView.addButton.showsMenuAsPrimaryAction = true
-        profileView.addButton.menu = UIMenu(title: "", children: [addRoadMap, insertRoadMap])
+        profileView.addButton.menu = UIMenu(title: "", children: [addRoadMap])
     }
     
     func setUIAlert() {

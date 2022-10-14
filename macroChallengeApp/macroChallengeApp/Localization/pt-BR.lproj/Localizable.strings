@@ -6,8 +6,19 @@
   
 */
 
+//MARK: - Notifications
+"Your trip to" = "Sua viagem para";
+"starts now!" = "começa agora!";
+"The" = "A atividade";
+"activity" = "";
+"starts in" = "começa em";
+"Let's go!" = "Vamos lá!";
+
 // MARK: -  Login
 "By clicking on the button above, you agree to our privacy policies" = "Clicando no botão acima, você concorda com nossas políticas de privacidade";
+"User" = "Usuário";
+"@user" = "@usuario";
+
 
 // MARK: -  New Activity
 "TYPE" = "TIPO";
@@ -42,6 +53,12 @@
 "Add the code to have access to the trip" = "Adicione o código para juntar-se à viagem";
 "Join" = "Junte-se";
 "No internet connection" = "Sem conexão com a internet";
+"Successfully duplicated!" = "Duplicado com sucesso!";
+"The roadmap is now available on your profile." = "O roteiro já está disponível em seu perfil.";
+"traveler  •" = "viajante  •";
+"travelers  •" = "viajantes  •";
+"thousand per person" = "mil por pessoa";
+
 
 // MARK: -  TabBar
 "Explore" = "Explorar";
@@ -70,8 +87,11 @@
 "Turn on notification" = "Ativar notificação";
 "Frequency" = "Frequência";
 "minutes" = "minutos";
+"minute" = "minuto";
 "hours" = "horas";
+"hour" = "hora";
 "days" = "dias";
+"day" = "dia";
 "days left" = "dias";
 "day left" = "dia";
 "Your trip is \ntomorrow!" = "Sua viagem é \namanhã!";

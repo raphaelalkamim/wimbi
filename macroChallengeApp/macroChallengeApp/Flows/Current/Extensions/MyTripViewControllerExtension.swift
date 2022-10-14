@@ -19,7 +19,7 @@ extension MyTripViewController {
         if coordinator != nil {
             let editItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMyTrip))
             editItem.tintColor = .accent
-            let shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action:  #selector(shareMyTrip))
+            let shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareMyTrip))
             self.navigationItem.rightBarButtonItems = [shareItem, editItem]
         }
         
@@ -165,7 +165,7 @@ extension MyTripViewController: UICollectionViewDataSource {
                 cell.circle.isHidden = false
                 cell.info.isHidden = true
                 cell.circle.layer.cornerRadius = 18
-                cell.circle.image = UIImage(named: "leisure")
+                cell.circle.image = UIImage(named: "icon")
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(36)
                 }

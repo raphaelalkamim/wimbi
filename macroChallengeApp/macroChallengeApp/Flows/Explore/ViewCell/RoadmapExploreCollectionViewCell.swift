@@ -35,6 +35,8 @@ class RoadmapExploreCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.stylize(with: designSystem.text.title)
         label.text = "Vargem Grande"
+        label.numberOfLines = 1
+        label.lineBreakMode = .byTruncatingTail
         return label
     }()
     
@@ -155,5 +157,18 @@ extension RoadmapExploreCollectionViewCell {
             make.centerY.equalToSuperview()
         }
         
+    }
+    
+    func setupColor(category: String) {
+        if category == "Praia".localized() {
+            self.categoryColor.tintColor = .blueBeach
+        } else if category == "Montanha".localized() {
+            self.categoryColor.tintColor = .yellowMontain
+        } else if category == "Cidade".localized() {
+            self.categoryColor.tintColor = .redCity
+        } else {
+            self.categoryColor.tintColor = .greenCamp
+
+        }
     }
 }

@@ -70,21 +70,21 @@ class PreviewRoadmapView: UIView {
     
     lazy var infoTitle: UILabel = {
         let title = UILabel()
-        title.text = "SOBRE"
+        title.text = "ABOUT".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var calendarTitle: UILabel = {
         let title = UILabel()
-        title.text = "DIAS DE VIAGEM"
+        title.text = "TRAVEL DAYS".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var roadmapTitle: UILabel = {
         let title = UILabel()
-        title.text = "ROTEIRO"
+        title.text = "ROADMAP".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
@@ -178,7 +178,7 @@ class PreviewRoadmapView: UIView {
             make.top.equalTo(roadmapTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.leading.equalTo(contentView.snp.leading)
             make.trailing.equalTo(contentView.snp.trailing)
-            make.height.equalTo(400)
+            make.height.equalTo(900)
             make.bottom.equalTo(scrollView.snp.bottom)
         }
     }

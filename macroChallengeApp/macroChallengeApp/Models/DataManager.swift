@@ -568,7 +568,6 @@ class DataManager {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
                         do {
-                            
                         } catch {
                             // FIXME: tratar o erro do decoder
                             print(error)

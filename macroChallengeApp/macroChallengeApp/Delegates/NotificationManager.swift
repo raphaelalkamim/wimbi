@@ -16,8 +16,8 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     var days: [DayLocal] = []
     var activities: [ActivityLocal] = []
     var daySelected = 0
-    var notificationPhrases = ["wimbi", "Bom dia!", "Boa tarde!", "Boa noite!", "Olá, explorador!"]
-    
+    var notificationPhrases = ["Your trip to".localized(), "starts now!".localized(), "The".localized(), "activity".localized(), "starts in".localized()]
+        
     override init() {
         super.init()
         center.delegate = self
@@ -27,13 +27,14 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
             if granted {
                 print("Yay!")
+                UserDefaults.standard.set(true, forKey: "switch")
             } else {
                 print("D'oh")
             }
         }
     }
     func registerCategories() {
-        let show = UNNotificationAction(identifier: "show", title: "Vamos lá!", options: .foreground)
+        let show = UNNotificationAction(identifier: "show", title: "Let's go!".localized(), options: .foreground)
         let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
         center.setNotificationCategories([category])
     }
@@ -48,6 +49,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
             
         }
     }
+    
     @objc func createActivityNotification(hour: Int, min: Int, day: Int, month: Int, year: Int, activityName: String, number: Int, interval: Int) {
         registerCategories()
         let content = UNMutableNotificationContent()
@@ -55,26 +57,26 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         
         if interval == 1 {
             if number == 1 {
-                intervalType = "minuto"
+                intervalType = "minute".localized()
             } else {
-                intervalType = "minutos"
+                intervalType = "minutes".localized()
             }
         } else if interval == 2 {
             if number == 1 {
-                intervalType = "hora"
+                intervalType = "hour".localized()
             } else {
-                intervalType = "horas"
+                intervalType = "hours".localized()
             }
         } else {
             if number == 1 {
-                intervalType = "dia"
+                intervalType = "day".localized()
             } else {
-                intervalType = "dias"
+                intervalType = "days".localized()
             }
         }
         
         content.title = "wimbi"
-        content.body = "A atividade \(activityName) começa em \(number) \(intervalType)."
+        content.body = "\(notificationPhrases[2]) '\(activityName)'\(notificationPhrases[3]) \(notificationPhrases[4]) \(number) \(intervalType)."
         content.categoryIdentifier = "alarm"
         content.userInfo = ["customData": "fizzbuzz"]
         content.sound = .default
@@ -94,7 +96,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
             dateComponents.hour = hour
             dateComponents.minute = min
         }
-        dateComponents.year = year + 2000
+        dateComponents.year = year
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
@@ -112,7 +114,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         let content = UNMutableNotificationContent()
         
         content.title = "wimbi"
-        content.body = "Sua viagem para \(tripName) começa agora!"
+        content.body = "\(notificationPhrases[0]) \(tripName) \(notificationPhrases[1])"
         content.categoryIdentifier = "alarm"
         content.userInfo = ["customData": "fizzbuzz"]
         content.sound = .default
@@ -122,7 +124,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         dateComponents.minute = 00
         dateComponents.month = month
         dateComponents.day = day
-        dateComponents.year = year + 2000
+        dateComponents.year = year
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
@@ -185,7 +187,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
-        dateFormatter.dateFormat = "dd/MM/yy"
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         
         let newDate = dateFormatter.string(from: roadmap.date ?? Date())
         let new = newDate.components(separatedBy: delimiter)
