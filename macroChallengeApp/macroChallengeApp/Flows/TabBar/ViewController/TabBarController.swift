@@ -46,7 +46,7 @@ class TabBarController: UITabBarController {
             if configCountDown() > 0 {
                 // abre o countdown
                 current.start()
-            } else if configCountDown() == 0 {
+            } else if configCountDown() == 0 && dateFormatter.string(from: date) != dateFormatter.string(from: roadmap.date ?? Date()) {
                 current.start()
 
             } else {
