@@ -53,6 +53,9 @@
 "No internet connection" = "Sin conexión a Internet";
 "Successfully duplicated!" = "¡Duplicado con éxito!";
 "The roadmap is now available on your profile." = "El guia de viaje ya está disponible en su perfil.";
+"traveler  •" = "viajero  •";
+"travelers  •" = "viajeros  •";
+"thousand per person" = "mil por persona";
 
 
 // MARK: -  TabBar

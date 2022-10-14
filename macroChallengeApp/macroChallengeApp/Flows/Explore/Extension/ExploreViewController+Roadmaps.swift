@@ -37,8 +37,11 @@ extension ExploreViewController: UICollectionViewDataSource {
             let roadmap = roadmaps[indexPath.row]
             cell.cover.image = UIImage(named: roadmap.imageId)
             cell.title.text = roadmap.name
-            cell.subtitle.text = "\(roadmap.peopleCount) viajante  •  \(roadmap.dayCount) dias"
-            cell.costByPerson.text = "R$ \(roadmap.budget / 1000) mil por pessoa"
+            let travelers = "travelers  •".localized()
+            let days = "days".localized()
+            cell.subtitle.text = "\(roadmap.peopleCount) \(travelers)  \(roadmap.dayCount) \(days)"
+            let amount = "thousand per person".localized()
+            cell.costByPerson.text = "R$ \(roadmap.budget / 1000) \(amount)"
             cell.categoryName.text = roadmap.category
             cell.setupColor(category: roadmap.category)
         }
