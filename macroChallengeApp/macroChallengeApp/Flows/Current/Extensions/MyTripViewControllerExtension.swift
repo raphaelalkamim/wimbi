@@ -213,6 +213,7 @@ extension MyTripViewController: UITableViewDelegate {
             try ActivityRepository.shared.deleteActivity(activity: activites[indexPath.row], roadmap: self.roadmap)
             activites.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
         } catch {
             print("erro ao deletar")
         }
