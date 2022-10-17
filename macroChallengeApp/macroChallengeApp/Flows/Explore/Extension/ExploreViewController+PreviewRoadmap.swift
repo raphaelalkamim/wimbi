@@ -112,7 +112,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.infoTitle.isHidden = false
                 cell.circle.isHidden = true
                 cell.categoryTitle.isHidden = true
-                cell.infoTitle.text = "\(self.roadmap.budget)"
+                cell.infoTitle.text = "R$ \(self.roadmap.budget)"
             case 2:
                 cell.title.text = "TRAVELERS".localized()
                 cell.info.isHidden = false
