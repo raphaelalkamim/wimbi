@@ -77,7 +77,7 @@ class DataManager {
             "username": username,
             "usernameApp": usernameApp,
             "name": name,
-            "photoId": photoId,
+            "photoId": "icon",
             "password": password
         ]
         
@@ -102,12 +102,13 @@ class DataManager {
                 print(error)
             } else if data != nil {
                 if let httpResponse = response as? HTTPURLResponse {
+                    DispatchQueue.main.async {
+                        completion()
+                    }
                     if httpResponse.statusCode == 200 {
                         print("Criou")
-                        DispatchQueue.main.async {
-                            completion()
-                        }
                     }
+                    
                 }
             } else {
                 // Handle unexpected error
@@ -303,7 +304,7 @@ class DataManager {
         let user: [String: Any] = [
             "usernameApp": userObj.usernameApp,
             "name": userObj.name,
-            "photoId": userObj.photoId
+            "photoId": "icon"
         ]
         
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
