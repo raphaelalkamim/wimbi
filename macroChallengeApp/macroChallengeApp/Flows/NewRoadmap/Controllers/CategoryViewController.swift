@@ -14,10 +14,10 @@ class CategoryViewController: UIViewController {
 
     let categoryView = CategoryView()
     let categories: [Category] =
-    [Category(title: "Countryside".localized(), subtitle: "A welcoming journey with more contact with nature.".localized(), icon: "categoryCamp"),
-     Category(title: "Beach".localized(), subtitle: "A trip to enjoy and refresh yourself on a nice sunny day.".localized(), icon: "categoryBeach"),
-     Category(title: "Mountain".localized(), subtitle: "A cozy trip, with cooler temperatures to enjoy the view.".localized(), icon: "categoryMountain"),
-     Category(title: "City".localized(), subtitle: "An immersive journey into the habits of other cities or countries.".localized(), icon: "categoryCity")]
+    [Category(title: "Countryside", subtitle: "A welcoming journey with more contact with nature.".localized(), icon: "categoryCamp"),
+     Category(title: "Beach", subtitle: "A trip to enjoy and refresh yourself on a nice sunny day.".localized(), icon: "categoryBeach"),
+     Category(title: "Mountain", subtitle: "A cozy trip, with cooler temperatures to enjoy the view.".localized(), icon: "categoryMountain"),
+     Category(title: "City", subtitle: "An immersive journey into the habits of other cities or countries.".localized(), icon: "categoryCity")]
     
     var roadmap = Roadmaps()
     var editRoadmap = RoadmapLocal()
@@ -98,7 +98,7 @@ extension CategoryViewController: UICollectionViewDataSource {
             preconditionFailure("Cell not find")
         }
         cell.setup()
-        cell.setCell(title: categories[indexPath.row].title, subtitle: categories[indexPath.row].subtitle, icon: categories[indexPath.row].icon)
+        cell.setCell(title: categories[indexPath.row].title.localized(), subtitle: categories[indexPath.row].subtitle, icon: categories[indexPath.row].icon)
         cell.backgroundColor = designSystem.palette.backgroundCell
         cell.layer.cornerRadius = 16
         

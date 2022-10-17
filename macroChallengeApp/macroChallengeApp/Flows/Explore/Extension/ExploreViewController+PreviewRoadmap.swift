@@ -98,7 +98,9 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.title.text = "CATEGORY".localized()
                 cell.circle.isHidden = false
                 cell.categoryTitle.isHidden = false
-                cell.categoryTitle.text = self.roadmap.category
+                cell.categoryTitle.text = self.roadmap.category.localized()
+                print(self.roadmap.category)
+                cell.circle.backgroundColor = setupColor(category: self.roadmap.category)
                 cell.info.isHidden = true
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(24)
@@ -169,6 +171,18 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 self.roadmap.days[Int(index)].isSelected = false
                 cell.disable()
             }
+        }
+    }
+    
+    func setupColor(category: String) -> UIColor {
+        if category == "Countryside" {
+            return .blueBeach
+        } else if category == "Mountain" {
+            return .yellowMontain
+        } else if category == "City" {
+            return .redCity
+        } else {
+            return .greenCamp
         }
     }
 }
