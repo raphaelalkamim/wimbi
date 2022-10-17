@@ -28,9 +28,9 @@ class PreviewRoadmapViewController: UIViewController {
         self.setupPreviewRoadmapView()
         previewView.bindCollectionView(delegate: self, dataSource: self)
         previewView.bindTableView(delegate: self, dataSource: self)
-        //        like = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(likeRoadmap))
+                like = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(likeRoadmap))
         duplicate = UIBarButtonItem(image: UIImage(systemName: "plus.square.on.square"), style: .plain, target: self, action: #selector(duplicateRoadmap))
-        navigationItem.rightBarButtonItems = [duplicate]
+        navigationItem.rightBarButtonItems = [duplicate, like]
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.backgroundColor = .backgroundPrimary
         navigationController?.navigationBar.barTintColor = .backgroundPrimary

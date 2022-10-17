@@ -123,7 +123,7 @@ extension MyTripViewController: UICollectionViewDelegate {
 extension MyTripViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == myTripView.infoTripCollectionView {
-            return 4
+            return 5
         } else {
             return Int(days.count)
         }
@@ -154,10 +154,10 @@ extension MyTripViewController: UICollectionViewDataSource {
                 cell.title.text = "TRAVELERS".localized()
                 cell.info.setTitle(" 4", for: .normal)
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
-//            case 3:
-//                cell.title.text = "LIKES".localized()
-//                cell.info.setTitle(" 10k", for: .normal)
             case 3:
+                cell.title.text = "LIKES".localized()
+                cell.info.setTitle(" 10k", for: .normal)
+            case 4:
                 cell.title.text = "CREATED BY".localized()
                 cell.separator.isHidden = true
                 cell.circle.isHidden = false

@@ -15,7 +15,7 @@
 "Let's go!" = "Vamos lá!";
 
 // MARK: -  Login
-"By clicking on the button above, you agree to our privacy policies" = "Clicando no botão acima, você concorda com nossas políticas de privacidade";
+"By clicking on the button above, you agree to our Privacy Policies" = "Clicando no botão acima, você concorda com nossas Políticas de Privacidade";
 "User" = "Usuário";
 "@user" = "@usuario";
 
@@ -79,7 +79,7 @@
 "Edit profile" = "Editar perfil";
 "Liked roadmaps" = "Roteiros curtidos";
 "Notifications" = "Notificações";
-"Privacy policies" = "Políticas de privacidade";
+"Privacy Policies" = "Políticas de Privacidade";
 "Sign out" = "Sair";
 "NAME" = "NOME";
 "USERNAME" = "NOME DO USUÁRIO";

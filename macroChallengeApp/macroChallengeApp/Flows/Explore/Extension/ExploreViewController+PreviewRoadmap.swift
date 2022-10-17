@@ -82,7 +82,7 @@ extension PreviewRoadmapViewController: UICollectionViewDelegate {
 extension PreviewRoadmapViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == previewView.infoTripCollectionView {
-            return 4
+            return 5
         } else {
             return self.roadmap.days.count
         }
@@ -117,10 +117,10 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.infoTitle.isHidden = true
                 cell.info.setTitle(" \(self.roadmap.peopleCount)", for: .normal)
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
-//            case 3:
-//                cell.title.text = "LIKES".localized()
-//                cell.info.setTitle(" 10k", for: .normal)
             case 3:
+                cell.title.text = "LIKES".localized()
+                cell.info.setTitle(" 10k", for: .normal)
+            case 4:
                 cell.title.text = "CREATED BY".localized()
                 cell.separator.isHidden = true
                 cell.circle.isHidden = false

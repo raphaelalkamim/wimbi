@@ -111,10 +111,24 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "Edit profile".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
+    func startLikedRoadmaps() {
+        let viewController = LikedRoadmapsViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "Liked roadmaps".localized()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
     func startNotifications() {
         let viewController = NotificationsViewController()
         viewController.coordinator = self
         viewController.navigationItem.title = "Notifications".localized()
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func startTerms() {
+        let viewController = TermsViewController()
+        viewController.coordinator = self
+        viewController.navigationItem.title = "Privacy Policies".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
     
