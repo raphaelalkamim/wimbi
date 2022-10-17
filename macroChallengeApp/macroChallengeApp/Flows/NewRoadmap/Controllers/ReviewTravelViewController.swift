@@ -45,7 +45,7 @@ class ReviewTravelViewController: UIViewController {
     }
     
     func setupReviewTravelView() {
-        navigationItem.title = "My trip".localized()
+        navigationItem.title = "My roadmap".localized()
         self.view.addSubview(reviewTravelView)
         setupReviewConstraints()
         reviewTravelView.bindTableView(delegate: self, dataSource: self)

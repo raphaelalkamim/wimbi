@@ -105,8 +105,8 @@ class MyTripViewController: UIViewController {
         let keySort = Int.random(in: 0..<1000)
         if !user.isEmpty {
             let codeTrip = "\(user[0].id)\(keySort)"
-            let introduction = "Hey! Join my trip in Wimbi app using the code: " + codeTrip
-            let activityItem = MyActivityItemSource(title: "Share your code trip!", text: introduction)
+            let introduction = "Hey! Join my roadmap in Wimbi app using the code: " + codeTrip
+            let activityItem = MyActivityItemSource(title: "Share your code roadmap!", text: introduction)
             
             let activityViewController = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view

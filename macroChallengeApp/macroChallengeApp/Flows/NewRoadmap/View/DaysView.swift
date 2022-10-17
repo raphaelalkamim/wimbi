@@ -45,13 +45,13 @@ class DaysView: UIView {
     
     lazy var publicTitle: UILabel = {
         let publicTitle = UILabel()
-        publicTitle.text = "Would you like to make this trip public?".localized()
+        publicTitle.text = "Would you like to make this roadmap public?".localized()
         return publicTitle
     }()
     
     lazy var publicCaption: UILabel = {
         let publicCaption = UILabel()
-        publicCaption.text = "By making your trip public, it’ll be viewed to all the app’s users.".localized()
+        publicCaption.text = "By making your roadmap public, it’ll be viewed to all the app’s users.".localized()
         return publicCaption
     }()
     

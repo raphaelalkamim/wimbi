@@ -48,9 +48,9 @@
 
 
 // MARK: -  Explore
-"New trip" = "Nova viagem";
-"Join trip" = "Junte-se à viagem";
-"Add the code to have access to the trip" = "Adicione o código para juntar-se à viagem";
+"New roadmap" = "Novo roteiro";
+"Join roadmap" = "Junte-se ao roteiro";
+"Add the code to have access to the roadmap" = "Adicione o código para juntar-se ao roteiro";
 "Join" = "Junte-se";
 "No internet connection" = "Sem conexão com a internet";
 "Successfully duplicated!" = "Duplicado com sucesso!";
@@ -123,8 +123,8 @@
 "THU" = "QUI";
 "FRI" = "SEX";
 "SAT" = "SÁB";
-"What do you think about exploring and booking a new trip?" = "Que tal desbravar e marcar uma nova viagem?";
-"Go to Explore and find a new trip or create your own." = "Vá em Explorar e encontre roteiros sugeridos ou crie o seu.";
+"What do you think about exploring and creating a new roadmap?" = "Que tal desbravar e criar um novo roteiro?";
+"Go to Explore and find a new roadmap or create your own." = "Vá em Explorar e encontre roteiros sugeridos ou crie o seu.";
 "Which app would you like to use to access the address?" = "Você deseja abrir o endereço em qual aplicativo?";
 "Open on Maps" = "Abrir no Mapas";
 "Open on Waze" = "Abrir no Waze";
@@ -147,14 +147,14 @@
 "End date" = "Termina";
 "TRAVELERS" = "VIAJANTES";
 "Number of travelers" = "Número de viajantes";
-"Would you like to make this trip public?" = "Deixar essa viagem pública?";
-"By making your trip public, it’ll be viewed to all the app’s users." = "Ao deixar sua viagem pública, ela será publicada para todos os usuários do aplicativo.";
-"My trip" = "Minha viagem";
+"Would you like to make this roadmap public?" = "Deixar esse roteiro público?";
+"By making your roadmap public, it’ll be viewed to all the app’s users." = "Ao deixar seu roteiro público, ele será publicado para todos os usuários do aplicativo.";
+"My roadmap" = "Meu roteiro";
 "Travel days" = "Dias de viagem";
 "PRIVACY" = "PRIVACIDADE";
-"Trip" = "Viagem";
-"Public" = "Pública";
-"Private" = "Privada";
+"Roadmap" = "Roteiro";
+"Public" = "Público";
+"Private" = "Privado";
 "Are you sure?" = "Tem certeza?";
 "By canceling you’ll lose your entire progress." = "Cancelando você perderá todo o seu processo.";
 "Back" = "Voltar";

@@ -46,13 +46,13 @@
 "Edit" = "Editar";
 
 // MARK: -  Explore
-"New trip" = "Nuevo viaje";
-"Join trip" = "Unirse al viaje";
-"Add the code to have access to the trip" = "Añade el código para tener acceso al viaje";
+"New roadmap" = "Nueva guía de viaje";
+"Join roadmap" = "Unirse al guía de viaje";
+"Add the code to have access to the roadmap" = "Añade el código para tener acceso al guía de viaje";
 "Join" = "Unirse";
 "No internet connection" = "Sin conexión a Internet";
 "Successfully duplicated!" = "¡Duplicado con éxito!";
-"The roadmap is now available on your profile." = "El guia de viaje ya está disponible en su perfil.";
+"The roadmap is now available on your profile." = "La guía de viaje ya está disponible en su perfil.";
 "traveler  •" = "viajero  •";
 "travelers  •" = "viajeros  •";
 "thousand per person" = "mil por persona";
@@ -64,9 +64,9 @@
 "Profile" = "Perfil";
 
 // MARK: -  Profile
-"My roadmaps" = "Mis guias de viaje";
+"My roadmaps" = "Mis guías de viaje";
 "NEW" = "NUEVO";
-"Click on ”+” to create a new roadmap or to explore the existing ones." = "Haz clic en ”+” para crear una nueva guia de viaje o para explorar las existentes.";
+"Click on ”+” to create a new roadmap or to explore the existing ones." = "Haz clic en ”+” para crear una nueva guía de viaje o para explorar las existentes.";
 "The content cannot be recovered." = "El contenido no se puede recuperar.";
 "Delete" = "Eliminar";
 "Delete all content from" = "Eliminar todo el contenido de";
@@ -75,7 +75,7 @@
 //Settings
 "Settings" = "Configuración";
 "Edit profile" = "Editar perfil";
-"Liked roadmaps" = "Guias de viaje que me gustaron";
+"Liked roadmaps" = "Guías de viaje que me gustaron";
 "Notifications" = "Notificaciones";
 "Privacy Policies" = "Políticas de Privacidad";
 "Sign out" = "Salir";
@@ -112,7 +112,7 @@
 "LIKES" = "ME GUSTA"; //confirmar
 "CREATED BY" = "CREADO POR";
 "TRAVEL DAYS" = "DÍAS DE VIAJE";
-"ROADMAP" = "GUIA DE VIAJE";
+"ROADMAP" = "GUÍA DE VIAJE";
 "Day " = "Día ";
 "DAILY COSTS" = "COSTOS DIARIOS";
 "Free" = "Gratis";
@@ -123,8 +123,8 @@
 "THU" = "JUE";
 "FRI" = "VIE";
 "SAT" = "SÁB";
-"What do you think about exploring and booking a new trip?" = "¿Qué tal explorar y reservar un nuevo viaje?";
-"Go to Explore and find a new trip or create your own." = "Vaya a Explorar y busque itinerarios sugeridos o cree el suyo propio.";
+"What do you think about exploring and creating a new roadmap?" = "¿Qué tal explorar y crear una nueva guía de viaje?";
+"Go to Explore and find a new roadmap or create your own." = "Vaya a Explorar y busque guías sugeridos o cree el suyo propio.";
 "Which app would you like to use to access the address?" = "¿Quiere abrir la dirección en qué aplicación?";
 "Open on Maps" = "Abrir en Mapas";
 "Open on Waze" = "Abrir en Waze";
@@ -148,12 +148,12 @@
 "End date" = "Fecha final";
 "TRAVELERS" = "VIAJEROS";
 "Number of travelers" = "Número de viajeros";
-"Would you like to make this trip public?" = "¿Hacer público este viaje?";
-"By making your trip public, it’ll be viewed to all the app’s users." = "Al hacer público el viaje, se publicará para todos los usuarios de la aplicación.";
-"My trip" = "Mi viaje";
+"Would you like to make this roadmap public?" = "¿Hacer pública esta guía de viaje?";
+"By making your roadmap public, it’ll be viewed to all the app’s users." = "Al hacer público la guía de viaje, se publicará para todos los usuarios de la aplicación.";
+"My roadmap" = "Mi guía de viaje";
 "Travel days" = "Días de viaje";
 "PRIVACY" = "PRIVACIDAD";
-"Trip" = "Viaje";
+"Roadmap" = "Guía de viaje";
 "Public" = "Público";
 "Private" = "Privado";
 "Are you sure?" = "¿Está seguro?";
