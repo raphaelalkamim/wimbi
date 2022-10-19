@@ -71,18 +71,12 @@ extension NewActivityViewController {
     func getNumber(text: String) -> String {
         var number = ""
         for index in 0..<text.count {
-            if userCurrency == "R$" {
-                if text[index].isNumber {
-                    number += String(text[index])
-                } else if text[index] == "," {
-                    return number
-                }
-            } else {
-                if text[index].isNumber {
-                    number += String(text[index])
-                } else if text[index] == "." {
-                    return number
-                }
+            if text[index].isNumber {
+                number += String(text[index])
+            } else if text[index] == "," && userCurrency == "R$" {
+                return number
+            } else if text[index] == "." && userCurrency != "R$"{
+                return number
             }
         }
         return number

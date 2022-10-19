@@ -21,6 +21,7 @@
 		131272DE28E624D1000B7968 /* RoadmapExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272C328E62441000B7968 /* RoadmapExploreCollectionViewCell.swift */; };
 		131272DF28E624D1000B7968 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272C428E62441000B7968 /* SearchResultTableViewCell.swift */; };
 		131272E028E624F4000B7968 /* ExploreViewController+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272BF28E62440000B7968 /* ExploreViewController+ContextMenu.swift */; };
+		133BE5B4290092590045E742 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BE5B3290092590045E742 /* NetworkMonitor.swift */; };
 		1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14728DA4869009509DF /* ActivityRepository.swift */; };
 		1359F14B28DA489A009509DF /* DayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14A28DA489A009509DF /* DayRepository.swift */; };
 		1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14C28DA48A8009509DF /* RoadmapRepository.swift */; };
@@ -175,6 +176,7 @@
 		131272D428E6249E000B7968 /* RoadmapSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoadmapSearchTableViewController.swift; sourceTree = "<group>"; };
 		131272D528E6249E000B7968 /* PreviewRoadmapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewRoadmapViewController.swift; sourceTree = "<group>"; };
 		131272D628E6249E000B7968 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		133BE5B3290092590045E742 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		1359F14728DA4869009509DF /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
 		1359F14A28DA489A009509DF /* DayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepository.swift; sourceTree = "<group>"; };
 		1359F14C28DA48A8009509DF /* RoadmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapRepository.swift; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 				B0E0684E28EF50C500418F87 /* CurrencyAPI.swift */,
 				B0E0685028EF5FD700418F87 /* Currency.swift */,
 				DF66658128F0991100E37429 /* DayDTO.swift */,
+				133BE5B3290092590045E742 /* NetworkMonitor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1234,6 +1237,7 @@
 				13C8A12728CA693F00994196 /* DesignText.swift in Sources */,
 				A04959C628DCEC92009156C8 /* ActivityTableViewCell.swift in Sources */,
 				DF2643AD28DB9EAD00053180 /* RoadmapDTO.swift in Sources */,
+				133BE5B4290092590045E742 /* NetworkMonitor.swift in Sources */,
 				DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */,
 				13C8A12528CA693700994196 /* DesignSpacing.swift in Sources */,
 				DF57253D28D110E1005466D9 /* DaysView.swift in Sources */,
