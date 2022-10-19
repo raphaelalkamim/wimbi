@@ -141,7 +141,8 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 
             }
             
-            cell.setDay(date: self.roadmap.days[indexPath.row].date )
+            cell.setDay(date: self.roadmap.days[indexPath.row].date)
+            cell.dayButton.setTitle("\(indexPath.row + 1)", for: .normal)
             if self.roadmap.days[indexPath.row].isSelected == true {
                 cell.selectedButton()
             }
@@ -153,7 +154,6 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
         if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
             // button status
             cell.selectedButton()
-            
             // select a day
             self.daySelected = indexPath.row
             self.roadmap.days[daySelected].isSelected = true

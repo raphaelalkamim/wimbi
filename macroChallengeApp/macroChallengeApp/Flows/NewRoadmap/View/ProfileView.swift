@@ -188,13 +188,13 @@ class ProfileView: UIView {
     }
     
     func updateConstraintsCollection() {
-        var heightCollection = 200
+        var heightCollection = 180
         let roadmapProfile = roadmaps.count
         
         if roadmapProfile.isMultiple(of: 2) { // par
-            heightCollection = (roadmapProfile / 2) * 200
+            heightCollection = (roadmapProfile / 2) * 180
         } else { // impar
-            heightCollection = ((roadmapProfile + 1) / 2) * 200
+            heightCollection = ((roadmapProfile + 1) / 2) * 180
         }
         
         myRoadmapCollectionView.snp.removeConstraints()
