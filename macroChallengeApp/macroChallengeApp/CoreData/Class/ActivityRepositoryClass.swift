@@ -46,6 +46,7 @@ class ActivityRepository {
         newActivity.hour = activity.hour
         newActivity.budget = activity.budget
         newActivity.currencyType = activity.currencyType
+        newActivity.tips = newActivity.tips
                 
         DataManager.shared.postActivity(activity: activity, dayId: Int(day.id), activityCore: newActivity)
         

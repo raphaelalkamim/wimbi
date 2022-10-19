@@ -8,6 +8,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="tips" optional="YES" attributeType="String"/>
         <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayLocal" inverseName="activity" inverseEntity="DayLocal"/>
     </entity>
     <entity name="DayLocal" representedClassName="DayLocal" syncable="YES" codeGenerationType="class">
@@ -37,7 +38,6 @@
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserLocal" inverseName="roadmap" inverseEntity="UserLocal"/>
     </entity>
     <entity name="UserLocal" representedClassName="UserLocal" syncable="YES" codeGenerationType="class">
-        <attribute name="currencyType" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="photoId" optional="YES" attributeType="String"/>

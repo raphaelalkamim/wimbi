@@ -46,7 +46,6 @@ class UserRepository: NSManagedObject {
         newUser.name = user.name
         newUser.photoId = user.photoId
         newUser.usernameApp = user.usernameApp
-        newUser.currencyType = user.currencyType
         
         self.saveContext()
         return newUser

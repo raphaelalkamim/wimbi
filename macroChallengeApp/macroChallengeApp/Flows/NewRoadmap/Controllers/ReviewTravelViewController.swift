@@ -84,12 +84,14 @@ class ReviewTravelViewController: UIViewController {
     }
     
     func updateCoreData() {
+        roadmap.currency = getUserCurrency()
         roadmap.budget = editRoadmap.budget
         let newRoadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.editRoadmap, roadmap: self.roadmap)
         delegateRoadmap?.updateRoadmapScreen(roadmap: newRoadmap)
     }
     
     func saveCoreData() {
+        roadmap.currency = getUserCurrency()
         roadmap.imageId = "beach0"
         // save in Core Data
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
@@ -126,6 +128,16 @@ class ReviewTravelViewController: UIViewController {
         self.reviewTravelView.title.text = self.roadmap.name
         self.reviewTravelView.setupCategory(category: roadmap.category)
         self.reviewTravelView.setupImage(category: roadmap.category)
+    }
+    
+    func getUserCurrency() -> String {
+        let locale = Locale.current
+        let currencySymbol = locale.currencySymbol
+        if currencySymbol == "$" {
+            return "U$"
+        } else {
+            return currencySymbol ?? "U$"
+        }
     }
 }
 
