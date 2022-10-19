@@ -29,6 +29,9 @@ class MyTripViewController: UIViewController {
         myTripView.bindCollectionView(delegate: self, dataSource: self)
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
         myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
+        self.myTripView.activitiesTableView.reloadData()
+        self.myTripView.activitiesTableView.layoutIfNeeded()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +40,22 @@ class MyTripViewController: UIViewController {
         self.emptyState(activities: activites)
         self.updateBudget()
         self.updateTotalBudgetValue()
+        self.myTripView.activitiesTableView.reloadData()
+        self.myTripView.activitiesTableView.layoutIfNeeded()
+        updateConstraintsTable()
+    }
+    
+    func updateConstraintsTable() {
+        let height = 100 * activites.count
+        
+        myTripView.activitiesTableView.snp.removeConstraints()
+        myTripView.activitiesTableView.snp.makeConstraints { make in
+            make.top.equalTo(myTripView.budgetView.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.leading.equalTo(myTripView.contentView.snp.leading)
+            make.trailing.equalTo(myTripView.contentView.snp.trailing)
+            make.bottom.equalTo(myTripView.scrollView.snp.bottom)
+            make.height.equalTo(height)
+        }
     }
     
     func getAllDays() {

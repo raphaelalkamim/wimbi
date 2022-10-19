@@ -159,6 +159,8 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
             self.roadmap.days[daySelected].isSelected = true
             
             // view updates
+            updateConstraintsTable()
+            
             self.previewView.activitiesTableView.reloadData()
         }
         

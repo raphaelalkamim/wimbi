@@ -36,6 +36,19 @@ class PreviewRoadmapViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .backgroundPrimary
     }
     
+    func updateConstraintsTable() {
+        let height = 100 * self.roadmap.days[daySelected].activity.count
+        
+        previewView.activitiesTableView.snp.removeConstraints()
+        previewView.activitiesTableView.snp.makeConstraints { make in
+            make.top.equalTo(previewView.roadmapTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.leading.equalTo(previewView.contentView.snp.leading)
+            make.trailing.equalTo(previewView.contentView.snp.trailing)
+            make.bottom.equalTo(previewView.scrollView.snp.bottom)
+            make.height.equalTo(height)
+        }
+    }
+    
     func getRoadmapById(roadmapId: Int) {
         DataManager.shared.getRoadmapById(roadmapId: roadmapId, { roadmap in
             self.previewView.cover.image = UIImage(named: roadmap.imageId)

@@ -172,7 +172,6 @@ class ProfileView: UIView {
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.bottom.equalTo(scrollView.snp.bottom)
-            make.height.equalTo(self.snp.height)
         }
         
         emptyStateTitle.snp.makeConstraints { make in
@@ -186,6 +185,27 @@ class ProfileView: UIView {
             make.centerX.equalTo(contentView.snp.centerX)
             make.height.equalTo(100)
         }
+    }
+    
+    func updateConstraintsCollection() {
+        var heightCollection = 200
+        let roadmapProfile = roadmaps.count
+        
+        if roadmapProfile.isMultiple(of: 2) { // par
+            heightCollection = (roadmapProfile / 2) * 200
+        } else { // impar
+            heightCollection = ((roadmapProfile + 1) / 2) * 200
+        }
+        
+        myRoadmapCollectionView.snp.removeConstraints()
+        myRoadmapCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(roadmapTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.bottom.equalTo(scrollView.snp.bottom)
+            make.height.equalTo(heightCollection)
+        }
+        
     }
     
     func getTable() -> UICollectionView {

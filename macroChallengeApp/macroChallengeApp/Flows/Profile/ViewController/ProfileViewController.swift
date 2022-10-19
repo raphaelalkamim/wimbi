@@ -42,12 +42,11 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         profileView.roadmaps = self.roadmaps
         
         super.viewDidLoad()
-        
         print("oi", ActivityRepository.shared.getActivity())
-
-        profileView.myRoadmapCollectionView.reloadData()
         self.view.backgroundColor = .backgroundPrimary
         self.setupProfileView()
+        profileView.updateConstraintsCollection()
+        
         profileView.bindColletionView(delegate: self, dataSource: self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
         self.setContextMenu()
@@ -63,7 +62,10 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
 //        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
 //            coordinator?.startLogin()
 //        }
-        
+        self.profileView.updateConstraintsCollection()
+        self.profileView.myRoadmapCollectionView.reloadData()
+        self.profileView.myRoadmapCollectionView.layoutIfNeeded()
+
         if let data = UserDefaults.standard.data(forKey: "user") {
             do {
                 let decoder = JSONDecoder()
@@ -77,9 +79,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
             }
         } else {
             getDataCloud()
-        }
-        
-        self.profileView.myRoadmapCollectionView.reloadData()
+        }        
     }
     
     @objc func profileSettings() {
@@ -93,6 +93,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         profileView.setup()
         profileView.roadmaps = newRoadmaps
         profileView.myRoadmapCollectionView.reloadData()
+        profileView.updateConstraintsCollection()
         
     }
     
