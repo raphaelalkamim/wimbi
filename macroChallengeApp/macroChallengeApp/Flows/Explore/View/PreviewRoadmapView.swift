@@ -162,10 +162,10 @@ class PreviewRoadmapView: UIView {
         }
         calendarCollectionView.snp.makeConstraints { make in
             make.centerX.equalTo(contentView.snp.centerX)
-            make.top.equalTo(calendarTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.top.equalTo(calendarTitle.snp.bottom)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xxLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xxLargePositive)
-            make.height.equalTo(60)
+            make.height.equalTo(80)
         }
         
         roadmapTitle.snp.makeConstraints { make in

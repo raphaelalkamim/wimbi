@@ -81,8 +81,8 @@ extension ProfileCollectionViewCell {
         if isNew == true {
             newTag.isHidden = false
         }
-//        self.addSubview(likeImage)
-//        self.addSubview(likeLabel)
+        self.addSubview(likeImage)
+        self.addSubview(likeLabel)
         setupConstraints()
     }
     
@@ -116,19 +116,19 @@ extension ProfileCollectionViewCell {
         title.snp.makeConstraints { make in
 //            make.top.equalTo(roadmapImage.snp.bottom).inset(designSystem.spacing.largeNegative)
             make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
+            make.trailing.equalTo(likeLabel.snp.leading).inset(designSystem.spacing.mediumNegative)
 //            make.bottom.equalToSuperview()
         }
 
-//        likeImage.snp.makeConstraints { make in
-//            make.top.equalTo(roadmapImage.snp.bottom).inset(designSystem.spacing.smallNegative)
-//            make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
-//        }
-//        
-//        likeLabel.snp.makeConstraints { make in
-//            make.top.equalTo(likeImage.snp.bottom).inset(designSystem.spacing.xSmallNegative)
-//            make.centerX.equalTo(likeImage.snp.centerX)
-//        }
+        likeImage.snp.makeConstraints { make in
+            make.top.equalTo(roadmapImage.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.trailing.equalToSuperview().inset(designSystem.spacing.smallPositive)
+        }
+        
+        likeLabel.snp.makeConstraints { make in
+            make.top.equalTo(likeImage.snp.bottom).inset(designSystem.spacing.xSmallNegative)
+            make.centerX.equalTo(likeImage.snp.centerX)
+        }
         
     }
 }

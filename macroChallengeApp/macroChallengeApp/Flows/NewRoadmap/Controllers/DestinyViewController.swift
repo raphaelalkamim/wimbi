@@ -13,7 +13,7 @@ import MapKit
 class DestinyViewController: UIViewController {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     weak var coordinator: NewRoadmapCoordinator?
-
+    
     let destinyView = DestinyView(frame: .zero)
     let locationManager = CLLocationManager()
     let locationSearchTable = LocationSearchTableViewController()
@@ -26,9 +26,10 @@ class DestinyViewController: UIViewController {
     
     var editRoadmap = RoadmapLocal()
     var edit = false
+    var nextButton = UIBarButtonItem()
     
     weak var delegateRoadmap: MyTripViewController?
-
+    
     init(roadmap: Roadmaps) {
         self.roadmap = roadmap
         super.init(nibName: nil, bundle: nil)
@@ -39,8 +40,8 @@ class DestinyViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupDestinyView()
         self.setupToolbar()
+        self.setupDestinyView()
     }
     
     func setupDestinyView() {
@@ -68,9 +69,11 @@ class DestinyViewController: UIViewController {
         
         if edit {
             destinyView.searchBar.searchTextField.text = self.editRoadmap.name
+            nextButton.isEnabled = true
         }
+        
     }
-
+    
     func createPin(title: String, coordinate: CLLocationCoordinate2D) -> MKPointAnnotation {
         let pin = MKPointAnnotation()
         pin.coordinate = coordinate
@@ -90,11 +93,12 @@ class DestinyViewController: UIViewController {
         toolBar.backgroundColor = designSystem.palette.backgroundCell
         
         let previous = UIBarButtonItem(title: "Previous".localized(), style: .plain, target: self, action: #selector(backPage))
-        let next = UIBarButtonItem(title: "Next".localized(), style: .plain, target: self, action: #selector(nextPage))
+        nextButton = UIBarButtonItem(title: "Next".localized(), style: .plain, target: self, action: #selector(nextPage))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let items = [spacer, previous, spacer, spacer, spacer, spacer, spacer, spacer, spacer, next, spacer]
+        let items = [spacer, previous, spacer, spacer, spacer, spacer, spacer, spacer, spacer, nextButton, spacer]
         self.setToolbarItems(items, animated: false)
         self.navigationController?.setToolbarHidden(false, animated: false)
+        nextButton.isEnabled = false
     }
     
     @objc func nextPage() {
@@ -126,36 +130,36 @@ class DestinyViewController: UIViewController {
 }
 
 extension DestinyViewController: UISearchBarDelegate {
-func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    self.searchedText = searchText
-}
-
-func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    destinyView.mapView.removeAnnotations(destinyView.mapView.annotations)
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchedText = searchText
+    }
     
-    let request = MKLocalSearch.Request()
-    request.naturalLanguageQuery = searchedText
-    request.region = destinyView.mapView.region
-    
-    let search = MKLocalSearch(request: request)
-    search.start(completionHandler: { response, _ in
-        guard let response = response else {
-            return
-        }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        destinyView.mapView.removeAnnotations(destinyView.mapView.annotations)
         
-        for item in response.mapItems {
-            if let name = item.name, let location = item.placemark.location {
-                let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-                
-                let pin = self.createPin(title: name, coordinate: coordinate)
-                self.destinyView.mapView.addAnnotation(pin)
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = searchedText
+        request.region = destinyView.mapView.region
+        
+        let search = MKLocalSearch(request: request)
+        search.start(completionHandler: { response, _ in
+            guard let response = response else {
+                return
             }
-        }
-    })
-    
-    searchBar.resignFirstResponder()
-    destinyView.searchController?.isActive = false
-}
+            
+            for item in response.mapItems {
+                if let name = item.name, let location = item.placemark.location {
+                    let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                    
+                    let pin = self.createPin(title: name, coordinate: coordinate)
+                    self.destinyView.mapView.addAnnotation(pin)
+                }
+            }
+        })
+        
+        searchBar.resignFirstResponder()
+        destinyView.searchController?.isActive = false
+    }
 }
 
 extension DestinyViewController: CLLocationManagerDelegate {
@@ -168,7 +172,7 @@ extension DestinyViewController: CLLocationManagerDelegate {
         if let location = locations.first {
             var region = MKCoordinateRegion()
             let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-
+            
             if edit {
                 let coordsSeparator = self.roadmap.location.split(separator: " ")
                 if let latitude = CLLocationDegrees(coordsSeparator[0]), let longitude = CLLocationDegrees(coordsSeparator[1]) {
@@ -188,7 +192,7 @@ extension DestinyViewController: CLLocationManagerDelegate {
 }
 
 extension DestinyViewController: MKMapViewDelegate {
-// change view of mkpoint
+    // change view of mkpoint
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is MKPointAnnotation else { return nil }
         
@@ -204,7 +208,7 @@ extension DestinyViewController: MKMapViewDelegate {
         
         return annotationView
     }
-
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print(view.annotation?.title as Any)
     }
@@ -219,7 +223,7 @@ extension DestinyViewController: HandleMapSearch {
         
         annotation.coordinate = placemark.coordinate
         placeCoords = "\(placemark.coordinate.latitude) \(placemark.coordinate.longitude)"
-
+        
         if let name = placemark.name {
             annotation.title = name
             placeTitle = name
@@ -234,5 +238,6 @@ extension DestinyViewController: HandleMapSearch {
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
         destinyView.mapView.setRegion(region, animated: true)
+        nextButton.isEnabled = true
     }
 }
