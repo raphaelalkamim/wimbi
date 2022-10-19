@@ -149,12 +149,12 @@ extension NewActivityViewController: UITableViewDataSource {
                 newCell.setupSeparator()
                 newCell.delegate = self
                 
-                
                 newCell.currency.text = self.currencyType
                 
                 switch self.currencyType {
                 case "R$":
                     newCell.setCurrencyLabel(currency: "Real  ")
+                    
                 case "U$":
                     newCell.setCurrencyLabel(currency: "Dollar  ")
                     
