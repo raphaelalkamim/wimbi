@@ -242,8 +242,7 @@ extension MyTripViewController: UITableViewDataSource {
                                  currency: self.activites[indexPath.row].currencyType ?? "R$",
                                  value: String(self.activites[indexPath.row].budget),
                                  name: self.activites[indexPath.row].name ?? "Nova atividade")
-        cell.activityIcon.image = UIImage(named: self.activites[indexPath.row].category ?? "leisure")
-        
+        cell.setupCategoryImage(image: self.activites[indexPath.row].category ?? "empty")
         return cell
     }
     

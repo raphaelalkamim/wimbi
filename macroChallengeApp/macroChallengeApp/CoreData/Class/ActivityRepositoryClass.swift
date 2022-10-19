@@ -70,13 +70,12 @@ class ActivityRepository {
         self.saveContext()
     }
     func updateActivity(day: DayLocal, oldActivity: ActivityLocal, activity: Activity) {
-        guard let newActivity = NSEntityDescription.insertNewObject(forEntityName: "ActivityLocal", into: context) as? ActivityLocal else { preconditionFailure() }
-        
-        newActivity.id = Int32(activity.id)
-        newActivity.name = activity.name
-        newActivity.category = activity.category
+        oldActivity.id = Int32(activity.id)
+        oldActivity.name = activity.name
         if activity.category.isEmpty {
-            newActivity.category = oldActivity.category
+            oldActivity.category = oldActivity.category
+        } else {
+            oldActivity.category = activity.category
         }
         oldActivity.location = activity.location
         oldActivity.hour = activity.hour

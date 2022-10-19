@@ -32,7 +32,7 @@ class NewActivityViewController: UIViewController {
             // tableView.reloadData()
         }
     }
-    var activity: Activity = Activity(id: 0, name: "", category: "", location: "", hour: "", budget: 0, currencyType: "", day: Day(isSelected: true, date: Date()))
+    var activity: Activity = Activity(id: 0, name: "New Activity", category: "empty", location: "", hour: "", budget: 0, currencyType: "", day: Day(isSelected: true, date: Date()))
     
     var day = DayLocal()
     var local: String = ""
@@ -82,12 +82,10 @@ class NewActivityViewController: UIViewController {
         print(activity)
         
         if UserDefaults.standard.bool(forKey: "switch") == true {
-            print("registrou")
             if let safeActivity = createdActivity {
                 NotificationManager.shared.registerActivityNotification(createdActivity: safeActivity)
 
             }
-            
         }
     }
     

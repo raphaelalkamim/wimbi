@@ -74,6 +74,9 @@ extension ActivityTableViewCell {
         self.activityInfo.text = hour + " • " + currency + " " + value
         self.activityTitle.text = name
     }
+    func setupCategoryImage(image: String) {
+        self.activityIcon.image = UIImage(named: image)
+    }
     func setupConstraints() {
         activityIcon.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
