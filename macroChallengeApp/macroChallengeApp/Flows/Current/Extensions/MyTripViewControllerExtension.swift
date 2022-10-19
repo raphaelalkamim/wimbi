@@ -103,7 +103,9 @@ extension MyTripViewController: UICollectionViewDelegate {
             
             // view updates
             self.myTripView.activitiesTableView.reloadData()
-            self.updateBudget()
+            Task {
+                await self.updateBudget()
+            }
             self.updateTotalBudgetValue()
         }
         
@@ -149,10 +151,10 @@ extension MyTripViewController: UICollectionViewDataSource {
                 cell.title.text = "TOTAL AMOUNT".localized()
                 cell.info.isHidden = true
                 cell.infoTitle.isHidden = false
-                cell.infoTitle.text = "R$12.000"
+                cell.infoTitle.text = ""
             case 2:
                 cell.title.text = "TRAVELERS".localized()
-                cell.info.setTitle(" 4", for: .normal)
+                cell.info.setTitle("", for: .normal)
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
 //            case 3:
 //                cell.title.text = "LIKES".localized()
@@ -202,6 +204,11 @@ extension MyTripViewController: UITableViewDelegate {
         let deleteAction = UIContextualAction(style: .normal,
                                               title: "Delete".localized()) { [weak self] _, _, completionHandler in
             self?.deleteItem(indexPath: indexPath, tableView: tableView)
+            Task {
+                await self!.updateBudget()
+                await self!.updateBudgetTotal()
+                await self!.updateTotalBudgetValue()
+            }
             completionHandler(true)
         }
         editAction.backgroundColor = .blueBeach
@@ -232,10 +239,10 @@ extension MyTripViewController: UITableViewDataSource {
         cell.localButton.tag = indexPath.row
         cell.localButton.addTarget(self, action: #selector(addRoute(sender:)), for: .touchUpInside)
         cell.setupDaysActivities(hour: self.activites[indexPath.row].hour ?? "10h00",
+                                 currency: self.activites[indexPath.row].currencyType ?? "U$",
                                  value: String(self.activites[indexPath.row].budget),
                                  name: self.activites[indexPath.row].name ?? "Nova atividade")
-        cell.activityIcon.image = UIImage(named: self.activites[indexPath.row].category ?? "leisure")
-        
+        cell.setupCategoryImage(image: self.activites[indexPath.row].category ?? "empty")
         return cell
     }
     

@@ -11,6 +11,10 @@ import CoreData
 
 extension UserRepository {
     @NSManaged var id: Int32
+    @NSManaged var name: String
+    @NSManaged var usernameApp: String
+    @NSManaged var photoId: String
+    @NSManaged var currencyType: String
     @NSManaged var roadmap: NSSet?
 
 }

@@ -41,7 +41,7 @@ extension ExploreViewController: UICollectionViewDataSource {
             let days = "days".localized()
             cell.subtitle.text = "\(roadmap.peopleCount) \(travelers)  \(roadmap.dayCount) \(days)"
             let amount = "thousand per person".localized()
-            cell.costByPerson.text = "R$ \(roadmap.budget / 1000) \(amount)"
+            cell.costByPerson.text = "\(roadmap.currency) \(roadmap.budget / 1000) \(amount)"
             cell.categoryName.text = roadmap.category
             cell.setupColor(category: roadmap.category)
         }
