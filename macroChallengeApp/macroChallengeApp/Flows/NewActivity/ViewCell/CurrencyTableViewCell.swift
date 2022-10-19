@@ -33,14 +33,14 @@ class CurrencyTableViewCell: UITableViewCell {
     
     lazy var label: UILabel = {
         let label = UILabel()
-        label.text = "Teste"
+        label.text = ""
         label.stylize(with: designSystem.text.body)
         return label
     }()
     
     lazy var currency: UILabel = {
         let label = UILabel()
-        label.text = "Teste"
+        label.text = ""
         label.stylize(with: designSystem.text.body)
         label.textColor = designSystem.palette.caption
         return label
