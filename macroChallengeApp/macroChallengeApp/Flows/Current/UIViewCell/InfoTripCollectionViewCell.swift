@@ -133,8 +133,11 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
     func getUserCurrency() -> String {
         let locale = Locale.current
         let currencySymbol = locale.currencySymbol
-        
-        return currencySymbol ?? "$"
+        if currencySymbol == "$" {
+            return "U$"
+        } else {
+            return currencySymbol ?? "U$"
+        }
     }
 }
 

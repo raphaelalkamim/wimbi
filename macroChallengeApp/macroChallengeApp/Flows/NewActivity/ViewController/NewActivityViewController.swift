@@ -22,7 +22,8 @@ class NewActivityViewController: UIViewController {
         let userC = self.getUserCurrency()
         return userC
     }()
-    var currencyType: String = "R$" {
+    
+    var currencyType: String = "U$" {
         didSet {
             newActivityView.valueTable.reloadData()
         }
@@ -92,8 +93,11 @@ class NewActivityViewController: UIViewController {
     func getUserCurrency() -> String {
         let locale = Locale.current
         let currencySymbol = locale.currencySymbol
-        
-        return currencySymbol ?? "$"
+        if currencySymbol == "$" {
+            return "U$"
+        } else {
+            return currencySymbol ?? "U$"
+        }
     }
 }
 

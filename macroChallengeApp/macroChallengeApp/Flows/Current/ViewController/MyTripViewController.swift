@@ -85,8 +85,11 @@ class MyTripViewController: UIViewController {
     func getUserCurrency() -> String {
         let locale = Locale.current
         let currencySymbol = locale.currencySymbol
-        
-        return currencySymbol ?? "$"
+        if currencySymbol == "$" {
+            return "U$"
+        } else {
+            return currencySymbol ?? "U$"
+        }
     }
     
     func updateBudget() async {
