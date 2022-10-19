@@ -20,14 +20,14 @@ class SearchResultTableViewCell: UITableViewCell {
     
     lazy var title: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "Teste"
         label.stylize(with: designSystem.text.title)
         return label
     }()
     
     lazy var caption: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "1 viajante • 3 dias • R$ 2.5 mil/pessoa"
         label.stylize(with: designSystem.text.caption)
         return label
     }()

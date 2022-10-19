@@ -10,10 +10,6 @@ import UIKit
 class InfoTripCollectionViewCell: UICollectionViewCell {
     static let identifier = "infoCell"
     let designSystem: DesignSystem = DefaultDesignSystem.shared
-    lazy var userCurrency = {
-        let userC = self.getUserCurrency()
-        return userC
-    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,7 +25,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         title.textColor = .textPrimary
         title.font = designSystem.text.caption.font
         title.textAlignment = .center
-        title.text = ""
+        title.text = "OIOIOI"
         return title
     }()
     
@@ -44,7 +40,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         title.textColor = .textPrimary
         title.font = designSystem.text.infoTitle.font
         title.textAlignment = .center
-        title.text = ""
+        title.text = "R$12 mil"
         return title
     }()
     
@@ -53,7 +49,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         let img = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         btn.setImage(img, for: .normal)
         btn.tintColor = .textPrimary
-        btn.setTitle("", for: .normal)
+        btn.setTitle(" 10K", for: .normal)
         btn.setTitleColor(designSystem.palette.textPrimary, for: .normal)
         btn.titleLabel?.font = designSystem.text.infoTitle.font
         //        btn.titleLabel?.textColor = .textPrimary
@@ -74,7 +70,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         title.textColor = .textPrimary
         title.font = UIFont(name: "Avenir-Book", size: 12)
         title.textAlignment = .center
-        title.text = ""
+        title.text = "Cidade"
         return title
     }()
     
@@ -94,7 +90,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
             title.text = "TOTAL AMOUNT".localized()
             info.isHidden = true
             infoTitle.isHidden = false
-            infoTitle.text = self.userCurrency + String(roadmap.budget)
+            infoTitle.text = "R$" + String(roadmap.budget)
         case 2:
             title.text = "TRAVELERS".localized()
             let viajantesCount = roadmap.peopleCount
@@ -127,16 +123,6 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
             circle.backgroundColor = designSystem.palette.redCity
         } else {
             circle.backgroundColor = designSystem.palette.yellowMontain
-        }
-    }
-    
-    func getUserCurrency() -> String {
-        let locale = Locale.current
-        let currencySymbol = locale.currencySymbol
-        if currencySymbol == "$" {
-            return "U$"
-        } else {
-            return currencySymbol ?? "U$"
         }
     }
 }

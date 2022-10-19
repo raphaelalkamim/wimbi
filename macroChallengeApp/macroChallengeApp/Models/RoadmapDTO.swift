@@ -18,7 +18,6 @@ struct RoadmapDTO: Codable {
     var peopleCount: Int
     var imageId: String
     var category: String
-    var currency: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -31,7 +30,6 @@ struct RoadmapDTO: Codable {
         case category
         case dateInitial
         case dateFinal
-        case currency
     }
 
 }
