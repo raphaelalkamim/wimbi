@@ -17,13 +17,7 @@ class NewActivityViewController: UIViewController {
     
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let newActivityView = NewActivityView()
-    
-    lazy var userCurrency = {
-        let userC = self.getUserCurrency()
-        return userC
-    }()
-    
-    var currencyType: String = "U$" {
+    var currencyType: String = "R$" {
         didSet {
             newActivityView.valueTable.reloadData()
         }
@@ -33,12 +27,13 @@ class NewActivityViewController: UIViewController {
             // tableView.reloadData()
         }
     }
-    var activity: Activity = Activity(id: 0, name: "New Activity", category: "empty", location: "", hour: "", budget: 0, currencyType: "", tips: "", day: Day(isSelected: true, date: Date()))
+    var activity: Activity = Activity(id: 0, name: "", category: "", location: "", hour: "", budget: 0, day: Day(isSelected: true, date: Date()))
     
     var day = DayLocal()
     var local: String = ""
     var address: String = ""
     var roadmap = RoadmapLocal()
+    
     var activityEdit = ActivityLocal()
     var edit = false
     
@@ -55,12 +50,7 @@ class NewActivityViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if edit {
-            getData()
-        }
-        if !edit {
-            self.currencyType = userCurrency
-        }
+        print(activity.name)
     }
     
     @objc func cancelCreation() {
@@ -80,23 +70,14 @@ class NewActivityViewController: UIViewController {
         self.delegate?.attTable()
         coordinator?.backPage()
         coordinatorCurrent?.backPage()
-        print(activity)
         
         if UserDefaults.standard.bool(forKey: "switch") == true {
+            print("registrou")
             if let safeActivity = createdActivity {
                 NotificationManager.shared.registerActivityNotification(createdActivity: safeActivity)
 
             }
-        }
-    }
-    
-    func getUserCurrency() -> String {
-        let locale = Locale.current
-        let currencySymbol = locale.currencySymbol
-        if currencySymbol == "$" {
-            return "U$"
-        } else {
-            return currencySymbol ?? "U$"
+            
         }
     }
 }

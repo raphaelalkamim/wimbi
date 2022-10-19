@@ -11,7 +11,7 @@ import UIKit
 class ValueTableViewCell: UITableViewCell {
     static let identifier = "valueCell"
     let designSystem = DefaultDesignSystem.shared
-    var currencyType: String = "U$"
+    var currencyType: String = "R$"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -29,7 +29,7 @@ class ValueTableViewCell: UITableViewCell {
     public lazy var title: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.body)
-        label.text = ""
+        label.text = "Title"
         return label
      }()
     
@@ -37,7 +37,7 @@ class ValueTableViewCell: UITableViewCell {
         let textField = UITextField()
         textField.textColor = designSystem.palette.caption
         textField.textColor = designSystem.palette.textPrimary
-        textField.placeholder = ""
+        textField.placeholder = "Value"
         textField.textAlignment = .right
         textField.font = .body
         textField.keyboardType = .numberPad

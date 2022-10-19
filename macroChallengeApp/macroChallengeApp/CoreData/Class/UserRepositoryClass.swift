@@ -43,9 +43,6 @@ class UserRepository: NSManagedObject {
         guard let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserLocal", into: context) as? UserLocal else { preconditionFailure() }
         
         newUser.id = Int32(user.id)
-        newUser.name = user.name
-        newUser.photoId = user.photoId
-        newUser.usernameApp = user.usernameApp
         
         self.saveContext()
         return newUser

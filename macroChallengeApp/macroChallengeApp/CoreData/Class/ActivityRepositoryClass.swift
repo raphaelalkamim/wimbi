@@ -45,8 +45,6 @@ class ActivityRepository {
         newActivity.location = activity.location
         newActivity.hour = activity.hour
         newActivity.budget = activity.budget
-        newActivity.currencyType = activity.currencyType
-        newActivity.tips = newActivity.tips
                 
         DataManager.shared.postActivity(activity: activity, dayId: Int(day.id), activityCore: newActivity)
         
@@ -64,24 +62,23 @@ class ActivityRepository {
         newActivity.location = activity.location
         newActivity.hour = activity.hour
         newActivity.budget = activity.budget
-        newActivity.currencyType = activity.currencyType
         
         day.addToActivity(newActivity)
         
         self.saveContext()
     }
     func updateActivity(day: DayLocal, oldActivity: ActivityLocal, activity: Activity) {
-        oldActivity.id = Int32(activity.id)
-        oldActivity.name = activity.name
+        guard let newActivity = NSEntityDescription.insertNewObject(forEntityName: "ActivityLocal", into: context) as? ActivityLocal else { preconditionFailure() }
+        
+        newActivity.id = Int32(activity.id)
+        newActivity.name = activity.name
+        newActivity.category = activity.category
         if activity.category.isEmpty {
-            oldActivity.category = oldActivity.category
-        } else {
-            oldActivity.category = activity.category
+            newActivity.category = oldActivity.category
         }
         oldActivity.location = activity.location
         oldActivity.hour = activity.hour
         oldActivity.budget = activity.budget
-        oldActivity.currencyType = activity.currencyType
         
         DataManager.shared.putActivity(activity: activity, dayId: Int(day.id))
         
@@ -98,11 +95,12 @@ class ActivityRepository {
     }
     
     func deleteActivity(activity: ActivityLocal, roadmap: RoadmapLocal) throws {
+        roadmap.budget -= activity.budget
         do {
             DataManager.shared.deleteObjectBack(objectID: Int(activity.id), urlPrefix: "activities", {
                 print("deu bom")
             })
-    
+            
             context.delete(activity)
             try saveContext()
         } catch {

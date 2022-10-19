@@ -33,14 +33,14 @@ class CurrencyTableViewCell: UITableViewCell {
     
     lazy var label: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "Teste"
         label.stylize(with: designSystem.text.body)
         return label
     }()
     
     lazy var currency: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "Teste"
         label.stylize(with: designSystem.text.body)
         label.textColor = designSystem.palette.caption
         return label
@@ -124,7 +124,7 @@ extension CurrencyTableViewCell {
             self.setCurrencyLabel(currency: "Renminbi  ")
             self.delegate?.didChangeFormatter(formatter: "元")
         }
-        buttonCurrency.menu = UIMenu(title: "", options: .displayInline, children: [real, dollar, euro, yen, swiss, renminbi])
+        buttonCurrency.menu = UIMenu(title: "", options: .displayInline, children: [real])
     }
     
     func setCurrencyLabel(currency: String) {

@@ -4,26 +4,12 @@ class RoadmapSearchTableViewController: UITableViewController {
     var matchingRoadmaps: [RoadmapDTO] = []
     var roadmaps: [RoadmapDTO] = []
     let designSystem = DefaultDesignSystem.shared
-    lazy var userCurrency = {
-        let userC = self.getUserCurrency()
-        return userC
-    }()
     weak var coordinator: ExploreCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.identifier)
         self.view.backgroundColor = designSystem.palette.backgroundPrimary
-    }
-    
-    func getUserCurrency() -> String {
-        let locale = Locale.current
-        let currencySymbol = locale.currencySymbol
-        if currencySymbol == "$" {
-            return "U$"
-        } else {
-            return currencySymbol ?? "U$"
-        }
     }
     
     // MARK: - Table view data source
@@ -39,7 +25,7 @@ class RoadmapSearchTableViewController: UITableViewController {
         let roadmap = matchingRoadmaps[indexPath.row]
         cell.title.text = roadmap.name
         cell.cover.image = UIImage(named: roadmap.imageId)
-        cell.caption.text = "\(roadmap.peopleCount) viajante • \(roadmap.dayCount) dias • \(userCurrency) \(roadmap.budget) mil/pessoa"
+        cell.caption.text = "\(roadmap.peopleCount) viajante • \(roadmap.dayCount) dias • R$ \(roadmap.budget) mil/pessoa"
         
         return cell
     }
