@@ -35,6 +35,7 @@ class NewActivityViewController: UIViewController {
     var activity: Activity = Activity(id: 0, name: "", category: "", location: "", hour: "", budget: 0, currencyType: "", day: Day(isSelected: true, date: Date()))
     
     var day = DayLocal()
+    var local: String = ""
     var address: String = ""
     var roadmap = RoadmapLocal()
     var activityEdit = ActivityLocal()

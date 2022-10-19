@@ -8,7 +8,6 @@ class RoadmapSearchTableViewController: UITableViewController {
         let userC = self.getUserCurrency()
         return userC
     }()
-    var tripType: String = "R$"
     weak var coordinator: ExploreCoordinator?
     
     override func viewDidLoad() {

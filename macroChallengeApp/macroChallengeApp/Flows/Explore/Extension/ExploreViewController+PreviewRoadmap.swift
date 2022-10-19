@@ -193,7 +193,7 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
         let activity = roadmap.days[self.daySelected].activity[indexPath.row]
         cell.localButton.tag = indexPath.row
         cell.localButton.addTarget(self, action: #selector(addRoute(sender:)), for: .touchUpInside)
-        cell.setupDaysActivities(hour: activity.hour,
+        cell.setupDaysActivities(hour: activity.hour, currency: activity.currencyType,
                                  value: String(activity.budget),
                                  name: activity.name)
         cell.activityIcon.image = UIImage(named: activity.category)
