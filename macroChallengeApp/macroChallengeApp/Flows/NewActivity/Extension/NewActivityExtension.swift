@@ -147,6 +147,7 @@ extension NewActivityViewController: UITableViewDataSource {
                 switch self.currencyType {
                 case "R$":
                     newCell.setCurrencyLabel(currency: "Real  ")
+                    
                 case "U$":
                     newCell.setCurrencyLabel(currency: "Dollar  ")
                     
