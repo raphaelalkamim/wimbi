@@ -44,8 +44,8 @@ class MyTripViewController: UIViewController {
         Task {
             await self.updateBudget()
             await self.updateBudgetTotal()
+            await self.updateTotalBudgetValue()
         }
-        self.updateTotalBudgetValue()
     }
     
     func getAllDays() {
@@ -163,6 +163,7 @@ class MyTripViewController: UIViewController {
     }
     
     func updateBudgetTotal() async {
+        budgetTotal = 0
         for day in days {
             for activite in day.activity?.allObjects as [ActivityLocal] {
                 switch activite.currencyType {

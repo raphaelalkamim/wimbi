@@ -204,6 +204,11 @@ extension MyTripViewController: UITableViewDelegate {
         let deleteAction = UIContextualAction(style: .normal,
                                               title: "Delete".localized()) { [weak self] _, _, completionHandler in
             self?.deleteItem(indexPath: indexPath, tableView: tableView)
+            Task {
+                await self!.updateBudget()
+                await self!.updateBudgetTotal()
+                await self!.updateTotalBudgetValue()
+            }
             completionHandler(true)
         }
         editAction.backgroundColor = .blueBeach

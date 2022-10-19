@@ -98,12 +98,11 @@ class ActivityRepository {
     }
     
     func deleteActivity(activity: ActivityLocal, roadmap: RoadmapLocal) throws {
-        roadmap.budget -= activity.budget
         do {
             DataManager.shared.deleteObjectBack(objectID: Int(activity.id), urlPrefix: "activities", {
                 print("deu bom")
             })
-            
+    
             context.delete(activity)
             try saveContext()
         } catch {

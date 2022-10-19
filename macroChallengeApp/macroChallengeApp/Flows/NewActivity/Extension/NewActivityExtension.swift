@@ -64,9 +64,7 @@ extension NewActivityViewController {
         guard let cell = tableViewValue.cellForRow(at: [0, 1]) as?
                 ValueTableViewCell else { return }
         let newValue = getNumber(text: cell.value.text ?? "123")
-        activity.budget = Double(newValue) ?? 0.0
-        //self.updateBudgetRoadmap(budget: Double(newValue) ?? 0.0)
-        
+        activity.budget = Double(newValue) ?? 0.0        
         activity.currencyType = self.currencyType
     }
     
@@ -81,11 +79,6 @@ extension NewActivityViewController {
         }
         return number
     }
-//    func updateBudgetRoadmap(budget: Double) {
-//
-//        self.roadmap.budget += budget
-//        RoadmapRepository.shared.saveContext()
-//    }
 }
 
 // MARK: Table View
@@ -148,7 +141,6 @@ extension NewActivityViewController: UITableViewDataSource {
                 newCell.label.text = "Currency".localized()
                 newCell.setupSeparator()
                 newCell.delegate = self
-                
                 
                 newCell.currency.text = self.currencyType
                 
