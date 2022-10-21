@@ -22,7 +22,7 @@ extension ExploreViewController {
             title: "Add",
             image: UIImage(systemName: "plus"),
             primaryAction: nil,
-            menu: UIMenu(title: "", children: [addRoadMap])
+            menu: UIMenu(title: "", children: [addRoadMap, insertRoadMap])
         )
         
         self.navigationItem.rightBarButtonItem = menuBarButton
@@ -48,6 +48,9 @@ extension ExploreViewController {
         
         let action = UIAlertAction(title: "Join".localized(), style: .default) { _ in
             print(textField.text ?? "Error")
+            if let roadmapKey = textField.text {
+                DataManager.shared.joinRoadmap(roadmapKey: roadmapKey)
+            }
         }
         
         let cancel = UIAlertAction(title: "Cancel".localized(), style: .destructive) { _ in

@@ -172,7 +172,7 @@ class DataManager {
         dateFormatter.dateFormat = "d/M/y"
         
         let keyWords = ["trip", "viagem", "travel", "viaggiare"]
-        let codeTrip = "\(Int.random(in: 0..<1_000_000))\(keyWords.randomElement())\(Int.random(in: 0..<1_000_000))"
+        let codeTrip = "\(Int.random(in: 0..<1_000_000))\(keyWords.randomElement() ?? "space")\(Int.random(in: 0..<1_000_000))"
 
         let roadmap: [String: Any] = [
             "name": roadmap.name,
@@ -224,6 +224,7 @@ class DataManager {
                                 self.postDays(roadmapId: roadmapResponse.id, daysCore: daysCore)
                                 
                                 roadmapCore.id = Int32(roadmapResponse.id)
+                                roadmapCore.shareKey = codeTrip
                                 RoadmapRepository.shared.saveContext()
                             } catch {
                                 // FIXME: tratar o erro do decoder
@@ -612,6 +613,50 @@ class DataManager {
                 }
             }
             task.resume()
+        }
+    }
+    
+    func joinRoadmap(roadmapKey: String) {
+        let session = URLSession.shared
+        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+            let userID = String(data: data, encoding: .utf8)!
+            guard let url = URL(string: baseURL + "roadmaps/\(roadmapKey)/users/\(userID)") else { return }
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            if let token = UserDefaults.standard.string(forKey: "authorization") {
+                request.setValue(token, forHTTPHeaderField: "Authorization")
+                
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                
+                let task = session.dataTask(with: request) { data, response, error in
+                    print(response)
+                    guard let data = data else { return }
+                    if error != nil {
+                        print(String(describing: error?.localizedDescription))
+                    }
+                    if let httpResponse = response as? HTTPURLResponse {
+                        if httpResponse.statusCode == 200 {
+                            do {
+                                let roadmapJoin = try JSONDecoder().decode(Roadmaps.self, from: data)
+                                let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: roadmapJoin, isNew: false)
+                                let days = newRoadmap.day?.allObjects as [DayLocal]
+                                let roadmapDays = roadmapJoin.days
+                                for index in 0..<roadmapDays.count {
+                                    let activiyArray = roadmapDays[index].activity
+                                    for activity in activiyArray {
+                                        _ = ActivityRepository.shared.createActivity(day: days[index], activity: activity, isNew: false)
+                                    }
+                                }
+                            } catch {
+                                // FIXME: tratar o erro do decoder
+                                print(error)
+                            }
+                        }
+                    }
+                }
+                task.resume()
+            }
         }
     }
     

@@ -65,7 +65,7 @@ class NewActivityViewController: UIViewController {
             self.activity.id = Int(self.activityEdit.id)
             ActivityRepository.shared.updateActivity(day: self.day, oldActivity: self.activityEdit, activity: self.activity)
         } else {
-            createdActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity)
+            createdActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity, isNew: true)
         }
         self.delegate?.attTable()
         coordinator?.backPage()

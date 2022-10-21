@@ -92,7 +92,7 @@ class ReviewTravelViewController: UIViewController {
     func saveCoreData() {
         roadmap.imageId = "beach0"
         // save in Core Data
-        let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
+        let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: true)
         RoadmapRepository.shared.saveContext()
         
         NotificationManager.shared.registerTripNotification(roadmap: newRoadmap)

@@ -39,7 +39,7 @@ public class RoadmapRepository: NSManagedObject {
         }
     }
     
-    func createRoadmap(roadmap: Roadmaps) -> RoadmapLocal {
+    func createRoadmap(roadmap: Roadmaps, isNew: Bool) -> RoadmapLocal {
         let dateFormat = DateFormatter()
         dateFormat.dateStyle = .short
         dateFormat.timeStyle = .none
@@ -80,10 +80,14 @@ public class RoadmapRepository: NSManagedObject {
             let date = dateFormat.date(from: roadmap.dateInitial)
             let newDay = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: date ?? Date(), indexPath: index, isSelected: isFirstDay))
         }
-        if var createdDays = newRoadmap.day?.allObjects as? [DayLocal] {
-            createdDays.sort { $0.id < $1.id }
-            self.postInBackend(newRoadmap: newRoadmap, roadmap: roadmap, newDays: createdDays)
+        
+        if isNew {
+            if var createdDays = newRoadmap.day?.allObjects as? [DayLocal] {
+                createdDays.sort { $0.id < $1.id }
+                self.postInBackend(newRoadmap: newRoadmap, roadmap: roadmap, newDays: createdDays)
+            }
         }
+        
         self.saveContext()
         return newRoadmap
     }

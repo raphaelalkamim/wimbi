@@ -36,7 +36,7 @@ class ActivityRepository {
         }
     }
     
-    func createActivity(day: DayLocal, activity: Activity) -> ActivityLocal {
+    func createActivity(day: DayLocal, activity: Activity, isNew: Bool) -> ActivityLocal {
         guard let newActivity = NSEntityDescription.insertNewObject(forEntityName: "ActivityLocal", into: context) as? ActivityLocal else { preconditionFailure() }
         
         newActivity.id = Int32(activity.id)
@@ -46,7 +46,9 @@ class ActivityRepository {
         newActivity.hour = activity.hour
         newActivity.budget = activity.budget
                 
-        DataManager.shared.postActivity(activity: activity, dayId: Int(day.id), activityCore: newActivity)
+        if isNew {
+            DataManager.shared.postActivity(activity: activity, dayId: Int(day.id), activityCore: newActivity)
+        }
         
         day.addToActivity(newActivity)
         
