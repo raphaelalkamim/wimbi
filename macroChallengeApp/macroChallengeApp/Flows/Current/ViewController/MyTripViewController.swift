@@ -102,10 +102,8 @@ class MyTripViewController: UIViewController {
     }
     @objc func shareMyTrip() {
         let user = UserRepository.shared.getUser()
-        let keySort = Int.random(in: 0..<1000)
         if !user.isEmpty {
-            let codeTrip = "\(user[0].id)\(keySort)"
-            let introduction = "Hey! Join my trip in Wimbi app using the code: " + codeTrip
+            let introduction = "Hey! Join my trip in Wimbi app using the code: " + (roadmap.shareKey ?? "0")
             let activityItem = MyActivityItemSource(title: "Share your code trip!", text: introduction)
             
             let activityViewController = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)

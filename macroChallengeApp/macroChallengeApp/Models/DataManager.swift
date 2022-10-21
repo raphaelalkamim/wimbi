@@ -10,7 +10,7 @@ import UIKit
 
 class DataManager {
     public static var shared = DataManager()
-    let baseURL: String = "https://macroptrip-api.herokuapp.com/"
+    let baseURL: String = "https://macrotrip-dev.herokuapp.com/"
     
     public let imageCash = NSCache<NSNumber, UIImage>()
     
@@ -170,7 +170,10 @@ class DataManager {
     func postRoadmap(roadmap: Roadmaps, roadmapCore: RoadmapLocal, daysCore: [DayLocal]) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
-                
+        
+        let keyWords = ["trip", "viagem", "travel", "viaggiare"]
+        let codeTrip = "\(Int.random(in: 0..<1_000_000))\(keyWords.randomElement())\(Int.random(in: 0..<1_000_000))"
+
         let roadmap: [String: Any] = [
             "name": roadmap.name,
             "location": roadmap.location,
@@ -183,15 +186,15 @@ class DataManager {
             "category": roadmap.category,
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
-            "shareKey": "ABC123",
-            "createdAt": dateFormatter.string(from: Date())
+            "shareKey": codeTrip,
+            "createdAt": dateFormatter.string(from: Date()),
+            "currency": "R$"
         ]
         
         let session = URLSession.shared
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
             guard let url = URL(string: baseURL + "roadmaps/users/\(userID)") else { return }
-            
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             if let token = UserDefaults.standard.string(forKey: "authorization") {
@@ -395,7 +398,8 @@ class DataManager {
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
             "shareKey": "ABC123",
-            "createdAt": dateFormatter.string(from: Date())
+            "createdAt": dateFormatter.string(from: Date()),
+            "currency": "R$"
         ]
         
         let session = URLSession.shared
@@ -482,6 +486,7 @@ class DataManager {
         
         let activity: [String: Any] = [
             "name": activity.name,
+            "tips": "Blablabla",
             "category": activity.category,
             "location": activity.location,
             "hour": activity.hour,
@@ -536,6 +541,7 @@ class DataManager {
         
         let activityNew: [String: Any] = [
             "name": activity.name,
+            "tips": "Blablabla",
             "category": activity.category,
             "location": activity.location,
             "hour": activity.hour,

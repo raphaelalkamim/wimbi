@@ -27,7 +27,7 @@ class NewActivityViewController: UIViewController {
             // tableView.reloadData()
         }
     }
-    var activity: Activity = Activity(id: 0, name: "", category: "", location: "", hour: "", budget: 0, day: Day(isSelected: true, date: Date()))
+    var activity: Activity = Activity(id: 0, name: "", tips: "", category: "", location: "", hour: "", budget: 0, day: Day(isSelected: true, date: Date()))
     
     var day = DayLocal()
     var local: String = ""

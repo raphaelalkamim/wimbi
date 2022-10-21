@@ -10,6 +10,7 @@ import Foundation
 struct Activity: Codable {    
     var id: Int
     var name: String
+    var tips: String
     var category: String
     var location: String
     var hour: String
@@ -19,6 +20,7 @@ struct Activity: Codable {
     enum CodingKeys: String, CodingKey {
         case id
         case name
+        case tips
         case category
         case location
         case hour
