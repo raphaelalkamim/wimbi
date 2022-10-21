@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ActivityLocal" representedClassName="ActivityLocal" syncable="YES" codeGenerationType="class">
         <attribute name="budget" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="currencyType" optional="YES" attributeType="String"/>
         <attribute name="hour" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="tips" optional="YES" attributeType="String"/>
         <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayLocal" inverseName="activity" inverseEntity="DayLocal"/>
     </entity>
     <entity name="DayLocal" representedClassName="DayLocal" syncable="YES" codeGenerationType="class">
@@ -20,6 +22,7 @@
         <attribute name="budget" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="currency" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateFinal" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dayCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -36,12 +39,9 @@
     </entity>
     <entity name="UserLocal" representedClassName="UserLocal" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="photoId" optional="YES" attributeType="String"/>
+        <attribute name="usernameApp" optional="YES" attributeType="String"/>
         <relationship name="roadmap" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RoadmapLocal" inverseName="user" inverseEntity="RoadmapLocal"/>
     </entity>
-    <elements>
-        <element name="ActivityLocal" positionX="296.9360961914063" positionY="-224.9982452392578" width="128" height="148"/>
-        <element name="DayLocal" positionX="-25.946533203125" positionY="-114.9786682128906" width="128" height="104"/>
-        <element name="RoadmapLocal" positionX="204.8248901367188" positionY="39.0375671386719" width="128" height="269"/>
-        <element name="UserLocal" positionX="485.9014282226562" positionY="130.62060546875" width="128" height="59"/>
-    </elements>
 </model>

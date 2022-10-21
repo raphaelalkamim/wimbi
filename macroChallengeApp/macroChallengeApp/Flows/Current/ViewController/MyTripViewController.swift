@@ -19,7 +19,13 @@ class MyTripViewController: UIViewController {
     var activites: [ActivityLocal] = []
     var days: [DayLocal] = []
     
+    lazy var userCurrency = {
+        let userC = self.getUserCurrency()
+        return userC
+    }()
+    
     var daySelected = 0
+    var budgetTotal: Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,17 +37,17 @@ class MyTripViewController: UIViewController {
         myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
         self.myTripView.activitiesTableView.reloadData()
         self.myTripView.activitiesTableView.layoutIfNeeded()
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.getAllDays()
         self.activites = self.getAllActivities()
         self.emptyState(activities: activites)
-        self.updateBudget()
         self.updateTotalBudgetValue()
         self.myTripView.activitiesTableView.reloadData()
         self.myTripView.activitiesTableView.layoutIfNeeded()
+        // self.updateBudget()
         updateConstraintsTable()
     }
     
@@ -55,9 +61,13 @@ class MyTripViewController: UIViewController {
             make.trailing.equalTo(myTripView.contentView.snp.trailing)
             make.bottom.equalTo(myTripView.scrollView.snp.bottom)
             make.height.equalTo(height)
+            Task {
+                await self.updateBudget()
+                await self.updateBudgetTotal()
+                await self.updateTotalBudgetValue()
+            }
         }
     }
-    
     func getAllDays() {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
@@ -80,17 +90,166 @@ class MyTripViewController: UIViewController {
         return []
     }
     
-    func updateBudget() {
-        var budgetDay: Double = 0
-        for activite in activites {
-            budgetDay += activite.budget
+    func getCurrencyFromAPI(userCurrency: String, outgoinCurrency: String) async -> Double {
+        var total: Double = 0
+        let currency = await CurrencyAPI.shared.getCurrency(incomingCurrency: userCurrency, outgoingCurrency: outgoinCurrency)
+        
+        if let currency = currency {
+            let value = currency.array[0].high
+            let currencyToDouble = Double(value) ?? 0
+            total = currencyToDouble
         }
-        myTripView.budgetValue.text = "R$\(budgetDay)"
+        return total
+    }
+    
+    func getUserCurrency() -> String {
+        let locale = Locale.current
+        let currencySymbol = locale.currencySymbol
+        if currencySymbol == "$" {
+            return "U$"
+        } else {
+            return currencySymbol ?? "U$"
+        }
+    }
+    
+    func updateBudget() async {
+        var budgetDay: Double = 0
+        
+        var totalReal: Double = 0
+        var totalDollar: Double = 0
+        var totalEuro: Double = 0
+        var totalYen: Double = 0
+        var totalSwiss: Double = 0
+        var totalRenminbi: Double = 0
+        
+        for activite in activites {
+            switch activite.currencyType {
+            case "R$":
+                totalReal += activite.budget
+                if userCurrency == "R$" {
+                    budgetDay += activite.budget
+                } else {
+                    let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    budgetDay += activite.budget * value
+                }
+                
+            case "U$":
+                totalDollar += activite.budget
+                if userCurrency == "U$" {
+                    budgetDay += activite.budget
+                } else {
+                    let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    budgetDay += activite.budget * value
+                }
+                
+            case "€":
+                totalEuro += activite.budget
+                if userCurrency == "€" {
+                    budgetDay += activite.budget
+                } else {
+                    let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    budgetDay += activite.budget * value
+                }
+                
+            case "¥":
+                totalYen += activite.budget
+                if userCurrency == "¥" {
+                    budgetDay += activite.budget
+                } else {
+                    let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    budgetDay += activite.budget * value
+                }
+                
+            case "Fr":
+                totalSwiss += activite.budget
+                if userCurrency == "Fr" {
+                    budgetDay += activite.budget
+                } else {
+                    let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    budgetDay += activite.budget * value
+                }
+                
+            case "元":
+                totalRenminbi += activite.budget
+                if userCurrency == "元" {
+                    budgetDay += activite.budget
+                } else {
+                    let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                    budgetDay += activite.budget * value
+                }
+                
+            default:
+                break
+            }
+        }
+        myTripView.budgetValue.text = "\(userCurrency) \(budgetDay)"
+    }
+    
+    func updateBudgetTotal() async {
+        budgetTotal = 0
+        for day in days {
+            for activite in day.activity?.allObjects as [ActivityLocal] {
+                switch activite.currencyType {
+                case "R$":
+                    if userCurrency == "R$" {
+                        budgetTotal += activite.budget
+                    } else {
+                        let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                        budgetTotal += activite.budget * value
+                    }
+                    
+                case "U$":
+                    if userCurrency == "U$" {
+                        budgetTotal += activite.budget
+                    } else {
+                        let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                        budgetTotal += activite.budget * value
+                    }
+                    
+                case "€":
+                    if userCurrency == "€" {
+                        budgetTotal += activite.budget
+                    } else {
+                        let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                        budgetTotal += activite.budget * value
+                    }
+                    
+                case "¥":
+                    if userCurrency == "¥" {
+                        budgetTotal += activite.budget
+                    } else {
+                        let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                        budgetTotal += activite.budget * value
+                    }
+                    
+                case "Fr":
+                    if userCurrency == "Fr" {
+                        budgetTotal += activite.budget
+                    } else {
+                        let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                        budgetTotal += activite.budget * value
+                    }
+                    
+                case "元":
+                    if userCurrency == "元" {
+                        budgetTotal += activite.budget
+                    } else {
+                        let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
+                        budgetTotal += activite.budget * value
+                    }
+                    
+                default:
+                    break
+                }
+            }
+        }
+        roadmap.budget = budgetTotal
+        RoadmapRepository.shared.saveContext()
     }
     
     func updateTotalBudgetValue() {
         guard let cell = myTripView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
-        cell.infoTitle.text = "R$\(self.roadmap.budget)"
+        cell.infoTitle.text = "\(self.userCurrency)\(self.budgetTotal)"
     }
     
     func emptyState(activities: [ActivityLocal]) {
@@ -141,7 +300,9 @@ extension MyTripViewController: ReviewTravelDelegate {
         self.getAllDays()
         self.activites = self.getAllActivities()
         self.emptyState(activities: activites)
-        self.updateBudget()
+        Task {
+            await self.updateBudget()
+        }
         self.updateTotalBudgetValue()
         
         myTripView.infoTripCollectionView.reloadItems(at: [IndexPath(item: 0, section: 0)])
@@ -151,3 +312,4 @@ extension MyTripViewController: ReviewTravelDelegate {
         coordinatorCurrent?.backPage()
     }
 }
+

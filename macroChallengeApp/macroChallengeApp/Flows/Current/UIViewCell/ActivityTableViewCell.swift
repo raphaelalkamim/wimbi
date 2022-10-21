@@ -69,10 +69,13 @@ extension ActivityTableViewCell {
         setupConstraints()
         
     }
-    func setupDaysActivities(hour: String, value: String, name: String) {
+    func setupDaysActivities(hour: String, currency: String, value: String, name: String) {
         let hour = hour
-        self.activityInfo.text = hour + " • " + "R$" + value
+        self.activityInfo.text = hour + " • " + currency + " " + value
         self.activityTitle.text = name
+    }
+    func setupCategoryImage(image: String) {
+        self.activityIcon.image = UIImage(named: image)
     }
     func setupConstraints() {
         activityIcon.snp.makeConstraints { make in

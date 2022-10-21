@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Network
 
 class ExploreViewController: UIViewController {
     weak var coordinator: ExploreCoordinator?
@@ -14,9 +15,14 @@ class ExploreViewController: UIViewController {
     
     let explorerView = ExploreView()
     var roadmaps: [RoadmapDTO] = []
-    
+    let network: NetworkMonitor = NetworkMonitor.shared
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        network.startMonitoring()
+        explorerView.showSpinner()
+        emptyState(conection: network.isReachable)
+        
         self.view.backgroundColor = .backgroundPrimary
         self.setContextMenu()
     
@@ -27,7 +33,6 @@ class ExploreViewController: UIViewController {
         explorerView.addSearchBarNavigation(navigation: navigationItem)
         
         explorerView.searchBar.delegate = self
-        emptyState()
         definesPresentationContext = true
         
     }
@@ -36,30 +41,33 @@ class ExploreViewController: UIViewController {
         DataManager.shared.getPublicRoadmaps({ roadmaps in
             self.roadmaps = roadmaps
             self.explorerView.roadmapsCollectionView.reloadData()
-            self.emptyState()
+            self.emptyState(conection: self.network.isReachable)
         })
         navigationController?.navigationBar.prefersLargeTitles = true
-        emptyState()
     }
     
     func addNewRoadmap() {
         coordinator?.createNewRoadmap()
     }
     
-    func emptyState() {
-        if roadmaps.isEmpty {
-            explorerView.roadmapsCollectionView.isHidden = true
-            explorerView.emptyStateTitle.isHidden = false
-            explorerView.emptyStateImage.isHidden = false
-            explorerView.roadmapsCollectionView.isScrollEnabled = false
+    func emptyState(conection: Bool) {
+        if conection {
+            self.explorerView.roadmapsCollectionView.isHidden = false
+            self.explorerView.emptyStateTitle.isHidden = true
+            self.explorerView.emptyStateImage.isHidden = true
+            self.explorerView.roadmapsCollectionView.isScrollEnabled = true
+            if !self.roadmaps.isEmpty {
+                self.explorerView.hiddenSpinner()
+            }
         } else {
-            explorerView.roadmapsCollectionView.isHidden = false
-            explorerView.emptyStateTitle.isHidden = true
-            explorerView.emptyStateImage.isHidden = true
-            explorerView.roadmapsCollectionView.isScrollEnabled = true
+            self.explorerView.hiddenSpinner()
+            self.explorerView.roadmapsCollectionView.isHidden = true
+            self.explorerView.emptyStateTitle.isHidden = false
+            self.explorerView.emptyStateImage.isHidden = false
+            self.explorerView.roadmapsCollectionView.isScrollEnabled = false
         }
+        // self.network.stopMonitoring()
     }
-    
 }
 
 extension ExploreViewController: UISearchBarDelegate {
