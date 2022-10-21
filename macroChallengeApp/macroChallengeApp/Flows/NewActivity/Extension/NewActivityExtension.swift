@@ -31,8 +31,8 @@ extension NewActivityViewController {
     }
     
     func getData() {
-        self.activity.currencyType = activityEdit.currencyType ?? "R$"
-        self.currencyType = self.activity.currencyType
+        self.activity.currency = activityEdit.currencyType ?? "R$"
+        self.currencyType = self.activity.currency
         self.activity.location = activityEdit.location ?? "Adress"
         self.activity.hour = activityEdit.hour ?? "23/10/2000"
         self.activity.name = activityEdit.name ?? "No name"
@@ -65,7 +65,7 @@ extension NewActivityViewController {
                 ValueTableViewCell else { return }
         let newValue = getNumber(text: cell.value.text ?? "123")
         activity.budget = Double(newValue) ?? 0.0        
-        activity.currencyType = self.currencyType
+        activity.currency = self.currencyType
     }
     
     func getNumber(text: String) -> String {
@@ -111,7 +111,7 @@ extension NewActivityViewController: UITableViewDataSource {
                 if address.isEmpty {
                     newCell.label.text = "Address".localized()
                 } else {
-                    newCell.label.text = activity.location
+                    newCell.label.text = self.address
                 }
                 newCell.setupSeparator()
                 cell = newCell
@@ -182,7 +182,7 @@ extension NewActivityViewController: UITableViewDataSource {
                     newCell.currencyType = self.currencyType
                     newCell.value.placeholder = "\(self.currencyType) 0.00"
                     newCell.value.text = "\(self.currencyType) \(activity.budget)"
-                    self.activity.currencyType = self.currencyType
+                    self.activity.currency = self.currencyType
                     cell = newCell
                 }
                 

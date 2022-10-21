@@ -491,7 +491,8 @@ class DataManager {
             "category": activity.category,
             "location": activity.location,
             "hour": activity.hour,
-            "budget": activity.budget
+            "budget": activity.budget,
+            "currency": activity.currency
         ]
         
         let session = URLSession.shared
@@ -546,7 +547,8 @@ class DataManager {
             "category": activity.category,
             "location": activity.location,
             "hour": activity.hour,
-            "budget": activity.budget
+            "budget": activity.budget,
+            "currency": activity.currency
         ]
         
         let session = URLSession.shared
@@ -681,13 +683,13 @@ class DataManager {
     }
     
     func setupImage(category: String) -> String {
-        if category == "Beach".localized() {
+        if category == "Beach" {
             let beachImages = ["beach0", "beach1", "beach2", "beach3", "beach4"]
             return beachImages[Int.random(in: 0..<beachImages.count)]
-        } else if category == "Mountain".localized() {
+        } else if category == "Mountain" {
             let mountainImages = ["montain0", "montain1", "montain2", "montain3", "montain4"]
             return mountainImages[Int.random(in: 0..<mountainImages.count)]
-        } else if category == "City".localized() {
+        } else if category == "City" {
             let cityImages = ["city0", "city1", "city2", "city3"]
             return cityImages[Int.random(in: 0..<cityImages.count)]
         } else {

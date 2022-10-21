@@ -212,7 +212,7 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
             cell.localButton.isHidden = true
         }
         cell.localButton.addTarget(self, action: #selector(addRoute(sender:)), for: .touchUpInside)
-        cell.setupDaysActivities(hour: activity.hour, currency: activity.currencyType,
+        cell.setupDaysActivities(hour: activity.hour, currency: activity.currency,
                                  value: String(activity.budget),
                                  name: activity.name)
         cell.activityIcon.image = UIImage(named: activity.category)

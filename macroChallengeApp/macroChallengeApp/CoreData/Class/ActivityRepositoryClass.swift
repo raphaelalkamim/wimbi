@@ -45,7 +45,7 @@ class ActivityRepository {
         newActivity.location = activity.location
         newActivity.hour = activity.hour
         newActivity.budget = activity.budget
-        newActivity.currencyType = activity.currencyType
+        newActivity.currencyType = activity.currency
         newActivity.tips = newActivity.tips
                 
         if isNew {
@@ -83,7 +83,7 @@ class ActivityRepository {
         oldActivity.location = activity.location
         oldActivity.hour = activity.hour
         oldActivity.budget = activity.budget
-        oldActivity.currencyType = activity.currencyType
+        oldActivity.currencyType = activity.currency
         
         DataManager.shared.putActivity(activity: activity, dayId: Int(day.id))
         
