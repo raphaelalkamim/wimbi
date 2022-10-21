@@ -640,9 +640,16 @@ class DataManager {
                             do {
                                 let roadmapJoin = try JSONDecoder().decode(Roadmaps.self, from: data)
                                 let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: roadmapJoin, isNew: false)
-                                let days = newRoadmap.day?.allObjects as [DayLocal]
-                                let roadmapDays = roadmapJoin.days
+                                newRoadmap.id = Int32(roadmapJoin.id)
+                                newRoadmap.shareKey = roadmapJoin.shareKey
+                                var days = newRoadmap.day?.allObjects as [DayLocal]
+                                var roadmapDays = roadmapJoin.days
+                                
+                                days.sort { $0.id < $1.id }
+                                roadmapDays.sort { $0.id < $1.id }
+                                
                                 for index in 0..<roadmapDays.count {
+                                    days[index].id = Int32(days[index].id)
                                     let activiyArray = roadmapDays[index].activity
                                     for activity in activiyArray {
                                         _ = ActivityRepository.shared.createActivity(day: days[index], activity: activity, isNew: false)
