@@ -655,6 +655,8 @@ class DataManager {
                                         _ = ActivityRepository.shared.createActivity(day: days[index], activity: activity, isNew: false)
                                     }
                                 }
+                                RoadmapRepository.shared.saveContext()
+                                DayRepository.shared.saveContext()
                             } catch {
                                 // FIXME: tratar o erro do decoder
                                 print(error)
