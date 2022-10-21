@@ -23,7 +23,6 @@ struct Roadmaps: Codable {
     var shareKey: String
     var currency: String
     var createdAt = Date()
-    var currency: String
     var days: [Day]
     
     enum CodingKeys: String, CodingKey {
@@ -38,7 +37,6 @@ struct Roadmaps: Codable {
         case isShared
         case isPublic
         case shareKey
-        case currency
         case days = "day"
         case dateInitial
         case dateFinal

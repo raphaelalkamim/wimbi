@@ -188,7 +188,7 @@ class DataManager {
             "isPublic": roadmap.isPublic,
             "shareKey": codeTrip,
             "createdAt": dateFormatter.string(from: Date()),
-            "currency": "R$"
+            "currency": roadmap.currency
         ]
         
         let session = URLSession.shared
@@ -400,7 +400,7 @@ class DataManager {
             "isPublic": roadmap.isPublic,
             "shareKey": "ABC123",
             "createdAt": dateFormatter.string(from: Date()),
-            "currency": "R$"
+            "currency": roadmap.currency
         ]
         
         let session = URLSession.shared
@@ -487,7 +487,7 @@ class DataManager {
         
         let activity: [String: Any] = [
             "name": activity.name,
-            "tips": "Blablabla",
+            "tips": activity.tips,
             "category": activity.category,
             "location": activity.location,
             "hour": activity.hour,
@@ -542,7 +542,7 @@ class DataManager {
         
         let activityNew: [String: Any] = [
             "name": activity.name,
-            "tips": "Blablabla",
+            "tips": activity.tips,
             "category": activity.category,
             "location": activity.location,
             "hour": activity.hour,
