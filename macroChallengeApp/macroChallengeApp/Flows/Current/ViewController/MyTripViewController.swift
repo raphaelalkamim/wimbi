@@ -37,18 +37,17 @@ class MyTripViewController: UIViewController {
         myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
         self.myTripView.activitiesTableView.reloadData()
         self.myTripView.activitiesTableView.layoutIfNeeded()
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.getAllDays()
         self.activites = self.getAllActivities()
         self.emptyState(activities: activites)
-<<<<<<< HEAD
-        self.updateBudget()
         self.updateTotalBudgetValue()
         self.myTripView.activitiesTableView.reloadData()
         self.myTripView.activitiesTableView.layoutIfNeeded()
+        // self.updateBudget()
         updateConstraintsTable()
     }
     
@@ -62,15 +61,13 @@ class MyTripViewController: UIViewController {
             make.trailing.equalTo(myTripView.contentView.snp.trailing)
             make.bottom.equalTo(myTripView.scrollView.snp.bottom)
             make.height.equalTo(height)
-=======
-        Task {
-            await self.updateBudget()
-            await self.updateBudgetTotal()
-            await self.updateTotalBudgetValue()
->>>>>>> parent of 310ef8e (Revert "Dev/currency")
+            Task {
+                await self.updateBudget()
+                await self.updateBudgetTotal()
+                await self.updateTotalBudgetValue()
+            }
         }
     }
-    
     func getAllDays() {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
@@ -315,3 +312,4 @@ extension MyTripViewController: ReviewTravelDelegate {
         coordinatorCurrent?.backPage()
     }
 }
+

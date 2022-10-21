@@ -66,7 +66,7 @@ class ExploreViewController: UIViewController {
             self.explorerView.emptyStateImage.isHidden = false
             self.explorerView.roadmapsCollectionView.isScrollEnabled = false
         }
-        self.network.stopMonitoring()
+        // self.network.stopMonitoring()
     }
 }
 
