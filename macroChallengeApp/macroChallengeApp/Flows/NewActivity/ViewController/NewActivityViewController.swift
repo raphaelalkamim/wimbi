@@ -18,7 +18,7 @@ class NewActivityViewController: UIViewController {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let newActivityView = NewActivityView()
     
-    lazy var userCurrency = {
+    lazy var userCurrency: String = {
         let userC = self.getUserCurrency()
         return userC
     }()

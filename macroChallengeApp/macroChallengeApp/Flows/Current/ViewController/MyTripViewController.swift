@@ -19,7 +19,7 @@ class MyTripViewController: UIViewController {
     var activites: [ActivityLocal] = []
     var days: [DayLocal] = []
     
-    lazy var userCurrency = {
+    lazy var userCurrency: String = {
         let userC = self.getUserCurrency()
         return userC
     }()
