@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     var dataManager = DataManager.shared
     // MARK: Cloud User
     var user: User?
+    let network: NetworkMonitor = NetworkMonitor.shared
     
     private lazy var fetchResultController: NSFetchedResultsController<RoadmapLocal> = {
         let request: NSFetchRequest<RoadmapLocal> = RoadmapLocal.fetchRequest()
@@ -42,7 +43,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         profileView.roadmaps = self.roadmaps
         
         super.viewDidLoad()
-        print("oi", ActivityRepository.shared.getActivity())
         self.view.backgroundColor = .backgroundPrimary
         self.setupProfileView()
         profileView.updateConstraintsCollection()

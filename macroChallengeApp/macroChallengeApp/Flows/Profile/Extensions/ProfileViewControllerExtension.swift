@@ -18,12 +18,13 @@ extension ProfileViewController {
             make.edges.equalToSuperview()
         }
     }
-    // MARK: Long press
+    // MARK: Long press and delete
     @objc public func handleLongPress(sender: UILongPressGestureRecognizer) {
+        network.startMonitoring()
         if sender.state == .began {
             let touchPoint = sender.location(in: profileView.myRoadmapCollectionView)
             if let indexPath = profileView.myRoadmapCollectionView.indexPathForItem(at: touchPoint) {
-                if roadmaps.isEmpty {
+                if roadmaps.isEmpty || !network.isReachable {
                     let action = UIAlertController(title: "Can't delete", message: nil, preferredStyle: .actionSheet)
                     action.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { [weak self] _ in
                         self?.profileView.myRoadmapCollectionView.reloadData()

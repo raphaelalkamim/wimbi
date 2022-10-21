@@ -16,7 +16,9 @@ extension MyTripViewController {
         view.addSubview(myTripView)
         setupConstraints()
         
-        if coordinator != nil {
+        // se estiver visualizando a viagem e estiver conectado
+        network.startMonitoring()
+        if coordinator != nil && network.isReachable {
             let editItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMyTrip))
             editItem.tintColor = .accent
             let shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareMyTrip))
