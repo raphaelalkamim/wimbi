@@ -21,8 +21,8 @@ struct Roadmaps: Codable {
     var isShared: Bool
     var isPublic: Bool
     var shareKey: String
-    var currency: String
     var createdAt = Date()
+    var currency: String
     var days: [Day]
     
     enum CodingKeys: String, CodingKey {
@@ -58,6 +58,7 @@ struct Roadmaps: Codable {
         self.dateFinal = ""
         self.currency = "U$"
         self.dateInitial = ""
+        self.currency = "R$"
     }
 }
 

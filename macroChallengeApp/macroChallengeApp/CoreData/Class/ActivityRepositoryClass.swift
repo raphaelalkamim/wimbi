@@ -36,7 +36,7 @@ class ActivityRepository {
         }
     }
     
-    func createActivity(day: DayLocal, activity: Activity) -> ActivityLocal {
+    func createActivity(day: DayLocal, activity: Activity, isNew: Bool) -> ActivityLocal {
         guard let newActivity = NSEntityDescription.insertNewObject(forEntityName: "ActivityLocal", into: context) as? ActivityLocal else { preconditionFailure() }
         
         newActivity.id = Int32(activity.id)
@@ -45,10 +45,12 @@ class ActivityRepository {
         newActivity.location = activity.location
         newActivity.hour = activity.hour
         newActivity.budget = activity.budget
-        newActivity.currencyType = activity.currencyType
+        newActivity.currencyType = activity.currency
         newActivity.tips = newActivity.tips
                 
-        DataManager.shared.postActivity(activity: activity, dayId: Int(day.id), activityCore: newActivity)
+        if isNew {
+            DataManager.shared.postActivity(activity: activity, dayId: Int(day.id), activityCore: newActivity)
+        }
         
         day.addToActivity(newActivity)
         
@@ -81,7 +83,7 @@ class ActivityRepository {
         oldActivity.location = activity.location
         oldActivity.hour = activity.hour
         oldActivity.budget = activity.budget
-        oldActivity.currencyType = activity.currencyType
+        oldActivity.currencyType = activity.currency
         
         DataManager.shared.putActivity(activity: activity, dayId: Int(day.id))
         
