@@ -26,6 +26,7 @@ extension RoadmapRepository {
     @NSManaged var createdAt: Date?
     @NSManaged var date: Date?
     @NSManaged var dateFinal: Date?
+    @NSManaged var currency: String?
 
 }
 
