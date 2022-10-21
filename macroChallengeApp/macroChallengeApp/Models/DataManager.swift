@@ -649,7 +649,7 @@ class DataManager {
                                 roadmapDays.sort { $0.id < $1.id }
                                 
                                 for index in 0..<roadmapDays.count {
-                                    days[index].id = Int32(days[index].id)
+                                    days[index].id = Int32(roadmapDays[index].id)
                                     let activiyArray = roadmapDays[index].activity
                                     for activity in activiyArray {
                                         _ = ActivityRepository.shared.createActivity(day: days[index], activity: activity, isNew: false)
