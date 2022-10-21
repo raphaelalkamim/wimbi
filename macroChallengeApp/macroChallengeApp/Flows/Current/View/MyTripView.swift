@@ -115,7 +115,7 @@ class MyTripView: UIView {
     
     lazy var budgetValue: UILabel = {
         let title = UILabel()
-        title.text = "R$2000.00"
+        title.text = ""
         title.font = designSystem.text.body.font
         title.stylize(with: designSystem.text.body)
         return title
@@ -202,10 +202,10 @@ class MyTripView: UIView {
         }
         calendarCollectionView.snp.makeConstraints { make in
             make.centerX.equalTo(contentView.snp.centerX)
-            make.top.equalTo(calendarTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.top.equalTo(calendarTitle.snp.bottom)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xxLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xxLargePositive)
-            make.height.equalTo(60)
+            make.height.equalTo(80)
         }
         roadmapTitle.snp.makeConstraints { make in
             make.top.equalTo(calendarCollectionView.snp.bottom).inset(designSystem.spacing.xLargeNegative)
@@ -260,8 +260,9 @@ class MyTripView: UIView {
             make.leading.equalTo(contentView.snp.leading)
             make.trailing.equalTo(contentView.snp.trailing)
             make.bottom.equalTo(scrollView.snp.bottom)
-            make.height.equalTo(self.scrollView.snp.height)
+            make.height.equalTo(600)
         }
+        
     }
 }
 

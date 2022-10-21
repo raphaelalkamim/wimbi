@@ -11,7 +11,7 @@ import SnapKit
 
 class ExploreView: UIView {
     let designSystem = DefaultDesignSystem.shared
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.searchController = UISearchController()
@@ -69,6 +69,11 @@ class ExploreView: UIView {
         return collectionView
     }()
     
+    lazy var activity: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        return spinner
+    }()
+    
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(searchBar)
@@ -98,7 +103,18 @@ class ExploreView: UIView {
 
         }
     }
-    
+    func showSpinner() {
+        activity.color = designSystem.palette.accent
+        activity.startAnimating()
+        self.addSubview(activity)
+        activity.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY)
+        }
+    }
+    func hiddenSpinner() {
+        activity.removeFromSuperview()
+    }
     func addSearchBarNavigation(navigation: UINavigationItem) {
         navigation.searchController = searchController
     }
@@ -116,8 +132,8 @@ class ExploreView: UIView {
         searchController.obscuresBackgroundDuringPresentation = true
         
         // Filtro
-//        searchController.searchBar.showsBookmarkButton = true
-//        searchController.searchBar.setImage(UIImage(systemName: "slider.horizontal.3"), for: .bookmark, state: .normal)
+        searchController.searchBar.showsBookmarkButton = true
+        searchController.searchBar.setImage(UIImage(systemName: "slider.horizontal.3"), for: .bookmark, state: .normal)
         
         searchBar = searchController.searchBar
         searchBar.placeholder = "Where do you want to go?".localized()

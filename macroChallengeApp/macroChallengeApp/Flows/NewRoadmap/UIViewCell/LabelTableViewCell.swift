@@ -101,7 +101,7 @@ class LabelTableViewCell: UITableViewCell {
     }
     func configureTripStatus(isPublic: Bool) {
         self.layer.cornerRadius = 16
-        self.title.text = "Trip".localized()
+        self.title.text = "Roadmap".localized()
         if isPublic == true {
             self.value.text = "Public".localized()
         } else {

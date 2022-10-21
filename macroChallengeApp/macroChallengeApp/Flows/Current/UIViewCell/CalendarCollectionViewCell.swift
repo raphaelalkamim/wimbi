@@ -33,7 +33,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     lazy var dayButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("1", for: .normal)
-        btn.layer.cornerRadius = 16
+        btn.layer.cornerRadius = 20
         btn.setTitleColor(designSystem.palette.textPrimary, for: .normal)
         btn.titleLabel?.font = designSystem.text.infoTitle.font
         btn.isUserInteractionEnabled = false
@@ -60,7 +60,7 @@ extension CalendarCollectionViewCell {
         dayButton.snp.makeConstraints { make in
             make.top.equalTo(day.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.centerX.equalToSuperview()
-            make.width.height.equalTo(32)
+            make.width.height.equalTo(40)
         }
     }
     func selectedBackgroundView() {

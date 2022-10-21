@@ -15,6 +15,8 @@ struct Activity: Codable {
     var location: String
     var hour: String
     var budget: Double
+    var currencyType: String
+    var tips: String
     var day: Day?
     
     enum CodingKeys: String, CodingKey {
@@ -25,11 +27,14 @@ struct Activity: Codable {
         case location
         case hour
         case budget
+        case currencyType
+        case tips
+        case day
     }
 }
 
 extension Activity: CustomStringConvertible {
     var description: String {
-        return "id: \(id),name: \(name),category: \(category),location: \(location), hour: \(hour), hour: \(hour), budget: \(budget), Day: \(day)"
+        return "id: \(id),name: \(name),category: \(category),location: \(location), hour: \(hour), budget: \(budget), currencyType: \(currencyType), Day: \(day)"
     }
 }

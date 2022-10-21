@@ -17,6 +17,12 @@ class CurrentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        roadmaps = RoadmapRepository.shared.getRoadmap()
         roadmaps.sort {
             $0.date ?? Date() < $1.date ?? Date()
         }
@@ -30,9 +36,10 @@ extension CurrentViewController {
             roadmap = roadmaps[0]
             configCountDown()
             setupCountDownView()
-
+            currentEmptyView.removeFromSuperview()
         } else {
             setupEmptyView()
+            currentCountDownView.removeFromSuperview()
         }
     }
     
@@ -69,6 +76,7 @@ extension CurrentViewController {
         let formatt = DateFormatter()
         formatt.timeStyle = .none
         formatt.dateStyle = .short
+        formatt.dateFormat = "dd/MM/yyyy"
         currentCountDownView.title.text = roadmap.name
         currentCountDownView.date.text = formatt.string(from: roadmap.date ?? Date())
     }

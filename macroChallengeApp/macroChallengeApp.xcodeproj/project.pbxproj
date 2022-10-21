@@ -21,6 +21,7 @@
 		131272DE28E624D1000B7968 /* RoadmapExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272C328E62441000B7968 /* RoadmapExploreCollectionViewCell.swift */; };
 		131272DF28E624D1000B7968 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272C428E62441000B7968 /* SearchResultTableViewCell.swift */; };
 		131272E028E624F4000B7968 /* ExploreViewController+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131272BF28E62440000B7968 /* ExploreViewController+ContextMenu.swift */; };
+		133BE5B4290092590045E742 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BE5B3290092590045E742 /* NetworkMonitor.swift */; };
 		1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14728DA4869009509DF /* ActivityRepository.swift */; };
 		1359F14B28DA489A009509DF /* DayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14A28DA489A009509DF /* DayRepository.swift */; };
 		1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14C28DA48A8009509DF /* RoadmapRepository.swift */; };
@@ -125,6 +126,8 @@
 		B0AC251628E21DEB00F38525 /* CurrentEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */; };
 		B0B17FE528E4DABF0010B00C /* CurrentCountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */; };
 		B0CDF35028CFC7E90092A76C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CDF34F28CFC7E90092A76C /* Category.swift */; };
+		B0E0684F28EF50C500418F87 /* CurrencyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E0684E28EF50C500418F87 /* CurrencyAPI.swift */; };
+		B0E0685128EF5FD700418F87 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E0685028EF5FD700418F87 /* Currency.swift */; };
 		B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */; };
 		B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461628CFA85E00D62AF1 /* CategoryView.swift */; };
 		DF2643AB28DB9CC500053180 /* UserRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AA28DB9CC500053180 /* UserRoadmap.swift */; };
@@ -173,6 +176,7 @@
 		131272D428E6249E000B7968 /* RoadmapSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoadmapSearchTableViewController.swift; sourceTree = "<group>"; };
 		131272D528E6249E000B7968 /* PreviewRoadmapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewRoadmapViewController.swift; sourceTree = "<group>"; };
 		131272D628E6249E000B7968 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		133BE5B3290092590045E742 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		1359F14728DA4869009509DF /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
 		1359F14A28DA489A009509DF /* DayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepository.swift; sourceTree = "<group>"; };
 		1359F14C28DA48A8009509DF /* RoadmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapRepository.swift; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 		B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentEmptyState.swift; sourceTree = "<group>"; };
 		B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCountDown.swift; sourceTree = "<group>"; };
 		B0CDF34F28CFC7E90092A76C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		B0E0684E28EF50C500418F87 /* CurrencyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPI.swift; sourceTree = "<group>"; };
+		B0E0685028EF5FD700418F87 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
 		B0E2461628CFA85E00D62AF1 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		B897B6EEE760DBB56A9888E4 /* Pods-macroChallengeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp/Pods-macroChallengeApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -526,7 +532,10 @@
 				B0CDF34F28CFC7E90092A76C /* Category.swift */,
 				DF2643AA28DB9CC500053180 /* UserRoadmap.swift */,
 				DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */,
+				B0E0684E28EF50C500418F87 /* CurrencyAPI.swift */,
+				B0E0685028EF5FD700418F87 /* Currency.swift */,
 				DF66658128F0991100E37429 /* DayDTO.swift */,
+				133BE5B3290092590045E742 /* NetworkMonitor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1173,6 +1182,7 @@
 				A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */,
 				13C8A13028CA6AF400994196 /* DefaultDesignSystem.swift in Sources */,
 				131272E028E624F4000B7968 /* ExploreViewController+ContextMenu.swift in Sources */,
+				B0E0684F28EF50C500418F87 /* CurrencyAPI.swift in Sources */,
 				1379745328D8E6B700AEA662 /* SettingsViewController.swift in Sources */,
 				13BD500F28DA297500C0EA7C /* KeychainManager.swift in Sources */,
 				1309973128F0BE5C00774E1A /* MyActivityItem.swift in Sources */,
@@ -1215,6 +1225,7 @@
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
 				131272DC28E624CE000B7968 /* ExploreView.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
+				B0E0685128EF5FD700418F87 /* Currency.swift in Sources */,
 				DF2EA1BD28DE28BA002F12D8 /* ActivityDestinyView.swift in Sources */,
 				13BD500828DA28E500C0EA7C /* NewActivityView.swift in Sources */,
 				131272DF28E624D1000B7968 /* SearchResultTableViewCell.swift in Sources */,
@@ -1226,6 +1237,7 @@
 				13C8A12728CA693F00994196 /* DesignText.swift in Sources */,
 				A04959C628DCEC92009156C8 /* ActivityTableViewCell.swift in Sources */,
 				DF2643AD28DB9EAD00053180 /* RoadmapDTO.swift in Sources */,
+				133BE5B4290092590045E742 /* NetworkMonitor.swift in Sources */,
 				DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */,
 				13C8A12528CA693700994196 /* DesignSpacing.swift in Sources */,
 				DF57253D28D110E1005466D9 /* DaysView.swift in Sources */,
@@ -1438,7 +1450,7 @@
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9R89XP5A63;
+				DEVELOPMENT_TEAM = V8V28A4DX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
@@ -1456,9 +1468,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm.macroChallengeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1471,7 +1486,7 @@
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9R89XP5A63;
+				DEVELOPMENT_TEAM = V8V28A4DX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
@@ -1489,9 +1504,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm.macroChallengeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

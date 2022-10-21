@@ -21,6 +21,7 @@ struct Roadmaps: Codable {
     var isShared: Bool
     var isPublic: Bool
     var shareKey: String
+    var currency: String
     var createdAt = Date()
     var currency: String
     var days: [Day]
@@ -37,6 +38,7 @@ struct Roadmaps: Codable {
         case isShared
         case isPublic
         case shareKey
+        case currency
         case days = "day"
         case dateInitial
         case dateFinal
@@ -56,6 +58,7 @@ struct Roadmaps: Codable {
         self.shareKey = "12345"
         self.days = [Day(isSelected: false, date: Date())]
         self.dateFinal = ""
+        self.currency = "U$"
         self.dateInitial = ""
         self.currency = "R$"
     }

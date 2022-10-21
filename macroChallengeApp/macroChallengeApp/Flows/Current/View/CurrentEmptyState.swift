@@ -23,7 +23,7 @@ class CurrentEmptyState: UIView {
     lazy var title: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.title)
-        label.text = "What do you think about exploring and booking a new trip?".localized()
+        label.text = "What do you think about exploring and creating a new roadmap?".localized()
         return label
     }()
     
@@ -38,7 +38,7 @@ class CurrentEmptyState: UIView {
         let label = UILabel()
         label.stylize(with: designSystem.text.body)
         label.textAlignment = .right
-        label.text = "Go to Explore and find a new trip or create your own.".localized()
+        label.text = "Go to Explore and find a new roadmap or create your own.".localized()
         return label
     }()
 }

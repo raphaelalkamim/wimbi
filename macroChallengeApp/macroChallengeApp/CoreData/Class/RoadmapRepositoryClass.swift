@@ -56,6 +56,7 @@ public class RoadmapRepository: NSManagedObject {
         newRoadmap.isShared = roadmap.isShared
         newRoadmap.isPublic = roadmap.isPublic
         newRoadmap.shareKey = roadmap.shareKey
+        newRoadmap.currency = roadmap.currency
         let dateInitial = dateFormat.date(from: roadmap.dateInitial)
         let dateFinal = dateFormat.date(from: roadmap.dateFinal)
         newRoadmap.date = dateInitial

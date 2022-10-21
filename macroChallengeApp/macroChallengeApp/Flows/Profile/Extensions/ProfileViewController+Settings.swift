@@ -25,7 +25,7 @@ extension SettingsViewController: UITableViewDelegate {
 
 extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -33,20 +33,16 @@ extension SettingsViewController: UITableViewDataSource {
         case 0:
             coordinator?.startEditProfile()
             
-//        case 1:
-//            let viewController = LikedRoadmapsViewController()
-//            viewController.navigationItem.title = "Liked roadmaps".localized()
-//            navigationController?.pushViewController(viewController, animated: true)
-//
         case 1:
-            coordinator?.startNotifications()
-
-            //        case 3:
-//            let viewController = TermsViewController()
-//            viewController.navigationItem.title = "Privacy policies".localized()
-//            navigationController?.pushViewController(viewController, animated: true)
+            coordinator?.startLikedRoadmaps()
             
         case 2:
+            coordinator?.startNotifications()
+
+        case 3:
+            coordinator?.startTerms()
+            
+        case 4:
             let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
             alert.view.tintColor = .accent
             let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
@@ -82,19 +78,19 @@ extension SettingsViewController: UITableViewDataSource {
             cell.title.text = "Edit profile".localized()
             cell.icon.setImage(UIImage(systemName: "person.fill"), for: .normal)
             
-//        case 1:
-//            cell.title.text = "Liked roadmaps".localized()
-//            cell.icon.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            
         case 1:
+            cell.title.text = "Liked roadmaps".localized()
+            cell.icon.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            
+        case 2:
             cell.title.text = "Notifications".localized()
             cell.icon.setImage(UIImage(systemName: "bell.fill"), for: .normal)
             
-//        case 3:
-//            cell.title.text = "Privacy policies".localized()
-//            cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
+        case 3:
+            cell.title.text = "Privacy Policies".localized()
+            cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
             
-        case 2:
+        case 4:
             cell.title.text = "Sign out".localized()
             cell.title.textColor = .redCity
             cell.icon.isHidden = true
