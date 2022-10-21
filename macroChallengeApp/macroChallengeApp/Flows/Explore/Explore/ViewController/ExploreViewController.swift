@@ -35,6 +35,10 @@ class ExploreViewController: UIViewController {
         explorerView.searchBar.delegate = self
         definesPresentationContext = true
         
+        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+            let userID = String(data: data, encoding: .utf8)!
+            print(userID)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -98,7 +98,9 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.title.text = "CATEGORY".localized()
                 cell.circle.isHidden = false
                 cell.categoryTitle.isHidden = false
-                cell.categoryTitle.text = self.roadmap.category
+                cell.categoryTitle.text = self.roadmap.category.localized()
+                print(self.roadmap.category)
+                cell.circle.backgroundColor = setupColor(category: self.roadmap.category)
                 cell.info.isHidden = true
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(24)
@@ -110,7 +112,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.infoTitle.isHidden = false
                 cell.circle.isHidden = true
                 cell.categoryTitle.isHidden = true
-                cell.infoTitle.text = "\(self.roadmap.budget)"
+                cell.infoTitle.text = "R$ \(self.roadmap.budget)"
             case 2:
                 cell.title.text = "TRAVELERS".localized()
                 cell.info.isHidden = false
@@ -173,6 +175,18 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
             }
         }
     }
+    
+    func setupColor(category: String) -> UIColor {
+        if category == "Countryside" {
+            return .blueBeach
+        } else if category == "Mountain" {
+            return .yellowMontain
+        } else if category == "City" {
+            return .redCity
+        } else {
+            return .greenCamp
+        }
+    }
 }
 
 extension PreviewRoadmapViewController: UITableViewDelegate {
@@ -194,8 +208,11 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
         
         let activity = roadmap.days[self.daySelected].activity[indexPath.row]
         cell.localButton.tag = indexPath.row
+        if activity.location == "" {
+            cell.localButton.isHidden = true
+        }
         cell.localButton.addTarget(self, action: #selector(addRoute(sender:)), for: .touchUpInside)
-        cell.setupDaysActivities(hour: activity.hour, currency: activity.currencyType,
+        cell.setupDaysActivities(hour: activity.hour, currency: activity.currency,
                                  value: String(activity.budget),
                                  name: activity.name)
         cell.activityIcon.image = UIImage(named: activity.category)

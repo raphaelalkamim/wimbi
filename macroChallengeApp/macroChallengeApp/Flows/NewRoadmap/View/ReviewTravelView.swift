@@ -126,22 +126,22 @@ extension ReviewTravelView {
         setupConstraints()
     }
     func setupImage(category: String) {
-        if category == "Beach".localized() {
+        if category == "Beach" {
             self.coverImage.image = designSystem.imagesDefault.beach[Int.random(in: 0..<designSystem.imagesDefault.beach.count)]
-        } else if category == "Mountain".localized() {
+        } else if category == "Mountain" {
             self.coverImage.image = designSystem.imagesDefault.mountain[Int.random(in: 0..<designSystem.imagesDefault.mountain.count)]
-        } else if category == "City".localized() {
+        } else if category == "City" {
             self.coverImage.image = designSystem.imagesDefault.city[Int.random(in: 0..<designSystem.imagesDefault.city.count)]
         } else {
             self.coverImage.image = designSystem.imagesDefault.camp[Int.random(in: 0..<designSystem.imagesDefault.camp.count)]
         }
     }
     func setupCategory(category: String) {
-        if category == "Beach".localized() {
+        if category == "Beach" {
             self.categoryImage.image = designSystem.images.beach
-        } else if category == "Mountain".localized() {
+        } else if category == "Mountain" {
             self.categoryImage.image = designSystem.images.mountain
-        } else if category == "City".localized() {
+        } else if category == "City" {
             self.categoryImage.image = designSystem.images.city
         } else {
             self.categoryImage.image = designSystem.images.camp

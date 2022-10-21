@@ -94,7 +94,7 @@ class ReviewTravelViewController: UIViewController {
         roadmap.currency = getUserCurrency()
         roadmap.imageId = "beach0"
         // save in Core Data
-        let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap)
+        let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: true)
         RoadmapRepository.shared.saveContext()
         
         NotificationManager.shared.registerTripNotification(roadmap: newRoadmap)

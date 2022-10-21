@@ -42,6 +42,9 @@ extension ProfileViewController {
         
         let action = UIAlertAction(title: "Join".localized(), style: .default) { _ in
             print(textField.text ?? "Error")
+            if let roadmapKey = textField.text {
+                DataManager.shared.joinRoadmap(roadmapKey: roadmapKey)
+            }
         }
         
         let cancel = UIAlertAction(title: "Cancel".localized(), style: .destructive) { _ in

@@ -71,7 +71,11 @@ extension ActivityTableViewCell {
     }
     func setupDaysActivities(hour: String, currency: String, value: String, name: String) {
         let hour = hour
-        self.activityInfo.text = hour + " • " + currency + " " + value
+        if Double(value) == 0 {
+            self.activityInfo.text = hour + " • " + "Free".localized()
+        } else {
+            self.activityInfo.text = hour + " • " + currency + value
+        }
         self.activityTitle.text = name
     }
     func setupCategoryImage(image: String) {
