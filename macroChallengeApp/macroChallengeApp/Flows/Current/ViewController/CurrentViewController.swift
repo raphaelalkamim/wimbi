@@ -13,6 +13,7 @@ class CurrentViewController: UIViewController {
     let currentCountDownView = CurrentCountDown()
     var roadmaps = RoadmapRepository.shared.getRoadmap()
     var roadmap: RoadmapLocal = RoadmapLocal()
+    let designSystem: DesignSystem = DefaultDesignSystem.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,13 @@ extension CurrentViewController {
         currentCountDownView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.title = "Current Roadmap".localized()
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
+        UINavigationBar.appearance().barTintColor = designSystem.palette.backgroundPrimary
+        UINavigationBar.appearance().barStyle = .default
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.cellTitle]
     }
     
     func setupEmptyView() {
@@ -55,11 +63,18 @@ extension CurrentViewController {
         currentEmptyView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.title = "Current Roadmap".localized()
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
+        UINavigationBar.appearance().barTintColor = designSystem.palette.backgroundPrimary
+        UINavigationBar.appearance().barStyle = .default
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.cellTitle]
     }
     
     func configCountDown() {
-        var time = Int((roadmap.date?.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24))
-        if time <= 0 {
+        var time = Int((roadmap.date?.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24)) //arredondar pra cima
+        if time < 1 {
             time = 0
             currentCountDownView.timer.text = "Your trip is \ntomorrow!".localized()
             currentCountDownView.timer.font = UIFont(name: "Avenir-Black", size: 40)
@@ -68,10 +83,6 @@ extension CurrentViewController {
             currentCountDownView.subtitle.isHidden = true
         } else {
             currentCountDownView.timer.text = String(time)
-            if time == 1 {
-                currentCountDownView.subtitle.text = "Falta".localized()
-                currentCountDownView.timerType.text = "day left".localized()
-            }
         }
         let formatt = DateFormatter()
         formatt.timeStyle = .none

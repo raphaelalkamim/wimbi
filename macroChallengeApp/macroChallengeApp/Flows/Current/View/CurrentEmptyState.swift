@@ -54,11 +54,11 @@ extension CurrentEmptyState {
     
     func setupConstraints() {
         title.snp.makeConstraints { make in
-            make.topMargin.equalToSuperview()
+            make.topMargin.equalToSuperview().inset(designSystem.spacing.xSmallPositive)
             make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
         }
         image.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(designSystem.spacing.xxLargePositive)
+            make.top.equalTo(title.snp.bottom).offset(50)
             make.trailing.equalToSuperview()
             make.height.equalTo(UIScreen.main.bounds.height / 2.5)
             make.width.equalTo(UIScreen.main.bounds.width / 1.5)
