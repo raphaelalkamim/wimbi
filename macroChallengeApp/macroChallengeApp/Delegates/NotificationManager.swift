@@ -26,7 +26,6 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     @objc func registerLocalNotifications() {
         center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
             if granted {
-                print("Yay!")
                 UserDefaults.standard.set(true, forKey: "switch")
             } else {
                 print("D'oh")
@@ -42,7 +41,6 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     func changeNotificationStatus(isEnabled: Bool) {
         if UserDefaults.standard.bool(forKey: "switch") != true {
             print("registrou")
-            //            registerNotification()
         } else {
             self.center.removeAllPendingNotificationRequests()
             print("removeu")

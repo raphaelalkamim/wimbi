@@ -14,9 +14,11 @@ class EditProfileViewController: UIViewController {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let editProfileView = EditProfileView()
     var user: User?
-    
+    let network: NetworkMonitor = NetworkMonitor.shared
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        network.startMonitoring()
         self.view.backgroundColor = .backgroundPrimary
         self.setupEditProfileView()
         
@@ -37,24 +39,32 @@ class EditProfileViewController: UIViewController {
     }
     
     @objc func saveProfile() {
-        if let newName = editProfileView.nameTextField.text, let newUsernameApp = editProfileView.usernameTextField.text {
-            self.user?.name = newName
-            self.user?.usernameApp = newUsernameApp
-            if let user = user {
-                DataManager.shared.putUser(userObj: user) { user in
-                    do {
-                        let encoder = JSONEncoder()
+        network.startMonitoring()
+        if !network.isReachable {
+            let action = UIAlertController(title: "You are offiline. Can't save", message: nil, preferredStyle: .actionSheet)
+            action.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { [] _ in
+            }))
+            present(action, animated: true)
+        } else {
+            if let newName = editProfileView.nameTextField.text, let newUsernameApp = editProfileView.usernameTextField.text {
+                self.user?.name = newName
+                self.user?.usernameApp = newUsernameApp
+                if let user = user {
+                    DataManager.shared.putUser(userObj: user) { user in
+                        do {
+                            let encoder = JSONEncoder()
 
-                        let data = try encoder.encode(user)
+                            let data = try encoder.encode(user)
 
-                        UserDefaults.standard.set(data, forKey: "user")
-                    } catch {
-                        print("Unable to Encode")
+                            UserDefaults.standard.set(data, forKey: "user")
+                        } catch {
+                            print("Unable to Encode")
+                        }
                     }
                 }
             }
+            coordinator?.backPage()
         }
-        coordinator?.backPage()
     }
     
     func changeToUserInfo(user: User) {

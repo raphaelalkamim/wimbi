@@ -227,7 +227,6 @@ class DataManager {
                                 roadmapCore.shareKey = codeTrip
                                 RoadmapRepository.shared.saveContext()
                             } catch {
-                                // FIXME: tratar o erro do decoder
                                 print(error)
                             }
                         }
@@ -265,7 +264,6 @@ class DataManager {
                         completion(user!)
                     }
                 } catch {
-                    // FIXME: tratar o erro do decoder
                     print(error)
                 }
             }
@@ -373,7 +371,6 @@ class DataManager {
                     completion(roadmap)
                 }
             } catch {
-                // FIXME: tratar o erro do decoder
                 print(error)
                 print("DEU RUIM NO PARSE")
             }
@@ -471,7 +468,6 @@ class DataManager {
                             }
                             
                         } catch {
-                            // FIXME: tratar o erro do decoder
                             print(error)
                         }
                     }
@@ -526,7 +522,6 @@ class DataManager {
                             activityCore.id = Int32(activityResponse.id)
                             ActivityRepository.shared.saveContext()
                         } catch {
-                            // FIXME: tratar o erro do decoder
                             print(error)
                         }
                     }
@@ -579,7 +574,6 @@ class DataManager {
                     if httpResponse.statusCode == 200 {
                         do {
                         } catch {
-                            // FIXME: tratar o erro do decoder
                             print(error)
                         }
                     }
@@ -632,7 +626,7 @@ class DataManager {
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
                 
                 let task = session.dataTask(with: request) { data, response, error in
-                    print(response)
+                    print(response ?? "sem resposta")
                     guard let data = data else { return }
                     if error != nil {
                         print(String(describing: error?.localizedDescription))
@@ -660,7 +654,6 @@ class DataManager {
                                 RoadmapRepository.shared.saveContext()
                                 DayRepository.shared.saveContext()
                             } catch {
-                                // FIXME: tratar o erro do decoder
                                 print(error)
                             }
                         }
