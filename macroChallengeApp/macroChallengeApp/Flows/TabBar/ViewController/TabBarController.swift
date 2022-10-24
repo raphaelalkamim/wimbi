@@ -63,7 +63,7 @@ class TabBarController: UITabBarController {
         viewControllers = [explore.navigationController, current.navigationController, profile.navigationController]
     }
     func configCountDown() -> Int {
-        var time = Int((roadmap.date?.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24))
+        let time = Int((roadmap.date?.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24))
         return time
     }
 }

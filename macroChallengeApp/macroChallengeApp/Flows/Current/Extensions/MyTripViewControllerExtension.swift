@@ -16,7 +16,9 @@ extension MyTripViewController {
         view.addSubview(myTripView)
         setupConstraints()
         
-        if coordinator != nil {
+        // se estiver visualizando a viagem e estiver conectado
+        network.startMonitoring()
+        if coordinator != nil && network.isReachable {
             let editItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMyTrip))
             editItem.tintColor = .accent
             let shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareMyTrip))
@@ -58,7 +60,7 @@ extension MyTripViewController {
                 alert.view.tintColor = .accent
                 
                 let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 16)]
-                let string = NSAttributedString(string: "Which app would you like to use to access the address?".localized(), attributes: titleAtt)
+                let string = NSAttributedString(string: "Which app would you like to use to access the address?".localized(), attributes: titleAtt as [NSAttributedString.Key : Any])
                 
                 alert.setValue(string, forKey: "attributedTitle")
                 

@@ -11,23 +11,24 @@ import UIKit
 class MyTripViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
     weak var coordinatorCurrent: CurrentCoordinator?
-    
+    let network: NetworkMonitor = NetworkMonitor.shared
+
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let myTripView = MyTripView()
     
     var roadmap = RoadmapLocal()
     var activites: [ActivityLocal] = []
     var days: [DayLocal] = []
+    var daySelected = 0
+    var budgetTotal: Double = 0
     
     lazy var userCurrency: String = {
         let userC = self.getUserCurrency()
         return userC
     }()
     
-    var daySelected = 0
-    var budgetTotal: Double = 0
-    
     override func viewDidLoad() {
+        network.startMonitoring()
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupMyTripView()
@@ -35,12 +36,14 @@ class MyTripViewController: UIViewController {
         myTripView.bindCollectionView(delegate: self, dataSource: self)
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
         myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
-        self.myTripView.activitiesTableView.reloadData()
-        self.myTripView.activitiesTableView.layoutIfNeeded()
+        
+        myTripView.activitiesTableView.reloadData()
+        myTripView.activitiesTableView.layoutIfNeeded()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        network.startMonitoring()
         self.getAllDays()
         self.activites = self.getAllActivities()
         self.emptyState(activities: activites)
@@ -310,4 +313,3 @@ extension MyTripViewController: ReviewTravelDelegate {
         coordinatorCurrent?.backPage()
     }
 }
-
