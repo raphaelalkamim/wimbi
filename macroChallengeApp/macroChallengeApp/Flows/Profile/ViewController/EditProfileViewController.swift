@@ -19,6 +19,7 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        network.startMonitoring()
         self.view.backgroundColor = .backgroundPrimary
         self.setupEditProfileView()
         

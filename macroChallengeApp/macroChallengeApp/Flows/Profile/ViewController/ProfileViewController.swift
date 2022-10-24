@@ -43,6 +43,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         profileView.roadmaps = self.roadmaps
         
         super.viewDidLoad()
+        network.startMonitoring()
         self.view.backgroundColor = .backgroundPrimary
         self.setupProfileView()
         profileView.updateConstraintsCollection()
@@ -59,6 +60,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        network.startMonitoring()
         if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
             coordinator?.startLogin()
         }

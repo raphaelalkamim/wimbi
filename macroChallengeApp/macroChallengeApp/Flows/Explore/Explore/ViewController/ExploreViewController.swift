@@ -42,6 +42,7 @@ class ExploreViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        network.startMonitoring()
         DataManager.shared.getPublicRoadmaps({ roadmaps in
             self.roadmaps = roadmaps
             self.explorerView.roadmapsCollectionView.reloadData()

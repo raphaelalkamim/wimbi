@@ -28,6 +28,7 @@ class MyTripViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
+        network.startMonitoring()
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupMyTripView()
@@ -42,6 +43,7 @@ class MyTripViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        network.startMonitoring()
         self.getAllDays()
         self.activites = self.getAllActivities()
         self.emptyState(activities: activites)
