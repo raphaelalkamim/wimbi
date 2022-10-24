@@ -313,4 +313,3 @@ extension MyTripViewController: ReviewTravelDelegate {
         coordinatorCurrent?.backPage()
     }
 }
-

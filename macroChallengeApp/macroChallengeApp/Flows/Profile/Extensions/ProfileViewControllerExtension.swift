@@ -37,11 +37,11 @@ extension ProfileViewController {
                     
                     let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 16)]
                     let title = "Delete all content from".localized()
-                    let string = NSAttributedString(string: "\(title) \(roadmapName)", attributes: titleAtt)
+                    let string = NSAttributedString(string: "\(title) \(roadmapName)", attributes: titleAtt as [NSAttributedString.Key: Any])
                     action.setValue(string, forKey: "attributedTitle")
                     
                     let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 16)]
-                    let subtitleString = NSAttributedString(string: "The content cannot be recovered.".localized(), attributes: subtitleAtt)
+                    let subtitleString = NSAttributedString(string: "The content cannot be recovered.".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
                     action.setValue(subtitleString, forKey: "attributedMessage")
                     
                     action.addAction(UIAlertAction(title: "Delete".localized(), style: .destructive, handler: { [weak self] _ in

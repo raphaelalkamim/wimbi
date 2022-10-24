@@ -16,7 +16,6 @@ class EditProfileViewController: UIViewController {
     var user: User?
     let network: NetworkMonitor = NetworkMonitor.shared
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         network.startMonitoring()

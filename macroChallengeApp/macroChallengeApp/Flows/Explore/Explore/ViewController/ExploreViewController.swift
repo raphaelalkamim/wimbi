@@ -23,17 +23,10 @@ class ExploreViewController: UIViewController {
         explorerView.showSpinner()
         emptyState(conection: network.isReachable)
         
-        self.view.backgroundColor = .backgroundPrimary
         self.setContextMenu()
     
         self.locationSearchTable.coordinator = coordinator
         self.setupExplorerView()
-        explorerView.setupSearchController(locationTable: locationSearchTable)
-        explorerView.bindCollectionView(delegate: self, dataSource: self)
-        explorerView.addSearchBarNavigation(navigation: navigationItem)
-        
-        explorerView.searchBar.delegate = self
-        definesPresentationContext = true
         
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
@@ -53,25 +46,6 @@ class ExploreViewController: UIViewController {
     
     func addNewRoadmap() {
         coordinator?.createNewRoadmap()
-    }
-    
-    func emptyState(conection: Bool) {
-        if conection {
-            self.explorerView.roadmapsCollectionView.isHidden = false
-            self.explorerView.emptyStateTitle.isHidden = true
-            self.explorerView.emptyStateImage.isHidden = true
-            self.explorerView.roadmapsCollectionView.isScrollEnabled = true
-            if !self.roadmaps.isEmpty {
-                self.explorerView.hiddenSpinner()
-            }
-        } else {
-            self.explorerView.hiddenSpinner()
-            self.explorerView.roadmapsCollectionView.isHidden = true
-            self.explorerView.emptyStateTitle.isHidden = false
-            self.explorerView.emptyStateImage.isHidden = false
-            self.explorerView.roadmapsCollectionView.isScrollEnabled = false
-        }
-        // self.network.stopMonitoring()
     }
 }
 
