@@ -161,7 +161,24 @@ public class RoadmapRepository: NSManagedObject {
         self.saveContext()
         return newRoadmap
     }
-    
+    func updateByBackend(editRoadmap: RoadmapLocal, roadmap: Roadmaps, isShared: Bool) -> RoadmapLocal {
+        let updatedRoadmap = self.createRoadmap(roadmap: roadmap, isNew: true)
+        let days = updatedRoadmap.day?.allObjects as [DayLocal]
+        let roadmapDays = roadmap.days
+        for index in 0..<roadmapDays.count {
+            let activiyArray = roadmapDays[index].activity
+            for activity in activiyArray {
+                _ = ActivityRepository.shared.createActivity(day: days[index], activity: activity, isNew: true)
+            }
+        }
+        
+        do {
+            try RoadmapRepository.shared.deleteRoadmap(roadmap: editRoadmap)
+        } catch {
+            print("Erro ao deletar")
+        }
+        return updatedRoadmap
+    }
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {
         let date = startDay.addingTimeInterval(Double(indexPath) * 24 * 3600)
         var day = Day(isSelected: isSelected, date: date)

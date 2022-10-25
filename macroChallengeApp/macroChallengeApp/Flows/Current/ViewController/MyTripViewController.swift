@@ -115,7 +115,9 @@ class MyTripViewController: UIViewController {
         if self.roadmap.isShared {
             // chama o roadmap do back
             DataManager.shared.getRoadmapById(roadmapId: Int(roadmap.id)) { backRoadmap in
-                self.roadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.roadmap, roadmap: backRoadmap, isShared: isShared)
+                print(backRoadmap.days[0].activity)
+                print(backRoadmap.days[1].activity)
+                self.roadmap = RoadmapRepository.shared.updateByBackend(editRoadmap: self.roadmap, roadmap: backRoadmap, isShared: false)
             }
         }
     }
