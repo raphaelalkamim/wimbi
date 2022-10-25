@@ -121,7 +121,6 @@ public class RoadmapRepository: NSManagedObject {
                 for index in 0..<range {
                     // pegando atividades dos dias antigos
                     if var oldActivities = oldDays[index].activity?.allObjects as? [ActivityLocal] {
-                        
                         oldActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
                         // criando as atividades nos novos dias
                         for newActivity in 0..<oldActivities.count {
@@ -184,7 +183,7 @@ public class RoadmapRepository: NSManagedObject {
         }
         
         var range = roadmap.dayCount
-
+        
         // atualiza as atividades dos novos dia
         if var newDays = newRoadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
@@ -192,8 +191,8 @@ public class RoadmapRepository: NSManagedObject {
             for index in 0..<range {
                 // pegando atividades dos dias antigos
                 var oldActivities = oldDays[index].activity
-                
                 oldActivities.sort { $0.hour < $1.hour }
+                print(oldActivities)
                 // criando as atividades nos novos dias
                 for newActivity in 0..<oldActivities.count {
                     let activity = ActivityRepository.shared.createActivity(day: newDays[index], activity: oldActivities[newActivity], isNew: false)
@@ -221,9 +220,6 @@ public class RoadmapRepository: NSManagedObject {
             try self.deleteOldRoadmap(roadmap: editRoadmap)
         } catch {
             print("erro")
-        }
-        if var newDaysCore = newRoadmap.day?.allObjects as? [DayLocal] {
-            newDaysCore.sort { $0.id < $1.id }
         }
         
         self.saveContext()

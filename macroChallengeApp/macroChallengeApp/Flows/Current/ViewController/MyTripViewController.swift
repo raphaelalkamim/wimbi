@@ -111,16 +111,6 @@ class MyTripViewController: UIViewController {
         }
     }
     
-//    func updateByBack(roadmap: RoadmapLocal, isShared: Bool) {
-//        if self.roadmap.isShared {
-//            // chama o roadmap do back
-//            DataManager.shared.getRoadmapById(roadmapId: Int(roadmap.id)) { backRoadmap in
-//                print(backRoadmap.days[0].activity)
-//                print(backRoadmap.days[1].activity)
-//                self.roadmap = RoadmapRepository.shared.updateByBackend(editRoadmap: self.roadmap, roadmap: backRoadmap, isShared: false)
-//            }
-//        }
-//    }
     func updateAllBudget() {
         Task {
             await self.updateBudget()
