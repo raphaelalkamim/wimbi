@@ -49,6 +49,14 @@ class MyTripViewController: UIViewController {
         self.myTripView.activitiesTableView.layoutIfNeeded()
         // self.updateBudget()
         updateConstraintsTable()
+        
+        // update by back
+        if roadmap.isShared {
+            // chama o roadmap do back
+            DataManager.shared.getRoadmapById(roadmapId: Int(self.roadmap.id)) { backRoadmap in
+                RoadmapRepository.shared.updateRoadmap(editRoadmap: self.roadmap, roadmap: backRoadmap)
+            }
+        }
     }
     
     func updateConstraintsTable() {
@@ -287,6 +295,8 @@ class MyTripViewController: UIViewController {
             let activityViewController = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view
             activityViewController.excludedActivityTypes = []
+            self.roadmap.isShared = true
+            RoadmapRepository.shared.saveContext()
             self.present(activityViewController, animated: true, completion: nil)
         }
     }

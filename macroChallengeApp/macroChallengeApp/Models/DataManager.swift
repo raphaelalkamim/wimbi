@@ -188,7 +188,8 @@ class DataManager {
             "isPublic": roadmap.isPublic,
             "shareKey": codeTrip,
             "createdAt": dateFormatter.string(from: Date()),
-            "currency": roadmap.currency
+            "currency": roadmap.currency,
+            "likesCount": 0
         ]
         
         let session = URLSession.shared
@@ -644,6 +645,8 @@ class DataManager {
                                 let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: roadmapJoin, isNew: false)
                                 newRoadmap.id = Int32(roadmapJoin.id)
                                 newRoadmap.shareKey = roadmapJoin.shareKey
+                                newRoadmap.isShared = true
+                                
                                 var days = newRoadmap.day?.allObjects as [DayLocal]
                                 var roadmapDays = roadmapJoin.days
                                 
