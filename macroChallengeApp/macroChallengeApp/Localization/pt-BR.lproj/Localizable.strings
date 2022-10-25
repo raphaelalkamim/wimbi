@@ -58,6 +58,8 @@
 "The roadmap is now available on your profile." = "O roteiro já está disponível em seu perfil.";
 "traveler  •" = "viajante  •";
 "travelers  •" = "viajantes  •";
+"traveler" = "viajante";
+"travelers" = "viajantes";
 "thousand per person" = "mil por pessoa";
 
 
@@ -163,5 +165,6 @@
 "By canceling you’ll lose your entire progress." = "Cancelando você perderá todo o seu processo.";
 "Back" = "Voltar";
 "Continue" = "Continuar";
+"Roadmap to" = "Roteiro para";
 
 
