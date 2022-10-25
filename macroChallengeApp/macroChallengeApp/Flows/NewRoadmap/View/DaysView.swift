@@ -124,7 +124,7 @@ class DaysView: UIView {
             make.top.equalTo(viajantesTitleLabel.snp.bottom).offset(designSystem.spacing.xSmallPositive)
             make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
             make.trailing.equalToSuperview().offset(designSystem.spacing.largeNegative)
-            make.height.equalTo(50)
+            make.height.equalTo(100)
         }
         
         publicTitle.snp.makeConstraints { make in
