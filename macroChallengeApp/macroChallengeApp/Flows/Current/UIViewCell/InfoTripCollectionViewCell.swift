@@ -84,7 +84,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
             title.text = "CATEGORY".localized()
             circle.isHidden = false
             categoryTitle.isHidden = false
-            categoryTitle.text = roadmap.category
+            categoryTitle.text = roadmap.category?.localized()
             info.isHidden = true
             setupCircleColor(category: roadmap.category ?? "Mountain")
             circle.snp.makeConstraints { make in
@@ -119,11 +119,11 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         }
     }
     func setupCircleColor(category: String) {
-        if category == "Countryside".localized() {
+        if category == "Countryside" {
             circle.backgroundColor = designSystem.palette.greenCamp
-        } else if category == "Beach".localized() {
+        } else if category == "Beach" {
             circle.backgroundColor = designSystem.palette.blueBeach
-        } else if category == "City".localized() {
+        } else if category == "City" {
             circle.backgroundColor = designSystem.palette.redCity
         } else {
             circle.backgroundColor = designSystem.palette.yellowMontain

@@ -98,7 +98,8 @@ public class RoadmapRepository: NSManagedObject {
         dateFormat.timeStyle = .none
         dateFormat.dateFormat = "dd/MM/yyyy"
         
-        guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
+        guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure()
+        }
         // guarda os dias antigos
         if var oldDays = editRoadmap.day?.allObjects as? [DayLocal] {
             oldDays.sort { $0.id < $1.id }
@@ -151,6 +152,7 @@ public class RoadmapRepository: NSManagedObject {
         } catch {
             print("erro")
         }
+        
         self.saveContext()
         if var newDaysCore = newRoadmap.day?.allObjects as? [DayLocal] {
             newDaysCore.sort { $0.id < $1.id }
