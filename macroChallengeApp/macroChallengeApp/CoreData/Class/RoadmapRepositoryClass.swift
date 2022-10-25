@@ -92,7 +92,7 @@ public class RoadmapRepository: NSManagedObject {
         self.saveContext()
         return newRoadmap
     }
-    func updateRoadmap(editRoadmap: RoadmapLocal, roadmap: Roadmaps) -> RoadmapLocal {
+    func updateRoadmap(editRoadmap: RoadmapLocal, roadmap: Roadmaps, isShared: Bool) -> RoadmapLocal {
         let dateFormat = DateFormatter()
         dateFormat.dateStyle = .short
         dateFormat.timeStyle = .none
@@ -152,9 +152,12 @@ public class RoadmapRepository: NSManagedObject {
             print("erro")
         }
         self.saveContext()
-        if var newDaysCore = newRoadmap.day?.allObjects as? [DayLocal] {
-            newDaysCore.sort { $0.id < $1.id }
-            self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDaysCore: newDaysCore)
+        
+        if !isShared {
+            if var newDaysCore = newRoadmap.day?.allObjects as? [DayLocal] {
+                newDaysCore.sort { $0.id < $1.id }
+                self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDaysCore: newDaysCore)
+            }
         }
         return newRoadmap
     }

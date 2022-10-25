@@ -29,6 +29,7 @@ class MyTripViewController: UIViewController {
     
     override func viewDidLoad() {
         network.startMonitoring()
+        self.updateByBack(roadmap: self.roadmap, isShared: true)
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupMyTripView()
@@ -52,14 +53,6 @@ class MyTripViewController: UIViewController {
         self.myTripView.activitiesTableView.layoutIfNeeded()
         // self.updateBudget()
         updateConstraintsTable()
-        
-        // update by back
-        if roadmap.isShared {
-            // chama o roadmap do back
-            DataManager.shared.getRoadmapById(roadmapId: Int(self.roadmap.id)) { backRoadmap in
-                RoadmapRepository.shared.updateRoadmap(editRoadmap: self.roadmap, roadmap: backRoadmap)
-            }
-        }
     }
     
     func updateConstraintsTable() {
@@ -120,6 +113,15 @@ class MyTripViewController: UIViewController {
             return "U$"
         } else {
             return currencySymbol ?? "U$"
+        }
+    }
+    
+    func updateByBack(roadmap: RoadmapLocal, isShared: Bool) {
+        if roadmap.isShared {
+            // chama o roadmap do back
+            DataManager.shared.getRoadmapById(roadmapId: Int(roadmap.id)) { backRoadmap in
+                self.roadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: roadmap, roadmap: backRoadmap, isShared: true)
+            }
         }
     }
     

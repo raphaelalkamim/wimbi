@@ -121,7 +121,6 @@ extension MyTripViewController: UICollectionViewDelegate {
             }
         }
     }
-    
 }
 
 // MARK: Collections - Data Source
