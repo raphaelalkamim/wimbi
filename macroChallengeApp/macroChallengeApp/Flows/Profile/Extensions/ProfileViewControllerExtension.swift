@@ -78,7 +78,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             DataManager.shared.getRoadmapById(roadmapId: Int(roadmaps[indexPath.row].id)) { backRoadmap in
                 print(backRoadmap.days[0].activity)
                 print(backRoadmap.days[1].activity)
-                let editRoadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.roadmaps[indexPath.row], roadmap: backRoadmap, isShared: false)
+                let editRoadmap = RoadmapRepository.shared.updateFromBackend(editRoadmap: self.roadmaps[indexPath.row], roadmap: backRoadmap)
                 self.coordinator?.openRoadmap(roadmap: editRoadmap )
             }
         } else {

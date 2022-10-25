@@ -176,15 +176,14 @@ public class RoadmapRepository: NSManagedObject {
         
         // adiciona os novos dias no roteiro
         for index in 0..<roadmap.dayCount {
+            print(index)
             let dateFormat = DateFormatter()
             dateFormat.dateFormat = "d/M/y"
             _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: dateFormat.date(from: roadmap.dateInitial) ?? Date(), indexPath: Int(index), isSelected: false))
         }
         
         var range = roadmap.dayCount
-        if roadmap.dayCount > oldDays.count {
-            range = oldDays.count
-        }
+
         // atualiza as atividades dos novos dia
         if var newDays = newRoadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
@@ -196,7 +195,7 @@ public class RoadmapRepository: NSManagedObject {
                 oldActivities.sort { $0.hour < $1.hour }
                 // criando as atividades nos novos dias
                 for newActivity in 0..<oldActivities.count {
-                    ActivityRepository.shared.createActivity(day: newDays[index], activity: oldActivities[newActivity], isNew: true)
+                    ActivityRepository.shared.createActivity(day: newDays[index], activity: oldActivities[newActivity], isNew: false)
                 }
                 
             }
@@ -224,9 +223,6 @@ public class RoadmapRepository: NSManagedObject {
         }
         if var newDaysCore = newRoadmap.day?.allObjects as? [DayLocal] {
             newDaysCore.sort { $0.id < $1.id }
-            if !isShared {
-                self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDaysCore: newDaysCore)
-            }
         }
         
         self.saveContext()
