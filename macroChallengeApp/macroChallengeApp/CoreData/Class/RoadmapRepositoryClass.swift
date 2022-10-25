@@ -171,12 +171,13 @@ public class RoadmapRepository: NSManagedObject {
                 _ = ActivityRepository.shared.createActivity(day: days[index], activity: activity, isNew: true)
             }
         }
-        
         do {
-            try RoadmapRepository.shared.deleteRoadmap(roadmap: editRoadmap)
+            try self.deleteRoadmap(roadmap: editRoadmap)
         } catch {
-            print("Erro ao deletar")
+            print("erro ao deletar")
         }
+        
+        self.saveContext()
         return updatedRoadmap
     }
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {
