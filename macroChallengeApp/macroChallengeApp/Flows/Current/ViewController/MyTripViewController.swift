@@ -43,7 +43,7 @@ class MyTripViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.updateByBack(roadmap: self.roadmap, isShared: true)
+        //self.updateByBack(roadmap: self.roadmap, isShared: true)
         network.startMonitoring()
         self.getAllDays()
         self.activites = self.getAllActivities()
@@ -111,16 +111,16 @@ class MyTripViewController: UIViewController {
         }
     }
     
-    func updateByBack(roadmap: RoadmapLocal, isShared: Bool) {
-        if self.roadmap.isShared {
-            // chama o roadmap do back
-            DataManager.shared.getRoadmapById(roadmapId: Int(roadmap.id)) { backRoadmap in
-                print(backRoadmap.days[0].activity)
-                print(backRoadmap.days[1].activity)
-                self.roadmap = RoadmapRepository.shared.updateByBackend(editRoadmap: self.roadmap, roadmap: backRoadmap, isShared: false)
-            }
-        }
-    }
+//    func updateByBack(roadmap: RoadmapLocal, isShared: Bool) {
+//        if self.roadmap.isShared {
+//            // chama o roadmap do back
+//            DataManager.shared.getRoadmapById(roadmapId: Int(roadmap.id)) { backRoadmap in
+//                print(backRoadmap.days[0].activity)
+//                print(backRoadmap.days[1].activity)
+//                self.roadmap = RoadmapRepository.shared.updateByBackend(editRoadmap: self.roadmap, roadmap: backRoadmap, isShared: false)
+//            }
+//        }
+//    }
     func updateAllBudget() {
         Task {
             await self.updateBudget()

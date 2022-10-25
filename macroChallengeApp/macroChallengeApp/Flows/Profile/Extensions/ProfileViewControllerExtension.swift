@@ -73,6 +73,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.updateByBack(roadmap: roadmaps[indexPath.row], isShared: false)
         coordinator?.openRoadmap(roadmap: roadmaps[indexPath.row] )
     }
     
@@ -98,6 +99,16 @@ extension ProfileViewController: UICollectionViewDataSource {
         }
         
         return cell
+    }
+    func updateByBack(roadmap: RoadmapLocal, isShared: Bool) {
+        if roadmap.isShared {
+            // chama o roadmap do back
+            DataManager.shared.getRoadmapById(roadmapId: Int(roadmap.id)) { backRoadmap in
+                print(backRoadmap.days[0].activity)
+                print(backRoadmap.days[1].activity)
+                RoadmapRepository.shared.updateByBackend(editRoadmap: roadmap, roadmap: backRoadmap, isShared: isShared)
+            }
+        }
     }
     
 }
