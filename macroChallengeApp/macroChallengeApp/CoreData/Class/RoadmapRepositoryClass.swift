@@ -179,7 +179,8 @@ public class RoadmapRepository: NSManagedObject {
             print(index)
             let dateFormat = DateFormatter()
             dateFormat.dateFormat = "d/M/y"
-            _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: dateFormat.date(from: roadmap.dateInitial) ?? Date(), indexPath: Int(index), isSelected: false))
+            let day = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: dateFormat.date(from: roadmap.dateInitial) ?? Date(), indexPath: Int(index), isSelected: false))
+            day.id = Int32(oldDays[index].id)
         }
         
         var range = roadmap.dayCount
@@ -195,13 +196,13 @@ public class RoadmapRepository: NSManagedObject {
                 oldActivities.sort { $0.hour < $1.hour }
                 // criando as atividades nos novos dias
                 for newActivity in 0..<oldActivities.count {
-                    ActivityRepository.shared.createActivity(day: newDays[index], activity: oldActivities[newActivity], isNew: false)
+                    let activity = ActivityRepository.shared.createActivity(day: newDays[index], activity: oldActivities[newActivity], isNew: false)
+                    activity.id = Int32(oldActivities[newActivity].id)
                 }
-                
             }
         }
         // cria o novo roadmap
-        newRoadmap.id = editRoadmap.id
+        newRoadmap.id = Int32(roadmap.id)
         newRoadmap.name = roadmap.name
         newRoadmap.location = roadmap.location
         newRoadmap.dayCount = Int32(roadmap.dayCount)
