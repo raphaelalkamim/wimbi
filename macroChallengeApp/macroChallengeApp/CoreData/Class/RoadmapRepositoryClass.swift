@@ -151,14 +151,14 @@ public class RoadmapRepository: NSManagedObject {
         } catch {
             print("erro")
         }
-        self.saveContext()
-        
-        if !isShared {
-            if var newDaysCore = newRoadmap.day?.allObjects as? [DayLocal] {
-                newDaysCore.sort { $0.id < $1.id }
+        if var newDaysCore = newRoadmap.day?.allObjects as? [DayLocal] {
+            newDaysCore.sort { $0.id < $1.id }
+            if !isShared {
                 self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDaysCore: newDaysCore)
             }
         }
+        
+        self.saveContext()
         return newRoadmap
     }
     

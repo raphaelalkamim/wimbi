@@ -51,7 +51,7 @@ class MyTripViewController: UIViewController {
         self.updateTotalBudgetValue()
         self.myTripView.activitiesTableView.reloadData()
         self.myTripView.activitiesTableView.layoutIfNeeded()
-        // self.updateBudget()
+        self.updateAllBudget()
         updateConstraintsTable()
     }
     
@@ -65,11 +65,6 @@ class MyTripViewController: UIViewController {
             make.trailing.equalTo(myTripView.contentView.snp.trailing)
             make.bottom.equalTo(myTripView.scrollView.snp.bottom)
             make.height.equalTo(height)
-            Task {
-                await self.updateBudget()
-                await self.updateBudgetTotal()
-                await self.updateTotalBudgetValue()
-            }
         }
     }
     func getAllDays() {
@@ -117,17 +112,22 @@ class MyTripViewController: UIViewController {
     }
     
     func updateByBack(roadmap: RoadmapLocal, isShared: Bool) {
-        if roadmap.isShared {
+        if self.roadmap.isShared {
             // chama o roadmap do back
             DataManager.shared.getRoadmapById(roadmapId: Int(roadmap.id)) { backRoadmap in
-                self.roadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: roadmap, roadmap: backRoadmap, isShared: true)
+                self.roadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.roadmap, roadmap: backRoadmap, isShared: isShared)
             }
         }
     }
-    
+    func updateAllBudget() {
+        Task {
+            await self.updateBudget()
+            await self.updateBudgetTotal()
+            await self.updateTotalBudgetValue()
+        }
+    }
     func updateBudget() async {
         var budgetDay: Double = 0
-        
         var totalReal: Double = 0
         var totalDollar: Double = 0
         var totalEuro: Double = 0
