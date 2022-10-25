@@ -77,7 +77,6 @@ extension CurrentCountDown {
         addSubview(subtitle)
         addSubview(timer)
         addSubview(timerType)
-        
         setupConstraints()
     }
     
