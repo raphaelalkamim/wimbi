@@ -18,12 +18,13 @@ extension ProfileViewController {
             make.edges.equalToSuperview()
         }
     }
-    // MARK: Long press
+    // MARK: Long press and delete
     @objc public func handleLongPress(sender: UILongPressGestureRecognizer) {
+        network.startMonitoring()
         if sender.state == .began {
             let touchPoint = sender.location(in: profileView.myRoadmapCollectionView)
             if let indexPath = profileView.myRoadmapCollectionView.indexPathForItem(at: touchPoint) {
-                if roadmaps.isEmpty {
+                if roadmaps.isEmpty || !network.isReachable {
                     let action = UIAlertController(title: "Can't delete", message: nil, preferredStyle: .actionSheet)
                     action.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { [weak self] _ in
                         self?.profileView.myRoadmapCollectionView.reloadData()
@@ -36,11 +37,11 @@ extension ProfileViewController {
                     
                     let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 16)]
                     let title = "Delete all content from".localized()
-                    let string = NSAttributedString(string: "\(title) \(roadmapName)", attributes: titleAtt)
+                    let string = NSAttributedString(string: "\(title) \(roadmapName)", attributes: titleAtt as [NSAttributedString.Key: Any])
                     action.setValue(string, forKey: "attributedTitle")
                     
                     let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 16)]
-                    let subtitleString = NSAttributedString(string: "The content cannot be recovered.".localized(), attributes: subtitleAtt)
+                    let subtitleString = NSAttributedString(string: "The content cannot be recovered.".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
                     action.setValue(subtitleString, forKey: "attributedMessage")
                     
                     action.addAction(UIAlertAction(title: "Delete".localized(), style: .destructive, handler: { [weak self] _ in

@@ -47,7 +47,7 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
             
             if emailId == nil {
                 let usernamesTags = ["explorer", "traveler", "passenger", "tourist", "visitor"]
-                username = (usernamesTags.randomElement() ?? "stranger") + "\(Int.random(in: 100000...900000))"
+                username = (usernamesTags.randomElement() ?? "stranger") + "\(Int.random(in: 100_000...900_000))"
             } else {
                 let delimiter = "@"
                 let usernameComps = emailId?.components(separatedBy: delimiter)

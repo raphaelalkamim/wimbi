@@ -23,17 +23,7 @@ class PreviewRoadmapViewController: UIViewController {
         super.viewDidLoad()
         
         getRoadmapById(roadmapId: self.roadmapId)
-        
-        self.view.backgroundColor = .backgroundPrimary
         self.setupPreviewRoadmapView()
-        previewView.bindCollectionView(delegate: self, dataSource: self)
-        previewView.bindTableView(delegate: self, dataSource: self)
-                like = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(likeRoadmap))
-        duplicate = UIBarButtonItem(image: UIImage(systemName: "plus.square.on.square"), style: .plain, target: self, action: #selector(duplicateRoadmap))
-        navigationItem.rightBarButtonItems = [duplicate, like]
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.backgroundColor = .backgroundPrimary
-        navigationController?.navigationBar.barTintColor = .backgroundPrimary
     }
     
     func updateConstraintsTable() {
@@ -81,10 +71,10 @@ class PreviewRoadmapViewController: UIViewController {
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alert.view.tintColor = .accent
         let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
-        let string = NSAttributedString(string: "Successfully duplicated!".localized(), attributes: titleAtt)
+        let string = NSAttributedString(string: "Successfully duplicated!".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
         alert.setValue(string, forKey: "attributedTitle")
         let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
-        let subtitleString = NSAttributedString(string: "The roadmap is now available on your profile.".localized(), attributes: subtitleAtt)
+        let subtitleString = NSAttributedString(string: "The roadmap is now available on your profile.".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
         alert.setValue(subtitleString, forKey: "attributedMessage")
         
         alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in

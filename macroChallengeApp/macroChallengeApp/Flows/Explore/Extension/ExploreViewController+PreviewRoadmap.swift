@@ -13,7 +13,19 @@ import MapKit
 extension PreviewRoadmapViewController {
     func setupPreviewRoadmapView() {
         view.addSubview(previewView)
+        previewView.bindCollectionView(delegate: self, dataSource: self)
+        previewView.bindTableView(delegate: self, dataSource: self)
+        setupNavControl()
         setupConstraints()
+    }
+    func setupNavControl() {
+        like = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(likeRoadmap))
+        duplicate = UIBarButtonItem(image: UIImage(systemName: "plus.square.on.square"), style: .plain, target: self, action: #selector(duplicateRoadmap))
+        
+        navigationItem.rightBarButtonItems = [duplicate, like]
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.backgroundColor = .backgroundPrimary
+        navigationController?.navigationBar.barTintColor = .backgroundPrimary
     }
     func setupConstraints() {
         previewView.snp.makeConstraints { make in
@@ -48,7 +60,7 @@ extension PreviewRoadmapViewController {
         alert.view.tintColor = .accent
         
         let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 15)]
-        let string = NSAttributedString(string: "Which app would you like to use to access the address?".localized(), attributes: titleAtt)
+        let string = NSAttributedString(string: "Which app would you like to use to access the address?".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
         
         alert.setValue(string, forKey: "attributedTitle")
         
@@ -77,6 +89,29 @@ extension PreviewRoadmapViewController {
 }
 
 extension PreviewRoadmapViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
+            // button status
+            cell.selectedButton()
+            // select a day
+            self.daySelected = indexPath.row
+            self.roadmap.days[daySelected].isSelected = true
+            
+            // view updates
+            updateConstraintsTable()
+            
+            self.previewView.activitiesTableView.reloadData()
+        }
+        
+        // desabilita todas as celulas que nao sao a que recebeu o clique
+        for index in 0..<roadmap.dayCount where index != indexPath.row {
+            let newIndexPath = IndexPath(item: Int(index), section: 0)
+            if let cell = collectionView.cellForItem(at: newIndexPath) as? CalendarCollectionViewCell {
+                self.roadmap.days[Int(index)].isSelected = false
+                cell.disable()
+            }
+        }
+    }
 }
 
 extension PreviewRoadmapViewController: UICollectionViewDataSource {
@@ -144,38 +179,13 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
             }
             
             cell.setDay(date: self.roadmap.days[indexPath.row].date)
-            cell.dayButton.setTitle("\(indexPath.row + 1)", for: .normal)
+            cell.dayButton.setTitle("\(indexPath.row + 1)º", for: .normal)
             if self.roadmap.days[indexPath.row].isSelected == true {
                 cell.selectedButton()
             }
             return cell
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
-            // button status
-            cell.selectedButton()
-            // select a day
-            self.daySelected = indexPath.row
-            self.roadmap.days[daySelected].isSelected = true
-            
-            // view updates
-            updateConstraintsTable()
-            
-            self.previewView.activitiesTableView.reloadData()
-        }
-        
-        // desabilita todas as celulas que nao sao a que recebeu o clique
-        for index in 0..<roadmap.dayCount where index != indexPath.row {
-            let newIndexPath = IndexPath(item: Int(index), section: 0)
-            if let cell = collectionView.cellForItem(at: newIndexPath) as? CalendarCollectionViewCell {
-                self.roadmap.days[Int(index)].isSelected = false
-                cell.disable()
-            }
-        }
-    }
-    
     func setupColor(category: String) -> UIColor {
         if category == "Countryside" {
             return .blueBeach

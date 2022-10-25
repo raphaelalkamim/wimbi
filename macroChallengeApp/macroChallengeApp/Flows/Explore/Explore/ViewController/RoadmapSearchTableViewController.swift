@@ -4,7 +4,7 @@ class RoadmapSearchTableViewController: UITableViewController {
     var matchingRoadmaps: [RoadmapDTO] = []
     var roadmaps: [RoadmapDTO] = []
     let designSystem = DefaultDesignSystem.shared
-    lazy var userCurrency = {
+    lazy var userCurrency: String = {
         let userC = self.getUserCurrency()
         return userC
     }()
