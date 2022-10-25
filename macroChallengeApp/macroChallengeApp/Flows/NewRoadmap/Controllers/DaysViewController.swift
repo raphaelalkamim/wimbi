@@ -107,8 +107,8 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if edit {
-            if editRoadmap.isPublic {
-                daysView.publicSwitch.isOn = true
+            if !editRoadmap.isPublic {
+                daysView.publicSwitch.isOn = false
             }
         }
     }

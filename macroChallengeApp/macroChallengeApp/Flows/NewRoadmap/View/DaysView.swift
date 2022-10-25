@@ -9,7 +9,7 @@ import UIKit
 
 class DaysView: UIView {    
     let designSystem = DefaultDesignSystem.shared
-    public var isPublic = false
+    public var isPublic = true
     
     lazy var dataTitleLabel: UILabel = {
         let dataTitleLabel = UILabel()
@@ -58,6 +58,7 @@ class DaysView: UIView {
     lazy var publicSwitch: UISwitch = {
         let publicSwitch = UISwitch()
         publicSwitch.addTarget(self, action: #selector(turnRoadmapPublic(_:)), for: .valueChanged)
+        publicSwitch.isOn = true
         publicSwitch.onTintColor = .accent
         return publicSwitch
     }()
