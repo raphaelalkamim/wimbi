@@ -73,8 +73,18 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.updateByBack(roadmap: roadmaps[indexPath.row], isShared: false)
-        coordinator?.openRoadmap(roadmap: roadmaps[indexPath.row] )
+        if roadmaps[indexPath.row].isShared {
+            // chama o roadmap do back
+            DataManager.shared.getRoadmapById(roadmapId: Int(roadmaps[indexPath.row].id)) { backRoadmap in
+                print(backRoadmap.days[0].activity)
+                print(backRoadmap.days[1].activity)
+                let editRoadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.roadmaps[indexPath.row], roadmap: backRoadmap, isShared: false)
+                self.coordinator?.openRoadmap(roadmap: editRoadmap )
+            }
+        } else {
+            self.coordinator?.openRoadmap(roadmap: roadmaps[indexPath.row])
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -106,7 +116,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             DataManager.shared.getRoadmapById(roadmapId: Int(roadmap.id)) { backRoadmap in
                 print(backRoadmap.days[0].activity)
                 print(backRoadmap.days[1].activity)
-                RoadmapRepository.shared.updateByBackend(editRoadmap: roadmap, roadmap: backRoadmap, isShared: isShared)
+                RoadmapRepository.shared.updateRoadmap(editRoadmap: roadmap, roadmap: backRoadmap, isShared: isShared)
             }
         }
     }
