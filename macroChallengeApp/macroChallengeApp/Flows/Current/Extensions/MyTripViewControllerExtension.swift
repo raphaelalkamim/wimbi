@@ -204,7 +204,17 @@ extension MyTripViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.coordinator?.showActivitySheet(tripVC: self)
+        var budget = ""
+        var activity = self.activites[indexPath.row]
+        
+        if Double(self.activites[indexPath.row].budget) == 0 {
+            budget = "Free".localized()
+        } else {
+            budget = "\(activity.currencyType ?? "R$")\(activity.budget)"
+        }
+        
+        self.coordinator?.showActivitySheet(tripVC: self, name: activity.name ?? "Ola", category: "Categoria: \(activity.category?.capitalized.localized() ?? "Praia")", hour: "Início: \(activity.hour ?? "8h")    •", budget: "    Valor: \(budget)", location: activity.location ?? "SP", details: activity.tips ?? "Details", icon: activity.category ?? "Praia")
+        
         myTripView.transparentView.isHidden = false
     }
 

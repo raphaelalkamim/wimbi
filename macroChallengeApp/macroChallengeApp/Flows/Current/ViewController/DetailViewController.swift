@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         setupDetailView()
+        detailView.linkButton.addTarget(self, action: #selector(openLink), for: .touchUpInside)
         
     }
     
@@ -31,6 +32,11 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         delegate?.dismissBlur()
+    }
+    
+    @objc func openLink() {
+        let text = detailView.linkButton.titleLabel?.text
+        UIApplication.shared.openURL(NSURL(string: text ?? "http://www.google.com")! as URL)
     }
 }
 

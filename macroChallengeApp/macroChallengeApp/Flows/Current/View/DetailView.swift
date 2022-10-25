@@ -82,16 +82,24 @@ class DetailView: UIView {
     
     lazy var details: UILabel = {
         let title = UILabel()
-        title.text = "Lugar muito calmo, ideal para sair com a família e uma dica extra: vai de quarta porque é mais vazio e tem mais descontos Lugar muito calmo, ideal para sair com a família e uma dica extra: vai de quarta porque é mais vazio e tem mais descontos Lugar muito calmo, ideal para sair com a família e uma dica extra: vai de quarta porque é mais vazio e tem mais descontos Lugar muito calmo, ideal para sair com a família e uma dica extra: vai de quarta porque é mais vazio e tem mais descontos Lugar muito calmo, ideal para sair com a família e uma dica extra: vai de quarta porque é mais vazio e tem mais descontosLugar muito calmo, ideal para sair com a família e uma dica extra: vai de quarta porque é mais vazio e tem mais descontosLugar muito calmo, ideal para sair com a família e uma dica extra: vai de quarta porque é mais vazio e tem mais descontosLugar muito calmo, ideal para sair com a família e uma dica extra: vai de quarta porque é mais vazio e tem mais descontosLugar muito calmo, ideal para sair com a família e uma dica extra: vai de quarta porque é mais vazio e tem mais descontos."
+        title.text = "Detalhes"
         title.stylize(with: designSystem.text.body)
         return title
     }()
     
-    lazy var addButton: UIButton = {
+    lazy var linkTitle: UILabel = {
+        let title = UILabel()
+        title.text = "LINK"
+        title.stylize(with: designSystem.text.caption)
+        return title
+    }()
+    
+    lazy var linkButton: UIButton = {
         let btn = UIButton()
-        let img = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
-        btn.setImage(img, for: .normal)
-        btn.tintColor = .accent
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 15)]
+        btn.setAttributedTitle(NSAttributedString(string: "https://instagram.com.br", attributes: attributes), for: .normal)
+        btn.contentHorizontalAlignment = .left
+        btn.setTitleColor(.accent, for: .normal)
         return btn
     }()
 
@@ -105,6 +113,8 @@ class DetailView: UIView {
         self.addSubview(local)
         self.addSubview(detailTitle)
         self.addSubview(details)
+        self.addSubview(linkTitle)
+        self.addSubview(linkButton)
         setupConstraints()
     }
 
@@ -137,8 +147,16 @@ class DetailView: UIView {
             make.topMargin.equalTo(localTitle.snp.bottom).inset(designSystem.spacing.mediumNegative)
             make.leading.trailing.equalToSuperview()
         }
-        detailTitle.snp.makeConstraints { make in
+        linkTitle.snp.makeConstraints { make in
             make.topMargin.equalTo(local.snp.bottom).inset(-42)
+            make.leading.trailing.equalToSuperview()
+        }
+        linkButton.snp.makeConstraints { make in
+            make.topMargin.equalTo(linkTitle.snp.bottom).inset(designSystem.spacing.mediumNegative)
+            make.leading.trailing.equalToSuperview()
+        }
+        detailTitle.snp.makeConstraints { make in
+            make.topMargin.equalTo(linkButton.snp.bottom).inset(-42)
             make.leading.trailing.equalToSuperview()
         }
         details.snp.makeConstraints { make in
