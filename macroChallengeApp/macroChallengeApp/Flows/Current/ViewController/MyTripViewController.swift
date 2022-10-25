@@ -29,7 +29,6 @@ class MyTripViewController: UIViewController {
     
     override func viewDidLoad() {
         network.startMonitoring()
-        self.updateByBack(roadmap: self.roadmap, isShared: true)
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupMyTripView()
@@ -44,6 +43,7 @@ class MyTripViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.updateByBack(roadmap: self.roadmap, isShared: true)
         network.startMonitoring()
         self.getAllDays()
         self.activites = self.getAllActivities()
