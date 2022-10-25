@@ -10,6 +10,11 @@ import UIKit
 import CoreLocation
 import MapKit
 
+
+protocol DismissBlur: AnyObject {
+    func dismissBlur()
+}
+
 // MARK: Setup
 extension MyTripViewController {
     func setupMyTripView() {
@@ -197,6 +202,12 @@ extension MyTripViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.coordinator?.showActivitySheet(tripVC: self)
+        myTripView.transparentView.isHidden = false
+    }
+
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editAction = UIContextualAction(style: .normal,
                                             title: "Edit".localized()) { [weak self] _, _, completionHandler in
@@ -218,6 +229,7 @@ extension MyTripViewController: UITableViewDelegate {
         deleteAction.backgroundColor = .redCity
         return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }
+    
     func deleteItem(indexPath: IndexPath, tableView: UITableView) {
         do {
             try ActivityRepository.shared.deleteActivity(activity: activites[indexPath.row], roadmap: self.roadmap)
@@ -286,4 +298,12 @@ extension MyTripViewController: AddNewActivityDelegate {
         self.activites = getAllActivities()
         myTripView.activitiesTableView.reloadData()
     }
+}
+
+extension MyTripViewController: DismissBlur {
+    func dismissBlur() {
+        myTripView.transparentView.isHidden = true
+    }
+    
+    
 }

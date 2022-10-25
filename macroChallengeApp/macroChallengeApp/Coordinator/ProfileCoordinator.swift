@@ -105,6 +105,22 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    func showActivitySheet(tripVC: MyTripViewController) {
+        let viewControllerToPresent = DetailViewController()
+        viewControllerToPresent.delegate = tripVC
+        if let sheet = viewControllerToPresent.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+            sheet.prefersGrabberVisible = true
+
+        }
+        navigationController.present(viewControllerToPresent, animated: true, completion: nil)
+        
+    }
+    
     func startEditProfile() {
         let viewController = EditProfileViewController()
         viewController.coordinator = self
