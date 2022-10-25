@@ -10,7 +10,7 @@ import UIKit
 class InfoTripCollectionViewCell: UICollectionViewCell {
     static let identifier = "infoCell"
     let designSystem: DesignSystem = DefaultDesignSystem.shared
-    lazy var userCurrency = {
+    lazy var userCurrency: String = {
         let userC = self.getUserCurrency()
         return userC
     }()

@@ -22,14 +22,14 @@ class CurrentCountDown: UIView {
     
     lazy var title: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.title)
+        label.stylize(with: designSystem.text.largeTitle)
         label.text = "Switzerland"
         return label
     }()
     
     lazy var date: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.body)
+        label.stylize(with: designSystem.text.cellTitle)
         label.textAlignment = .left
         label.text = "02.10.2022"
         return label
@@ -44,7 +44,7 @@ class CurrentCountDown: UIView {
     
     lazy var subtitle: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.body)
+        label.stylize(with: designSystem.text.cellTitle)
         label.textAlignment = .left
         label.text = "Faltam".localized()
         return label
@@ -52,7 +52,7 @@ class CurrentCountDown: UIView {
     
     lazy var timer: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Avenir-Black", size: 70)
+        label.font = UIFont(name: "Avenir-Black", size: 90)
         label.numberOfLines = 0
         label.textColor = .textPrimary
         label.textAlignment = .left
@@ -62,7 +62,7 @@ class CurrentCountDown: UIView {
     
     lazy var timerType: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.body)
+        label.stylize(with: designSystem.text.infoTitle)
         label.textAlignment = .left
         label.text = "days left".localized()
         return label
@@ -77,18 +77,17 @@ extension CurrentCountDown {
         addSubview(subtitle)
         addSubview(timer)
         addSubview(timerType)
-        
         setupConstraints()
     }
     
     func setupConstraints() {
         title.snp.makeConstraints { make in
-            make.topMargin.equalToSuperview()
+            make.topMargin.equalToSuperview().inset(designSystem.spacing.xSmallPositive)
             make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
         }
         
         date.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(designSystem.spacing.smallPositive)
+            make.top.equalTo(title.snp.bottom).offset(designSystem.spacing.xSmallPositive)
             make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
         }
         
@@ -100,19 +99,19 @@ extension CurrentCountDown {
         }
         
         subtitle.snp.makeConstraints { make in
-            make.top.equalTo(image.snp.bottom).offset(designSystem.spacing.xLargePositive)
+            make.top.equalTo(image.snp.bottom).offset(designSystem.spacing.xxLargePositive)
             make.trailing.leading.equalToSuperview().inset(designSystem
                 .spacing.xxLargePositive)
         }
         
         timer.snp.makeConstraints { make in
-            make.top.equalTo(subtitle.snp.bottom)
+            make.top.equalTo(subtitle.snp.bottom).inset(designSystem.spacing.mediumPositive)
             make.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
         }
         
         timerType.snp.makeConstraints { make in
-            make.bottom.equalTo(timer.snp.bottom).inset(designSystem.spacing.xLargePositive)
-            make.leading.equalTo(timer.snp.trailing).offset(designSystem.spacing.xSmallPositive)
+            make.bottom.equalTo(timer.snp.bottom).inset(30)
+            make.leading.equalTo(timer.snp.trailing).offset(designSystem.spacing.smallPositive)
         }
     }
 }
