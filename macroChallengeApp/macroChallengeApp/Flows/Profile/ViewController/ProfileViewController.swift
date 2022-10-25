@@ -61,9 +61,9 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         network.startMonitoring()
-        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
-            coordinator?.startLogin()
-        }
+//        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
+//            coordinator?.startLogin()
+//        }
         
         self.profileView.updateConstraintsCollection()
         self.profileView.myRoadmapCollectionView.reloadData()

@@ -159,6 +159,8 @@
 "Public" = "Público";
 "Private" = "Privado";
 "Are you sure?" = "¿Está seguro?";
+"No" = "No";
+"Yes" = "Sí";
 "By canceling you’ll lose your entire progress." = "Al cancelar su progreso será perdido.";
 "Back" = "Atrás";
 "Continue" = "Continuar";
