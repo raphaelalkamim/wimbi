@@ -21,7 +21,7 @@ class EditProfileViewController: UIViewController {
         network.startMonitoring()
         self.view.backgroundColor = .backgroundPrimary
         self.setupEditProfileView()
-        
+        editProfileView.editButton.addTarget(self, action: #selector(editPhoto), for: .touchUpInside)
         if let data = UserDefaults.standard.data(forKey: "user") {
             do {
                 let decoder = JSONDecoder()
@@ -71,6 +71,26 @@ class EditProfileViewController: UIViewController {
         self.editProfileView.imageProfile.image = UIImage(named: "icon")
         self.editProfileView.nameTextField.text = user.name
         self.editProfileView.usernameTextField.text = user.usernameApp
+    }
+    
+    @objc func editPhoto() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.view.tintColor = .accent
+
+        alert.addAction(UIAlertAction(title: "Remover foto atual".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+            print("Remover")
+        }))
+        alert.addAction(UIAlertAction(title: "Tirar foto".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+            print("Tirar foto")
+        }))
+        alert.addAction(UIAlertAction(title: "Escolher da Biblioteca".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+            print("Escolher")
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+            self.navigationController?.dismiss(animated: true)
+        }))
+        
+        self.navigationController?.present(alert, animated: true)
     }
 }
 
