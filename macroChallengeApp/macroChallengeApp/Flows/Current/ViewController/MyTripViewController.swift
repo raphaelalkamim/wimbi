@@ -203,7 +203,7 @@ class MyTripViewController: UIViewController {
     func updateBudgetTotal() async {
         budgetTotal = 0
         for day in days {
-            for activite in activites {
+            for activite in day.activity?.allObjects as [ActivityLocal] {
                 switch activite.currencyType {
                 case "R$":
                     if userCurrency == "R$" {
