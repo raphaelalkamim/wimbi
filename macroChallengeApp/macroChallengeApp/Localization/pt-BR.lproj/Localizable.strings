@@ -21,6 +21,12 @@
 
 
 // MARK: -  New Activity
+"Type:" = "Tipo:";
+"Starts at:" = "Início";
+"Value:" = "Valor";
+"DETAILS" = "DETALHES";
+"Describe here curiosities, tips or interesting facts about the place." = "Descreva aqui curiosidades, dicas ou fatos importantes sobre o local.";
+
 "TYPE" = "TIPO";
 "LOCATION" = "LOCAL";
 "TIME" = "HORÁRIO";

@@ -100,14 +100,14 @@ class NewActivityView: UIView {
     
     lazy var detailLabel: UILabel = {
         let label = UILabel()
-        label.text = "DETALHES".localized()
+        label.text = "DETAILS".localized()
         label.stylize(with: designSystem.text.caption)
         return label
     }()
     
     lazy var detailCaption: UILabel = {
         let title = UILabel()
-        title.text = "Descreva aqui curiosidades, dicas ou fatos importantes sobre o local.".localized()
+        title.text = "Describe here curiosities, tips or interesting facts about the place.".localized()
         title.textColor = .caption
         title.stylize(with: designSystem.text.caption)
         return title

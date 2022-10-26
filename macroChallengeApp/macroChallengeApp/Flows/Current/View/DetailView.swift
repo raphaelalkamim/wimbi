@@ -61,7 +61,7 @@ class DetailView: UIView {
    
     lazy var localTitle: UILabel = {
         let title = UILabel()
-        title.text = "LOCAL"
+        title.text = "LOCATION".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
@@ -75,7 +75,7 @@ class DetailView: UIView {
     
     lazy var detailTitle: UILabel = {
         let title = UILabel()
-        title.text = "DETALHES"
+        title.text = "DETAILS".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()

@@ -20,6 +20,12 @@
 "@user" = "@usuario";
 
 // MARK: -  New Activity
+"Type:" = "Tipo:";
+"Starts at:" = "Empieza:";
+"Value:" = "Monto";
+"DETAILS" = "DETALLES";
+"Describe here curiosities, tips or interesting facts about the place." = "Describa aquí curiosidades, consejos o datos importantes sobre el lugar.";
+
 "TYPE" = "TIPO";
 "LOCATION" = "UBICACIÓN";
 "TIME" = "HORARIO";
