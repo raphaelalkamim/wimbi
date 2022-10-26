@@ -204,8 +204,7 @@ extension MyTripViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var budget = ""
-        var activity = self.activites[indexPath.row]
-        
+        let activity = self.activites[indexPath.row]
         if Double(self.activites[indexPath.row].budget) == 0 {
             budget = "Free".localized()
         } else {

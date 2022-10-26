@@ -66,17 +66,4 @@ extension DetailTableViewCell: UITextViewDelegate {
         let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
         return updatedText.count <= 400
     }
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        if textView.textColor == UIColor(named: "placeholder") {
-//            textView.text = nil
-//            textView.textColor = UIColor(named: "textView")
-//        }
-//    }
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        if ((textView.text == "")) {
-//            textView.text = "Digite aqui seu objetivo profissional\nExemplo: Desenvolvimento de projetos voltados à tecnologia.".localized()
-//            textView.textColor = UIColor(named: "placeholder")
-//        }
-//
-//    }
 }

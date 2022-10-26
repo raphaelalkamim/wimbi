@@ -33,7 +33,7 @@ extension ProfileViewController {
         alert.setValue(stringTitle, forKey: "attributedTitle")
         
         let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
-        let stringSub = NSAttributedString(string: "Add the code to have access to the roadmap".localized(), attributes:subtitleAtt as [NSAttributedString.Key : Any])
+        let stringSub = NSAttributedString(string: "Add the code to have access to the roadmap".localized(), attributes: subtitleAtt as [NSAttributedString.Key : Any])
         alert.setValue(stringSub, forKey: "attributedMessage")
         
         alert.addTextField { alertTextField in
