@@ -46,14 +46,13 @@ class ActivityRepository {
         newActivity.hour = activity.hour
         newActivity.budget = activity.budget
         newActivity.currencyType = activity.currency
-        newActivity.tips = newActivity.tips
+        newActivity.tips = activity.tips
                 
         if isNew {
             DataManager.shared.postActivity(activity: activity, dayId: Int(day.id), activityCore: newActivity)
         }
         
         day.addToActivity(newActivity)
-        
         self.saveContext()
         return newActivity
     }
@@ -67,7 +66,7 @@ class ActivityRepository {
         newActivity.hour = activity.hour
         newActivity.budget = activity.budget
         newActivity.currencyType = activity.currencyType
-        
+        newActivity.tips = activity.tips
         day.addToActivity(newActivity)
         
         self.saveContext()
@@ -84,7 +83,7 @@ class ActivityRepository {
         oldActivity.hour = activity.hour
         oldActivity.budget = activity.budget
         oldActivity.currencyType = activity.currency
-        
+        oldActivity.tips = activity.tips
         DataManager.shared.putActivity(activity: activity, dayId: Int(day.id))
         
         self.saveContext()

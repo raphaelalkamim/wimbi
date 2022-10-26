@@ -37,6 +37,7 @@ extension NewActivityViewController {
         self.activity.hour = activityEdit.hour ?? "23/10/2000"
         self.activity.name = activityEdit.name ?? "No name"
         self.activity.budget = activityEdit.budget
+        self.activity.tips = activityEdit.tips ?? "Details"
     }
     
     // MARK: Save new Activity functions
@@ -45,7 +46,7 @@ extension NewActivityViewController {
         let tableView = newActivityView.localyTable
         guard let cell = tableView.cellForRow(at: [0, 1]) as? TextFieldTableViewCell else { return }
         activity.name = cell.title.text ?? "Nova atividade"
-
+        
         // date
         let formater = DateFormatter()
         formater.dateStyle = .short
@@ -61,11 +62,15 @@ extension NewActivityViewController {
         
         // value
         let tableViewValue = newActivityView.valueTable
-        guard let cell = tableViewValue.cellForRow(at: [0, 1]) as?
-                ValueTableViewCell else { return }
+        guard let cell = tableViewValue.cellForRow(at: [0, 1]) as? ValueTableViewCell else { return }
         let newValue = getNumber(text: cell.value.text ?? "123")
-        activity.budget = Double(newValue) ?? 0.0        
+        activity.budget = Double(newValue) ?? 0.0
         activity.currency = self.currencyType
+        
+        // tips
+        let tableViewDetail = newActivityView.detailTable
+        guard let cell = tableViewDetail.cellForRow(at: [0, 1]) as? DetailTableViewCell else { return }
+        activity.tips = cell.detailText.text ?? "Details"
     }
     
     func getNumber(text: String) -> String {
@@ -99,6 +104,8 @@ extension NewActivityViewController: UITableViewDataSource {
             rows = 2
         } else if tableView == newActivityView.valueTable {
             rows = 2
+        } else if tableView == newActivityView.detailTable {
+            rows = 1
         }
         return rows
     }
@@ -161,31 +168,35 @@ extension NewActivityViewController: UITableViewDataSource {
                     
                 case "€":
                     newCell.setCurrencyLabel(currency: "Euro  ")
-
+                    
                 case "¥":
                     newCell.setCurrencyLabel(currency: "Yen  ")
-
+                    
                 case "Fr":
                     newCell.setCurrencyLabel(currency: "Swiss Franc  ")
-
+                    
                 case "元":
                     newCell.setCurrencyLabel(currency: "Renminbi  ")
                 default:
                     break
                 }
                 cell = newCell
-            } else {
-                if indexPath.row == 1 {
-                    guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
-                    
-                    newCell.title.text = "Value".localized()
-                    newCell.currencyType = self.currencyType
-                    newCell.value.placeholder = "\(self.currencyType) 0.00"
-                    newCell.value.text = "\(self.currencyType) \(activity.budget)"
-                    self.activity.currency = self.currencyType
-                    cell = newCell
-                }
+            } else if indexPath.row == 1 {
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
                 
+                newCell.title.text = "Value".localized()
+                newCell.currencyType = self.currencyType
+                newCell.value.placeholder = "\(self.currencyType) 0.00"
+                newCell.value.text = "\(self.currencyType) \(activity.budget)"
+                self.activity.currency = self.currencyType
+                cell = newCell
+            }
+        } else if tableView == newActivityView.detailTable {
+            if indexPath.row == 0 {
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { fatalError("TableCell not found") }
+                self.activity.tips = newCell.detailText.text ?? "Details"
+                cell = newCell
+
             }
         }
         return cell
@@ -203,9 +214,13 @@ extension NewActivityViewController: UITableViewDataSource {
 
 extension NewActivityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        if tableView == newActivityView.detailTable {
+            return 100
+        } else {
+            return 50
+        }
     }
-
+    
 }
 // MARK: CollectionView
 extension NewActivityViewController: UICollectionViewDelegate {

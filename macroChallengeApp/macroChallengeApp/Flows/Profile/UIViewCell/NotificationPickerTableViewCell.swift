@@ -44,6 +44,7 @@ class NotificationPickerTableViewCell: UITableViewCell {
 
 extension NotificationPickerTableViewCell {
     func setup() {
+        backgroundColor = .backgroundCell
         contentView.addSubview(title)
         contentView.addSubview(picker)
         setupConstraints()

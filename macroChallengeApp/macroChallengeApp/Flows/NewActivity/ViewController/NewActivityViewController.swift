@@ -46,11 +46,11 @@ class NewActivityViewController: UIViewController {
         super.viewDidLoad()
         setupNewActivityView()
         setKeyboard()
-        let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelCreation))
+        let cancelButton = UIBarButtonItem(title: "Cancel".localized(), style: .plain, target: self, action: #selector(cancelCreation))
         cancelButton.tintColor = .accent
         self.navigationItem.leftBarButtonItem = cancelButton
         
-        let salvarButton = UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(saveActivity))
+        let salvarButton = UIBarButtonItem(title: "Save".localized(), style: .plain, target: self, action: #selector(saveActivity))
         self.navigationItem.rightBarButtonItem = salvarButton
     }
     
@@ -110,6 +110,7 @@ extension NewActivityViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dissMissKeyboard))
         
         newActivityView.valueTable.addGestureRecognizer(tap)
+        newActivityView.detailTable.addGestureRecognizer(tap)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

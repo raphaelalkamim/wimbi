@@ -10,7 +10,6 @@ import UIKit
 import CoreLocation
 import MapKit
 
-
 protocol DismissBlur: AnyObject {
     func dismissBlur()
 }
@@ -212,9 +211,9 @@ extension MyTripViewController: UITableViewDelegate {
         } else {
             budget = "\(activity.currencyType ?? "R$")\(activity.budget)"
         }
-        
         self.coordinator?.showActivitySheet(tripVC: self, name: activity.name ?? "Ola", category: "Categoria: \(activity.category?.capitalized.localized() ?? "Praia")", hour: "Início: \(activity.hour ?? "8h")    •", budget: "    Valor: \(budget)", location: activity.location ?? "SP", details: activity.tips ?? "Details", icon: activity.category ?? "Praia")
-        
+        self.coordinatorCurrent?.showActivitySheet(tripVC: self, name: activity.name ?? "Ola", category: "Categoria: \(activity.category?.capitalized.localized() ?? "Praia")", hour: "Início: \(activity.hour ?? "8h")    •", budget: "    Valor: \(budget)", location: activity.location ?? "SP", details: activity.tips ?? "Details", icon: activity.category ?? "Praia")
+
         myTripView.transparentView.isHidden = false
     }
 
@@ -314,6 +313,5 @@ extension MyTripViewController: DismissBlur {
     func dismissBlur() {
         myTripView.transparentView.isHidden = true
     }
-    
     
 }
