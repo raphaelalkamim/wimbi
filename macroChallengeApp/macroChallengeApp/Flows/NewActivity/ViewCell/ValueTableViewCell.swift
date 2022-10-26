@@ -68,6 +68,26 @@ extension ValueTableViewCell {
             make.trailing.equalToSuperview().inset(designSystem.spacing.largePositive)
         }
     }
+    
+    func setCurrencyValue(currency: String, value: Double) {
+        self.title.text = "Value".localized()
+        self.currencyType = currency
+        self.value.placeholder = "\(currency) 0.00"
+        self.value.text = "\(currency) \(self.setNumber(number: value))"
+
+    }
+    func setNumber(number: Double) -> String {
+        let numberText = String(number)
+        var number = ""
+        for index in 0..<numberText.count {
+            if numberText[index].isNumber {
+                number += String(numberText[index])
+            } else if numberText[index] == "." {
+                number += ","
+            }
+        }
+        return number
+    }
 }
 
 extension ValueTableViewCell: UITextFieldDelegate {

@@ -46,7 +46,6 @@ class ActivityRepository {
         }
         
         day.addToActivity(newActivity)
-        
         self.saveContext()
         return newActivity
     }
