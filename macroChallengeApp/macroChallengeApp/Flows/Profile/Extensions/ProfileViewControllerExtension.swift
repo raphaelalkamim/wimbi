@@ -88,7 +88,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         
         cell.title.translatesAutoresizingMaskIntoConstraints = false
         
-        if cell.title.text!.count < 15 {
+        if cell.title.text!.count < 14 {
             cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.xLargePositive).isActive = true
             cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.smallPositive).isActive = false
         } else {
