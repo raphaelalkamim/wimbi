@@ -87,18 +87,6 @@ extension NewActivityViewController {
         }
         return number
     }
-    func setNumber(number: Double) -> String {
-        let numberText = String(number)
-        var number = ""
-        for index in 0..<numberText.count {
-            if numberText[index].isNumber {
-                number += String(numberText[index])
-            } else if numberText[index] == "." {
-                number += ","
-            }
-        }
-        return number
-    }
 }
 
 // MARK: Table View
@@ -158,42 +146,15 @@ extension NewActivityViewController: UITableViewDataSource {
         } else if tableView == newActivityView.valueTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = "Currency".localized()
                 newCell.setupSeparator()
                 newCell.delegate = self
-                
-                newCell.currency.text = self.currencyType
-                
-                switch self.currencyType {
-                case "R$":
-                    newCell.setCurrencyLabel(currency: "Real  ")
-                    
-                case "U$":
-                    newCell.setCurrencyLabel(currency: "Dollar  ")
-                    
-                case "€":
-                    newCell.setCurrencyLabel(currency: "Euro  ")
-
-                case "¥":
-                    newCell.setCurrencyLabel(currency: "Yen  ")
-
-                case "Fr":
-                    newCell.setCurrencyLabel(currency: "Swiss Franc  ")
-
-                case "元":
-                    newCell.setCurrencyLabel(currency: "Renminbi  ")
-                default:
-                    break
-                }
+                newCell.label.text = "Currency".localized()
+                newCell.setCurrencyLabel(currency: self.currencyType)
                 cell = newCell
             } else {
                 if indexPath.row == 1 {
                     guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
-                    
-                    newCell.title.text = "Value".localized()
-                    newCell.currencyType = self.currencyType
-                    newCell.value.placeholder = "\(self.currencyType) 0.00"
-                    newCell.value.text = "\(self.currencyType) \(self.setNumber(number: activity.budget))"
+                    newCell.setCurrencyValue(currency: self.currencyType, value: activity.budget)
                     self.activity.currency = self.currencyType
                     cell = newCell
                 }
