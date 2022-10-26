@@ -22,7 +22,7 @@ class MyTripViewController: UIViewController {
     var daySelected = 0
     var budgetTotal: Double = 0
     
-    lazy var userCurrency = {
+    lazy var userCurrency: String = {
         let userC = self.getUserCurrency()
         return userC
     }()
