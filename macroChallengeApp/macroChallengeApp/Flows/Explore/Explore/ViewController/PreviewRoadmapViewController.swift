@@ -66,8 +66,6 @@ class PreviewRoadmapViewController: UIViewController {
     }
     
     @objc func duplicateRoadmap() {
-        print("DUPLICA")
-        
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alert.view.tintColor = .accent
         let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]

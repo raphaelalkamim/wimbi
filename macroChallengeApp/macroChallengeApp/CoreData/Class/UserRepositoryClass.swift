@@ -18,7 +18,6 @@ class UserRepository: NSManagedObject {
             if let erro = error {
                 preconditionFailure(erro.localizedDescription)
             }
-            
         }
         return container
     }()

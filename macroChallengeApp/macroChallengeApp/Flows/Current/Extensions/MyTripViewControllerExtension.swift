@@ -98,6 +98,7 @@ extension MyTripViewController: UICollectionViewDelegate {
             cell.selectedButton()
             
             // select a day
+            self.getAllDays()
             self.daySelected = indexPath.row
             self.days[daySelected].isSelected = true
             self.activites = getAllActivities()
@@ -120,8 +121,9 @@ extension MyTripViewController: UICollectionViewDelegate {
                 cell.disable()
             }
         }
+        self.updateAllBudget()
+        RoadmapRepository.shared.saveContext()
     }
-    
 }
 
 // MARK: Collections - Data Source

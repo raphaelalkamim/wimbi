@@ -59,6 +59,28 @@ extension CategoryActivityCollectionViewCell {
         }
     }
     
+    func setCellIcon(isSelected: Bool) -> String {
+        var buttonType = ""
+        switch self.iconDescription.text {
+        case "Accommodation".localized():
+            buttonType = "accommodation"
+        case "Food".localized():
+            buttonType = "food"
+        case "Leisure".localized():
+            buttonType = "leisure"
+        case "Transportation".localized():
+            buttonType = "transportation"
+        default:
+            break
+        }
+        if !isSelected {
+            self.notSelectedBackgroundView(button: buttonType)
+        } else {
+            self.selectedBackgroundView(button: buttonType)
+        }
+        return buttonType
+    }
+    
     func selectedBackgroundView(button: String) {
         icon.image = UIImage(named: "\(button)Selected")
     }
