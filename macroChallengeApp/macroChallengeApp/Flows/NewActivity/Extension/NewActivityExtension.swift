@@ -87,6 +87,18 @@ extension NewActivityViewController {
         }
         return number
     }
+    func setNumber(number: Double) -> String {
+        let numberText = String(number)
+        var number = ""
+        for index in 0..<numberText.count {
+            if numberText[index].isNumber {
+                number += String(numberText[index])
+            } else if numberText[index] == "." {
+                number += ","
+            }
+        }
+        return number
+    }
 }
 
 // MARK: Table View
@@ -181,7 +193,7 @@ extension NewActivityViewController: UITableViewDataSource {
                     newCell.title.text = "Value".localized()
                     newCell.currencyType = self.currencyType
                     newCell.value.placeholder = "\(self.currencyType) 0.00"
-                    newCell.value.text = "\(self.currencyType) \(activity.budget)"
+                    newCell.value.text = "\(self.currencyType) \(self.setNumber(number: activity.budget))"
                     self.activity.currency = self.currencyType
                     cell = newCell
                 }
