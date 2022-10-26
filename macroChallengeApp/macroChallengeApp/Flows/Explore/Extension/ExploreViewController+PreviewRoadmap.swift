@@ -187,7 +187,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
         }
     }
     func setupColor(category: String) -> UIColor {
-        if category == "Countryside" {
+        if category == "Beach" {
             return .blueBeach
         } else if category == "Mountain" {
             return .yellowMontain
