@@ -77,13 +77,13 @@ class EditProfileViewController: UIViewController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.view.tintColor = .accent
 
-        alert.addAction(UIAlertAction(title: "Remover foto atual".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Remove current photo".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
             print("Remover")
         }))
-        alert.addAction(UIAlertAction(title: "Tirar foto".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Take photo".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
             print("Tirar foto")
         }))
-        alert.addAction(UIAlertAction(title: "Escolher da Biblioteca".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Choose from library".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
             print("Escolher")
         }))
         alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in

@@ -83,7 +83,10 @@
 "Delete" = "Deletar";
 "Delete all content from" = "Deletar todo o conteúdo de";
 "Can't delete" = "Não é possível deletar";
-
+"Change profile photo" = "Alterar foto do perfil";
+"Remove current photo" = "Remover foto atual";
+"Take photo" = "Tirar foto";
+"Choose from library" = "Escolher da biblioteca";
 //Settings
 "Settings" = "Ajustes";
 "Edit profile" = "Editar perfil";
