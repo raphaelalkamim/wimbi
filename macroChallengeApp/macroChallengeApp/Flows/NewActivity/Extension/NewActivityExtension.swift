@@ -44,17 +44,19 @@ extension NewActivityViewController {
         // local name
         let tableView = newActivityView.localyTable
         guard let cell = tableView.cellForRow(at: [0, 1]) as? TextFieldTableViewCell else { return }
-        activity.name = cell.title.text ?? "Nova atividade"
+        activity.name = cell.title.text ?? "New Activity".localized()
 
         // date
+        let dateTable = newActivityView.dateTable
+        guard let cell = dateTable.cellForRow(at: [0, 0]) as? DatePickerTableViewCell else { return }
+        
         let formater = DateFormatter()
         formater.dateStyle = .short
         formater.timeStyle = .none
-        activity.day = Day(isSelected: true, date: formater.date(from: self.day.date ?? "23/10/2000") ?? Date())
+        activity.day = Day(isSelected: true, date: cell.datePicker.date)
         
         // hour
-        let tableViewHour = newActivityView.dateTable
-        guard let cell = tableViewHour.cellForRow(at: [0, 1]) as? TimePickerTableViewCell else { return }
+        guard let cell = dateTable.cellForRow(at: [0, 1]) as? TimePickerTableViewCell else { return }
         formater.dateStyle = .none
         formater.timeStyle = .short
         activity.hour = formater.string(from: cell.datePicker.date)
