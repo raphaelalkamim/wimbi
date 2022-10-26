@@ -69,7 +69,7 @@ extension NewActivityViewController {
         
         // tips
         let tableViewDetail = newActivityView.detailTable
-        guard let cell = tableViewDetail.cellForRow(at: [0, 1]) as? DetailTableViewCell else { return }
+        guard let cell = tableViewDetail.cellForRow(at: [0, 0]) as? DetailTableViewCell else { return }
         activity.tips = cell.detailText.text ?? "Details"
     }
     
@@ -194,9 +194,9 @@ extension NewActivityViewController: UITableViewDataSource {
         } else if tableView == newActivityView.detailTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { fatalError("TableCell not found") }
-                self.activity.tips = newCell.detailText.text ?? "Details"
+                newCell.detailText.text = self.activity.tips
                 cell = newCell
-
+                
             }
         }
         return cell
