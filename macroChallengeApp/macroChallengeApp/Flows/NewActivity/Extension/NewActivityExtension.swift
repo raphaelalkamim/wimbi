@@ -130,7 +130,7 @@ extension NewActivityViewController: UITableViewDataSource {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Date".localized()
-                newCell.setupDate(date: day.date ?? "23/10/2022")
+                newCell.setupDate(date: day.date ?? "23/10/2022", dateFinal: roadmap.dateFinal ?? Date())
                 newCell.setupSeparator()
                 
                 cell = newCell

@@ -55,10 +55,11 @@ class DatePickerTableViewCell: UITableViewCell {
         setupConstraints()
     }
     
-    func setupDate(date: String) {
+    func setupDate(date: String, dateFinal: Date) {
         let format = DateFormatter()
         format.timeStyle = .none
         format.dateStyle = .short
+        self.datePicker.maximumDate = dateFinal
         self.datePicker.minimumDate = format.date(from: date)
     }
     
