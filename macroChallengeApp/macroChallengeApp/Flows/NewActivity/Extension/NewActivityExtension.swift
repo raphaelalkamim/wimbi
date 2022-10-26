@@ -37,6 +37,7 @@ extension NewActivityViewController {
         self.activity.hour = activityEdit.hour ?? "23/10/2000"
         self.activity.name = activityEdit.name ?? "No name"
         self.activity.budget = activityEdit.budget
+        self.activity.category = activityEdit.category ?? "empty"
     }
     
     // MARK: Save new Activity functions
@@ -45,7 +46,7 @@ extension NewActivityViewController {
         let tableView = newActivityView.localyTable
         guard let cell = tableView.cellForRow(at: [0, 1]) as? TextFieldTableViewCell else { return }
         activity.name = cell.title.text ?? "Nova atividade"
-
+        
         // date
         let formater = DateFormatter()
         formater.dateStyle = .short
@@ -64,7 +65,7 @@ extension NewActivityViewController {
         guard let cell = tableViewValue.cellForRow(at: [0, 1]) as?
                 ValueTableViewCell else { return }
         let newValue = getNumber(text: cell.value.text ?? "123")
-        activity.budget = Double(newValue) ?? 0.0        
+        activity.budget = Double(newValue) ?? 0.0
         activity.currency = self.currencyType
     }
     
@@ -151,14 +152,11 @@ extension NewActivityViewController: UITableViewDataSource {
                 newCell.label.text = "Currency".localized()
                 newCell.setCurrencyLabel(currency: self.currencyType)
                 cell = newCell
-            } else {
-                if indexPath.row == 1 {
+            } else if indexPath.row == 1 {
                     guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
                     newCell.setCurrencyValue(currency: self.currencyType, value: activity.budget)
                     self.activity.currency = self.currencyType
                     cell = newCell
-                }
-                
             }
         }
         return cell
@@ -178,7 +176,7 @@ extension NewActivityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-
+    
 }
 // MARK: CollectionView
 extension NewActivityViewController: UICollectionViewDelegate {
@@ -213,42 +211,16 @@ extension NewActivityViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryActivityCollectionViewCell {
-            switch cell.iconDescription.text {
-            case "Accommodation".localized():
-                cell.selectedBackgroundView(button: "accommodation")
-                activity.category = "accommodation"
-            case "Food".localized():
-                cell.selectedBackgroundView(button: "food")
-                activity.category = "food"
-            case "Leisure".localized():
-                cell.selectedBackgroundView(button: "leisure")
-                activity.category = "leisure"
-            case "Transportation".localized():
-                cell.selectedBackgroundView(button: "transportation")
-                activity.category = "transportation"
-            default:
-                break
-            }
+            activity.category = cell.setCellIcon(isSelected: true)
+
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryActivityCollectionViewCell {
-            switch cell.iconDescription.text {
-            case "Accommodation".localized():
-                cell.notSelectedBackgroundView(button: "accommodation")
-            case "Food".localized():
-                cell.notSelectedBackgroundView(button: "food")
-            case "Leisure".localized():
-                cell.notSelectedBackgroundView(button: "leisure")
-            case "Transportation".localized():
-                cell.notSelectedBackgroundView(button: "transportation")
-            default:
-                break
-            }
+            cell.setCellIcon(isSelected: false)
         }
     }
-    
 }
 
 // MARK: Delegates
