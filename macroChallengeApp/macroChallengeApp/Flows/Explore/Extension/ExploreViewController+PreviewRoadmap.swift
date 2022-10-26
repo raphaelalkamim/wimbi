@@ -156,7 +156,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
             case 3:
                 cell.title.text = "LIKES".localized()
-                cell.info.setTitle(" 10k", for: .normal)
+                cell.info.setTitle(" \(roadmap.likesCount)", for: .normal)
             case 4:
                 cell.title.text = "CREATED BY".localized()
                 cell.separator.isHidden = true
