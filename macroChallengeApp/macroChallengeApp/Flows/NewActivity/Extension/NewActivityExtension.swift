@@ -66,29 +66,9 @@ extension NewActivityViewController {
         let tableViewValue = newActivityView.valueTable
         guard let cell = tableViewValue.cellForRow(at: [0, 1]) as?
                 ValueTableViewCell else { return }
-        let newValue = getNumber(text: cell.value.text ?? "123")
+        let newValue = cell.getNumber(textNumber: cell.value.text ?? "123", userCurrency: self.userCurrency)
         activity.budget = Double(newValue) ?? 0.0
         activity.currency = self.currencyType
-    }
-    
-    func getNumber(text: String) -> String {
-        var number = ""
-        for index in 0..<text.count {
-            if userCurrency == "R$" || userCurrency == "€"{
-                if text[index].isNumber {
-                    number += String(text[index])
-                } else if text[index] == "," {
-                    return number
-                }
-            } else {
-                if text[index].isNumber {
-                    number += String(text[index])
-                } else if text[index] == "." {
-                    return number
-                }
-            }
-        }
-        return number
     }
 }
 
@@ -130,7 +110,9 @@ extension NewActivityViewController: UITableViewDataSource {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Date".localized()
-                newCell.setupDate(date: day.date ?? "23/10/2022", dateFinal: roadmap.dateFinal ?? Date())
+                newCell.setupDate(date: day.date ?? "23/10/2022",
+                                  dateInitial: roadmap.date ?? Date(),
+                                  dateFinal: roadmap.dateFinal ?? Date())
                 newCell.setupSeparator()
                 
                 cell = newCell

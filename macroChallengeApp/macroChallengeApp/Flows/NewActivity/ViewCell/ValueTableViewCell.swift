@@ -88,6 +88,25 @@ extension ValueTableViewCell {
         }
         return number
     }
+    func getNumber(textNumber: String, userCurrency: String) -> String {
+        var number = ""
+        for index in 0..<textNumber.count {
+            if userCurrency == "R$" || userCurrency == "€"{
+                if textNumber[index].isNumber {
+                    number += String(textNumber[index])
+                } else if textNumber[index] == "," {
+                    return number
+                }
+            } else {
+                if textNumber[index].isNumber {
+                    number += String(textNumber[index])
+                } else if textNumber[index] == "." {
+                    return number
+                }
+            }
+        }
+        return number
+    }
 }
 
 extension ValueTableViewCell: UITextFieldDelegate {
