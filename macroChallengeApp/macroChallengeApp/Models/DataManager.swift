@@ -392,7 +392,7 @@ class DataManager {
             "dateInitial": roadmap.dateInitial,
             "dateFinal": roadmap.dateFinal,
             "peopleCount": roadmap.peopleCount,
-            "imageId": roadmap.imageId,
+            "imageId": setupImage(category: roadmap.category),
             "category": roadmap.category,
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
