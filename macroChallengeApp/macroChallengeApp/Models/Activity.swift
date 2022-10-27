@@ -16,6 +16,8 @@ struct Activity: Codable {
     var hour: String
     var budget: Double
     var currency: String
+    var address: String
+    var link: String
     var day: Day?
     
     enum CodingKeys: String, CodingKey {
@@ -27,6 +29,8 @@ struct Activity: Codable {
         case hour
         case budget
         case currency
+        case address
+        case link
         case day
     }
 }

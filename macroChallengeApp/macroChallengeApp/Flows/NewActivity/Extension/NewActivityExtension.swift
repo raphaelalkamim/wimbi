@@ -33,12 +33,15 @@ extension NewActivityViewController {
     func getData() {
         self.activity.currency = activityEdit.currencyType ?? "R$"
         self.currencyType = self.activity.currency
-        self.activity.location = activityEdit.location ?? "Adress"
+        self.activity.location = activityEdit.location ?? "Coord"
         self.activity.hour = activityEdit.hour ?? "23/10/2000"
         self.activity.name = activityEdit.name ?? "No name"
         self.activity.budget = activityEdit.budget
         self.activity.tips = activityEdit.tips ?? "Details"
         self.activity.category = activityEdit.category ?? "empty"
+        self.activity.address = activityEdit.address ?? "Address"
+        self.activity.link = activityEdit.link ?? "www"
+        self.address = activityEdit.address ?? "Address"
     }
     
     // MARK: Save new Activity functions
@@ -232,7 +235,7 @@ extension NewActivityViewController: ChangeTextTableDelegate {
     func changeText(coords: String, locationName: String, address: String) {
         activity.location = coords
         activity.name = locationName
-        self.address = address
+        activity.address = address
         newActivityView.localyTable.reloadData()
     }
 }
