@@ -160,7 +160,7 @@ extension RoadmapExploreCollectionViewCell {
     }
     
     func setupColor(category: String) {
-        if category == "Countryside" {
+        if category == "Beach" {
             self.categoryColor.tintColor = .blueBeach
         } else if category == "Mountain" {
             self.categoryColor.tintColor = .yellowMontain

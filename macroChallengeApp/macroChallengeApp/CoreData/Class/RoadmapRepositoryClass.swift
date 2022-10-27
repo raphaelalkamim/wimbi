@@ -179,6 +179,7 @@ public class RoadmapRepository: NSManagedObject {
         toRoadmap.date = dateFormat.date(from: fromRoadmap.dateInitial)
         toRoadmap.dateFinal = dateFormat.date(from: fromRoadmap.dateFinal)
         toRoadmap.createdAt = fromRoadmap.createdAt
+        toRoadmap.likesCount = Int32(fromRoadmap.likesCount)
     }
     
     func createDaysInRoadmap(fromRoadmap: Roadmaps, toRoadmap: RoadmapLocal) {

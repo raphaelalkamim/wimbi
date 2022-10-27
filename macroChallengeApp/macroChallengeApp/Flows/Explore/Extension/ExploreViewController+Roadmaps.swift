@@ -70,6 +70,7 @@ extension ExploreViewController: UICollectionViewDataSource {
             cell.costByPerson.text = "\(roadmap.currency) \(roadmap.budget / 1000) \(amount)"
             cell.categoryName.text = roadmap.category.localized()
             cell.setupColor(category: roadmap.category)
+            cell.totalLikes.text = "\(roadmap.likesCount)"
         }
         
         return cell
