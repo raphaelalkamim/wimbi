@@ -45,17 +45,19 @@ extension NewActivityViewController {
         // local name
         let tableView = newActivityView.localyTable
         guard let cell = tableView.cellForRow(at: [0, 1]) as? TextFieldTableViewCell else { return }
-        activity.name = cell.title.text ?? "Nova atividade"
-        
+        activity.name = cell.title.text ?? "New Activity".localized()
+
         // date
+        let dateTable = newActivityView.dateTable
+        guard let cell = dateTable.cellForRow(at: [0, 0]) as? DatePickerTableViewCell else { return }
+        
         let formater = DateFormatter()
         formater.dateStyle = .short
         formater.timeStyle = .none
-        activity.day = Day(isSelected: true, date: formater.date(from: self.day.date ?? "23/10/2000") ?? Date())
+        activity.day = Day(isSelected: true, date: cell.datePicker.date)
         
         // hour
-        let tableViewHour = newActivityView.dateTable
-        guard let cell = tableViewHour.cellForRow(at: [0, 1]) as? TimePickerTableViewCell else { return }
+        guard let cell = dateTable.cellForRow(at: [0, 1]) as? TimePickerTableViewCell else { return }
         formater.dateStyle = .none
         formater.timeStyle = .short
         activity.hour = formater.string(from: cell.datePicker.date)
@@ -64,29 +66,9 @@ extension NewActivityViewController {
         let tableViewValue = newActivityView.valueTable
         guard let cell = tableViewValue.cellForRow(at: [0, 1]) as?
                 ValueTableViewCell else { return }
-        let newValue = getNumber(text: cell.value.text ?? "123")
+        let newValue = cell.getNumber(textNumber: cell.value.text ?? "123", userCurrency: self.userCurrency)
         activity.budget = Double(newValue) ?? 0.0
         activity.currency = self.currencyType
-    }
-    
-    func getNumber(text: String) -> String {
-        var number = ""
-        for index in 0..<text.count {
-            if userCurrency == "R$" || userCurrency == "€"{
-                if text[index].isNumber {
-                    number += String(text[index])
-                } else if text[index] == "," {
-                    return number
-                }
-            } else {
-                if text[index].isNumber {
-                    number += String(text[index])
-                } else if text[index] == "." {
-                    return number
-                }
-            }
-        }
-        return number
     }
 }
 
@@ -128,7 +110,9 @@ extension NewActivityViewController: UITableViewDataSource {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Date".localized()
-                newCell.setupDate(date: day.date ?? "23/10/2022")
+                newCell.setupDate(date: day.date ?? "23/10/2022",
+                                  dateInitial: roadmap.date ?? Date(),
+                                  dateFinal: roadmap.dateFinal ?? Date())
                 newCell.setupSeparator()
                 
                 cell = newCell

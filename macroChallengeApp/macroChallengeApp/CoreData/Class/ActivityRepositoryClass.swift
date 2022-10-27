@@ -38,16 +38,9 @@ class ActivityRepository {
     
     func createActivity(day: DayLocal, activity: Activity, isNew: Bool) -> ActivityLocal {
         guard let newActivity = NSEntityDescription.insertNewObject(forEntityName: "ActivityLocal", into: context) as? ActivityLocal else { preconditionFailure() }
-        
         newActivity.id = Int32(activity.id)
-        newActivity.name = activity.name
-        newActivity.category = activity.category
-        newActivity.location = activity.location
-        newActivity.hour = activity.hour
-        newActivity.budget = activity.budget
-        newActivity.currencyType = activity.currency
-        newActivity.tips = newActivity.tips
-                
+        self.setActivityData(fromActivity: activity, toActivity: newActivity)
+        
         if isNew {
             DataManager.shared.postActivity(activity: activity, dayId: Int(day.id), activityCore: newActivity)
         }
@@ -66,6 +59,7 @@ class ActivityRepository {
         newActivity.hour = activity.hour
         newActivity.budget = activity.budget
         newActivity.currencyType = activity.currencyType
+        newActivity.tips = activity.tips
         
         day.addToActivity(newActivity)
         
@@ -73,20 +67,38 @@ class ActivityRepository {
     }
     func updateActivity(day: DayLocal, oldActivity: ActivityLocal, activity: Activity) {
         oldActivity.id = Int32(activity.id)
-        oldActivity.name = activity.name
-        if activity.category.isEmpty {
-            oldActivity.category = oldActivity.category
-        } else {
-            oldActivity.category = activity.category
-        }
-        oldActivity.location = activity.location
-        oldActivity.hour = activity.hour
-        oldActivity.budget = activity.budget
-        oldActivity.currencyType = activity.currency
+        self.setActivityData(fromActivity: activity, toActivity: oldActivity)
+        if activity.category.isEmpty { oldActivity.category = oldActivity.category }
         
         DataManager.shared.putActivity(activity: activity, dayId: Int(day.id))
         
         self.saveContext()
+    }
+    
+    func setActivityData(fromActivity: Activity, toActivity: ActivityLocal) {
+        toActivity.name = fromActivity.name
+        toActivity.category = fromActivity.category
+        toActivity.location = fromActivity.location
+        toActivity.hour = fromActivity.hour
+        toActivity.budget = fromActivity.budget
+        toActivity.currencyType = fromActivity.currency
+        toActivity.tips = fromActivity.tips
+    }
+    func updateActivityDay(roadmap: RoadmapLocal, oldDay: DayLocal, activityLocal: ActivityLocal, newActivity: Activity) {
+        if activityLocal.day?.date != newActivity.day?.date {
+            // chama os dias do roadmap
+            let allDays = roadmap.day?.allObjects as [DayLocal]
+            for day in allDays where day.date == newActivity.day?.date {
+                    // adiciona a atividade no dia encontrado no coreData
+                    let addActivity = self.createActivity(day: day, activity: newActivity, isNew: true)
+            }
+            // deleta a atividade do dia antigo
+            do {
+                try self.deleteActivity(activity: activityLocal)
+            } catch {
+                print("Erro ao deletar")
+            }
+        }
     }
     func getActivity() -> [ActivityLocal] {
         let fetchRequest = NSFetchRequest<ActivityLocal>(entityName: "ActivityLocal")
@@ -98,16 +110,12 @@ class ActivityRepository {
         return []
     }
     
-    func deleteActivity(activity: ActivityLocal, roadmap: RoadmapLocal) throws {
-        do {
-            DataManager.shared.deleteObjectBack(objectID: Int(activity.id), urlPrefix: "activities", {
-                print("deu bom")
-            })
-    
-            context.delete(activity)
-            try saveContext()
-        } catch {
-            print("erro ao deletar")
-        }
+    func deleteActivity(activity: ActivityLocal) throws {
+        DataManager.shared.deleteObjectBack(objectID: Int(activity.id), urlPrefix: "activities", {
+            print("deu bom")
+        })
+        
+        context.delete(activity)
+        saveContext()
     }
 }

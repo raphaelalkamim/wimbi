@@ -222,7 +222,7 @@ extension MyTripViewController: UITableViewDelegate {
     }
     func deleteItem(indexPath: IndexPath, tableView: UITableView) {
         do {
-            try ActivityRepository.shared.deleteActivity(activity: activites[indexPath.row], roadmap: self.roadmap)
+            try ActivityRepository.shared.deleteActivity(activity: activites[indexPath.row])
             activites.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()

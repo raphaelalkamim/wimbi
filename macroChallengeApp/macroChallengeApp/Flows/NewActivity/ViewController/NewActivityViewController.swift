@@ -33,7 +33,7 @@ class NewActivityViewController: UIViewController {
             // tableView.reloadData()
         }
     }
-    var activity: Activity = Activity(id: 0, name: "New Activity", tips: "", category: "empty", location: "", hour: "", budget: 0, currency: "", day: Day(isSelected: true, date: Date()))
+    var activity: Activity = Activity(id: 0, name: "New Activity".localized(), tips: "", category: "empty", location: "", hour: "", budget: 0, currency: "", day: Day(isSelected: true, date: Date()))
     
     var day = DayLocal()
     var local: String = ""
@@ -74,6 +74,7 @@ class NewActivityViewController: UIViewController {
         if edit {
             self.activity.id = Int(self.activityEdit.id)
             ActivityRepository.shared.updateActivity(day: self.day, oldActivity: self.activityEdit, activity: self.activity)
+            ActivityRepository.shared.updateActivityDay(roadmap: self.roadmap, oldDay: self.day, activityLocal: self.activityEdit, newActivity: self.activity)
         } else {
             createdActivity = ActivityRepository.shared.createActivity(day: self.day, activity: self.activity, isNew: true)
         }
