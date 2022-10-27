@@ -30,6 +30,7 @@
         <attribute name="imageId" optional="YES" attributeType="String"/>
         <attribute name="isPublic" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isShared" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="likesCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="peopleCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>

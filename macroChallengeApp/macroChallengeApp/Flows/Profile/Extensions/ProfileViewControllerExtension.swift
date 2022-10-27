@@ -73,7 +73,18 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.openRoadmap(roadmap: roadmaps[indexPath.row] )
+        var openRoadmap = roadmaps[indexPath.row]
+        if openRoadmap.isShared {
+            // chama o roadmap do back
+            DataManager.shared.getRoadmapById(roadmapId: Int(roadmaps[indexPath.row].id)) { backRoadmap in
+                openRoadmap = RoadmapRepository.shared.updateFromBackend(editRoadmap: self.roadmaps[indexPath.row], roadmap: backRoadmap)
+                self.coordinator?.openRoadmap(roadmap: openRoadmap )
+            }
+            self.coordinator?.openRoadmap(roadmap: openRoadmap)
+        } else {
+            self.coordinator?.openRoadmap(roadmap: openRoadmap)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

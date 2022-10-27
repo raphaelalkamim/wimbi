@@ -91,6 +91,25 @@ extension CurrencyTableViewCell {
             make.trailing.equalToSuperview()
         }
     }
+    func setupCurrency(currencyType: String) {
+        self.currency.text = currencyType
+        switch currencyType {
+        case "R$":
+            self.setCurrencyLabel(currency: "Real  ")
+        case "U$":
+            self.setCurrencyLabel(currency: "Dollar  ")
+        case "€":
+            self.setCurrencyLabel(currency: "Euro  ")
+        case "¥":
+            self.setCurrencyLabel(currency: "Yen  ")
+        case "Fr":
+            self.setCurrencyLabel(currency: "Swiss Franc  ")
+        case "元":
+            self.setCurrencyLabel(currency: "Renminbi  ")
+        default:
+            break
+        }
+    }
 }
 
 extension CurrencyTableViewCell {

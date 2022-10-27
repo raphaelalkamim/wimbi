@@ -18,12 +18,23 @@ class PreviewRoadmapViewController: UIViewController {
     var roadmapId: Int = 0
     var roadmap: Roadmaps = Roadmaps()
     var daySelected = 0
+    var likeId = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getRoadmapById(roadmapId: self.roadmapId)
         self.setupPreviewRoadmapView()
+        
+        DataManager.shared.getLike(roadmapId: self.roadmapId) { response in
+            self.likeId = response
+            if self.likeId == 0 {
+                print("Not Liked")
+            } else {
+                print("Liked")
+                self.like.image = UIImage(systemName: "heart.fill")
+            }
+        }
     }
     
     func updateConstraintsTable() {
@@ -62,12 +73,29 @@ class PreviewRoadmapViewController: UIViewController {
     }
     
     @objc func likeRoadmap() {
+        if self.likeId == 0 {
+            self.like.image = UIImage(systemName: "heart.fill")
+            DataManager.shared.postLike(roadmapId: self.roadmapId) { response in
+                self.likeId = response
+                if self.likeId == 0 {
+                    print("Not Liked")
+                } else {
+                    print("Liked")
+                    self.like.image = UIImage(systemName: "heart.fill")
+                }
+            }
+            
+        } else {
+            self.like.image = UIImage(systemName: "heart")
+            DataManager.shared.deleteObjectBack(objectID: self.likeId, urlPrefix: "likes") {
+                print("deletou")
+                self.likeId = 0
+            }
+        }
         print("LIKE")
     }
     
     @objc func duplicateRoadmap() {
-        print("DUPLICA")
-        
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alert.view.tintColor = .accent
         let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]

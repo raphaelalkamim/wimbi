@@ -38,6 +38,7 @@ extension NewActivityViewController {
         self.activity.name = activityEdit.name ?? "No name"
         self.activity.budget = activityEdit.budget
         self.activity.tips = activityEdit.tips ?? "Details"
+        self.activity.category = activityEdit.category ?? "empty"
     }
     
     // MARK: Save new Activity functions
@@ -45,25 +46,28 @@ extension NewActivityViewController {
         // local name
         let tableView = newActivityView.localyTable
         guard let cell = tableView.cellForRow(at: [0, 1]) as? TextFieldTableViewCell else { return }
-        activity.name = cell.title.text ?? "Nova atividade"
-        
+        activity.name = cell.title.text ?? "New Activity".localized()
+
         // date
+        let dateTable = newActivityView.dateTable
+        guard let cell = dateTable.cellForRow(at: [0, 0]) as? DatePickerTableViewCell else { return }
+        
         let formater = DateFormatter()
         formater.dateStyle = .short
         formater.timeStyle = .none
-        activity.day = Day(isSelected: true, date: formater.date(from: self.day.date ?? "23/10/2000") ?? Date())
+        activity.day = Day(isSelected: true, date: cell.datePicker.date)
         
         // hour
-        let tableViewHour = newActivityView.dateTable
-        guard let cell = tableViewHour.cellForRow(at: [0, 1]) as? TimePickerTableViewCell else { return }
+        guard let cell = dateTable.cellForRow(at: [0, 1]) as? TimePickerTableViewCell else { return }
         formater.dateStyle = .none
         formater.timeStyle = .short
         activity.hour = formater.string(from: cell.datePicker.date)
         
         // value
         let tableViewValue = newActivityView.valueTable
-        guard let cell = tableViewValue.cellForRow(at: [0, 1]) as? ValueTableViewCell else { return }
-        let newValue = getNumber(text: cell.value.text ?? "123")
+        guard let cell = tableViewValue.cellForRow(at: [0, 1]) as?
+                ValueTableViewCell else { return }
+        let newValue = cell.getNumber(textNumber: cell.value.text ?? "123", userCurrency: self.userCurrency)
         activity.budget = Double(newValue) ?? 0.0
         activity.currency = self.currencyType
         
@@ -71,26 +75,6 @@ extension NewActivityViewController {
         let tableViewDetail = newActivityView.detailTable
         guard let cell = tableViewDetail.cellForRow(at: [0, 0]) as? DetailTableViewCell else { return }
         activity.tips = cell.detailText.text ?? "Details"
-    }
-    
-    func getNumber(text: String) -> String {
-        var number = ""
-        for index in 0..<text.count {
-            if userCurrency == "R$" || userCurrency == "€"{
-                if text[index].isNumber {
-                    number += String(text[index])
-                } else if text[index] == "," {
-                    return number
-                }
-            } else {
-                if text[index].isNumber {
-                    number += String(text[index])
-                } else if text[index] == "." {
-                    return number
-                }
-            }
-        }
-        return number
     }
 }
 
@@ -134,7 +118,9 @@ extension NewActivityViewController: UITableViewDataSource {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Date".localized()
-                newCell.setupDate(date: day.date ?? "23/10/2022")
+                newCell.setupDate(date: day.date ?? "23/10/2022",
+                                  dateInitial: roadmap.date ?? Date(),
+                                  dateFinal: roadmap.dateFinal ?? Date())
                 newCell.setupSeparator()
                 
                 cell = newCell
@@ -153,50 +139,16 @@ extension NewActivityViewController: UITableViewDataSource {
         } else if tableView == newActivityView.valueTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.identifier, for: indexPath) as? CurrencyTableViewCell else { fatalError("TableCell not found") }
-                newCell.label.text = "Currency".localized()
                 newCell.setupSeparator()
                 newCell.delegate = self
-                
-                newCell.currency.text = self.currencyType
-                
-                switch self.currencyType {
-                case "R$":
-                    newCell.setCurrencyLabel(currency: "Real  ")
-                    
-                case "U$":
-                    newCell.setCurrencyLabel(currency: "Dollar  ")
-                    
-                case "€":
-                    newCell.setCurrencyLabel(currency: "Euro  ")
-                    
-                case "¥":
-                    newCell.setCurrencyLabel(currency: "Yen  ")
-                    
-                case "Fr":
-                    newCell.setCurrencyLabel(currency: "Swiss Franc  ")
-                    
-                case "元":
-                    newCell.setCurrencyLabel(currency: "Renminbi  ")
-                default:
-                    break
-                }
+                newCell.label.text = "Currency".localized()
+                newCell.setCurrencyLabel(currency: self.currencyType)
                 cell = newCell
             } else if indexPath.row == 1 {
-                guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
-                
-                newCell.title.text = "Value".localized()
-                newCell.currencyType = self.currencyType
-                newCell.value.placeholder = "\(self.currencyType) 0.00"
-                newCell.value.text = "\(self.currencyType) \(activity.budget)"
-                self.activity.currency = self.currencyType
-                cell = newCell
-            }
-        } else if tableView == newActivityView.detailTable {
-            if indexPath.row == 0 {
-                guard let newCell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { fatalError("TableCell not found") }
-                newCell.detailText.text = self.activity.tips
-                cell = newCell
-                
+                    guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
+                    newCell.setCurrencyValue(currency: self.currencyType, value: activity.budget)
+                    self.activity.currency = self.currencyType
+                    cell = newCell
             }
         }
         return cell
@@ -255,42 +207,16 @@ extension NewActivityViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryActivityCollectionViewCell {
-            switch cell.iconDescription.text {
-            case "Accommodation".localized():
-                cell.selectedBackgroundView(button: "accommodation")
-                activity.category = "accommodation"
-            case "Food".localized():
-                cell.selectedBackgroundView(button: "food")
-                activity.category = "food"
-            case "Leisure".localized():
-                cell.selectedBackgroundView(button: "leisure")
-                activity.category = "leisure"
-            case "Transportation".localized():
-                cell.selectedBackgroundView(button: "transportation")
-                activity.category = "transportation"
-            default:
-                break
-            }
+            activity.category = cell.setCellIcon(isSelected: true)
+
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryActivityCollectionViewCell {
-            switch cell.iconDescription.text {
-            case "Accommodation".localized():
-                cell.notSelectedBackgroundView(button: "accommodation")
-            case "Food".localized():
-                cell.notSelectedBackgroundView(button: "food")
-            case "Leisure".localized():
-                cell.notSelectedBackgroundView(button: "leisure")
-            case "Transportation".localized():
-                cell.notSelectedBackgroundView(button: "transportation")
-            default:
-                break
-            }
+            cell.setCellIcon(isSelected: false)
         }
     }
-    
 }
 
 // MARK: Delegates

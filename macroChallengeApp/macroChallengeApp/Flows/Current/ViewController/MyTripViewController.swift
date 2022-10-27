@@ -44,6 +44,7 @@ class MyTripViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //self.updateByBack(roadmap: self.roadmap, isShared: true)
         network.startMonitoring()
         self.getAllDays()
         self.activites = self.getAllActivities()
@@ -51,7 +52,7 @@ class MyTripViewController: UIViewController {
         self.updateTotalBudgetValue()
         self.myTripView.activitiesTableView.reloadData()
         self.myTripView.activitiesTableView.layoutIfNeeded()
-        // self.updateBudget()
+        self.updateAllBudget()
         updateConstraintsTable()
     }
     
@@ -65,11 +66,6 @@ class MyTripViewController: UIViewController {
             make.trailing.equalTo(myTripView.contentView.snp.trailing)
             make.bottom.equalTo(myTripView.scrollView.snp.bottom)
             make.height.equalTo(height)
-            Task {
-                await self.updateBudget()
-                await self.updateBudgetTotal()
-                await self.updateTotalBudgetValue()
-            }
         }
     }
     func getAllDays() {
@@ -116,9 +112,15 @@ class MyTripViewController: UIViewController {
         }
     }
     
+    func updateAllBudget() {
+        Task {
+            await self.updateBudget()
+            await self.updateBudgetTotal()
+            await self.updateTotalBudgetValue()
+        }
+    }
     func updateBudget() async {
         var budgetDay: Double = 0
-        
         var totalReal: Double = 0
         var totalDollar: Double = 0
         var totalEuro: Double = 0
@@ -291,6 +293,8 @@ class MyTripViewController: UIViewController {
             let activityViewController = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view
             activityViewController.excludedActivityTypes = []
+            self.roadmap.isShared = true
+            RoadmapRepository.shared.saveContext()
             self.present(activityViewController, animated: true, completion: nil)
         }
     }

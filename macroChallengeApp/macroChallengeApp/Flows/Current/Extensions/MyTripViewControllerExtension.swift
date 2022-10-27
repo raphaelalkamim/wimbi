@@ -102,6 +102,7 @@ extension MyTripViewController: UICollectionViewDelegate {
             cell.selectedButton()
             
             // select a day
+            self.getAllDays()
             self.daySelected = indexPath.row
             self.days[daySelected].isSelected = true
             self.activites = getAllActivities()
@@ -124,8 +125,9 @@ extension MyTripViewController: UICollectionViewDelegate {
                 cell.disable()
             }
         }
+        self.updateAllBudget()
+        RoadmapRepository.shared.saveContext()
     }
-    
 }
 
 // MARK: Collections - Data Source
@@ -165,7 +167,7 @@ extension MyTripViewController: UICollectionViewDataSource {
                 cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
             case 3:
                 cell.title.text = "LIKES".localized()
-                cell.info.setTitle(" 10k", for: .normal)
+                cell.info.setTitle(" \(roadmap.likesCount)", for: .normal)
             case 4:
                 cell.title.text = "CREATED BY".localized()
                 cell.separator.isHidden = true
@@ -259,7 +261,7 @@ extension MyTripViewController: UITableViewDelegate {
     
     func deleteItem(indexPath: IndexPath, tableView: UITableView) {
         do {
-            try ActivityRepository.shared.deleteActivity(activity: activites[indexPath.row], roadmap: self.roadmap)
+            try ActivityRepository.shared.deleteActivity(activity: activites[indexPath.row])
             activites.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()

@@ -9,6 +9,7 @@ class RoadmapSearchTableViewController: UITableViewController {
         return userC
     }()
     weak var coordinator: ExploreCoordinator?
+    var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,11 @@ class RoadmapSearchTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.previewRoadmap(roadmapId: roadmaps[indexPath.row].id)
+        if isSearching {
+            coordinator?.previewRoadmap(roadmapId: matchingRoadmaps[indexPath.row].id)
+        } else {
+            coordinator?.previewRoadmap(roadmapId: roadmaps[indexPath.row].id)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -58,8 +63,10 @@ extension RoadmapSearchTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.isActive {
             searchController.searchBar.showsBookmarkButton = false
+            self.isSearching = true
         } else {
             searchController.searchBar.showsBookmarkButton = true
+            self.isSearching = false
         }
         
         guard let searchBarText = searchController.searchBar.text?.lowercased() else { return }

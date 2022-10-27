@@ -170,20 +170,23 @@ extension DestinyViewController: CLLocationManagerDelegate {
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            var region = MKCoordinateRegion()
             let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
             
-            if edit {
-                let coordsSeparator = self.roadmap.location.split(separator: " ")
-                if let latitude = CLLocationDegrees(coordsSeparator[0]), let longitude = CLLocationDegrees(coordsSeparator[1]) {
-                    let locationRoadmap = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    region = MKCoordinateRegion(center: locationRoadmap, span: span)
+            var region = MKCoordinateRegion()
+            
+            if self.edit {
+                if let roadmapLocation = self.editRoadmap.location {
+                    let coordsSeparated = roadmapLocation.split(separator: " ")
+                    if let latitude = CLLocationDegrees(coordsSeparated[0]), let longitude = CLLocationDegrees(coordsSeparated[1]) {
+                        let locationRoadmap = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                        region = MKCoordinateRegion(center: locationRoadmap, span: span)
+                    }
                 }
             } else {
                 region = MKCoordinateRegion(center: location.coordinate, span: span)
             }
-            destinyView.mapView.setRegion(region, animated: true)
             
+            destinyView.mapView.setRegion(region, animated: true)
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

@@ -534,7 +534,6 @@
 				13C8A11228C6835300994196 /* Activity.swift */,
 				13C8A10E28C6829100994196 /* Day.swift */,
 				13C8A11028C6833D00994196 /* Like.swift */,
-				13C8A11528C68B7700994196 /* DataManager.swift */,
 				13C8A11728C691F100994196 /* DataType.swift */,
 				B0CDF34F28CFC7E90092A76C /* Category.swift */,
 				DF2643AA28DB9CC500053180 /* UserRoadmap.swift */,
@@ -542,7 +541,6 @@
 				B0E0684E28EF50C500418F87 /* CurrencyAPI.swift */,
 				B0E0685028EF5FD700418F87 /* Currency.swift */,
 				DF66658128F0991100E37429 /* DayDTO.swift */,
-				133BE5B3290092590045E742 /* NetworkMonitor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -743,6 +741,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		13FDB99529083F4F006EB076 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				13C8A11528C68B7700994196 /* DataManager.swift */,
+				133BE5B3290092590045E742 /* NetworkMonitor.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		4171B73C15A2C812F704D532 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,6 +858,7 @@
 				13F994F828D3B1F800B077C0 /* Components */,
 				1309973228F0C0E800774E1A /* Extensions */,
 				13C8A10928C6826B00994196 /* Models */,
+				13FDB99529083F4F006EB076 /* Controller */,
 				13C8A10728C6824F00994196 /* Flows */,
 				B078F22128C27F2400D46F61 /* Assets.xcassets */,
 				B078F22328C27F2400D46F61 /* LaunchScreen.storyboard */,

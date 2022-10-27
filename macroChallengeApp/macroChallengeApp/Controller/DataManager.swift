@@ -173,7 +173,7 @@ class DataManager {
         
         let keyWords = ["trip", "viagem", "travel", "viaggiare"]
         let codeTrip = "\(Int.random(in: 0..<1_000_000))\(keyWords.randomElement() ?? "space")\(Int.random(in: 0..<1_000_000))"
-
+        
         let roadmap: [String: Any] = [
             "name": roadmap.name,
             "location": roadmap.location,
@@ -188,7 +188,8 @@ class DataManager {
             "isPublic": roadmap.isPublic,
             "shareKey": codeTrip,
             "createdAt": dateFormatter.string(from: Date()),
-            "currency": roadmap.currency
+            "currency": roadmap.currency,
+            "likesCount": 0
         ]
         
         let session = URLSession.shared
@@ -391,49 +392,47 @@ class DataManager {
             "dateInitial": roadmap.dateInitial,
             "dateFinal": roadmap.dateFinal,
             "peopleCount": roadmap.peopleCount,
-            "imageId": roadmap.imageId,
+            "imageId": setupImage(category: roadmap.category),
             "category": roadmap.category,
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
             "shareKey": "ABC123",
             "createdAt": dateFormatter.string(from: Date()),
-            "currency": roadmap.currency
+            "currency": roadmap.currency,
+            "likesCount": roadmap.likesCount
         ]
         
         let session = URLSession.shared
-        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
-            let userID = String(data: data, encoding: .utf8)!
-            guard let url = URL(string: baseURL + "roadmaps/\(roadmapId)") else { return }
+        guard let url = URL(string: baseURL + "roadmaps/\(roadmapId)") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
             
-            var request = URLRequest(url: url)
-            request.httpMethod = "PUT"
-            if let token = UserDefaults.standard.string(forKey: "authorization") {
-                request.setValue(token, forHTTPHeaderField: "Authorization")
-                
-                do {
-                    request.httpBody = try JSONSerialization.data(withJSONObject: roadmapJson, options: .prettyPrinted)
-                } catch {
-                    print(error.localizedDescription)
-                }
-                
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.addValue("application/json", forHTTPHeaderField: "Accept")
-                
-                let task = session.dataTask(with: request) { data, response, error in
-                    print(response)
-                    guard let data = data else { return }
-                    if error != nil {
-                        print(String(describing: error?.localizedDescription))
-                    }
-                    if let httpResponse = response as? HTTPURLResponse {
-                        if httpResponse.statusCode == 200 {
-                            self.postDays(roadmapId: roadmapId, daysCore: newDaysCore)
-                            print("Atualizou")
-                        }
-                    }
-                }
-                task.resume()
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: roadmapJson, options: .prettyPrinted)
+            } catch {
+                print(error.localizedDescription)
             }
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                print(response)
+                guard let data = data else { return }
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        self.postDays(roadmapId: roadmapId, daysCore: newDaysCore)
+                        print("Atualizou")
+                    }
+                }
+            }
+            task.resume()
         }
     }
     
@@ -638,6 +637,8 @@ class DataManager {
                                 let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: roadmapJoin, isNew: false)
                                 newRoadmap.id = Int32(roadmapJoin.id)
                                 newRoadmap.shareKey = roadmapJoin.shareKey
+                                newRoadmap.isShared = true
+                                
                                 var days = newRoadmap.day?.allObjects as [DayLocal]
                                 var roadmapDays = roadmapJoin.days
                                 
@@ -661,6 +662,87 @@ class DataManager {
                 }
                 task.resume()
             }
+        }
+    }
+    
+    func getLike(roadmapId: Int, _ completion: @escaping ((_ response: Int) -> Void)) {
+        let session: URLSession = URLSession.shared
+        
+        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+            let userID = String(data: data, encoding: .utf8)!
+            print(userID)
+            let url: URL = URL(string: baseURL + "likes/users/\(userID)/roadmaps/\(roadmapId)")!
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            if let token = UserDefaults.standard.string(forKey: "authorization") {
+                request.setValue(token, forHTTPHeaderField: "Authorization")
+                let task = session.dataTask(with: request) { data, _, error in
+                    guard let data = data else { return }
+                    if error != nil {
+                        print(String(describing: error?.localizedDescription))
+                    }
+                    
+                    do {
+                        let stringInt = String(data: data, encoding: String.Encoding.utf8)
+                        var likeId: Int = 0
+                        if let likeIdConvert = Int(stringInt ?? "0") {
+                            likeId = likeIdConvert
+                        }
+                        DispatchQueue.main.async {
+                            completion(likeId)
+                        }
+                    } catch {
+                        print(error)
+                        print("DEU RUIM NO PARSE")
+                    }
+                }
+                task.resume()
+            }
+        }
+    }
+    
+    func postLike(roadmapId: Int, _ completion: @escaping ((_ response: Int) -> Void)) {
+        let session: URLSession = URLSession.shared
+        
+        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+            let userID = String(data: data, encoding: .utf8)!
+            let url: URL = URL(string: baseURL + "users/\(userID)/roadmaps/\(roadmapId)/likes")!
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            if let token = UserDefaults.standard.string(forKey: "authorization") {
+                request.setValue(token, forHTTPHeaderField: "Authorization")
+                let task = session.dataTask(with: request) { data, response, error in
+                    print(response)
+                    guard let data = data else { return }
+                    if error != nil {
+                        print(String(describing: error?.localizedDescription))
+                    }
+                    
+                    do {
+                        let stringInt = String(data: data, encoding: String.Encoding.utf8)
+                        var likeId: Int = 0
+                        if let likeIdConvert = Int(stringInt ?? "0") {
+                            likeId = likeIdConvert
+                        }
+                        DispatchQueue.main.async {
+                            completion(likeId)
+                        }
+                    } catch {
+                        print(error)
+                        print("DEU RUIM NO PARSE")
+                    }
+                }
+                task.resume()
+            }
+            
         }
     }
     
