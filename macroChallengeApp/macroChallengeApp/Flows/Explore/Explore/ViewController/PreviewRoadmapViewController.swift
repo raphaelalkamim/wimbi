@@ -34,6 +34,7 @@ class PreviewRoadmapViewController: UIViewController {
                 print("Liked")
                 self.like.image = UIImage(systemName: "heart.fill")
             }
+            self.previewView.animateCollection()
         }
     }
     

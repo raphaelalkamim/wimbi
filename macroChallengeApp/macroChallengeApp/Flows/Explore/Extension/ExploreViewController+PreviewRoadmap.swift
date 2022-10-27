@@ -113,7 +113,7 @@ extension PreviewRoadmapViewController: UICollectionViewDelegate {
         }
     }
 }
-
+// MARK: CollectionView
 extension PreviewRoadmapViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == previewView.infoTripCollectionView {
@@ -198,7 +198,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
         }
     }
 }
-
+// MARK: TableView
 extension PreviewRoadmapViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100

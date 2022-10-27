@@ -31,16 +31,10 @@ class MyTripViewController: UIViewController {
     override func viewDidLoad() {
         network.startMonitoring()
         super.viewDidLoad()
-        self.view.backgroundColor = .backgroundPrimary
+        
         self.setupMyTripView()
-        myTripView.setupContent(roadmap: roadmap)
-        myTripView.bindCollectionView(delegate: self, dataSource: self)
-        myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
-        myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
         
-        myTripView.activitiesTableView.reloadData()
-        myTripView.activitiesTableView.layoutIfNeeded()
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
