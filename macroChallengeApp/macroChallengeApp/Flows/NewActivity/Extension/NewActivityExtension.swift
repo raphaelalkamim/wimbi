@@ -236,6 +236,7 @@ extension NewActivityViewController: ChangeTextTableDelegate {
         activity.location = coords
         activity.name = locationName
         activity.address = address
+        self.address = activity.address
         newActivityView.localyTable.reloadData()
     }
 }

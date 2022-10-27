@@ -48,6 +48,11 @@ class NewActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if edit {
+            getData()
+        }
+        
         setupNewActivityView()
         setKeyboard()
         let cancelButton = UIBarButtonItem(title: "Cancel".localized(), style: .plain, target: self, action: #selector(cancelCreation))
@@ -59,9 +64,6 @@ class NewActivityViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if edit {
-            getData()
-        }
         if !edit {
             self.currencyType = userCurrency
         }
