@@ -23,6 +23,10 @@ class NewActivityViewController: UIViewController {
         return userC
     }()
     
+    override func loadView() {
+        view = newActivityView
+    }
+    
     var currencyType: String = "U$" {
         didSet {
             newActivityView.valueTable.reloadData()
@@ -110,8 +114,11 @@ extension NewActivityViewController {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dissMissKeyboard))
         
+        newActivityView.addGestureRecognizer(tap)
         newActivityView.valueTable.addGestureRecognizer(tap)
         newActivityView.detailTable.addGestureRecognizer(tap)
+        newActivityView.valueLabel.resignFirstResponder()
+        newActivityView.detailLabel.resignFirstResponder()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -127,5 +134,13 @@ extension NewActivityViewController {
     
     @objc func dissMissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+// MARK: Extension Text Field
+extension NewActivityViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

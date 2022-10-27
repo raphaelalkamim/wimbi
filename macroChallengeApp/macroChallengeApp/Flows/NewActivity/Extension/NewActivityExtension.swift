@@ -19,8 +19,8 @@ protocol ChangeTextTableDelegate: AnyObject {
 extension NewActivityViewController {
     func setupNewActivityView() {
         navigationItem.title = "New activity".localized()
-        view.addSubview(newActivityView)
-        setupConstraints()
+        //view.addSubview(newActivityView)
+        //setupConstraints()
         newActivityView.bindTableView(delegate: self, dataSource: self)
         newActivityView.bindCollectionView(delegate: self, dataSource: self)
     }
@@ -150,6 +150,13 @@ extension NewActivityViewController: UITableViewDataSource {
                     self.activity.currency = self.currencyType
                     cell = newCell
             }
+        } else if tableView == newActivityView.detailTable {
+            if indexPath.row == 0 {
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { fatalError("TableCell not found") }
+                self.activity.tips = newCell.detailText.text ?? "Details"
+                cell = newCell
+                
+            }
         }
         return cell
     }
@@ -218,6 +225,7 @@ extension NewActivityViewController: UICollectionViewDataSource {
         }
     }
 }
+
 
 // MARK: Delegates
 extension NewActivityViewController: ChangeTextTableDelegate {
