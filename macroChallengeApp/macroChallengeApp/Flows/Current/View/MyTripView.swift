@@ -13,6 +13,7 @@ class MyTripView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let scrollView = UIScrollView()
     let contentView = UIView()
+    let transparentView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -134,7 +135,7 @@ class MyTripView: UIView {
         table.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCell.identifier)
         table.isScrollEnabled = false
         table.separatorColor = .clear
-        table.allowsSelection = false
+        table.allowsSelection = true
         table.backgroundColor = designSystem.palette.backgroundPrimary
         table.dragInteractionEnabled = true
         table.isUserInteractionEnabled = true
@@ -161,6 +162,9 @@ class MyTripView: UIView {
         activitiesTableView.isHidden = true
         budgetView.isHidden = true
         scrollView.isScrollEnabled = false
+        self.addSubview(transparentView)
+        transparentView.isHidden = true
+        transparentView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         setupConstraints()
     }
     
@@ -178,6 +182,10 @@ class MyTripView: UIView {
             make.top.equalTo(scrollView.snp.top)
             make.bottom.equalTo(calendarCollectionView.snp.bottom)
             make.left.right.equalTo(self)
+        }
+        
+        transparentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         
         infoTripCollectionView.snp.makeConstraints { make in

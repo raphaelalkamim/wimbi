@@ -97,6 +97,32 @@ class NewActivityView: UIView {
 
         return table
     }()
+    
+    lazy var detailLabel: UILabel = {
+        let label = UILabel()
+        label.text = "DETAILS".localized()
+        label.stylize(with: designSystem.text.caption)
+        return label
+    }()
+    
+    lazy var detailCaption: UILabel = {
+        let title = UILabel()
+        title.text = "Describe here curiosities, tips or interesting facts about the place.".localized()
+        title.textColor = .caption
+        title.stylize(with: designSystem.text.caption)
+        return title
+    }()
+    
+    lazy var detailTable: UITableView = {
+        let table = UITableView()
+        table.register(DetailTableViewCell.self, forCellReuseIdentifier: DetailTableViewCell.identifier)
+        table.layer.cornerRadius = 16
+        table.isScrollEnabled = false
+        table.allowsSelection = false
+        table.isUserInteractionEnabled = true
+        table.backgroundColor = .backgroundCell
+        return table
+    }()
 }
 
 extension NewActivityView {
@@ -116,6 +142,10 @@ extension NewActivityView {
         
         contentView.addSubview(valueLabel)
         contentView.addSubview(valueTable)
+        
+        contentView.addSubview(detailLabel)
+        scrollView.addSubview(detailTable)
+        contentView.addSubview(detailCaption)
         
         setupConstraints()
     }
@@ -183,7 +213,27 @@ extension NewActivityView {
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.height.equalTo(100)
-            make.bottom.equalTo(scrollView.snp.bottom)
+        }
+        
+        detailLabel.snp.makeConstraints { make in
+            make.top.equalTo(valueTable.snp.bottom).offset(designSystem.spacing.xLargePositive)
+            make.leading.equalTo(contentView.snp.leading).inset(32)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+        }
+
+        detailTable.snp.makeConstraints { make in
+            make.top.equalTo(detailLabel.snp.bottom).offset(designSystem.spacing.xSmallPositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+            make.height.equalTo(100)
+        }
+        
+        detailCaption.snp.makeConstraints { make in
+            make.leading.equalTo(designSystem.spacing.xxLargePositive)
+            make.trailing.equalTo(designSystem.spacing.xxLargeNegative)
+            make.top.equalTo(detailTable.snp.bottom).inset(designSystem.spacing.mediumNegative)
+            make.bottom.equalTo(scrollView.snp.bottom).inset(designSystem.spacing.xxLargePositive)
+
         }
     }
 }
@@ -198,10 +248,15 @@ extension NewActivityView {
         
         valueTable.delegate = delegate
         valueTable.dataSource = dataSource
+        
+        detailTable.delegate = delegate
+        detailTable.dataSource = dataSource
+
     }
     
     func bindCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         categoryCollectionView.delegate = delegate
         categoryCollectionView.dataSource = dataSource
+        
     }
 }

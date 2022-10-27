@@ -87,6 +87,9 @@
 		640CD5CCE40B36AB975231D2 /* Pods_macroChallengeApp_macroChallengeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D148866C3AA7A72395A6BDAC /* Pods_macroChallengeApp_macroChallengeAppUITests.framework */; };
 		8937FC4EB5BEAACC958B84A1 /* Pods_macroChallengeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */; };
 		90297BBF83D0A825FF081EB4 /* Pods_macroChallengeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */; };
+		A0287558290870C000894B6D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0287557290870C000894B6D /* DetailView.swift */; };
+		A028755A290870FC00894B6D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0287559290870FC00894B6D /* DetailViewController.swift */; };
+		A028755C2908DD8000894B6D /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A028755B2908DD8000894B6D /* DetailTableViewCell.swift */; };
 		A04959C628DCEC92009156C8 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04959C528DCEC92009156C8 /* ActivityTableViewCell.swift */; };
 		A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */; };
 		A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */; };
@@ -243,6 +246,9 @@
 		4842CC9B9D145281B17CEC0E /* Pods-macroChallengeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeAppTests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeAppTests/Pods-macroChallengeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macroChallengeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F3A7956A6476CF7C11EC092 /* Pods-macroChallengeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp.debug.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp/Pods-macroChallengeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		A0287557290870C000894B6D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		A0287559290870FC00894B6D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A028755B2908DD8000894B6D /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		A04959C528DCEC92009156C8 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		A04B45D528D5051E0045558E /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		A04B45DD28D62A4B0045558E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -496,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				13BD501328DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift */,
+				A028755B2908DD8000894B6D /* DetailTableViewCell.swift */,
 				13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */,
 				B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */,
 				B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */,
@@ -718,6 +725,7 @@
 			isa = PBXGroup;
 			children = (
 				1379744028D8E55000AEA662 /* CurrentViewController.swift */,
+				A0287559290870FC00894B6D /* DetailViewController.swift */,
 				A0FD739A28DA7EF70044E47C /* MyTripViewController.swift */,
 			);
 			path = ViewController;
@@ -800,6 +808,7 @@
 				A0FD739828DA7EF00044E47C /* MyTripView.swift */,
 				B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */,
 				B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */,
+				A0287557290870C000894B6D /* DetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1155,6 +1164,7 @@
 				131272DD28E624CE000B7968 /* PreviewRoadmapView.swift in Sources */,
 				13C8A13628CA6C1100994196 /* TextStyle.swift in Sources */,
 				A0B9F4C528D90A7C00F2DF06 /* SwitchTableViewCell.swift in Sources */,
+				A028755A290870FC00894B6D /* DetailViewController.swift in Sources */,
 				13C8A10F28C6829100994196 /* Day.swift in Sources */,
 				13C8A11628C68B7700994196 /* DataManager.swift in Sources */,
 				13BD500628DA28D600C0EA7C /* NewActivityViewController.swift in Sources */,
@@ -1170,6 +1180,7 @@
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
 				DF66658228F0991100E37429 /* DayDTO.swift in Sources */,
 				B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */,
+				A0287558290870C000894B6D /* DetailView.swift in Sources */,
 				13C8A14928CFA66200994196 /* DestinyView.swift in Sources */,
 				A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */,
 				A0B9F4C928DA2A5400F2DF06 /* TermsViewController.swift in Sources */,
@@ -1200,6 +1211,7 @@
 				1359F15628DA48F3009509DF /* DayRepositoryClass.swift in Sources */,
 				13F994E728D393CE00B077C0 /* CategoryViewController.swift in Sources */,
 				13C8A11128C6833D00994196 /* Like.swift in Sources */,
+				A028755C2908DD8000894B6D /* DetailTableViewCell.swift in Sources */,
 				B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */,
 				A0FD739B28DA7EF70044E47C /* MyTripViewController.swift in Sources */,
 				1379745428D8E6B700AEA662 /* SettingsView.swift in Sources */,
@@ -1468,7 +1480,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1504,7 +1516,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

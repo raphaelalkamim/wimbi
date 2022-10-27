@@ -29,6 +29,14 @@ class EditProfileView: UIView {
         return img
     }()
     
+    lazy var editButton: UIButton = {
+        let button = UIButton()
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 15)]
+        button.setAttributedTitle(NSAttributedString(string: "Change profile photo".localized(), attributes: attributes), for: .normal)
+        button.setTitleColor(.accent, for: .normal)
+        return button
+    }()
+
     lazy var nameLabel: UILabel = {
         let title = UILabel()
         title.text = "NAME".localized() // adicionar nome
@@ -85,6 +93,7 @@ class EditProfileView: UIView {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(contentView)
         contentView.addSubview(imageProfile)
+        contentView.addSubview(editButton)
         contentView.addSubview(usernameLabel)
         contentView.addSubview(nameLabel)
         contentView.addSubview(nameTextField)
@@ -107,8 +116,13 @@ class EditProfileView: UIView {
 
         }
         
+        editButton.snp.makeConstraints { make in
+            make.top.equalTo(imageProfile.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.centerX.equalToSuperview()
+        }
+        
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageProfile.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
+            make.top.equalTo(editButton.snp.bottom).inset(designSystem.spacing.xLargeNegative)
             make.leading.equalTo(contentView.snp.leading).inset(32)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
 

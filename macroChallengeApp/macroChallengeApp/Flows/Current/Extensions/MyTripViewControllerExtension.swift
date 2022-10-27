@@ -10,6 +10,10 @@ import UIKit
 import CoreLocation
 import MapKit
 
+protocol DismissBlur: AnyObject {
+    func dismissBlur()
+}
+
 // MARK: Setup
 extension MyTripViewController {
     func setupMyTripView() {
@@ -199,6 +203,40 @@ extension MyTripViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var budget = ""
+        let activity = self.activites[indexPath.row]
+        let categoryText = "Type:".localized()
+        let dateText = "Starts at:".localized()
+        let budgetText = "Value:".localized()
+
+        if Double(self.activites[indexPath.row].budget) == 0 {
+            budget = "Free".localized()
+        } else {
+            budget = "\(activity.currencyType ?? "R$")\(activity.budget)"
+        }
+        self.coordinator?.showActivitySheet(tripVC: self,
+                                            name: activity.name ?? "Ola",
+                                            category: "\(categoryText) \(activity.category?.capitalized.localized() ?? "Praia")",
+                                            hour: "\(dateText) \(activity.hour ?? "8h")    •",
+                                            budget: "    \(budgetText) \(budget)",
+                                            location: activity.location ?? "SP",
+                                            details: activity.tips ?? "Details",
+                                            icon: activity.category ?? "Praia")
+        
+        self.coordinatorCurrent?.showActivitySheet(tripVC: self,
+                                                   name: activity.name ?? "Ola",
+                                                   category: "\(categoryText) \(activity.category?.capitalized.localized() ?? "Praia")",
+                                                   hour: "\(dateText) \(activity.hour ?? "8h")    •",
+                                                   budget: "    \(budgetText) \(budget)",
+                                                   location: activity.location ?? "SP",
+                                                   details: activity.tips ?? "Details",
+                                                   icon: activity.category ?? "Praia")
+
+        myTripView.transparentView.isHidden = false
+    }
+
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editAction = UIContextualAction(style: .normal,
                                             title: "Edit".localized()) { [weak self] _, _, completionHandler in
@@ -220,6 +258,7 @@ extension MyTripViewController: UITableViewDelegate {
         deleteAction.backgroundColor = .redCity
         return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }
+    
     func deleteItem(indexPath: IndexPath, tableView: UITableView) {
         do {
             try ActivityRepository.shared.deleteActivity(activity: activites[indexPath.row])
@@ -288,4 +327,11 @@ extension MyTripViewController: AddNewActivityDelegate {
         self.activites = getAllActivities()
         myTripView.activitiesTableView.reloadData()
     }
+}
+
+extension MyTripViewController: DismissBlur {
+    func dismissBlur() {
+        myTripView.transparentView.isHidden = true
+    }
+    
 }

@@ -105,6 +105,28 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    func showActivitySheet(tripVC: MyTripViewController, name: String, category: String, hour: String, budget: String, location: String, details: String, icon: String) {
+        let viewControllerToPresent = DetailViewController()
+        viewControllerToPresent.detailView.activityTitle.text = name
+        viewControllerToPresent.detailView.activityIcon.image = UIImage(named: "\(icon)Selected")
+        viewControllerToPresent.detailView.activityCategory.text = category
+        viewControllerToPresent.detailView.activityInfo.text = hour + budget
+        viewControllerToPresent.detailView.local.text = location
+        viewControllerToPresent.detailView.details.text = details
+        viewControllerToPresent.delegate = tripVC
+        if let sheet = viewControllerToPresent.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+            sheet.prefersGrabberVisible = true
+
+        }
+        navigationController.present(viewControllerToPresent, animated: true, completion: nil)
+        
+    }
+    
     func startEditProfile() {
         let viewController = EditProfileViewController()
         viewController.coordinator = self

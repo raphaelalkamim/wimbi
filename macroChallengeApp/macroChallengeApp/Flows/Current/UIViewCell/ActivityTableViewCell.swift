@@ -66,6 +66,7 @@ extension ActivityTableViewCell {
         contentView.addSubview(activityTitle)
         contentView.addSubview(localButton)
         self.backgroundColor = designSystem.palette.backgroundPrimary
+        self.selectionStyle = .none
         setupConstraints()
         
     }

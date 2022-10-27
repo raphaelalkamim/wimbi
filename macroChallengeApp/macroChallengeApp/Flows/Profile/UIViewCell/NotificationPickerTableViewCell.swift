@@ -13,6 +13,7 @@ class NotificationPickerTableViewCell: UITableViewCell {
     static let identifier = "notificationPickerCell"
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let dataArray = ["minutes".localized(), "hours".localized(), "days".localized()]
+    let dataTravel = ["traveler".localized(), "travelers".localized()]
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -43,6 +44,7 @@ class NotificationPickerTableViewCell: UITableViewCell {
 
 extension NotificationPickerTableViewCell {
     func setup() {
+        backgroundColor = .backgroundCell
         contentView.addSubview(title)
         contentView.addSubview(picker)
         setupConstraints()
@@ -70,19 +72,37 @@ extension NotificationPickerTableViewCell: UIPickerViewDelegate, UIPickerViewDat
         return 2
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if component == 0 {
-            return 30
+        if title.text == "Roadmap to".localized() {
+            if component == 0 {
+                return 30
+            } else {
+                return dataTravel.count
+            }
         } else {
-            return dataArray.count
+            if component == 0 {
+                return 30
+            } else {
+                return dataArray.count
+            }
         }
+
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if component == 0 {
-            return "\(row + 1)"
+        if title.text == "Roadmap to".localized() {
+            if component == 0 {
+                return "\(row + 1)"
+            } else {
+                let row = dataTravel[row]
+                return row
+            }
         } else {
-            let row = dataArray[row]
-            return row
+            if component == 0 {
+                return "\(row + 1)"
+            } else {
+                let row = dataArray[row]
+                return row
+            }
         }
 
     }

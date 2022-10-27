@@ -20,6 +20,12 @@
 "@user" = "@usuario";
 
 // MARK: -  New Activity
+"Type:" = "Tipo:";
+"Starts at:" = "Empieza:";
+"Value:" = "Monto";
+"DETAILS" = "DETALLES";
+"Describe here curiosities, tips or interesting facts about the place." = "Describa aquí curiosidades, consejos o datos importantes sobre el lugar.";
+
 "TYPE" = "TIPO";
 "LOCATION" = "UBICACIÓN";
 "TIME" = "HORARIO";
@@ -56,6 +62,8 @@
 "The roadmap is now available on your profile." = "La guía de viaje ya está disponible en su perfil.";
 "traveler  •" = "viajero  •";
 "travelers  •" = "viajeros  •";
+"traveler" = "viajero";
+"travelers" = "viajeros";
 "thousand per person" = "mil por persona";
 
 
@@ -73,6 +81,10 @@
 "Delete" = "Eliminar";
 "Delete all content from" = "Eliminar todo el contenido de";
 "Can't delete" = "No se puede eliminar";
+"Change profile photo" = "Cambiar foto del perfil";
+"Remove current photo" = "Eliminar foto actual";
+"Take photo" = "Tomar foto";
+"Choose from library" = "Elegir de la biblioteca";
 
 //Settings
 "Settings" = "Configuración";
@@ -159,7 +171,10 @@
 "Public" = "Público";
 "Private" = "Privado";
 "Are you sure?" = "¿Está seguro?";
+"No" = "No";
+"Yes" = "Sí";
 "By canceling you’ll lose your entire progress." = "Al cancelar su progreso será perdido.";
 "Back" = "Atrás";
 "Continue" = "Continuar";
+"Roadmap to" = "Guía de viaje para";
 

@@ -33,6 +33,6 @@ struct Activity: Codable {
 
 extension Activity: CustomStringConvertible {
     var description: String {
-        return "id: \(id),name: \(name),category: \(category),location: \(location), hour: \(hour), budget: \(budget), currencyType: \(currency), Day: \(day)"
+        return "id: \(id),name: \(name),category: \(category),location: \(location), hour: \(hour), budget: \(budget), currencyType: \(currency), Day: \(day), Tips: \(tips)"
     }
 }

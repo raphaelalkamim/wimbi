@@ -35,7 +35,7 @@ class DaysView: UIView {
     }()
     lazy var numberPickerTableView: UITableView = {
         let numberPickerTableView = UITableView()
-        numberPickerTableView.register(NumberPickerTableViewCell.self, forCellReuseIdentifier: "NumberCell")
+        numberPickerTableView.register(NotificationPickerTableViewCell.self, forCellReuseIdentifier: "notificationPickerCell")
         numberPickerTableView.layer.cornerRadius = 16
         numberPickerTableView.isScrollEnabled = false
         numberPickerTableView.separatorColor = .clear
@@ -124,7 +124,7 @@ class DaysView: UIView {
             make.top.equalTo(viajantesTitleLabel.snp.bottom).offset(designSystem.spacing.xSmallPositive)
             make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
             make.trailing.equalToSuperview().offset(designSystem.spacing.largeNegative)
-            make.height.equalTo(100)
+            make.height.equalTo(230)
         }
         
         publicTitle.snp.makeConstraints { make in

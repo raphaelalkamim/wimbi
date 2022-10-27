@@ -15,6 +15,7 @@ class MyTripViewController: UIViewController {
 
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let myTripView = MyTripView()
+    let detailView = DetailView()
     
     var roadmap = RoadmapLocal()
     var activites: [ActivityLocal] = []
