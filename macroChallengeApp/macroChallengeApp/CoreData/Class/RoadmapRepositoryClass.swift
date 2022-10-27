@@ -181,7 +181,7 @@ public class RoadmapRepository: NSManagedObject {
         toRoadmap.createdAt = fromRoadmap.createdAt
     }
     
-    func createDaysInRoadmap(fromRoadmap: Roadmaps,toRoadmap: RoadmapLocal) {
+    func createDaysInRoadmap(fromRoadmap: Roadmaps, toRoadmap: RoadmapLocal) {
         var isFirstDay = false
         for index in 0..<fromRoadmap.dayCount {
             if index == 0 {

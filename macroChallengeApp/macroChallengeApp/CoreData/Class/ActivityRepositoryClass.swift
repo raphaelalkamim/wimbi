@@ -88,11 +88,9 @@ class ActivityRepository {
         if activityLocal.day?.date != newActivity.day?.date {
             // chama os dias do roadmap
             let allDays = roadmap.day?.allObjects as [DayLocal]
-            for day in allDays {
-                if day.date == newActivity.day?.date {
+            for day in allDays where day.date == newActivity.day?.date {
                     // adiciona a atividade no dia encontrado no coreData
                     let addActivity = self.createActivity(day: day, activity: newActivity, isNew: true)
-                }
             }
             // deleta a atividade do dia antigo
             do {
