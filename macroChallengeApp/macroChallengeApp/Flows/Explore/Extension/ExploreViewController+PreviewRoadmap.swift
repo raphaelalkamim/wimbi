@@ -17,7 +17,9 @@ extension PreviewRoadmapViewController {
         previewView.bindTableView(delegate: self, dataSource: self)
         setupNavControl()
         setupConstraints()
+        self.previewView.animateCollection()
     }
+    
     func setupNavControl() {
         like = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(likeRoadmap))
         duplicate = UIBarButtonItem(image: UIImage(systemName: "plus.square.on.square"), style: .plain, target: self, action: #selector(duplicateRoadmap))
@@ -27,6 +29,7 @@ extension PreviewRoadmapViewController {
         navigationController?.navigationBar.backgroundColor = .backgroundPrimary
         navigationController?.navigationBar.barTintColor = .backgroundPrimary
     }
+    
     func setupConstraints() {
         previewView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

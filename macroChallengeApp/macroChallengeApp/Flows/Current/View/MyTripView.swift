@@ -288,7 +288,6 @@ extension MyTripView {
         activitiesTableView.dragDelegate = dragDelegate
     }
     func animateCollection() {
-        //infoTripCollectionView.reloadData()
         infoTripCollectionView.layoutIfNeeded()
         UIView.animate(withDuration: 5,
                        delay: 2,

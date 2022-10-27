@@ -197,30 +197,14 @@ extension PreviewRoadmapView {
         
     }
     func animateCollection() {
+        infoTripCollectionView.layoutIfNeeded()
+        UIView.animate(withDuration: 5,
+                       delay: 2,
+                       usingSpringWithDamping: 0.8,
+                       initialSpringVelocity: 0,
+                       options: [],
+                       animations: { self.infoTripCollectionView.scrollToItem(at: [0, 2], at: .right, animated: true) },
+                       completion: nil)
         infoTripCollectionView.reloadData()
-        layoutIfNeeded()
-        
-        let cells = infoTripCollectionView.visibleCells
-        let collectionHeight = infoTripCollectionView.bounds.size.height
-        infoTripCollectionView.scrollToItem(at: [0, 3], at: .right, animated: true)
-        sleep(UInt32(2))
-        //infoTripCollectionView.scrollToItem(at: [0, 0], at: .right, animated: true)
-
-//        var delay = 0
-//        for index in 0..<cells.count {
-//            guard let cell = infoTripCollectionView.cellForItem(at: [0, index]) as? InfoTripCollectionViewCell else { return }
-//            //cell.transform = CGAffineTransform(rotationAngle: 100)
-//            cell.transform = CGAffineTransform(translationX: 0, y: 100)
-//            UIView.animate(withDuration: 5.0,
-//                           delay: 10 * Double(delay),
-//                           usingSpringWithDamping: 0.8,
-//                           initialSpringVelocity: 0,
-//                           options: [],
-//                           animations: { cell.transform = CGAffineTransform.identity; },
-//                           completion: nil)
-//            print("working")
-//            delay += 1
-//        }
     }
-    
 }
