@@ -5,7 +5,6 @@
 //  Created by Beatriz Duque on 28/10/22.
 //
 
-
 import Foundation
 import UIKit
 
@@ -14,7 +13,6 @@ public protocol ImagePickerDelegate: AnyObject {
 }
 
 open class ImagePicker: NSObject {
-
     private let pickerController: UIImagePickerController
     private weak var presentationController: UIViewController?
     private weak var delegate: ImagePickerDelegate?
@@ -37,19 +35,22 @@ open class ImagePicker: NSObject {
             return nil
         }
 
-        return UIAlertAction(title: title, style: .default) { [unowned self] _ in
+        return UIAlertAction(title: title, style: .default) { [self] _ in
             self.pickerController.sourceType = type
             self.presentationController?.present(self.pickerController, animated: true)
         }
     }
 
     public func present(from sourceView: UIView) {
-
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.view.tintColor = .accent
+        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir", size: 18)]
+        let string = NSAttributedString(string: "Que tal personalizar sua foto de perfil?", attributes: titleAtt as [NSAttributedString.Key: Any])
+        alertController.setValue(string, forKey: "attributedTitle")
+        
         if let action = self.action(for: .photoLibrary, title: "Biblioteca de Imagens") {
             alertController.addAction(action)
         }
-
         alertController.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
 
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -57,11 +58,7 @@ open class ImagePicker: NSObject {
             alertController.popoverPresentationController?.sourceRect = sourceView.bounds
             alertController.popoverPresentationController?.permittedArrowDirections = [.down, .up]
         }
-
         self.presentationController?.present(alertController, animated: true)
-        
-      
-        
     }
 
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
@@ -72,7 +69,6 @@ open class ImagePicker: NSObject {
 }
 
 extension ImagePicker: UIImagePickerControllerDelegate {
-
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.pickerController(picker, didSelect: nil)
     }
@@ -87,5 +83,4 @@ extension ImagePicker: UIImagePickerControllerDelegate {
 }
 
 extension ImagePicker: UINavigationControllerDelegate {
-
 }

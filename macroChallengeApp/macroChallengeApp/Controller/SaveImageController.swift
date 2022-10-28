@@ -8,9 +8,8 @@
 import Foundation
 import UIKit
 
-//transforma o formato da imagem jpg e "comprimir" em string
+// transforma o formato da imagem jpg e "comprimir" em string
 class SaveImagecontroller {
-    
     // achar diretorio onde salva as imagens
     static func getDocumentDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

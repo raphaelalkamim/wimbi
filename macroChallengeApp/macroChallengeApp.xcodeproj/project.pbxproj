@@ -1491,7 +1491,7 @@
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Wimbi wants to have access to your camera in case you want to take a picture";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Wimbi wants to have access to your images so you can customize the app";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1528,7 +1528,7 @@
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Wimbi wants to have access to your camera in case you want to take a picture";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Wimbi wants to have access to your images so you can customize the app";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
