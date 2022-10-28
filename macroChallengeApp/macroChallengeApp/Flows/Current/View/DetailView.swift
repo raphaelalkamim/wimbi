@@ -114,6 +114,7 @@ class DetailView: UIView {
         self.addSubview(linkTitle)
         self.addSubview(linkButton)
         setupConstraints()
+        
     }
 
     func setupConstraints() {

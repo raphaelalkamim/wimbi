@@ -119,12 +119,33 @@ class CurrentCoordinator: Coordinator {
             value = "\(activity.budget)"
             currency = "\(activity.currencyType ?? "R$")"
         }
+        
         viewControllerToPresent.detailView.activityInfo.text = "\(starts)\(activity.hour ?? "8h")    •    \(coin)\(currency )\(value)"
         viewControllerToPresent.detailView.local.text = activity.location
         viewControllerToPresent.detailView.details.text = activity.tips
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 15)]
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 17)]
         viewControllerToPresent.detailView.linkButton.setAttributedTitle(NSAttributedString(string: "\(activity.link ?? "https://www.google.com")", attributes: attributes), for: .normal)
         viewControllerToPresent.delegate = tripVC
+        
+        if activity.location?.isEmpty == true {
+            viewControllerToPresent.detailView.local.text = "Endereço não disponibilizado"
+            viewControllerToPresent.detailView.local.textColor = .caption
+
+        }
+        if activity.category == "empty" {
+            viewControllerToPresent.detailView.activityIcon.image = UIImage(named: "empty")
+            viewControllerToPresent.detailView.activityCategory.text = "No type"
+        }
+        if activity.link?.isEmpty == true {
+            viewControllerToPresent.detailView.linkButton.setAttributedTitle(NSAttributedString(string: "Contato indisponível ", attributes: attributes), for: .normal)
+            viewControllerToPresent.detailView.linkButton.isEnabled = false
+            viewControllerToPresent.detailView.linkButton.setTitleColor(.caption, for: .normal)
+        }
+        
+        if activity.tips?.isEmpty == true {
+            viewControllerToPresent.detailView.details.text = "Nenhum detalhe informado"
+            viewControllerToPresent.detailView.details.textColor = .caption
+        }
         
         if let sheet = viewControllerToPresent.sheetPresentationController {
             sheet.detents = [.medium(), .large()]

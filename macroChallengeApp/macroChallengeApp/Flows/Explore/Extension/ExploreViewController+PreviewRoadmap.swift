@@ -238,7 +238,7 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
         let activity = self.roadmap.days[daySelected].activity[indexPath.row]
         self.coordinator?.showActivitySheet(tripVC: self, activity: activity)
         previewView.transparentView.isHidden = false
-
+        navigationController?.navigationBar.backgroundColor = UIColor(white: 0, alpha: 0.001)
     }
 }
 

@@ -126,7 +126,10 @@ class PreviewRoadmapView: UIView {
         }
         
         transparentView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(self.snp.top)
+            make.bottom.equalTo(self.snp.bottom)
+            make.left.right.equalTo(self)
+            
         }
         
         contentView.snp.makeConstraints { make in

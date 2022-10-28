@@ -96,6 +96,26 @@ class ExploreCoordinator: Coordinator {
         viewControllerToPresent.detailView.linkButton.setAttributedTitle(NSAttributedString(string: "\(activity.link)", attributes: attributes), for: .normal)
         viewControllerToPresent.delegateExplore = tripVC
         
+        if activity.location.isEmpty == true {
+            viewControllerToPresent.detailView.local.text = "Endereço não disponibilizado"
+            viewControllerToPresent.detailView.local.textColor = .caption
+
+        }
+        if activity.category == "empty" {
+            viewControllerToPresent.detailView.activityIcon.image = UIImage(named: "empty")
+            viewControllerToPresent.detailView.activityCategory.text = "No type"
+        }
+        if activity.link.isEmpty == true {
+            viewControllerToPresent.detailView.linkButton.setAttributedTitle(NSAttributedString(string: "Contato indisponível ", attributes: attributes), for: .normal)
+            viewControllerToPresent.detailView.linkButton.isEnabled = false
+            viewControllerToPresent.detailView.linkButton.setTitleColor(.caption, for: .normal)
+        }
+        
+        if activity.tips.isEmpty == true {
+            viewControllerToPresent.detailView.details.text = "Nenhum detalhe informado"
+            viewControllerToPresent.detailView.details.textColor = .caption
+        }
+        
         if let sheet = viewControllerToPresent.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.largestUndimmedDetentIdentifier = .medium
@@ -105,6 +125,7 @@ class ExploreCoordinator: Coordinator {
             sheet.prefersGrabberVisible = true
 
         }
+
         navigationController.present(viewControllerToPresent, animated: true, completion: nil)
         
     }

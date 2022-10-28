@@ -209,7 +209,7 @@ extension MyTripViewController: UITableViewDelegate {
 
         self.coordinator?.showActivitySheet(tripVC: self, activity: activity)
         self.coordinatorCurrent?.showActivitySheet(tripVC: self, activity: activity)
-
+        navigationController?.navigationBar.backgroundColor = UIColor(white: 0, alpha: 0.001)
         myTripView.transparentView.isHidden = false
     }
 
