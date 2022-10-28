@@ -24,10 +24,8 @@ class ExploreViewController: UIViewController {
         emptyState(conection: network.isReachable)
         
         self.setContextMenu()
-    
         self.locationSearchTable.coordinator = coordinator
         self.setupExplorerView()
-        
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
             print(userID)

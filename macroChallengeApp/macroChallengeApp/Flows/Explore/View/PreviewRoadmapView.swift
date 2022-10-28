@@ -206,5 +206,15 @@ extension PreviewRoadmapView {
         activitiesTableView.dataSource = dataSource
         
     }
-    
+    func animateCollection() {
+        infoTripCollectionView.layoutIfNeeded()
+        UIView.animate(withDuration: 5,
+                       delay: 2,
+                       usingSpringWithDamping: 0.8,
+                       initialSpringVelocity: 0,
+                       options: [],
+                       animations: { self.infoTripCollectionView.scrollToItem(at: [0, 2], at: .right, animated: true) },
+                       completion: nil)
+        infoTripCollectionView.reloadData()
+    }
 }

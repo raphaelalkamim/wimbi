@@ -32,6 +32,7 @@
 		1359F15828DA48FD009509DF /* UserRepositoryClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F15728DA48FD009509DF /* UserRepositoryClass.swift */; };
 		135AC6A328DE1B01003E1CF3 /* DesignImagesActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135AC6A228DE1B01003E1CF3 /* DesignImagesActivities.swift */; };
 		135AC6A528DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */; };
+		13732800290B1EB50021231E /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137327FF290B1EB40021231E /* CurrencyController.swift */; };
 		1379743B28D5162C00AEA662 /* ReviewTravelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379743A28D5162C00AEA662 /* ReviewTravelView.swift */; };
 		1379743D28D5165200AEA662 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */; };
 		1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744028D8E55000AEA662 /* CurrentViewController.swift */; };
@@ -191,6 +192,7 @@
 		1359F15728DA48FD009509DF /* UserRepositoryClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryClass.swift; sourceTree = "<group>"; };
 		135AC6A228DE1B01003E1CF3 /* DesignImagesActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImagesActivities.swift; sourceTree = "<group>"; };
 		135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignActivitiesImages.swift; sourceTree = "<group>"; };
+		137327FF290B1EB40021231E /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
 		1379743A28D5162C00AEA662 /* ReviewTravelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTravelView.swift; sourceTree = "<group>"; };
 		1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSearchTableViewController.swift; path = macroChallengeApp/Components/LocationSearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1379744028D8E55000AEA662 /* CurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
@@ -749,6 +751,7 @@
 			children = (
 				13C8A11528C68B7700994196 /* DataManager.swift */,
 				133BE5B3290092590045E742 /* NetworkMonitor.swift */,
+				137327FF290B1EB40021231E /* CurrencyController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1213,6 +1216,7 @@
 				131272D928E6249E000B7968 /* ExploreViewController.swift in Sources */,
 				13BD4FFF28D90F9700C0EA7C /* DefaultDesignSystemImages.swift in Sources */,
 				1359F15628DA48F3009509DF /* DayRepositoryClass.swift in Sources */,
+				13732800290B1EB50021231E /* CurrencyController.swift in Sources */,
 				13F994E728D393CE00B077C0 /* CategoryViewController.swift in Sources */,
 				13C8A11128C6833D00994196 /* Like.swift in Sources */,
 				A028755C2908DD8000894B6D /* DetailTableViewCell.swift in Sources */,

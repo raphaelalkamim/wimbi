@@ -19,7 +19,6 @@ extension MyTripViewController {
     func setupMyTripView() {
         view.addSubview(myTripView)
         setupConstraints()
-        
         // se estiver visualizando a viagem e estiver conectado
         network.startMonitoring()
         if coordinator != nil && network.isReachable {
@@ -28,7 +27,12 @@ extension MyTripViewController {
             let shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareMyTrip))
             self.navigationItem.rightBarButtonItems = [shareItem, editItem]
         }
-        
+        myTripView.setupContent(roadmap: roadmap)
+        myTripView.bindCollectionView(delegate: self, dataSource: self)
+        myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
+        myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
+
+        myTripView.animateCollection()
     }
     func setupConstraints() {
         myTripView.snp.makeConstraints { make in
@@ -112,7 +116,7 @@ extension MyTripViewController: UICollectionViewDelegate {
             updateConstraintsTable()
             self.myTripView.activitiesTableView.reloadData()
             Task {
-                await self.updateBudget()
+                await currencyController.updateBudget(activites: activites, userCurrency: self.userCurrency)
             }
             self.updateTotalBudgetValue()
         }
@@ -223,11 +227,7 @@ extension MyTripViewController: UITableViewDelegate {
         let deleteAction = UIContextualAction(style: .normal,
                                               title: "Delete".localized()) { [weak self] _, _, completionHandler in
             self?.deleteItem(indexPath: indexPath, tableView: tableView)
-            Task {
-                await self!.updateBudget()
-                await self!.updateBudgetTotal()
-                await self!.updateTotalBudgetValue()
-            }
+            self?.updateAllBudget()
             completionHandler(true)
         }
         editAction.backgroundColor = .blueBeach

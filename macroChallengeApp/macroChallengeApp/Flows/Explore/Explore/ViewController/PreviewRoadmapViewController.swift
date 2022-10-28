@@ -20,6 +20,14 @@ class PreviewRoadmapViewController: UIViewController {
     var daySelected = 0
     var likeId = 0
     
+    var budgetTotal: Double = 0
+    let currencyController = CurrencyController()
+    
+    lazy var userCurrency: String = {
+        let userC = currencyController.getUserCurrency()
+        return userC
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -118,5 +126,17 @@ class PreviewRoadmapViewController: UIViewController {
                 _ = ActivityRepository.shared.createActivity(day: days[index], activity: activity, isNew: true)
             }
         }
+    }
+    func updateAllBudget() {
+        Task {
+            await budgetTotal = currencyController.updateBudgetTotal(userCurrency: self.userCurrency, days: self.roadmap.days)
+            roadmap.budget = budgetTotal
+            RoadmapRepository.shared.saveContext()
+            self.updateTotalBudgetValue()
+        }
+    }
+    func updateTotalBudgetValue() {
+        guard let cell = previewView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
+        cell.infoTitle.text = "\(self.userCurrency)\(self.budgetTotal)"
     }
 }
