@@ -60,6 +60,8 @@ class ActivityRepository {
         newActivity.budget = activity.budget
         newActivity.currencyType = activity.currencyType
         newActivity.tips = activity.tips
+        newActivity.address = activity.address
+        newActivity.link = activity.link
         
         day.addToActivity(newActivity)
         
@@ -83,6 +85,8 @@ class ActivityRepository {
         toActivity.budget = fromActivity.budget
         toActivity.currencyType = fromActivity.currency
         toActivity.tips = fromActivity.tips
+        toActivity.address = fromActivity.address
+        toActivity.link = fromActivity.link
     }
     func updateActivityDay(roadmap: RoadmapLocal, oldDay: DayLocal, activityLocal: ActivityLocal, newActivity: Activity) {
         if activityLocal.day?.date != newActivity.day?.date {

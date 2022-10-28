@@ -225,7 +225,7 @@ extension MyTripViewController: UITableViewDelegate {
                                             category: "\(categoryText) \(activity.category?.capitalized.localized() ?? "Praia")",
                                             hour: "\(dateText) \(activity.hour ?? "8h")    •",
                                             budget: "    \(budgetText) \(budget)",
-                                            location: activity.location ?? "SP",
+                                            location: activity.address ?? "SP",
                                             details: activity.tips ?? "Details",
                                             icon: activity.category ?? "Praia")
         
@@ -234,7 +234,7 @@ extension MyTripViewController: UITableViewDelegate {
                                                    category: "\(categoryText) \(activity.category?.capitalized.localized() ?? "Praia")",
                                                    hour: "\(dateText) \(activity.hour ?? "8h")    •",
                                                    budget: "    \(budgetText) \(budget)",
-                                                   location: activity.location ?? "SP",
+                                                   location: activity.address ?? "SP",
                                                    details: activity.tips ?? "Details",
                                                    icon: activity.category ?? "Praia")
 

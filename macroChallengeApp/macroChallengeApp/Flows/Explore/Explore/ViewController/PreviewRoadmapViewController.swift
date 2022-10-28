@@ -55,6 +55,7 @@ class PreviewRoadmapViewController: UIViewController {
             self.previewView.cover.image = UIImage(named: roadmap.imageId)
             self.previewView.title.text = roadmap.name
             self.roadmap = roadmap
+
             self.roadmap.days.sort {
                 $0.id < $1.id
             }
@@ -62,7 +63,7 @@ class PreviewRoadmapViewController: UIViewController {
             
             for index in 0..<self.roadmap.days.count {
                 self.roadmap.days[index].activity.sort {
-                    $0.id < $1.id
+                    $0.hour < $1.hour
                 }
             }
             
