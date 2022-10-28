@@ -487,7 +487,9 @@ class DataManager {
             "location": activity.location,
             "hour": activity.hour,
             "budget": activity.budget,
-            "currency": activity.currency
+            "currency": activity.currency,
+            "address": activity.address,
+            "link": activity.link
         ]
         
         let session = URLSession.shared
@@ -542,7 +544,9 @@ class DataManager {
             "location": activity.location,
             "hour": activity.hour,
             "budget": activity.budget,
-            "currency": activity.currency
+            "currency": activity.currency,
+            "address": activity.address,
+            "link": activity.link
         ]
         
         let session = URLSession.shared
