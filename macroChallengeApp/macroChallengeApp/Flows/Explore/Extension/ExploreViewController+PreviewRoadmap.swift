@@ -17,7 +17,9 @@ extension PreviewRoadmapViewController {
         previewView.bindTableView(delegate: self, dataSource: self)
         setupNavControl()
         setupConstraints()
+        self.previewView.animateCollection()
     }
+    
     func setupNavControl() {
         like = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(likeRoadmap))
         duplicate = UIBarButtonItem(image: UIImage(systemName: "plus.square.on.square"), style: .plain, target: self, action: #selector(duplicateRoadmap))
@@ -27,6 +29,7 @@ extension PreviewRoadmapViewController {
         navigationController?.navigationBar.backgroundColor = .backgroundPrimary
         navigationController?.navigationBar.barTintColor = .backgroundPrimary
     }
+    
     func setupConstraints() {
         previewView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -113,7 +116,7 @@ extension PreviewRoadmapViewController: UICollectionViewDelegate {
         }
     }
 }
-
+// MARK: CollectionView
 extension PreviewRoadmapViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == previewView.infoTripCollectionView {
@@ -198,7 +201,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
         }
     }
 }
-
+// MARK: TableView
 extension PreviewRoadmapViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
@@ -213,7 +216,6 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCell.identifier, for: indexPath) as? ActivityTableViewCell else {
             fatalError("TableCell not found")
-            
         }
         
         let activity = roadmap.days[self.daySelected].activity[indexPath.row]
@@ -222,11 +224,12 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
             cell.localButton.isHidden = true
         }
         cell.localButton.addTarget(self, action: #selector(addRoute(sender:)), for: .touchUpInside)
+        
         cell.setupDaysActivities(hour: activity.hour, currency: activity.currency,
                                  value: String(activity.budget),
                                  name: activity.name)
         cell.activityIcon.image = UIImage(named: activity.category)
-        
+        self.updateAllBudget()
         return cell
     }
     

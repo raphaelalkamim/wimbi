@@ -287,4 +287,14 @@ extension MyTripView {
         activitiesTableView.dataSource = dataSource
         activitiesTableView.dragDelegate = dragDelegate
     }
+    func animateCollection() {
+        infoTripCollectionView.layoutIfNeeded()
+        UIView.animate(withDuration: 5,
+                       delay: 2,
+                       usingSpringWithDamping: 0.8,
+                       initialSpringVelocity: 0,
+                       options: [.allowAnimatedContent],
+                       animations: { self.infoTripCollectionView.scrollToItem(at: [0, 3], at: .right, animated: true) },
+                       completion: nil)
+    }
 }
