@@ -13,7 +13,7 @@ class PreviewRoadmapView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let scrollView = UIScrollView()
     let contentView = UIView()
-    
+    let transparentView = UIView()
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
@@ -94,7 +94,7 @@ class PreviewRoadmapView: UIView {
         table.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCell.identifier)
         table.isScrollEnabled = false
         table.separatorColor = .clear
-        table.allowsSelection = false
+        table.allowsSelection = true
         table.backgroundColor = .backgroundPrimary
         return table
     }()
@@ -103,6 +103,9 @@ class PreviewRoadmapView: UIView {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        self.addSubview(transparentView)
+        transparentView.isHidden = true
+        transparentView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         contentView.addSubview(infoTripCollectionView)
         contentView.addSubview(calendarCollectionView)
         contentView.addSubview(activitiesTableView)
@@ -120,6 +123,10 @@ class PreviewRoadmapView: UIView {
             make.top.equalTo(self.snp.top)
             make.bottom.equalTo(self.snp.bottom)
             make.left.right.equalTo(self)
+        }
+        
+        transparentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         
         contentView.snp.makeConstraints { make in

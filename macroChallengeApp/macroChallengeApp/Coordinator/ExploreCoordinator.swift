@@ -72,6 +72,43 @@ class ExploreCoordinator: Coordinator {
         delegate?.didFinishPresent(of: self, isNewRoadmap: false)
     }
     
+    func showActivitySheet(tripVC: PreviewRoadmapViewController, activity: Activity) {
+        var value = ""
+        var currency = ""
+        let starts = "Starts at: ".localized()
+        let coin = "Value: ".localized()
+        let type = "Type: ".localized()
+        let viewControllerToPresent = DetailViewController()
+        viewControllerToPresent.detailView.activityTitle.text = activity.name
+        viewControllerToPresent.detailView.activityIcon.image = UIImage(named: "\(activity.category )Selected")
+        viewControllerToPresent.detailView.activityCategory.text = type + (activity.category.capitalized.localized())
+        if activity.budget == 0.0 {
+            value = "Free"
+            currency = ""
+        } else {
+            value = "\(activity.budget)"
+            currency = "\(activity.currency)"
+        }
+        viewControllerToPresent.detailView.activityInfo.text = "\(starts)\(activity.hour)    •    \(coin)\(currency )\(value)"
+        viewControllerToPresent.detailView.local.text = activity.location
+        viewControllerToPresent.detailView.details.text = activity.tips
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 15)]
+        viewControllerToPresent.detailView.linkButton.setAttributedTitle(NSAttributedString(string: "\(activity.link)", attributes: attributes), for: .normal)
+        viewControllerToPresent.delegateExplore = tripVC
+        
+        if let sheet = viewControllerToPresent.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+            sheet.prefersGrabberVisible = true
+
+        }
+        navigationController.present(viewControllerToPresent, animated: true, completion: nil)
+        
+    }
+    
     func setupBarAppearence() {
         let designSystem: DesignSystem = DefaultDesignSystem.shared
         
