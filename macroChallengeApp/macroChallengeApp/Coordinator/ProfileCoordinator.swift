@@ -105,15 +105,30 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func showActivitySheet(tripVC: MyTripViewController, name: String, category: String, hour: String, budget: String, location: String, details: String, icon: String) {
+    func showActivitySheet(tripVC: MyTripViewController, activity: ActivityLocal) {
+        var value = ""
+        var currency = ""
+        let starts = "Starts at: ".localized()
+        let coin = "Value: ".localized()
+        let type = "Type: ".localized()
         let viewControllerToPresent = DetailViewController()
-        viewControllerToPresent.detailView.activityTitle.text = name
-        viewControllerToPresent.detailView.activityIcon.image = UIImage(named: "\(icon)Selected")
-        viewControllerToPresent.detailView.activityCategory.text = category
-        viewControllerToPresent.detailView.activityInfo.text = hour + budget
-        viewControllerToPresent.detailView.local.text = location
-        viewControllerToPresent.detailView.details.text = details
+        viewControllerToPresent.detailView.activityTitle.text = activity.name
+        viewControllerToPresent.detailView.activityIcon.image = UIImage(named: "\(activity.category ?? "food")Selected")
+        viewControllerToPresent.detailView.activityCategory.text = type + (activity.category?.capitalized.localized() ?? "Category")
+        if activity.budget == 0.0 {
+            value = "Free"
+            currency = ""
+        } else {
+            value = "\(activity.budget)"
+            currency = "\(activity.currencyType ?? "R$")"
+        }
+        viewControllerToPresent.detailView.activityInfo.text = "\(starts)\(activity.hour ?? "8h")    •    \(coin)\(currency )\(value)"
+        viewControllerToPresent.detailView.local.text = activity.location
+        viewControllerToPresent.detailView.details.text = activity.tips
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 15)]
+        viewControllerToPresent.detailView.linkButton.setAttributedTitle(NSAttributedString(string: "\(activity.link ?? "https://www.google.com")", attributes: attributes), for: .normal)
         viewControllerToPresent.delegate = tripVC
+        
         if let sheet = viewControllerToPresent.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.largestUndimmedDetentIdentifier = .medium

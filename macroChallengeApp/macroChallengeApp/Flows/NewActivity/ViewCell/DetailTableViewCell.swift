@@ -64,6 +64,6 @@ extension DetailTableViewCell: UITextViewDelegate {
         let currentText = textView.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
-        return updatedText.count <= 400
+        return updatedText.count <= 300
     }
 }

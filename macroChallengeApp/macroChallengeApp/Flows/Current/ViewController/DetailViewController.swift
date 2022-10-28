@@ -12,10 +12,9 @@ class DetailViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
     let detailView = DetailView()
     let myTripView = MyTripView()
-    var roadmaps = RoadmapRepository.shared.getRoadmap()
-    var roadmap: RoadmapLocal = RoadmapLocal()
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     weak var delegate: DismissBlur?
+    let activity = ActivityLocal()
     
     override func viewDidLoad() {
         super.viewDidLoad()

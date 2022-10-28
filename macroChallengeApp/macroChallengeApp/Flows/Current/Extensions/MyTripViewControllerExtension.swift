@@ -205,34 +205,10 @@ extension MyTripViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var budget = ""
         let activity = self.activites[indexPath.row]
-        let categoryText = "Type:".localized()
-        let dateText = "Starts at:".localized()
-        let budgetText = "Value:".localized()
 
-        if Double(self.activites[indexPath.row].budget) == 0 {
-            budget = "Free".localized()
-        } else {
-            budget = "\(activity.currencyType ?? "R$")\(activity.budget)"
-        }
-        self.coordinator?.showActivitySheet(tripVC: self,
-                                            name: activity.name ?? "Ola",
-                                            category: "\(categoryText) \(activity.category?.capitalized.localized() ?? "Praia")",
-                                            hour: "\(dateText) \(activity.hour ?? "8h")    •",
-                                            budget: "    \(budgetText) \(budget)",
-                                            location: activity.address ?? "SP",
-                                            details: activity.tips ?? "Details",
-                                            icon: activity.category ?? "Praia")
-        
-        self.coordinatorCurrent?.showActivitySheet(tripVC: self,
-                                                   name: activity.name ?? "Ola",
-                                                   category: "\(categoryText) \(activity.category?.capitalized.localized() ?? "Praia")",
-                                                   hour: "\(dateText) \(activity.hour ?? "8h")    •",
-                                                   budget: "    \(budgetText) \(budget)",
-                                                   location: activity.address ?? "SP",
-                                                   details: activity.tips ?? "Details",
-                                                   icon: activity.category ?? "Praia")
+        self.coordinator?.showActivitySheet(tripVC: self, activity: activity)
+        self.coordinatorCurrent?.showActivitySheet(tripVC: self, activity: activity)
 
         myTripView.transparentView.isHidden = false
     }

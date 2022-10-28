@@ -98,6 +98,32 @@ class NewActivityView: UIView {
         return table
     }()
     
+    lazy var contactLabel: UILabel = {
+        let label = UILabel()
+        label.text = "CONTACT".localized()
+        label.stylize(with: designSystem.text.caption)
+        return label
+    }()
+    
+    lazy var contactCaption: UILabel = {
+        let title = UILabel()
+        title.text = "Enter here the location's website or phone number.".localized()
+        title.textColor = .caption
+        title.stylize(with: designSystem.text.caption)
+        return title
+    }()
+    
+    lazy var contactTable: UITableView = {
+        let table = UITableView()
+        table.register(TextFieldTableViewCell.self, forCellReuseIdentifier: TextFieldTableViewCell.identifier)
+        table.layer.cornerRadius = 16
+        table.isScrollEnabled = false
+        table.allowsSelection = false
+        table.isUserInteractionEnabled = true
+        table.backgroundColor = .backgroundCell
+        return table
+    }()
+    
     lazy var detailLabel: UILabel = {
         let label = UILabel()
         label.text = "DETAILS".localized()
@@ -147,6 +173,10 @@ extension NewActivityView {
         scrollView.addSubview(detailTable)
         contentView.addSubview(detailCaption)
         
+        contentView.addSubview(contactLabel)
+        scrollView.addSubview(contactTable)
+        contentView.addSubview(contactCaption)
+        
         setupConstraints()
     }
     
@@ -159,7 +189,7 @@ extension NewActivityView {
 
         contentView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top)
-            make.bottom.equalTo(valueTable.snp.bottom)
+            make.bottom.equalTo(detailCaption.snp.bottom)
             make.left.right.equalTo(self)
         }
         
@@ -215,8 +245,29 @@ extension NewActivityView {
             make.height.equalTo(100)
         }
         
-        detailLabel.snp.makeConstraints { make in
+        contactLabel.snp.makeConstraints { make in
             make.top.equalTo(valueTable.snp.bottom).offset(designSystem.spacing.xLargePositive)
+            make.leading.equalTo(contentView.snp.leading).inset(32)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+        }
+
+        contactTable.snp.makeConstraints { make in
+            make.top.equalTo(contactLabel.snp.bottom).offset(designSystem.spacing.xSmallPositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+            make.height.equalTo(49)
+        }
+        
+        contactCaption.snp.makeConstraints { make in
+            make.leading.equalTo(designSystem.spacing.xxLargePositive)
+            make.trailing.equalTo(designSystem.spacing.xxLargeNegative)
+            make.top.equalTo(contactTable.snp.bottom).inset(designSystem.spacing.mediumNegative)
+//            make.bottom.equalTo(scrollView.snp.bottom).inset(designSystem.spacing.xxLargePositive)
+
+        }
+        
+        detailLabel.snp.makeConstraints { make in
+            make.top.equalTo(contactCaption.snp.bottom).offset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(contentView.snp.leading).inset(32)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
         }
@@ -225,7 +276,7 @@ extension NewActivityView {
             make.top.equalTo(detailLabel.snp.bottom).offset(designSystem.spacing.xSmallPositive)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
-            make.height.equalTo(100)
+            make.height.equalTo(98)
         }
         
         detailCaption.snp.makeConstraints { make in
@@ -251,6 +302,9 @@ extension NewActivityView {
         
         detailTable.delegate = delegate
         detailTable.dataSource = dataSource
+        
+        contactTable.delegate = delegate
+        contactTable.dataSource = dataSource
 
     }
     
