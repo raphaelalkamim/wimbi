@@ -100,7 +100,16 @@ class EditProfileView: UIView {
         contentView.addSubview(usernameTextField)
         setupConstraints()
     }
-    
+    func setupImage(image: UIImage) {
+        self.imageProfile.image = image
+        imageProfile.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.topMargin).inset(designSystem.spacing.mediumPositive)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(120)
+            make.width.equalTo(120)
+        }
+        imageProfile.layer.cornerRadius = 60
+    }
     func setupConstraints() {
         contentView.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -113,7 +122,6 @@ class EditProfileView: UIView {
             make.centerX.equalToSuperview()
             make.height.equalTo(120)
             make.width.equalTo(120)
-
         }
         
         editButton.snp.makeConstraints { make in

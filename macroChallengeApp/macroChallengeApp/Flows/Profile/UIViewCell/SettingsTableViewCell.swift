@@ -58,6 +58,7 @@ extension SettingsTableViewCell {
         self.addSubview(title)
         self.addSubview(icon)
         self.addSubview(chevron)
+        self.selectionStyle = .none
         setupConstraints()
     }
     

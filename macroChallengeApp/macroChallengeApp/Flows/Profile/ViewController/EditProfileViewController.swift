@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import PhotosUI
 
 class EditProfileViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
@@ -15,11 +16,13 @@ class EditProfileViewController: UIViewController {
     let editProfileView = EditProfileView()
     var user: User?
     let network: NetworkMonitor = NetworkMonitor.shared
+    var imagePicker: ImagePicker!
+    var access = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         network.startMonitoring()
-        self.view.backgroundColor = .backgroundPrimary
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         self.setupEditProfileView()
         editProfileView.editButton.addTarget(self, action: #selector(editPhoto), for: .touchUpInside)
         if let data = UserDefaults.standard.data(forKey: "user") {
@@ -73,24 +76,42 @@ class EditProfileViewController: UIViewController {
         self.editProfileView.usernameTextField.text = user.usernameApp
     }
     
-    @objc func editPhoto() {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.view.tintColor = .accent
+    @objc func editPhoto(_ sender: Any) {
+//        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//        alert.view.tintColor = .accent
+//
+//        alert.addAction(UIAlertAction(title: "Remove current photo".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+//            print("Remover")
+//        }))
+//        alert.addAction(UIAlertAction(title: "Take photo".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+//            print("Tirar foto")
+//        }))
+//        alert.addAction(UIAlertAction(title: "Choose from library".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+//            print("Escolher")
+//        }))
+//        alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+//            self.navigationController?.dismiss(animated: true)
+//        }))
+//
+//        self.navigationController?.present(alert, animated: true)
+        let photos = PHPhotoLibrary.authorizationStatus()
+            if photos == .notDetermined {
+                PHPhotoLibrary.requestAuthorization({status in
+                    if status != .denied {
+                        self.access = true
 
-        alert.addAction(UIAlertAction(title: "Remove current photo".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-            print("Remover")
-        }))
-        alert.addAction(UIAlertAction(title: "Take photo".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-            print("Tirar foto")
-        }))
-        alert.addAction(UIAlertAction(title: "Choose from library".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-            print("Escolher")
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
-            self.navigationController?.dismiss(animated: true)
-        }))
-        
-        self.navigationController?.present(alert, animated: true)
+                    } else {
+                        self.access = false
+                    }
+                })
+            } else {
+            let authorization = PHPhotoLibrary.authorizationStatus()
+            if authorization != .denied {
+                self.imagePicker.present(from: (sender as? UIView)!)
+            } else {
+                print("Nao permitido")
+            }
+        }
     }
 }
 
@@ -102,6 +123,15 @@ extension EditProfileViewController {
     func setupConstraints() {
         editProfileView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+    }
+}
+
+extension EditProfileViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        if let imageNew = image {
+            self.editProfileView.setupImage(image: imageNew)
+            // SaveImagecontroller.saveToFiles(image: imageNew)
         }
     }
 }
