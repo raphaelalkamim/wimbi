@@ -264,7 +264,12 @@ extension MyTripViewController: UITableViewDataSource {
                                  value: String(self.activites[indexPath.row].budget),
                                  name: self.activites[indexPath.row].name ?? "Nova atividade")
         cell.setupCategoryImage(image: self.activites[indexPath.row].category ?? "empty")
+        if self.activites[indexPath.row].address?.isEmpty == true {
+            cell.localButton.isHidden = true
+        }
+
         return cell
+     
     }
     
 }
