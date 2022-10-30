@@ -135,6 +135,7 @@ class NewActivityView: UIView {
         let title = UILabel()
         title.text = "Describe here curiosities, tips or interesting facts about the place.".localized()
         title.textColor = .caption
+        title.numberOfLines = 0
         title.stylize(with: designSystem.text.caption)
         return title
     }()
@@ -283,7 +284,7 @@ extension NewActivityView {
             make.leading.equalTo(designSystem.spacing.xxLargePositive)
             make.trailing.equalTo(designSystem.spacing.xxLargeNegative)
             make.top.equalTo(detailTable.snp.bottom).inset(designSystem.spacing.mediumNegative)
-            make.bottom.equalTo(scrollView.snp.bottom).inset(designSystem.spacing.xxLargePositive)
+            make.bottomMargin.equalTo(scrollView.snp.bottom).inset(designSystem.spacing.xxLargePositive)
 
         }
     }
