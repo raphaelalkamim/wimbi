@@ -38,7 +38,7 @@ class CurrentCountDown: UIView {
     lazy var image: UIImageView = {
         let image = UIImageView()
         image.image = designSystem.images.compass
-        image.contentMode = .scaleToFill
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
@@ -52,7 +52,7 @@ class CurrentCountDown: UIView {
     
     lazy var timer: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Avenir-Black", size: 90)
+        label.font = UIFont(name: "Avenir-Black", size: 100)
         label.numberOfLines = 0
         label.textColor = .textPrimary
         label.textAlignment = .left
@@ -99,13 +99,13 @@ extension CurrentCountDown {
         }
         
         subtitle.snp.makeConstraints { make in
-            make.top.equalTo(image.snp.bottom).offset(designSystem.spacing.xxLargePositive)
+            make.bottom.equalTo(timer.snp.top).offset(designSystem.spacing.mediumPositive)
             make.trailing.leading.equalToSuperview().inset(designSystem
                 .spacing.xxLargePositive)
         }
         
         timer.snp.makeConstraints { make in
-            make.top.equalTo(subtitle.snp.bottom).inset(designSystem.spacing.mediumPositive)
+            make.bottomMargin.equalTo(self.snp.bottomMargin).inset(designSystem.spacing.smallPositive)
             make.leading.equalToSuperview().inset(designSystem.spacing.xLargePositive)
         }
         

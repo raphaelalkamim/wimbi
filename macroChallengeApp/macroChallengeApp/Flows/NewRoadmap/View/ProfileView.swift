@@ -181,8 +181,9 @@ class ProfileView: UIView {
 
         }
         emptyStateImage.snp.makeConstraints { make in
-            make.top.equalTo(roadmapTitle.snp.bottom).inset(-140)
-            make.centerX.equalTo(contentView.snp.centerX)
+//            make.top.equalTo(roadmapTitle.snp.bottom).inset(-UIScreen.main.bounds.height / 7)
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY).offset(48)
             make.height.equalTo(100)
         }
     }
