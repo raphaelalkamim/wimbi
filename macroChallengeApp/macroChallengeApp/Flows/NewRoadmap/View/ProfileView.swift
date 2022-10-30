@@ -83,7 +83,7 @@ class ProfileView: UIView {
     lazy var myRoadmapCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
-        layout.itemSize = CGSize(width: 170, height: 165)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2.1 - designSystem.spacing.xLargePositive, height: 165)
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
         collectionView.isScrollEnabled = false

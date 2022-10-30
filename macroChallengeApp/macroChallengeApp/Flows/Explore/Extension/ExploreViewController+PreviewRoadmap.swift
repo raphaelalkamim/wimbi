@@ -21,6 +21,7 @@ extension PreviewRoadmapViewController {
         previewView.bindTableView(delegate: self, dataSource: self)
         setupNavControl()
         setupConstraints()
+        updateConstraintsTable()
         self.previewView.animateCollection()
     }
     
