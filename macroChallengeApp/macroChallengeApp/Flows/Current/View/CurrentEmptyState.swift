@@ -30,7 +30,8 @@ class CurrentEmptyState: UIView {
     lazy var image: UIImageView = {
         let image = UIImageView()
         image.image = designSystem.images.flora
-        image.contentMode = .scaleToFill
+        image.contentMode = .scaleAspectFill
+
         return image
     }()
     
@@ -64,7 +65,7 @@ extension CurrentEmptyState {
             make.width.equalTo(UIScreen.main.bounds.width / 1.5)
         }
         subtitle.snp.makeConstraints { make in
-            make.top.equalTo(image.snp.bottom).offset(designSystem.spacing.xxLargePositive)
+            make.top.equalTo(image.snp.bottom).inset(-40)
             make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
             make.width.equalToSuperview().inset(50)
         }

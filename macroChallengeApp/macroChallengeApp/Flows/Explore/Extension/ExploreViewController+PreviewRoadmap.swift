@@ -10,6 +10,10 @@ import UIKit
 import CoreLocation
 import MapKit
 
+protocol DismissBlurExplore: AnyObject {
+    func dismissBlur()
+}
+
 extension PreviewRoadmapViewController {
     func setupPreviewRoadmapView() {
         view.addSubview(previewView)
@@ -17,6 +21,7 @@ extension PreviewRoadmapViewController {
         previewView.bindTableView(delegate: self, dataSource: self)
         setupNavControl()
         setupConstraints()
+        updateConstraintsTable()
         self.previewView.animateCollection()
     }
     
@@ -234,6 +239,15 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("fsfs")
+        let activity = self.roadmap.days[daySelected].activity[indexPath.row]
+        self.coordinator?.showActivitySheet(tripVC: self, activity: activity)
+        previewView.transparentView.isHidden = false
+        navigationController?.navigationBar.backgroundColor = UIColor(white: 0, alpha: 0.001)
+    }
+}
+
+extension PreviewRoadmapViewController: DismissBlurExplore {
+    func dismissBlur() {
+        previewView.transparentView.isHidden = true
     }
 }
