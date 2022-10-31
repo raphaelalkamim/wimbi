@@ -95,7 +95,7 @@ extension CalendarCollectionViewCell {
     }
     func selectedButton() {
         dayButton.backgroundColor = designSystem.palette.accent
-        dayButton.setTitleColor(.white, for: .normal)
+        dayButton.setTitleColor(designSystem.palette.backgroundCell, for: .normal)
     }
     func disable() {
         dayButton.backgroundColor = designSystem.palette.backgroundPrimary
