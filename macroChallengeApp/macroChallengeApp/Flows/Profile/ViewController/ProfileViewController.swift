@@ -48,6 +48,9 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         self.setupProfileView()
         profileView.updateConstraintsCollection()
         
+        self.tutorialTimer()
+        profileView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
+        
         profileView.bindColletionView(delegate: self, dataSource: self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
         self.setContextMenu()
@@ -85,6 +88,20 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     @objc func profileSettings() {
         coordinator?.settings(profileVC: self)
+    }
+    
+    func tutorialTimer() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.profileView.tutorialView.isHidden = false
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            self.profileView.tutorialView.removeFromSuperview()
+        }
+    }
+    
+    @objc func tutorial() {
+        profileView.tutorialView.removeFromSuperview()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
