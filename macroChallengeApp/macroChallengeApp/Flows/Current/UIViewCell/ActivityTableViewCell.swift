@@ -103,7 +103,6 @@ extension ActivityTableViewCell {
 
         localButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
-            make.leading.equalToSuperview().inset(330)
             make.centerY.equalToSuperview().inset(designSystem.spacing.smallPositive)
         }
 

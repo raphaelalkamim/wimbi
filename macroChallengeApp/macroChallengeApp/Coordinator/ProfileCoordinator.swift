@@ -105,15 +105,51 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func showActivitySheet(tripVC: MyTripViewController, name: String, category: String, hour: String, budget: String, location: String, details: String, icon: String) {
+    func showActivitySheet(tripVC: MyTripViewController, activity: ActivityLocal) {
+        var value = ""
+        var currency = ""
+        let starts = "Starts at: ".localized()
+        let coin = "Value: ".localized()
+        let type = "Type: ".localized()
         let viewControllerToPresent = DetailViewController()
-        viewControllerToPresent.detailView.activityTitle.text = name
-        viewControllerToPresent.detailView.activityIcon.image = UIImage(named: "\(icon)Selected")
-        viewControllerToPresent.detailView.activityCategory.text = category
-        viewControllerToPresent.detailView.activityInfo.text = hour + budget
-        viewControllerToPresent.detailView.local.text = location
-        viewControllerToPresent.detailView.details.text = details
+        viewControllerToPresent.detailView.activityTitle.text = activity.name
+        viewControllerToPresent.detailView.activityIcon.image = UIImage(named: "\(activity.category ?? "food")Selected")
+        viewControllerToPresent.detailView.activityCategory.text = type + (activity.category?.capitalized.localized() ?? "Category")
+        if activity.budget == 0.0 {
+            value = "Free"
+            currency = ""
+        } else {
+            value = "\(activity.budget)"
+            currency = "\(activity.currencyType ?? "R$")"
+        }
+        
+        viewControllerToPresent.detailView.activityInfo.text = "\(starts)\(activity.hour ?? "8h")    •    \(coin)\(currency )\(value)"
+        viewControllerToPresent.detailView.local.text = activity.location
+        viewControllerToPresent.detailView.details.text = activity.tips
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 17)]
+        viewControllerToPresent.detailView.linkButton.setAttributedTitle(NSAttributedString(string: "\(activity.link ?? "https://www.google.com")", attributes: attributes), for: .normal)
         viewControllerToPresent.delegate = tripVC
+        
+        if activity.location?.isEmpty == true {
+            viewControllerToPresent.detailView.local.text = "Endereço não disponibilizado"
+            viewControllerToPresent.detailView.local.textColor = .caption
+
+        }
+        if activity.category == "empty" {
+            viewControllerToPresent.detailView.activityIcon.image = UIImage(named: "empty")
+            viewControllerToPresent.detailView.activityCategory.text = "No type"
+        }
+        if activity.link?.isEmpty == true {
+            viewControllerToPresent.detailView.linkButton.setAttributedTitle(NSAttributedString(string: "Contato indisponível ", attributes: attributes), for: .normal)
+            viewControllerToPresent.detailView.linkButton.isEnabled = false
+            viewControllerToPresent.detailView.linkButton.setTitleColor(.caption, for: .normal)
+        }
+        
+        if activity.tips?.isEmpty == true {
+            viewControllerToPresent.detailView.details.text = "Nenhum detalhe informado"
+            viewControllerToPresent.detailView.details.textColor = .caption
+        }
+        
         if let sheet = viewControllerToPresent.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.largestUndimmedDetentIdentifier = .medium

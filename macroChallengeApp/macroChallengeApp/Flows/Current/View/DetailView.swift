@@ -89,15 +89,13 @@ class DetailView: UIView {
     
     lazy var linkTitle: UILabel = {
         let title = UILabel()
-        title.text = "LINK"
+        title.text = "CONTACT".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()
     
     lazy var linkButton: UIButton = {
         let btn = UIButton()
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 15)]
-        btn.setAttributedTitle(NSAttributedString(string: "https://instagram.com.br", attributes: attributes as [NSAttributedString.Key : Any]), for: .normal)
         btn.contentHorizontalAlignment = .left
         btn.setTitleColor(.accent, for: .normal)
         return btn
@@ -116,6 +114,7 @@ class DetailView: UIView {
         self.addSubview(linkTitle)
         self.addSubview(linkButton)
         setupConstraints()
+        
     }
 
     func setupConstraints() {

@@ -21,11 +21,13 @@
 
 
 // MARK: -  New Activity
-"Type:" = "Tipo:";
-"Starts at:" = "Início";
-"Value:" = "Valor";
+"Type: " = "Tipo: ";
+"Starts at: " = "Início: ";
+"Value: " = "Valor: ";
+"CONTACT" = "CONTATO";
 "DETAILS" = "DETALHES";
 "Describe here curiosities, tips or interesting facts about the place." = "Descreva aqui curiosidades, dicas ou fatos importantes sobre o local.";
+"Enter here the location's website or phone number." = "Digite aqui o site ou telefone do local.";
 
 "TYPE" = "TIPO";
 "LOCATION" = "LOCAL";

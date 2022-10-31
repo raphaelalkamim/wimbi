@@ -83,7 +83,7 @@ class ProfileView: UIView {
     lazy var myRoadmapCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
-        layout.itemSize = CGSize(width: 170, height: 165)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2.1 - designSystem.spacing.xLargePositive, height: 165)
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
         collectionView.isScrollEnabled = false
@@ -181,8 +181,9 @@ class ProfileView: UIView {
 
         }
         emptyStateImage.snp.makeConstraints { make in
-            make.top.equalTo(roadmapTitle.snp.bottom).inset(-140)
-            make.centerX.equalTo(contentView.snp.centerX)
+//            make.top.equalTo(roadmapTitle.snp.bottom).inset(-UIScreen.main.bounds.height / 7)
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY).offset(48)
             make.height.equalTo(100)
         }
     }
