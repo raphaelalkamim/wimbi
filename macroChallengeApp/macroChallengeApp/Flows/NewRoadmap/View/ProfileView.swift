@@ -108,6 +108,7 @@ class ProfileView: UIView {
        let button = UIButton()
         let att = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 12)]
         button.setAttributedTitle(NSAttributedString(string: "Aqui irão aparecer roteiros criados e duplicados por você.".localized(), attributes: att), for: .normal)
+        button.setTitleColor(.textPrimary, for: .normal)
         button.titleLabel?.numberOfLines = 0
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .left

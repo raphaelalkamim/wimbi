@@ -11,8 +11,6 @@ import SnapKit
 
 class LikedRoadmapsView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
-    let contentView = UIView()
-    let scrollView = UIScrollView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +28,7 @@ class LikedRoadmapsView: UIView {
         layout.minimumLineSpacing = designSystem.spacing.largePositive
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(RoadmapExploreCollectionViewCell.self, forCellWithReuseIdentifier: RoadmapExploreCollectionViewCell.identifier)
-        collectionView.isScrollEnabled = false
+        collectionView.isScrollEnabled = true
         collectionView.isPagingEnabled = false
         collectionView.backgroundColor = .clear
         collectionView.layer.cornerRadius = 16
@@ -39,25 +37,11 @@ class LikedRoadmapsView: UIView {
     
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
-        self.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        contentView.addSubview(likedRoadmapsCollectionView)
+        self.addSubview(likedRoadmapsCollectionView)
         setupConstraints()
     }
     
     func setupConstraints() {
-        scrollView.snp.makeConstraints { make in
-            make.top.equalTo(self.snp.top)
-            make.bottom.equalTo(self.snp.bottom)
-            make.left.right.equalTo(self)
-        }
-        
-        contentView.snp.makeConstraints { make in
-            make.top.equalTo(scrollView.snp.top)
-            make.bottom.equalTo(likedRoadmapsCollectionView.snp.bottom)
-            make.left.right.equalTo(self)
-        }
-        
         likedRoadmapsCollectionView.snp.makeConstraints { make in
             make.topMargin.equalToSuperview()
             make.trailing.leading.equalToSuperview()
