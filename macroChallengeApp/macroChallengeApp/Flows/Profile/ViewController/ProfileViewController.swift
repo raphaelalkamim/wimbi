@@ -22,7 +22,8 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     // MARK: Cloud User
     var user: User?
     let network: NetworkMonitor = NetworkMonitor.shared
-    
+    let tutorialEnable = UserDefaults.standard.bool(forKey: "tutorialProfile")
+
     private lazy var fetchResultController: NSFetchedResultsController<RoadmapLocal> = {
         let request: NSFetchRequest<RoadmapLocal> = RoadmapLocal.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal.createdAt, ascending: false)]
@@ -48,9 +49,11 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         self.setupProfileView()
         profileView.updateConstraintsCollection()
         
-        self.tutorialTimer()
-        profileView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
+        if tutorialEnable == false {
+            self.tutorialTimer()
+        }
         
+        profileView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
         profileView.bindColletionView(delegate: self, dataSource: self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
         self.setContextMenu()
@@ -91,6 +94,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     func tutorialTimer() {
+        UserDefaults.standard.set(true, forKey: "tutorialProfile")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.profileView.tutorialView.isHidden = false
         }
@@ -101,6 +105,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     @objc func tutorial() {
+        UserDefaults.standard.set(true, forKey: "tutorialProfile")
         profileView.tutorialView.removeFromSuperview()
     }
     

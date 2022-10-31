@@ -23,6 +23,7 @@ class MyTripViewController: UIViewController {
     var daySelected = 0
     var budgetTotal: Double = 0
     let currencyController = CurrencyController()
+    let tutorialEnable = UserDefaults.standard.bool(forKey: "tutorialMyTrip")
     
     lazy var userCurrency: String = {
         let userC = currencyController.getUserCurrency()
@@ -84,6 +85,7 @@ class MyTripViewController: UIViewController {
     }
     
     func tutorialTimer() {
+        UserDefaults.standard.set(true, forKey: "tutorialMyTrip")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.myTripView.secondTutorialView.isHidden = false
         }
@@ -100,6 +102,7 @@ class MyTripViewController: UIViewController {
     }
     
     @objc func tutorial() {
+        UserDefaults.standard.set(true, forKey: "tutorialMyTrip")
         myTripView.tutorialView.removeFromSuperview()
     }
     
@@ -127,7 +130,9 @@ class MyTripViewController: UIViewController {
             myTripView.emptyStateImage.isHidden = false
 
         } else {
-            self.tutorialTimer()
+            if tutorialEnable == false {
+                self.tutorialTimer()
+            }
             myTripView.activitiesTableView.isHidden = false
             myTripView.budgetView.isHidden = false
             myTripView.emptyStateTitle.isHidden = true
