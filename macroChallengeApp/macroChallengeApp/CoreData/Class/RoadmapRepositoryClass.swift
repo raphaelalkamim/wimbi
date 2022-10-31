@@ -219,9 +219,7 @@ public class RoadmapRepository: NSManagedObject {
     }
     
     func deleteRoadmap(roadmap: RoadmapLocal) throws {
-        DataManager.shared.deleteObjectBack(objectID: Int(roadmap.id), urlPrefix: "roadmaps", {
-            print("deleted roadmap")
-        })
+        DataManager.shared.deleteObjectBack(objectID: Int(roadmap.id), urlPrefix: "roadmaps")
         self.persistentContainer.viewContext.delete(roadmap)
         self.saveContext()
     }

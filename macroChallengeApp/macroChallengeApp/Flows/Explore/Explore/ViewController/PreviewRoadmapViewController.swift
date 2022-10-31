@@ -96,10 +96,8 @@ class PreviewRoadmapViewController: UIViewController {
             
         } else {
             self.like.image = UIImage(systemName: "heart")
-            DataManager.shared.deleteObjectBack(objectID: self.likeId, urlPrefix: "likes") {
-                print("deletou")
-                self.likeId = 0
-            }
+            DataManager.shared.deleteObjectBack(objectID: self.likeId, urlPrefix: "likes")
+            self.likeId = 0
         }
         print("LIKE")
     }

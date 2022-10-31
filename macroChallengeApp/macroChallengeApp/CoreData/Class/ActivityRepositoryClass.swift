@@ -115,9 +115,7 @@ class ActivityRepository {
     }
     
     func deleteActivity(activity: ActivityLocal) throws {
-        DataManager.shared.deleteObjectBack(objectID: Int(activity.id), urlPrefix: "activities", {
-            print("deu bom")
-        })
+        DataManager.shared.deleteObjectBack(objectID: Int(activity.id), urlPrefix: "activities")
         
         context.delete(activity)
         saveContext()

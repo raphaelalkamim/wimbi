@@ -68,6 +68,8 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
 
         let user = UserRepository.shared.getUser()
         if user.isEmpty {
+            self.profileView.getName().text = "Usuário"
+            self.profileView.getUsernameApp().text = "Usuário"
             self.getDataCloud()
         } else {
             self.changeToUserInfo(user: user[0])
