@@ -15,6 +15,7 @@ class EditProfileViewController: UIViewController {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let editProfileView = EditProfileView()
     var user: User?
+    var userLocal: [UserLocal] = []
     let network: NetworkMonitor = NetworkMonitor.shared
     var imagePicker: ImagePicker!
     var access = false
@@ -25,19 +26,8 @@ class EditProfileViewController: UIViewController {
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         self.setupEditProfileView()
         editProfileView.editButton.addTarget(self, action: #selector(editPhoto), for: .touchUpInside)
-        if let data = UserDefaults.standard.data(forKey: "user") {
-            do {
-                let decoder = JSONDecoder()
-                self.user = try decoder.decode(User.self, from: data)
-                if let user = self.user {
-                    self.changeToUserInfo(user: user)
-                }
-                
-            } catch {
-                print("Unable to decode")
-            }
-        }
-        
+        self.userLocal = UserRepository.shared.getUser()
+        self.changeToUserInfo(user: userLocal[0])
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save".localized(), style: .plain, target: self, action: #selector(saveProfile))
     }
     
@@ -52,6 +42,8 @@ class EditProfileViewController: UIViewController {
             if let newName = editProfileView.nameTextField.text, let newUsernameApp = editProfileView.usernameTextField.text {
                 self.user?.name = newName
                 self.user?.usernameApp = newUsernameApp
+                UserRepository.shared.updateName(user: self.userLocal[0], name: newName)
+                UserRepository.shared.updateUsernameApp(user: self.userLocal[0], username: newUsernameApp)
                 if let user = user {
                     DataManager.shared.putUser(userObj: user) { user in
                         do {
@@ -70,8 +62,11 @@ class EditProfileViewController: UIViewController {
         }
     }
     
-    func changeToUserInfo(user: User) {
-        self.editProfileView.imageProfile.image = UIImage(named: "icon")
+    func changeToUserInfo(user: UserLocal) {
+        let path = user.photoId ?? "icon"
+        let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
+        self.editProfileView.imageProfile.image = imageNew
+        self.editProfileView.setupImage(image: imageNew!)
         self.editProfileView.nameTextField.text = user.name
         self.editProfileView.usernameTextField.text = user.usernameApp
     }
@@ -114,7 +109,8 @@ extension EditProfileViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         if let imageNew = image {
             self.editProfileView.setupImage(image: imageNew)
-            // SaveImagecontroller.saveToFiles(image: imageNew)
+            UserRepository.shared.updatePhotoId(user: userLocal[0],
+                                                photoId: SaveImagecontroller.saveToFiles(image: imageNew))
         }
     }
 }

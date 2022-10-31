@@ -20,7 +20,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     var roadmaps: [RoadmapLocal] = []
     var dataManager = DataManager.shared
     // MARK: Cloud User
-    var user: User?
     let network: NetworkMonitor = NetworkMonitor.shared
     
     private lazy var fetchResultController: NSFetchedResultsController<RoadmapLocal> = {
@@ -67,20 +66,12 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         self.profileView.myRoadmapCollectionView.reloadData()
         self.profileView.myRoadmapCollectionView.layoutIfNeeded()
 
-        if let data = UserDefaults.standard.data(forKey: "user") {
-            do {
-                let decoder = JSONDecoder()
-                self.user = try decoder.decode(User.self, from: data)
-                if let user = self.user {
-                    self.changeToUserInfo(user: user)
-                }
-                
-            } catch {
-                print("Unable to decode")
-            }
+        let user = UserRepository.shared.getUser()
+        if user.isEmpty {
+            self.getDataCloud()
         } else {
-            getDataCloud()
-        }        
+            self.changeToUserInfo(user: user[0])
+        }
     }
     
     @objc func profileSettings() {
@@ -103,30 +94,19 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
             DataManager.shared.getUser(username: userID, { user in
-                self.user = user
-                if let user = self.user {
-                    self.changeToUserInfo(user: user)
-                    do {
-                        let encoder = JSONEncoder()
-
-                        let data = try encoder.encode(user)
-
-                        UserDefaults.standard.set(data, forKey: "user")
-                    } catch {
-                        print("Unable to Encode")
-                    }
-                }
-                
+                let userLocal = UserRepository.shared.createUser(user: user)
+                self.changeToUserInfo(user: userLocal)
             })
         }
     }
     
-    func changeToUserInfo(user: User) {
+    func changeToUserInfo(user: UserLocal) {
         self.profileView.getName().text = user.name
-        self.profileView.getUsernameApp().text = "@\(user.usernameApp)"
+        self.profileView.getUsernameApp().text = "@" + user.usernameApp!
         self.profileView.getTable().reloadData()
-        self.profileView.getImage().image = UIImage(named: "icon")
-        _ = UserRepository.shared.createUser(user: user)
+        let path = user.photoId ?? "icon"
+        let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
+        self.profileView.getImage().image = imageNew
     }
 }
 
