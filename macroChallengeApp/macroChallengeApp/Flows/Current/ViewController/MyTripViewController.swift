@@ -45,6 +45,8 @@ class MyTripViewController: UIViewController {
         self.myTripView.activitiesTableView.layoutIfNeeded()
         self.updateAllBudget()
         updateConstraintsTable()
+    
+        myTripView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
     }
     
     func updateConstraintsTable() {
@@ -81,6 +83,20 @@ class MyTripViewController: UIViewController {
         return []
     }
     
+    func tutorialTimer() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.myTripView.tutorialView.isHidden = false
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            self.myTripView.tutorialView.removeFromSuperview()
+        }
+    }
+    
+    @objc func tutorial() {
+        myTripView.tutorialView.removeFromSuperview()
+    }
+    
     func emptyState(activities: [ActivityLocal]) {
         if activities.isEmpty {
             if UIDevice.current.name == "iPhone SE (3rd generation)" || UIDevice.current.name == "iPhone 8" {
@@ -105,6 +121,7 @@ class MyTripViewController: UIViewController {
             myTripView.emptyStateImage.isHidden = false
 
         } else {
+            self.tutorialTimer()
             myTripView.activitiesTableView.isHidden = false
             myTripView.budgetView.isHidden = false
             myTripView.emptyStateTitle.isHidden = true

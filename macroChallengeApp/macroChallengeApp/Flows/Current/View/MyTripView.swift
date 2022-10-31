@@ -142,6 +142,28 @@ class MyTripView: UIView {
         return table
     }()
 
+    lazy var tutorialView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    lazy var tutorialImage: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "tutorial-left")
+        img.clipsToBounds = true
+        return img
+    }()
+    
+    lazy var tutorialTitle: UIButton = {
+       let button = UIButton()
+        let att = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 12)]
+        button.setAttributedTitle(NSAttributedString(string: "Segure e arraste para mudar a ordem das atividades.".localized(), attributes: att), for: .normal)
+        button.titleLabel?.numberOfLines = 0
+        button.contentVerticalAlignment = .center
+        button.contentHorizontalAlignment = .left
+        return button
+    }()
+    
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)
@@ -159,6 +181,10 @@ class MyTripView: UIView {
         budgetView.addSubview(budgetLabel)
         budgetView.addSubview(budgetValue)
         scrollView.addSubview(activitiesTableView)
+        scrollView.addSubview(tutorialView)
+        tutorialView.isHidden = true
+        tutorialView.addSubview(tutorialImage)
+        tutorialView.addSubview(tutorialTitle)
         activitiesTableView.isHidden = true
         budgetView.isHidden = true
         scrollView.isScrollEnabled = false
@@ -271,6 +297,25 @@ class MyTripView: UIView {
             make.height.equalTo(600)
         }
         
+        tutorialView.snp.makeConstraints { make in
+            make.top.equalTo(activitiesTableView.snp.top).inset(72)
+            make.trailing.equalTo(activitiesTableView.snp.trailing).inset(42)
+            make.height.equalTo(76)
+            make.width.equalTo(140)
+        }
+        
+        tutorialImage.snp.makeConstraints { make in
+            make.edges.equalTo(tutorialView.snp.edges)
+        }
+        
+        tutorialTitle.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(designSystem.spacing.mediumPositive)
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview().inset(designSystem.spacing.smallPositive)
+            make.height.width.equalToSuperview()
+            
+        }
+
     }
 }
 

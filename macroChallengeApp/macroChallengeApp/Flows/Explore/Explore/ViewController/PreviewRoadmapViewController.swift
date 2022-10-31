@@ -34,6 +34,9 @@ class PreviewRoadmapViewController: UIViewController {
         getRoadmapById(roadmapId: self.roadmapId)
         self.setupPreviewRoadmapView()
         
+        previewView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
+        self.tutorialTimer()
+        
         DataManager.shared.getLike(roadmapId: self.roadmapId) { response in
             self.likeId = response
             if self.likeId == 0 {
@@ -43,6 +46,20 @@ class PreviewRoadmapViewController: UIViewController {
                 self.like.image = UIImage(systemName: "heart.fill")
             }
         }
+    }
+    
+    func tutorialTimer() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.previewView.tutorialView.isHidden = false
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
+            self.previewView.tutorialView.removeFromSuperview()
+        }
+    }
+    
+    @objc func tutorial() {
+        previewView.tutorialView.removeFromSuperview()
     }
     
     func updateConstraintsTable() {
