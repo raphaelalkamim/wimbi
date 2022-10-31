@@ -38,7 +38,7 @@ class CurrentEmptyState: UIView {
         let label = UILabel()
         label.stylize(with: designSystem.text.body)
         label.textAlignment = .right
-        label.text = "Create, duplicate, track the countdown, or view your trip roadmap.".localized()
+        label.text = "Create, duplicate, track the countdown, or view your trip roadmap on this screen.".localized()
         return label
     }()
 }
