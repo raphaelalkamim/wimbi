@@ -115,6 +115,7 @@ class PreviewRoadmapView: UIView {
        let button = UIButton()
         let att = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 12)]
         button.setAttributedTitle(NSAttributedString(string: "Duplique este roteiro e use como referência para montar o seu.".localized(), attributes: att), for: .normal)
+        button.setTitleColor(.textPrimary, for: .normal)
         button.titleLabel?.numberOfLines = 0
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .left

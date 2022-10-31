@@ -158,6 +158,7 @@ class MyTripView: UIView {
        let button = UIButton()
         let att = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 12)]
         button.setAttributedTitle(NSAttributedString(string: "Segure e arraste para mudar a ordem das atividades.".localized(), attributes: att), for: .normal)
+        button.setTitleColor(.textPrimary, for: .normal)
         button.titleLabel?.numberOfLines = 0
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .left
