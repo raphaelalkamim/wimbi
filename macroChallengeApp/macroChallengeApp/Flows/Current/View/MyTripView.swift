@@ -165,6 +165,29 @@ class MyTripView: UIView {
         return button
     }()
     
+    lazy var secondTutorialView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    lazy var secondTutorialImage: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "tutorial-down")
+        img.clipsToBounds = true
+        return img
+    }()
+    
+    lazy var secondTutorialTitle: UIButton = {
+       let button = UIButton()
+        let att = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 12)]
+        button.setAttributedTitle(NSAttributedString(string: "Deslize para o lado para editar ou deletar uma atividade.".localized(), attributes: att), for: .normal)
+        button.setTitleColor(.textPrimary, for: .normal)
+        button.titleLabel?.numberOfLines = 0
+        button.contentVerticalAlignment = .center
+        button.contentHorizontalAlignment = .left
+        return button
+    }()
+    
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)
@@ -186,6 +209,10 @@ class MyTripView: UIView {
         tutorialView.isHidden = true
         tutorialView.addSubview(tutorialImage)
         tutorialView.addSubview(tutorialTitle)
+        scrollView.addSubview(secondTutorialView)
+        secondTutorialView.isHidden = true
+        secondTutorialView.addSubview(secondTutorialImage)
+        secondTutorialView.addSubview(secondTutorialTitle)
         activitiesTableView.isHidden = true
         budgetView.isHidden = true
         scrollView.isScrollEnabled = false
@@ -300,7 +327,7 @@ class MyTripView: UIView {
         
         tutorialView.snp.makeConstraints { make in
             make.top.equalTo(activitiesTableView.snp.top).inset(72)
-            make.trailing.equalTo(activitiesTableView.snp.trailing).inset(42)
+            make.trailing.equalTo(activitiesTableView.snp.trailing).inset(130)
             make.height.equalTo(76)
             make.width.equalTo(140)
         }
@@ -314,6 +341,27 @@ class MyTripView: UIView {
             make.trailing.equalToSuperview()
             make.top.equalToSuperview().inset(designSystem.spacing.smallPositive)
             make.height.width.equalToSuperview()
+            
+        }
+        
+        secondTutorialView.snp.makeConstraints { make in
+            make.top.equalTo(activitiesTableView.snp.top).inset(-50)
+            make.trailing.equalTo(activitiesTableView.snp.trailing).inset(82)
+            make.height.equalTo(86)
+            make.width.equalTo(150)
+        }
+        
+        secondTutorialImage.snp.makeConstraints { make in
+            make.edges.equalTo(secondTutorialView.snp.edges)
+        }
+        
+        secondTutorialTitle.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(designSystem.spacing.mediumPositive)
+            make.trailing.equalToSuperview().inset(designSystem.spacing.mediumNegative)
+            make.top.equalToSuperview().inset(-10)
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(80)
             
         }
 

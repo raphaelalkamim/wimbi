@@ -45,7 +45,7 @@ class MyTripViewController: UIViewController {
         self.myTripView.activitiesTableView.layoutIfNeeded()
         self.updateAllBudget()
         updateConstraintsTable()
-    
+        myTripView.secondTutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
         myTripView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
     }
     
@@ -85,11 +85,17 @@ class MyTripViewController: UIViewController {
     
     func tutorialTimer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.myTripView.secondTutorialView.isHidden = false
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
             self.myTripView.tutorialView.isHidden = false
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
             self.myTripView.tutorialView.removeFromSuperview()
+            self.myTripView.secondTutorialView.removeFromSuperview()
+            
         }
     }
     
