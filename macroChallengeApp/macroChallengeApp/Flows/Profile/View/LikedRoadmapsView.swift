@@ -25,13 +25,14 @@ class LikedRoadmapsView: UIView {
  
     lazy var likedRoadmapsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
-//        layout.itemSize = CGSize(width: 170, height: 165)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - designSystem.spacing.xLargePositive, height: 292)
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = designSystem.spacing.largePositive
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-//        collectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
+        collectionView.register(RoadmapExploreCollectionViewCell.self, forCellWithReuseIdentifier: RoadmapExploreCollectionViewCell.identifier)
         collectionView.isScrollEnabled = false
         collectionView.isPagingEnabled = false
-        collectionView.backgroundColor = .backgroundCell
+        collectionView.backgroundColor = .clear
         collectionView.layer.cornerRadius = 16
         return collectionView
     }()
@@ -58,12 +59,17 @@ class LikedRoadmapsView: UIView {
         }
         
         likedRoadmapsCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.topMargin)
-            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
-            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
-            make.height.equalTo(900)
-            make.bottom.equalTo(scrollView.snp.bottom)
+            make.topMargin.equalToSuperview()
+            make.trailing.leading.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
 
     }
+}
+extension LikedRoadmapsView {
+    func bindCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+        likedRoadmapsCollectionView.delegate = delegate
+        likedRoadmapsCollectionView.dataSource = dataSource
+    }
+    
 }
