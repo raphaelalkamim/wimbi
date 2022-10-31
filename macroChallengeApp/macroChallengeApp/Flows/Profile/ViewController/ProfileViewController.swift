@@ -46,6 +46,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         self.view.backgroundColor = .backgroundPrimary
         self.setupProfileView()
         profileView.updateConstraintsCollection()
+        profileView.updateConstraintsCollection()
         
         profileView.bindColletionView(delegate: self, dataSource: self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
@@ -67,6 +68,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         self.profileView.myRoadmapCollectionView.layoutIfNeeded()
 
         let user = UserRepository.shared.getUser()
+        
         if user.isEmpty {
             self.profileView.getName().text = "Usuário"
             self.profileView.getUsernameApp().text = "Usuário"
