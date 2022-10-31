@@ -97,7 +97,7 @@ class DetailView: UIView {
     lazy var linkButton: UIButton = {
         let btn = UIButton()
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 15)]
-        btn.setAttributedTitle(NSAttributedString(string: "https://instagram.com.br", attributes: attributes), for: .normal)
+        btn.setAttributedTitle(NSAttributedString(string: "https://instagram.com.br", attributes: attributes as [NSAttributedString.Key : Any]), for: .normal)
         btn.contentHorizontalAlignment = .left
         btn.setTitleColor(.accent, for: .normal)
         return btn
