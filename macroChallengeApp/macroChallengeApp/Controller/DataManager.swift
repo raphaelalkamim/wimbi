@@ -303,7 +303,7 @@ class DataManager {
         task.resume()
     }
     
-    func putUser(userObj: User, _ completion: @escaping ((_ user: User) -> Void)) {
+    func putUser(userObj: UserLocal) {
         let user: [String: Any] = [
             "usernameApp": userObj.usernameApp,
             "name": userObj.name,
@@ -334,13 +334,7 @@ class DataManager {
                     if let error = error {
                         print(error)
                     } else if data != nil {
-                        if let httpResponse = response as? HTTPURLResponse {
-                            if httpResponse.statusCode == 200 {
-                                DispatchQueue.main.async {
-                                    completion(userObj)
-                                }
-                            }
-                        }
+
                     } else {
                         // Handle unexpected error
                     }

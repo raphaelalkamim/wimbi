@@ -104,9 +104,9 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         self.profileView.getName().text = user.name
         self.profileView.getUsernameApp().text = "@" + user.usernameApp!
         self.profileView.getTable().reloadData()
-        let path = user.photoId ?? "icon"
-        let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
-        self.profileView.getImage().image = imageNew
+        let path = user.photoId
+        let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path ?? "icon"))
+        self.profileView.setupImage(image: imageNew ?? UIImage(named: "icon")!)
     }
 }
 

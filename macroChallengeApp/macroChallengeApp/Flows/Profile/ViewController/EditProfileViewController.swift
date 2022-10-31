@@ -14,7 +14,6 @@ class EditProfileViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let editProfileView = EditProfileView()
-    var user: User?
     var userLocal: [UserLocal] = []
     let network: NetworkMonitor = NetworkMonitor.shared
     var imagePicker: ImagePicker!
@@ -40,23 +39,9 @@ class EditProfileViewController: UIViewController {
             present(action, animated: true)
         } else {
             if let newName = editProfileView.nameTextField.text, let newUsernameApp = editProfileView.usernameTextField.text {
-                self.user?.name = newName
-                self.user?.usernameApp = newUsernameApp
                 UserRepository.shared.updateName(user: self.userLocal[0], name: newName)
                 UserRepository.shared.updateUsernameApp(user: self.userLocal[0], username: newUsernameApp)
-                if let user = user {
-                    DataManager.shared.putUser(userObj: user) { user in
-                        do {
-                            let encoder = JSONEncoder()
-
-                            let data = try encoder.encode(user)
-
-                            UserDefaults.standard.set(data, forKey: "user")
-                        } catch {
-                            print("Unable to Encode")
-                        }
-                    }
-                }
+                DataManager.shared.putUser(userObj: self.userLocal[0])
             }
             coordinator?.backPage()
         }
@@ -66,7 +51,7 @@ class EditProfileViewController: UIViewController {
         let path = user.photoId ?? "icon"
         let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
         self.editProfileView.imageProfile.image = imageNew
-        self.editProfileView.setupImage(image: imageNew!)
+        self.editProfileView.setupImage(image: imageNew ?? UIImage(named: "icon")!)
         self.editProfileView.nameTextField.text = user.name
         self.editProfileView.usernameTextField.text = user.usernameApp
     }

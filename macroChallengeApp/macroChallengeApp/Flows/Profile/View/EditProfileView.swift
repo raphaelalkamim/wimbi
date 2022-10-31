@@ -110,6 +110,7 @@ class EditProfileView: UIView {
         }
         imageProfile.layer.cornerRadius = 60
     }
+    
     func setupConstraints() {
         contentView.snp.makeConstraints { make in
             make.top.equalToSuperview()
