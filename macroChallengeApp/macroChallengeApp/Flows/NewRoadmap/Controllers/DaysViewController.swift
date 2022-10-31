@@ -144,12 +144,12 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
                 cellTable = cell
             }
         } else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: NotificationPickerTableViewCell.identifier, for: indexPath) as? NotificationPickerTableViewCell {
-                cell.title.text = "Roadmap to".localized()
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "NumberPickerCell", for: indexPath) as? NumberPickerTableViewCell {
+                cell.label.text = "Number of travelers".localized()
                 if edit {
-                    cell.picker.selectRow(Int(editRoadmap.peopleCount) - 1, inComponent: 0, animated: true)
+                    cell.numberPicker.selectRow(Int(editRoadmap.peopleCount) - 1, inComponent: 0, animated: true)
                 }
-                self.travelersCount = cell.picker
+                self.travelersCount = cell.numberPicker
                 cellTable = cell
             }
         }
@@ -159,7 +159,7 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == daysView.numberPickerTableView {
-            return 230
+            return 100
         } else {
             return 50
         }    }

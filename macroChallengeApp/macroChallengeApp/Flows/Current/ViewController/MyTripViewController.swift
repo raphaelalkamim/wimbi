@@ -23,6 +23,7 @@ class MyTripViewController: UIViewController {
     var daySelected = 0
     var budgetTotal: Double = 0
     let currencyController = CurrencyController()
+    let tutorialEnable = UserDefaults.standard.bool(forKey: "tutorialMyTrip")
     
     lazy var userCurrency: String = {
         let userC = currencyController.getUserCurrency()
@@ -45,6 +46,8 @@ class MyTripViewController: UIViewController {
         self.myTripView.activitiesTableView.layoutIfNeeded()
         self.updateAllBudget()
         updateConstraintsTable()
+        myTripView.secondTutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
+        myTripView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
     }
     
     func updateConstraintsTable() {
@@ -81,6 +84,28 @@ class MyTripViewController: UIViewController {
         return []
     }
     
+    func tutorialTimer() {
+        UserDefaults.standard.set(true, forKey: "tutorialMyTrip")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.myTripView.secondTutorialView.isHidden = false
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            self.myTripView.tutorialView.isHidden = false
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+            self.myTripView.tutorialView.removeFromSuperview()
+            self.myTripView.secondTutorialView.removeFromSuperview()
+            
+        }
+    }
+    
+    @objc func tutorial() {
+        UserDefaults.standard.set(true, forKey: "tutorialMyTrip")
+        myTripView.tutorialView.removeFromSuperview()
+    }
+    
     func emptyState(activities: [ActivityLocal]) {
         if activities.isEmpty {
             if UIDevice.current.name == "iPhone SE (3rd generation)" || UIDevice.current.name == "iPhone 8" {
@@ -105,6 +130,9 @@ class MyTripViewController: UIViewController {
             myTripView.emptyStateImage.isHidden = false
 
         } else {
+            if tutorialEnable == false {
+                self.tutorialTimer()
+            }
             myTripView.activitiesTableView.isHidden = false
             myTripView.budgetView.isHidden = false
             myTripView.emptyStateTitle.isHidden = true
