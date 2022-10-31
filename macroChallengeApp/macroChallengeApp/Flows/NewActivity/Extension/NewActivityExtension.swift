@@ -19,8 +19,6 @@ protocol ChangeTextTableDelegate: AnyObject {
 extension NewActivityViewController {
     func setupNewActivityView() {
         navigationItem.title = "New activity".localized()
-        // view.addSubview(newActivityView)
-        // setupConstraints()
         newActivityView.bindTableView(delegate: self, dataSource: self)
         newActivityView.bindCollectionView(delegate: self, dataSource: self)
     }

@@ -10,13 +10,17 @@ import UIKit
 
 extension ProfileViewController {
     func setupProfileView() {
-        view.addSubview(profileView)
-        setupConstraints()
+        self.setupGestures()
+        self.setupNavButton()
+        profileView.updateConstraintsCollection()
+        profileView.bindColletionView(delegate: self, dataSource: self)
     }
-    func setupConstraints() {
-        profileView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+    func setupGestures() {
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        profileView.myRoadmapCollectionView.addGestureRecognizer(longPress)
+    }
+    func setupNavButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
     }
     // MARK: Long press and delete
     @objc public func handleLongPress(sender: UILongPressGestureRecognizer) {

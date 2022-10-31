@@ -19,7 +19,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     let profileView = ProfileView()
     var roadmaps: [RoadmapLocal] = []
     var dataManager = DataManager.shared
-    // MARK: Cloud User
     let network: NetworkMonitor = NetworkMonitor.shared
     
     private lazy var fetchResultController: NSFetchedResultsController<RoadmapLocal> = {
@@ -33,24 +32,19 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         return frc
     }()
 
+    override func loadView() {
+        view = profileView
+    }
     override func viewDidLoad() {
-        // long press gesture
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
-        profileView.myRoadmapCollectionView.addGestureRecognizer(longPress)
-
         self.roadmaps = RoadmapRepository.shared.getRoadmap()
         profileView.roadmaps = self.roadmaps
         
         super.viewDidLoad()
-        network.startMonitoring()
-        self.view.backgroundColor = .backgroundPrimary
-        self.setupProfileView()
-        profileView.updateConstraintsCollection()
-        profileView.updateConstraintsCollection()
         
-        profileView.bindColletionView(delegate: self, dataSource: self)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
+        self.network.startMonitoring()
+        self.setupProfileView()
         self.setContextMenu()
+        
         do {
             try fetchResultController.performFetch()
             self.roadmaps = fetchResultController.fetchedObjects ?? []
@@ -59,16 +53,9 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        network.startMonitoring()
-        
+    override func viewWillAppear(_ animated: Bool) {        
         if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") { coordinator?.startLogin() }
-        self.profileView.updateConstraintsCollection()
-        self.profileView.myRoadmapCollectionView.reloadData()
-        self.profileView.myRoadmapCollectionView.layoutIfNeeded()
-
         let user = UserRepository.shared.getUser()
-        
         if user.isEmpty {
             self.getDataCloud()
         } else {
@@ -87,8 +74,8 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         profileView.setup()
         profileView.roadmaps = newRoadmaps
         profileView.myRoadmapCollectionView.reloadData()
+        profileView.myRoadmapCollectionView.layoutIfNeeded()
         profileView.updateConstraintsCollection()
-        
     }
     
     // MARK: Manage Data Cloud
