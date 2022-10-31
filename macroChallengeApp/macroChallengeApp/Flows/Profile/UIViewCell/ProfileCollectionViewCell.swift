@@ -78,12 +78,25 @@ extension ProfileCollectionViewCell {
         self.addSubview(newTag)
         newTag.isHidden = true
         
-        if isNew == true {
-            newTag.isHidden = false
-        }
+        if isNew == true { newTag.isHidden = false }
         self.addSubview(likeImage)
         self.addSubview(likeLabel)
+        
         setupConstraints()
+        
+        self.backgroundColor = designSystem.palette.backgroundCell
+        self.layer.cornerRadius = 16
+        self.title.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func setupAnchors() {
+        if self.title.text!.count < 14 {
+            self.title.topAnchor.constraint(equalTo: self.roadmapImage.bottomAnchor, constant: designSystem.spacing.xLargePositive).isActive = true
+            self.title.topAnchor.constraint(equalTo: self.roadmapImage.bottomAnchor, constant: designSystem.spacing.smallPositive).isActive = false
+        } else {
+            self.title.topAnchor.constraint(equalTo: self.roadmapImage.bottomAnchor, constant: designSystem.spacing.xLargePositive).isActive = false
+            self.title.topAnchor.constraint(equalTo: self.roadmapImage.bottomAnchor, constant: designSystem.spacing.smallPositive).isActive = true
+        }
     }
     
     func setupImage(category: String) {
@@ -114,10 +127,8 @@ extension ProfileCollectionViewCell {
         }
         
         title.snp.makeConstraints { make in
-//            make.top.equalTo(roadmapImage.snp.bottom).inset(designSystem.spacing.largeNegative)
             make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
             make.trailing.equalTo(likeLabel.snp.leading).inset(designSystem.spacing.mediumNegative)
-//            make.bottom.equalToSuperview()
         }
 
         likeImage.snp.makeConstraints { make in
