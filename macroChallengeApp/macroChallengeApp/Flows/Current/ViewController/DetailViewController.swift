@@ -12,10 +12,10 @@ class DetailViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
     let detailView = DetailView()
     let myTripView = MyTripView()
-    var roadmaps = RoadmapRepository.shared.getRoadmap()
-    var roadmap: RoadmapLocal = RoadmapLocal()
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     weak var delegate: DismissBlur?
+    weak var delegateExplore: DismissBlurExplore?
+    let activity = ActivityLocal()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,7 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         delegate?.dismissBlur()
+        delegateExplore?.dismissBlur()
     }
     
     @objc func openLink() {

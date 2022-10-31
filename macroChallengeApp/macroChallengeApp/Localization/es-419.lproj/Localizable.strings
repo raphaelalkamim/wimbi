@@ -20,11 +20,13 @@
 "@user" = "@usuario";
 
 // MARK: -  New Activity
-"Type:" = "Tipo:";
-"Starts at:" = "Empieza:";
-"Value:" = "Monto";
+"Type: " = "Tipo: ";
+"Starts at: " = "Empieza: ";
+"Value: " = "Monto: ";
 "DETAILS" = "DETALLES";
 "Describe here curiosities, tips or interesting facts about the place." = "Describa aquí curiosidades, consejos o datos importantes sobre el lugar.";
+"CONTACT" = "CONTACTO";
+"Enter here the location's website or phone number." = "Introduzca el sitio web o el número de teléfono de la ubicación.";
 
 "TYPE" = "TIPO";
 "LOCATION" = "UBICACIÓN";

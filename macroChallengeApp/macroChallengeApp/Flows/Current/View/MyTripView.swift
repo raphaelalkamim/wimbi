@@ -258,7 +258,7 @@ class MyTripView: UIView {
         }
         
         emptyStateImage.snp.makeConstraints { make in
-            make.height.equalTo(120)
+            make.height.equalTo(UIScreen.main.bounds.height / 7)
             make.centerX.equalToSuperview()
             make.top.equalTo(dayTitle.snp.bottom).inset(-40)
         }

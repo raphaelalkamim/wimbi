@@ -32,7 +32,6 @@ class MyTripViewController: UIViewController {
     override func viewDidLoad() {
         network.startMonitoring()
         super.viewDidLoad()
-        
         self.setupMyTripView()
     }
     
@@ -84,11 +83,27 @@ class MyTripViewController: UIViewController {
     
     func emptyState(activities: [ActivityLocal]) {
         if activities.isEmpty {
+            if UIDevice.current.name == "iPhone SE (3rd generation)" || UIDevice.current.name == "iPhone 8" {
+                myTripView.emptyStateImage.snp.removeConstraints()
+                myTripView.emptyStateImage.snp.makeConstraints { make in
+                    make.height.equalTo(UIScreen.main.bounds.height / 9)
+                    make.centerX.equalToSuperview()
+                    make.top.equalTo(myTripView.dayTitle.snp.bottom)
+                }
+            } else {
+                myTripView.emptyStateImage.snp.removeConstraints()
+                myTripView.emptyStateImage.snp.makeConstraints { make in
+                    make.height.equalTo(UIScreen.main.bounds.height / 7)
+                    make.centerX.equalToSuperview()
+                    make.top.equalTo(myTripView.dayTitle.snp.bottom).inset(-40)
+                }
+
+            }
             myTripView.activitiesTableView.isHidden = true
             myTripView.budgetView.isHidden = true
             myTripView.emptyStateTitle.isHidden = false
             myTripView.emptyStateImage.isHidden = false
-            myTripView.scrollView.isScrollEnabled = false
+
         } else {
             myTripView.activitiesTableView.isHidden = false
             myTripView.budgetView.isHidden = false

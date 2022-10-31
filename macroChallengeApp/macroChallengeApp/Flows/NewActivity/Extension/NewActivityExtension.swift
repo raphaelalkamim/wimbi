@@ -78,6 +78,11 @@ extension NewActivityViewController {
         let tableViewDetail = newActivityView.detailTable
         guard let cell = tableViewDetail.cellForRow(at: [0, 0]) as? DetailTableViewCell else { return }
         activity.tips = cell.detailText.text ?? "Details"
+        
+        // link
+        let tableViewLink = newActivityView.contactTable
+        guard let cell = tableViewLink.cellForRow(at: [0, 0]) as? TextFieldTableViewCell else { return }
+        activity.link = cell.title.text ?? "Contact"
     }
 }
 
@@ -92,6 +97,8 @@ extension NewActivityViewController: UITableViewDataSource {
         } else if tableView == newActivityView.valueTable {
             rows = 2
         } else if tableView == newActivityView.detailTable {
+            rows = 1
+        } else if tableView == newActivityView.contactTable {
             rows = 1
         }
         return rows
@@ -157,6 +164,14 @@ extension NewActivityViewController: UITableViewDataSource {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { fatalError("TableCell not found") }
                 self.activity.tips = newCell.detailText.text ?? "Details"
+                cell = newCell
+                
+            }
+        } else if tableView == newActivityView.contactTable {
+            if indexPath.row == 0 {
+                guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
+                newCell.title.placeholder = "Contact"
+                newCell.title.text = activity.link
                 cell = newCell
                 
             }
