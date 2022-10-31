@@ -62,9 +62,34 @@ extension SettingsViewController: UITableViewDataSource {
             present(alert, animated: true)
             
         case 5:
-            print("deletar")
-        
+            let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+            alert.view.tintColor = .accent
+            let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
+            let string = NSAttributedString(string: "Delete your account?".localized(), attributes: titleAtt)
+            alert.setValue(string, forKey: "attributedTitle")
+            alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+            }))
             
+            alert.addAction(UIAlertAction(title: "Delete".localized(), style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
+                if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+                    let userID = String(data: data, encoding: .utf8)!
+                    DataManager.shared.deleteObjectBack(username: userID, urlPrefix: "users")
+                }
+                KeychainManager.shared.delete(service: "username", account: "explorer")
+                UserDefaults.standard.setValue("", forKey: "authorization")
+                UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+                UserDefaults.standard.set(nil, forKey: "user")
+                let userActual = UserRepository.shared.getUser()
+                do {
+                    try UserRepository.shared.deleteUser(user: userActual[0])
+                } catch {
+                    print(error)
+                }
+                
+                self.coordinator?.backPage()
+            }))
+            present(alert, animated: true)
+        
         default:
             break
         }

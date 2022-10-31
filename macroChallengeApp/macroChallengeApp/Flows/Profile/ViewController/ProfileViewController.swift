@@ -57,6 +57,8 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") { coordinator?.startLogin() }
         let user = UserRepository.shared.getUser()
         if user.isEmpty {
+            self.profileView.getName().text = "Usuário"
+            self.profileView.getUsernameApp().text = "Usuário"
             self.getDataCloud()
         } else {
             self.changeToUserInfo(user: user[0])
