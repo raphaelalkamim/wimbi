@@ -25,7 +25,7 @@ extension SettingsViewController: UITableViewDelegate {
 
 extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -61,6 +61,10 @@ extension SettingsViewController: UITableViewDataSource {
             }))
             present(alert, animated: true)
             
+        case 5:
+            print("deletar")
+        
+            
         default:
             break
         }
@@ -90,8 +94,17 @@ extension SettingsViewController: UITableViewDataSource {
             cell.title.text = "Privacy Policies".localized()
             cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
             
-        case 4:
+        case 4 :
             cell.title.text = "Sign out".localized()
+            cell.title.textColor = .redCity
+            cell.icon.isHidden = true
+            cell.chevron.isHidden = true
+            cell.title.snp.makeConstraints { make in
+                make.leading.equalToSuperview().inset(designSystem.spacing.largePositive)
+            }
+            
+        case 5:
+            cell.title.text = "Delete account".localized()
             cell.title.textColor = .redCity
             cell.icon.isHidden = true
             cell.chevron.isHidden = true
