@@ -252,7 +252,7 @@ class OnboardingView: UIView {
             make.width.equalTo(300)
             make.leading.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
             make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
-            make.top.equalTo(likeSubtitle.snp.bottom).inset(-180)
+            make.top.equalTo(likeSubtitle.snp.bottom).inset(-220)
         }
         
     }
