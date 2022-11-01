@@ -139,6 +139,7 @@
 		DF2643AB28DB9CC500053180 /* UserRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AA28DB9CC500053180 /* UserRoadmap.swift */; };
 		DF2643AD28DB9EAD00053180 /* RoadmapDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */; };
 		DF2EA1BD28DE28BA002F12D8 /* ActivityDestinyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */; };
+		DF2FAF822911B51A00194F04 /* RefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FAF812911B51A00194F04 /* RefreshToken.swift */; };
 		DF57253D28D110E1005466D9 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57253C28D110E1005466D9 /* DaysView.swift */; };
 		DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */; };
 		DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */; };
@@ -314,6 +315,7 @@
 		DF2643AA28DB9CC500053180 /* UserRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoadmap.swift; sourceTree = "<group>"; };
 		DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapDTO.swift; sourceTree = "<group>"; };
 		DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDestinyView.swift; sourceTree = "<group>"; };
+		DF2FAF812911B51A00194F04 /* RefreshToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshToken.swift; sourceTree = "<group>"; };
 		DF57253C28D110E1005466D9 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
 		DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 				B0E0685028EF5FD700418F87 /* Currency.swift */,
 				DF66658128F0991100E37429 /* DayDTO.swift */,
 				DF89333D290B1DD900C280FA /* Tag.swift */,
+				DF2FAF812911B51A00194F04 /* RefreshToken.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1244,6 +1247,7 @@
 				1359F15828DA48FD009509DF /* UserRepositoryClass.swift in Sources */,
 				1359F14F28DA48AF009509DF /* UserRepository.swift in Sources */,
 				B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */,
+				DF2FAF822911B51A00194F04 /* RefreshToken.swift in Sources */,
 				DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */,
 				1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */,
 				DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */,

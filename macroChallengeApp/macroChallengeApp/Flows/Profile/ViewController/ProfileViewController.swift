@@ -53,7 +53,9 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {        
+    override func viewWillAppear(_ animated: Bool) {
+        SignInWithAppleManager.shared.checkUserStatus()
+
         if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") { coordinator?.startLogin() }
         let user = UserRepository.shared.getUser()
         if user.isEmpty {

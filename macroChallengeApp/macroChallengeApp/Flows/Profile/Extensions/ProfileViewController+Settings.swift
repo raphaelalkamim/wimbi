@@ -76,6 +76,7 @@ extension SettingsViewController: UITableViewDataSource {
                     DataManager.shared.deleteObjectBack(username: userID, urlPrefix: "users")
                 }
                 KeychainManager.shared.delete(service: "username", account: "explorer")
+                SignInWithAppleManager.shared.revokeToken()
                 UserDefaults.standard.setValue("", forKey: "authorization")
                 UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
                 UserDefaults.standard.set(nil, forKey: "user")
@@ -85,7 +86,7 @@ extension SettingsViewController: UITableViewDataSource {
                 } catch {
                     print(error)
                 }
-                
+                KeychainManager.shared.delete(service: "signInRefresh", account: "explorer")
                 self.coordinator?.backPage()
             }))
             present(alert, animated: true)
