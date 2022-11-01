@@ -34,7 +34,6 @@ class ProfileCoordinator: Coordinator {
         childCoordinators.append(coordinator)
         coordinator.delegate = self
         coordinator.start()
-        
         navigationController.present(coordinator.navigationController, animated: true) {
         }
     }
@@ -195,6 +194,20 @@ class ProfileCoordinator: Coordinator {
         delegate?.didFinishPresent(of: self, isNewRoadmap: false)
     }
     
+    func startOnboarding() {
+        let viewController = OnboardingViewController()
+        viewController.coordinator = self
+//        viewController.navigationItem.title = "Edit profile".localized()
+        navigationController.present(viewController, animated: true)
+        navigationController.modalPresentationStyle = .formSheet
+    }
+    
+    func startExplore() {
+        delegate?.didFinishPresent(of: self, isNewRoadmap: false)
+        navigationController.dismiss(animated: true)
+        UserDefaults.standard.set(true, forKey: "onboard")
+    }
+    
     func setupBarAppearence() {
         let designSystem: DesignSystem = DefaultDesignSystem.shared
         navigationController.navigationBar.prefersLargeTitles = true
@@ -212,5 +225,6 @@ class ProfileCoordinator: Coordinator {
 extension ProfileCoordinator: PresentationCoordinatorDelegate {
     func didFinishPresent(of coordinator: Coordinator, isNewRoadmap isnewRoadmap: Bool) {
         childCoordinators = childCoordinators.filter { $0 === coordinator }
+        navigationController.tabBarController!.selectedIndex = 1
     }
 }

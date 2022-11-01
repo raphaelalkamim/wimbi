@@ -16,6 +16,7 @@ class ExploreViewController: UIViewController {
     let explorerView = ExploreView()
     var roadmaps: [RoadmapDTO] = []
     let network: NetworkMonitor = NetworkMonitor.shared
+    let onboardEnable = UserDefaults.standard.bool(forKey: "onboard")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,10 @@ class ExploreViewController: UIViewController {
             self.emptyState(conection: self.network.isReachable)
         })
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        if onboardEnable == false {
+            coordinator?.startOnboarding()
+        }
     }
     
     func addNewRoadmap() {
