@@ -33,6 +33,12 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
             userId = appleIDCredential.user
             fullName = appleIDCredential.fullName
             emailId = appleIDCredential.email
+            print(appleIDCredential.authorizationCode)
+            if let authorizationCode = appleIDCredential.authorizationCode {
+                let authCode = String(decoding: authorizationCode, as: Unicode.ASCII.self)
+                createToken(code: authCode)
+                print(authCode)
+            }
             
             guard let userId = userId else {
                 return
@@ -63,6 +69,30 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
                 })
             }
         }
+    }
+    
+    func createToken(code: String) {
+        let session: URLSession = URLSession.shared
+        let url: URL = URL(string: "localhost:8080/appleToken/" + code)!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            let task = session.dataTask(with: request) { data, response, error in
+                print(response, "arroz")
+                guard let data = data else { return }
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                
+            }
+            task.resume()
+        }
+        
     }
     
     func checkUserStatus() {
