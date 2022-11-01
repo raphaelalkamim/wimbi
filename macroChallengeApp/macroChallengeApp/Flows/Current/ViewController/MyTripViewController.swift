@@ -124,17 +124,19 @@ class MyTripViewController: UIViewController {
         
     }
     @objc func shareMyTrip() {
-        let user = UserRepository.shared.getUser()
-        if !user.isEmpty {
+        if roadmap.isPublic {
             let introduction = "Hey! Join my roadmap in Wimbi app using the code: " + (roadmap.shareKey ?? "0")
             let activityItem = MyActivityItemSource(title: "Share your code roadmap!", text: introduction)
-            
             let activityViewController = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view
             activityViewController.excludedActivityTypes = []
             self.roadmap.isShared = true
             RoadmapRepository.shared.saveContext()
             self.present(activityViewController, animated: true, completion: nil)
+        } else {
+            let action = UIAlertController(title: "To share this trip, turn it public", message: nil, preferredStyle: .actionSheet)
+            action.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(action, animated: true)
         }
     }
     func updateAllBudget() {
