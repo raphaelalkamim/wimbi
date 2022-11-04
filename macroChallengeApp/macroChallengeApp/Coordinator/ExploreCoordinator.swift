@@ -63,10 +63,15 @@ class ExploreCoordinator: Coordinator {
         let viewController = PreviewRoadmapViewController()
         viewController.coordinator = self
         viewController.roadmapId = roadmapId
-//        viewController.navigationItem.title = "Trip"
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    func previewMockRoadmap(roadmap: Roadmaps) {
+        let viewController = PreviewRoadmapViewController()
+        viewController.coordinator = self
+        viewController.roadmap = roadmap
+        navigationController.pushViewController(viewController, animated: true)
+    }
     func back() {
         navigationController.popViewController(animated: true)
         delegate?.didFinishPresent(of: self, isNewRoadmap: false)
@@ -125,7 +130,6 @@ class ExploreCoordinator: Coordinator {
             sheet.prefersGrabberVisible = true
 
         }
-
         navigationController.present(viewControllerToPresent, animated: true, completion: nil)
         
     }
