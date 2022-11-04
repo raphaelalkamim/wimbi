@@ -45,12 +45,17 @@ extension ExploreViewController {
 
 extension ExploreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.previewRoadmap(roadmapId: roadmaps[indexPath.row].id)
+        if roadmapsMock.isEmpty {
+            coordinator?.previewRoadmap(roadmapId: roadmaps[indexPath.row].id)
+        } else {
+            coordinator?.previewMockRoadmap(roadmap: roadmapsMock[indexPath.row])
+        }
     }
 }
 
 extension ExploreViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if roadmaps.isEmpty { return roadmapsMock.count }
         return roadmaps.count
     }
     
@@ -71,8 +76,19 @@ extension ExploreViewController: UICollectionViewDataSource {
             cell.categoryName.text = roadmap.category.localized()
             cell.setupColor(category: roadmap.category)
             cell.totalLikes.text = "\(roadmap.likesCount)"
+        } else if !roadmapsMock.isEmpty {
+            let roadmap = roadmapsMock[indexPath.row]
+            cell.cover.image = UIImage(named: roadmap.imageId)
+            cell.title.text = roadmap.name
+            let travelers = "travelers  •".localized()
+            let days = "days".localized()
+            cell.subtitle.text = "\(roadmap.peopleCount) \(travelers)  \(roadmap.dayCount) \(days)"
+            let amount = "thousand per person".localized()
+            cell.costByPerson.text = "\(roadmap.currency) \(roadmap.budget / 1000) \(amount)"
+            cell.categoryName.text = roadmap.category.localized()
+            cell.setupColor(category: roadmap.category)
+            cell.totalLikes.text = "\(roadmap.likesCount)"
         }
-        
         return cell
     }
 }

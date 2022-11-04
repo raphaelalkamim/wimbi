@@ -1,0 +1,56 @@
+[
+    {
+      "id": 44,
+      "name": "Gramado",
+      "location": "-29.3770565 -50.8731584",
+      "budget": 2485.0,
+      "dayCount": 4,
+      "dateInitial": "1/12/2022",
+      "dateFinal": "4/12/2022",
+      "peopleCount": 2,
+      "imageId": "beach2",
+      "category": "Beach",
+      "isShared": false,
+      "isPublic": true,
+      "shareKey": "215052viagem908982",
+      "createdAt": "4/11/2022",
+      "currency": "R$",
+      "likesCount": 0,
+      "day": [
+        {
+          "id": 49,
+          "date": "04/12/2022",
+          "activity": []
+        },
+        {
+          "id": 47,
+          "date": "02/12/2022",
+          "activity": []
+        },
+        {
+          "id": 46,
+          "date": "01/12/2022",
+          "activity": [
+            {
+              "id": 50,
+              "name": "Checkin: Hotel Daara",
+              "tips": "",
+              "category": "accommodation",
+              "location": "-29.368627837380135 -50.87939143180847",
+              "address": "Avenida Borges de Medeiros, 4165, Gramado, Lagos do Bosque, RS, Brasil",
+              "link": "",
+              "hour": "13:30",
+              "budget": 2485.0,
+              "currency": "R$"
+            }
+          ]
+        },
+        {
+          "id": 48,
+          "date": "03/12/2022",
+          "activity": []
+        }
+      ],
+      "tags": []
+    }
+]

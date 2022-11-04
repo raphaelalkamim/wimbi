@@ -117,6 +117,54 @@ class DetailView: UIView {
         
     }
     
+    func setupContentByBackend(activity: Activity) {
+        var value = ""
+        var currency = ""
+        let starts = "Starts at: ".localized()
+        let coin = "Value: ".localized()
+        let type = "Type: ".localized()
+        
+        activityTitle.text = activity.name
+        activityIcon.image = UIImage(named: "\(activity.category )Selected")
+        
+        activityCategory.text = type + (activity.category.capitalized.localized() )
+        if activity.budget == 0.0 {
+            value = "Free"
+            currency = ""
+        } else {
+            value = "\(activity.budget)"
+            currency = "\(activity.currency )"
+        }
+        
+        activityInfo.text = "\(starts)\(activity.hour )    •    \(coin)\(currency )\(value)"
+        local.text = activity.address
+        details.text = activity.tips
+        
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 17)]
+        
+        linkButton.setAttributedTitle(NSAttributedString(string: "\(activity.link )", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
+        
+        if activity.address.isEmpty == true {
+            local.text = "Endereço não disponibilizado"
+            local.textColor = .caption
+
+        }
+        if activity.category == "empty" {
+            activityIcon.image = UIImage(named: "empty")
+            activityCategory.text = "No type"
+        }
+        if activity.link.isEmpty == true {
+            linkButton.setAttributedTitle(NSAttributedString(string: "Contato indisponível ", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
+            linkButton.isEnabled = false
+            linkButton.setTitleColor(.caption, for: .normal)
+        }
+        
+        if activity.tips.isEmpty == true {
+            details.text = "Nenhum detalhe informado"
+            details.textColor = .caption
+        }
+    }
+    
     func setupContent(activity: ActivityLocal) {
         var value = ""
         var currency = ""
@@ -163,7 +211,6 @@ class DetailView: UIView {
             details.text = "Nenhum detalhe informado"
             details.textColor = .caption
         }
-        
     }
 
     func setupConstraints() {

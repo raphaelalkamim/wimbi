@@ -33,7 +33,7 @@ class PreviewRoadmapView: UIView {
     
     lazy var title: UILabel = {
         let title = UILabel()
-        title.text = "Egito"
+        title.text = ""
         title.stylize(with: designSystem.text.largeTitle)
         return title
     }()

@@ -15,6 +15,7 @@ class ExploreViewController: UIViewController {
     
     let explorerView = ExploreView()
     var roadmaps: [RoadmapDTO] = []
+    var roadmapsMock: [Roadmaps] = []
     let network: NetworkMonitor = NetworkMonitor.shared
     let onboardEnable = UserDefaults.standard.bool(forKey: "onboard")
 
@@ -40,14 +41,22 @@ class ExploreViewController: UIViewController {
         network.startMonitoring()
         DataManager.shared.getPublicRoadmaps({ roadmaps in
             self.roadmaps = roadmaps
+            if roadmaps.isEmpty { self.getMockData() }
+            //self.getMockData()
             self.explorerView.roadmapsCollectionView.reloadData()
             self.emptyState(conection: self.network.isReachable)
         })
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
     func addNewRoadmap() {
         coordinator?.createNewRoadmap()
+    }
+    func getMockData() {
+        let mockManager = DataMockManager()
+        if let localData = mockManager.readLocalFile(forName: "dataRoadmaps") {
+            self.roadmapsMock = mockManager.parse(jsonData: localData)!
+            self.explorerView.hiddenSpinner()
+        }
     }
 }
 

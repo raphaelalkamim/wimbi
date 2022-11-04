@@ -45,8 +45,10 @@ extension DetailViewController {
     func setupDetailView() {
         view.addSubview(detailView)
         setupConstraints()
-        detailView.setupContent(activity: activity)
+        if (self.coordinator != nil) {
+            detailView.setupContent(activity: activity)
         }
+    }
         
     func setupConstraints() {
         detailView.snp.makeConstraints { make in
