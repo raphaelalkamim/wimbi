@@ -16,6 +16,7 @@ class ExploreViewController: UIViewController {
     let explorerView = ExploreView()
     var roadmaps: [RoadmapDTO] = []
     let network: NetworkMonitor = NetworkMonitor.shared
+    let onboardEnable = UserDefaults.standard.bool(forKey: "onboard")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,9 @@ class ExploreViewController: UIViewController {
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
             print(userID)
+        }
+        if onboardEnable == false {
+            coordinator?.startOnboarding()
         }
     }
     
