@@ -36,14 +36,20 @@ class ExploreViewController: UIViewController {
         network.startMonitoring()
         DataManager.shared.getPublicRoadmaps({ roadmaps in
             self.roadmaps = roadmaps
+            if roadmaps.isEmpty { self.getMockData() }
             self.explorerView.roadmapsCollectionView.reloadData()
             self.emptyState(conection: self.network.isReachable)
         })
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
     func addNewRoadmap() {
         coordinator?.createNewRoadmap()
+    }
+    func getMockData() {
+        let mockManager = DataMockManager()
+        if let localData = mockManager.readLocalFile(forName: "dataRoadmaps") {
+            mockManager.parse(jsonData: localData)
+        }
     }
 }
 
