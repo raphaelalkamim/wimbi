@@ -45,7 +45,7 @@ extension ExploreViewController {
 
 extension ExploreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.previewRoadmap(roadmapId: roadmaps[indexPath.row].id)
+        coordinator?.previewRoadmap(roadmapId: roadmapsMock[indexPath.row].id)
     }
 }
 

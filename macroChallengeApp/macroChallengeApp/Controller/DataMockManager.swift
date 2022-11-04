@@ -21,6 +21,17 @@ class DataMockManager {
         }
         return nil
     }
+    func parseDTO(jsonData: Data) -> [RoadmapDTO]? {
+        do {
+            let decodedData = try JSONDecoder().decode([RoadmapDTO].self,
+                                                       from: jsonData)
+            return decodedData
+        } catch {
+            print("decode error")
+        }
+        return nil
+    }
+    
     func parse(jsonData: Data) -> [Roadmaps]? {
         do {
             let decodedData = try JSONDecoder().decode([Roadmaps].self,
