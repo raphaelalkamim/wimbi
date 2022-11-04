@@ -296,7 +296,6 @@ class DataManager {
                     completion(roadmaps)
                 }
             } catch {
-                // FIXME: tratar o erro do decoder
                 print("DEU RUIM NO PARSE")
             }
         }
@@ -330,7 +329,6 @@ class DataManager {
                             completion(roadmaps)
                         }
                     } catch {
-                        // FIXME: tratar o erro do decoder
                         print("DEU RUIM NO PARSE")
                     }
                 }
@@ -370,7 +368,6 @@ class DataManager {
                     if let error = error {
                         print(error)
                     } else if data != nil {
-
                     } else {
                         // Handle unexpected error
                     }
@@ -777,7 +774,6 @@ class DataManager {
         }
     }
     
-#warning("Corrigir essa funcao para utilizar no codigo")
     func decodeType<T: Codable>(_ class: T, data: Data) -> T? {
         do {
             let newData = try JSONDecoder().decode(T.self, from: data)

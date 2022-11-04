@@ -42,7 +42,6 @@ class ExploreViewController: UIViewController {
         DataManager.shared.getPublicRoadmaps({ roadmaps in
             self.roadmaps = roadmaps
             if roadmaps.isEmpty { self.getMockData() }
-            //self.getMockData()
             self.explorerView.roadmapsCollectionView.reloadData()
             self.emptyState(conection: self.network.isReachable)
         })

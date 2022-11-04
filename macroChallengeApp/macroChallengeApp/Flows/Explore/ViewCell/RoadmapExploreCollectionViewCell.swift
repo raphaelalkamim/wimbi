@@ -171,4 +171,26 @@ extension RoadmapExploreCollectionViewCell {
 
         }
     }
+    
+    func setupRoadmapMock(roadmap: Roadmaps) {
+        self.setupContent(imageId: roadmap.imageId, name: roadmap.name, peopleCount: roadmap.peopleCount, dayCount: roadmap.dayCount, budget: roadmap.budget, currency: roadmap.currency, category: roadmap.category, likesCount: roadmap.likesCount)
+    }
+    func setupRoadmapBackEnd(roadmap: RoadmapDTO) {
+        self.setupContent(imageId: roadmap.imageId, name: roadmap.name, peopleCount: roadmap.peopleCount, dayCount: roadmap.dayCount, budget: roadmap.budget, currency: roadmap.currency, category: roadmap.category, likesCount: roadmap.likesCount)
+    }
+    func setupContent(imageId: String, name: String, peopleCount: Int, dayCount: Int, budget: Double, currency: String, category: String, likesCount: Int) {
+        cover.image = UIImage(named: imageId)
+        title.text = name
+        let travelers = "travelers  •".localized()
+        let days = "days".localized()
+        subtitle.text = "\(peopleCount) \(travelers)  \(dayCount) \(days)"
+        var amount = "per person"
+        if budget > 1000 {
+            amount = "thousand per person".localized()
+        }
+        costByPerson.text = "\(currency) \(budget / 1000) \(amount)"
+        categoryName.text = category.localized()
+        setupColor(category: category)
+        totalLikes.text = "\(likesCount)"
+    }
 }
