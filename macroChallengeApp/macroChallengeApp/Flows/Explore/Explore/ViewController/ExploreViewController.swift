@@ -31,6 +31,9 @@ class ExploreViewController: UIViewController {
             let userID = String(data: data, encoding: .utf8)!
             print(userID)
         }
+        if onboardEnable == false {
+            coordinator?.startOnboarding()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,10 +44,6 @@ class ExploreViewController: UIViewController {
             self.emptyState(conection: self.network.isReachable)
         })
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        if onboardEnable == false {
-            coordinator?.startOnboarding()
-        }
     }
     
     func addNewRoadmap() {
