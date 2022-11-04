@@ -70,6 +70,7 @@ class ExploreCoordinator: Coordinator {
         let viewController = PreviewRoadmapViewController()
         viewController.coordinator = self
         viewController.roadmap = roadmap
+        viewController.setupContent(roadmap: roadmap)
         navigationController.pushViewController(viewController, animated: true)
     }
     func back() {

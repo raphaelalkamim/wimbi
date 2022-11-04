@@ -29,10 +29,12 @@ class PreviewRoadmapViewController: UIViewController {
         return userC
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        getRoadmapById(roadmapId: self.roadmapId)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getRoadmapById(roadmapId: self.roadmapId)
         self.setupPreviewRoadmapView()
         
         previewView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
@@ -83,25 +85,26 @@ class PreviewRoadmapViewController: UIViewController {
     
     func getRoadmapById(roadmapId: Int) {
         DataManager.shared.getRoadmapById(roadmapId: roadmapId, { roadmap in
-            self.previewView.cover.image = UIImage(named: roadmap.imageId)
-            self.previewView.title.text = roadmap.name
             self.roadmap = roadmap
-
-            self.roadmap.days.sort {
-                $0.id < $1.id
-            }
-            self.roadmap.days[0].isSelected = true
-            
-            for index in 0..<self.roadmap.days.count {
-                self.roadmap.days[index].activity.sort {
-                    $0.hour < $1.hour
-                }
-            }
-            
-            self.previewView.infoTripCollectionView.reloadData()
-            self.previewView.calendarCollectionView.reloadData()
-            self.previewView.activitiesTableView.reloadData()
+            self.setupContent(roadmap: roadmap)
         })
+    }
+    
+    func setupContent(roadmap: Roadmaps) {
+        self.previewView.cover.image = UIImage(named: roadmap.imageId)
+        self.previewView.title.text = roadmap.name
+        self.roadmap.days.sort {
+            $0.id < $1.id
+        }
+        self.roadmap.days[0].isSelected = true
+        for index in 0..<self.roadmap.days.count {
+            self.roadmap.days[index].activity.sort {
+                $0.hour < $1.hour
+            }
+        }
+        self.previewView.infoTripCollectionView.reloadData()
+        self.previewView.calendarCollectionView.reloadData()
+        self.previewView.activitiesTableView.reloadData()
     }
     
     @objc func likeRoadmap() {
