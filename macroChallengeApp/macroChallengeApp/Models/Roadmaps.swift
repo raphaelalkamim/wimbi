@@ -51,7 +51,7 @@ struct Roadmaps: Codable {
         self.budget = 0
         self.dayCount = 1
         self.peopleCount = 1
-        self.imageId = "ImageDefault"
+        self.imageId = "defaultCover"
         self.category = "No category"
         self.isShared = false
         self.isPublic = false

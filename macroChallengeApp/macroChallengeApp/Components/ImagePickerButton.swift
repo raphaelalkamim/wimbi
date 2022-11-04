@@ -38,4 +38,9 @@ class ImagePickerButton: UIButton {
     func setupBackgroundImage(category: String) {
         self.setBackgroundImage(UIImage(named: "button\(category)"), for: .normal)
     }
+    func setImageById(imageId: String) {
+        let path = imageId
+        let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
+        self.setBackgroundImage(imageNew, for: .normal)
+    }
 }

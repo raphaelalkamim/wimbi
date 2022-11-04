@@ -38,6 +38,7 @@
 		13737BF12915836E00BC4373 /* DataMockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13737BF02915836E00BC4373 /* DataMockManager.swift */; };
 		13737BF42915845F00BC4373 /* dataRoadmaps.json in Resources */ = {isa = PBXBuildFile; fileRef = 13737BF32915845F00BC4373 /* dataRoadmaps.json */; };
 		13737BF62915A3AA00BC4373 /* ImagePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13737BF52915A3AA00BC4373 /* ImagePickerButton.swift */; };
+		13737BF92915CBEC00BC4373 /* ReviewTravelViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13737BF82915CBEC00BC4373 /* ReviewTravelViewControllerExtension.swift */; };
 		1379743B28D5162C00AEA662 /* ReviewTravelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379743A28D5162C00AEA662 /* ReviewTravelView.swift */; };
 		1379743D28D5165200AEA662 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */; };
 		1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744028D8E55000AEA662 /* CurrentViewController.swift */; };
@@ -206,6 +207,7 @@
 		13737BF02915836E00BC4373 /* DataMockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMockManager.swift; sourceTree = "<group>"; };
 		13737BF32915845F00BC4373 /* dataRoadmaps.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dataRoadmaps.json; sourceTree = "<group>"; };
 		13737BF52915A3AA00BC4373 /* ImagePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerButton.swift; sourceTree = "<group>"; };
+		13737BF82915CBEC00BC4373 /* ReviewTravelViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTravelViewControllerExtension.swift; sourceTree = "<group>"; };
 		1379743A28D5162C00AEA662 /* ReviewTravelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTravelView.swift; sourceTree = "<group>"; };
 		1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSearchTableViewController.swift; path = macroChallengeApp/Components/LocationSearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1379744028D8E55000AEA662 /* CurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
@@ -462,6 +464,14 @@
 			path = Contents;
 			sourceTree = "<group>";
 		};
+		13737BF72915CBD600BC4373 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				13737BF82915CBEC00BC4373 /* ReviewTravelViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1379744E28D8E61100AEA662 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +671,7 @@
 		13F994E528D3939F00B077C0 /* NewRoadmap */ = {
 			isa = PBXGroup;
 			children = (
+				13737BF72915CBD600BC4373 /* Extensions */,
 				B0E2461328CFA39A00D62AF1 /* UIViewCell */,
 				13F994EF28D3943D00B077C0 /* View */,
 				13F994EE28D3941F00B077C0 /* Controllers */,
@@ -1257,6 +1268,7 @@
 				B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */,
 				A0FD739B28DA7EF70044E47C /* MyTripViewController.swift in Sources */,
 				1379745428D8E6B700AEA662 /* SettingsView.swift in Sources */,
+				13737BF92915CBEC00BC4373 /* ReviewTravelViewControllerExtension.swift in Sources */,
 				A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */,
 				1467706728D2699D00D55098 /* LabelTableViewCell.swift in Sources */,
 				13BD501128DA297500C0EA7C /* LoginView.swift in Sources */,
