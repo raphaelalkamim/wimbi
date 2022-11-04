@@ -98,7 +98,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         }
         let isNew = false
         cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: isNew)
-        cell.setupImage(category: roadmaps[indexPath.row].category ?? "noCategory")
+        cell.setupImage(category: roadmaps[indexPath.row].imageId ?? "noCategory")
         cell.setupAnchors()
         return cell
     }

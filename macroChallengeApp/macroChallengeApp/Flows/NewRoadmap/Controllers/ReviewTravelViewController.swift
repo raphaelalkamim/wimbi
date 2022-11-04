@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 class ReviewTravelViewController: UIViewController {
     weak var coordinator: NewRoadmapCoordinator?
@@ -13,6 +14,8 @@ class ReviewTravelViewController: UIViewController {
     let reviewTravelView = ReviewTravelView()
     let designSystem = DefaultDesignSystem.shared
     var dataManager = DataManager.shared
+    var imagePicker: ImagePicker!
+    var access = false
     
     var roadmap: Roadmaps
     var category = ""
@@ -27,6 +30,10 @@ class ReviewTravelViewController: UIViewController {
     var edit = false
     
     weak var delegateRoadmap: ReviewTravelDelegate?
+    
+    override func loadView() {
+        view = reviewTravelView
+    }
     
     init(roadmap: Roadmaps) {
         self.roadmap = roadmap
@@ -46,16 +53,11 @@ class ReviewTravelViewController: UIViewController {
     
     func setupReviewTravelView() {
         navigationItem.title = "My roadmap".localized()
-        self.view.addSubview(reviewTravelView)
-        setupReviewConstraints()
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        reviewTravelView.coverImage.addTarget(self, action: #selector(editPhoto), for: .touchUpInside)
         reviewTravelView.bindTableView(delegate: self, dataSource: self)
     }
     
-    func setupReviewConstraints() {
-        reviewTravelView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
     func setupToolbar() {
         let barItems = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelRoadmap))
         self.navigationItem.leftBarButtonItems = [barItems]
@@ -92,7 +94,7 @@ class ReviewTravelViewController: UIViewController {
     
     func saveCoreData() {
         roadmap.currency = getUserCurrency()
-        roadmap.imageId = "beach0"
+        
         // save in Core Data
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: true)
         RoadmapRepository.shared.saveContext()
@@ -105,12 +107,6 @@ class ReviewTravelViewController: UIViewController {
         var day = Day(isSelected: isSelected, date: date)
         day.id = indexPath
         return day
-    }
-    @objc func backPage() {
-        coordinator?.back()
-    }
-    @objc func cancelRoadmap() {
-        coordinator?.dismissRoadmap(isNewRoadmap: false)
     }
     func setupContent() {
         self.daysCount = roadmap.dayCount
@@ -138,6 +134,33 @@ class ReviewTravelViewController: UIViewController {
         } else {
             return currencySymbol ?? "U$"
         }
+    }
+    @objc func editPhoto(_ sender: Any) {
+        let photos = PHPhotoLibrary.authorizationStatus()
+            if photos == .notDetermined {
+                PHPhotoLibrary.requestAuthorization({status in
+                    if status != .denied {
+                        self.access = true
+
+                    } else {
+                        self.access = false
+                    }
+                })
+            } else {
+            let authorization = PHPhotoLibrary.authorizationStatus()
+            if authorization != .denied {
+                self.imagePicker.present(from: self.reviewTravelView)
+                //self.imagePicker.present(from: (sender as? UIView)!)
+            } else {
+                print("Nao permitido")
+            }
+        }
+    }
+    @objc func backPage() {
+        coordinator?.back()
+    }
+    @objc func cancelRoadmap() {
+        coordinator?.dismissRoadmap(isNewRoadmap: false)
     }
 }
 
@@ -194,6 +217,15 @@ extension ReviewTravelViewController: UITableViewDataSource {
             }
         }
         return cell
+    }
+}
+
+extension ReviewTravelViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        if let imageNew = image {
+            self.reviewTravelView.coverImage.setBackgroundImage(imageNew, for: .normal)
+            self.roadmap.imageId = SaveImagecontroller.saveToFiles(image: imageNew)
+        }
     }
 }
 
