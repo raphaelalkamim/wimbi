@@ -150,9 +150,7 @@ class ProfileView: UIView {
         setupConstraints()
         emptyState()
     }
-    
 
-    
     func setupConstraints() {
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)

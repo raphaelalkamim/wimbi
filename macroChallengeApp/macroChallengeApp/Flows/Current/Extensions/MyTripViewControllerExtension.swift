@@ -68,7 +68,7 @@ extension MyTripViewController {
                 alert.view.tintColor = .accent
                 
                 let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 16)]
-                let string = NSAttributedString(string: "Which app would you like to use to access the address?".localized(), attributes: titleAtt as [NSAttributedString.Key : Any])
+                let string = NSAttributedString(string: "Which app would you like to use to access the address?".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
                 
                 alert.setValue(string, forKey: "attributedTitle")
                 
