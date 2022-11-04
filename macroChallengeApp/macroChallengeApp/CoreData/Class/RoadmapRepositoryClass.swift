@@ -23,12 +23,9 @@ public class RoadmapRepository: NSManagedObject {
         return container
     }()
     
-    public var context: NSManagedObjectContext {
-        persistentContainer.viewContext
-    }
-    
+    var context = UserRepository.shared.context
+
     func saveContext() {
-        let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
@@ -53,7 +50,8 @@ public class RoadmapRepository: NSManagedObject {
                 self.postInBackend(newRoadmap: newRoadmap, roadmap: roadmap, newDays: createdDays)
             }
         }
-        
+        let user = UserRepository.shared.getUser()
+        user[0].addToRoadmap(newRoadmap)
         self.saveContext()
         return newRoadmap
     }
@@ -107,7 +105,6 @@ public class RoadmapRepository: NSManagedObject {
                 self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDaysCore: newDaysCore)
             }
         }
-        
         self.saveContext()
         return newRoadmap
     }
@@ -219,15 +216,13 @@ public class RoadmapRepository: NSManagedObject {
     }
     
     func deleteRoadmap(roadmap: RoadmapLocal) throws {
-        DataManager.shared.deleteObjectBack(objectID: Int(roadmap.id), urlPrefix: "roadmaps", {
-            print("deleted roadmap")
-        })
-        self.persistentContainer.viewContext.delete(roadmap)
+        DataManager.shared.deleteObjectBack(objectID: Int(roadmap.id), urlPrefix: "roadmaps")
+        context.delete(roadmap)
         self.saveContext()
     }
     
     func deleteOldRoadmap(roadmap: RoadmapLocal) throws {
-        self.persistentContainer.viewContext.delete(roadmap)
+        context.delete(roadmap)
         self.saveContext()
     }
     

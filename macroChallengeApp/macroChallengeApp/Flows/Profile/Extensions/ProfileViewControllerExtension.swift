@@ -10,13 +10,17 @@ import UIKit
 
 extension ProfileViewController {
     func setupProfileView() {
-        view.addSubview(profileView)
-        setupConstraints()
+        self.setupGestures()
+        self.setupNavButton()
+        profileView.updateConstraintsCollection()
+        profileView.bindColletionView(delegate: self, dataSource: self)
     }
-    func setupConstraints() {
-        profileView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+    func setupGestures() {
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        profileView.myRoadmapCollectionView.addGestureRecognizer(longPress)
+    }
+    func setupNavButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
     }
     // MARK: Long press and delete
     @objc public func handleLongPress(sender: UILongPressGestureRecognizer) {
@@ -69,6 +73,7 @@ extension ProfileViewController: UICollectionViewDelegate {
 
 extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        profileView.emptyState()
         return roadmaps.count
     }
     
@@ -94,20 +99,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         let isNew = false
         cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: isNew)
         cell.setupImage(category: roadmaps[indexPath.row].category ?? "noCategory")
-        cell.backgroundColor = designSystem.palette.backgroundCell
-        cell.layer.cornerRadius = 16
-        
-        cell.title.translatesAutoresizingMaskIntoConstraints = false
-        
-        if cell.title.text!.count < 14 {
-            cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.xLargePositive).isActive = true
-            cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.smallPositive).isActive = false
-        } else {
-            cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.xLargePositive).isActive = false
-            cell.title.topAnchor.constraint(equalTo: cell.roadmapImage.bottomAnchor, constant: designSystem.spacing.smallPositive).isActive = true
-            
-        }
-        
+        cell.setupAnchors()
         return cell
     }
 }

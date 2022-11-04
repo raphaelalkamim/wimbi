@@ -43,7 +43,6 @@ class UserRepository: NSManagedObject {
         
         newUser.id = Int32(user.id)
         newUser.name = user.name
-        newUser.photoId = user.photoId
         newUser.usernameApp = user.usernameApp
         
         self.saveContext()
@@ -59,7 +58,18 @@ class UserRepository: NSManagedObject {
         }
         return []
     }
-    
+    func updateName(user: UserLocal, name: String) {
+        user.name = name
+        self.saveContext()
+    }
+    func updateUsernameApp(user: UserLocal, username: String) {
+        user.usernameApp = username
+        self.saveContext()
+    }
+    func updatePhotoId(user: UserLocal, photoId: String) {
+        user.photoId = photoId
+        self.saveContext()
+    }
     func deleteUser(user: UserLocal) throws {
         self.persistentContainer.viewContext.delete(user)
         self.saveContext()

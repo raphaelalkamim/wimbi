@@ -33,6 +33,8 @@
 		135AC6A328DE1B01003E1CF3 /* DesignImagesActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135AC6A228DE1B01003E1CF3 /* DesignImagesActivities.swift */; };
 		135AC6A528DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */; };
 		13732800290B1EB50021231E /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137327FF290B1EB40021231E /* CurrencyController.swift */; };
+		13732802290C67840021231E /* SaveImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13732801290C67840021231E /* SaveImageController.swift */; };
+		13732804290C67900021231E /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13732803290C67900021231E /* ImagePickerController.swift */; };
 		1379743B28D5162C00AEA662 /* ReviewTravelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379743A28D5162C00AEA662 /* ReviewTravelView.swift */; };
 		1379743D28D5165200AEA662 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */; };
 		1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744028D8E55000AEA662 /* CurrentViewController.swift */; };
@@ -139,6 +141,7 @@
 		DF2643AB28DB9CC500053180 /* UserRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AA28DB9CC500053180 /* UserRoadmap.swift */; };
 		DF2643AD28DB9EAD00053180 /* RoadmapDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */; };
 		DF2EA1BD28DE28BA002F12D8 /* ActivityDestinyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */; };
+		DF2FAF822911B51A00194F04 /* RefreshToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FAF812911B51A00194F04 /* RefreshToken.swift */; };
 		DF57253D28D110E1005466D9 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57253C28D110E1005466D9 /* DaysView.swift */; };
 		DF57254128D11559005466D9 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */; };
 		DF57254328D241D2005466D9 /* NumberPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */; };
@@ -195,6 +198,8 @@
 		135AC6A228DE1B01003E1CF3 /* DesignImagesActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImagesActivities.swift; sourceTree = "<group>"; };
 		135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignActivitiesImages.swift; sourceTree = "<group>"; };
 		137327FF290B1EB40021231E /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
+		13732801290C67840021231E /* SaveImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImageController.swift; sourceTree = "<group>"; };
+		13732803290C67900021231E /* ImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
 		1379743A28D5162C00AEA662 /* ReviewTravelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTravelView.swift; sourceTree = "<group>"; };
 		1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSearchTableViewController.swift; path = macroChallengeApp/Components/LocationSearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1379744028D8E55000AEA662 /* CurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
@@ -314,6 +319,7 @@
 		DF2643AA28DB9CC500053180 /* UserRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoadmap.swift; sourceTree = "<group>"; };
 		DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapDTO.swift; sourceTree = "<group>"; };
 		DF2EA1BC28DE28BA002F12D8 /* ActivityDestinyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDestinyView.swift; sourceTree = "<group>"; };
+		DF2FAF812911B51A00194F04 /* RefreshToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshToken.swift; sourceTree = "<group>"; };
 		DF57253C28D110E1005466D9 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
 		DF57254028D11559005466D9 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		DF57254228D241D2005466D9 /* NumberPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -551,6 +557,7 @@
 				B0E0685028EF5FD700418F87 /* Currency.swift */,
 				DF66658128F0991100E37429 /* DayDTO.swift */,
 				DF89333D290B1DD900C280FA /* Tag.swift */,
+				DF2FAF812911B51A00194F04 /* RefreshToken.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -758,6 +765,8 @@
 				13C8A11528C68B7700994196 /* DataManager.swift */,
 				133BE5B3290092590045E742 /* NetworkMonitor.swift */,
 				137327FF290B1EB40021231E /* CurrencyController.swift */,
+				13732801290C67840021231E /* SaveImageController.swift */,
+				13732803290C67900021231E /* ImagePickerController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1245,6 +1254,7 @@
 				1359F15828DA48FD009509DF /* UserRepositoryClass.swift in Sources */,
 				1359F14F28DA48AF009509DF /* UserRepository.swift in Sources */,
 				B078F21628C27F2000D46F61 /* AppDelegate.swift in Sources */,
+				DF2FAF822911B51A00194F04 /* RefreshToken.swift in Sources */,
 				DF5F774528CA846C00BA5F5F /* UILabel+Font.swift in Sources */,
 				1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */,
 				DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */,
@@ -1294,6 +1304,7 @@
 				A0B9F4C728DA2A4C00F2DF06 /* TermsView.swift in Sources */,
 				131272D828E6249E000B7968 /* PreviewRoadmapViewController.swift in Sources */,
 				13BD501028DA297500C0EA7C /* LoginViewController.swift in Sources */,
+				13732804290C67900021231E /* ImagePickerController.swift in Sources */,
 				A0252CB429118E7700093E14 /* OnboardingView.swift in Sources */,
 				1359F14B28DA489A009509DF /* DayRepository.swift in Sources */,
 				A0A8BAB628E4E824006A8BDD /* String+Localization.swift in Sources */,
@@ -1301,6 +1312,7 @@
 				13EC5C5428DB902F005F7128 /* DefaultDesignDefaultImages.swift in Sources */,
 				131272DA28E624CC000B7968 /* ExploreViewController+PreviewRoadmap.swift in Sources */,
 				DF5F774128CA7E1600BA5F5F /* DesignSystem+UIFont.swift in Sources */,
+				13732802290C67840021231E /* SaveImageController.swift in Sources */,
 				131272DB28E624CC000B7968 /* ExploreViewController+Roadmaps.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1486,12 +1498,14 @@
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V8V28A4DX2;
+				DEVELOPMENT_TEAM = TX88D8XM39;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Wimbi wants to have access to your camera in case you want to take a picture";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Wimbi wants to have access to your location so you can create roadmaps";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Wimbi wants to have access to your images so you can customize the app";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -1522,12 +1536,14 @@
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V8V28A4DX2;
+				DEVELOPMENT_TEAM = TX88D8XM39;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Wimbi wants to have access to your camera in case you want to take a picture";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Wimbi wants to have access to your location so you can create roadmaps";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Wimbi wants to have access to your images so you can customize the app";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
