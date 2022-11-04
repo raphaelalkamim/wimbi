@@ -1,244 +1,56 @@
-[{
-  "id": 88,
-  "name": "Gramado (RS)",
-  "location": "-29.378967480882853 -50.88101881803257",
-  "budget": 5760.0,
-  "dayCount": 4,
-  "dateInitial": "01/12/2022",
-  "dateFinal": "04/12/2022",
-  "peopleCount": 2,
-  "imageId": "montain2",
-  "category": "Montanha",
-  "currency": "BRL",
-  "likesCount": 0,
-  "isShared": false,
-  "isPublic": true,
-  "shareKey": "ABC123",
-  "createdAt": "13/10/2022",
-  "days": [
+[
     {
-      "id": 90,
-      "date": "01/12/2022",
-      "activity": [
+      "id": 44,
+      "name": "Gramado",
+      "location": "-29.3770565 -50.8731584",
+      "budget": 2485.0,
+      "dayCount": 4,
+      "dateInitial": "1/12/2022",
+      "dateFinal": "4/12/2022",
+      "peopleCount": 2,
+      "imageId": "beach2",
+      "category": "Beach",
+      "isShared": false,
+      "isPublic": true,
+      "shareKey": "215052viagem908982",
+      "createdAt": "4/11/2022",
+      "currency": "R$",
+      "likesCount": 0,
+      "day": [
         {
-          "id": 98,
-          "name": "Hotel Daara",
-          "category": "accommodation",
-          "location": "-29.368476532215404 -50.87932793238265",
-          "hour": "18:00",
-          "budget": 0.0
+          "id": 49,
+          "date": "04/12/2022",
+          "activity": []
         },
         {
-          "id": 97,
-          "name": "Caminhada Av.Borges de Medeiros",
-          "category": "leisure",
-          "location": "-29.385425816448354 -50.87363973052958",
-          "hour": "16:30",
-          "budget": 0.0
+          "id": 47,
+          "date": "02/12/2022",
+          "activity": []
         },
         {
-          "id": 99,
-          "name": "Restaurante Maison de Saveurs",
-          "category": "food",
-          "location": "-29.379833149878543 -50.874238857512715",
-          "hour": "20:00",
-          "budget": 550.0
+          "id": 46,
+          "date": "01/12/2022",
+          "activity": [
+            {
+              "id": 50,
+              "name": "Checkin: Hotel Daara",
+              "tips": "",
+              "category": "accommodation",
+              "location": "-29.368627837380135 -50.87939143180847",
+              "address": "Avenida Borges de Medeiros, 4165, Gramado, Lagos do Bosque, RS, Brasil",
+              "link": "",
+              "hour": "13:30",
+              "budget": 2485.0,
+              "currency": "R$"
+            }
+          ]
         },
         {
-          "id": 95,
-          "name": "Pastasciutta Rua Coberta",
-          "category": "food",
-          "location": "-29.378398951324826 -50.87315525936569",
-          "hour": "14:00",
-          "budget": 370.0
-        },
-        {
-          "id": 94,
-          "name": "Checkin: Hotel Daara",
-          "category": "accommodation",
-          "location": "-29.368476532215404 -50.87932793238265",
-          "hour": "13:00",
-          "budget": 2485.0
-        },
-        {
-          "id": 100,
-          "name": "Hotel Daara",
-          "category": "accommodation",
-          "location": "-29.368476532215404 -50.87932793238265",
-          "hour": "22:00",
-          "budget": 0.0
-        },
-        {
-          "id": 96,
-          "name": "Igreja Matriz São Pedro",
-          "category": "leisure",
-          "location": "-29.379119211652117 -50.87390615751284",
-          "hour": "16:00",
-          "budget": 0.0
+          "id": 48,
+          "date": "03/12/2022",
+          "activity": []
         }
-      ]
-    },
-    {
-      "id": 93,
-      "date": "04/12/2022",
-      "activity": [
-        {
-          "id": 131,
-          "name": "Check out: Hotel Daara",
-          "category": "accommodation",
-          "location": "-29.368476532215404 -50.87932793238265",
-          "hour": "12:00",
-          "budget": 0.0
-        },
-        {
-          "id": 132,
-          "name": "Restaurante George III",
-          "category": "food",
-          "location": "-29.388655263654933 -50.87466860242176",
-          "hour": "13:00",
-          "budget": 420.0
-        },
-        {
-          "id": 129,
-          "name": "Café da manhã do hotel",
-          "category": "food",
-          "location": "-29.368476532215404 -50.87932793238265",
-          "hour": "08:00",
-          "budget": 0.0
-        },
-        {
-          "id": 130,
-          "name": "Caminhada Av.Borges de Medeiros",
-          "category": "leisure",
-          "location": "-29.38536972573664 -50.87363973052958",
-          "hour": "10:00",
-          "budget": 0.0
-        }
-      ]
-    },
-    {
-      "id": 92,
-      "date": "03/12/2022",
-      "activity": [
-        {
-          "id": 119,
-          "name": "Containner Bistrot",
-          "category": "food",
-          "location": "-29.362555667072282 -50.81010254402141",
-          "hour": "13:00",
-          "budget": 247.0
-        },
-        {
-          "id": 117,
-          "name": "Café da manhã do hotel",
-          "category": "food",
-          "location": "-29.368476532215404 -50.87932793238265",
-          "hour": "08:00",
-          "budget": 0.0
-        },
-        {
-          "id": 121,
-          "name": "Mundo a vapor",
-          "category": "leisure",
-          "location": "-29.361347367803237 -50.83478351703829",
-          "hour": "16:30",
-          "budget": 140.0
-        },
-        {
-          "id": 123,
-          "name": "Josephina Café e Restaurante",
-          "category": "food",
-          "location": "-29.379694606954033 -50.87398125751275",
-          "hour": "20:00",
-          "budget": 370.0
-        },
-        {
-          "id": 122,
-          "name": "Hotel Daara",
-          "category": "accommodation",
-          "location": "-29.368476532215404 -50.87932793238265",
-          "hour": "18:00",
-          "budget": 0.0
-        },
-        {
-          "id": 118,
-          "name": "Parque do Teleférico Canela",
-          "category": "leisure",
-          "location": "-29.30767058253994 -50.84936222019577",
-          "hour": "10:00",
-          "budget": 140.0
-        },
-        {
-          "id": 120,
-          "name": "Catedral de pedra",
-          "category": "leisure",
-          "location": "-29.363534371339284 -50.80980713238277",
-          "hour": "15:00",
-          "budget": 0.0
-        },
-        {
-          "id": 124,
-          "name": "Hotel Daara",
-          "category": "accommodation",
-          "location": "-29.368476532215404 -50.87932793238265",
-          "hour": "22:00",
-          "budget": 0.0
-        }
-      ]
-    },
-    {
-      "id": 91,
-      "date": "02/12/2022",
-      "activity": [
-        {
-          "id": 111,
-          "name": "Café da manhã do hotel",
-          "category": "food",
-          "location": "-29.368476532215404 -50.87932793238265",
-          "hour": "07:00",
-          "budget": 0.0
-        },
-        {
-          "id": 114,
-          "name": "Vinícula Miolo Degustação",
-          "category": "leisure",
-          "location": "-29.18392411114587, -51.58262185751595",
-          "hour": "15:00",
-          "budget": 50.0
-        },
-        {
-          "id": 116,
-          "name": "Hotel Daara",
-          "category": "accommodation",
-          "location": "-29.368476532215404 -50.87932793238265",
-          "hour": "23:00",
-          "budget": 0.0
-        },
-        {
-          "id": 113,
-          "name": "Restaurante Maria Valduga",
-          "category": "food",
-          "location": "-29.17725986708654 -51.55613951518849",
-          "hour": "13:00",
-          "budget": 418.0
-        },
-        {
-          "id": 115,
-          "name": "Restaurante Varanda 61",
-          "category": "food",
-          "location": "-29.377920106576074 -50.87286255751274",
-          "hour": "21:00",
-          "budget": 330.0
-        },
-        {
-          "id": 112,
-          "name": "Vinícula Casa Valduga Degustação",
-          "category": "food",
-          "location": "-29.175850328634063 -51.55650567148265",
-          "hour": "11:00",
-          "budget": 240.0
-        }
-      ]
+      ],
+      "tags": []
     }
-  ]
-}]
+]
