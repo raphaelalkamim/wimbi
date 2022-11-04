@@ -33,10 +33,12 @@
 		135AC6A328DE1B01003E1CF3 /* DesignImagesActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135AC6A228DE1B01003E1CF3 /* DesignImagesActivities.swift */; };
 		135AC6A528DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */; };
 		13732800290B1EB50021231E /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137327FF290B1EB40021231E /* CurrencyController.swift */; };
-		13737BF12915836E00BC4373 /* DataMockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13737BF02915836E00BC4373 /* DataMockManager.swift */; };
-		13737BF42915845F00BC4373 /* dataRoadmaps.json in Resources */ = {isa = PBXBuildFile; fileRef = 13737BF32915845F00BC4373 /* dataRoadmaps.json */; };
 		13732802290C67840021231E /* SaveImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13732801290C67840021231E /* SaveImageController.swift */; };
 		13732804290C67900021231E /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13732803290C67900021231E /* ImagePickerController.swift */; };
+		13737BF12915836E00BC4373 /* DataMockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13737BF02915836E00BC4373 /* DataMockManager.swift */; };
+		13737BF42915845F00BC4373 /* dataRoadmaps.json in Resources */ = {isa = PBXBuildFile; fileRef = 13737BF32915845F00BC4373 /* dataRoadmaps.json */; };
+		13737BF62915A3AA00BC4373 /* ImagePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13737BF52915A3AA00BC4373 /* ImagePickerButton.swift */; };
+		13737BF92915CBEC00BC4373 /* ReviewTravelViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13737BF82915CBEC00BC4373 /* ReviewTravelViewControllerExtension.swift */; };
 		1379743B28D5162C00AEA662 /* ReviewTravelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379743A28D5162C00AEA662 /* ReviewTravelView.swift */; };
 		1379743D28D5165200AEA662 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */; };
 		1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744028D8E55000AEA662 /* CurrentViewController.swift */; };
@@ -200,10 +202,12 @@
 		135AC6A228DE1B01003E1CF3 /* DesignImagesActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImagesActivities.swift; sourceTree = "<group>"; };
 		135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignActivitiesImages.swift; sourceTree = "<group>"; };
 		137327FF290B1EB40021231E /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
-		13737BF02915836E00BC4373 /* DataMockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMockManager.swift; sourceTree = "<group>"; };
-		13737BF32915845F00BC4373 /* dataRoadmaps.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dataRoadmaps.json; sourceTree = "<group>"; };
 		13732801290C67840021231E /* SaveImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImageController.swift; sourceTree = "<group>"; };
 		13732803290C67900021231E /* ImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
+		13737BF02915836E00BC4373 /* DataMockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMockManager.swift; sourceTree = "<group>"; };
+		13737BF32915845F00BC4373 /* dataRoadmaps.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dataRoadmaps.json; sourceTree = "<group>"; };
+		13737BF52915A3AA00BC4373 /* ImagePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerButton.swift; sourceTree = "<group>"; };
+		13737BF82915CBEC00BC4373 /* ReviewTravelViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTravelViewControllerExtension.swift; sourceTree = "<group>"; };
 		1379743A28D5162C00AEA662 /* ReviewTravelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTravelView.swift; sourceTree = "<group>"; };
 		1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSearchTableViewController.swift; path = macroChallengeApp/Components/LocationSearchTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1379744028D8E55000AEA662 /* CurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
@@ -460,6 +464,14 @@
 			path = Contents;
 			sourceTree = "<group>";
 		};
+		13737BF72915CBD600BC4373 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				13737BF82915CBEC00BC4373 /* ReviewTravelViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1379744E28D8E61100AEA662 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,6 +671,7 @@
 		13F994E528D3939F00B077C0 /* NewRoadmap */ = {
 			isa = PBXGroup;
 			children = (
+				13737BF72915CBD600BC4373 /* Extensions */,
 				B0E2461328CFA39A00D62AF1 /* UIViewCell */,
 				13F994EF28D3943D00B077C0 /* View */,
 				13F994EE28D3941F00B077C0 /* Controllers */,
@@ -767,6 +780,7 @@
 				1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */,
 				13F994F928D3B21800B077C0 /* RoadmapToolbar.swift */,
 				1309973028F0BE5C00774E1A /* MyActivityItem.swift */,
+				13737BF52915A3AA00BC4373 /* ImagePickerButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1254,6 +1268,7 @@
 				B05A9C5728DBA795004859F8 /* AddressTableViewCell.swift in Sources */,
 				A0FD739B28DA7EF70044E47C /* MyTripViewController.swift in Sources */,
 				1379745428D8E6B700AEA662 /* SettingsView.swift in Sources */,
+				13737BF92915CBEC00BC4373 /* ReviewTravelViewControllerExtension.swift in Sources */,
 				A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */,
 				1467706728D2699D00D55098 /* LabelTableViewCell.swift in Sources */,
 				13BD501128DA297500C0EA7C /* LoginView.swift in Sources */,
@@ -1300,6 +1315,7 @@
 				DF2643AD28DB9EAD00053180 /* RoadmapDTO.swift in Sources */,
 				133BE5B4290092590045E742 /* NetworkMonitor.swift in Sources */,
 				DF5F774328CA820200BA5F5F /* DefaultDesignTextFonts.swift in Sources */,
+				13737BF62915A3AA00BC4373 /* ImagePickerButton.swift in Sources */,
 				13C8A12528CA693700994196 /* DesignSpacing.swift in Sources */,
 				DF57253D28D110E1005466D9 /* DaysView.swift in Sources */,
 				1379744A28D8E57B00AEA662 /* ProfileViewControllerExtension.swift in Sources */,

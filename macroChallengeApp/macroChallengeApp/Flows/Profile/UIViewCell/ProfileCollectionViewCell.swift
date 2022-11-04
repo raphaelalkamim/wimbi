@@ -99,15 +99,13 @@ extension ProfileCollectionViewCell {
         }
     }
     
-    func setupImage(category: String) {
-        if category == "Beach" {
-            self.roadmapImage.image = designSystem.imagesDefault.beach[Int.random(in: 0..<designSystem.imagesDefault.beach.count)]
-        } else if category == "Mountain" {
-            self.roadmapImage.image = designSystem.imagesDefault.mountain[Int.random(in: 0..<designSystem.imagesDefault.mountain.count)]
-        } else if category == "City" {
-            self.roadmapImage.image = designSystem.imagesDefault.city[Int.random(in: 0..<designSystem.imagesDefault.city.count)]
+    func setupImage(imageId: String, category: String) {
+        if imageId == "defaultCover" {
+            self.roadmapImage.image = UIImage(named: "\(imageId)\(category)")
         } else {
-            self.roadmapImage.image = designSystem.imagesDefault.camp[Int.random(in: 0..<designSystem.imagesDefault.camp.count)]
+            let path = imageId
+            let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
+            self.roadmapImage.image = imageNew
         }
     }
     

@@ -61,8 +61,7 @@ class ProfileCoordinator: Coordinator {
         childCoordinators.append(coordinator)
         coordinator.delegate = self
         coordinator.startEditing(editRoadmap: editRoadmap, delegate: delegate)
-        navigationController.present(coordinator.navigationController, animated: true) {
-        }
+        navigationController.present(coordinator.navigationController, animated: true)
     }
     
     func startActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController) {

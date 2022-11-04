@@ -51,10 +51,7 @@ extension ProfileViewController {
                     action.addAction(UIAlertAction(title: "Delete".localized(), style: .destructive, handler: { [weak self] _ in
                         do {
                             try RoadmapRepository.shared.deleteRoadmap(roadmap: self!.roadmaps[indexPath.row])
-                        } catch {
-                            print(error)
-                        }
-                        
+                        } catch { print(error) }
                         self?.profileView.myRoadmapCollectionView.reloadData()
                     }))
                     action.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil))
@@ -89,7 +86,6 @@ extension ProfileViewController: UICollectionViewDataSource {
         } else {
             self.coordinator?.openRoadmap(roadmap: openRoadmap)
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,7 +94,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         }
         let isNew = false
         cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: isNew)
-        cell.setupImage(category: roadmaps[indexPath.row].category ?? "noCategory")
+        cell.setupImage(imageId: roadmaps[indexPath.row].imageId ?? "defaultCover", category: roadmaps[indexPath.row].category ?? "City")
         cell.setupAnchors()
         return cell
     }

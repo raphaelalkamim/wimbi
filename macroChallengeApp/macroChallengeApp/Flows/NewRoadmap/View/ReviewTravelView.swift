@@ -22,13 +22,11 @@ class ReviewTravelView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public lazy var coverImage: UIImageView = {
-        let image = UIImageView()
+    public lazy var coverImage: ImagePickerButton = {
+        let image = ImagePickerButton(category: "Beach")
         image.clipsToBounds = true
-        image.image = UIImage(named: "beachView")
         image.layer.cornerRadius = 16
         image.contentMode = UIView.ContentMode.scaleAspectFill
-        image.backgroundColor = .red
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -126,15 +124,7 @@ extension ReviewTravelView {
         setupConstraints()
     }
     func setupImage(category: String) {
-        if category == "Beach" {
-            self.coverImage.image = designSystem.imagesDefault.beach[Int.random(in: 0..<designSystem.imagesDefault.beach.count)]
-        } else if category == "Mountain" {
-            self.coverImage.image = designSystem.imagesDefault.mountain[Int.random(in: 0..<designSystem.imagesDefault.mountain.count)]
-        } else if category == "City" {
-            self.coverImage.image = designSystem.imagesDefault.city[Int.random(in: 0..<designSystem.imagesDefault.city.count)]
-        } else {
-            self.coverImage.image = designSystem.imagesDefault.camp[Int.random(in: 0..<designSystem.imagesDefault.camp.count)]
-        }
+        self.coverImage.setupBackgroundImage(category: category)
     }
     func setupCategory(category: String) {
         if category == "Beach" {
