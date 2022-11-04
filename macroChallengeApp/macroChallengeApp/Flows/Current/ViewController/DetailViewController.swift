@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     weak var delegate: DismissBlur?
     weak var delegateExplore: DismissBlurExplore?
-    let activity = ActivityLocal()
+    var activity = ActivityLocal()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ extension DetailViewController {
     func setupDetailView() {
         view.addSubview(detailView)
         setupConstraints()
-        
+        detailView.setupContent(activity: activity)
         }
         
     func setupConstraints() {
