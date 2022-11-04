@@ -339,7 +339,7 @@ class DataManager {
         }
     }
     
-    func putUser(userObj: User, _ completion: @escaping ((_ user: User) -> Void)) {
+    func putUser(userObj: UserLocal) {
         let user: [String: Any] = [
             "usernameApp": userObj.usernameApp,
             "name": userObj.name,
