@@ -35,7 +35,6 @@ class ExploreCoordinator: Coordinator {
             childCoordinators.append(coordinator)
             coordinator.delegate = self
             coordinator.start()
-            
             navigationController.present(coordinator.navigationController, animated: true)
         } else {
             startLogin()
@@ -133,6 +132,17 @@ class ExploreCoordinator: Coordinator {
         }
         navigationController.present(viewControllerToPresent, animated: true, completion: nil)
         
+    }
+    
+    func startOnboarding() {
+        let viewController = OnboardingViewController()
+        viewController.coordinatorExplore = self
+        navigationController.present(viewController, animated: true)
+        navigationController.modalPresentationStyle = .formSheet
+    }
+    
+    func dismiss() {
+        navigationController.dismiss(animated: true)
     }
     
     func setupBarAppearence() {

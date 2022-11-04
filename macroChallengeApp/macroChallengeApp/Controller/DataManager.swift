@@ -339,7 +339,7 @@ class DataManager {
         }
     }
     
-    func putUser(userObj: User, _ completion: @escaping ((_ user: User) -> Void)) {
+    func putUser(userObj: UserLocal) {
         let user: [String: Any] = [
             "usernameApp": userObj.usernameApp,
             "name": userObj.name,
@@ -370,13 +370,7 @@ class DataManager {
                     if let error = error {
                         print(error)
                     } else if data != nil {
-                        if let httpResponse = response as? HTTPURLResponse {
-                            if httpResponse.statusCode == 200 {
-                                DispatchQueue.main.async {
-                                    completion(userObj)
-                                }
-                            }
-                        }
+
                     } else {
                         // Handle unexpected error
                     }
@@ -622,9 +616,14 @@ class DataManager {
         }
     }
     
-    func deleteObjectBack(objectID: Int, urlPrefix: String, _ completion: @escaping (() -> Void)) {
+    func deleteObjectBack(objectID: Int = 0, username: String = "", urlPrefix: String) {
         let session: URLSession = URLSession.shared
-        let url: URL = URL(string: baseURL + "\(urlPrefix)/\(objectID)")!
+        var url: URL
+        if username.isEmpty {
+            url = URL(string: baseURL + "\(urlPrefix)/\(objectID)")!
+        } else {
+            url = URL(string: baseURL + "\(urlPrefix)/\(username)")!
+        }
         
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
@@ -637,14 +636,6 @@ class DataManager {
                 guard let data = data else {return}
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
-                }
-                
-                if let httpResponse = response as? HTTPURLResponse {
-                    if httpResponse.statusCode == 200 {
-                        DispatchQueue.main.async {
-                            completion()
-                        }
-                    }
                 }
             }
             task.resume()

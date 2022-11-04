@@ -140,7 +140,7 @@ extension NewActivityViewController {
 }
 
 // MARK: Extension Text Field
-extension NewActivityViewController: UITextFieldDelegate{
+extension NewActivityViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

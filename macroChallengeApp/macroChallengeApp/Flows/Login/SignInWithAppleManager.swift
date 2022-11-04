@@ -33,6 +33,12 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
             userId = appleIDCredential.user
             fullName = appleIDCredential.fullName
             emailId = appleIDCredential.email
+            print(appleIDCredential.authorizationCode)
+            if let authorizationCode = appleIDCredential.authorizationCode {
+                let authCode = String(decoding: authorizationCode, as: Unicode.ASCII.self)
+                createToken(code: authCode)
+                print(authCode)
+            }
             
             guard let userId = userId else {
                 return
@@ -65,20 +71,87 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
         }
     }
     
+    func createToken(code: String) {
+        let session: URLSession = URLSession.shared
+        let url: URL = URL(string: "https://macrotrip-dev.herokuapp.com/appleToken/" + code)!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data else { return }
+            if error != nil {
+                print(String(describing: error?.localizedDescription))
+            }
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    do {
+                        let refreshToken = try JSONDecoder().decode(RefreshToken.self, from: data)
+                        do {
+                            try KeychainManager.shared.save(refreshToken.accessToken, service: "signInRefresh", account: "explorer")
+                        } catch {
+                            print(error)
+                        }
+                        print(refreshToken)
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
+            
+        }
+        task.resume()
+        
+    }
+    
+    func revokeToken() {
+        let session: URLSession = URLSession.shared
+        
+        if let data = KeychainManager.shared.read(service: "signInRefresh", account: "explorer") {
+            let refreshToken = String(data: data, encoding: .utf8)!
+            
+            let url: URL = URL(string: "https://macrotrip-dev.herokuapp.com/appleToken/" + refreshToken)!
+            
+            if let token = UserDefaults.standard.string(forKey: "authorization") {
+                var request = URLRequest(url: url)
+                request.setValue(token, forHTTPHeaderField: "Authorization")
+                request.httpMethod = "DELETE"
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                
+                let task = session.dataTask(with: request) { data, response, error in
+                    guard let data = data else { return }
+                    
+                    let refreshToken = String(data: data, encoding: .utf8) ?? ""
+                    print(refreshToken)
+                    
+                    if error != nil {
+                        print(String(describing: error?.localizedDescription))
+                    }
+                    
+                }
+                task.resume()
+            }
+        }
+    }
+    
     func checkUserStatus() {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
-        if let userId = userId {
-            appleIDProvider.getCredentialState(forUserID: userId) { credentialState, _ in
+        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+            let userID = String(data: data, encoding: .utf8)!
+            appleIDProvider.getCredentialState(forUserID: userID) { credentialState, _ in
                 switch credentialState {
                 case .authorized:
                     // The Apple ID credential is valid.
-                    print("autho")
+                    print("autho arroz")
                 case .revoked:
                     // The Apple ID credential is revoked.
-                    print("revoked")
+                    print("revoked arroz")
                 case .notFound:
                     // No credential was found, so show the sign-in UI.
-                    print("notFound")
+                    print("notFound arroz")
                 default:
                     break
                 }

@@ -25,7 +25,7 @@ extension SettingsViewController: UITableViewDelegate {
 
 extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -61,6 +61,36 @@ extension SettingsViewController: UITableViewDataSource {
             }))
             present(alert, animated: true)
             
+        case 5:
+            let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+            alert.view.tintColor = .accent
+            let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
+            let string = NSAttributedString(string: "Delete your account?".localized(), attributes: titleAtt)
+            alert.setValue(string, forKey: "attributedTitle")
+            alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Delete".localized(), style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
+                if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+                    let userID = String(data: data, encoding: .utf8)!
+                    DataManager.shared.deleteObjectBack(username: userID, urlPrefix: "users")
+                }
+                KeychainManager.shared.delete(service: "username", account: "explorer")
+                SignInWithAppleManager.shared.revokeToken()
+                UserDefaults.standard.setValue("", forKey: "authorization")
+                UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+                UserDefaults.standard.set(nil, forKey: "user")
+                let userActual = UserRepository.shared.getUser()
+                do {
+                    try UserRepository.shared.deleteUser(user: userActual[0])
+                } catch {
+                    print(error)
+                }
+                KeychainManager.shared.delete(service: "signInRefresh", account: "explorer")
+                self.coordinator?.backPage()
+            }))
+            present(alert, animated: true)
+        
         default:
             break
         }
@@ -90,8 +120,17 @@ extension SettingsViewController: UITableViewDataSource {
             cell.title.text = "Privacy Policies".localized()
             cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
             
-        case 4:
+        case 4 :
             cell.title.text = "Sign out".localized()
+            cell.title.textColor = .redCity
+            cell.icon.isHidden = true
+            cell.chevron.isHidden = true
+            cell.title.snp.makeConstraints { make in
+                make.leading.equalToSuperview().inset(designSystem.spacing.largePositive)
+            }
+            
+        case 5:
+            cell.title.text = "Delete account".localized()
             cell.title.textColor = .redCity
             cell.icon.isHidden = true
             cell.chevron.isHidden = true

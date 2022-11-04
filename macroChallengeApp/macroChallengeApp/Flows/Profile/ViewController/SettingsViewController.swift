@@ -18,6 +18,12 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         self.setupSettingsView()
+        let helpButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(info))
+        self.navigationItem.rightBarButtonItem = helpButton
         settingsView.bindTableView(delegate: self, dataSource: self)
+    }
+    
+    @objc func info() {
+        coordinator?.startOnboarding()
     }
 }

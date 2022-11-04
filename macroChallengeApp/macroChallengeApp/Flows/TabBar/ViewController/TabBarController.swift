@@ -58,6 +58,8 @@ class TabBarController: UITabBarController {
         }
         profile.start()
         
+        profile.delegate = self
+        
     }
     func setupNavigators() {
         viewControllers = [explore.navigationController, current.navigationController, profile.navigationController]
@@ -65,5 +67,14 @@ class TabBarController: UITabBarController {
     func configCountDown() -> Int {
         let time = Int((roadmap.date?.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24))
         return time
+    }
+}
+
+extension TabBarController: PresentationCoordinatorDelegate {
+    func didFinishPresent(of coordinator: Coordinator, isNewRoadmap: Bool) {
+        coordinator.childCoordinators = coordinator.childCoordinators.filter { $0 === coordinator }
+        if isNewRoadmap == true {
+            coordinator.navigationController.tabBarController?.selectedIndex = 0
+        }
     }
 }

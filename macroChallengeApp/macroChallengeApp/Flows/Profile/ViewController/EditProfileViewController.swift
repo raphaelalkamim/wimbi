@@ -8,33 +8,25 @@
 import Foundation
 import UIKit
 import SnapKit
+import PhotosUI
 
 class EditProfileViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let editProfileView = EditProfileView()
-    var user: User?
+    var userLocal: [UserLocal] = []
     let network: NetworkMonitor = NetworkMonitor.shared
+    var imagePicker: ImagePicker!
+    var access = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         network.startMonitoring()
-        self.view.backgroundColor = .backgroundPrimary
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         self.setupEditProfileView()
         editProfileView.editButton.addTarget(self, action: #selector(editPhoto), for: .touchUpInside)
-        if let data = UserDefaults.standard.data(forKey: "user") {
-            do {
-                let decoder = JSONDecoder()
-                self.user = try decoder.decode(User.self, from: data)
-                if let user = self.user {
-                    self.changeToUserInfo(user: user)
-                }
-                
-            } catch {
-                print("Unable to decode")
-            }
-        }
-        
+        self.userLocal = UserRepository.shared.getUser()
+        self.changeToUserInfo(user: userLocal[0])
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save".localized(), style: .plain, target: self, action: #selector(saveProfile))
     }
     
@@ -47,50 +39,42 @@ class EditProfileViewController: UIViewController {
             present(action, animated: true)
         } else {
             if let newName = editProfileView.nameTextField.text, let newUsernameApp = editProfileView.usernameTextField.text {
-                self.user?.name = newName
-                self.user?.usernameApp = newUsernameApp
-                if let user = user {
-                    DataManager.shared.putUser(userObj: user) { user in
-                        do {
-                            let encoder = JSONEncoder()
-
-                            let data = try encoder.encode(user)
-
-                            UserDefaults.standard.set(data, forKey: "user")
-                        } catch {
-                            print("Unable to Encode")
-                        }
-                    }
-                }
+                UserRepository.shared.updateName(user: self.userLocal[0], name: newName)
+                UserRepository.shared.updateUsernameApp(user: self.userLocal[0], username: newUsernameApp)
+                DataManager.shared.putUser(userObj: self.userLocal[0])
             }
             coordinator?.backPage()
         }
     }
     
-    func changeToUserInfo(user: User) {
-        self.editProfileView.imageProfile.image = UIImage(named: "icon")
+    func changeToUserInfo(user: UserLocal) {
+        let path = user.photoId ?? "icon"
+        let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
+        self.editProfileView.imageProfile.image = imageNew
+        self.editProfileView.setupImage(image: imageNew ?? UIImage(named: "icon")!)
         self.editProfileView.nameTextField.text = user.name
         self.editProfileView.usernameTextField.text = user.usernameApp
     }
     
-    @objc func editPhoto() {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.view.tintColor = .accent
+    @objc func editPhoto(_ sender: Any) {
+        let photos = PHPhotoLibrary.authorizationStatus()
+            if photos == .notDetermined {
+                PHPhotoLibrary.requestAuthorization({status in
+                    if status != .denied {
+                        self.access = true
 
-        alert.addAction(UIAlertAction(title: "Remove current photo".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-            print("Remover")
-        }))
-        alert.addAction(UIAlertAction(title: "Take photo".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-            print("Tirar foto")
-        }))
-        alert.addAction(UIAlertAction(title: "Choose from library".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-            print("Escolher")
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
-            self.navigationController?.dismiss(animated: true)
-        }))
-        
-        self.navigationController?.present(alert, animated: true)
+                    } else {
+                        self.access = false
+                    }
+                })
+            } else {
+            let authorization = PHPhotoLibrary.authorizationStatus()
+            if authorization != .denied {
+                self.imagePicker.present(from: (sender as? UIView)!)
+            } else {
+                print("Nao permitido")
+            }
+        }
     }
 }
 
@@ -102,6 +86,16 @@ extension EditProfileViewController {
     func setupConstraints() {
         editProfileView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+    }
+}
+
+extension EditProfileViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        if let imageNew = image {
+            self.editProfileView.setupImage(image: imageNew)
+            UserRepository.shared.updatePhotoId(user: userLocal[0],
+                                                photoId: SaveImagecontroller.saveToFiles(image: imageNew))
         }
     }
 }

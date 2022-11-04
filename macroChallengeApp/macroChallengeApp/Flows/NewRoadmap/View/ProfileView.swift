@@ -256,6 +256,16 @@ class ProfileView: UIView {
         
     }
     
+    func setupImage(image: UIImage) {
+        userImage.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.top).inset(designSystem.spacing.xLargePositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xxLargePositive)
+            make.height.size.equalTo(64)
+        }
+        userImage.layer.cornerRadius = 32
+        self.userImage.image = image
+    }
+    
     func getTable() -> UICollectionView {
         return myRoadmapCollectionView
     }
