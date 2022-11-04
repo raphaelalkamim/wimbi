@@ -19,7 +19,8 @@ class PreviewRoadmapViewController: UIViewController {
     var roadmap: Roadmaps = Roadmaps()
     var daySelected = 0
     var likeId = 0
-    
+    let tutorialEnable = UserDefaults.standard.bool(forKey: "tutorialExplore")
+
     var budgetTotal: Double = 0
     let currencyController = CurrencyController()
     
@@ -34,6 +35,12 @@ class PreviewRoadmapViewController: UIViewController {
         getRoadmapById(roadmapId: self.roadmapId)
         self.setupPreviewRoadmapView()
         
+        previewView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
+        
+        if tutorialEnable == false {
+            self.tutorialTimer()
+        }
+        
         DataManager.shared.getLike(roadmapId: self.roadmapId) { response in
             self.likeId = response
             if self.likeId == 0 {
@@ -43,6 +50,22 @@ class PreviewRoadmapViewController: UIViewController {
                 self.like.image = UIImage(systemName: "heart.fill")
             }
         }
+    }
+    
+    func tutorialTimer() {
+        UserDefaults.standard.set(true, forKey: "tutorialExplore")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.previewView.tutorialView.isHidden = false
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
+            self.previewView.tutorialView.removeFromSuperview()
+        }
+    }
+    
+    @objc func tutorial() {
+        UserDefaults.standard.set(true, forKey: "tutorialExplore")
+        previewView.tutorialView.removeFromSuperview()
     }
     
     func updateConstraintsTable() {

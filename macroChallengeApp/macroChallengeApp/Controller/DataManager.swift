@@ -303,7 +303,43 @@ class DataManager {
         task.resume()
     }
     
-    func putUser(userObj: UserLocal) {
+    func getLikedRoadmaps(_ completion: @escaping ((_ roadmaps: [RoadmapDTO]) -> Void)) {
+        var roadmaps: [RoadmapDTO] = []
+        let session: URLSession = URLSession.shared
+        
+        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+            let userID = String(data: data, encoding: .utf8)!
+            let url: URL = URL(string: baseURL + "likes/users/\(userID)")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            if let token = UserDefaults.standard.string(forKey: "authorization") {
+                request.setValue(token, forHTTPHeaderField: "Authorization")
+                let task = session.dataTask(with: request) { data, _, error in
+                    guard let data = data else { return }
+                    if error != nil {
+                        print(String(describing: error?.localizedDescription))
+                    }
+                    
+                    do {
+                        roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
+                        
+                        DispatchQueue.main.async {
+                            completion(roadmaps)
+                        }
+                    } catch {
+                        // FIXME: tratar o erro do decoder
+                        print("DEU RUIM NO PARSE")
+                    }
+                }
+                task.resume()
+            }
+        }
+    }
+    
+    func putUser(userObj: User, _ completion: @escaping ((_ user: User) -> Void)) {
         let user: [String: Any] = [
             "usernameApp": userObj.usernameApp,
             "name": userObj.name,
