@@ -78,7 +78,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         return title
     }()
     
-    func setupContent(roadmap: RoadmapLocal, indexPath: Int) {
+    func setupContent(roadmap: RoadmapLocal, indexPath: Int, user: UserLocal) {
         switch indexPath {
         case 0:
             title.text = "CATEGORY".localized()
@@ -109,6 +109,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
             separator.isHidden = true
             circle.isHidden = false
             info.isHidden = true
+            self.setupImage(userId: user.photoId ?? "icon")
             circle.layer.cornerRadius = 18
             circle.snp.makeConstraints { make in
                 make.height.width.equalTo(36)
