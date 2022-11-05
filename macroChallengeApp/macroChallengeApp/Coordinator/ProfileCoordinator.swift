@@ -105,6 +105,7 @@ class ProfileCoordinator: Coordinator {
     
     func showActivitySheet(tripVC: MyTripViewController, activity: ActivityLocal) {
         let viewControllerToPresent = DetailViewController()
+        viewControllerToPresent.detailView.setupContent(activity: activity)
         viewControllerToPresent.activity = activity
         viewControllerToPresent.delegate = tripVC
         

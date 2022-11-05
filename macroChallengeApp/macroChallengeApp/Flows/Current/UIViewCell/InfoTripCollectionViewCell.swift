@@ -110,7 +110,6 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
             circle.isHidden = false
             info.isHidden = true
             circle.layer.cornerRadius = 18
-            circle.image = UIImage(named: "icon")
             circle.snp.makeConstraints { make in
                 make.height.width.equalTo(36)
             }
@@ -157,6 +156,13 @@ extension InfoTripCollectionViewCell {
         setupConstraints()
     }
     
+    func setupImage(userId: String) {
+        let path = userId
+        let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
+        circle.image = imageNew
+        circle.clipsToBounds = true
+        circle.layer.cornerRadius = 18
+    }
     func setupConstraints() {
         title.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
