@@ -163,6 +163,8 @@ class PreviewRoadmapViewController: UIViewController {
     }
     func updateTotalBudgetValue() {
         guard let cell = previewView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
-        cell.infoTitle.text = "\(self.userCurrency)\(self.budgetTotal)"
+        
+        let content = String(format: "\(self.userCurrency)%.2f", self.budgetTotal)
+        cell.infoTitle.text = content
     }
 }
