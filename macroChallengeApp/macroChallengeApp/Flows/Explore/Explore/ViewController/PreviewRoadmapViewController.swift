@@ -82,12 +82,16 @@ class PreviewRoadmapViewController: UIViewController {
             make.bottom.equalTo(previewView.scrollView.snp.bottom)
             make.height.equalTo(height)
         }
+        previewView.infoTripCollectionView.reloadData()
+        previewView.calendarCollectionView.reloadData()
+        previewView.activitiesTableView.reloadData()
     }
     
     func getRoadmapById(roadmapId: Int) {
         DataManager.shared.getRoadmapById(roadmapId: roadmapId, { roadmap in
             self.roadmap = roadmap
             self.setupContent(roadmap: roadmap)
+            self.previewView.hiddenSpinner()
         })
     }
     
@@ -103,10 +107,7 @@ class PreviewRoadmapViewController: UIViewController {
                 $0.hour < $1.hour
             }
         }
-        self.previewView.infoTripCollectionView.reloadData()
-        self.previewView.calendarCollectionView.reloadData()
-        self.previewView.activitiesTableView.reloadData()
-        self.previewView.hiddenSpinner()
+        updateConstraintsTable()
     }
     
     @objc func likeRoadmap() {
@@ -127,7 +128,6 @@ class PreviewRoadmapViewController: UIViewController {
             DataManager.shared.deleteObjectBack(objectID: self.likeId, urlPrefix: "likes")
             self.likeId = 0
         }
-        print("LIKE")
     }
     
     @objc func duplicateRoadmap() {
