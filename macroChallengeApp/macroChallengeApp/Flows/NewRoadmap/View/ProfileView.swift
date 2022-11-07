@@ -39,11 +39,11 @@ class ProfileView: UIView {
         return title
     }()
     
-    private lazy var userImage: UIImageView = {
-        let img = UIImageView()
-        img.image = UIImage(named: "icon") // adicionar foto de perfil
-        img.clipsToBounds = true
-        return img
+    lazy var userImage: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "icon"), for: .normal)
+        button.clipsToBounds = true
+        return button
     }()
     
     private lazy var roadmapTitle: UILabel = {
@@ -261,7 +261,7 @@ class ProfileView: UIView {
             make.height.size.equalTo(64)
         }
         userImage.layer.cornerRadius = 32
-        self.userImage.image = image
+        self.userImage.setImage(image, for: .normal)
     }
     
     func getTable() -> UICollectionView {
@@ -276,7 +276,7 @@ class ProfileView: UIView {
         return username
     }
     
-    func getImage() -> UIImageView {
+    func getImage() -> UIButton {
         return userImage
     }
     
