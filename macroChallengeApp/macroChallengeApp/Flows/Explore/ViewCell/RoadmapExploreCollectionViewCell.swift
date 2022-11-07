@@ -184,11 +184,13 @@ extension RoadmapExploreCollectionViewCell {
         let travelers = "travelers  •".localized()
         let days = "days".localized()
         subtitle.text = "\(peopleCount) \(travelers)  \(dayCount) \(days)"
-        var amount = "per person"
+        var amount = " per person"
         if budget > 1000 {
-            amount = "thousand per person".localized()
+            amount = " thousand per person".localized()
+            costByPerson.text = "\(currency) \(budget / Double(peopleCount) / 1000) \(amount)"
+        } else {
+            costByPerson.text = "\(currency) \(budget / Double(peopleCount))\(amount)"
         }
-        costByPerson.text = "\(currency) \(budget / 1000) \(amount)"
         categoryName.text = category.localized()
         setupColor(category: category)
         totalLikes.text = "\(likesCount)"
