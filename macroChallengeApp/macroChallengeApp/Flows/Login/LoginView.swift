@@ -25,7 +25,17 @@ class LoginView: UIView {
         let label = UILabel()
         label.text = "By clicking on the button above, you agree to our Privacy Policies".localized()
         label.textAlignment = .center
-        label.font = UIFont(name: "Avenir-Roman", size: 14)!
+        label.font = UIFont(name: "Avenir-Book", size: 12)!
+        label.numberOfLines = 0
+        label.textColor = .textPrimary
+        return label
+    }()
+    
+    lazy var signInText: UILabel = {
+        let label = UILabel()
+        label.text = "Sign in to be able to create, duplicate, like and share a roadmap.".localized()
+        label.textAlignment = .center
+        label.font = UIFont(name: "Avenir-Roman", size: 17)!
         label.numberOfLines = 0
         label.textColor = .textPrimary
         return label
@@ -54,6 +64,7 @@ class LoginView: UIView {
         self.addSubview(imageLogin)
         self.addSubview(buttonAppleSignIn)
         self.addSubview(agreeText)
+        self.addSubview(signInText)
         
         setupConstraints()
     }
@@ -61,20 +72,27 @@ class LoginView: UIView {
     func setupConstraints() {
         imageLogin.snp.makeConstraints { make in
             make.top.equalTo(self.snp.topMargin)
-            make.height.equalTo(400)
+            make.height.equalTo(UIScreen.main.bounds.height / 2.3)
             make.centerX.equalTo(self.snp.centerX)
 
         }
         
+        signInText.snp.makeConstraints { make in
+            make.top.equalTo(imageLogin.snp.bottom).offset(designSystem.spacing.xxLargePositive)
+            make.leading.equalToSuperview().offset(designSystem.spacing.xxLargePositive)
+            make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
+            
+        }
+        
         buttonAppleSignIn.snp.makeConstraints { make in
-            make.top.equalTo(imageLogin.snp.bottom).offset(70)
+            make.top.equalTo(signInText.snp.bottom).offset(designSystem.spacing.xxLargePositive)
             make.leading.equalToSuperview().offset(50)
             make.trailing.equalToSuperview().offset(-50)
             make.height.equalTo(51)
         }
         
         agreeText.snp.makeConstraints { make in
-            make.top.equalTo(buttonAppleSignIn.snp.bottom).offset(designSystem.spacing.xLargePositive)
+            make.top.equalTo(buttonAppleSignIn.snp.bottom).offset(designSystem.spacing.mediumPositive)
             make.leading.equalToSuperview().offset(designSystem.spacing.xxLargePositive)
             make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
             

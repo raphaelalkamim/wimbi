@@ -105,6 +105,7 @@ class ProfileCoordinator: Coordinator {
     
     func showActivitySheet(tripVC: MyTripViewController, activity: ActivityLocal) {
         let viewControllerToPresent = DetailViewController()
+        viewControllerToPresent.detailView.setupContent(activity: activity)
         viewControllerToPresent.activity = activity
         viewControllerToPresent.delegate = tripVC
         
@@ -165,6 +166,10 @@ class ProfileCoordinator: Coordinator {
         delegate?.didFinishPresent(of: self, isNewRoadmap: true)
         navigationController.dismiss(animated: true)
         UserDefaults.standard.set(true, forKey: "onboard")
+    }
+    
+    func dismiss() {
+        navigationController.dismiss(animated: true)
     }
     
     func setupBarAppearence() {

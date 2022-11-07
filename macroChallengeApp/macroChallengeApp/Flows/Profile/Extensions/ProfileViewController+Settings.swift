@@ -46,25 +46,6 @@ extension SettingsViewController: UITableViewDataSource {
             let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
             alert.view.tintColor = .accent
             let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
-            let string = NSAttributedString(string: "Sign out of your account?".localized(), attributes: titleAtt)
-            alert.setValue(string, forKey: "attributedTitle")
-            alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Sign out".localized(), style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
-                KeychainManager.shared.delete(service: "username", account: "explorer")
-                UserDefaults.standard.setValue("", forKey: "authorization")
-                UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
-                UserDefaults.standard.set(nil, forKey: "user")
-                
-                self.coordinator?.backPage()
-            }))
-            present(alert, animated: true)
-            
-        case 5:
-            let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-            alert.view.tintColor = .accent
-            let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
             let string = NSAttributedString(string: "Delete your account?".localized(), attributes: titleAtt)
             alert.setValue(string, forKey: "attributedTitle")
             alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
@@ -91,6 +72,25 @@ extension SettingsViewController: UITableViewDataSource {
             }))
             present(alert, animated: true)
         
+        case 5:
+            let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+            alert.view.tintColor = .accent
+            let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
+            let string = NSAttributedString(string: "Sign out of your account?".localized(), attributes: titleAtt)
+            alert.setValue(string, forKey: "attributedTitle")
+            alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Sign out".localized(), style: UIAlertAction.Style.destructive, handler: {(_: UIAlertAction!) in
+                KeychainManager.shared.delete(service: "username", account: "explorer")
+                UserDefaults.standard.setValue("", forKey: "authorization")
+                UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+                UserDefaults.standard.set(nil, forKey: "user")
+                
+                self.coordinator?.backPage()
+            }))
+            present(alert, animated: true)
+            
         default:
             break
         }
@@ -120,8 +120,8 @@ extension SettingsViewController: UITableViewDataSource {
             cell.title.text = "Privacy Policies".localized()
             cell.icon.setImage(UIImage(systemName: "book.closed.fill"), for: .normal)
             
-        case 4 :
-            cell.title.text = "Sign out".localized()
+        case 4:
+            cell.title.text = "Delete account".localized()
             cell.title.textColor = .redCity
             cell.icon.isHidden = true
             cell.chevron.isHidden = true
@@ -130,13 +130,14 @@ extension SettingsViewController: UITableViewDataSource {
             }
             
         case 5:
-            cell.title.text = "Delete account".localized()
+            cell.title.text = "Sign out".localized()
             cell.title.textColor = .redCity
             cell.icon.isHidden = true
             cell.chevron.isHidden = true
             cell.title.snp.makeConstraints { make in
                 make.leading.equalToSuperview().inset(designSystem.spacing.largePositive)
             }
+
         default:
             break
         }
