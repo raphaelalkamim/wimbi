@@ -17,6 +17,7 @@ protocol DismissBlurExplore: AnyObject {
 extension PreviewRoadmapViewController {
     func setupPreviewRoadmapView() {
         view.addSubview(previewView)
+        
         previewView.bindCollectionView(delegate: self, dataSource: self)
         previewView.bindTableView(delegate: self, dataSource: self)
         setupNavControl()
