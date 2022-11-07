@@ -30,7 +30,7 @@ class ReviewTravelViewController: UIViewController {
     var peopleCount = 1
     var isPublic = false
     var imageId = "defaultCover"
-    
+    var imageSelected: UIImage?
     var editRoadmap = RoadmapLocal()
     var edit = false
     
@@ -74,7 +74,7 @@ class ReviewTravelViewController: UIViewController {
     func saveCoreData() {
         roadmap.currency = getUserCurrency()
         // save in Core Data
-        let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: true)
+        let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: true, selectedImage: imageSelected)
         RoadmapRepository.shared.saveContext()
         
         NotificationManager.shared.registerTripNotification(roadmap: newRoadmap)

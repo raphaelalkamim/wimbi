@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseCore
 
 class DataManager {
     public static var shared = DataManager()
@@ -167,7 +168,7 @@ class DataManager {
         task.resume()
     }
     
-    func postRoadmap(roadmap: Roadmaps, roadmapCore: RoadmapLocal, daysCore: [DayLocal]) {
+    func postRoadmap(roadmap: Roadmaps, roadmapCore: RoadmapLocal, daysCore: [DayLocal], selectedImage: UIImage? = nil) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
         
@@ -227,6 +228,10 @@ class DataManager {
                                 roadmapCore.id = Int32(roadmapResponse.id)
                                 roadmapCore.shareKey = codeTrip
                                 RoadmapRepository.shared.saveContext()
+                                
+                                if let selectedImage = selectedImage {
+                                    FirebaseManager.shared.uploadImage(image: selectedImage)    
+                                }
                             } catch {
                                 print(error)
                             }
@@ -773,6 +778,7 @@ class DataManager {
             
         }
     }
+    
     
     func decodeType<T: Codable>(_ class: T, data: Data) -> T? {
         do {

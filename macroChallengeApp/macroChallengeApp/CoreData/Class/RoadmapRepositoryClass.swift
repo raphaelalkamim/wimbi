@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 public class RoadmapRepository: NSManagedObject {
     static let shared: RoadmapRepository = RoadmapRepository()
@@ -36,7 +37,7 @@ public class RoadmapRepository: NSManagedObject {
         }
     }
     
-    func createRoadmap(roadmap: Roadmaps, isNew: Bool) -> RoadmapLocal {
+    func createRoadmap(roadmap: Roadmaps, isNew: Bool, selectedImage: UIImage? = nil) -> RoadmapLocal {
         guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         
         // add infos in Roadmap
@@ -47,7 +48,7 @@ public class RoadmapRepository: NSManagedObject {
         if isNew {
             if var createdDays = newRoadmap.day?.allObjects as? [DayLocal] {
                 createdDays.sort { $0.id < $1.id }
-                self.postInBackend(newRoadmap: newRoadmap, roadmap: roadmap, newDays: createdDays)
+                self.postInBackend(newRoadmap: newRoadmap, roadmap: roadmap, newDays: createdDays, selectedImage: selectedImage)
             }
         }
         let user = UserRepository.shared.getUser()
@@ -226,8 +227,8 @@ public class RoadmapRepository: NSManagedObject {
         self.saveContext()
     }
     
-    func postInBackend(newRoadmap: RoadmapLocal, roadmap: Roadmaps, newDays: [DayLocal]) {
-        DataManager.shared.postRoadmap(roadmap: roadmap, roadmapCore: newRoadmap, daysCore: newDays)
+    func postInBackend(newRoadmap: RoadmapLocal, roadmap: Roadmaps, newDays: [DayLocal], selectedImage: UIImage? = nil) {
+        DataManager.shared.postRoadmap(roadmap: roadmap, roadmapCore: newRoadmap, daysCore: newDays, selectedImage: selectedImage)
     }
     
     func updateBackend(roadmap: Roadmaps, id: Int, newDaysCore: [DayLocal]) {

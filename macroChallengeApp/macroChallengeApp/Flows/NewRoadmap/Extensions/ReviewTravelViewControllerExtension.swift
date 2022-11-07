@@ -121,6 +121,7 @@ extension ReviewTravelViewController: UITableViewDataSource {
 extension ReviewTravelViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         if let imageNew = image {
+            self.imageSelected = imageNew
             self.reviewTravelView.coverImage.setBackgroundImage(imageNew, for: .normal)
             self.roadmap.imageId = SaveImagecontroller.saveToFiles(image: imageNew)
         }
