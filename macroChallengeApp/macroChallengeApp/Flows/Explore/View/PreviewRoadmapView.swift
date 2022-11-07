@@ -14,9 +14,11 @@ class PreviewRoadmapView: UIView {
     let scrollView = UIScrollView()
     let contentView = UIView()
     let transparentView = UIView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
+        self.setupLoad()
     }
     
     required init?(coder: NSCoder) {
@@ -112,7 +114,7 @@ class PreviewRoadmapView: UIView {
     }()
     
     lazy var tutorialTitle: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         let att = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 12)]
         button.setAttributedTitle(NSAttributedString(string: "Duplique este roteiro e use como referência para montar o seu.".localized(), attributes: att), for: .normal)
         button.setTitleColor(.textPrimary, for: .normal)
@@ -121,6 +123,15 @@ class PreviewRoadmapView: UIView {
         button.contentHorizontalAlignment = .left
         return button
     }()
+    
+    lazy var activity: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        return spinner
+    }()
+    
+    func setupLoad() {
+        showSpinner()
+    }
     
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
@@ -236,6 +247,19 @@ class PreviewRoadmapView: UIView {
             make.height.equalToSuperview()
             
         }
+    }
+    
+    func showSpinner() {
+        activity.color = designSystem.palette.accent
+        activity.startAnimating()
+        self.addSubview(activity)
+        activity.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY)
+        }
+    }
+    func hiddenSpinner() {
+        activity.removeFromSuperview()
     }
 }
 

@@ -106,6 +106,7 @@ class PreviewRoadmapViewController: UIViewController {
         self.previewView.infoTripCollectionView.reloadData()
         self.previewView.calendarCollectionView.reloadData()
         self.previewView.activitiesTableView.reloadData()
+        self.previewView.hiddenSpinner()
     }
     
     @objc func likeRoadmap() {
