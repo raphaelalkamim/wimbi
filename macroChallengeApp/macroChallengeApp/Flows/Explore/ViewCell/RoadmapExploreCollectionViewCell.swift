@@ -168,7 +168,7 @@ extension RoadmapExploreCollectionViewCell {
             self.categoryColor.tintColor = .redCity
         } else {
             self.categoryColor.tintColor = .greenCamp
-
+            
         }
     }
     
@@ -180,6 +180,10 @@ extension RoadmapExploreCollectionViewCell {
     }
     func setupContent(imageId: String, name: String, peopleCount: Int, dayCount: Int, budget: Double, currency: String, category: String, likesCount: Int) {
         cover.image = UIImage(named: imageId)
+        
+        if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: imageId)) {
+            cover.image = cachedImage
+        }
         title.text = name
         let travelers = "travelers  •".localized()
         let days = "days".localized()

@@ -11,6 +11,7 @@ import UIKit
 
 class FirebaseManager {
     public static var shared = FirebaseManager()
+    public let imageCash = NSCache<NSString, UIImage>()
     
     private init() {}
     
@@ -32,7 +33,7 @@ class FirebaseManager {
                 // save a reference to the file in Firestore
                 print("ATUALIZAR IMAGEM BACK")
                 DataManager.shared.putImageRoadmap(roadmapId: roadmapId, uuid: uuidImage)
-
+                
             }
         }
     }
@@ -40,19 +41,22 @@ class FirebaseManager {
     func getImage(uuid: String) {
         let path = "images/\(uuid)"
         let reference = Storage.storage().reference(withPath: path)
-        
-        reference.getData(maxSize: (1 * 1024 * 1024)) { (data, error) in
+        DispatchQueue.global(qos: .utility).async {
+            reference.getData(maxSize: (1 * 1024 * 1024)) { data, error in
                 if let err = error {
-                   print(err)
-              } else {
-                if let image = data {
-                     let myImage: UIImage! = UIImage(data: image)
-                    
-                     // Use Image
+                    print(err)
+                } else {
+                    if let image = data {
+                        let myImage: UIImage! = UIImage(data: image)
+                        self.imageCash.setObject(myImage, forKey: NSString(string: uuid))
+
+                    }
                 }
-             }
+            }
         }
+        
     }
+    
     
     func deleteImage(uuid: String) {
         let path = "images/\(uuid)"

@@ -296,7 +296,9 @@ class DataManager {
             
             do {
                 roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
-                
+                for roadmap in roadmaps {
+                    FirebaseManager.shared.getImage(uuid: roadmap.imageId)
+                }
                 DispatchQueue.main.async {
                     completion(roadmaps)
                 }
