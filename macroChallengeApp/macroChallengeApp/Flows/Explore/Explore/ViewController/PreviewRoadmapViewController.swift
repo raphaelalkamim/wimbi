@@ -35,6 +35,7 @@ class PreviewRoadmapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.updateAllBudget()
         self.setupPreviewRoadmapView()
         
         previewView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
