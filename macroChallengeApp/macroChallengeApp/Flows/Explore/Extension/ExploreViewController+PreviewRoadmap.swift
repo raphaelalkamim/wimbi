@@ -108,7 +108,6 @@ extension PreviewRoadmapViewController: UICollectionViewDelegate {
             updateConstraintsTable()
             self.previewView.activitiesTableView.reloadData()
         }
-        
         // desabilita todas as celulas que nao sao a que recebeu o clique
         for index in 0..<roadmap.dayCount where index != indexPath.row {
             let newIndexPath = IndexPath(item: Int(index), section: 0)

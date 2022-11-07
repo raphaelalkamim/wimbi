@@ -95,6 +95,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         let isNew = false
         cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: isNew)
         cell.setupImage(imageId: roadmaps[indexPath.row].imageId ?? "defaultCover", category: roadmaps[indexPath.row].category ?? "City")
+        cell.likeLabel.text = String(roadmaps[indexPath.row].likesCount)
         cell.setupAnchors()
         return cell
     }
