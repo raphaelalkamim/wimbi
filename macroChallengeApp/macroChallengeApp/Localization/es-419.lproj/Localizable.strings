@@ -27,6 +27,7 @@
 "DETAILS" = "DETALLES";
 "Describe here curiosities, tips or interesting facts about the place." = "Describa aquí curiosidades, consejos o datos importantes sobre el lugar.";
 "CONTACT" = "CONTACTO";
+"Contact" = "Contacto";
 "Enter here the location's website or phone number." = "Introduzca el sitio web o el número de teléfono de la ubicación.";
 
 "TYPE" = "TIPO";
@@ -117,6 +118,7 @@
 "Sign out of your account?" = "¿Usted desea salir?";
 "Cancel" = "Cancelar";
 "Sign out" = "Salir";
+"Delete your account?" = "Borrar su cuenta?";
 
 // MARK: -  Current
 "ABOUT" = "ACERCA";

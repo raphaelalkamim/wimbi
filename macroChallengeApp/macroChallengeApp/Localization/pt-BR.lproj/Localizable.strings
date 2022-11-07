@@ -26,6 +26,7 @@
 "Starts at: " = "Início: ";
 "Value: " = "Valor: ";
 "CONTACT" = "CONTATO";
+"Contact" = "Contato";
 "DETAILS" = "DETALHES";
 "Describe here curiosities, tips or interesting facts about the place." = "Descreva aqui curiosidades, dicas ou fatos importantes sobre o local.";
 "Enter here the location's website or phone number." = "Digite aqui o site ou telefone do local.";
@@ -116,6 +117,7 @@
 "Sign out of your account?" = "Sair da sua conta?";
 "Cancel" = "Cancelar";
 "Sign out" = "Sair";
+"Delete your account?" = "Deletar sua conta?";
 
 // MARK: -  Current
 "ABOUT" = "SOBRE";
