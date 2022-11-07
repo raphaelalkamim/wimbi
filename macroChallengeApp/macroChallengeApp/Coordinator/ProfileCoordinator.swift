@@ -168,6 +168,10 @@ class ProfileCoordinator: Coordinator {
         UserDefaults.standard.set(true, forKey: "onboard")
     }
     
+    func dismiss() {
+        navigationController.dismiss(animated: true)
+    }
+    
     func setupBarAppearence() {
         let designSystem: DesignSystem = DefaultDesignSystem.shared
         navigationController.navigationBar.prefersLargeTitles = true
