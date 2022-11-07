@@ -24,6 +24,7 @@ class EditProfileViewController: UIViewController {
         network.startMonitoring()
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         self.setupEditProfileView()
+        editProfileView.imageProfile.addTarget(self, action: #selector(editPhoto), for: .touchUpInside)
         editProfileView.editButton.addTarget(self, action: #selector(editPhoto), for: .touchUpInside)
         self.userLocal = UserRepository.shared.getUser()
         self.changeToUserInfo(user: userLocal[0])
@@ -50,7 +51,7 @@ class EditProfileViewController: UIViewController {
     func changeToUserInfo(user: UserLocal) {
         let path = user.photoId ?? "icon"
         let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
-        self.editProfileView.imageProfile.image = imageNew
+        self.editProfileView.imageProfile.setBackgroundImage(imageNew, for: .normal) 
         self.editProfileView.setupImage(image: imageNew ?? UIImage(named: "icon")!)
         self.editProfileView.nameTextField.text = user.name
         self.editProfileView.usernameTextField.text = user.usernameApp

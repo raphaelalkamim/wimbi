@@ -66,16 +66,7 @@ extension LikedRoadmapsViewController: UICollectionViewDataSource {
         
         if !likedRoadmaps.isEmpty {
             let roadmap = likedRoadmaps[indexPath.row]
-            cell.cover.image = UIImage(named: roadmap.imageId)
-            cell.title.text = roadmap.name
-            let travelers = "travelers  •".localized()
-            let days = "days".localized()
-            cell.subtitle.text = "\(roadmap.peopleCount) \(travelers)  \(roadmap.dayCount) \(days)"
-            let amount = "thousand per person".localized()
-            cell.costByPerson.text = "\(roadmap.currency) \(roadmap.budget / 1000) \(amount)"
-            cell.categoryName.text = roadmap.category.localized()
-            cell.setupColor(category: roadmap.category)
-            cell.totalLikes.text = "\(roadmap.likesCount)"
+            cell.setupRoadmapBackEnd(roadmap: roadmap)
         }
         
         return cell
