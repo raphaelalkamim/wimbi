@@ -49,6 +49,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         }
         
         profileView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
+        profileView.userImage.addTarget(self, action: #selector(editProfile), for: .touchUpInside)
         profileView.bindColletionView(delegate: self, dataSource: self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
         self.setContextMenu()
@@ -77,6 +78,10 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     @objc func profileSettings() {
         coordinator?.settings(profileVC: self)
+    }
+    
+    @objc func editProfile() {
+        coordinator?.startEditProfile()
     }
     
     func tutorialTimer() {

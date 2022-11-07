@@ -222,7 +222,8 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
         
         let activity = roadmap.days[self.daySelected].activity[indexPath.row]
         cell.localButton.tag = indexPath.row
-        if activity.location.isEmpty { cell.localButton.isHidden = true }
+        if activity.location.isEmpty { cell.localButton.isHidden = true
+        } else { cell.localButton.isHidden = false }
         cell.localButton.addTarget(self, action: #selector(addRoute(sender:)), for: .touchUpInside)
         cell.setupDaysActivities(hour: activity.hour, currency: activity.currency,
                                  value: String(activity.budget),

@@ -42,7 +42,7 @@ extension MyTripViewController {
     
     @objc func addRoute(sender: UIButton) {
         let activity = activites[sender.tag]
-        if activity.location != "" {
+        if activity.location != nil {
             let coordsSeparated = activity.location?.split(separator: " ")
             if let coordsSeparated = coordsSeparated {
                 let latitude = String(coordsSeparated[0])
@@ -149,54 +149,14 @@ extension MyTripViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfoTripCollectionViewCell.identifier, for: indexPath) as? InfoTripCollectionViewCell else {
                 preconditionFailure("Cell not find")
             }
-            switch indexPath.row {
-            case 0:
-                cell.title.text = "CATEGORY".localized()
-                cell.circle.isHidden = false
-                cell.categoryTitle.isHidden = false
-                cell.categoryTitle.text = "Mountain".localized()
-                cell.info.isHidden = true
-                cell.circle.snp.makeConstraints { make in
-                    make.height.width.equalTo(24)
-                }
-                
-            case 1:
-                cell.title.text = "TOTAL AMOUNT".localized()
-                cell.info.isHidden = true
-                cell.infoTitle.isHidden = false
-                cell.infoTitle.text = ""
-            case 2:
-                cell.title.text = "TRAVELERS".localized()
-                cell.info.setTitle("", for: .normal)
-                cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
-            case 3:
-                cell.title.text = "LIKES".localized()
-                cell.info.setTitle(" \(roadmap.likesCount)", for: .normal)
-            case 4:
-                cell.title.text = "CREATED BY".localized()
-                cell.separator.isHidden = true
-                cell.circle.isHidden = false
-                cell.info.isHidden = true
-                cell.circle.layer.cornerRadius = 18
-                cell.circle.image = UIImage(named: "icon")
-                cell.circle.snp.makeConstraints { make in
-                    make.height.width.equalTo(36)
-                }
-            default:
-                break
-            }
-            
-            cell.setupContent(roadmap: roadmap, indexPath: indexPath.row)
+            cell.setupContent(roadmap: roadmap, indexPath: indexPath.row, user: self.user[0])
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell else {
                 preconditionFailure("Cell not find")
-                
             }
             cell.setDay(date: days[indexPath.row].date ?? "1")
-            if days[indexPath.row].isSelected == true {
-                cell.selectedButton()
-            }
+            if days[indexPath.row].isSelected == true { cell.selectedButton() }
             return cell
         }
     }
@@ -266,6 +226,8 @@ extension MyTripViewController: UITableViewDataSource {
         cell.setupCategoryImage(image: self.activites[indexPath.row].category ?? "empty")
         if self.activites[indexPath.row].location?.isEmpty == true {
             cell.localButton.isHidden = true
+        } else {
+            cell.localButton.isHidden = false
         }
 
         return cell

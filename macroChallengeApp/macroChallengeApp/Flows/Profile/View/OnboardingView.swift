@@ -138,6 +138,13 @@ class OnboardingView: UIView {
         return button
     }()
 
+    lazy var okButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("OK", for: .normal)
+        button.setTitleColor(.accent, for: .normal)
+        return button
+    }()
+    
     func setup() {
         self.backgroundColor = .backgroundPrimary
         self.addSubview(title)
@@ -155,17 +162,23 @@ class OnboardingView: UIView {
         self.addSubview(shareSubtitle)
         self.addSubview(shareIcon)
         self.addSubview(exploreButton)
+        self.addSubview(okButton)
         setupConstraints()
     }
     
     func setupConstraints() {
         title.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(36)
+            make.top.equalToSuperview().inset(52)
             make.centerX.equalToSuperview()
         }
         
+        okButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(16)
+            make.trailing.equalToSuperview().inset(16)
+        }
+        
         subtitle.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+            make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.centerX.equalToSuperview()
         }
         createTitle.snp.makeConstraints { make in

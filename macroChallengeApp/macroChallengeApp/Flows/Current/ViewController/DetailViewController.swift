@@ -51,9 +51,6 @@ extension DetailViewController {
     func setupDetailView() {
         view.addSubview(detailView)
         setupConstraints()
-        if (self.coordinator != nil) {
-            detailView.setupContent(activity: activity)
-        }
     }
         
     func setupConstraints() {

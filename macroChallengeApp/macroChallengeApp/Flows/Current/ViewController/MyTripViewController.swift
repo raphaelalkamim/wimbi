@@ -12,6 +12,7 @@ class MyTripViewController: UIViewController {
     weak var coordinator: ProfileCoordinator?
     weak var coordinatorCurrent: CurrentCoordinator?
     let network: NetworkMonitor = NetworkMonitor.shared
+    let user = UserRepository.shared.getUser()
 
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let myTripView = MyTripView()
