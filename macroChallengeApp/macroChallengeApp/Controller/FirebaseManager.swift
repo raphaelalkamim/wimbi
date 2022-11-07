@@ -41,6 +41,10 @@ class FirebaseManager {
     func getImage(uuid: String) {
         let path = "images/\(uuid)"
         let reference = Storage.storage().reference(withPath: path)
+        if FirebaseManager.shared.imageCash.object(forKey: NSString(string: uuid)) != nil || !uuid.contains("jpeg") {
+            return
+        }
+        print(uuid, "arroz")
         DispatchQueue.global(qos: .utility).async {
             reference.getData(maxSize: (1 * 1024 * 1024)) { data, error in
                 if let err = error {
