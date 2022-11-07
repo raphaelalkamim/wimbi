@@ -230,7 +230,7 @@ class DataManager {
                                 RoadmapRepository.shared.saveContext()
                                 
                                 if let selectedImage = selectedImage {
-                                    FirebaseManager.shared.uploadImage(image: selectedImage)    
+                                    FirebaseManager.shared.uploadImage(image: selectedImage, roadmapId: roadmapResponse.id, roadmapCore: roadmapCore)
                                 }
                             } catch {
                                 print(error)
@@ -460,6 +460,34 @@ class DataManager {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
                         self.postDays(roadmapId: roadmapId, daysCore: newDaysCore)
+                        print("Atualizou")
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func putImageRoadmap(roadmapId: Int, uuid: String) {
+        let session = URLSession.shared
+        guard let url = URL(string: baseURL + "roadmaps/\(roadmapId)/\(uuid)") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                print(response)
+                guard let data = data else { return }
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
                         print("Atualizou")
                     }
                 }
