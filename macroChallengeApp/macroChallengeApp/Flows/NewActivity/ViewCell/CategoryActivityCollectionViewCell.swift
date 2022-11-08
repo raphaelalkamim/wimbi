@@ -16,6 +16,7 @@ class CategoryActivityCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = designSystem.palette.backgroundCell
         setup()
     }
     

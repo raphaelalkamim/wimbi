@@ -47,7 +47,8 @@ extension NewActivityViewController {
         // local name
         let tableView = newActivityView.localyTable
         guard let cell = tableView.cellForRow(at: [0, 1]) as? TextFieldTableViewCell else { return }
-        activity.name = cell.title.text ?? "New Activity".localized()
+        activity.name = cell.title.text ?? "New activity".localized()
+        if activity.name == "" { activity.name = "New activity".localized() }
 
         // date
         let dateTable = newActivityView.dateTable
@@ -119,6 +120,7 @@ extension NewActivityViewController: UITableViewDataSource {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
                 newCell.title.placeholder = "Name".localized()
                 newCell.title.text = activity.name
+                self.setupTextFields(textField: newCell.title)
                 cell = newCell
             }
             
@@ -162,6 +164,7 @@ extension NewActivityViewController: UITableViewDataSource {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { fatalError("TableCell not found") }
                 self.activity.tips = newCell.detailText.text ?? "Details"
+                self.setupTextView(textView: newCell.detailText)
                 cell = newCell
                 
             }
@@ -170,6 +173,7 @@ extension NewActivityViewController: UITableViewDataSource {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
                 newCell.title.placeholder = "Contact".localized()
                 newCell.title.text = activity.link
+                self.setupTextFields(textField: newCell.title)
                 cell = newCell
                 
             }

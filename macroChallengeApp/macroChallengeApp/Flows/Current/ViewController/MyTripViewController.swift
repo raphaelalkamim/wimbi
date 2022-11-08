@@ -66,7 +66,6 @@ class MyTripViewController: UIViewController {
     func getAllDays() {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
-            print(newDays)
             self.days = newDays
         }
         for index in 0..<days.count where days[index].isSelected == true {
@@ -177,16 +176,20 @@ class MyTripViewController: UIViewController {
         Task {
             var budgetDay = 0.0
             await budgetDay = currencyController.updateBudget(activites: activites, userCurrency: self.userCurrency)
-            myTripView.budgetValue.text = "\(userCurrency) \(budgetDay)"
             await budgetTotal = currencyController.updateBudgetTotal(userCurrency: self.userCurrency, days: days)
             roadmap.budget = budgetTotal
             RoadmapRepository.shared.saveContext()
+            
+            let content = String(format: "\(self.userCurrency)%.2f", budgetDay)
+            myTripView.budgetValue.text = content
+            
             self.updateTotalBudgetValue()
         }
     }
     func updateTotalBudgetValue() {
         guard let cell = myTripView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
-        cell.infoTitle.text = "\(self.userCurrency)\(self.budgetTotal)"
+        let content = String(format: "\(self.userCurrency)%.2f", self.budgetTotal)
+        cell.infoTitle.text = content
     }
 }
 

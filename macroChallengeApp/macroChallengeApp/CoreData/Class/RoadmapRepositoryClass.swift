@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 public class RoadmapRepository: NSManagedObject {
     static let shared: RoadmapRepository = RoadmapRepository()
@@ -36,7 +37,7 @@ public class RoadmapRepository: NSManagedObject {
         }
     }
     
-    func createRoadmap(roadmap: Roadmaps, isNew: Bool) -> RoadmapLocal {
+    func createRoadmap(roadmap: Roadmaps, isNew: Bool, selectedImage: UIImage? = nil) -> RoadmapLocal {
         guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         
         // add infos in Roadmap
@@ -47,7 +48,7 @@ public class RoadmapRepository: NSManagedObject {
         if isNew {
             if var createdDays = newRoadmap.day?.allObjects as? [DayLocal] {
                 createdDays.sort { $0.id < $1.id }
-                self.postInBackend(newRoadmap: newRoadmap, roadmap: roadmap, newDays: createdDays)
+                self.postInBackend(newRoadmap: newRoadmap, roadmap: roadmap, newDays: createdDays, selectedImage: selectedImage)
             }
         }
         let user = UserRepository.shared.getUser()
@@ -55,7 +56,7 @@ public class RoadmapRepository: NSManagedObject {
         self.saveContext()
         return newRoadmap
     }
-    func updateRoadmap(editRoadmap: RoadmapLocal, roadmap: Roadmaps, isShared: Bool) -> RoadmapLocal {
+    func updateRoadmap(editRoadmap: RoadmapLocal, roadmap: Roadmaps, isShared: Bool, selectedImage: UIImage? = nil) -> RoadmapLocal {
         guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         
         // cria o novo roadmap
@@ -102,7 +103,7 @@ public class RoadmapRepository: NSManagedObject {
         if var newDaysCore = newRoadmap.day?.allObjects as? [DayLocal] {
             newDaysCore.sort { $0.id < $1.id }
             if !isShared {
-                self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDaysCore: newDaysCore)
+                self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDaysCore: newDaysCore, selectedImage: selectedImage)
             }
         }
         self.saveContext()
@@ -194,7 +195,7 @@ public class RoadmapRepository: NSManagedObject {
             dateFormat.dateFormat = "dd/MM/yyyy"
             
             let date = dateFormat.date(from: fromRoadmap.dateInitial)
-            let newDay = DayRepository.shared.createDay(roadmap: toRoadmap, day: setupDays(startDay: date ?? Date(), indexPath: index, isSelected: isFirstDay))
+            _ = DayRepository.shared.createDay(roadmap: toRoadmap, day: setupDays(startDay: date ?? Date(), indexPath: index, isSelected: isFirstDay))
         }
     }
     
@@ -216,6 +217,10 @@ public class RoadmapRepository: NSManagedObject {
     }
     
     func deleteRoadmap(roadmap: RoadmapLocal) throws {
+        if let uuid = roadmap.imageId {
+            FirebaseManager.shared.deleteImage(category: 0, uuid: uuid)
+
+        }
         DataManager.shared.deleteObjectBack(objectID: Int(roadmap.id), urlPrefix: "roadmaps")
         context.delete(roadmap)
         self.saveContext()
@@ -226,11 +231,11 @@ public class RoadmapRepository: NSManagedObject {
         self.saveContext()
     }
     
-    func postInBackend(newRoadmap: RoadmapLocal, roadmap: Roadmaps, newDays: [DayLocal]) {
-        DataManager.shared.postRoadmap(roadmap: roadmap, roadmapCore: newRoadmap, daysCore: newDays)
+    func postInBackend(newRoadmap: RoadmapLocal, roadmap: Roadmaps, newDays: [DayLocal], selectedImage: UIImage? = nil) {
+        DataManager.shared.postRoadmap(roadmap: roadmap, roadmapCore: newRoadmap, daysCore: newDays, selectedImage: selectedImage)
     }
     
-    func updateBackend(roadmap: Roadmaps, id: Int, newDaysCore: [DayLocal]) {
-        DataManager.shared.putRoadmap(roadmap: roadmap, roadmapId: id, newDaysCore: newDaysCore)
+    func updateBackend(roadmap: Roadmaps, id: Int, newDaysCore: [DayLocal], selectedImage: UIImage? = nil) {
+        DataManager.shared.putRoadmap(roadmap: roadmap, roadmapId: id, newDaysCore: newDaysCore, selectedImage: selectedImage)
     }
 }

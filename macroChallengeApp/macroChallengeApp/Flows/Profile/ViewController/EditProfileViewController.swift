@@ -17,6 +17,7 @@ class EditProfileViewController: UIViewController {
     var userLocal: [UserLocal] = []
     let network: NetworkMonitor = NetworkMonitor.shared
     var imagePicker: ImagePicker!
+    var imageSelected: UIImage?
     var access = false
 
     override func viewDidLoad() {
@@ -24,6 +25,7 @@ class EditProfileViewController: UIViewController {
         network.startMonitoring()
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         self.setupEditProfileView()
+        editProfileView.imageProfile.addTarget(self, action: #selector(editPhoto), for: .touchUpInside)
         editProfileView.editButton.addTarget(self, action: #selector(editPhoto), for: .touchUpInside)
         self.userLocal = UserRepository.shared.getUser()
         self.changeToUserInfo(user: userLocal[0])
@@ -42,6 +44,9 @@ class EditProfileViewController: UIViewController {
                 UserRepository.shared.updateName(user: self.userLocal[0], name: newName)
                 UserRepository.shared.updateUsernameApp(user: self.userLocal[0], username: newUsernameApp)
                 DataManager.shared.putUser(userObj: self.userLocal[0])
+                if let imageSelected = imageSelected {
+                    FirebaseManager.shared.uploadImageUser(image: imageSelected)
+                }
             }
             coordinator?.backPage()
         }
@@ -50,7 +55,7 @@ class EditProfileViewController: UIViewController {
     func changeToUserInfo(user: UserLocal) {
         let path = user.photoId ?? "icon"
         let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
-        self.editProfileView.imageProfile.image = imageNew
+        self.editProfileView.imageProfile.setBackgroundImage(imageNew, for: .normal) 
         self.editProfileView.setupImage(image: imageNew ?? UIImage(named: "icon")!)
         self.editProfileView.nameTextField.text = user.name
         self.editProfileView.usernameTextField.text = user.usernameApp
@@ -93,6 +98,7 @@ extension EditProfileViewController {
 extension EditProfileViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         if let imageNew = image {
+            self.imageSelected = imageNew
             self.editProfileView.setupImage(image: imageNew)
             UserRepository.shared.updatePhotoId(user: userLocal[0],
                                                 photoId: SaveImagecontroller.saveToFiles(image: imageNew))

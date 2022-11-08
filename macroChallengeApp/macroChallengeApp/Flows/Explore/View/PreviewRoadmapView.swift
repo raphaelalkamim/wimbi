@@ -14,9 +14,11 @@ class PreviewRoadmapView: UIView {
     let scrollView = UIScrollView()
     let contentView = UIView()
     let transparentView = UIView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
+        self.setupLoad()
     }
     
     required init?(coder: NSCoder) {
@@ -111,6 +113,15 @@ class PreviewRoadmapView: UIView {
         button.clipsToBounds = true
         return button
     }()
+    
+    lazy var activity: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        return spinner
+    }()
+    
+    func setupLoad() {
+        showSpinner()
+    }
     
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
@@ -221,6 +232,19 @@ class PreviewRoadmapView: UIView {
             make.height.equalToSuperview()
             
         }
+    }
+    
+    func showSpinner() {
+        activity.color = designSystem.palette.accent
+        activity.startAnimating()
+        self.addSubview(activity)
+        activity.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY)
+        }
+    }
+    func hiddenSpinner() {
+        activity.removeFromSuperview()
     }
 }
 

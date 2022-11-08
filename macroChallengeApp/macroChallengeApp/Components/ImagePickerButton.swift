@@ -18,6 +18,20 @@ class ImagePickerButton: UIButton {
         return img
     }()
     
+    lazy var profileImage: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "icon")
+        img.clipsToBounds = true
+        img.layer.cornerRadius = 32
+        return img
+    }()
+    
+    init(photo: String) {
+        super.init(frame: .zero)
+        setBackgroundImage(UIImage(named: "icon"), for: .normal)
+        self.addSubview(profileImage)
+    }
+    
     init(category: String) {
         super.init(frame: .zero)
         self.category = category
@@ -25,7 +39,6 @@ class ImagePickerButton: UIButton {
         self.addSubview(addImageIcon)
         self.setupConstraints()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -35,9 +48,16 @@ class ImagePickerButton: UIButton {
             make.centerY.equalTo(self.snp.centerY)
         }
     }
+    func setupConstraintsImageProfile() {
+        profileImage.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY)
+        }
+    }
     func setupBackgroundImage(category: String) {
         self.setBackgroundImage(UIImage(named: "button\(category)"), for: .normal)
     }
+    
     func setImageById(imageId: String) {
         let path = imageId
         let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))

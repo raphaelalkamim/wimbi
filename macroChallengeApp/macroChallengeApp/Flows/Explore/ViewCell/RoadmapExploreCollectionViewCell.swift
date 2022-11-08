@@ -168,7 +168,7 @@ extension RoadmapExploreCollectionViewCell {
             self.categoryColor.tintColor = .redCity
         } else {
             self.categoryColor.tintColor = .greenCamp
-
+            
         }
     }
     
@@ -180,6 +180,10 @@ extension RoadmapExploreCollectionViewCell {
     }
     func setupContent(imageId: String, name: String, peopleCount: Int, dayCount: Int, budget: Double, currency: String, category: String, likesCount: Int) {
         cover.image = UIImage(named: imageId)
+        
+        if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: imageId)) {
+            cover.image = cachedImage
+        }
         title.text = name
         var travelers = ""
         var days = ""
@@ -194,11 +198,13 @@ extension RoadmapExploreCollectionViewCell {
             days = "days".localized()
         }
         subtitle.text = "\(peopleCount) \(travelers)  \(dayCount) \(days)"
-        var amount = "per person"
+        var amount = " per person"
         if budget > 1000 {
-            amount = "thousand per person".localized()
+            amount = " thousand per person".localized()
+            costByPerson.text = "\(currency) \(budget / Double(peopleCount) / 1000) \(amount)"
+        } else {
+            costByPerson.text = "\(currency) \(budget / Double(peopleCount))\(amount)"
         }
-        costByPerson.text = "\(currency) \(budget / 1000) \(amount)"
         categoryName.text = category.localized()
         setupColor(category: category)
         totalLikes.text = "\(likesCount)"

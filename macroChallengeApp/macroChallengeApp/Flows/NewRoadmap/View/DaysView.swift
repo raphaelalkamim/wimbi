@@ -92,10 +92,8 @@ class DaysView: UIView {
     
     @objc func turnRoadmapPublic(_ sender: UISwitch!) {
         if sender.isOn {
-            print("on")
             isPublic = true
         } else {
-            print("off")
             isPublic = false
         }
     }

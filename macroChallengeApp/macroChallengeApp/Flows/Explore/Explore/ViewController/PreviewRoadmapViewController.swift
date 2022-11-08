@@ -35,6 +35,7 @@ class PreviewRoadmapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.updateAllBudget()
         self.setupPreviewRoadmapView()
         
         previewView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
@@ -87,24 +88,27 @@ class PreviewRoadmapViewController: UIViewController {
         DataManager.shared.getRoadmapById(roadmapId: roadmapId, { roadmap in
             self.roadmap = roadmap
             self.setupContent(roadmap: roadmap)
+            self.previewView.hiddenSpinner()
+            self.previewView.infoTripCollectionView.reloadData()
+            self.previewView.calendarCollectionView.reloadData()
+            self.previewView.activitiesTableView.reloadData()
         })
+       
     }
     
     func setupContent(roadmap: Roadmaps) {
-        self.previewView.cover.image = UIImage(named: roadmap.imageId)
+        if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: roadmap.imageId)) {
+            self.previewView.cover.image = cachedImage
+        } else { self.previewView.cover.image = UIImage(named: roadmap.imageId) }
         self.previewView.title.text = roadmap.name
-        self.roadmap.days.sort {
-            $0.id < $1.id
-        }
+        self.roadmap.days.sort { $0.id < $1.id }
         self.roadmap.days[0].isSelected = true
         for index in 0..<self.roadmap.days.count {
             self.roadmap.days[index].activity.sort {
                 $0.hour < $1.hour
             }
         }
-        self.previewView.infoTripCollectionView.reloadData()
-        self.previewView.calendarCollectionView.reloadData()
-        self.previewView.activitiesTableView.reloadData()
+        updateConstraintsTable()
     }
     
     @objc func likeRoadmap() {
@@ -115,17 +119,14 @@ class PreviewRoadmapViewController: UIViewController {
                 if self.likeId == 0 {
                     print("Not Liked")
                 } else {
-                    print("Liked")
                     self.like.image = UIImage(systemName: "heart.fill")
                 }
             }
-            
         } else {
             self.like.image = UIImage(systemName: "heart")
             DataManager.shared.deleteObjectBack(objectID: self.likeId, urlPrefix: "likes")
             self.likeId = 0
         }
-        print("LIKE")
     }
     
     @objc func duplicateRoadmap() {
@@ -141,7 +142,7 @@ class PreviewRoadmapViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
         }))
         present(alert, animated: true)
-        let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: true)
+        let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: false)
         let days = newRoadmap.day?.allObjects as [DayLocal]
         let roadmapDays = self.roadmap.days
         for index in 0..<roadmapDays.count {
@@ -161,6 +162,8 @@ class PreviewRoadmapViewController: UIViewController {
     }
     func updateTotalBudgetValue() {
         guard let cell = previewView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
-        cell.infoTitle.text = "\(self.userCurrency)\(self.budgetTotal)"
+        
+        let content = String(format: "\(self.userCurrency)%.2f", self.budgetTotal)
+        cell.infoTitle.text = content
     }
 }
