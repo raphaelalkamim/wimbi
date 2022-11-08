@@ -111,7 +111,7 @@ extension PreviewRoadmapViewController: UICollectionViewDelegate {
         }
         // desabilita todas as celulas que nao sao a que recebeu o clique
         for index in 0..<roadmap.dayCount where index != indexPath.row {
-            let newIndexPath = IndexPath(item: Int(index), section: 0)
+            let newIndexPath = IndexPath(row: index, section: 0)
             if let cell = collectionView.cellForItem(at: newIndexPath) as? CalendarCollectionViewCell {
                 self.roadmap.days[Int(index)].isSelected = false
                 cell.disable()

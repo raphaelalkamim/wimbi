@@ -82,9 +82,6 @@ class PreviewRoadmapViewController: UIViewController {
             make.bottom.equalTo(previewView.scrollView.snp.bottom)
             make.height.equalTo(height)
         }
-        previewView.infoTripCollectionView.reloadData()
-        previewView.calendarCollectionView.reloadData()
-        previewView.activitiesTableView.reloadData()
     }
     
     func getRoadmapById(roadmapId: Int) {
@@ -92,19 +89,19 @@ class PreviewRoadmapViewController: UIViewController {
             self.roadmap = roadmap
             self.setupContent(roadmap: roadmap)
             self.previewView.hiddenSpinner()
+            self.previewView.infoTripCollectionView.reloadData()
+            self.previewView.calendarCollectionView.reloadData()
+            self.previewView.activitiesTableView.reloadData()
         })
+       
     }
     
     func setupContent(roadmap: Roadmaps) {
         if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: roadmap.imageId)) {
             self.previewView.cover.image = cachedImage
-        } else {
-            self.previewView.cover.image = UIImage(named: roadmap.imageId)
-        }
+        } else { self.previewView.cover.image = UIImage(named: roadmap.imageId) }
         self.previewView.title.text = roadmap.name
-        self.roadmap.days.sort {
-            $0.id < $1.id
-        }
+        self.roadmap.days.sort { $0.id < $1.id }
         self.roadmap.days[0].isSelected = true
         for index in 0..<self.roadmap.days.count {
             self.roadmap.days[index].activity.sort {
@@ -121,12 +118,10 @@ class PreviewRoadmapViewController: UIViewController {
                 self.likeId = response
                 if self.likeId == 0 {
                     print("Not Liked")
-                    
                 } else {
                     self.like.image = UIImage(systemName: "heart.fill")
                 }
             }
-            
         } else {
             self.like.image = UIImage(systemName: "heart")
             DataManager.shared.deleteObjectBack(objectID: self.likeId, urlPrefix: "likes")
