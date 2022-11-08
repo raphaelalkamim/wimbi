@@ -237,10 +237,9 @@ class MyTripView: UIView {
             
         }
         calendarCollectionView.snp.makeConstraints { make in
-            make.centerX.equalTo(contentView.snp.centerX)
             make.top.equalTo(calendarTitle.snp.bottom)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xxLargePositive)
-            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xxLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing)
             make.height.equalTo(80)
         }
         roadmapTitle.snp.makeConstraints { make in
