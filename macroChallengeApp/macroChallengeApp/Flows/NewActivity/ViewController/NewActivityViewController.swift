@@ -37,7 +37,7 @@ class NewActivityViewController: UIViewController {
             // tableView.reloadData()
         }
     }
-    var activity: Activity = Activity(id: 0, name: "New Activity".localized(), tips: "", category: "empty", location: "", hour: "", budget: 0, currency: "", address: "", link: "", day: Day(isSelected: true, date: Date()))
+    var activity: Activity = Activity(id: 0, name: "".localized(), tips: "", category: "empty", location: "", hour: "", budget: 0, currency: "", address: "", link: "", day: Day(isSelected: true, date: Date()))
     
     var day = DayLocal()
     var local: String = ""
@@ -55,12 +55,14 @@ class NewActivityViewController: UIViewController {
         
         setupNewActivityView()
         setKeyboard()
+        newActivityView.scrollView.delegate = self
         let cancelButton = UIBarButtonItem(title: "Cancel".localized(), style: .plain, target: self, action: #selector(cancelCreation))
         cancelButton.tintColor = .accent
         self.navigationItem.leftBarButtonItem = cancelButton
         
         let salvarButton = UIBarButtonItem(title: "Save".localized(), style: .plain, target: self, action: #selector(saveActivity))
         self.navigationItem.rightBarButtonItem = salvarButton
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,14 +115,6 @@ extension NewActivityViewController {
     fileprivate func setKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dissMissKeyboard))
-        
-        newActivityView.addGestureRecognizer(tap)
-        newActivityView.valueTable.addGestureRecognizer(tap)
-        newActivityView.detailTable.addGestureRecognizer(tap)
-        newActivityView.valueLabel.resignFirstResponder()
-        newActivityView.detailLabel.resignFirstResponder()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -131,11 +125,41 @@ extension NewActivityViewController {
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            newActivityView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -keyboardSize.height, right: 0)}
+            newActivityView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)}
     }
     
     @objc func dissMissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func setupTextFields(textField: UITextField) {
+            let toolbar = UIToolbar()
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: nil, action: nil)
+            let doneButton = UIBarButtonItem(title: "Done", style: .done,
+                                             target: self, action: #selector(doneButtonTapped))
+            
+            toolbar.setItems([flexSpace, doneButton], animated: true)
+            toolbar.sizeToFit()
+            
+            textField.inputAccessoryView = toolbar
+    }
+    func setupTextView(textView: UITextView) {
+            let toolbar = UIToolbar()
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: nil, action: nil)
+            let doneButton = UIBarButtonItem(title: "Done", style: .done,
+                                             target: self, action: #selector(doneButtonTapped))
+            
+            toolbar.setItems([flexSpace, doneButton], animated: true)
+            toolbar.sizeToFit()
+            textView.inputAccessoryView = toolbar
+    }
+    
+    @objc func doneButtonTapped() {
+        view.endEditing(true)
+        newActivityView.scrollView.isScrollEnabled = true
+
     }
 }
 
@@ -144,5 +168,12 @@ extension NewActivityViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension NewActivityViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     }
 }
