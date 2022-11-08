@@ -82,9 +82,6 @@ class PreviewRoadmapViewController: UIViewController {
             make.bottom.equalTo(previewView.scrollView.snp.bottom)
             make.height.equalTo(height)
         }
-        previewView.infoTripCollectionView.reloadData()
-        previewView.calendarCollectionView.reloadData()
-        previewView.activitiesTableView.reloadData()
     }
     
     func getRoadmapById(roadmapId: Int) {
@@ -92,7 +89,11 @@ class PreviewRoadmapViewController: UIViewController {
             self.roadmap = roadmap
             self.setupContent(roadmap: roadmap)
             self.previewView.hiddenSpinner()
+            self.previewView.infoTripCollectionView.reloadData()
+            self.previewView.calendarCollectionView.reloadData()
+            self.previewView.activitiesTableView.reloadData()
         })
+       
     }
     
     func setupContent(roadmap: Roadmaps) {
