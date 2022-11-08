@@ -37,7 +37,13 @@ class DetailViewController: UIViewController {
     
     @objc func openLink() {
         let text = detailView.linkButton.titleLabel?.text
-        UIApplication.shared.openURL(NSURL(string: text ?? "http://www.google.com")! as URL)
+        if let text = detailView.linkButton.titleLabel?.text {
+            if text.contains("https://") || text.contains("http://") {
+                UIApplication.shared.open(URL(string: text )! as URL)
+            } else {
+                UIApplication.shared.open(URL(string: "https://www.instagram.com/wimbi.app/")! as URL)
+            }
+        }
     }
 }
 
@@ -45,9 +51,6 @@ extension DetailViewController {
     func setupDetailView() {
         view.addSubview(detailView)
         setupConstraints()
-        if (self.coordinator != nil) {
-            detailView.setupContent(activity: activity)
-        }
     }
         
     func setupConstraints() {

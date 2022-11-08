@@ -18,6 +18,7 @@
 "By clicking on the button above, you agree to our Privacy Policies" = "Al hacer clic en el botón de arriba, usted acepta nuestras Políticas de Privacidad";
 "User" = "Usuario";
 "@user" = "@usuario";
+"Sign in to be able to create, duplicate, like and share a roadmap." = "Inicie sesión para poder crear, duplicar, dar me gusta y compartir un guía.";
 
 // MARK: -  New Activity
 "Type: " = "Tipo: ";
@@ -26,6 +27,7 @@
 "DETAILS" = "DETALLES";
 "Describe here curiosities, tips or interesting facts about the place." = "Describa aquí curiosidades, consejos o datos importantes sobre el lugar.";
 "CONTACT" = "CONTACTO";
+"Contact" = "Contacto";
 "Enter here the location's website or phone number." = "Introduzca el sitio web o el número de teléfono de la ubicación.";
 
 "TYPE" = "TIPO";
@@ -87,6 +89,8 @@
 "Remove current photo" = "Eliminar foto actual";
 "Take photo" = "Tomar foto";
 "Choose from library" = "Elegir de la biblioteca";
+"How about changing your profile photo?" = "¿Qué hay de cambiar su foto del perfil?";
+"How about inserting a photo into your roadmap?" = "¿Qué tal insertar una foto en tu guión?";
 
 //Settings
 "Settings" = "Configuración";
@@ -116,6 +120,7 @@
 "Sign out of your account?" = "¿Usted desea salir?";
 "Cancel" = "Cancelar";
 "Sign out" = "Salir";
+"Delete your account?" = "Borrar su cuenta?";
 
 // MARK: -  Current
 "ABOUT" = "ACERCA";

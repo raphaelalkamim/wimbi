@@ -22,11 +22,13 @@ class EditProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    lazy var imageProfile: UIImageView = {
-        let img = UIImageView()
-        img.image = UIImage(named: "icon")
-        img.clipsToBounds = true
-        return img
+    lazy var imageProfile: ImagePickerButton = {
+        let btn = ImagePickerButton(photo: "icon")
+        btn.clipsToBounds = true
+        btn.contentMode = UIView.ContentMode.scaleAspectFill
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.layer.cornerRadius = 32
+        return btn
     }()
     
     lazy var editButton: UIButton = {
@@ -101,7 +103,7 @@ class EditProfileView: UIView {
         setupConstraints()
     }
     func setupImage(image: UIImage) {
-        self.imageProfile.image = image
+        self.imageProfile.setBackgroundImage(image, for: .normal)
         imageProfile.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.topMargin).inset(designSystem.spacing.mediumPositive)
             make.centerX.equalToSuperview()

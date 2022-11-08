@@ -80,7 +80,7 @@ extension NewActivityViewController {
         // link
         let tableViewLink = newActivityView.contactTable
         guard let cell = tableViewLink.cellForRow(at: [0, 0]) as? TextFieldTableViewCell else { return }
-        activity.link = cell.title.text ?? "Contact"
+        activity.link = cell.title.text ?? "Contact".localized()
     }
 }
 
@@ -168,7 +168,7 @@ extension NewActivityViewController: UITableViewDataSource {
         } else if tableView == newActivityView.contactTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier, for: indexPath) as? TextFieldTableViewCell else { fatalError("TableCell not found") }
-                newCell.title.placeholder = "Contact"
+                newCell.title.placeholder = "Contact".localized()
                 newCell.title.text = activity.link
                 cell = newCell
                 

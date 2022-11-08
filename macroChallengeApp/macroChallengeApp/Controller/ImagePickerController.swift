@@ -41,14 +41,14 @@ open class ImagePicker: NSObject {
         }
     }
 
-    public func present(from sourceView: UIView) {
+    public func present(from sourceView: UIView, title: String) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.view.tintColor = .accent
         let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir", size: 18)]
-        let string = NSAttributedString(string: "Que tal personalizar sua foto de perfil?", attributes: titleAtt as [NSAttributedString.Key: Any])
+        let string = NSAttributedString(string: title, attributes: titleAtt as [NSAttributedString.Key: Any])
         alertController.setValue(string, forKey: "attributedTitle")
         
-        if let action = self.action(for: .photoLibrary, title: "Biblioteca de Imagens") {
+        if let action = self.action(for: .photoLibrary, title: "Choose from library".localized()) {
             alertController.addAction(action)
         }
         alertController.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))

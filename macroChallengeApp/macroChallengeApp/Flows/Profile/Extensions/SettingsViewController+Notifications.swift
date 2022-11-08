@@ -26,19 +26,6 @@ extension NotificationsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        switch indexPath.row {
-//        case 0:
-//            print("Ação editar perfil")
-//            
-//        case 1:
-//            print("Ação roteiros curtidos")
-//        
-//        default:
-//            break
-//        }
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
@@ -61,6 +48,8 @@ extension NotificationsViewController: UITableViewDataSource {
             cellPicker.setup()
             cellPicker.title.text = "Frequency".localized()
             cellPicker.backgroundColor = designSystem.palette.backgroundCell
+            cellPicker.picker.selectRow(UserDefaults.standard.integer(forKey: "number"), inComponent: 0, animated: true)
+            cellPicker.picker.selectRow(UserDefaults.standard.integer(forKey: "interval"), inComponent: 1, animated: true)
             cell = cellPicker
             
         default:

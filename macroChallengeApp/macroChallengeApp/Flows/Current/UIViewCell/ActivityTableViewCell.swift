@@ -98,12 +98,14 @@ extension ActivityTableViewCell {
         activityTitle.snp.makeConstraints { make in
             make.leading.equalTo(activityIcon.snp.trailing).inset(designSystem.spacing.xLargeNegative)
             make.trailing.equalTo(localButton.snp.leading).inset(designSystem.spacing.xxLargeNegative)
+            make.width.equalTo(UIScreen.main.bounds.width / 2)
             make.top.equalTo(activityInfo.snp.bottom)
         }
 
         localButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
             make.centerY.equalToSuperview().inset(designSystem.spacing.smallPositive)
+            make.leading.equalTo(activityTitle.snp.trailing).inset(designSystem.spacing.xxLargeNegative)
         }
 
     }

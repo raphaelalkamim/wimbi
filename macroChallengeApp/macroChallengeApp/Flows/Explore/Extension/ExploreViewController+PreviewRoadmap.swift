@@ -109,7 +109,6 @@ extension PreviewRoadmapViewController: UICollectionViewDelegate {
             updateConstraintsTable()
             self.previewView.activitiesTableView.reloadData()
         }
-        
         // desabilita todas as celulas que nao sao a que recebeu o clique
         for index in 0..<roadmap.dayCount where index != indexPath.row {
             let newIndexPath = IndexPath(item: Int(index), section: 0)
@@ -224,11 +223,9 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
         
         let activity = roadmap.days[self.daySelected].activity[indexPath.row]
         cell.localButton.tag = indexPath.row
-        if activity.location == "" {
-            cell.localButton.isHidden = true
-        }
+        if activity.location.isEmpty { cell.localButton.isHidden = true
+        } else { cell.localButton.isHidden = false }
         cell.localButton.addTarget(self, action: #selector(addRoute(sender:)), for: .touchUpInside)
-        
         cell.setupDaysActivities(hour: activity.hour, currency: activity.currency,
                                  value: String(activity.budget),
                                  name: activity.name)

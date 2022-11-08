@@ -132,7 +132,7 @@ class ExploreView: UIView {
         searchController.obscuresBackgroundDuringPresentation = true
         
         // Filtro
-        searchController.searchBar.showsBookmarkButton = true
+        searchController.searchBar.showsBookmarkButton = false
         searchController.searchBar.setImage(UIImage(systemName: "slider.horizontal.3"), for: .bookmark, state: .normal)
         
         searchBar = searchController.searchBar

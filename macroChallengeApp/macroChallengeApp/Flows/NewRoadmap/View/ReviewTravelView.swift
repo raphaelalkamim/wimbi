@@ -25,8 +25,9 @@ class ReviewTravelView: UIView {
     public lazy var coverImage: ImagePickerButton = {
         let image = ImagePickerButton(category: "Beach")
         image.clipsToBounds = true
-        image.layer.cornerRadius = 16
-        image.contentMode = UIView.ContentMode.scaleAspectFill
+        image.layer.cornerRadius = 35
+        image.contentMode = .scaleAspectFill
+        image.imageView?.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -154,7 +155,7 @@ extension ReviewTravelView {
             make.top.equalTo(contentView.snp.topMargin)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
-            make.height.equalTo(150)
+            make.height.equalTo(350)
         }
         
         categoryImage.snp.makeConstraints { make in
