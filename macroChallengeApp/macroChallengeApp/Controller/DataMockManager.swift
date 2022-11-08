@@ -38,7 +38,7 @@ class DataMockManager {
                                                        from: jsonData)
             return decodedData
         } catch {
-            print("decode error")
+            print(error)
         }
         return nil
     }

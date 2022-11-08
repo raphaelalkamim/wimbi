@@ -352,8 +352,8 @@
         "dateInitial": "01/12/2022",
         "dateFinal": "06/12/2022",
         "peopleCount": 2,
-        "imageId": "Beach",
-        "category": "Praia",
+        "imageId": "beach1",
+        "category": "Beach",
         "isShared": false,
         "isPublic": true,
         "shareKey": "portoSeguroWimbi123",
@@ -804,8 +804,8 @@
         "dateInitial": "01/12/2022",
         "dateFinal": "02/12/2022",
         "peopleCount": 2,
-        "imageId": "Countryside",
-        "category": "Campo",
+        "imageId": "camp3",
+        "category": "Countryside",
         "isShared": false,
         "isPublic": true,
         "shareKey": "portoSeguroWimbi123",
@@ -968,8 +968,8 @@
         "dateInitial": "01/12/2022",
         "dateFinal": "03/12/2022",
         "peopleCount": 2,
-        "imageId": "Beach",
-        "category": "Praia",
+        "imageId": "beach0",
+        "category": "Beach",
         "isShared": false,
         "isPublic": true,
         "shareKey": "florianopolisWimbi123",
@@ -978,266 +978,260 @@
         "likesCount": 0,
         "day": [
             {
-                "id": 38,
-                "date": "01/12/2022",
+                "id": 39,
+                "date": "02/12/2022",
                 "activity": [
                     {
-                        "id": 39,
-                        "date": "02/12/2022",
-                        "activity": [
-                            {
-                                "id": 40,
-                                "name": "Pátio Milano",
-                                "tips": "",
-                                "category": "accommodation",
-                                "location": "-27.5877749384813, -48.54291401411633",
-                                "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "13:00",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 41,
-                                "name": "Ostradamos Sul da ilha ",
-                                "tips": "",
-                                "category": "food",
-                                "location": "-27.719848942674734, -48.56410507288449",
-                                "address": "Rodovia Baldicero Filomeno, 7640, Ribeirão da Ilha, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "14:00",
-                                "budget": 330.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 42,
-                                "name": "Praia Armação",
-                                "tips": "",
-                                "category": "leisure",
-                                "location": "-27.743520185093743, -48.50752621318502",
-                                "address": "Praia Armação, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "16:00",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 43,
-                                "name": "La cave",
-                                "tips": "",
-                                "category": "food",
-                                "location": "-27.584068706017117, -48.54387669986971",
-                                "address": "Rua Demétrio Ribeiro, 51, Centro, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "19:00",
-                                "budget": 340.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 44,
-                                "name": "Pátio Milano",
-                                "tips": "",
-                                "category": "accommodation",
-                                "location": "-27.5877749384813, -48.54291401411633",
-                                "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "13:00",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            }
-                        ]
+                        "id": 40,
+                        "name": "Pátio Milano",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "-27.5877749384813, -48.54291401411633",
+                        "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "13:00",
+                        "budget": 0.0,
+                        "currency": "R$"
                     },
                     {
-                        "id": 49,
-                        "date": "02/12/2022",
-                        "activity": [
-                            {
-                                "id": 55,
-                                "name": "Pátio Milano",
-                                "tips": "",
-                                "category": "accommodation",
-                                "location": "-27.5877749384813, -48.54291401411633",
-                                "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "13:00",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 56,
-                                "name": "Jurere Internacional",
-                                "tips": "",
-                                "category": "leisure",
-                                "location": "-27.441313243041503, -48.50624747933099",
-                                "address": "Jurere Internacional, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "11:00",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 57,
-                                "name": "Acqua Plage ",
-                                "tips": "",
-                                "category": "food",
-                                "location": "-27.437873334166998, -48.493758501725",
-                                "address": "Avenida dos Icarais, Posto da Praia, Jurerê, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "13:00",
-                                "budget": 400.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 58,
-                                "name": "Praia Brava",
-                                "tips": "",
-                                "category": "leisure",
-                                "location": "-26.95021451505938, -48.62972143130408",
-                                "address": "Praia Brava, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "15:00",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 59,
-                                "name": "Pátio Milano",
-                                "tips": "",
-                                "category": "accommodation",
-                                "location": "-27.5877749384813, -48.54291401411633",
-                                "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "13:00",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 60,
-                                "name": "Bistro da praça",
-                                "tips": "",
-                                "category": "food",
-                                "location": "-22.628524415350515, -47.0502579889784",
-                                "address": " Largo Benjamin Constant, 663, Centro, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "20:00",
-                                "budget": 352.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 61,
-                                "name": "Pátio Milano",
-                                "tips": "",
-                                "category": "accommodation",
-                                "location": "-27.5877749384813, -48.54291401411633",
-                                "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "22:30",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            }
-                        ]
+                        "id": 41,
+                        "name": "Ostradamos Sul da ilha ",
+                        "tips": "",
+                        "category": "food",
+                        "location": "-27.719848942674734, -48.56410507288449",
+                        "address": "Rodovia Baldicero Filomeno, 7640, Ribeirão da Ilha, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "14:00",
+                        "budget": 330.0,
+                        "currency": "R$"
                     },
                     {
-                        "id": 49,
-                        "date": "03/12/2022",
-                        "activity": [
-                            {
-                                "id": 1,
-                                "name": "Pátio Milano",
-                                "tips": "",
-                                "category": "accommodation",
-                                "location": "-27.5877749384813, -48.54291401411633",
-                                "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "09:00",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 2,
-                                "name": "Mirante lagoa da conceição",
-                                "tips": "",
-                                "category": "leisure",
-                                "location": "-27.600108443552365, -48.48118990088404",
-                                "address": "Mirante lagoa da conceição, Lagoa da Conceição, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "11:00",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 3,
-                                "name": "Praia Santo Antonio de Lisboa",
-                                "tips": "",
-                                "category": "leisure",
-                                "location": "-27.507512474666747, -48.5200875371967",
-                                "address": "Santo Antônio de Lisboa, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "12:00",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 4,
-                                "name": "Amalfi Restaurante",
-                                "tips": "",
-                                "category": "food",
-                                "location": "-27.506846371777264, -48.52074095813211",
-                                "address": "Rua Quinze de Novembro, 18, Santo Antonio de Lisboa, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "14:00",
-                                "budget": 277.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 5,
-                                "name": "Praia da Joaquina",
-                                "tips": "",
-                                "category": "leisure",
-                                "location": "-27.629253204750952, -48.44903338389554",
-                                "address": "Praia da Joaquina, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "16:00",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 6,
-                                "name": "Casa de chá Mayra Pauli",
-                                "tips": "",
-                                "category": "food",
-                                "location": "-27.591814792899353, -48.50695517103353",
-                                "address": " Rua Cap. Amaro Seixas Ribeiro, 321, Santa Monica, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "17:00",
-                                "budget": 100.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 7,
-                                "name": "Pátio Milano",
-                                "tips": "",
-                                "category": "accommodation",
-                                "location": "-27.5877749384813, -48.54291401411633",
-                                "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "19:30",
-                                "budget": 0.0,
-                                "currency": "R$"
-                            },
-                            {
-                                "id": 8,
-                                "name": "Artusi Restaurante",
-                                "tips": "",
-                                "category": "food",
-                                "location": "-27.585946781706276, -48.54777110357561",
-                                "address": "Rua Bocaiúva, 2090, Centro, Florianópolis, SC, Brasil",
-                                "link": "",
-                                "hour": "21:00",
-                                "budget": 290.0,
-                                "currency": "R$"
-                            }
-                        ]
+                        "id": 42,
+                        "name": "Praia Armação",
+                        "tips": "",
+                        "category": "leisure",
+                        "location": "-27.743520185093743, -48.50752621318502",
+                        "address": "Praia Armação, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "16:00",
+                        "budget": 0.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 43,
+                        "name": "La cave",
+                        "tips": "",
+                        "category": "food",
+                        "location": "-27.584068706017117, -48.54387669986971",
+                        "address": "Rua Demétrio Ribeiro, 51, Centro, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "19:00",
+                        "budget": 340.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 44,
+                        "name": "Pátio Milano",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "-27.5877749384813, -48.54291401411633",
+                        "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "13:00",
+                        "budget": 0.0,
+                        "currency": "R$"
+                    }
+                ]
+            },
+            {
+                "id": 49,
+                "date": "02/12/2022",
+                "activity": [
+                    {
+                        "id": 55,
+                        "name": "Pátio Milano",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "-27.5877749384813, -48.54291401411633",
+                        "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "13:00",
+                        "budget": 0.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 56,
+                        "name": "Jurere Internacional",
+                        "tips": "",
+                        "category": "leisure",
+                        "location": "-27.441313243041503, -48.50624747933099",
+                        "address": "Jurere Internacional, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "11:00",
+                        "budget": 0.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 57,
+                        "name": "Acqua Plage ",
+                        "tips": "",
+                        "category": "food",
+                        "location": "-27.437873334166998, -48.493758501725",
+                        "address": "Avenida dos Icarais, Posto da Praia, Jurerê, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "13:00",
+                        "budget": 400.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 58,
+                        "name": "Praia Brava",
+                        "tips": "",
+                        "category": "leisure",
+                        "location": "-26.95021451505938, -48.62972143130408",
+                        "address": "Praia Brava, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "15:00",
+                        "budget": 0.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 59,
+                        "name": "Pátio Milano",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "-27.5877749384813, -48.54291401411633",
+                        "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "13:00",
+                        "budget": 0.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 60,
+                        "name": "Bistro da praça",
+                        "tips": "",
+                        "category": "food",
+                        "location": "-22.628524415350515, -47.0502579889784",
+                        "address": " Largo Benjamin Constant, 663, Centro, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "20:00",
+                        "budget": 352.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 61,
+                        "name": "Pátio Milano",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "-27.5877749384813, -48.54291401411633",
+                        "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "22:30",
+                        "budget": 0.0,
+                        "currency": "R$"
+                    }
+                ]
+            },
+            {
+                "id": 49,
+                "date": "03/12/2022",
+                "activity": [
+                    {
+                        "id": 1,
+                        "name": "Pátio Milano",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "-27.5877749384813, -48.54291401411633",
+                        "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "09:00",
+                        "budget": 0.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 2,
+                        "name": "Mirante lagoa da conceição",
+                        "tips": "",
+                        "category": "leisure",
+                        "location": "-27.600108443552365, -48.48118990088404",
+                        "address": "Mirante lagoa da conceição, Lagoa da Conceição, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "11:00",
+                        "budget": 0.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 3,
+                        "name": "Praia Santo Antonio de Lisboa",
+                        "tips": "",
+                        "category": "leisure",
+                        "location": "-27.507512474666747, -48.5200875371967",
+                        "address": "Santo Antônio de Lisboa, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "12:00",
+                        "budget": 0.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Amalfi Restaurante",
+                        "tips": "",
+                        "category": "food",
+                        "location": "-27.506846371777264, -48.52074095813211",
+                        "address": "Rua Quinze de Novembro, 18, Santo Antonio de Lisboa, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "14:00",
+                        "budget": 277.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Praia da Joaquina",
+                        "tips": "",
+                        "category": "leisure",
+                        "location": "-27.629253204750952, -48.44903338389554",
+                        "address": "Praia da Joaquina, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "16:00",
+                        "budget": 0.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 6,
+                        "name": "Casa de chá Mayra Pauli",
+                        "tips": "",
+                        "category": "food",
+                        "location": "-27.591814792899353, -48.50695517103353",
+                        "address": " Rua Cap. Amaro Seixas Ribeiro, 321, Santa Monica, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "17:00",
+                        "budget": 100.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 7,
+                        "name": "Pátio Milano",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "-27.5877749384813, -48.54291401411633",
+                        "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "19:30",
+                        "budget": 0.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 8,
+                        "name": "Artusi Restaurante",
+                        "tips": "",
+                        "category": "food",
+                        "location": "-27.585946781706276, -48.54777110357561",
+                        "address": "Rua Bocaiúva, 2090, Centro, Florianópolis, SC, Brasil",
+                        "link": "",
+                        "hour": "21:00",
+                        "budget": 290.0,
+                        "currency": "R$"
                     }
                 ]
             }
@@ -1252,8 +1246,8 @@
         "dateInitial": "01/12/2022",
         "dateFinal": "04/12/2022",
         "peopleCount": 1,
-        "imageId": "City",
-        "category": "Cidade",
+        "imageId": "city3",
+        "category": "City",
         "isShared": false,
         "isPublic": true,
         "shareKey": "saoPauloWimbi123",
@@ -1349,7 +1343,6 @@
                         "budget": 0.0,
                         "currency": "R$"
                     }
-
                 ]
             },
             {
