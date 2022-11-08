@@ -40,9 +40,10 @@ class ExploreViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         network.startMonitoring()
         DataManager.shared.getPublicRoadmaps({ roadmaps in
-            self.roadmaps = roadmaps
-            self.roadmaps.sort { $0.likesCount < $1.likesCount }
-            if roadmaps.isEmpty { self.getMockData() }
+            // self.roadmaps = roadmaps
+            // self.roadmaps.sort { $0.likesCount < $1.likesCount }
+            //if roadmaps.isEmpty { self.getMockData() }
+            self.getMockData()
             self.explorerView.roadmapsCollectionView.reloadData()
             self.emptyState(conection: self.network.isReachable)
         })
