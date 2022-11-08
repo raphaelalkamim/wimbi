@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseCore
 
 class DataManager {
     public static var shared = DataManager()
@@ -97,7 +98,6 @@ class DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request) { data, response, error in
-            print(response)
             if let error = error {
                 print(error)
             } else if data != nil {
@@ -139,10 +139,9 @@ class DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request) { data, response, error in
-            print(response)
             if let error = error {
                 print(error)
-            } else if data == data {
+            } else if data != nil {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
                         do {
@@ -167,7 +166,7 @@ class DataManager {
         task.resume()
     }
     
-    func postRoadmap(roadmap: Roadmaps, roadmapCore: RoadmapLocal, daysCore: [DayLocal]) {
+    func postRoadmap(roadmap: Roadmaps, roadmapCore: RoadmapLocal, daysCore: [DayLocal], selectedImage: UIImage? = nil) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
         
@@ -211,7 +210,6 @@ class DataManager {
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
                 
                 let task = session.dataTask(with: request) { data, response, error in
-                    print(response)
                     guard let data = data else { return }
                     if error != nil {
                         print(String(describing: error?.localizedDescription))
@@ -227,6 +225,10 @@ class DataManager {
                                 roadmapCore.id = Int32(roadmapResponse.id)
                                 roadmapCore.shareKey = codeTrip
                                 RoadmapRepository.shared.saveContext()
+                                
+                                if let selectedImage = selectedImage {
+                                    FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapResponse.id, roadmapCore: roadmapCore)
+                                }
                             } catch {
                                 print(error)
                             }
@@ -291,7 +293,9 @@ class DataManager {
             
             do {
                 roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
-                
+                for roadmap in roadmaps {
+                    FirebaseManager.shared.getImage(category: 0, uuid: roadmap.imageId)
+                }
                 DispatchQueue.main.async {
                     completion(roadmaps)
                 }
@@ -407,7 +411,7 @@ class DataManager {
         
     }
     
-    func putRoadmap(roadmap: Roadmaps, roadmapId: Int, newDaysCore: [DayLocal]) {
+    func putRoadmap(roadmap: Roadmaps, roadmapId: Int, newDaysCore: [DayLocal], selectedImage: UIImage? = nil) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
         
@@ -455,6 +459,51 @@ class DataManager {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
                         self.postDays(roadmapId: roadmapId, daysCore: newDaysCore)
+                        
+                        if let selectedImage = selectedImage {
+                            FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapId, uuid: roadmap.imageId)
+                        }
+                        print("Atualizou")
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func putImageRoadmap(roadmapId: Int, uuid: String) {
+        let session = URLSession.shared
+        var urlFinal = ""
+        var oldId = UserRepository.shared.getUser()[0].photoId
+        
+        if roadmapId != 0 {
+            urlFinal = "roadmaps/\(roadmapId)/\(uuid)"
+        } else {
+            if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+                let userID = String(data: data, encoding: .utf8)!
+                print(userID)
+                urlFinal = "users/\(userID)/\(uuid)"
+            }
+        }
+        
+        guard let url = URL(string: baseURL + urlFinal) else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                print(response)
+                guard let data = data else { return }
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
                         print("Atualizou")
                     }
                 }
@@ -629,8 +678,8 @@ class DataManager {
         
         if let token = UserDefaults.standard.string(forKey: "authorization") {
             request.setValue(token, forHTTPHeaderField: "Authorization")
-            let task = session.dataTask(with: request) { data, response, error in
-                guard let data = data else {return}
+            let task = session.dataTask(with: request) { data, _, error in
+                guard data != nil else { return }
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
                 }
@@ -773,6 +822,7 @@ class DataManager {
             
         }
     }
+    
     
     func decodeType<T: Codable>(_ class: T, data: Data) -> T? {
         do {

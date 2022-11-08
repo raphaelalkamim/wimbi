@@ -30,7 +30,6 @@ class ImagePickerButton: UIButton {
         super.init(frame: .zero)
         setBackgroundImage(UIImage(named: "icon"), for: .normal)
         self.addSubview(profileImage)
-        //self.setupConstraintsImageProfile()
     }
     
     init(category: String) {

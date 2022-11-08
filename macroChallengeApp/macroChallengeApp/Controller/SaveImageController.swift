@@ -18,7 +18,7 @@ class SaveImagecontroller {
     
     // salvar arquivo
     static func saveToFiles(image: UIImage?) -> String {
-        if let data = image?.jpegData(compressionQuality: 1){
+        if let data = image?.jpegData(compressionQuality: 1) {
             let directory = getDocumentDirectory()
             let path = directory.appendingPathComponent("\(UUID().uuidString).jpeg")
             try? data.write(to: path)

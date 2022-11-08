@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1006758824592-8nv98njm1kbb8hr8ovgocktr1jtauhth.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1006758824592-8nv98njm1kbb8hr8ovgocktr1jtauhth</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDkIffXVxQVGpzkGxwYr0DorMb-Pmz_AG8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1006758824592</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.dev.grupoUm.macroChallengeApp</string>
+	<key>PROJECT_ID</key>
+	<string>wimbi-a3243</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wimbi-a3243.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1006758824592:ios:6a3cd60d7a14a3c2d5e615</string>
+</dict>
+</plist>
