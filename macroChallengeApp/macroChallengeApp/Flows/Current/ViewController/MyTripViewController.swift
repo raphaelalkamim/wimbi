@@ -47,7 +47,7 @@ class MyTripViewController: UIViewController {
         self.myTripView.activitiesTableView.layoutIfNeeded()
         self.updateAllBudget()
         updateConstraintsTable()
-        myTripView.secondTutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
+        myTripView.secondTutorialTitle.addTarget(self, action: #selector(tutorialSecond), for: .touchUpInside)
         myTripView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
     }
     
@@ -106,6 +106,11 @@ class MyTripViewController: UIViewController {
         myTripView.tutorialView.removeFromSuperview()
     }
     
+    @objc func tutorialSecond() {
+        UserDefaults.standard.set(true, forKey: "tutorialMyTrip")
+        myTripView.secondTutorialView.removeFromSuperview()
+    }
+    
     func emptyState(activities: [ActivityLocal]) {
         if activities.isEmpty {
             if UIDevice.current.name == "iPhone SE (3rd generation)" || UIDevice.current.name == "iPhone 8" {
@@ -153,8 +158,8 @@ class MyTripViewController: UIViewController {
     }
     @objc func shareMyTrip() {
         if roadmap.isPublic {
-            let introduction = "Hey! Join my roadmap in Wimbi app using the code: " + (roadmap.shareKey ?? "0")
-            let activityItem = MyActivityItemSource(title: "Share your code roadmap!", text: introduction)
+            let introduction = "Hey! Join my roadmap in Wimbi app using the code: ".localized() + (roadmap.shareKey ?? "0")
+            let activityItem = MyActivityItemSource(title: "Share your roadmap code!".localized(), text: introduction)
             let activityViewController = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view
             activityViewController.excludedActivityTypes = []
@@ -162,7 +167,7 @@ class MyTripViewController: UIViewController {
             RoadmapRepository.shared.saveContext()
             self.present(activityViewController, animated: true, completion: nil)
         } else {
-            let action = UIAlertController(title: "To share this trip, turn it public", message: nil, preferredStyle: .actionSheet)
+            let action = UIAlertController(title: "To share this roadmap, turn it public".localized(), message: nil, preferredStyle: .actionSheet)
             action.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             present(action, animated: true)
         }

@@ -185,8 +185,18 @@ extension RoadmapExploreCollectionViewCell {
             cover.image = cachedImage
         }
         title.text = name
-        let travelers = "travelers  •".localized()
-        let days = "days".localized()
+        var travelers = ""
+        var days = ""
+        if peopleCount == 1 {
+            travelers = "traveler  •".localized()
+        } else {
+            travelers = "travelers  •".localized()
+        }
+        if dayCount == 1 {
+            days = "day".localized()
+        } else {
+            days = "days".localized()
+        }
         subtitle.text = "\(peopleCount) \(travelers)  \(dayCount) \(days)"
         var amount = " per person"
         if budget > 1000 {

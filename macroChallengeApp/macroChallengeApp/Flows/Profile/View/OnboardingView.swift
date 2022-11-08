@@ -30,7 +30,7 @@ class OnboardingView: UIView {
     
     lazy var subtitle: UILabel = {
         let title = UILabel()
-        title.text = "A primeira rede social de viagens".localized() // adicionar nome
+        title.text = "The first social travel network".localized() // adicionar nome
         title.stylize(with: designSystem.text.body)
         title.textAlignment = .center
         return title
@@ -38,14 +38,14 @@ class OnboardingView: UIView {
     
     lazy var createTitle: UILabel = {
         let title = UILabel()
-        title.text = "Seja um explorador".localized()
+        title.text = "Be an explorer".localized()
         title.stylize(with: designSystem.text.cellTitle)
         return title
     }()
     
     lazy var createSubtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.text = "Crie o seu roteiro e deixe-o público para pessoas curtirem e poderem usá-lo como inspiração.".localized()
+        subtitle.text = "Create your roadmap and make it public for people to enjoy and use as inspiration.".localized()
         subtitle.stylize(with: designSystem.text.caption)
         return subtitle
     }()
@@ -61,14 +61,14 @@ class OnboardingView: UIView {
     
     lazy var duplicateTitle: UILabel = {
         let title = UILabel()
-        title.text = "Explore roteiros sem fazer login".localized()
+        title.text = "Explore roadmaps without sign in".localized()
         title.stylize(with: designSystem.text.cellTitle)
         return title
     }()
     
     lazy var duplicateSubtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.text = "Caso encontre um roteiro ideal, duplique-o para poder editá-lo a qualquer momento.".localized()
+        subtitle.text = "If you find a perfect roadmap, duplicate it so you can edit it at any time.".localized()
         subtitle.stylize(with: designSystem.text.caption)
         return subtitle
     }()
@@ -84,14 +84,14 @@ class OnboardingView: UIView {
     
     lazy var likeTitle: UILabel = {
         let title = UILabel()
-        title.text = "Não perca nenhum roteiro".localized()
+        title.text = "Don't miss any roadmap".localized()
         title.stylize(with: designSystem.text.cellTitle)
         return title
     }()
     
     lazy var likeSubtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.text = "Curta um roteiro para que ele fique salvo nas configurações.".localized()
+        subtitle.text = "Like a roadmap so that it's saved in settings.".localized()
         subtitle.stylize(with: designSystem.text.caption)
         return subtitle
     }()
@@ -107,14 +107,14 @@ class OnboardingView: UIView {
     
     lazy var shareTitle: UILabel = {
         let title = UILabel()
-        title.text = "Viaje junto com seus amigos".localized()
+        title.text = "Travel together with your friends".localized()
         title.stylize(with: designSystem.text.cellTitle)
         return title
     }()
     
     lazy var shareSubtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.text = "Compartilhe seu roteiro com seus amigos para que todos possam modificá-lo.".localized()
+        subtitle.text = "Share your roadmap with your friends so everyone can edit it.".localized()
         subtitle.stylize(with: designSystem.text.caption)
         return subtitle
     }()

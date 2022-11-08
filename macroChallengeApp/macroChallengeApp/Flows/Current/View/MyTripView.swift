@@ -147,21 +147,9 @@ class MyTripView: UIView {
         return view
     }()
     
-    lazy var tutorialImage: UIImageView = {
-        let img = UIImageView()
-        img.image = UIImage(named: "tutorial-left")
-        img.clipsToBounds = true
-        return img
-    }()
-    
     lazy var tutorialTitle: UIButton = {
        let button = UIButton()
-        let att = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 12)]
-        button.setAttributedTitle(NSAttributedString(string: "Segure e arraste para mudar a ordem das atividades.".localized(), attributes: att), for: .normal)
-        button.setTitleColor(.textPrimary, for: .normal)
-        button.titleLabel?.numberOfLines = 0
-        button.contentVerticalAlignment = .center
-        button.contentHorizontalAlignment = .left
+        button.setImage(UIImage(named: "tutorial-left2"), for: .normal)
         return button
     }()
     
@@ -170,21 +158,9 @@ class MyTripView: UIView {
         return view
     }()
     
-    lazy var secondTutorialImage: UIImageView = {
-        let img = UIImageView()
-        img.image = UIImage(named: "tutorial-down")
-        img.clipsToBounds = true
-        return img
-    }()
-    
     lazy var secondTutorialTitle: UIButton = {
        let button = UIButton()
-        let att = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 12)]
-        button.setAttributedTitle(NSAttributedString(string: "Deslize para o lado para editar ou deletar uma atividade.".localized(), attributes: att), for: .normal)
-        button.setTitleColor(.textPrimary, for: .normal)
-        button.titleLabel?.numberOfLines = 0
-        button.contentVerticalAlignment = .center
-        button.contentHorizontalAlignment = .left
+        button.setImage(UIImage(named: "tutorial-down"), for: .normal)
         return button
     }()
     
@@ -207,11 +183,9 @@ class MyTripView: UIView {
         scrollView.addSubview(activitiesTableView)
         scrollView.addSubview(tutorialView)
         tutorialView.isHidden = true
-        tutorialView.addSubview(tutorialImage)
         tutorialView.addSubview(tutorialTitle)
         scrollView.addSubview(secondTutorialView)
         secondTutorialView.isHidden = true
-        secondTutorialView.addSubview(secondTutorialImage)
         secondTutorialView.addSubview(secondTutorialTitle)
         activitiesTableView.isHidden = true
         budgetView.isHidden = true
@@ -263,10 +237,9 @@ class MyTripView: UIView {
             
         }
         calendarCollectionView.snp.makeConstraints { make in
-            make.centerX.equalTo(contentView.snp.centerX)
             make.top.equalTo(calendarTitle.snp.bottom)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xxLargePositive)
-            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xxLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing)
             make.height.equalTo(80)
         }
         roadmapTitle.snp.makeConstraints { make in
@@ -328,18 +301,14 @@ class MyTripView: UIView {
         tutorialView.snp.makeConstraints { make in
             make.top.equalTo(activitiesTableView.snp.top).inset(72)
             make.trailing.equalTo(activitiesTableView.snp.trailing).inset(130)
-            make.height.equalTo(76)
-            make.width.equalTo(140)
+            make.height.equalTo(66)
+            make.width.equalTo(131)
         }
-        
-        tutorialImage.snp.makeConstraints { make in
-            make.edges.equalTo(tutorialView.snp.edges)
-        }
-        
+
         tutorialTitle.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(designSystem.spacing.mediumPositive)
+            make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.top.equalToSuperview().inset(designSystem.spacing.smallPositive)
+            make.top.equalToSuperview()
             make.height.width.equalToSuperview()
             
         }
@@ -347,21 +316,15 @@ class MyTripView: UIView {
         secondTutorialView.snp.makeConstraints { make in
             make.top.equalTo(activitiesTableView.snp.top).inset(-50)
             make.trailing.equalTo(activitiesTableView.snp.trailing).inset(82)
-            make.height.equalTo(86)
-            make.width.equalTo(150)
-        }
-        
-        secondTutorialImage.snp.makeConstraints { make in
-            make.edges.equalTo(secondTutorialView.snp.edges)
+            make.height.equalTo(70)
+            make.width.equalTo(130)
         }
         
         secondTutorialTitle.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(designSystem.spacing.mediumPositive)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.mediumNegative)
-            make.top.equalToSuperview().inset(-10)
-            make.bottom.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(80)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.height.width.equalToSuperview()
             
         }
 

@@ -185,4 +185,17 @@
 "Continue" = "Continuar";
 "Roadmap to" = "Roteiro para";
 
+//MARK: - Onboarding
+"The first social travel network" = "A primeira rede social de viagens";
+"Be an explorer" = "Seja um explorador";
+"Create your roadmap and make it public for people to enjoy and use as inspiration." = "Crie o seu roteiro e deixe-o público para pessoas curtirem e poderem usá-lo como inspiração.";
+"Explore roadmaps without sign in" = "Explore roteiros sem iniciar sessão";
+"If you find a perfect roadmap, duplicate it so you can edit it at any time." = "Caso encontre um roteiro ideal, duplique-o para poder editá-lo a qualquer momento.";
+"Don't miss any roadmap" = "Não perca nenhum roteiro";
+"Like a roadmap so that it's saved in settings." = "Curta um roteiro para que ele fique salvo nas configurações.";
+"Travel together with your friends" ="Viaje junto com seus amigos";
+"Share your roadmap with your friends so everyone can edit it." = "Compartilhe seu roteiro com seus amigos para que todos possam modificá-lo.";
+"Hey! Join my roadmap in Wimbi app using the code: " = "Ei! Junte-se ao meu roteiro no aplicativo Wimbi usando o código: ";
+"To share this roadmap, turn it public" = "Para compartilhar este roteiro, deixe-a pública";
+"Share your roadmap code!" = "Compartilhe o código de seu roteiro!";
 
