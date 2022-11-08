@@ -97,21 +97,10 @@ class ProfileView: UIView {
         return view
     }()
     
-    lazy var tutorialImage: UIImageView = {
-        let img = UIImageView()
-        img.image = UIImage(named: "tutorial-left")
-        img.clipsToBounds = true
-        return img
-    }()
-    
     lazy var tutorialTitle: UIButton = {
        let button = UIButton()
-        let att = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 12)]
-        button.setAttributedTitle(NSAttributedString(string: "Aqui irão aparecer roteiros criados e duplicados por você.".localized(), attributes: att), for: .normal)
-        button.setTitleColor(.textPrimary, for: .normal)
-        button.titleLabel?.numberOfLines = 0
-        button.contentVerticalAlignment = .center
-        button.contentHorizontalAlignment = .left
+        button.setImage(UIImage(named: "tutorial-left1"), for: .normal)
+        button.clipsToBounds = true
         return button
     }()
     
@@ -143,7 +132,6 @@ class ProfileView: UIView {
         contentView.addSubview(emptyStateImage)
         scrollView.addSubview(tutorialView)
         tutorialView.isHidden = true
-        tutorialView.addSubview(tutorialImage)
         tutorialView.addSubview(tutorialTitle)
         emptyStateTitle.isHidden = true
         emptyStateImage.isHidden = true
@@ -191,20 +179,15 @@ class ProfileView: UIView {
         tutorialView.snp.makeConstraints { make in
             make.top.equalTo(roadmapTitle.snp.bottom)
             make.trailing.equalTo(roadmapTitle.snp.trailing).inset(24)
-            make.height.equalTo(76)
-            make.width.equalTo(140)
-        }
-        
-        tutorialImage.snp.makeConstraints { make in
-            make.edges.equalTo(tutorialView.snp.edges)
+            make.height.equalTo(66)
+            make.width.equalTo(131)
         }
         
         tutorialTitle.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(designSystem.spacing.mediumPositive)
+            make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.top.equalToSuperview().inset(designSystem.spacing.smallPositive)
+            make.top.equalToSuperview()
             make.height.width.equalToSuperview()
-            
         }
 
         addButton.snp.makeConstraints { make in

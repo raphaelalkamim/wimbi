@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Group 515.png",
+      "filename" : "Group 521.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Group 516.png",
+      "filename" : "Group 524.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -45,7 +45,7 @@
       "scale" : "3x"
     },
     {
-      "filename" : "Group 413.png",
+      "filename" : "Group 519.png",
       "idiom" : "universal",
       "locale" : "pt-BR",
       "scale" : "1x"
@@ -57,7 +57,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Group 514.png",
+      "filename" : "Group 522.png",
       "idiom" : "universal",
       "locale" : "pt-BR",
       "scale" : "1x"
@@ -95,7 +95,7 @@
       "scale" : "3x"
     },
     {
-      "filename" : "Group 517.png",
+      "filename" : "Group 520.png",
       "idiom" : "universal",
       "locale" : "es-419",
       "scale" : "1x"
@@ -107,7 +107,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Group 518.png",
+      "filename" : "Group 523.png",
       "idiom" : "universal",
       "locale" : "es-419",
       "scale" : "1x"

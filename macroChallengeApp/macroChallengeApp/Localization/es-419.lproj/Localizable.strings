@@ -90,7 +90,7 @@
 "Take photo" = "Tomar foto";
 "Choose from library" = "Elegir de la biblioteca";
 "How about changing your profile photo?" = "¿Qué hay de cambiar su foto del perfil?";
-"How about inserting a photo into your roadmap?" = "¿Qué tal insertar una foto en tu guión?";
+"How about inserting a photo into your roadmap?" = "¿Qué tal insertar una foto en tu guía?";
 
 //Settings
 "Settings" = "Configuración";
@@ -185,4 +185,18 @@
 "Back" = "Atrás";
 "Continue" = "Continuar";
 "Roadmap to" = "Guía de viaje para";
+
+//MARK: - Onboarding
+"The first social travel network" = "La primera red social de viajes";
+"Be an explorer" = "Sé un explorador";
+"Create your roadmap and make it public for people to enjoy and use as inspiration." = "Cree su guía y hágalo público para que la gente lo disfrute y lo use como inspiración.";
+"Explore roadmaps without sign in" = "Explorar hojas de ruta sin iniciar sesión";
+"If you find a perfect roadmap, duplicate it so you can edit it at any time." = "Si encuentra un guía ideal, duplíquelo para poder editarlo en cualquier momento.";
+"Don't miss any roadmap" = "No te pierdas ninguna guía de viaje";
+"Like a roadmap so that it's saved in settings." = "Me gusta un script para que se guarde en la configuración.";
+"Travel together with your friends" = "Viaja con tus amigos";
+"Share your roadmap with your friends so everyone can edit it." = "Comparte tu guía con tus amigos para que todos puedan modificarlo.";
+"Hey! Join my roadmap in Wimbi app using the code: " = "¡Oye! Únase a mi guía de viaje en la aplicación Wimbi usando el código: ";
+"To share this roadmap, turn it public" = "Para compartir este guía de viaje, hazlo público";
+"Share your roadmap code!" = "¡Comparta el código de su guía de viaje!";
 

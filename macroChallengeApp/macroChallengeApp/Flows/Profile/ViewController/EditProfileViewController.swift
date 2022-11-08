@@ -70,7 +70,7 @@ class EditProfileViewController: UIViewController {
             } else {
             let authorization = PHPhotoLibrary.authorizationStatus()
             if authorization != .denied {
-                self.imagePicker.present(from: (sender as? UIView)!, title: "Que tal alterar sua foto de perfil?".localized())
+                self.imagePicker.present(from: (sender as? UIView)!, title: "How about changing your profile photo?".localized())
             } else {
                 print("Nao permitido")
             }

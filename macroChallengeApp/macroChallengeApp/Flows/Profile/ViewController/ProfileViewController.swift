@@ -44,11 +44,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         
         self.network.startMonitoring()
         self.setupProfileView()
-        if tutorialEnable == false {
-            self.tutorialTimer()
-        }
-        
-        profileView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
+
         profileView.userImage.addTarget(self, action: #selector(editProfile), for: .touchUpInside)
         profileView.bindColletionView(delegate: self, dataSource: self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
@@ -65,7 +61,16 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     override func viewWillAppear(_ animated: Bool) {
         SignInWithAppleManager.shared.checkUserStatus()
 
-        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") { coordinator?.startLogin() }
+        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
+            coordinator?.startLogin()
+            
+        } else {
+            profileView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
+            if tutorialEnable == false {
+                self.tutorialTimer()
+            }
+        }
+        
         let user = UserRepository.shared.getUser()
         if user.isEmpty {
             self.profileView.getName().text = "Usuário"

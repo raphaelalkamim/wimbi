@@ -104,21 +104,11 @@ class PreviewRoadmapView: UIView {
         return view
     }()
     
-    lazy var tutorialImage: UIImageView = {
-        let img = UIImageView()
-        img.image = UIImage(named: "tutorial-right")
-        img.clipsToBounds = true
-        return img
-    }()
     
     lazy var tutorialTitle: UIButton = {
        let button = UIButton()
-        let att = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 12)]
-        button.setAttributedTitle(NSAttributedString(string: "Duplique este roteiro e use como referência para montar o seu.".localized(), attributes: att), for: .normal)
-        button.setTitleColor(.textPrimary, for: .normal)
-        button.titleLabel?.numberOfLines = 0
-        button.contentVerticalAlignment = .center
-        button.contentHorizontalAlignment = .left
+        button.setImage(UIImage(named: "tutorial-right"), for: .normal)
+        button.clipsToBounds = true
         return button
     }()
     
@@ -140,7 +130,6 @@ class PreviewRoadmapView: UIView {
         contentView.addSubview(roadmapTitle)
         contentView.addSubview(tutorialView)
         tutorialView.isHidden = true
-        tutorialView.addSubview(tutorialImage)
         tutorialView.addSubview(tutorialTitle)
         setupConstraints()
     }
@@ -221,18 +210,14 @@ class PreviewRoadmapView: UIView {
         tutorialView.snp.makeConstraints { make in
             make.topMargin.equalToSuperview()
             make.trailing.equalToSuperview().inset(24)
-            make.height.equalTo(86)
+            make.height.equalTo(80)
             make.width.equalTo(160)
         }
-        
-        tutorialImage.snp.makeConstraints { make in
-            make.edges.equalTo(tutorialView.snp.edges)
-        }
-        
+
         tutorialTitle.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(designSystem.spacing.mediumPositive)
-            make.trailing.equalToSuperview().inset(designSystem.spacing.mediumPositive)
-            make.top.equalToSuperview().inset(designSystem.spacing.smallPositive)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview()
             make.height.equalToSuperview()
             
         }
