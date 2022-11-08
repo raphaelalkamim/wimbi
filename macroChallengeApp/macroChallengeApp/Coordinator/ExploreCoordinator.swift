@@ -62,6 +62,7 @@ class ExploreCoordinator: Coordinator {
         let viewController = PreviewRoadmapViewController()
         viewController.coordinator = self
         viewController.roadmapId = roadmapId
+        viewController.previewView.hiddenSpinner()
         navigationController.pushViewController(viewController, animated: true)
     }
     
@@ -70,6 +71,7 @@ class ExploreCoordinator: Coordinator {
         viewController.coordinator = self
         viewController.roadmap = roadmap
         viewController.setupContent(roadmap: roadmap)
+        viewController.previewView.hiddenSpinner()
         navigationController.pushViewController(viewController, animated: true)
     }
     func back() {
