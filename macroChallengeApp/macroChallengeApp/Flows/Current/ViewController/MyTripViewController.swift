@@ -66,7 +66,6 @@ class MyTripViewController: UIViewController {
     func getAllDays() {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
-            print(newDays)
             self.days = newDays
         }
         for index in 0..<days.count where days[index].isSelected == true {

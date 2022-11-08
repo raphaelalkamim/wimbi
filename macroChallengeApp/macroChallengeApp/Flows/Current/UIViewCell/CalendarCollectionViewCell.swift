@@ -74,7 +74,6 @@ extension CalendarCollectionViewCell {
         let newDate = format.date(from: date)
                 
         let weekday = (calendar.component(.weekday, from: newDate ?? Date()) - calendar.firstWeekday + 7) % 7 + 1
-        print(weekday)
         
         format.dateFormat = "d"
         day.text = self.setupDayWeek(day: weekday)
@@ -89,7 +88,6 @@ extension CalendarCollectionViewCell {
     }
    
     @objc func dayAction() {
-        print("apertei")
         dayButton.backgroundColor = .accent
         dayButton.setTitleColor(.white, for: .normal)
     }

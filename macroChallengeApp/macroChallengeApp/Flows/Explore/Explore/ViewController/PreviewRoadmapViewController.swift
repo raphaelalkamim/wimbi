@@ -96,7 +96,11 @@ class PreviewRoadmapViewController: UIViewController {
     }
     
     func setupContent(roadmap: Roadmaps) {
-        self.previewView.cover.image = UIImage(named: roadmap.imageId)
+        if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: roadmap.imageId)) {
+            self.previewView.cover.image = cachedImage
+        } else {
+            self.previewView.cover.image = UIImage(named: roadmap.imageId)
+        }
         self.previewView.title.text = roadmap.name
         self.roadmap.days.sort {
             $0.id < $1.id
@@ -117,8 +121,8 @@ class PreviewRoadmapViewController: UIViewController {
                 self.likeId = response
                 if self.likeId == 0 {
                     print("Not Liked")
+                    
                 } else {
-                    print("Liked")
                     self.like.image = UIImage(systemName: "heart.fill")
                 }
             }

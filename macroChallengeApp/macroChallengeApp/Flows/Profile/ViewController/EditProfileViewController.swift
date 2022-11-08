@@ -17,6 +17,7 @@ class EditProfileViewController: UIViewController {
     var userLocal: [UserLocal] = []
     let network: NetworkMonitor = NetworkMonitor.shared
     var imagePicker: ImagePicker!
+    var imageSelected: UIImage?
     var access = false
 
     override func viewDidLoad() {
@@ -43,6 +44,9 @@ class EditProfileViewController: UIViewController {
                 UserRepository.shared.updateName(user: self.userLocal[0], name: newName)
                 UserRepository.shared.updateUsernameApp(user: self.userLocal[0], username: newUsernameApp)
                 DataManager.shared.putUser(userObj: self.userLocal[0])
+                if let imageSelected = imageSelected {
+                    FirebaseManager.shared.uploadImageUser(image: imageSelected)
+                }
             }
             coordinator?.backPage()
         }
@@ -94,6 +98,7 @@ extension EditProfileViewController {
 extension EditProfileViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         if let imageNew = image {
+            self.imageSelected = imageNew
             self.editProfileView.setupImage(image: imageNew)
             UserRepository.shared.updatePhotoId(user: userLocal[0],
                                                 photoId: SaveImagecontroller.saveToFiles(image: imageNew))

@@ -27,7 +27,6 @@ class LikedRoadmapsViewController: UIViewController {
     
     func getLikedRoadmaps() {
         DataManager.shared.getLikedRoadmaps { roadmaps in
-            print(roadmaps)
             self.likedRoadmaps = roadmaps
             self.likedRoadmapsView.bindCollectionView(delegate: self, dataSource: self)
             self.likedRoadmapsView.likedRoadmapsCollectionView.reloadData()

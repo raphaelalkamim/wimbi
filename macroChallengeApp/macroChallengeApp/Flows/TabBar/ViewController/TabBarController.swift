@@ -73,7 +73,7 @@ class TabBarController: UITabBarController {
 extension TabBarController: PresentationCoordinatorDelegate {
     func didFinishPresent(of coordinator: Coordinator, isNewRoadmap: Bool) {
         if isNewRoadmap == true {
-            coordinator.childCoordinators = coordinator.childCoordinators.filter { $0 === coordinator}
+            coordinator.childCoordinators = coordinator.childCoordinators.filter { $0 === coordinator }
             coordinator.navigationController.tabBarController?.selectedIndex = 0
         }
     }
