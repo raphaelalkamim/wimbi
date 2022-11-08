@@ -98,7 +98,6 @@ class DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request) { data, response, error in
-            print(response)
             if let error = error {
                 print(error)
             } else if data != nil {
@@ -140,10 +139,9 @@ class DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTask(with: request) { data, response, error in
-            print(response)
             if let error = error {
                 print(error)
-            } else if data == data {
+            } else if data != nil {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
                         do {
@@ -212,7 +210,6 @@ class DataManager {
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
                 
                 let task = session.dataTask(with: request) { data, response, error in
-                    print(response)
                     guard let data = data else { return }
                     if error != nil {
                         print(String(describing: error?.localizedDescription))
@@ -681,8 +678,8 @@ class DataManager {
         
         if let token = UserDefaults.standard.string(forKey: "authorization") {
             request.setValue(token, forHTTPHeaderField: "Authorization")
-            let task = session.dataTask(with: request) { data, response, error in
-                guard let data = data else {return}
+            let task = session.dataTask(with: request) { data, _, error in
+                guard data != nil else { return }
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
                 }

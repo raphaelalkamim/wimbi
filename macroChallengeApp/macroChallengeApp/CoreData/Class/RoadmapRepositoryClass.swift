@@ -195,7 +195,7 @@ public class RoadmapRepository: NSManagedObject {
             dateFormat.dateFormat = "dd/MM/yyyy"
             
             let date = dateFormat.date(from: fromRoadmap.dateInitial)
-            let newDay = DayRepository.shared.createDay(roadmap: toRoadmap, day: setupDays(startDay: date ?? Date(), indexPath: index, isSelected: isFirstDay))
+            _ = DayRepository.shared.createDay(roadmap: toRoadmap, day: setupDays(startDay: date ?? Date(), indexPath: index, isSelected: isFirstDay))
         }
     }
     

@@ -121,8 +121,8 @@ class PreviewRoadmapViewController: UIViewController {
                 self.likeId = response
                 if self.likeId == 0 {
                     print("Not Liked")
+                    
                 } else {
-                    print("Liked")
                     self.like.image = UIImage(systemName: "heart.fill")
                 }
             }

@@ -33,11 +33,9 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
             userId = appleIDCredential.user
             fullName = appleIDCredential.fullName
             emailId = appleIDCredential.email
-            print(appleIDCredential.authorizationCode)
             if let authorizationCode = appleIDCredential.authorizationCode {
                 let authCode = String(decoding: authorizationCode, as: Unicode.ASCII.self)
                 createToken(code: authCode)
-                print(authCode)
             }
             
             guard let userId = userId else {
@@ -121,7 +119,7 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
                 
-                let task = session.dataTask(with: request) { data, response, error in
+                let task = session.dataTask(with: request) { data, _, error in
                     guard let data = data else { return }
                     
                     let refreshToken = String(data: data, encoding: .utf8) ?? ""

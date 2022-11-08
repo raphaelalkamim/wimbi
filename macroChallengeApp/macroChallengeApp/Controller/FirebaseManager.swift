@@ -60,7 +60,7 @@ class FirebaseManager {
         let fileRef = storageRef.child("profile/\(uuidImage)")
         
         // upload
-        let uploadTask = fileRef.putData(imageData, metadata: nil) { metadata, error in
+        _ = fileRef.putData(imageData, metadata: nil) { metadata, error in
             if error == nil && metadata != nil {
                 // save a reference to the file in Firestore
                 print("ATUALIZAR IMAGEM BACK")
@@ -80,7 +80,7 @@ class FirebaseManager {
         }
         
         let reference = Storage.storage().reference(withPath: path)
-        if FirebaseManager.shared.imageCash.object(forKey: NSString(string: uuid)) != nil || !uuid.contains("jpeg") {
+        if self.imageCash.object(forKey: NSString(string: uuid)) != nil || !uuid.contains("jpeg") {
             return
         }
         print(uuid, "arroz")
