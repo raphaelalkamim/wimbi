@@ -82,6 +82,9 @@ extension SettingsViewController: UITableViewDataSource {
                 UserDefaults.standard.set(nil, forKey: "user")
                 let userActual = UserRepository.shared.getUser()
                 do {
+                    if let photoId = userActual[0].photoId {
+                        FirebaseManager.shared.deleteImage(category: 1, uuid: photoId)
+                    }
                     try UserRepository.shared.deleteUser(user: userActual[0])
                 } catch {
                     print(error)

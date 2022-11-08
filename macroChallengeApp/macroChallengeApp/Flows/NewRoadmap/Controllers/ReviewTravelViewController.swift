@@ -56,6 +56,12 @@ class ReviewTravelViewController: UIViewController {
         self.setupContent()
     }
     @objc func nextPage() {
+        if let imageSelected = imageSelected {
+            if self.roadmap.imageId.contains(".jpeg") {
+                FirebaseManager.shared.deleteImage(category: 0, uuid: roadmap.imageId)
+            }
+            self.roadmap.imageId = SaveImagecontroller.saveToFiles(image: imageSelected)
+        }
         if edit {
             self.updateCoreData()
             NotificationManager.shared.registerTripNotification(roadmap: self.editRoadmap)
@@ -68,7 +74,7 @@ class ReviewTravelViewController: UIViewController {
     func updateCoreData() {
         roadmap.currency = getUserCurrency()
         roadmap.budget = editRoadmap.budget
-        let newRoadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.editRoadmap, roadmap: self.roadmap, isShared: false)
+        let newRoadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.editRoadmap, roadmap: self.roadmap, isShared: false, selectedImage: imageSelected)
         delegateRoadmap?.updateRoadmapScreen(roadmap: newRoadmap)
     }
     func saveCoreData() {

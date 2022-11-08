@@ -230,7 +230,7 @@ class DataManager {
                                 RoadmapRepository.shared.saveContext()
                                 
                                 if let selectedImage = selectedImage {
-                                    FirebaseManager.shared.uploadImage(image: selectedImage, roadmapId: roadmapResponse.id, roadmapCore: roadmapCore)
+                                    FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapResponse.id, roadmapCore: roadmapCore)
                                 }
                             } catch {
                                 print(error)
@@ -297,7 +297,7 @@ class DataManager {
             do {
                 roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
                 for roadmap in roadmaps {
-                    FirebaseManager.shared.getImage(uuid: roadmap.imageId)
+                    FirebaseManager.shared.getImage(category: 0, uuid: roadmap.imageId)
                 }
                 DispatchQueue.main.async {
                     completion(roadmaps)
@@ -414,7 +414,7 @@ class DataManager {
         
     }
     
-    func putRoadmap(roadmap: Roadmaps, roadmapId: Int, newDaysCore: [DayLocal]) {
+    func putRoadmap(roadmap: Roadmaps, roadmapId: Int, newDaysCore: [DayLocal], selectedImage: UIImage? = nil) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
         
@@ -462,6 +462,10 @@ class DataManager {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
                         self.postDays(roadmapId: roadmapId, daysCore: newDaysCore)
+                        
+                        if let selectedImage = selectedImage {
+                            FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapId, uuid: roadmap.imageId)
+                        }
                         print("Atualizou")
                     }
                 }
@@ -472,7 +476,20 @@ class DataManager {
     
     func putImageRoadmap(roadmapId: Int, uuid: String) {
         let session = URLSession.shared
-        guard let url = URL(string: baseURL + "roadmaps/\(roadmapId)/\(uuid)") else { return }
+        var urlFinal = ""
+        var oldId = UserRepository.shared.getUser()[0].photoId
+        
+        if roadmapId != 0 {
+            urlFinal = "roadmaps/\(roadmapId)/\(uuid)"
+        } else {
+            if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+                let userID = String(data: data, encoding: .utf8)!
+                print(userID)
+                urlFinal = "users/\(userID)/\(uuid)"
+            }
+        }
+        
+        guard let url = URL(string: baseURL + urlFinal) else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"

@@ -56,7 +56,7 @@ public class RoadmapRepository: NSManagedObject {
         self.saveContext()
         return newRoadmap
     }
-    func updateRoadmap(editRoadmap: RoadmapLocal, roadmap: Roadmaps, isShared: Bool) -> RoadmapLocal {
+    func updateRoadmap(editRoadmap: RoadmapLocal, roadmap: Roadmaps, isShared: Bool, selectedImage: UIImage? = nil) -> RoadmapLocal {
         guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         
         // cria o novo roadmap
@@ -103,7 +103,7 @@ public class RoadmapRepository: NSManagedObject {
         if var newDaysCore = newRoadmap.day?.allObjects as? [DayLocal] {
             newDaysCore.sort { $0.id < $1.id }
             if !isShared {
-                self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDaysCore: newDaysCore)
+                self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDaysCore: newDaysCore, selectedImage: selectedImage)
             }
         }
         self.saveContext()
@@ -218,7 +218,7 @@ public class RoadmapRepository: NSManagedObject {
     
     func deleteRoadmap(roadmap: RoadmapLocal) throws {
         if let uuid = roadmap.imageId {
-            FirebaseManager.shared.deleteImage(uuid: uuid)
+            FirebaseManager.shared.deleteImage(category: 0, uuid: uuid)
 
         }
         DataManager.shared.deleteObjectBack(objectID: Int(roadmap.id), urlPrefix: "roadmaps")
@@ -235,7 +235,7 @@ public class RoadmapRepository: NSManagedObject {
         DataManager.shared.postRoadmap(roadmap: roadmap, roadmapCore: newRoadmap, daysCore: newDays, selectedImage: selectedImage)
     }
     
-    func updateBackend(roadmap: Roadmaps, id: Int, newDaysCore: [DayLocal]) {
-        DataManager.shared.putRoadmap(roadmap: roadmap, roadmapId: id, newDaysCore: newDaysCore)
+    func updateBackend(roadmap: Roadmaps, id: Int, newDaysCore: [DayLocal], selectedImage: UIImage? = nil) {
+        DataManager.shared.putRoadmap(roadmap: roadmap, roadmapId: id, newDaysCore: newDaysCore, selectedImage: selectedImage)
     }
 }

@@ -123,7 +123,6 @@ extension ReviewTravelViewController: ImagePickerDelegate {
         if let imageNew = image {
             self.imageSelected = imageNew
             self.reviewTravelView.coverImage.setBackgroundImage(imageNew, for: .normal)
-            self.roadmap.imageId = SaveImagecontroller.saveToFiles(image: imageNew)
         }
     }
 }

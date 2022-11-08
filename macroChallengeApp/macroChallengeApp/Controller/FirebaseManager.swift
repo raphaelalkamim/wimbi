@@ -15,14 +15,21 @@ class FirebaseManager {
     
     private init() {}
     
-    func uploadImage(image: UIImage, roadmapId: Int, roadmapCore: RoadmapLocal) {
+    func uploadImageRoadmap(image: UIImage, roadmapId: Int, roadmapCore: RoadmapLocal? = nil, uuid: String? = nil) {
         // create storage reference
         let storageRef = Storage.storage().reference()
+        var uuidImage = ""
         
         // turn our image into data
-        let imageData = image.jpegData(compressionQuality: 0.7)
+        let imageData = image.jpegData(compressionQuality: 0.5)
         
-        guard let imageData = imageData, let uuidImage = roadmapCore.imageId else { return }
+        guard let imageData = imageData else { return }
+        
+        if roadmapCore != nil {
+            uuidImage = (roadmapCore?.imageId)!
+        } else {
+            uuidImage = uuid!
+        }
         
         // specify file path and name
         let fileRef = storageRef.child("images/\(uuidImage)")
@@ -38,8 +45,40 @@ class FirebaseManager {
         }
     }
     
-    func getImage(uuid: String) {
-        let path = "images/\(uuid)"
+    func uploadImageUser(image: UIImage) {
+        // create storage reference
+        let storageRef = Storage.storage().reference()
+        
+        // turn our image into data
+        let imageData = image.jpegData(compressionQuality: 0.5)
+        
+        let userLocal = UserRepository.shared.getUser()
+        
+        guard let imageData = imageData, let uuidImage = userLocal[0].photoId else { return }
+        
+        // specify file path and name
+        let fileRef = storageRef.child("profile/\(uuidImage)")
+        
+        // upload
+        let uploadTask = fileRef.putData(imageData, metadata: nil) { metadata, error in
+            if error == nil && metadata != nil {
+                // save a reference to the file in Firestore
+                print("ATUALIZAR IMAGEM BACK")
+                DataManager.shared.putImageRoadmap(roadmapId: 0, uuid: uuidImage)
+                
+            }
+        }
+    }
+    
+    func getImage(category: Int, uuid: String) {
+        var path = ""
+        
+        if category == 0 {
+            path = "images/\(uuid)"
+        } else {
+            path = "profile/\(uuid)"
+        }
+        
         let reference = Storage.storage().reference(withPath: path)
         if FirebaseManager.shared.imageCash.object(forKey: NSString(string: uuid)) != nil || !uuid.contains("jpeg") {
             return
@@ -61,9 +100,15 @@ class FirebaseManager {
         
     }
     
-    
-    func deleteImage(uuid: String) {
-        let path = "images/\(uuid)"
+    func deleteImage(category: Int, uuid: String) {
+        var path = ""
+        
+        if category == 0 {
+            path = "images/\(uuid)"
+        } else {
+            path = "profile/\(uuid)"
+        }
+        
         let reference = Storage.storage().reference(withPath: path)
         
         reference.delete { error in
