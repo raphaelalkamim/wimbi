@@ -92,7 +92,6 @@ class FirebaseManager {
                     if let image = data {
                         let myImage: UIImage! = UIImage(data: image)
                         self.imageCash.setObject(myImage, forKey: NSString(string: uuid))
-
                     }
                 }
             }
