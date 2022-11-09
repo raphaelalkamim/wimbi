@@ -71,7 +71,7 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
     
     func createToken(code: String) {
         let session: URLSession = URLSession.shared
-        let url: URL = URL(string: "https://macrotrip-dev.herokuapp.com/appleToken/" + code)!
+        let url: URL = URL(string: DataManager.shared.baseURL + "appleToken/" + code)!
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -110,7 +110,7 @@ class SignInWithAppleManager: NSObject, ASAuthorizationControllerDelegate {
         if let data = KeychainManager.shared.read(service: "signInRefresh", account: "explorer") {
             let refreshToken = String(data: data, encoding: .utf8)!
             
-            let url: URL = URL(string: "https://macrotrip-dev.herokuapp.com/appleToken/" + refreshToken)!
+            let url: URL = URL(string: DataManager.shared.baseURL + "appleToken/" + refreshToken)!
             
             if let token = UserDefaults.standard.string(forKey: "authorization") {
                 var request = URLRequest(url: url)
