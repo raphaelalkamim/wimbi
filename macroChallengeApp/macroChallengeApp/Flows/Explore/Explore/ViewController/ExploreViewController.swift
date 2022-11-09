@@ -18,7 +18,7 @@ class ExploreViewController: UIViewController {
     var roadmapsMock: [Roadmaps] = []
     let network: NetworkMonitor = NetworkMonitor.shared
     let onboardEnable = UserDefaults.standard.bool(forKey: "onboard")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         network.startMonitoring()
