@@ -1546,7 +1546,7 @@
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TX88D8XM39;
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
@@ -1584,7 +1584,7 @@
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TX88D8XM39;
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
