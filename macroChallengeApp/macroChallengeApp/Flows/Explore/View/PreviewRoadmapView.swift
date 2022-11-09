@@ -106,7 +106,6 @@ class PreviewRoadmapView: UIView {
         return view
     }()
     
-    
     lazy var tutorialTitle: UIButton = {
        let button = UIButton()
         button.setImage(UIImage(named: "tutorial-right"), for: .normal)
