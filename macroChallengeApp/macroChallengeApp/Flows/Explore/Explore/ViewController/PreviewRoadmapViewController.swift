@@ -142,6 +142,7 @@ class PreviewRoadmapViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
         }))
         present(alert, animated: true)
+        roadmap.imageId = "defaultCover"
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: false)
         let days = newRoadmap.day?.allObjects as [DayLocal]
         let roadmapDays = self.roadmap.days
