@@ -44,6 +44,10 @@ class PreviewRoadmapViewController: UIViewController {
             self.tutorialTimer()
         }
         
+        DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser in
+            print(uuidUser)
+        }
+        
         DataManager.shared.getLike(roadmapId: self.roadmapId) { response in
             self.likeId = response
             if self.likeId == 0 {

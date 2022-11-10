@@ -820,6 +820,39 @@ class DataManager {
         }
     }
     
+    func getRoadmapUserImage(roadmapId: Int, _ completion: @escaping ((_ uuidUser: String) -> Void)) {
+        let session: URLSession = URLSession.shared
+        let url: URL = URL(string: baseURL + "roadmaps/\(roadmapId)/userImage")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            let task = session.dataTask(with: request) { data, response, error in
+                print(response)
+                guard let data = data else { return }
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                
+                do {
+                    // tentar transformar os dados no tipo Cohort
+                    guard let userUUID = String(data: data, encoding: String.Encoding.utf8) else { return }
+                    
+                    DispatchQueue.main.async {
+                        completion(userUUID)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            task.resume()
+            
+        }
+    }
     
     func decodeType<T: Codable>(_ class: T, data: Data) -> T? {
         do {
