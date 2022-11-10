@@ -29,6 +29,7 @@ class PreviewRoadmapView: UIView {
         let img = UIImageView()
         img.image = designSystem.imagesDefault.beach[3]
         img.clipsToBounds = true
+        img.translatesAutoresizingMaskIntoConstraints = false 
         img.contentMode = .scaleAspectFill
         return img
     }()
