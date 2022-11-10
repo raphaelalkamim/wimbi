@@ -10,7 +10,7 @@ import Foundation
 /// classe utilizada para guardar o motivo de gratidao utilizado
 class UserDefaultsManager {
     static let shared = UserDefaultsManager()
-    var nextTrip: String?{
+    var nextTrip: String? {
         didSet {
             UserDefaults(suiteName: "group.wimbiApp")?.set(nextTrip, forKey: "nextTrip")
         }
