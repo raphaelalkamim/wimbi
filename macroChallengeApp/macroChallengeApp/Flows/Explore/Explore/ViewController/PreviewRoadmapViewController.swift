@@ -20,7 +20,7 @@ class PreviewRoadmapViewController: UIViewController {
     var daySelected = 0
     var likeId = 0
     let tutorialEnable = UserDefaults.standard.bool(forKey: "tutorialExplore")
-
+    var uuidImage = ""
     var budgetTotal: Double = 0
     let currencyController = CurrencyController()
     
@@ -45,7 +45,9 @@ class PreviewRoadmapViewController: UIViewController {
         }
         
         DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser in
-            print(uuidUser)
+            self.uuidImage = uuidUser
+            FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
+            }
         }
         
         DataManager.shared.getLike(roadmapId: self.roadmapId) { response in

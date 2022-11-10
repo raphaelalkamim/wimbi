@@ -845,6 +845,8 @@ class DataManager {
                     DispatchQueue.main.async {
                         completion(userUUID)
                     }
+                    
+                         
                 } catch {
                     print(error)
                 }
