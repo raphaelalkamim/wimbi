@@ -7,7 +7,6 @@
 
 import Foundation
 
-/// classe utilizada para guardar o motivo de gratidao utilizado
 class UserDefaultsManager {
     static let shared = UserDefaultsManager()
     var nextTrip: String? {
