@@ -136,9 +136,23 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         self.profileView.getName().text = user.name
         self.profileView.getUsernameApp().text = "@" + user.usernameApp!
         self.profileView.getTable().reloadData()
-        let path = user.photoId
-        let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path ?? "icon"))
-        self.profileView.setupImage(image: imageNew ?? UIImage(named: "icon")!)
+        if var path = user.photoId {
+            let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
+            if imageNew == nil {
+                if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: path)) {
+                    self.profileView.setupImage(image: cachedImage)
+                } else {
+                    FirebaseManager.shared.getImage(category: 1, uuid: path) { image in
+                        self.profileView.setupImage(image: image)
+                        path = path.replacingOccurrences(of: ".jpeg", with: "")
+                        _ = SaveImagecontroller.saveToFiles(image: image, UUID: path)
+                    }
+                }
+            } else {
+                self.profileView.setupImage(image: imageNew ?? UIImage(named: "icon")!)
+            }
+        }
+ 
     }
 }
 

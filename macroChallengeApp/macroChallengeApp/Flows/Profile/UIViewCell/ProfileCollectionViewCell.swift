@@ -103,14 +103,18 @@ extension ProfileCollectionViewCell {
         if imageId == "defaultCover" {
             self.roadmapImage.image = UIImage(named: "\(imageId)\(category)")
         } else {
-            let path = imageId
+            var path = imageId
             let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
             if imageNew == nil {
                 if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: path)) {
                     self.roadmapImage.image = cachedImage
+                    path = path.replacingOccurrences(of: ".jpeg", with: "")
+                    _ = SaveImagecontroller.saveToFiles(image: cachedImage, UUID: path)
                 } else {
                     FirebaseManager.shared.getImage(category: 0, uuid: path) { image in
                         self.roadmapImage.image = image
+                        path = path.replacingOccurrences(of: ".jpeg", with: "")
+                        _ = SaveImagecontroller.saveToFiles(image: image, UUID: path)
                     }
                 }
             } else {

@@ -44,6 +44,7 @@ class UserRepository: NSManagedObject {
         newUser.id = Int32(user.id)
         newUser.name = user.name
         newUser.usernameApp = user.usernameApp
+        newUser.photoId = user.photoId
         
         self.saveContext()
         return newUser
@@ -71,10 +72,6 @@ class UserRepository: NSManagedObject {
         self.saveContext()
     }
     func deleteUser(user: UserLocal) throws {
-        if let photoId = user.photoId {
-            FirebaseManager.shared.deleteImage(category: 1, uuid: photoId)
-        }
-        
         self.persistentContainer.viewContext.delete(user)
         self.saveContext()
     }

@@ -66,10 +66,10 @@ class RoadmapSearchTableViewController: UITableViewController {
 extension RoadmapSearchTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.isActive {
-            searchController.searchBar.showsBookmarkButton = false
+            // searchController.searchBar.showsBookmarkButton = false
             self.isSearching = true
         } else {
-            searchController.searchBar.showsBookmarkButton = true
+            // searchController.searchBar.showsBookmarkButton = true
             self.isSearching = false
         }
         

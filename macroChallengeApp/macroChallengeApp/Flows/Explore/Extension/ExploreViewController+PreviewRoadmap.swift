@@ -169,6 +169,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.circle.isHidden = false
                 cell.info.isHidden = true
                 cell.circle.layer.cornerRadius = 18
+                cell.circle.clipsToBounds = true
                 if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: self.uuidImage)) {
                     cell.circle.image = cachedImage
                 } else {

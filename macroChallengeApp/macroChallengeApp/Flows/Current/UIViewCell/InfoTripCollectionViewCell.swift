@@ -164,6 +164,7 @@ extension InfoTripCollectionViewCell {
         circle.clipsToBounds = true
         circle.layer.cornerRadius = 18
     }
+    
     func setupConstraints() {
         title.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(designSystem.spacing.smallPositive)
