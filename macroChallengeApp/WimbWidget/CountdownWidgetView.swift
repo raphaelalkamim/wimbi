@@ -10,6 +10,8 @@ import SwiftUI
 struct CountdownWidgetView: View {
     var countdown = ""
     var nextTrip = ""
+    var days = "days".localized()
+    
     var body: some View {
         ZStack {
             Color(uiColor: UIColor(named: "backgroundWidget")!).edgesIgnoringSafeArea(.all)
@@ -17,7 +19,7 @@ struct CountdownWidgetView: View {
                 Spacer()
                 VStack {
                     // Text(entry.date, style: .time)
-                    Text("Sua viagem para")
+                    Text("Your trip to".localized())
                         .font(.custom("Avenir-Book", size: 12))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
@@ -27,13 +29,13 @@ struct CountdownWidgetView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
                         .colorInvert()
-                    Text("acontecerá em:")
+                    Text("will happen in".localized())
                         .font(.custom("Avenir-Book", size: 12))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
                         .colorInvert()
                     
-                    Text("\(countdown) dias")
+                    Text("\(countdown) \(days)")
                         .font(.custom("Avenir-Black", size: 35))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)

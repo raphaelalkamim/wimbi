@@ -200,3 +200,11 @@
 "To share this roadmap, turn it public" = "Para compartir este guía de viaje, hazlo público";
 "Share your roadmap code!" = "¡Comparta el código de su guía de viaje!";
 
+//MARK: - Widget
+"How about creating a new roadmap?" = "¿Qué tal si creamos una nueva guía de ruta?";
+"Click here and create or duplicate a roadmap" = "Haga clic aquí para crear o duplicar una guía de ruta";
+"Your trip to" = "Tu viaje a";
+"will happen in" = "sucederá en";
+"days" = "dias";
+
+
