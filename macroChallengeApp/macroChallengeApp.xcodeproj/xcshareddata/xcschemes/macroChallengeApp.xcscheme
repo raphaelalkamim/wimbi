@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B078F23428C27F2500D46F61"
+               BuildableName = "macroChallengeAppUITests.xctest"
+               BlueprintName = "macroChallengeAppUITests"
+               ReferencedContainer = "container:macroChallengeApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B078F22A28C27F2500D46F61"
+               BuildableName = "macroChallengeAppTests.xctest"
+               BlueprintName = "macroChallengeAppTests"
+               ReferencedContainer = "container:macroChallengeApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
