@@ -123,6 +123,11 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
             DataManager.shared.getUser(username: userID, { user in
                 let userLocal = UserRepository.shared.createUser(user: user)
                 self.changeToUserInfo(user: userLocal)
+                if !user.userRoadmap.isEmpty {
+                    for roadmap in user.userRoadmap {
+                        RoadmapRepository.shared.pushRoadmap(newRoadmap: roadmap)
+                    }
+                }
             })
         }
     }
