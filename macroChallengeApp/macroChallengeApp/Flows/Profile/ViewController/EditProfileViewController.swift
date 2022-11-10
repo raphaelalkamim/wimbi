@@ -101,7 +101,7 @@ extension EditProfileViewController: ImagePickerDelegate {
             self.imageSelected = imageNew
             self.editProfileView.setupImage(image: imageNew)
             UserRepository.shared.updatePhotoId(user: userLocal[0],
-                                                photoId: SaveImagecontroller.saveToFiles(image: imageNew))
+                                                photoId: SaveImagecontroller.saveToFiles(image: imageNew, UUID: UUID().uuidString))
         }
     }
 }

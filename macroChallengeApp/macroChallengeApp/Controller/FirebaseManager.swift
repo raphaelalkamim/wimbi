@@ -70,7 +70,7 @@ class FirebaseManager {
         }
     }
     
-    func getImage(category: Int, uuid: String) {
+    func getImage(category: Int, uuid: String, _ completion: @escaping ((_ image: UIImage) -> Void)) {
         var path = ""
         
         if category == 0 {
@@ -91,8 +91,8 @@ class FirebaseManager {
                 } else {
                     if let image = data {
                         let myImage: UIImage! = UIImage(data: image)
+                        completion(myImage)
                         self.imageCash.setObject(myImage, forKey: NSString(string: uuid))
-
                     }
                 }
             }
