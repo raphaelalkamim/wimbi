@@ -105,7 +105,17 @@ extension ProfileCollectionViewCell {
         } else {
             let path = imageId
             let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
-            self.roadmapImage.image = imageNew
+            if imageNew == nil {
+                if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: path)) {
+                    self.roadmapImage.image = cachedImage
+                } else {
+                    FirebaseManager.shared.getImage(category: 0, uuid: path) { image in
+                        self.roadmapImage.image = image
+                    }
+                }
+            } else {
+                self.roadmapImage.image = imageNew
+            }
         }
     }
     
