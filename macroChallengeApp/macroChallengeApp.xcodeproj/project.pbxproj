@@ -57,6 +57,8 @@
 		137C8D42291D69F50007AF5B /* wimbWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 137C8D35291D69F30007AF5B /* wimbWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		137C8D48291D6B060007AF5B /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D47291D6B060007AF5B /* UserDefaultManager.swift */; };
 		137C8D49291D6B0C0007AF5B /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D47291D6B060007AF5B /* UserDefaultManager.swift */; };
+		137C8D52291D85960007AF5B /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D51291D85960007AF5B /* EmptyWidgetView.swift */; };
+		137C8D54291D862C0007AF5B /* CountdownWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D53291D862C0007AF5B /* CountdownWidgetView.swift */; };
 		13BD4FFB28D90EF700C0EA7C /* DesignSystem+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */; };
 		13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */; };
 		13BD4FFF28D90F9700C0EA7C /* DefaultDesignSystemImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */; };
@@ -259,6 +261,8 @@
 		137C8D3F291D69F50007AF5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		137C8D47291D6B060007AF5B /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		137C8D4A291D6D480007AF5B /* wimbWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wimbWidgetExtension.entitlements; sourceTree = "<group>"; };
+		137C8D51291D85960007AF5B /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
+		137C8D53291D862C0007AF5B /* CountdownWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownWidgetView.swift; sourceTree = "<group>"; };
 		13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+UIImage.swift"; sourceTree = "<group>"; };
 		13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImages.swift; sourceTree = "<group>"; };
 		13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignSystemImages.swift; sourceTree = "<group>"; };
@@ -555,6 +559,8 @@
 			isa = PBXGroup;
 			children = (
 				137C8D3B291D69F30007AF5B /* WimbWidget.swift */,
+				137C8D51291D85960007AF5B /* EmptyWidgetView.swift */,
+				137C8D53291D862C0007AF5B /* CountdownWidgetView.swift */,
 				137C8D3D291D69F50007AF5B /* Assets.xcassets */,
 				137C8D3F291D69F50007AF5B /* Info.plist */,
 			);
@@ -1318,7 +1324,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				137C8D54291D862C0007AF5B /* CountdownWidgetView.swift in Sources */,
 				137C8D49291D6B0C0007AF5B /* UserDefaultManager.swift in Sources */,
+				137C8D52291D85960007AF5B /* EmptyWidgetView.swift in Sources */,
 				137C8D3C291D69F30007AF5B /* WimbWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

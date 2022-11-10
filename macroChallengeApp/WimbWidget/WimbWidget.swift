@@ -52,65 +52,11 @@ struct WimbWidgetEntryView: View {
     var body: some View {
         let countdown = entry.countdown
         let nextTrip = entry.nextTrip
-        
-        ZStack {
-            Color(uiColor: UIColor(named: "backgroundWidget")!).edgesIgnoringSafeArea(.all)
-            HStack {
-                Spacer()
-                VStack {
-                    Text("Que tal criar um novo roteiro?")
-                        .font(.custom("Avenir-Black", size: 20))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .multilineTextAlignment(.leading)
-                        .colorInvert()
-                    Text("Crie ou duplique um roteiro")
-                        .font(.custom("Avenir-Book", size: 12))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .multilineTextAlignment(.leading)
-                        .colorInvert()
-                }
-                VStack {
-                    Image("emptyWidget")
-                        .resizable()
-                        .frame(width: 150, height: 150)
-                }
-            }
-            
-            
-//            HStack {
-//                Spacer()
-//                VStack {
-//                    // Text(entry.date, style: .time)
-//                    Text("Sua viagem para")
-//                        .font(.custom("Avenir-Book", size: 12))
-//                        .frame(maxWidth: .infinity, alignment: .leading)
-//                        .multilineTextAlignment(.leading)
-//                        .colorInvert()
-//                    Text(nextTrip)
-//                        .font(.custom("Avenir-Medium", size: 24))
-//                        .frame(maxWidth: .infinity, alignment: .leading)
-//                        .multilineTextAlignment(.leading)
-//                        .colorInvert()
-//                    Text("acontecerá em:")
-//                        .font(.custom("Avenir-Book", size: 12))
-//                        .frame(maxWidth: .infinity, alignment: .leading)
-//                        .multilineTextAlignment(.leading)
-//                        .colorInvert()
-//
-//                    Text(countdown)
-//                        .font(.custom("Avenir-Black", size: 35))
-//                        .frame(maxWidth: .infinity, alignment: .leading)
-//                        .multilineTextAlignment(.leading)
-//                        .colorInvert()
-//
-//                }.padding()
-//                VStack {
-//                    Image("bussolaWidget")
-//                        .resizable()
-//                        .frame(width: 150, height: 150)
-//                }
-//            }
-//
+        if countdown == "" {
+            EmptyWidgetView()
+        } else {
+            CountdownWidgetView(countdown: countdown,
+                                nextTrip: nextTrip)
         }
     }
     
