@@ -68,8 +68,8 @@
 "travelers  •" = "viajeros  •";
 "traveler" = "viajero";
 "travelers" = "viajeros";
-"thousand per person" = "mil por persona";
-
+" thousand per person" = " mil por persona";
+" per person" = " por persona";
 
 // MARK: -  TabBar
 "Explore" = "Explorar";

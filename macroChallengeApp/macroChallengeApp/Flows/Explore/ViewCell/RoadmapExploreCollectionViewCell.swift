@@ -198,7 +198,7 @@ extension RoadmapExploreCollectionViewCell {
             days = "days".localized()
         }
         subtitle.text = "\(peopleCount) \(travelers)  \(dayCount) \(days)"
-        var amount = " per person"
+        var amount = " per person".localized()
         if budget > 1000 {
             amount = " thousand per person".localized()
             costByPerson.text = "\(currency) \(budget / Double(peopleCount) / 1000) \(amount)"
