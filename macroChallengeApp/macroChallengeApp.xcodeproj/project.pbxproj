@@ -1541,10 +1541,10 @@
 				CODE_SIGN_ENTITLEMENTS = wimbWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wimbWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = wimbWidget;
+				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1571,10 +1571,10 @@
 				CODE_SIGN_ENTITLEMENTS = wimbWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wimbWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = wimbWidget;
+				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1718,7 +1718,7 @@
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
@@ -1757,7 +1757,7 @@
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
