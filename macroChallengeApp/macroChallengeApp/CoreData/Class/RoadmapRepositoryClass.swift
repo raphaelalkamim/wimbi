@@ -146,7 +146,7 @@ public class RoadmapRepository: NSManagedObject {
                 }
             }
         }
-        
+                
         do {
             try self.deleteOldRoadmap(roadmap: editRoadmap)
         } catch {
@@ -159,7 +159,7 @@ public class RoadmapRepository: NSManagedObject {
     func pushRoadmap(newRoadmap: UserRoadmap) -> RoadmapLocal {
         guard var newCopyRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         
-        DataManager.shared.getRoadmapById(roadmapId: Int(newRoadmap.id)) { roadmap in
+        DataManager.shared.getRoadmapById(roadmapId: Int(newRoadmap.roadmap.id)) { roadmap in
             newCopyRoadmap = self.updateFromBackend(editRoadmap: newCopyRoadmap, roadmap: roadmap)
             let user = UserRepository.shared.getUser()
             user[0].addToRoadmap(newCopyRoadmap)
@@ -179,7 +179,11 @@ public class RoadmapRepository: NSManagedObject {
         toRoadmap.budget = fromRoadmap.budget
         toRoadmap.dayCount = Int32(fromRoadmap.dayCount)
         toRoadmap.peopleCount = Int32(fromRoadmap.peopleCount)
-        toRoadmap.imageId = fromRoadmap.imageId
+        if !fromRoadmap.imageId.contains(".jpeg") {
+            toRoadmap.imageId = "defaultCover"
+        } else {
+            toRoadmap.imageId = fromRoadmap.imageId
+        }
         toRoadmap.category = fromRoadmap.category
         toRoadmap.isShared = fromRoadmap.isShared
         toRoadmap.isPublic = fromRoadmap.isPublic
