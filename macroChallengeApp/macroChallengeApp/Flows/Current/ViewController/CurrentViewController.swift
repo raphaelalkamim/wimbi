@@ -94,5 +94,9 @@ extension CurrentViewController {
         formatt.dateFormat = "dd/MM/yyyy"
         currentCountDownView.title.text = roadmap.name
         currentCountDownView.date.text = formatt.string(from: roadmap.date ?? Date())
+        
+        // passa o timer para o widget
+        UserDefaultsManager.shared.nextTrip = roadmap.name
+        UserDefaultsManager.shared.countdown = String(Int(ceil(time)))
     }
 }
