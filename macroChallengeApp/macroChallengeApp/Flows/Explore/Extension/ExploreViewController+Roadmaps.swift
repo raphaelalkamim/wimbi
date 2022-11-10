@@ -66,12 +66,17 @@ extension ExploreViewController: UICollectionViewDataSource {
         
         if !roadmaps.isEmpty {
             let roadmap = roadmaps[indexPath.row]
+            FirebaseManager.shared.getImage(category: 0, uuid: roadmap.imageId) { image in
+                cell.cover.image = image
+            }
             cell.setupRoadmapBackEnd(roadmap: roadmap)
-           
+            
         } else if !roadmapsMock.isEmpty {
             let roadmap = roadmapsMock[indexPath.row]
             cell.setupRoadmapMock(roadmap: roadmap)
         }
         return cell
     }
+    
+    
 }

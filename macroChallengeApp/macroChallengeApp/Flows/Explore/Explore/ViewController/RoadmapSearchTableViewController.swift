@@ -39,7 +39,11 @@ class RoadmapSearchTableViewController: UITableViewController {
         
         let roadmap = matchingRoadmaps[indexPath.row]
         cell.title.text = roadmap.name
-        cell.cover.image = UIImage(named: roadmap.imageId)
+        if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: roadmap.imageId)) {
+            cell.cover.image = cachedImage
+        } else {
+            cell.cover.image = UIImage(named: "beach0")
+        }
         cell.caption.text = "\(roadmap.peopleCount) viajante • \(roadmap.dayCount) dias • \(userCurrency) \(roadmap.budget) mil/pessoa"
         
         return cell
@@ -62,10 +66,10 @@ class RoadmapSearchTableViewController: UITableViewController {
 extension RoadmapSearchTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.isActive {
-            searchController.searchBar.showsBookmarkButton = false
+            // searchController.searchBar.showsBookmarkButton = false
             self.isSearching = true
         } else {
-            searchController.searchBar.showsBookmarkButton = true
+            // searchController.searchBar.showsBookmarkButton = true
             self.isSearching = false
         }
         

@@ -49,6 +49,16 @@
 		1379745028D8E61B00AEA662 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379744F28D8E61B00AEA662 /* ProfileView.swift */; };
 		1379745328D8E6B700AEA662 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379745128D8E6B700AEA662 /* SettingsViewController.swift */; };
 		1379745428D8E6B700AEA662 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1379745228D8E6B700AEA662 /* SettingsView.swift */; };
+		137C8D26291C29060007AF5B /* giphy.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 137C8D25291C28810007AF5B /* giphy.mp4 */; };
+		137C8D37291D69F30007AF5B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 137C8D36291D69F30007AF5B /* WidgetKit.framework */; };
+		137C8D39291D69F30007AF5B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 137C8D38291D69F30007AF5B /* SwiftUI.framework */; };
+		137C8D3C291D69F30007AF5B /* WimbWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D3B291D69F30007AF5B /* WimbWidget.swift */; };
+		137C8D3E291D69F50007AF5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 137C8D3D291D69F50007AF5B /* Assets.xcassets */; };
+		137C8D42291D69F50007AF5B /* wimbWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 137C8D35291D69F30007AF5B /* wimbWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		137C8D48291D6B060007AF5B /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D47291D6B060007AF5B /* UserDefaultManager.swift */; };
+		137C8D49291D6B0C0007AF5B /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D47291D6B060007AF5B /* UserDefaultManager.swift */; };
+		137C8D52291D85960007AF5B /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D51291D85960007AF5B /* EmptyWidgetView.swift */; };
+		137C8D54291D862C0007AF5B /* CountdownWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D53291D862C0007AF5B /* CountdownWidgetView.swift */; };
 		13BD4FFB28D90EF700C0EA7C /* DesignSystem+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */; };
 		13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */; };
 		13BD4FFF28D90F9700C0EA7C /* DefaultDesignSystemImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */; };
@@ -162,6 +172,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		137C8D40291D69F50007AF5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B078F20A28C27F2000D46F61 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 137C8D34291D69F30007AF5B;
+			remoteInfo = wimbWidgetExtension;
+		};
 		B078F22C28C27F2500D46F61 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B078F20A28C27F2000D46F61 /* Project object */;
@@ -177,6 +194,20 @@
 			remoteInfo = macroChallengeApp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		137C8D43291D69F50007AF5B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				137C8D42291D69F50007AF5B /* wimbWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1309973028F0BE5C00774E1A /* MyActivityItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivityItem.swift; sourceTree = "<group>"; };
@@ -221,6 +252,17 @@
 		1379744F28D8E61B00AEA662 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = macroChallengeApp/Flows/NewRoadmap/View/ProfileView.swift; sourceTree = SOURCE_ROOT; };
 		1379745128D8E6B700AEA662 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = macroChallengeApp/Flows/Profile/ViewController/SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
 		1379745228D8E6B700AEA662 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = macroChallengeApp/Flows/NewRoadmap/View/SettingsView.swift; sourceTree = SOURCE_ROOT; };
+		137C8D25291C28810007AF5B /* giphy.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = giphy.mp4; sourceTree = "<group>"; };
+		137C8D35291D69F30007AF5B /* wimbWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = wimbWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		137C8D36291D69F30007AF5B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		137C8D38291D69F30007AF5B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		137C8D3B291D69F30007AF5B /* WimbWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WimbWidget.swift; sourceTree = "<group>"; };
+		137C8D3D291D69F50007AF5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		137C8D3F291D69F50007AF5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		137C8D47291D6B060007AF5B /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		137C8D4A291D6D480007AF5B /* wimbWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wimbWidgetExtension.entitlements; sourceTree = "<group>"; };
+		137C8D51291D85960007AF5B /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
+		137C8D53291D862C0007AF5B /* CountdownWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownWidgetView.swift; sourceTree = "<group>"; };
 		13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+UIImage.swift"; sourceTree = "<group>"; };
 		13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImages.swift; sourceTree = "<group>"; };
 		13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignSystemImages.swift; sourceTree = "<group>"; };
@@ -348,6 +390,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		137C8D32291D69F30007AF5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				137C8D39291D69F30007AF5B /* SwiftUI.framework in Frameworks */,
+				137C8D37291D69F30007AF5B /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B078F20F28C27F2000D46F61 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -395,6 +446,7 @@
 		131272BE28E62440000B7968 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				137C8D25291C28810007AF5B /* giphy.mp4 */,
 				131272BF28E62440000B7968 /* ExploreViewController+ContextMenu.swift */,
 				131272C028E62440000B7968 /* ExploreViewController+PreviewRoadmap.swift */,
 				131272C128E62440000B7968 /* ExploreViewController+Roadmaps.swift */,
@@ -501,6 +553,18 @@
 				1379744628D8E57B00AEA662 /* ProfileViewControllerExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		137C8D3A291D69F30007AF5B /* WimbWidget */ = {
+			isa = PBXGroup;
+			children = (
+				137C8D3B291D69F30007AF5B /* WimbWidget.swift */,
+				137C8D51291D85960007AF5B /* EmptyWidgetView.swift */,
+				137C8D53291D862C0007AF5B /* CountdownWidgetView.swift */,
+				137C8D3D291D69F50007AF5B /* Assets.xcassets */,
+				137C8D3F291D69F50007AF5B /* Info.plist */,
+			);
+			path = WimbWidget;
 			sourceTree = "<group>";
 		};
 		13BD500228DA28B600C0EA7C /* NewActivity */ = {
@@ -801,6 +865,7 @@
 				13732801290C67840021231E /* SaveImageController.swift */,
 				13732803290C67900021231E /* ImagePickerController.swift */,
 				DFD23B44291978590003307A /* FirebaseManager.swift */,
+				137C8D47291D6B060007AF5B /* UserDefaultManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -824,6 +889,8 @@
 				F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */,
 				D148866C3AA7A72395A6BDAC /* Pods_macroChallengeApp_macroChallengeAppUITests.framework */,
 				690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */,
+				137C8D36291D69F30007AF5B /* WidgetKit.framework */,
+				137C8D38291D69F30007AF5B /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -880,10 +947,12 @@
 		B078F20928C27F2000D46F61 = {
 			isa = PBXGroup;
 			children = (
+				137C8D4A291D6D480007AF5B /* wimbWidgetExtension.entitlements */,
 				13C8A10528C6698100994196 /* .swiftlint.yml */,
 				B078F21428C27F2000D46F61 /* macroChallengeApp */,
 				B078F22E28C27F2500D46F61 /* macroChallengeAppTests */,
 				B078F23828C27F2500D46F61 /* macroChallengeAppUITests */,
+				137C8D3A291D69F30007AF5B /* WimbWidget */,
 				B078F21328C27F2000D46F61 /* Products */,
 				4171B73C15A2C812F704D532 /* Pods */,
 				8873B324A12FFF3116531BEB /* Frameworks */,
@@ -896,6 +965,7 @@
 				B078F21228C27F2000D46F61 /* macroChallengeApp.app */,
 				B078F22B28C27F2500D46F61 /* macroChallengeAppTests.xctest */,
 				B078F23528C27F2500D46F61 /* macroChallengeAppUITests.xctest */,
+				137C8D35291D69F30007AF5B /* wimbWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -956,6 +1026,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		137C8D34291D69F30007AF5B /* wimbWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 137C8D46291D69F50007AF5B /* Build configuration list for PBXNativeTarget "wimbWidgetExtension" */;
+			buildPhases = (
+				137C8D31291D69F30007AF5B /* Sources */,
+				137C8D32291D69F30007AF5B /* Frameworks */,
+				137C8D33291D69F30007AF5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wimbWidgetExtension;
+			productName = wimbWidgetExtension;
+			productReference = 137C8D35291D69F30007AF5B /* wimbWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B078F21128C27F2000D46F61 /* macroChallengeApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B078F23F28C27F2500D46F61 /* Build configuration list for PBXNativeTarget "macroChallengeApp" */;
@@ -966,10 +1053,12 @@
 				B078F20F28C27F2000D46F61 /* Frameworks */,
 				B078F21028C27F2000D46F61 /* Resources */,
 				040E69FC101F990AD4F63C88 /* [CP] Embed Pods Frameworks */,
+				137C8D43291D69F50007AF5B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				137C8D41291D69F50007AF5B /* PBXTargetDependency */,
 			);
 			name = macroChallengeApp;
 			packageProductDependencies = (
@@ -1025,9 +1114,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					137C8D34291D69F30007AF5B = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
 					B078F21128C27F2000D46F61 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -1062,11 +1154,20 @@
 				B078F21128C27F2000D46F61 /* macroChallengeApp */,
 				B078F22A28C27F2500D46F61 /* macroChallengeAppTests */,
 				B078F23428C27F2500D46F61 /* macroChallengeAppUITests */,
+				137C8D34291D69F30007AF5B /* wimbWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		137C8D33291D69F30007AF5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				137C8D3E291D69F50007AF5B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B078F21028C27F2000D46F61 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1075,6 +1176,7 @@
 				A0A8BABA28E4E8C0006A8BDD /* Localizable.strings in Resources */,
 				B078F22528C27F2400D46F61 /* LaunchScreen.storyboard in Resources */,
 				B078F22228C27F2400D46F61 /* Assets.xcassets in Resources */,
+				137C8D26291C29060007AF5B /* giphy.mp4 in Resources */,
 				13737BF42915845F00BC4373 /* dataRoadmaps.json in Resources */,
 				DFD23B3E291972C90003307A /* GoogleService-Info.plist in Resources */,
 			);
@@ -1218,6 +1320,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		137C8D31291D69F30007AF5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				137C8D54291D862C0007AF5B /* CountdownWidgetView.swift in Sources */,
+				137C8D49291D6B0C0007AF5B /* UserDefaultManager.swift in Sources */,
+				137C8D52291D85960007AF5B /* EmptyWidgetView.swift in Sources */,
+				137C8D3C291D69F30007AF5B /* WimbWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B078F20E28C27F2000D46F61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1324,6 +1437,7 @@
 				1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */,
 				A0B9F4C328D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift in Sources */,
 				DFA30CAF28DA2E5A00F316EB /* TabBarController.swift in Sources */,
+				137C8D48291D6B060007AF5B /* UserDefaultManager.swift in Sources */,
 				13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */,
 				A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */,
 				13C8A12728CA693F00994196 /* DesignText.swift in Sources */,
@@ -1385,6 +1499,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		137C8D41291D69F50007AF5B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 137C8D34291D69F30007AF5B /* wimbWidgetExtension */;
+			targetProxy = 137C8D40291D69F50007AF5B /* PBXContainerItemProxy */;
+		};
 		B078F22D28C27F2500D46F61 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B078F21128C27F2000D46F61 /* macroChallengeApp */;
@@ -1421,6 +1540,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		137C8D44291D69F50007AF5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = wimbWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9R89XP5A63;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = wimbWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm.macroChallengeApp.wimbWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		137C8D45291D69F50007AF5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = wimbWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9R89XP5A63;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = wimbWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.dev.grupoUm.macroChallengeApp.wimbWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B078F23D28C27F2500D46F61 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1541,12 +1720,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9F3A7956A6476CF7C11EC092 /* Pods-macroChallengeApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TX88D8XM39;
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
@@ -1579,12 +1759,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B897B6EEE760DBB56A9888E4 /* Pods-macroChallengeApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macroChallengeApp/macroChallengeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TX88D8XM39;
+				DEVELOPMENT_TEAM = 9R89XP5A63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macroChallengeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = wimbi;
@@ -1696,6 +1877,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		137C8D46291D69F50007AF5B /* Build configuration list for PBXNativeTarget "wimbWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				137C8D44291D69F50007AF5B /* Debug */,
+				137C8D45291D69F50007AF5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B078F20D28C27F2000D46F61 /* Build configuration list for PBXProject "macroChallengeApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

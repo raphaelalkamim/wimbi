@@ -18,7 +18,7 @@ class ExploreViewController: UIViewController {
     var roadmapsMock: [Roadmaps] = []
     let network: NetworkMonitor = NetworkMonitor.shared
     let onboardEnable = UserDefaults.standard.bool(forKey: "onboard")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         network.startMonitoring()
@@ -41,7 +41,7 @@ class ExploreViewController: UIViewController {
         network.startMonitoring()
         DataManager.shared.getPublicRoadmaps({ roadmaps in
             self.roadmaps = roadmaps
-            self.roadmaps.sort { $0.likesCount < $1.likesCount }
+            self.roadmaps.sort { $0.likesCount > $1.likesCount }
             if roadmaps.isEmpty { self.getMockData() }
             self.explorerView.roadmapsCollectionView.reloadData()
             self.emptyState(conection: self.network.isReachable)

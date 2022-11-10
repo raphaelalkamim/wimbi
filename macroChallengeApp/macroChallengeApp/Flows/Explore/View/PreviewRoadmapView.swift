@@ -29,6 +29,7 @@ class PreviewRoadmapView: UIView {
         let img = UIImageView()
         img.image = designSystem.imagesDefault.beach[3]
         img.clipsToBounds = true
+        img.translatesAutoresizingMaskIntoConstraints = false 
         img.contentMode = .scaleAspectFill
         return img
     }()
@@ -105,7 +106,6 @@ class PreviewRoadmapView: UIView {
         let view = UIView()
         return view
     }()
-    
     
     lazy var tutorialTitle: UIButton = {
        let button = UIButton()

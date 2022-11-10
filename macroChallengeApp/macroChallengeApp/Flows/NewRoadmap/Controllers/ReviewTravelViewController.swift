@@ -60,7 +60,7 @@ class ReviewTravelViewController: UIViewController {
             if self.roadmap.imageId.contains(".jpeg") {
                 FirebaseManager.shared.deleteImage(category: 0, uuid: roadmap.imageId)
             }
-            self.roadmap.imageId = SaveImagecontroller.saveToFiles(image: imageSelected)
+            self.roadmap.imageId = SaveImagecontroller.saveToFiles(image: imageSelected, UUID: UUID().uuidString)
         }
         if edit {
             self.updateCoreData()

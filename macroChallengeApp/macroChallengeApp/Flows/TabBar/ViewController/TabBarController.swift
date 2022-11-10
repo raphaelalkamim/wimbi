@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
+import AVFAudio
 
 class TabBarController: UITabBarController {
     private let designSystem: DesignSystem = DefaultDesignSystem.shared
@@ -16,17 +19,20 @@ class TabBarController: UITabBarController {
     var roadmaps = RoadmapRepository.shared.getRoadmap()
     var roadmap: RoadmapLocal = RoadmapLocal()
     
+    var player = AVPlayer()
+    var playerLayer = AVPlayerLayer()
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "stopVideo"), object: player.currentTime)
+    }
+    
     override func viewDidLoad() {
-        self.setupCoordnators()
-        self.setupNavigators()
-        tabBar.barTintColor = designSystem.palette.backgroundPrimary
-        
+        self.loadScene()
         if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
             UITabBar.appearance().scrollEdgeAppearance = appearance
-            
-            appearance.backgroundColor = designSystem.palette.backgroundPrimary
+            appearance.backgroundColor = self.designSystem.palette.backgroundPrimary
         }
     }
     
@@ -57,7 +63,6 @@ class TabBarController: UITabBarController {
             current.start()
         }
         profile.start()
-        
         profile.delegate = self
         
     }
@@ -67,6 +72,35 @@ class TabBarController: UITabBarController {
     func configCountDown() -> Int {
         let time = Int((roadmap.date?.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24))
         return time
+    }
+    func loadScene() {
+        self.loadVideo()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.stopVideo()
+            self.setupCoordnators()
+            self.setupNavigators()
+            self.tabBar.barTintColor = self.designSystem.palette.backgroundPrimary
+        }
+    }
+    func loadVideo() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
+        } catch { }
+
+        let path = Bundle.main.path(forResource: "giphy", ofType: "mp4")
+        player = AVPlayer(url: NSURL(fileURLWithPath: path!) as URL)
+        playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = self.view.frame
+        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        playerLayer.zPosition = 1
+        
+        self.view.layer.addSublayer(playerLayer)
+        player.seek(to: CMTime.zero)
+        player.play()
+    }
+    func stopVideo() {
+        player.pause()
+        playerLayer.removeFromSuperlayer()
     }
 }
 

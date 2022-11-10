@@ -20,7 +20,7 @@ class PreviewRoadmapViewController: UIViewController {
     var daySelected = 0
     var likeId = 0
     let tutorialEnable = UserDefaults.standard.bool(forKey: "tutorialExplore")
-
+    var uuidImage = ""
     var budgetTotal: Double = 0
     let currencyController = CurrencyController()
     
@@ -42,6 +42,12 @@ class PreviewRoadmapViewController: UIViewController {
         
         if tutorialEnable == false {
             self.tutorialTimer()
+        }
+        
+        DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser in
+            self.uuidImage = uuidUser
+            FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
+            }
         }
         
         DataManager.shared.getLike(roadmapId: self.roadmapId) { response in
@@ -142,6 +148,7 @@ class PreviewRoadmapViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
         }))
         present(alert, animated: true)
+        roadmap.imageId = "defaultCover"
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: false)
         let days = newRoadmap.day?.allObjects as [DayLocal]
         let roadmapDays = self.roadmap.days
