@@ -20,7 +20,7 @@ class UserDefaultsManager {
         }
     }
     private init() {
-        self.nextTrip = UserDefaults(suiteName: "group.MeuDevocional")?.object(forKey: "nextTrip") as? String
-        self.countdown = UserDefaults(suiteName: "group.MeuDevocional")?.object(forKey: "countdown") as? String
+        self.nextTrip = UserDefaults(suiteName: "group.wimbiApp")?.object(forKey: "nextTrip") as? String
+        self.countdown = UserDefaults(suiteName: "group.wimbiApp")?.object(forKey: "countdown") as? String
     }
 }

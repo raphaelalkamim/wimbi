@@ -33,7 +33,7 @@ struct CountdownWidgetView: View {
                         .multilineTextAlignment(.leading)
                         .colorInvert()
                     
-                    Text(countdown)
+                    Text("\(countdown) dias")
                         .font(.custom("Avenir-Black", size: 35))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
