@@ -156,6 +156,17 @@ public class RoadmapRepository: NSManagedObject {
         self.saveContext()
         return newRoadmap
     }
+    func pushRoadmap(newRoadmap: UserRoadmap) -> RoadmapLocal {
+        guard var newCopyRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
+        
+        DataManager.shared.getRoadmapById(roadmapId: Int(newRoadmap.id)) { roadmap in
+            newCopyRoadmap = self.updateFromBackend(editRoadmap: newCopyRoadmap, roadmap: roadmap)
+            let user = UserRepository.shared.getUser()
+            user[0].addToRoadmap(newCopyRoadmap)
+            self.saveContext()
+        }
+        return newCopyRoadmap
+    }
     
     func setRoadmapData(fromRoadmap: Roadmaps, toRoadmap: RoadmapLocal) {
         let dateFormat = DateFormatter()
