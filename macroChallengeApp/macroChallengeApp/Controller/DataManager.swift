@@ -365,7 +365,7 @@ class DataManager {
             
             if let token = UserDefaults.standard.string(forKey: "authorization") {
                 request.setValue(token, forHTTPHeaderField: "Authorization")
-                let task = session.dataTask(with: request) { data, response, error in
+                let task = session.dataTask(with: request) { data, _, error in
                     if let error = error {
                         print(error)
                     } else if data != nil {
@@ -846,8 +846,6 @@ class DataManager {
                     DispatchQueue.main.async {
                         completion(userUUID)
                     }
-                    
-                         
                 } catch {
                     print(error)
                 }
