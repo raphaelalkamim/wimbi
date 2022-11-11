@@ -77,6 +77,4 @@ extension ExploreViewController: UICollectionViewDataSource {
         }
         return cell
     }
-    
-    
 }

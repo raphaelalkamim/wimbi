@@ -365,7 +365,7 @@ class DataManager {
             
             if let token = UserDefaults.standard.string(forKey: "authorization") {
                 request.setValue(token, forHTTPHeaderField: "Authorization")
-                let task = session.dataTask(with: request) { data, response, error in
+                let task = session.dataTask(with: request) { data, _, error in
                     if let error = error {
                         print(error)
                     } else if data != nil {
@@ -378,8 +378,8 @@ class DataManager {
         }
     }
     
-    func getRoadmapById(roadmapId: Int, _ completion: @escaping ((_ roadmap: Roadmaps) -> Void)) {
-        var roadmap: Roadmaps = Roadmaps()
+    func getRoadmapById(roadmapId: Int, _ completion: @escaping ((_ roadmap: Roadmaps?) -> Void)) {
+        var roadmap: Roadmaps?
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "roadmaps/\(roadmapId)")!
         
@@ -396,12 +396,13 @@ class DataManager {
             
             do {
                 roadmap = try JSONDecoder().decode(Roadmaps.self, from: data)
-                DispatchQueue.main.async {
-                    completion(roadmap)
-                }
             } catch {
                 print(error)
                 print("DEU RUIM NO PARSE")
+            }
+            
+            DispatchQueue.main.async {
+                completion(roadmap)
             }
         }
         task.resume()
@@ -845,8 +846,6 @@ class DataManager {
                     DispatchQueue.main.async {
                         completion(userUUID)
                     }
-                    
-                         
                 } catch {
                     print(error)
                 }
