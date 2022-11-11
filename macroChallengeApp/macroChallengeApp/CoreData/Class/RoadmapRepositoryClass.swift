@@ -63,6 +63,7 @@ public class RoadmapRepository: NSManagedObject {
         self.setRoadmapData(fromRoadmap: roadmap, toRoadmap: newRoadmap)
         
         newRoadmap.id = editRoadmap.id
+        newRoadmap.shareKey = editRoadmap.shareKey
         // guarda os dias antigos
         if var oldDays = editRoadmap.day?.allObjects as? [DayLocal] {
             oldDays.sort { $0.id < $1.id }
