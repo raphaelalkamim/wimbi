@@ -75,13 +75,13 @@ class MyTripViewController: UIViewController {
     }
     
     func getAllActivities() -> [ActivityLocal] {
-        if var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] {
-            newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
-            myTripView.dayTitle.text = "Day ".localized() + String(daySelected + 1)
-            myTripView.activitiesTableView.reloadData()
-            return newActivities
+        guard var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] else {
+            return []
         }
-        return []
+        newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
+        self.myTripView.dayTitle.text = "Day ".localized() + String(daySelected + 1)
+        self.myTripView.activitiesTableView.reloadData()
+        return newActivities
     }
     
     func tutorialTimer() {
