@@ -81,4 +81,29 @@ class SearchResultTableViewCell: UITableViewCell {
             make.trailing.equalTo(title.snp.trailing)
         }
     }
+    
+    func setupContent(roadmap: RoadmapDTO) {
+        var amount = "per person".localized()
+           var cost = ""
+           var travelers = ""
+           var days = ""
+           if roadmap.peopleCount == 1 {
+               travelers = "traveler  •".localized()
+           } else {
+               travelers = "travelers  •".localized()
+           }
+           if roadmap.dayCount == 1 {
+               days = "day".localized()
+           } else {
+               days = "days".localized()
+           }
+           
+           if roadmap.budget > 1000 {
+               amount = "thousand per person".localized()
+               cost = "\(roadmap.currency) \(String(format: "%.2f", roadmap.budget / Double(roadmap.peopleCount) / 1000)) \(amount)"
+           } else {
+               cost = "\(roadmap.currency) \(String(format: "%.2f", roadmap.budget / Double(roadmap.peopleCount))) \(amount)"
+           }
+           self.caption.text = "\(roadmap.peopleCount) \(travelers) \(roadmap.dayCount) \(days) \(cost)"
+       }
 }

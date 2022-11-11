@@ -44,7 +44,7 @@ class RoadmapSearchTableViewController: UITableViewController {
         } else {
             cell.cover.image = UIImage(named: "beach0")
         }
-        cell.caption.text = "\(roadmap.peopleCount) viajante • \(roadmap.dayCount) dias • \(userCurrency) \(roadmap.budget) mil/pessoa"
+        cell.setupContent(roadmap: roadmap)
         
         return cell
     }
