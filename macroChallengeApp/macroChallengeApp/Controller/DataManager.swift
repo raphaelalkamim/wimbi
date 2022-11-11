@@ -378,8 +378,8 @@ class DataManager {
         }
     }
     
-    func getRoadmapById(roadmapId: Int, _ completion: @escaping ((_ roadmap: Roadmaps) -> Void)) {
-        var roadmap: Roadmaps = Roadmaps()
+    func getRoadmapById(roadmapId: Int, _ completion: @escaping ((_ roadmap: Roadmaps?) -> Void)) {
+        var roadmap: Roadmaps?
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "roadmaps/\(roadmapId)")!
         
@@ -396,12 +396,13 @@ class DataManager {
             
             do {
                 roadmap = try JSONDecoder().decode(Roadmaps.self, from: data)
-                DispatchQueue.main.async {
-                    completion(roadmap)
-                }
             } catch {
                 print(error)
                 print("DEU RUIM NO PARSE")
+            }
+            
+            DispatchQueue.main.async {
+                completion(roadmap)
             }
         }
         task.resume()

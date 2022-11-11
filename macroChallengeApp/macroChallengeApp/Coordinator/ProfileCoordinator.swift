@@ -122,6 +122,10 @@ class ProfileCoordinator: Coordinator {
         
     }
     
+    func showAlertController(alert: UIAlertController) {
+        navigationController.present(alert, animated: true)
+    }
+    
     func startEditProfile() {
         let viewController = EditProfileViewController()
         viewController.coordinator = self

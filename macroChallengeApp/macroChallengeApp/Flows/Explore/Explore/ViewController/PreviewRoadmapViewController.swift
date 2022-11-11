@@ -92,8 +92,10 @@ class PreviewRoadmapViewController: UIViewController {
     
     func getRoadmapById(roadmapId: Int) {
         DataManager.shared.getRoadmapById(roadmapId: roadmapId, { roadmap in
-            self.roadmap = roadmap
-            self.setupContent(roadmap: roadmap)
+            if let roadmap = roadmap {
+                self.roadmap = roadmap
+                self.setupContent(roadmap: roadmap)
+            }
             self.previewView.hiddenSpinner()
             self.previewView.infoTripCollectionView.reloadData()
             self.previewView.calendarCollectionView.reloadData()

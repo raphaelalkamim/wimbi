@@ -161,9 +161,12 @@ public class RoadmapRepository: NSManagedObject {
         guard var newCopyRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         
         DataManager.shared.getRoadmapById(roadmapId: Int(newRoadmap.roadmap.id)) { roadmap in
-            newCopyRoadmap = self.updateFromBackend(editRoadmap: newCopyRoadmap, roadmap: roadmap)
-            let user = UserRepository.shared.getUser()
-            user[0].addToRoadmap(newCopyRoadmap)
+            if let roadmap = roadmap {
+                newCopyRoadmap = self.updateFromBackend(editRoadmap: newCopyRoadmap, roadmap: roadmap)
+                let user = UserRepository.shared.getUser()
+                user[0].addToRoadmap(newCopyRoadmap)
+            }
+            
             self.saveContext()
         }
         return newCopyRoadmap
