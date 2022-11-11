@@ -82,7 +82,6 @@ extension ProfileViewController: UICollectionViewDataSource {
                 openRoadmap = RoadmapRepository.shared.updateFromBackend(editRoadmap: self.roadmaps[indexPath.row], roadmap: backRoadmap)
                 self.coordinator?.openRoadmap(roadmap: openRoadmap )
             }
-            self.coordinator?.openRoadmap(roadmap: openRoadmap)
         } else {
             self.coordinator?.openRoadmap(roadmap: openRoadmap)
         }
