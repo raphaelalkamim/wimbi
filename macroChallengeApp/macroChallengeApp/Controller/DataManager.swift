@@ -253,7 +253,6 @@ class DataManager {
         if let token = UserDefaults.standard.string(forKey: "authorization") {
             request.setValue(token, forHTTPHeaderField: "Authorization")
             let task = session.dataTask(with: request) { data, response, error in
-                print(response)
                 guard let data = data else { return }
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
@@ -340,8 +339,8 @@ class DataManager {
     
     func putUser(userObj: UserLocal) {
         let user: [String: Any] = [
-            "usernameApp": userObj.usernameApp,
-            "name": userObj.name,
+            "usernameApp": userObj.usernameApp ?? "newuser",
+            "name": userObj.name ?? "newuser",
             "photoId": "icon"
         ]
         
@@ -449,7 +448,6 @@ class DataManager {
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
             let task = session.dataTask(with: request) { data, response, error in
-                print(response)
                 guard let data = data else { return }
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
@@ -495,7 +493,6 @@ class DataManager {
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
             let task = session.dataTask(with: request) { data, response, error in
-                print(response)
                 guard let data = data else { return }
                 if error != nil {
                     print(String(describing: error?.localizedDescription))

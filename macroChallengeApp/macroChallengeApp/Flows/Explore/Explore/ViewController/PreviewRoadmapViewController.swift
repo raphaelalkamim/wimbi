@@ -152,7 +152,7 @@ class PreviewRoadmapViewController: UIViewController {
         present(alert, animated: true)
         roadmap.imageId = "defaultCover"
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: false)
-        let days = newRoadmap.day?.allObjects as [DayLocal]
+        guard let days = newRoadmap.day?.allObjects as? [DayLocal] else { return }
         let roadmapDays = self.roadmap.days
         for index in 0..<roadmapDays.count {
             let activiyArray = roadmapDays[index].activity

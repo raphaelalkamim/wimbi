@@ -15,13 +15,13 @@ struct Provider: TimelineProvider {
                     countdown: "")
     }
     
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
         let entry = SimpleEntry(date: Date(),
                                 nextTrip: "",
                                 countdown: "")
         completion(entry)
     }
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         var entries: [SimpleEntry] = []
         let nextTrip = UserDefaultsManager.shared.nextTrip
         let countdown = UserDefaultsManager.shared.countdown

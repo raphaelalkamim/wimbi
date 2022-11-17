@@ -39,6 +39,9 @@ extension CurrentViewController {
             setupCountDownView()
             configCountDown()
         } else {
+            // passa o timer para o widget
+            UserDefaultsManager.shared.nextTrip = ""
+            UserDefaultsManager.shared.countdown = ""
             setupEmptyView()
             currentCountDownView.removeFromSuperview()
         }
