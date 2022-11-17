@@ -253,7 +253,6 @@ class DataManager {
         if let token = UserDefaults.standard.string(forKey: "authorization") {
             request.setValue(token, forHTTPHeaderField: "Authorization")
             let task = session.dataTask(with: request) { data, response, error in
-                print(response)
                 guard let data = data else { return }
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
@@ -340,8 +339,8 @@ class DataManager {
     
     func putUser(userObj: UserLocal) {
         let user: [String: Any] = [
-            "usernameApp": userObj.usernameApp,
-            "name": userObj.name,
+            "usernameApp": userObj.usernameApp ?? "newuser",
+            "name": userObj.name ?? "newuser",
             "photoId": "icon"
         ]
         
@@ -449,7 +448,6 @@ class DataManager {
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
             let task = session.dataTask(with: request) { data, response, error in
-                print(response)
                 guard let data = data else { return }
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
@@ -495,7 +493,6 @@ class DataManager {
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
             let task = session.dataTask(with: request) { data, response, error in
-                print(response)
                 guard let data = data else { return }
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
@@ -866,19 +863,7 @@ class DataManager {
     }
     
     func setupImage(category: String) -> String {
-        if category == "Beach" {
-            let beachImages = ["beach0", "beach1", "beach2", "beach3", "beach4"]
-            return beachImages[Int.random(in: 0..<beachImages.count)]
-        } else if category == "Mountain" {
-            let mountainImages = ["montain0", "montain1", "montain2", "montain3", "montain4"]
-            return mountainImages[Int.random(in: 0..<mountainImages.count)]
-        } else if category == "City" {
-            let cityImages = ["city0", "city1", "city2", "city3"]
-            return cityImages[Int.random(in: 0..<cityImages.count)]
-        } else {
-            let campImages = ["camp0", "camp1", "camp2", "camp3", "camp4"]
-            return campImages[Int.random(in: 0..<campImages.count)]
-        }
+        return String("\(category)Cover")
     }
 }
 

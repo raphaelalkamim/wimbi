@@ -27,7 +27,7 @@ class PreviewRoadmapView: UIView {
     
     lazy var cover: UIImageView = {
         let img = UIImageView()
-        img.image = designSystem.imagesDefault.beach[3]
+        img.image = UIImage(named: "")
         img.clipsToBounds = true
         img.translatesAutoresizingMaskIntoConstraints = false 
         img.contentMode = .scaleAspectFill
@@ -128,6 +128,18 @@ class PreviewRoadmapView: UIView {
         let spinner = UIActivityIndicatorView(style: .large)
         return spinner
     }()
+    lazy var emptyView: UIView = {
+        let view = UIView()
+        view.backgroundColor = designSystem.palette.backgroundPrimary
+        return view
+    }()
+    
+    lazy var username: UILabel = {
+        let title = UILabel()
+        title.text = "@username".localized()
+        title.stylize(with: designSystem.text.body)
+        return title
+    }()
     
     func setupLoad() {
         showSpinner()
@@ -149,7 +161,9 @@ class PreviewRoadmapView: UIView {
         contentView.addSubview(infoTitle)
         contentView.addSubview(calendarTitle)
         contentView.addSubview(roadmapTitle)
+        contentView.addSubview(username)
         contentView.addSubview(tutorialView)
+        contentView.addSubview(emptyView)
         contentView.addSubview(emptyStateTitle)
         emptyStateTitle.isHidden = true
         tutorialView.isHidden = true
@@ -170,19 +184,22 @@ class PreviewRoadmapView: UIView {
     }
     
     func setupConstraints() {
+        emptyView.snp.makeConstraints { make in
+            make.top.equalTo(self.snp.top)
+            make.bottom.equalTo(self.snp.bottom)
+            make.left.right.equalTo(self)
+        }
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
             make.bottom.equalTo(self.snp.bottom)
             make.left.right.equalTo(self)
         }
-        
         transparentView.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
             make.bottom.equalTo(self.snp.bottom)
             make.left.right.equalTo(self)
             
         }
-        
         contentView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top)
             make.bottom.equalTo(activitiesTableView)
@@ -201,8 +218,15 @@ class PreviewRoadmapView: UIView {
             make.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
         }
         
+        username.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+            
+        }
+        
         infoTitle.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.mediumNegative)
+            make.top.equalTo(username.snp.bottom).inset(designSystem.spacing.mediumNegative)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             
@@ -275,6 +299,7 @@ class PreviewRoadmapView: UIView {
         }
     }
     func hiddenSpinner() {
+        emptyView.isHidden = true
         activity.removeFromSuperview()
     }
 }
@@ -294,7 +319,7 @@ extension PreviewRoadmapView {
     func animateCollection() {
         infoTripCollectionView.layoutIfNeeded()
         UIView.animate(withDuration: 5,
-                       delay: 2,
+                       delay: 1,
                        usingSpringWithDamping: 0.8,
                        initialSpringVelocity: 0,
                        options: [],

@@ -131,7 +131,7 @@ class OnboardingView: UIView {
     lazy var exploreButton: UIButton = {
         let button = UIButton()
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
-        button.setAttributedTitle(NSAttributedString(string: "Explore", attributes: attributes), for: .normal)
+        button.setAttributedTitle(NSAttributedString(string: "Explore", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
         button.backgroundColor = .accent
         button.setTitleColor(.backgroundPrimary, for: .normal)
         button.layer.cornerRadius = 16

@@ -46,7 +46,7 @@ extension SettingsViewController: UITableViewDataSource {
             let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
             alert.view.tintColor = .accent
             let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
-            let string = NSAttributedString(string: "Delete your account?".localized(), attributes: titleAtt)
+            let string = NSAttributedString(string: "Delete your account?".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
             alert.setValue(string, forKey: "attributedTitle")
             alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
             }))
