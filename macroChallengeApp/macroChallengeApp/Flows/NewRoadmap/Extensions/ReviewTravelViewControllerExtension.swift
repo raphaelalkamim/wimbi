@@ -46,7 +46,7 @@ extension ReviewTravelViewController {
         
         self.isPublic = roadmap.isPublic
         self.peopleCount = roadmap.peopleCount
-        self.reviewTravelView.subtitle.text = self.roadmap.category
+        self.reviewTravelView.subtitle.text = self.roadmap.category.localized()
         self.reviewTravelView.title.text = self.roadmap.name
         self.reviewTravelView.setupCategory(category: roadmap.category)
         
