@@ -104,6 +104,8 @@
 		640CD5CCE40B36AB975231D2 /* Pods_macroChallengeApp_macroChallengeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D148866C3AA7A72395A6BDAC /* Pods_macroChallengeApp_macroChallengeAppUITests.framework */; };
 		8937FC4EB5BEAACC958B84A1 /* Pods_macroChallengeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 690BA5B7FB893AA45078E000 /* Pods_macroChallengeAppTests.framework */; };
 		90297BBF83D0A825FF081EB4 /* Pods_macroChallengeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */; };
+		A01267D42926AB1D0044F440 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A8BAB528E4E824006A8BDD /* String+Localization.swift */; };
+		A01267D52926AB200044F440 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0A8BABC28E4E8C0006A8BDD /* Localizable.strings */; };
 		A0252CB229118E6900093E14 /* OnbordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0252CB129118E6900093E14 /* OnbordingViewController.swift */; };
 		A0252CB429118E7700093E14 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0252CB329118E7700093E14 /* OnboardingView.swift */; };
 		A0287558290870C000894B6D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0287557290870C000894B6D /* DetailView.swift */; };
@@ -126,8 +128,6 @@
 		A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CC28DA2E6100F2DF06 /* EditProfileViewController.swift */; };
 		A0B9F4CF28DA342300F2DF06 /* LikedRoadmapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4CE28DA342300F2DF06 /* LikedRoadmapsView.swift */; };
 		A0B9F4D128DA342B00F2DF06 /* LikedRoadmapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9F4D028DA342B00F2DF06 /* LikedRoadmapsViewController.swift */; };
-		A0D80FA3291DB67900D101B9 /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D51291D85960007AF5B /* EmptyWidgetView.swift */; };
-		A0D80FA4291DB67D00D101B9 /* CountdownWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D53291D862C0007AF5B /* CountdownWidgetView.swift */; };
 		A0FD739928DA7EF00044E47C /* MyTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739828DA7EF00044E47C /* MyTripView.swift */; };
 		A0FD739B28DA7EF70044E47C /* MyTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739A28DA7EF70044E47C /* MyTripViewController.swift */; };
 		A0FD739D28DA7F780044E47C /* MyTripViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739C28DA7F780044E47C /* MyTripViewControllerExtension.swift */; };
@@ -1167,6 +1167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				137C8D3E291D69F50007AF5B /* Assets.xcassets in Resources */,
+				A01267D52926AB200044F440 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1330,6 +1331,7 @@
 				137C8D49291D6B0C0007AF5B /* UserDefaultManager.swift in Sources */,
 				137C8D52291D85960007AF5B /* EmptyWidgetView.swift in Sources */,
 				137C8D3C291D69F30007AF5B /* WimbWidget.swift in Sources */,
+				A01267D42926AB1D0044F440 /* String+Localization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1411,7 +1413,6 @@
 				B04777DA28E62B130023540D /* ProfileViewController+ContextMenu.swift in Sources */,
 				DFD23B45291978590003307A /* FirebaseManager.swift in Sources */,
 				1359F15428DA48E5009509DF /* RoadmapRepositoryClass.swift in Sources */,
-				A0D80FA4291DB67D00D101B9 /* CountdownWidgetView.swift in Sources */,
 				13737BF12915836E00BC4373 /* DataMockManager.swift in Sources */,
 				13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */,
 				1359F15828DA48FD009509DF /* UserRepositoryClass.swift in Sources */,
@@ -1452,7 +1453,6 @@
 				13C8A12528CA693700994196 /* DesignSpacing.swift in Sources */,
 				DF57253D28D110E1005466D9 /* DaysView.swift in Sources */,
 				1379744A28D8E57B00AEA662 /* ProfileViewControllerExtension.swift in Sources */,
-				A0D80FA3291DB67900D101B9 /* EmptyWidgetView.swift in Sources */,
 				1379745028D8E61B00AEA662 /* ProfileView.swift in Sources */,
 				B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */,
 				13C8A11828C691F100994196 /* DataType.swift in Sources */,

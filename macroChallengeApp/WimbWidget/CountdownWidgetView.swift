@@ -10,7 +10,7 @@ import SwiftUI
 struct CountdownWidgetView: View {
     var countdown = ""
     var nextTrip = ""
-    var days = "days".localized()
+    var days = "days"
     
     var body: some View {
         ZStack {
@@ -35,7 +35,7 @@ struct CountdownWidgetView: View {
                         .multilineTextAlignment(.leading)
                         .colorInvert()
                     
-                    Text("\(countdown) \(days)")
+                    Text("\(countdown) \(days.localized())")
                         .font(.custom("Avenir-Black", size: 35))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
