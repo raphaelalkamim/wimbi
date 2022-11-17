@@ -89,10 +89,10 @@ extension ProfileViewController: UICollectionViewDataSource {
                         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
                         alert.view.tintColor = .accent
                         let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
-                        let string = NSAttributedString(string: "This itinerary has been deleted by another user".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
+                        let string = NSAttributedString(string: "This roadmap has been deleted by another user".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
                         alert.setValue(string, forKey: "attributedMessage")
                         
-                        alert.addAction(UIAlertAction(title: "Okay".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+                        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
                         }))
 
                         self.coordinator?.showAlertController(alert: alert)
