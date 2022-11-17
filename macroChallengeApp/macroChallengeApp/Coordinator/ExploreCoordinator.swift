@@ -62,7 +62,6 @@ class ExploreCoordinator: Coordinator {
         let viewController = PreviewRoadmapViewController()
         viewController.coordinator = self
         viewController.roadmapId = roadmapId
-        viewController.previewView.hiddenSpinner()
         navigationController.pushViewController(viewController, animated: true)
     }
     

@@ -27,7 +27,7 @@ class PreviewRoadmapView: UIView {
     
     lazy var cover: UIImageView = {
         let img = UIImageView()
-        img.image = designSystem.imagesDefault.beach[3]
+        img.image = UIImage(named: "")
         img.clipsToBounds = true
         img.translatesAutoresizingMaskIntoConstraints = false 
         img.contentMode = .scaleAspectFill
@@ -118,6 +118,11 @@ class PreviewRoadmapView: UIView {
         let spinner = UIActivityIndicatorView(style: .large)
         return spinner
     }()
+    lazy var emptyView: UIView = {
+        let view = UIView()
+        view.backgroundColor = designSystem.palette.backgroundPrimary
+        return view
+    }()
     
     func setupLoad() {
         showSpinner()
@@ -140,25 +145,29 @@ class PreviewRoadmapView: UIView {
         contentView.addSubview(calendarTitle)
         contentView.addSubview(roadmapTitle)
         contentView.addSubview(tutorialView)
+        contentView.addSubview(emptyView)
         tutorialView.isHidden = true
         tutorialView.addSubview(tutorialTitle)
         setupConstraints()
     }
     
     func setupConstraints() {
+        emptyView.snp.makeConstraints { make in
+            make.top.equalTo(self.snp.top)
+            make.bottom.equalTo(self.snp.bottom)
+            make.left.right.equalTo(self)
+        }
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
             make.bottom.equalTo(self.snp.bottom)
             make.left.right.equalTo(self)
         }
-        
         transparentView.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
             make.bottom.equalTo(self.snp.bottom)
             make.left.right.equalTo(self)
             
         }
-        
         contentView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top)
             make.bottom.equalTo(activitiesTableView)

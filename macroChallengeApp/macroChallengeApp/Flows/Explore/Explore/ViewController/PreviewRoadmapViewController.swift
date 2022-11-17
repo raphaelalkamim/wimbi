@@ -96,12 +96,15 @@ class PreviewRoadmapViewController: UIViewController {
                 self.roadmap = roadmap
                 self.setupContent(roadmap: roadmap)
             }
-            self.previewView.hiddenSpinner()
             self.previewView.infoTripCollectionView.reloadData()
             self.previewView.calendarCollectionView.reloadData()
             self.previewView.activitiesTableView.reloadData()
+            self.previewView.hiddenSpinner()
+            self.previewView.emptyView.isHidden = true
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+//            }
         })
-       
+        
     }
     
     func setupContent(roadmap: Roadmaps) {
