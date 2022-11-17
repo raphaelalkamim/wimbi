@@ -40,6 +40,7 @@ extension NewActivityViewController {
         self.activity.address = activityEdit.address ?? "Address"
         self.activity.link = activityEdit.link ?? "www"
         self.address = activityEdit.address ?? "Address"
+        self.activity.tips = activityEdit.tips ?? ""
     }
     
     // MARK: Save new Activity functions
@@ -163,7 +164,7 @@ extension NewActivityViewController: UITableViewDataSource {
         } else if tableView == newActivityView.detailTable {
             if indexPath.row == 0 {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as? DetailTableViewCell else { fatalError("TableCell not found") }
-                self.activity.tips = newCell.detailText.text ?? "Details"
+                newCell.detailText.text = self.activity.tips
                 self.setupTextView(textView: newCell.detailText)
                 cell = newCell
                 
@@ -175,7 +176,6 @@ extension NewActivityViewController: UITableViewDataSource {
                 newCell.title.text = activity.link
                 self.setupTextFields(textField: newCell.title)
                 cell = newCell
-                
             }
         }
         return cell
@@ -216,15 +216,19 @@ extension NewActivityViewController: UICollectionViewDataSource {
         case 0:
             cell.iconDescription.text = "Food".localized()
             cell.icon.image = designSystem.imagesActivities.food
+            if activity.category == "food" { cell.selectedBackgroundView(button: activity.category) }
         case 1:
             cell.iconDescription.text = "Accommodation".localized()
             cell.icon.image = designSystem.imagesActivities.accomodation
+            if activity.category == "accommodation" { cell.selectedBackgroundView(button: activity.category) }
         case 2:
             cell.iconDescription.text = "Leisure".localized()
             cell.icon.image = designSystem.imagesActivities.leisure
+            if activity.category == "leisure" { cell.selectedBackgroundView(button: activity.category) }
         case 3:
             cell.iconDescription.text = "Transportation".localized()
             cell.icon.image = designSystem.imagesActivities.transportation
+            if activity.category == "transportation" { cell.selectedBackgroundView(button: activity.category) }
         default:
             break
         }
@@ -235,13 +239,12 @@ extension NewActivityViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryActivityCollectionViewCell {
             activity.category = cell.setCellIcon(isSelected: true)
-
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryActivityCollectionViewCell {
-            cell.setCellIcon(isSelected: false)
+        for index in 0..<4 where index != indexPath.row {
+            let newIndexPath = IndexPath(item: Int(index), section: 0)
+            if let cell = collectionView.cellForItem(at: newIndexPath) as? CategoryActivityCollectionViewCell {
+                _ = cell.setCellIcon(isSelected: false)
+            }
         }
     }
 }

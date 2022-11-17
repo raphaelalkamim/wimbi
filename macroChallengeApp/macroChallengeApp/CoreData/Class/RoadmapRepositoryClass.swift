@@ -63,6 +63,7 @@ public class RoadmapRepository: NSManagedObject {
         self.setRoadmapData(fromRoadmap: roadmap, toRoadmap: newRoadmap)
         
         newRoadmap.id = editRoadmap.id
+        newRoadmap.shareKey = editRoadmap.shareKey
         // guarda os dias antigos
         if var oldDays = editRoadmap.day?.allObjects as? [DayLocal] {
             oldDays.sort { $0.id < $1.id }
@@ -160,9 +161,12 @@ public class RoadmapRepository: NSManagedObject {
         guard var newCopyRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         
         DataManager.shared.getRoadmapById(roadmapId: Int(newRoadmap.roadmap.id)) { roadmap in
-            newCopyRoadmap = self.updateFromBackend(editRoadmap: newCopyRoadmap, roadmap: roadmap)
-            let user = UserRepository.shared.getUser()
-            user[0].addToRoadmap(newCopyRoadmap)
+            if let roadmap = roadmap {
+                newCopyRoadmap = self.updateFromBackend(editRoadmap: newCopyRoadmap, roadmap: roadmap)
+                let user = UserRepository.shared.getUser()
+                user[0].addToRoadmap(newCopyRoadmap)
+            }
+            
             self.saveContext()
         }
         return newCopyRoadmap

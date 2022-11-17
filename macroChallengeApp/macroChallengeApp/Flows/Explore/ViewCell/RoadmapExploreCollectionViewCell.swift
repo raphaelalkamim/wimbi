@@ -217,12 +217,12 @@ extension RoadmapExploreCollectionViewCell {
             days = "days".localized()
         }
         subtitle.text = "\(peopleCount) \(travelers)  \(dayCount) \(days)"
-        var amount = " per person".localized()
+        var amount = "per person".localized()
         if budget > 1000 {
-            amount = " thousand per person".localized()
-            costByPerson.text = "\(currency) \(budget / Double(peopleCount) / 1000) \(amount)"
+            amount = "thousand per person".localized()
+            costByPerson.text = "\(currency) \(String(format: "%.2f", budget / Double(peopleCount) / 1000))  \(amount)"
         } else {
-            costByPerson.text = "\(currency) \(budget / Double(peopleCount))\(amount)"
+            costByPerson.text = "\(currency) \(String(format: "%.2f", budget / Double(peopleCount)))  \(amount)"
         }
         categoryName.text = category.localized()
         setupColor(category: category)

@@ -79,10 +79,28 @@ extension ProfileViewController: UICollectionViewDataSource {
         if openRoadmap.isShared {
             // chama o roadmap do back
             DataManager.shared.getRoadmapById(roadmapId: Int(roadmaps[indexPath.row].id)) { backRoadmap in
-                openRoadmap = RoadmapRepository.shared.updateFromBackend(editRoadmap: self.roadmaps[indexPath.row], roadmap: backRoadmap)
-                self.coordinator?.openRoadmap(roadmap: openRoadmap )
+                if let backRoadmap = backRoadmap {
+                    openRoadmap = RoadmapRepository.shared.updateFromBackend(editRoadmap: self.roadmaps[indexPath.row], roadmap: backRoadmap)
+                    self.coordinator?.openRoadmap(roadmap: openRoadmap )
+                } else {
+                    do {
+                        try RoadmapRepository.shared.deleteRoadmap(roadmap: openRoadmap)
+                        
+                        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+                        alert.view.tintColor = .accent
+                        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
+                        let string = NSAttributedString(string: "This itinerary has been deleted by another user".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
+                        alert.setValue(string, forKey: "attributedMessage")
+                        
+                        alert.addAction(UIAlertAction(title: "Okay".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+                        }))
+
+                        self.coordinator?.showAlertController(alert: alert)
+                    } catch {
+                        print(error)
+                    }
+                }
             }
-            self.coordinator?.openRoadmap(roadmap: openRoadmap)
         } else {
             self.coordinator?.openRoadmap(roadmap: openRoadmap)
         }

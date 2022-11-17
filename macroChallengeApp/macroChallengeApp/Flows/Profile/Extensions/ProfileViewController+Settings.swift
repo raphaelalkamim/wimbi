@@ -65,6 +65,10 @@ extension SettingsViewController: UITableViewDataSource {
                 if let photoId = userActual[0].photoId {
                     FirebaseManager.shared.deleteImage(category: 1, uuid: photoId)
                 }
+                let roadmaps = RoadmapRepository.shared.getRoadmap()
+                for roadmap in roadmaps {
+                    FirebaseManager.shared.deleteImage(category: 0, uuid: roadmap.imageId ?? "defaultImage")
+                }
                 do {
                     try UserRepository.shared.deleteUser(user: userActual[0])
                 } catch {
