@@ -29,12 +29,9 @@ class PreviewRoadmapViewController: UIViewController {
         return userC
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        getRoadmapById(roadmapId: self.roadmapId)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getRoadmapById(roadmapId: self.roadmapId)
         self.updateAllBudget()
         self.setupPreviewRoadmapView()
         
@@ -42,22 +39,6 @@ class PreviewRoadmapViewController: UIViewController {
         
         if tutorialEnable == false {
             self.tutorialTimer()
-        }
-        
-        DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser in
-            self.uuidImage = uuidUser
-            FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
-            }
-        }
-        
-        DataManager.shared.getLike(roadmapId: self.roadmapId) { response in
-            self.likeId = response
-            if self.likeId == 0 {
-                print("Not Liked")
-            } else {
-                print("Liked")
-                self.like.image = UIImage(systemName: "heart.fill")
-            }
         }
     }
     
@@ -102,6 +83,21 @@ class PreviewRoadmapViewController: UIViewController {
             self.previewView.hiddenSpinner()
         })
         
+        DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser in
+            self.uuidImage = uuidUser
+            FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
+            }
+        }
+        
+        DataManager.shared.getLike(roadmapId: self.roadmapId) { response in
+            self.likeId = response
+            if self.likeId == 0 {
+                print("Not Liked")
+            } else {
+                print("Liked")
+                self.like.image = UIImage(systemName: "heart.fill")
+            }
+        }
     }
     
     func setupContent(roadmap: Roadmaps) {

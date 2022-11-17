@@ -134,6 +134,13 @@ class PreviewRoadmapView: UIView {
         return view
     }()
     
+    lazy var username: UILabel = {
+        let title = UILabel()
+        title.text = "@username".localized()
+        title.stylize(with: designSystem.text.body)
+        return title
+    }()
+    
     func setupLoad() {
         showSpinner()
     }
@@ -154,6 +161,7 @@ class PreviewRoadmapView: UIView {
         contentView.addSubview(infoTitle)
         contentView.addSubview(calendarTitle)
         contentView.addSubview(roadmapTitle)
+        contentView.addSubview(username)
         contentView.addSubview(tutorialView)
         contentView.addSubview(emptyView)
         contentView.addSubview(emptyStateTitle)
@@ -210,8 +218,15 @@ class PreviewRoadmapView: UIView {
             make.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
         }
         
+        username.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+            
+        }
+        
         infoTitle.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.mediumNegative)
+            make.top.equalTo(username.snp.bottom).inset(designSystem.spacing.mediumNegative)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             

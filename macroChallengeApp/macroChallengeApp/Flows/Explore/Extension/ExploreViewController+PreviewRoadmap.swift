@@ -119,6 +119,11 @@ extension PreviewRoadmapViewController: UICollectionViewDelegate {
             }
         }
     }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
+            cell.disable()
+        }
+    }
 }
 // MARK: CollectionView
 extension PreviewRoadmapViewController: UICollectionViewDataSource {
