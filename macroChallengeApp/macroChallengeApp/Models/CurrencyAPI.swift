@@ -25,7 +25,6 @@ class CurrencyAPI {
         } catch {
             print(String(describing: error.localizedDescription))
         }
-        print(self.currency)
         return self.currency
     }
     

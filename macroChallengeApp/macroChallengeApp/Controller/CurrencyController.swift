@@ -106,7 +106,8 @@ class CurrencyController {
     func updateBudgetTotal(userCurrency: String, days: [DayLocal]) async -> Double {
         var budgetTotal = 0.0
         for day in days {
-            for activite in day.activity?.allObjects as [ActivityLocal] {
+            guard let activities = day.activity?.allObjects as? [ActivityLocal] else { return 0.0 }
+            for activite in  activities {
                 switch activite.currencyType {
                 case "R$":
                     if userCurrency == "R$" {

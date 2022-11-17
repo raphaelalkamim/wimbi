@@ -91,7 +91,7 @@ class ActivityRepository {
     func updateActivityDay(roadmap: RoadmapLocal, oldDay: DayLocal, activityLocal: ActivityLocal, newActivity: Activity) {
         if activityLocal.day?.date != newActivity.day?.date {
             // chama os dias do roadmap
-            let allDays = roadmap.day?.allObjects as [DayLocal]
+            guard let allDays = roadmap.day?.allObjects as? [DayLocal] else { return }
             for day in allDays where day.date == newActivity.day?.date {
                     // adiciona a atividade no dia encontrado no coreData
                 _ = self.createActivity(day: day, activity: newActivity, isNew: true)

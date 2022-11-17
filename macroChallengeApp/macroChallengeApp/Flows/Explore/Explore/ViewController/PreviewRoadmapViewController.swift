@@ -29,12 +29,9 @@ class PreviewRoadmapViewController: UIViewController {
         return userC
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        getRoadmapById(roadmapId: self.roadmapId)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getRoadmapById(roadmapId: self.roadmapId)
         self.updateAllBudget()
         self.setupPreviewRoadmapView()
         
@@ -42,22 +39,6 @@ class PreviewRoadmapViewController: UIViewController {
         
         if tutorialEnable == false {
             self.tutorialTimer()
-        }
-        
-        DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser in
-            self.uuidImage = uuidUser
-            FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
-            }
-        }
-        
-        DataManager.shared.getLike(roadmapId: self.roadmapId) { response in
-            self.likeId = response
-            if self.likeId == 0 {
-                print("Not Liked")
-            } else {
-                print("Liked")
-                self.like.image = UIImage(systemName: "heart.fill")
-            }
         }
     }
     
@@ -96,25 +77,38 @@ class PreviewRoadmapViewController: UIViewController {
                 self.roadmap = roadmap
                 self.setupContent(roadmap: roadmap)
             }
-            self.previewView.hiddenSpinner()
             self.previewView.infoTripCollectionView.reloadData()
             self.previewView.calendarCollectionView.reloadData()
             self.previewView.activitiesTableView.reloadData()
+            self.previewView.hiddenSpinner()
         })
-       
+        
+        DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser in
+            self.uuidImage = uuidUser
+            FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
+            }
+        }
+        
+        DataManager.shared.getLike(roadmapId: self.roadmapId) { response in
+            self.likeId = response
+            if self.likeId == 0 {
+                print("Not Liked")
+            } else {
+                print("Liked")
+                self.like.image = UIImage(systemName: "heart.fill")
+            }
+        }
     }
     
     func setupContent(roadmap: Roadmaps) {
         if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: roadmap.imageId)) {
             self.previewView.cover.image = cachedImage
-        } else { self.previewView.cover.image = UIImage(named: roadmap.imageId) }
+        } else { self.previewView.cover.image = UIImage(named: ("\(roadmap.category)Cover")) }
         self.previewView.title.text = roadmap.name
         self.roadmap.days.sort { $0.id < $1.id }
         self.roadmap.days[0].isSelected = true
         for index in 0..<self.roadmap.days.count {
-            self.roadmap.days[index].activity.sort {
-                $0.hour < $1.hour
-            }
+            self.roadmap.days[index].activity.sort { $0.hour < $1.hour }
         }
         updateConstraintsTable()
     }
@@ -152,7 +146,7 @@ class PreviewRoadmapViewController: UIViewController {
         present(alert, animated: true)
         roadmap.imageId = "defaultCover"
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: false)
-        let days = newRoadmap.day?.allObjects as [DayLocal]
+        guard let days = newRoadmap.day?.allObjects as? [DayLocal] else { return }
         let roadmapDays = self.roadmap.days
         for index in 0..<roadmapDays.count {
             let activiyArray = roadmapDays[index].activity

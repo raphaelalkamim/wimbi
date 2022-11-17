@@ -35,7 +35,7 @@ class FirebaseManager {
         let fileRef = storageRef.child("images/\(uuidImage)")
         
         // upload
-        let uploadTask = fileRef.putData(imageData, metadata: nil) { metadata, error in
+        _ = fileRef.putData(imageData, metadata: nil) { metadata, error in
             if error == nil && metadata != nil {
                 // save a reference to the file in Firestore
                 print("ATUALIZAR IMAGEM BACK")
