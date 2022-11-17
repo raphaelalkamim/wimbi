@@ -21,7 +21,7 @@ class SearchResultTableViewCell: UITableViewCell {
     lazy var title: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.stylize(with: designSystem.text.title)
+        label.stylize(with: designSystem.text.cellTitle)
         return label
     }()
     
@@ -76,7 +76,7 @@ class SearchResultTableViewCell: UITableViewCell {
         }
         
         caption.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.xSmallPositive)
+            make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.xSmallNegative)
             make.leading.equalTo(title.snp.leading)
             make.trailing.equalTo(title.snp.trailing)
         }
@@ -100,10 +100,11 @@ class SearchResultTableViewCell: UITableViewCell {
            
            if roadmap.budget > 1000 {
                amount = "thousand per person".localized()
-               cost = "\(roadmap.currency) \(String(format: "%.2f", roadmap.budget / Double(roadmap.peopleCount) / 1000)) \(amount)"
+               cost = " •  \(roadmap.currency) \(String(format: "%.2f", roadmap.budget / Double(roadmap.peopleCount) / 1000)) \(amount)"
            } else {
-               cost = "\(roadmap.currency) \(String(format: "%.2f", roadmap.budget / Double(roadmap.peopleCount))) \(amount)"
+               cost = " •  \(roadmap.currency) \(String(format: "%.2f", roadmap.budget / Double(roadmap.peopleCount))) \(amount)"
            }
-           self.caption.text = "\(roadmap.peopleCount) \(travelers) \(roadmap.dayCount) \(days) \(cost)"
+           self.caption.text = "\(roadmap.peopleCount) \(travelers)  \(roadmap.dayCount) \(days) \(cost)"
+
        }
 }
