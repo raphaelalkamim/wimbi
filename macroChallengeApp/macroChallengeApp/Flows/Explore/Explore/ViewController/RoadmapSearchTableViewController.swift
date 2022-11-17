@@ -36,13 +36,13 @@ class RoadmapSearchTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultTableViewCell.identifier, for: indexPath) as? SearchResultTableViewCell else {
             preconditionFailure("Cell not found")
         }
-        
+
         let roadmap = matchingRoadmaps[indexPath.row]
         cell.title.text = roadmap.name
         if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: roadmap.imageId)) {
             cell.cover.image = cachedImage
         } else {
-            cell.cover.image = UIImage(named: "beach0")
+            cell.cover.image = UIImage(named: "button\(roadmap.category)")
         }
         cell.setupContent(roadmap: roadmap)
         
