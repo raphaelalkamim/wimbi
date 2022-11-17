@@ -253,6 +253,7 @@ class PreviewRoadmapView: UIView {
         }
     }
     func hiddenSpinner() {
+        emptyView.isHidden = true
         activity.removeFromSuperview()
     }
 }

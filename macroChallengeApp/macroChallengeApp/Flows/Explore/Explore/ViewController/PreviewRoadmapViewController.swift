@@ -100,9 +100,6 @@ class PreviewRoadmapViewController: UIViewController {
             self.previewView.calendarCollectionView.reloadData()
             self.previewView.activitiesTableView.reloadData()
             self.previewView.hiddenSpinner()
-            self.previewView.emptyView.isHidden = true
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-//            }
         })
         
     }
