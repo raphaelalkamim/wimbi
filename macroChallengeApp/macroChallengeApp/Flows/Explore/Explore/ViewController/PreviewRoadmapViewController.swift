@@ -107,14 +107,12 @@ class PreviewRoadmapViewController: UIViewController {
     func setupContent(roadmap: Roadmaps) {
         if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: roadmap.imageId)) {
             self.previewView.cover.image = cachedImage
-        } else { self.previewView.cover.image = UIImage(named: roadmap.imageId) }
+        } else { self.previewView.cover.image = UIImage(named: ("\(roadmap.category)Cover")) }
         self.previewView.title.text = roadmap.name
         self.roadmap.days.sort { $0.id < $1.id }
         self.roadmap.days[0].isSelected = true
         for index in 0..<self.roadmap.days.count {
-            self.roadmap.days[index].activity.sort {
-                $0.hour < $1.hour
-            }
+            self.roadmap.days[index].activity.sort { $0.hour < $1.hour }
         }
         updateConstraintsTable()
     }

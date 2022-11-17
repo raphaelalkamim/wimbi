@@ -304,7 +304,7 @@ extension PreviewRoadmapView {
     func animateCollection() {
         infoTripCollectionView.layoutIfNeeded()
         UIView.animate(withDuration: 5,
-                       delay: 2,
+                       delay: 1,
                        usingSpringWithDamping: 0.8,
                        initialSpringVelocity: 0,
                        options: [],
