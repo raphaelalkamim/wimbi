@@ -104,6 +104,7 @@ extension PreviewRoadmapViewController: UICollectionViewDelegate {
             cell.selectedButton()
             // select a day
             self.daySelected = indexPath.row
+            previewView.emptyState(activities: roadmap.days[self.daySelected].activity)
             self.roadmap.days[daySelected].isSelected = true
             // view updates
             updateConstraintsTable()
@@ -225,7 +226,6 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCell.identifier, for: indexPath) as? ActivityTableViewCell else {
             fatalError("TableCell not found")
         }
-        
         let activity = roadmap.days[self.daySelected].activity[indexPath.row]
         cell.localButton.tag = indexPath.row
         if activity.location.isEmpty { cell.localButton.isHidden = true

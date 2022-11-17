@@ -220,9 +220,9 @@ extension RoadmapExploreCollectionViewCell {
         var amount = "per person".localized()
         if budget > 1000 {
             amount = "thousand per person".localized()
-            costByPerson.text = "\(currency) \(String(format: "%.2f", budget / Double(peopleCount) / 1000))  \(amount)"
+            costByPerson.text = "\(currency) \(String(format: "%.2f", budget / Double(peopleCount) / 1000)) \(amount)"
         } else {
-            costByPerson.text = "\(currency) \(String(format: "%.2f", budget / Double(peopleCount)))  \(amount)"
+            costByPerson.text = "\(currency) \(String(format: "%.2f", budget / Double(peopleCount))) \(amount)"
         }
         categoryName.text = category.localized()
         setupColor(category: category)

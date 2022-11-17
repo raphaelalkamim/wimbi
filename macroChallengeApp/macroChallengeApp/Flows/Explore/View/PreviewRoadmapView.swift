@@ -71,6 +71,16 @@ class PreviewRoadmapView: UIView {
         return collection
     }()
     
+    lazy var emptyStateTitle: UILabel = {
+        let title = UILabel()
+        title.text = "Nenhuma atividade programada para este dia.".localized()
+        title.numberOfLines = 0
+        title.font = designSystem.text.body.font
+        title.textAlignment = .center
+        title.textColor = .textPrimary
+        return title
+    }()
+    
     lazy var infoTitle: UILabel = {
         let title = UILabel()
         title.text = "ABOUT".localized()
@@ -140,9 +150,23 @@ class PreviewRoadmapView: UIView {
         contentView.addSubview(calendarTitle)
         contentView.addSubview(roadmapTitle)
         contentView.addSubview(tutorialView)
+        contentView.addSubview(emptyStateTitle)
+        emptyStateTitle.isHidden = true
         tutorialView.isHidden = true
         tutorialView.addSubview(tutorialTitle)
         setupConstraints()
+    }
+    
+    func emptyState(activities: [Activity]) {
+        if activities.isEmpty {
+            activitiesTableView.isHidden = true
+            emptyStateTitle.isHidden = false
+            scrollView.isScrollEnabled = false
+        } else {
+            activitiesTableView.isHidden = false
+            emptyStateTitle.isHidden = true
+            scrollView.isScrollEnabled = true
+        }
     }
     
     func setupConstraints() {
@@ -230,6 +254,13 @@ class PreviewRoadmapView: UIView {
             make.trailing.equalToSuperview()
             make.top.equalToSuperview()
             make.height.equalToSuperview()
+            
+        }
+        
+        emptyStateTitle.snp.makeConstraints { make in
+            make.top.equalTo(roadmapTitle.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             
         }
     }
