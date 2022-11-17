@@ -14,12 +14,12 @@ struct EmptyWidgetView: View {
             HStack {
                 Spacer()
                 VStack {
-                    Text("Que tal criar um novo roteiro?")
+                    Text("How about creating a new roadmap?".localized())
                         .font(.custom("Avenir-Black", size: 20))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
                         .colorInvert()
-                    Text("Crie ou duplique um roteiro")
+                    Text("Click here and create or duplicate a roadmap".localized())
                         .font(.custom("Avenir-Book", size: 12))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
