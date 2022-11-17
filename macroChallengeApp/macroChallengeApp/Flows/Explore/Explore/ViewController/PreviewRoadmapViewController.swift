@@ -17,6 +17,7 @@ class PreviewRoadmapViewController: UIViewController {
     var duplicate = UIBarButtonItem()
     var roadmapId: Int = 0
     var roadmap: Roadmaps = Roadmaps()
+    var days: [Day] = []
     var daySelected = 0
     var likeId = 0
     let tutorialEnable = UserDefaults.standard.bool(forKey: "tutorialExplore")
@@ -77,6 +78,8 @@ class PreviewRoadmapViewController: UIViewController {
                 self.roadmap = roadmap
                 self.setupContent(roadmap: roadmap)
             }
+            self.days = self.roadmap.days
+            self.days.sort { $0.date < $1.date }
             self.previewView.infoTripCollectionView.reloadData()
             self.previewView.calendarCollectionView.reloadData()
             self.previewView.activitiesTableView.reloadData()
