@@ -83,6 +83,7 @@ class EditProfileView: UIView {
         textField.text = "@malcon"
         textField.layer.cornerRadius = 14
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0)
+        textField.autocapitalizationType = .none
         textField.keyboardType = .default
         textField.returnKeyType = UIReturnKeyType.done
         textField.autocorrectionType = UITextAutocorrectionType.no

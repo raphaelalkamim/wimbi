@@ -102,7 +102,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
             info.setImage(UIImage(systemName: "person.fill"), for: .normal)
         case 3:
             title.text = "LIKES".localized()
-            let countLikes = 0
+            let countLikes = roadmap.likesCount
             info.setTitle(String(countLikes), for: .normal)
         case 4:
             title.text = "CREATED BY".localized()

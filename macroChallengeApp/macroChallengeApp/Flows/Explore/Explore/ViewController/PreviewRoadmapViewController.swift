@@ -83,10 +83,12 @@ class PreviewRoadmapViewController: UIViewController {
             self.previewView.infoTripCollectionView.reloadData()
             self.previewView.calendarCollectionView.reloadData()
             self.previewView.activitiesTableView.reloadData()
-            self.previewView.hiddenSpinner()
         })
         
-        DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser in
+        DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser, username in
+            print(uuidUser, username)
+            self.previewView.username.text = "@\(username)"
+            // self.previewView.username.textColor = .accent
             self.uuidImage = uuidUser
             FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
             }
@@ -100,6 +102,7 @@ class PreviewRoadmapViewController: UIViewController {
                 print("Liked")
                 self.like.image = UIImage(systemName: "heart.fill")
             }
+            self.previewView.hiddenSpinner()
         }
     }
     

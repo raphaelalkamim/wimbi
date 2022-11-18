@@ -113,7 +113,14 @@ extension ProfileViewController: UICollectionViewDataSource {
         let isNew = false
         cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: isNew)
         cell.setupImage(imageId: roadmaps[indexPath.row].imageId ?? "defaultCover", category: roadmaps[indexPath.row].category ?? "City")
-        cell.likeLabel.text = String(roadmaps[indexPath.row].likesCount)
+        if roadmaps[indexPath.row].isPublic == false {
+            cell.likeImage.image = UIImage(systemName: "lock.fill")
+            cell.likeLabel.isHidden = true
+        } else {
+            cell.likeLabel.isHidden = false
+            cell.likeImage.image = UIImage(systemName: "heart.fill")
+            cell.likeLabel.text = String(roadmaps[indexPath.row].likesCount)
+        }
         cell.setupAnchors()
         return cell
     }
