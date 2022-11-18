@@ -818,7 +818,7 @@ class DataManager {
         }
     }
     
-    func getRoadmapUserImage(roadmapId: Int, _ completion: @escaping ((_ uuidUser: String) -> Void)) {
+    func getRoadmapUserImage(roadmapId: Int, _ completion: @escaping ((_ uuidUser: String, _ username: String) -> Void)) {
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "roadmaps/\(roadmapId)/userImage")!
         
@@ -838,11 +838,12 @@ class DataManager {
                 
                 do {
                     // tentar transformar os dados no tipo Cohort
-                    guard let userUUID = String(data: data, encoding: String.Encoding.utf8) else { return }
-                    
+                    let result = try JSONDecoder().decode([String].self, from: data)
                     DispatchQueue.main.async {
-                        completion(userUUID)
+                        completion(result[0], result[1])
                     }
+                    
+                   
                 } catch {
                     print(error)
                 }
