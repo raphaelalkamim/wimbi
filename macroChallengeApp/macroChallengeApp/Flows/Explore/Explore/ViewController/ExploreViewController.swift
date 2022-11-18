@@ -55,7 +55,7 @@ class ExploreViewController: UIViewController {
         let mockManager = DataMockManager()
         if let localData = mockManager.readLocalFile(forName: "dataRoadmaps") {
             self.roadmapsMock = mockManager.parse(jsonData: localData)!
-            self.roadmapsMock.sort { $0.likesCount < $1.likesCount }
+            self.roadmapsMock.sort { $0.likesCount > $1.likesCount }
             self.explorerView.hiddenSpinner()
         }
     }
