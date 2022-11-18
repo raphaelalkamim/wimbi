@@ -86,7 +86,7 @@ class PreviewRoadmapViewController: UIViewController {
             self.previewView.hiddenSpinner()
         })
         
-        DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser in
+        DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser, username in
             self.uuidImage = uuidUser
             FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
             }
