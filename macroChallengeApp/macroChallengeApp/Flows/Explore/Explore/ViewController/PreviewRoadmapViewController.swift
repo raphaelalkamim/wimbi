@@ -108,6 +108,7 @@ class PreviewRoadmapViewController: UIViewController {
             self.previewView.cover.image = cachedImage
         } else { self.previewView.cover.image = UIImage(named: ("\(roadmap.category)Cover")) }
         self.previewView.title.text = roadmap.name
+        self.previewView.username.text = "@\()"
         self.roadmap.days.sort { $0.id < $1.id }
         self.roadmap.days[0].isSelected = true
         for index in 0..<self.roadmap.days.count {
