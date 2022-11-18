@@ -83,10 +83,12 @@ class PreviewRoadmapViewController: UIViewController {
             self.previewView.infoTripCollectionView.reloadData()
             self.previewView.calendarCollectionView.reloadData()
             self.previewView.activitiesTableView.reloadData()
-            self.previewView.hiddenSpinner()
         })
         
         DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser, username in
+            print(uuidUser, username)
+            self.previewView.username.text = "@\(username)"
+            // self.previewView.username.textColor = .accent
             self.uuidImage = uuidUser
             FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
             }
@@ -100,6 +102,7 @@ class PreviewRoadmapViewController: UIViewController {
                 print("Liked")
                 self.like.image = UIImage(systemName: "heart.fill")
             }
+            self.previewView.hiddenSpinner()
         }
     }
     
@@ -108,7 +111,6 @@ class PreviewRoadmapViewController: UIViewController {
             self.previewView.cover.image = cachedImage
         } else { self.previewView.cover.image = UIImage(named: ("\(roadmap.category)Cover")) }
         self.previewView.title.text = roadmap.name
-        self.previewView.username.text = "@\()"
         self.roadmap.days.sort { $0.id < $1.id }
         self.roadmap.days[0].isSelected = true
         for index in 0..<self.roadmap.days.count {

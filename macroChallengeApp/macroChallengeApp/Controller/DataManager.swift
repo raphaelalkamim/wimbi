@@ -840,7 +840,7 @@ class DataManager {
                     // tentar transformar os dados no tipo Cohort
                     let result = try JSONDecoder().decode([String].self, from: data)
                     DispatchQueue.main.async {
-                        completion(result[0], result[1])
+                        completion(result[1], result[0])
                     }
                     
                    
