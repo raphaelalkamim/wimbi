@@ -101,6 +101,11 @@ extension MyTripViewController {
 // MARK: Collections - Delegate
 extension MyTripViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // desabilita todas as celulas que nao sao a que recebeu o clique
+        for daysCallendar in days {
+            daysCallendar.isSelected = false
+        }
+        
         if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
             // button status
             cell.selectedButton()
@@ -120,15 +125,7 @@ extension MyTripViewController: UICollectionViewDelegate {
             }
             self.updateTotalBudgetValue()
         }
-        
-        // desabilita todas as celulas que nao sao a que recebeu o clique
-        for index in 0..<roadmap.dayCount where index != indexPath.row {
-            let newIndexPath = IndexPath(item: Int(index), section: 0)
-            if let cell = collectionView.cellForItem(at: newIndexPath) as? CalendarCollectionViewCell {
-                self.days[Int(index)].isSelected = false
-                cell.disable()
-            }
-        }
+        collectionView.reloadData()
         self.updateAllBudget()
         RoadmapRepository.shared.saveContext()
     }
@@ -156,7 +153,10 @@ extension MyTripViewController: UICollectionViewDataSource {
                 preconditionFailure("Cell not find")
             }
             cell.setDay(date: days[indexPath.row].date ?? "1")
-            if days[indexPath.row].isSelected == true { cell.selectedButton() }
+            if days[indexPath.row].isSelected == true {
+                cell.selectedButton()
+                
+            } else { cell.disable() }
             return cell
         }
     }

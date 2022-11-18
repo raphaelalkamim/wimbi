@@ -99,6 +99,11 @@ extension PreviewRoadmapViewController {
 
 extension PreviewRoadmapViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // desabilita todas as celulas que nao sao a que recebeu o clique
+        for index in 0..<roadmap.dayCount where index != indexPath.row {
+            self.roadmap.days[Int(index)].isSelected = false
+        }
+        
         if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
             // button status
             cell.selectedButton()
@@ -110,14 +115,8 @@ extension PreviewRoadmapViewController: UICollectionViewDelegate {
             updateConstraintsTable()
             self.previewView.activitiesTableView.reloadData()
         }
-        // desabilita todas as celulas que nao sao a que recebeu o clique
-        for index in 0..<roadmap.dayCount where index != indexPath.row {
-            let newIndexPath = IndexPath(row: index, section: 0)
-            if let cell = collectionView.cellForItem(at: newIndexPath) as? CalendarCollectionViewCell {
-                self.roadmap.days[Int(index)].isSelected = false
-                cell.disable()
-            }
-        }
+        collectionView.reloadData()
+
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
@@ -199,7 +198,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
             cell.dayButton.setTitle("\(indexPath.row + 1)º", for: .normal)
             if self.roadmap.days[indexPath.row].isSelected == true {
                 cell.selectedButton()
-            }
+            } else { cell.disable() }
             return cell
         }
     }
