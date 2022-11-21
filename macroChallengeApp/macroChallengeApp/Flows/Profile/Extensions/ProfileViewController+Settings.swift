@@ -65,6 +65,7 @@ extension SettingsViewController: UITableViewDataSource {
                 if let photoId = userActual[0].photoId {
                     FirebaseManager.shared.deleteImage(category: 1, uuid: photoId)
                 }
+                FirebaseManager.shared.createAnalyticsEvent(event: "delete_account")
                 let roadmaps = RoadmapRepository.shared.getRoadmap()
                 for roadmap in roadmaps {
                     FirebaseManager.shared.deleteImage(category: 0, uuid: roadmap.imageId ?? "defaultImage")
@@ -93,6 +94,7 @@ extension SettingsViewController: UITableViewDataSource {
                 UserDefaults.standard.setValue("", forKey: "authorization")
                 UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
                 UserDefaults.standard.set(nil, forKey: "user")
+                FirebaseManager.shared.createAnalyticsEvent(event: "sign_out")
                 let userActual = UserRepository.shared.getUser()
                 do {
                     try UserRepository.shared.deleteUser(user: userActual[0])

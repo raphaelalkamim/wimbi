@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import FirebaseCore
+import FirebaseAnalytics
 
 class DataManager {
     public static var shared = DataManager()
@@ -107,6 +108,8 @@ class DataManager {
                     }
                     if httpResponse.statusCode == 200 {
                         print("Criou")
+                        FirebaseManager.shared.createAnalyticsEvent(event: AnalyticsEventSignUp)
+
                     }
                     
                 }
@@ -153,6 +156,9 @@ class DataManager {
                         let jwtToken = httpResponse.value(forHTTPHeaderField: "Authorization")
                         UserDefaults.standard.setValue(jwtToken, forKey: "authorization")
                         UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                        
+                        FirebaseManager.shared.createAnalyticsEvent(event: AnalyticsEventLogin)
+
                         
                         DispatchQueue.main.async {
                             self.delegate?.finishLogin()
@@ -843,7 +849,6 @@ class DataManager {
                         completion(result[1], result[0])
                     }
                     
-                   
                 } catch {
                     print(error)
                 }
