@@ -65,4 +65,10 @@ extension ExploreViewController: UISearchBarDelegate {
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         print("filtro")
     }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if let searchText = searchBar.text {
+            FirebaseManager.shared.createAnalyticsEvent(event: "search_roadmap", parameters: ["search_text": searchText])
+        }
+    }
 }

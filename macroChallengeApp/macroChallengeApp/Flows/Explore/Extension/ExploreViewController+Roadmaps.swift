@@ -47,6 +47,7 @@ extension ExploreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if roadmapsMock.isEmpty {
             coordinator?.previewRoadmap(roadmapId: roadmaps[indexPath.row].id)
+            FirebaseManager.shared.createAnalyticsEvent(event: "selected_roadmap", parameters: ["roadmap_name": roadmaps[indexPath.row].name])
         } else {
             coordinator?.previewMockRoadmap(roadmap: roadmapsMock[indexPath.row])
         }

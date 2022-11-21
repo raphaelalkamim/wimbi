@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import FirebaseCore
+import FirebaseAnalytics
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = ExploreViewController()
         window?.makeKeyAndVisible()
         FirebaseApp.configure()
+        FirebaseManager.shared.createAnalyticsEvent(event: AnalyticsEventAppOpen)
+        Analytics.logEvent(AnalyticsEventAppOpen, parameters: nil)
         return true
     }
 
