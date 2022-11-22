@@ -18,15 +18,19 @@ class CurrentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         roadmaps = RoadmapRepository.shared.getRoadmap()
+        var mostRecentRoadmaps: [RoadmapLocal] = []
         roadmaps.sort {
             $0.date ?? Date() < $1.date ?? Date()
         }
+        for newRoadmap in roadmaps {
+            if newRoadmap.dateFinal ?? Date() > Date() { mostRecentRoadmaps.append(newRoadmap) }
+        }
+        roadmap = mostRecentRoadmaps[0]
         setup()
     }
 }
@@ -34,7 +38,6 @@ class CurrentViewController: UIViewController {
 extension CurrentViewController {
     func setup() {
         if !roadmaps.isEmpty {
-            roadmap = roadmaps[0]
             currentEmptyView.removeFromSuperview()
             setupCountDownView()
             configCountDown()

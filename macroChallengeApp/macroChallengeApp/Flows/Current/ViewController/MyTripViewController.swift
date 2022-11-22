@@ -7,8 +7,9 @@
 
 import Foundation
 import UIKit
+import CoreData
 
-class MyTripViewController: UIViewController {
+class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate{
     weak var coordinator: ProfileCoordinator?
     weak var coordinatorCurrent: CurrentCoordinator?
     let network: NetworkMonitor = NetworkMonitor.shared
@@ -31,10 +32,26 @@ class MyTripViewController: UIViewController {
         return userC
     }()
     
+    private lazy var fetchResultController: NSFetchedResultsController<RoadmapLocal> = {
+        let request: NSFetchRequest<RoadmapLocal> = RoadmapLocal.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal.createdAt, ascending: false)]
+        let frc = NSFetchedResultsController(fetchRequest: request,
+                                             managedObjectContext: RoadmapRepository.shared.context,
+                                             sectionNameKeyPath: nil,
+                                             cacheName: nil)
+        frc.delegate = self
+        return frc
+    }()
+    
     override func viewDidLoad() {
         network.startMonitoring()
         super.viewDidLoad()
         self.setupMyTripView()
+        do {
+            try fetchResultController.performFetch()
+        } catch {
+            fatalError("Não foi possível atualizar conteúdo")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -210,5 +227,15 @@ extension MyTripViewController: ReviewTravelDelegate {
         myTripView.calendarCollectionView.reloadData()
         coordinator?.backPage()
         coordinatorCurrent?.backPage()
+    }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        // let newRoadmaps = RoadmapRepository.shared.getRoadmap()
+        guard let newRoadmaps = controller.fetchedObjects as? [RoadmapLocal] else { return }
+        self.roadmap = self.findRoadmap(roadmaps: newRoadmaps) ?? self.roadmap
+        
+    }
+    func findRoadmap(roadmaps: [RoadmapLocal]) -> RoadmapLocal? {
+        for roadmap in roadmaps where roadmap.name == self.roadmap.name { return roadmap }
+        return nil
     }
 }

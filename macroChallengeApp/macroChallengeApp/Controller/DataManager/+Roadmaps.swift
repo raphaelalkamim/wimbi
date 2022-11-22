@@ -153,25 +153,23 @@ extension DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        if let token = UserDefaults.standard.string(forKey: "authorization") {
-            request.setValue(token, forHTTPHeaderField: "Authorization")
-            let task = session.dataTask(with: request) { data, response, error in
-                guard let data = data else { return }
-                if error != nil {
-                    print(String(describing: error?.localizedDescription))
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data else { return }
+            if error != nil {
+                print(String(describing: error?.localizedDescription))
+            }
+            
+            do {
+                let result = try JSONDecoder().decode([String].self, from: data)
+                DispatchQueue.main.async {
+                    completion(result[1], result[0])
                 }
                 
-                do {
-                    let result = try JSONDecoder().decode([String].self, from: data)
-                    DispatchQueue.main.async {
-                        completion(result[1], result[0])
-                    }
-                    
-                } catch { print(error) }
-            }
-            task.resume()
-            
+            } catch { print(error) }
         }
+        task.resume()
+        
     }
     // MARK: - PUT
     func putRoadmap(roadmap: Roadmaps, roadmapId: Int, newDaysCore: [DayLocal], selectedImage: UIImage? = nil) {

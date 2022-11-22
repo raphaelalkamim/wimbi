@@ -32,10 +32,12 @@ extension MyTripViewController {
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
         myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
 
-        if (coordinatorCurrent != nil) {
-            myTripView.animateCollection(index: 2)
-        } else {
-            myTripView.animateCollection(index: 3)
+        if tutorialEnable == false {
+            if (coordinatorCurrent != nil) {
+                myTripView.animateCollection(index: 2)
+            } else {
+                myTripView.animateCollection(index: 3)
+            }
         }
     }
     func setupConstraints() {

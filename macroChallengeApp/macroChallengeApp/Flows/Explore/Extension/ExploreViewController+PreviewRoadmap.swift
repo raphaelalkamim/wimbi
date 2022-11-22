@@ -23,7 +23,7 @@ extension PreviewRoadmapViewController {
         setupNavControl()
         setupConstraints()
         updateConstraintsTable()
-        self.previewView.animateCollection()
+        if tutorialEnable == false { self.previewView.animateCollection() }
     }
     
     func setupNavControl() {
@@ -114,9 +114,8 @@ extension PreviewRoadmapViewController: UICollectionViewDelegate {
             // view updates
             updateConstraintsTable()
             self.previewView.activitiesTableView.reloadData()
+            collectionView.reloadData()
         }
-        collectionView.reloadData()
-
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
