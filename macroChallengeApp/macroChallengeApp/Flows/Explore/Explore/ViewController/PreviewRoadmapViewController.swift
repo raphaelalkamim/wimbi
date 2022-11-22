@@ -92,8 +92,9 @@ class PreviewRoadmapViewController: UIViewController {
             self.uuidImage = uuidUser
             FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
             }
+            self.previewView.hiddenSpinner()
         }
-        
+
         DataManager.shared.getLike(roadmapId: self.roadmapId) { response in
             self.likeId = response
             if self.likeId == 0 {
@@ -102,7 +103,6 @@ class PreviewRoadmapViewController: UIViewController {
                 print("Liked")
                 self.like.image = UIImage(systemName: "heart.fill")
             }
-            self.previewView.hiddenSpinner()
         }
     }
     

@@ -73,10 +73,6 @@ class DataManager {
             }
         }
     }
-    
-   
-    
-    
     func deleteObjectBack(objectID: Int = 0, username: String = "", urlPrefix: String) {
         let session: URLSession = URLSession.shared
         var url: URL
@@ -102,14 +98,6 @@ class DataManager {
             task.resume()
         }
     }
-    
-
-   
-    
-    
-    
-    
-    
     func decodeType<T: Codable>(_ class: T, data: Data) -> T? {
         do {
             let newData = try JSONDecoder().decode(T.self, from: data)
