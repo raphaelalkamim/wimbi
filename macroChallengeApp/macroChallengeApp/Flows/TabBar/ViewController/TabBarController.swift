@@ -39,10 +39,14 @@ class TabBarController: UITabBarController {
     func setupCoordnators() {
         explore.start()
         if !roadmaps.isEmpty {
+            var mostRecentRoadmaps: [RoadmapLocal] = []
             roadmaps.sort {
                 $0.date ?? Date() < $1.date ?? Date()
             }
-            roadmap = roadmaps[0]
+            for newRoadmap in roadmaps {
+                if newRoadmap.dateFinal ?? Date() > Date() { mostRecentRoadmaps.append(newRoadmap) }
+            }
+            roadmap = mostRecentRoadmaps[0]
             let date = Date()
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .short
