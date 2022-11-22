@@ -160,6 +160,7 @@ class PreviewRoadmapViewController: UIViewController {
                 _ = ActivityRepository.shared.createActivity(day: days[index], activity: activity, isNew: true)
             }
         }
+        FirebaseManager.shared.createAnalyticsEvent(event: "duplicate_roadmap", parameters: ["roadmap_id": self.roadmap.id])
     }
     func updateAllBudget() {
         Task {

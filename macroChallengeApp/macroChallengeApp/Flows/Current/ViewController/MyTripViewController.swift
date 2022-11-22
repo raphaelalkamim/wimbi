@@ -164,6 +164,7 @@ class MyTripViewController: UIViewController {
             activityViewController.popoverPresentationController?.sourceView = self.view
             activityViewController.excludedActivityTypes = []
             self.roadmap.isShared = true
+            FirebaseManager.shared.createAnalyticsEvent(event: "share_roadmap")
             RoadmapRepository.shared.saveContext()
             self.present(activityViewController, animated: true, completion: nil)
         } else {

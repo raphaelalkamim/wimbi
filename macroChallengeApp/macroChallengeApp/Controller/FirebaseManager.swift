@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseStorage
+import FirebaseAnalytics
 import UIKit
 
 class FirebaseManager {
@@ -14,7 +15,7 @@ class FirebaseManager {
     public let imageCash = NSCache<NSString, UIImage>()
     
     private init() {}
-    
+
     func uploadImageRoadmap(image: UIImage, roadmapId: Int, roadmapCore: RoadmapLocal? = nil, uuid: String? = nil) {
         // create storage reference
         let storageRef = Storage.storage().reference()
@@ -118,5 +119,9 @@ class FirebaseManager {
                 print("Deletou")
             }
         }
+    }
+    
+    func createAnalyticsEvent(event: String, parameters: [String: Any]? = nil ) {
+        Analytics.logEvent(event, parameters: parameters)
     }
 }
