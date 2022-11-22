@@ -61,7 +61,7 @@
 // MARK: -  Explore
 "New roadmap" = "Novo roteiro";
 "Join roadmap" = "Junte-se ao roteiro";
-"Add the code to have access to the roadmap" = "Adicione o código para juntar-se ao roteiro";
+"Add a trip code that a friend shared with you to have access to the roadmap" = "Adicione o código que um amigo compartilhou com você para juntar-se ao roteiro";
 "Join" = "Junte-se";
 "No internet connection" = "Sem conexão com a internet";
 "Successfully duplicated!" = "Duplicado com sucesso!";
@@ -148,7 +148,7 @@
 "FRI" = "SEX";
 "SAT" = "SÁB";
 "What do you think about exploring and creating a new roadmap?" = "Que tal desbravar e criar um novo roteiro?";
-"Follow the countdown or view your current trip roadmap on this screen." = "Acompanhe a contagem regressiva ou visualize o roteiro de sua viagem atual nesta tela.";
+"Create a new intinerary and follow the countdown or view your current trip roadmap on this screen." = "Crie um novo roteiro e companhe a contagem regressiva ou visualize sua viagem atual nesta tela.";
 "Which app would you like to use to access the address?" = "Você deseja abrir o endereço em qual aplicativo?";
 "Open on Maps" = "Abrir no Mapas";
 "Open on Waze" = "Abrir no Waze";
