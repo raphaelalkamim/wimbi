@@ -23,7 +23,7 @@ extension PreviewRoadmapViewController {
         setupNavControl()
         setupConstraints()
         updateConstraintsTable()
-        self.previewView.animateCollection()
+        if tutorialEnable == false { self.previewView.animateCollection() }
     }
     
     func setupNavControl() {
