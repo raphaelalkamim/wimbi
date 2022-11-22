@@ -13,6 +13,7 @@ class CurrentViewController: UIViewController {
     let currentCountDownView = CurrentCountDown()
     var roadmaps = RoadmapRepository.shared.getRoadmap()
     var roadmap: RoadmapLocal = RoadmapLocal()
+    var mostRecentRoadmaps: [RoadmapLocal] = []
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     
     override func viewDidLoad() {
@@ -23,14 +24,13 @@ class CurrentViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         roadmaps = RoadmapRepository.shared.getRoadmap()
-        var mostRecentRoadmaps: [RoadmapLocal] = []
+        self.mostRecentRoadmaps = []
         roadmaps.sort {
             $0.date ?? Date() < $1.date ?? Date()
         }
         for newRoadmap in roadmaps {
             if newRoadmap.dateFinal ?? Date() > Date() { mostRecentRoadmaps.append(newRoadmap) }
         }
-        roadmap = mostRecentRoadmaps[0]
         setup()
     }
 }
@@ -38,6 +38,7 @@ class CurrentViewController: UIViewController {
 extension CurrentViewController {
     func setup() {
         if !roadmaps.isEmpty {
+            roadmap = mostRecentRoadmaps[0]
             currentEmptyView.removeFromSuperview()
             setupCountDownView()
             configCountDown()
