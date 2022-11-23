@@ -1037,7 +1037,7 @@
                         "location": "-27.5877749384813, -48.54291401411633",
                         "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
                         "link": "",
-                        "hour": "13:00",
+                        "hour": "21:00",
                         "budget": 0.0,
                         "currency": "R$"
                     }
@@ -1055,7 +1055,7 @@
                         "location": "-27.5877749384813, -48.54291401411633",
                         "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
                         "link": "",
-                        "hour": "13:00",
+                        "hour": "09:00",
                         "budget": 0.0,
                         "currency": "R$"
                     },
@@ -1073,7 +1073,7 @@
                     },
                     {
                         "id": 57,
-                        "name": "Acqua Plage ",
+                        "name": "Acqua Plage",
                         "tips": "",
                         "category": "food",
                         "location": "-27.437873334166998, -48.493758501725",
@@ -1103,7 +1103,7 @@
                         "location": "-27.5877749384813, -48.54291401411633",
                         "address": "Avenida Mauro Ramos, 1512, Centro, Florianópolis, SC, Brasil",
                         "link": "",
-                        "hour": "13:00",
+                        "hour": "16:00",
                         "budget": 0.0,
                         "currency": "R$"
                     },
@@ -1151,7 +1151,7 @@
                     },
                     {
                         "id": 2,
-                        "name": "Mirante lagoa da conceição",
+                        "name": "Mirante Lagoa da Conceição",
                         "tips": "",
                         "category": "leisure",
                         "location": "-27.600108443552365, -48.48118990088404",
@@ -1256,13 +1256,12 @@
         "likesCount": 0,
         "day": [
             {
-                "id": 39,
                 "id": 38,
                 "date": "01/12/2022",
                 "activity": [
                     {
                         "id": 39,
-                        "name": "Café da manhã: Ibis Paulista",
+                        "name": "Check in - Ibis Paulista",
                         "tips": "",
                         "category": "accommodation",
                         "location": "-23.556717127604113, -46.66187714781553",
@@ -1270,6 +1269,18 @@
                         "link": "",
                         "hour": "09:00",
                         "budget": 1610.0,
+                        "currency": "R$"
+                    },
+                    {
+                        "id": 39,
+                        "name": "Café da manhã no Hotel",
+                        "tips": "",
+                        "category": "food",
+                        "location": "-23.556717127604113, -46.66187714781553",
+                        "address": "Avida Paulista, 2355, Bela Vista, São Paulo, SP, Brasil",
+                        "link": "",
+                        "hour": "09:00",
+                        "budget": 0.0,
                         "currency": "R$"
                     },
                     {
