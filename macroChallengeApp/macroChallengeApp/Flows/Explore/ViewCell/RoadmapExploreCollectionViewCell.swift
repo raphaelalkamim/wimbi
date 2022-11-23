@@ -188,7 +188,7 @@ extension RoadmapExploreCollectionViewCell {
         if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: imageId)) {
             cover.image = cachedImage
         } else {
-//            cover.image = UIImage(named: setupImage(category: category))
+            cover.image = UIImage(named: setupImage(category: category))
         }
         title.text = name
         var travelers = ""
