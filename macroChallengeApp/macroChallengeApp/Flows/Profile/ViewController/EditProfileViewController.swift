@@ -30,6 +30,8 @@ class EditProfileViewController: UIViewController {
         self.userLocal = UserRepository.shared.getUser()
         self.changeToUserInfo(user: userLocal[0])
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save".localized(), style: .plain, target: self, action: #selector(saveProfile))
+        self.editProfileView.nameTextField.delegate = self
+        self.editProfileView.usernameTextField.delegate = self
     }
     
     @objc func saveProfile() {
@@ -80,6 +82,13 @@ class EditProfileViewController: UIViewController {
                 print("Nao permitido")
             }
         }
+    }
+}
+
+extension EditProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // dismiss keyboard
+        return true
     }
 }
 
