@@ -99,7 +99,6 @@
 		13C8A14928CFA66200994196 /* DestinyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A14828CFA66200994196 /* DestinyView.swift */; };
 		13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A15128CFC29500994196 /* HandleMapSearch.swift */; };
 		13EC5C5228DB8FF0005F7128 /* DesignDefaultImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC5C5128DB8FF0005F7128 /* DesignDefaultImages.swift */; };
-		13EC5C5428DB902F005F7128 /* DefaultDesignDefaultImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EC5C5328DB902F005F7128 /* DefaultDesignDefaultImages.swift */; };
 		13F994E428D273EB00B077C0 /* NewRoadmapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F994E328D273EB00B077C0 /* NewRoadmapCoordinator.swift */; };
 		13F994E728D393CE00B077C0 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F994E628D393CE00B077C0 /* CategoryViewController.swift */; };
 		13F994E928D393D900B077C0 /* DestinyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F994E828D393D900B077C0 /* DestinyViewController.swift */; };
@@ -311,7 +310,6 @@
 		13C8A14828CFA66200994196 /* DestinyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinyView.swift; sourceTree = "<group>"; };
 		13C8A15128CFC29500994196 /* HandleMapSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleMapSearch.swift; sourceTree = "<group>"; };
 		13EC5C5128DB8FF0005F7128 /* DesignDefaultImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignDefaultImages.swift; sourceTree = "<group>"; };
-		13EC5C5328DB902F005F7128 /* DefaultDesignDefaultImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignDefaultImages.swift; sourceTree = "<group>"; };
 		13F994E328D273EB00B077C0 /* NewRoadmapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoadmapCoordinator.swift; sourceTree = "<group>"; };
 		13F994E628D393CE00B077C0 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		13F994E828D393D900B077C0 /* DestinyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinyViewController.swift; sourceTree = "<group>"; };
@@ -739,7 +737,6 @@
 				13C8A13328CA6B4200994196 /* DefaultDesignSpacing.swift */,
 				DF5F774228CA820200BA5F5F /* DefaultDesignTextFonts.swift */,
 				13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */,
-				13EC5C5328DB902F005F7128 /* DefaultDesignDefaultImages.swift */,
 				135AC6A428DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift */,
 			);
 			path = Implementations;
@@ -1506,7 +1503,6 @@
 				1359F14B28DA489A009509DF /* DayRepository.swift in Sources */,
 				A0A8BAB628E4E824006A8BDD /* String+Localization.swift in Sources */,
 				131272DE28E624D1000B7968 /* RoadmapExploreCollectionViewCell.swift in Sources */,
-				13EC5C5428DB902F005F7128 /* DefaultDesignDefaultImages.swift in Sources */,
 				131272DA28E624CC000B7968 /* ExploreViewController+PreviewRoadmap.swift in Sources */,
 				DF5F774128CA7E1600BA5F5F /* DesignSystem+UIFont.swift in Sources */,
 				13732802290C67840021231E /* SaveImageController.swift in Sources */,

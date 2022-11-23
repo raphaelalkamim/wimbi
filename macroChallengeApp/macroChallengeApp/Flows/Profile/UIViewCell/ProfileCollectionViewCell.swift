@@ -13,7 +13,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup(name: "Novo roteiro", image: "beach0", isNew: false)
+        setup(name: "Novo roteiro", image: "floripa", isNew: false)
     }
     
     required init?(coder: NSCoder) {

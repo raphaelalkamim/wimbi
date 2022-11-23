@@ -12,6 +12,5 @@ protocol DesignSystem {
     var spacing: DesignSpacing { get }
     var text: DesignText { get }
     var images: DesignImages { get }
-    var imagesDefault: DesignDefaultImages { get }
     var imagesActivities: DesignImagesActivities { get }
 }

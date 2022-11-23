@@ -13,6 +13,5 @@ struct DefaultDesignSystem: DesignSystem {
     let palette: DesignPalette = DefaultDesignPalette()
     let spacing: DesignSpacing = DefaultDesignSpacing()
     let images: DesignImages = DefaultDesignSystemImages()
-    let imagesDefault: DesignDefaultImages = DefaultDesignDefaultSystemImages()
     let imagesActivities: DesignImagesActivities = DefaultDesignActivitiesImages()
 }

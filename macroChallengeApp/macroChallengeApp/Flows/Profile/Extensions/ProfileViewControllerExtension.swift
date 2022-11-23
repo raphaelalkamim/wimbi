@@ -111,7 +111,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             preconditionFailure("Cell not find")
         }
         let isNew = false
-        cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "mountain0", isNew: isNew)
+        cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "floripa", isNew: isNew)
         cell.setupImage(imageId: roadmaps[indexPath.row].imageId ?? "defaultCover", category: roadmaps[indexPath.row].category ?? "City")
         if roadmaps[indexPath.row].isPublic == false {
             cell.likeImage.image = UIImage(systemName: "lock.fill")
