@@ -14,6 +14,13 @@ class DetailTableViewCell: UITableViewCell {
     
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     
+    lazy var counterLabel: UILabel = {
+        let label = UILabel()
+        label.text = "0/250"
+        label.stylize(with: designSystem.text.caption)
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = designSystem.palette.backgroundCell
@@ -47,6 +54,7 @@ extension DetailTableViewCell {
     func setup() {
         self.backgroundColor = .backgroundCell
         contentView.addSubview(detailText)
+        contentView.addSubview(counterLabel)
         setupConstraints()
     }
     
@@ -57,6 +65,10 @@ extension DetailTableViewCell {
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.mediumPositive)
             make.bottom.equalTo(contentView.snp.bottom)
         }
+        counterLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(detailText.snp.bottom).inset(designSystem.spacing.mediumPositive)
+            make.trailing.equalTo(detailText.snp.trailing).inset(designSystem.spacing.xSmallPositive)
+        }
     }
     
 }
@@ -65,6 +77,9 @@ extension DetailTableViewCell: UITextViewDelegate {
         let currentText = textView.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
-        return updatedText.count <= 300
+        let length = currentText.count + text.count - range.length
+        let count = length
+        counterLabel.text = String(count) + "/250"
+        return updatedText.count < 250
     }
 }

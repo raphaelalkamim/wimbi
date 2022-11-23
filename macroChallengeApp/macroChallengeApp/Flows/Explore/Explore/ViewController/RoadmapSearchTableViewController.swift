@@ -78,9 +78,9 @@ extension RoadmapSearchTableViewController: UISearchResultsUpdating {
         DataManager.shared.getPublicRoadmaps({ roadmaps in
             self.roadmaps = roadmaps
         })
-        
         matchingRoadmaps = roadmaps.filter({ roadmap in
-            return roadmap.name.lowercased().contains(searchBarText)
+            var category = roadmap.category.localized()
+            return roadmap.name.lowercased().contains(searchBarText) || category.lowercased().contains(searchBarText)
         })
         
         self.tableView.reloadData()
