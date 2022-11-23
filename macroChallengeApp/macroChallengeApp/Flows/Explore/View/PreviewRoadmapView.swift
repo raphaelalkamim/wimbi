@@ -136,7 +136,7 @@ class PreviewRoadmapView: UIView {
     
     lazy var username: UILabel = {
         let title = UILabel()
-        title.text = "@username".localized()
+        title.text = "@wimbi"
         title.stylize(with: designSystem.text.body)
         return title
     }()

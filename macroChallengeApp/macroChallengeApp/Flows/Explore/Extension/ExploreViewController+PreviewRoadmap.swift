@@ -177,7 +177,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: self.uuidImage)) {
                     cell.circle.image = cachedImage
                 } else {
-                    cell.circle.image = UIImage(named: "icon")
+                    cell.circle.image = UIImage(named: "iconApp")
                 }
                 cell.circle.snp.makeConstraints { make in
                     make.height.width.equalTo(36)
