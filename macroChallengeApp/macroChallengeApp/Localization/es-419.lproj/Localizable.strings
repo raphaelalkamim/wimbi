@@ -18,7 +18,7 @@
 "By clicking on the button above, you agree to our Privacy Policies" = "Al hacer clic en el botón de arriba, usted acepta nuestras Políticas de Privacidad";
 "User" = "Usuario";
 "@user" = "@usuario";
-"Sign in to be able to create, duplicate, like and share a roadmap." = "Inicie sesión para poder crear, duplicar, dar me gusta y compartir un guía.";
+"Sign in to be able to create, duplicate, like and share a itinerary." = "Inicie sesión para poder crear, duplicar, dar me gusta y compartir un guía.";
 
 // MARK: -  New Activity
 "Type: " = "Tipo: ";
@@ -57,13 +57,13 @@
 "Free"= "Gratis";
 
 // MARK: -  Explore
-"New roadmap" = "Nueva guía de viaje";
-"Join roadmap" = "Unirse al guía de viaje";
-"Add a trip code that a friend shared with you to have access to the roadmap" = "Añade el código que un amigo compartió con usted para tener acceso al guía de viaje";
+"New itinerary" = "Nueva guía de viaje";
+"Join itinerary" = "Unirse al guía de viaje";
+"Add a trip code that a friend shared with you to have access to the itinerary" = "Añade el código que un amigo compartió con usted para tener acceso al guía de viaje";
 "Join" = "Unirse";
 "No internet connection" = "Sin conexión a Internet";
 "Successfully duplicated!" = "¡Duplicado con éxito!";
-"The roadmap is now available on your profile." = "La guía de viaje ya está disponible en su perfil.";
+"The itinerary is now available on your profile." = "La guía de viaje ya está disponible en su perfil.";
 "traveler  •" = "viajero  •";
 "travelers  •" = "viajeros  •";
 "traveler" = "viajero";
@@ -76,28 +76,28 @@
 "Explore" = "Explorar";
 "Current" = "Actual";
 "Profile" = "Perfil";
-"Current Roadmap" = "Guía actual";
+"Current Itinerary" = "Guía actual";
 
 // MARK: -  Profile
-"My roadmaps" = "Mis guías de viaje";
+"My itineraries" = "Mis guías de viaje";
 "NEW" = "NUEVO";
-"Click on ”+” to create a new roadmap or to explore the existing ones." = "Haz clic en ”+” para crear una nueva guía de viaje o para explorar las existentes.";
+"Click on ”+” to create a new itinerary or to explore the existing ones." = "Haz clic en ”+” para crear una nueva guía de viaje o para explorar las existentes.";
 "The content cannot be recovered." = "El contenido no se puede recuperar.";
 "Delete" = "Eliminar";
 "Delete all content from" = "Eliminar todo el contenido de";
 "Can't delete" = "No se puede eliminar";
 "Change profile photo" = "Cambiar foto del perfil";
 "Remove current photo" = "Eliminar foto actual";
-"This roadmap has been deleted by another user" = "Este guía de viaje ha sido eliminado por otro usuario";
+"This itinerary has been deleted by another user" = "Este guía de viaje ha sido eliminado por otro usuario";
 "Take photo" = "Tomar foto";
 "Choose from library" = "Elegir de la biblioteca";
 "How about changing your profile photo?" = "¿Qué hay de cambiar su foto del perfil?";
-"How about inserting a photo into your roadmap?" = "¿Qué tal insertar una foto en tu guía?";
+"How about inserting a photo into your itinerary?" = "¿Qué tal insertar una foto en tu guía?";
 
 //Settings
 "Settings" = "Configuración";
 "Edit profile" = "Editar perfil";
-"Liked roadmaps" = "Guías de viaje que me gustaron";
+"Liked itineraries" = "Guías de viaje que me gustaron";
 "Notifications" = "Notificaciones";
 "Privacy Policies" = "Políticas de Privacidad";
 "Sign out" = "Salir";
@@ -136,7 +136,7 @@
 "LIKES" = "ME GUSTA"; //confirmar
 "CREATED BY" = "CREADO POR";
 "TRAVEL DAYS" = "DÍAS DE VIAJE";
-"ROADMAP" = "GUÍA DE VIAJE";
+"ITINERARY" = "GUÍA DE VIAJE";
 "Day " = "Día ";
 "DAILY COSTS" = "COSTOS DIARIOS";
 "Free" = "Gratis";
@@ -147,8 +147,8 @@
 "THU" = "JUE";
 "FRI" = "VIE";
 "SAT" = "SÁB";
-"What do you think about exploring and creating a new roadmap?" = "¿Qué tal explorar y crear una nueva guía de viaje?";
-"Create a new intinerary and follow the countdown or view your current trip roadmap on this screen." = "Cree un nuevo intinerario y siga la cuenta regresiva o vea su guía de viaje actual en esta pantalla.";
+"What do you think about exploring and creating a new itinerary?" = "¿Qué tal explorar y crear una nueva guía de viaje?";
+"Create a new intinerary and follow the countdown or view your current trip itinerary on this screen." = "Cree un nuevo intinerario y siga la cuenta regresiva o vea su guía de viaje actual en esta pantalla.";
 "Which app would you like to use to access the address?" = "¿Quiere abrir la dirección en qué aplicación?";
 "Open on Maps" = "Abrir en Mapas";
 "Open on Waze" = "Abrir en Waze";
@@ -172,12 +172,12 @@
 "End date" = "Fecha final";
 "TRAVELERS" = "VIAJEROS";
 "Number of travelers" = "Número de viajeros";
-"Would you like to make this roadmap public?" = "¿Hacer pública esta guía de viaje?";
-"By making your roadmap public, it’ll be viewed to all the app’s users." = "Al hacer público la guía de viaje, se publicará para todos los usuarios de la aplicación.";
-"My roadmap" = "Mi guía de viaje";
+"Would you like to make this itinerary public?" = "¿Hacer pública esta guía de viaje?";
+"By making your itinerary public, it’ll be viewed to all the app’s users." = "Al hacer público la guía de viaje, se publicará para todos los usuarios de la aplicación.";
+"My itinerary" = "Mi guía de viaje";
 "Travel days" = "Días de viaje";
 "PRIVACY" = "PRIVACIDAD";
-"Roadmap" = "Guía de viaje";
+"Itinerary" = "Guía de viaje";
 "Public" = "Público";
 "Private" = "Privado";
 "Are you sure?" = "¿Está seguro?";
@@ -186,25 +186,25 @@
 "By canceling you’ll lose your entire progress." = "Al cancelar su progreso será perdido.";
 "Back" = "Atrás";
 "Continue" = "Continuar";
-"Roadmap to" = "Guía de viaje para";
+"Itinerary to" = "Guía de viaje para";
 
 //MARK: - Onboarding
 "The first social travel network" = "La primera red social de viajes";
 "Be an explorer" = "Sé un explorador";
-"Create your roadmap and make it public for people to enjoy and use as inspiration." = "Cree su guía y hágalo público para que la gente lo disfrute y lo use como inspiración.";
-"Explore roadmaps without sign in" = "Explorar hojas de ruta sin iniciar sesión";
-"If you find a perfect roadmap, duplicate it so you can edit it at any time." = "Si encuentra un guía ideal, duplíquelo para poder editarlo en cualquier momento.";
-"Don't miss any roadmap" = "No te pierdas ninguna guía de viaje";
-"Like a roadmap so that it's saved in settings." = "Me gusta un script para que se guarde en la configuración.";
+"Create your itinerary and make it public for people to enjoy and use as inspiration." = "Cree su guía y hágalo público para que la gente lo disfrute y lo use como inspiración.";
+"Explore itineraries without sign in" = "Explorar hojas de ruta sin iniciar sesión";
+"If you find a perfect itinerary, duplicate it so you can edit it at any time." = "Si encuentra un guía ideal, duplíquelo para poder editarlo en cualquier momento.";
+"Don't miss any itinerary" = "No te pierdas ninguna guía de viaje";
+"Like a itinerary so that it's saved in settings." = "Me gusta un script para que se guarde en la configuración.";
 "Travel together with your friends" = "Viaja con tus amigos";
-"Share your roadmap with your friends so everyone can edit it." = "Comparte tu guía con tus amigos para que todos puedan modificarlo.";
-"Hey! Join my roadmap in Wimbi app using the code: " = "¡Oye! Únase a mi guía de viaje en la aplicación Wimbi usando el código: ";
-"To share this roadmap, turn it public" = "Para compartir este guía de viaje, hazlo público";
-"Share your roadmap code!" = "¡Comparta el código de su guía de viaje!";
+"Share your itinerary with your friends so everyone can edit it." = "Comparte tu guía con tus amigos para que todos puedan modificarlo.";
+"Hey! Join my itinerary in Wimbi app using the code: " = "¡Oye! Únase a mi guía de viaje en la aplicación Wimbi usando el código: ";
+"To share this itinerary, turn it public" = "Para compartir este guía de viaje, hazlo público";
+"Share your itinerary code!" = "¡Comparta el código de su guía de viaje!";
 
 //MARK: - Widget
-"How about creating a new roadmap?" = "¿Qué tal si creamos una nueva guía de ruta?";
-"Click here and create or duplicate a roadmap" = "Haga clic aquí para crear o duplicar una guía de ruta";
+"How about creating a new itinerary?" = "¿Qué tal si creamos una nueva guía de ruta?";
+"Click here and create or duplicate a itinerary" = "Haga clic aquí para crear o duplicar una guía de ruta";
 "Your trip to" = "Tu viaje a";
 "will happen in" = "sucederá en";
 "days" = "dias";

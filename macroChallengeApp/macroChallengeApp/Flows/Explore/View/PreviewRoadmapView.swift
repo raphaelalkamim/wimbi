@@ -97,7 +97,7 @@ class PreviewRoadmapView: UIView {
     
     lazy var roadmapTitle: UILabel = {
         let title = UILabel()
-        title.text = "ROADMAP".localized()
+        title.text = "ITINERARY".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()

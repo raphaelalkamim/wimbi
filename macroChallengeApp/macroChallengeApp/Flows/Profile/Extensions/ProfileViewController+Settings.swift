@@ -123,7 +123,7 @@ extension SettingsViewController: UITableViewDataSource {
             cell.icon.setImage(UIImage(systemName: "person.fill"), for: .normal)
             
         case 1:
-            cell.title.text = "Liked roadmaps".localized()
+            cell.title.text = "Liked itineraries".localized()
             cell.icon.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             
         case 2:

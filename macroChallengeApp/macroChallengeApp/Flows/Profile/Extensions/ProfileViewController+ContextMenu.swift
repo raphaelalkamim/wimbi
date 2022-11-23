@@ -10,11 +10,11 @@ import UIKit
 
 extension ProfileViewController {
     func setContextMenu() {
-        let addRoadMap = UIAction(title: "New roadmap".localized(), image: UIImage(systemName: "pencil")) { _ in
+        let addRoadMap = UIAction(title: "New itinerary".localized(), image: UIImage(systemName: "pencil")) { _ in
             self.coordinator?.newRoadmap()
         }
         
-        let insertRoadMap = UIAction(title: "Join roadmap".localized(), image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis")) { _ in
+        let insertRoadMap = UIAction(title: "Join itinerary".localized(), image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis")) { _ in
             self.setUIAlert()
         }
         
@@ -29,11 +29,11 @@ extension ProfileViewController {
         alert.view.tintColor = .accent
         
         let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
-        let stringTitle = NSAttributedString(string: "Join roadmap".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
+        let stringTitle = NSAttributedString(string: "Join itinerary".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
         alert.setValue(stringTitle, forKey: "attributedTitle")
         
         let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
-        let stringSub = NSAttributedString(string: "Add a trip code that a friend shared with you to have access to the roadmap".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
+        let stringSub = NSAttributedString(string: "Add a trip code that a friend shared with you to have access to the itinerary".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
         alert.setValue(stringSub, forKey: "attributedMessage")
         
         alert.addTextField { alertTextField in
