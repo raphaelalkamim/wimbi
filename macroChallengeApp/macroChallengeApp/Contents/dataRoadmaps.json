@@ -1654,7 +1654,7 @@
                     {
                         "id": 11,
                         "name": "Phuket (Rassada Pier)",
-                        "tips": "Rassada Pier/Rassada Harbour is the main port to travel from Phuket to Krabi,there are speedboats and passengers ferries to Phiphi islands,Lanta island everyday. Buy your ticket direct on the pier. Due to weather condition, check availibity boat schedule. Contact Rassada Harbour +66 84 675 1177",
+                        "tips": "Buy your ticket direct on the pier. Due to weather condition, check availibity boat schedule. Contact Rassada Harbour +66 84 675 1177",
                         "category": "leisure",
                         "location": "7.871598187997538, 98.41436128608663",
                         "address": "Ratsada, Mueang Phuket District, Phuket 83000, Thailand",
@@ -1792,7 +1792,7 @@
                     {
                         "id": 22,
                         "name": "Hike to Long Beach",
-                        "tips": "The hike is safe but involves some short jungle trails and walking over rocks so it’s best not to walk the route at night or alone. The easiest way to walk to Long Beach is to first navigate your way to Carlitos Bar just on the outskirts of town. From Carlitos Bar keep following the yellow path towards the Don Chukkit Hotel. There is a turn off once you pass by Rimlay Restaurant, (if you reach the Mosque, you’ve gone too far). Turn down the path towards the Hippies Bar and from there you’ll have a view of the beach.",
+                        "tips": "First navigate your way to Carlitos Bar. Keep following the yellow path towards the Don Chukkit Hotel. There is a turn off once you pass by Rimlay Restaurant. Turn down the path towards the Hippies Bar and from there you’ll have a view of the beach.",
                         "category": "leisure",
                         "location": "7.729893796912719, 98.78643170928609",
                         "address": "PQHP+PGM, Ao Nang, Mueang Krabi District, Krabi 81000, Thailand",
@@ -2010,7 +2010,7 @@
                     {
                         "id": 23,
                         "name": "Check-in - Holiday Inn Express Hotel & Suites Hollywood Walk of Fame, an IHG Hotel",
-                        "tips": "It is a 10-minute drive from Universal Studios Hollywood™ and the Hollywood Walk of Fame. The venue features an outdoor pool, 10 beach bars, a gym, a snack bar and a terrace. The property also has easy access to public transportation: Hollywood - Highland Station is a 7-minute walk away.",
+                        "tips": "It is a 10-minute drive from Universal Studios Hollywood™ and the Hollywood Walk of Fame. The property also has easy access to public transportation: Hollywood - Highland Station is a 7-minute walk away.",
                         "category": "accommodation",
                         "location": "34.10610088343829, -118.33779690013664",
                         "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
@@ -2022,7 +2022,7 @@
                     {
                         "id": 24,
                         "name": "Walk to Hall of Fame",
-                        "tips": "- 5 minutes by car and 20 minutes on foot. A tip to help you search for your favorite stars is the website Star Finder, just search for the name of your star and go straight to the point, without having to keep walking to back and forth, reading star by star. If you want a quieter place, go between 6am and 10am",
+                        "tips": "5 minutes by car and 20 minutes on foot. A tip to help you search for your favorite stars is the website Star Finder. If you want a quieter place, go between 6am and 10am",
                         "category": "leisure",
                         "location": "34.10182986524827, -118.3267158453144",
                         "address": "Hollywood Boulevard, Vine St, Los Angeles, CA 90028, United States",
@@ -2046,7 +2046,7 @@
                     {
                         "id": 26,
                         "name": "Jack's Candy",
-                        "tips": "Jack’s Candy in DTLA is the best place to shop for your party supplies and candy. Super safe to shop at store is really clean and organized. It has all kinds of sweets and treats, from chocolates to teddy bear candies. If you are traveling with children, this visit is essential!",
+                        "tips": "Jack’s Candy in DTLA is the best place to shop for your party supplies and candy. Super safe to shop at store is really clean and organized. If you are traveling with children, this visit is essential!",
                         "category": "food",
                         "location": "34.03493663775942, -118.24294704717975",
                         "address": "777 S Central Ave, Los Angeles, CA 90021, United States",
@@ -2058,7 +2058,7 @@
                     {
                         "id": 27,
                         "name": "Dolby Theatre",
-                        "tips": "Tours depart every 30 minutes and take tourists to different areas of the theater, backstage, in chairs reserved for certain artists, in addition to showing an original copy of the Oscar, highly protected. For cinema fanatics, a tour of its interior is a must.",
+                        "tips": "Tours depart every 30 minutes and take tourists to different areas of the theater, backstage, in chairs reserved for certain artists, in addition to showing an original copy of the Oscar, highly protected.",
                         "category": "leisure",
                         "location": "34.10285520843328, -118.34043994220418",
                         "address": "6801 Hollywood Blvd, Hollywood, CA 90028, United States",
@@ -2112,7 +2112,7 @@
                     {
                         "id": 31,
                         "name": "Walk to Rodeo Drive",
-                        "tips": "If you’re looking for designer clothes, Rodeo Drive is the place to go. However, it’s also a great place to find affordable clothes as well. Many of the stores on Rodeo Drive offer lower prices than other stores in the city. ",
+                        "tips": "If you’re looking for designer clothes, Rodeo Drive is the place to go. However, it’s also a great place to find affordable clothes as well. Many of the stores on Rodeo Drive offer lower prices than other stores in the city.",
                         "category": "leisure",
                         "location": "34.06791200556656, -118.40165478849892",
                         "address": "Santa Monica Blvd at Wilshire Blvd, Beverly Hills, CA 90210, United States",
@@ -2148,7 +2148,7 @@
                     {
                         "id": 34,
                         "name": "Paramount Studios",
-                        "tips": "Warner's studios are one of the largest in the world. It is located in Burbank, a city very close to Los Angeles, less than 1 hour away, with regular buses that stop at the door of the studio. There are three types of tours available that vary in price and duration",
+                        "tips": "It is located in Burbank, a city very close to Los Angeles, less than 1 hour away, with regular buses that stop at the door of the studio. There are three types of tours available that vary in price and duration",
                         "category" : "leisure",
                         "location": "34.08463149989909, -118.32083535188055",
                         "address": "PQHP+PGM, Ao Nang, Mueang Krabi District, Krabi 81000, Thailand",
@@ -2226,7 +2226,7 @@
                     {
                         "id": 40,
                         "name": "La Brea Tar Pits",
-                        "tips": "One of the most interesting tourist attractions in Los Angeles. Who would have thought that, in the middle of one of the largest metropolises in the world, we would find a great archaeological site? La Brea is a set of tar pits that sprouted from the earth thousands of years ago and which, throughout history, trapped and fossilized Ice Age animals and plants.",
+                        "tips": "One of the most interesting tourist attractions in Los Angeles. La Brea is a set of tar pits that sprouted from the earth thousands of years ago and which, throughout history, trapped and fossilized Ice Age animals and plants.",
                         "category": "leisure",
                         "location": "34.06381991599955, -118.35549360246074",
                         "address": "5801 Wilshire Blvd, Los Angeles, CA 90036, United States",
@@ -2238,7 +2238,7 @@
                     {
                         "id": 41,
                         "name": "Griffith Observatory",
-                        "tips": "One of the best spots in the city of Los Angeles to see the Hollywood Sign and the entire city skyline, especially during sunset. In addition, it is an observatory with numerous telescopes to see the moon and some planets, understand better about the universe and visit its planetarium ($7 for adults and $3 for children and seniors).",
+                        "tips": "One of the best spots in the city of Los Angeles to see the Hollywood Sign and the entire city skyline, especially during sunset. ($7 for adults and $3 for children and seniors).",
                         "category": "leisure",
                         "location": "34.119254645389624, -118.30065113203845",
                         "address": "2800 E Observatory Rd, Los Angeles, CA 90027, United States",
@@ -2262,7 +2262,7 @@
                     {
                         "id": 43,
                         "name": "Walt Disney Concert Hall ",
-                        "tips": "It is a mandatory stop. Designed by Canadian architect Frank Gehry, it took 16 years to complete due to its bold design. The concert hall itself is so incredibly laid out that acoustically it's one of the best concert Halls I've ever visited in the entire world. And it's just gorgeous. Visit for the architecture alone, but absolutely enjoy the music.",
+                        "tips": "Designed by Canadian architect Frank Gehry, it took 16 years to complete due to its bold design. The concert hall itself is so incredibly laid out that acoustically it's one of the best concert Halls I've ever visited in the entire world.",
                         "category": "leisure",
                         "location": "34.0554354451524, -118.2498450223235",
                         "address": "111 S Grand Ave, Los Angeles, CA 90012, United States",
@@ -2279,7 +2279,7 @@
                         "location": "34.10610088343829, -118.33779690013664",
                         "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
                         "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
-                        "hour": "00:00",
+                        "hour": "23:30",
                         "budget": 0.0,
                         "currency": "U$"
                     }
@@ -2304,7 +2304,7 @@
                     {
                         "id": 46,
                         "name": "Disneyland Park",
-                        "tips": "Disneyland, is in the city of Anaheim, 1 hour away from Los Angeles. For those who want to experience an amusement park with the Disney brand, but with a more intimate atmosphere, Disneyland is the best option. With two theme parks (Disneyland and Disney California Adventure), an entertainment, shopping and dining center (Downtown Disney District), and three hotels (Grand Californian, Paradise Pier and the Disneyland Hotel), the entire complex is relatively small – you can explore everything on foot.",
+                        "tips": "Disneyland, is in the city of Anaheim, 1 hour away from Los Angeles. With two theme parks, an entertainment, shopping and dining center, and three hotels, the entire complex is relatively small – you can explore everything on foot.",
                         "category": "leisure",
                         "location": "33.81230572207704, -117.91895274432312",
                         "address": "1313 Disneyland Dr, Anaheim, CA 92802, United States",
@@ -2370,7 +2370,7 @@
                     {
                         "id": 51,
                         "name": "Universal Studios Hollywood",
-                        "tips": "An amusement park that combines amazing themed areas like Harry Potter and The Simpsons with extreme roller coasters and a spectacular tour of Universal's movie studios. The first step for anyone wanting to visit Universal Studios is to download the park app. In it you can find interactive maps, waiting times for attractions and show times. With the app in hand, you can make smart decisions and avoid huge queues.",
+                        "tips": "The first step for anyone wanting to visit Universal Studios is to download the park app. In it you can find interactive maps, waiting times for attractions and show times.",
                         "category": "leisure",
                         "location": "34.139822362045436, -118.35393536412957",
                         "address": "100 Universal City Plaza, Universal City, CA 91608, United States",
@@ -2394,7 +2394,7 @@
                     {
                         "id": 53,
                         "name": "iFLY",
-                        "tips": "You can experience human flight! Indoor Skydiving at iFLY Hollywood's vertical wind tunnel is safe for kids, challenging for adults, exciting for teens and realistic for skydivers. If you are looking for a fun and different excursion in L.A., you've found it!",
+                        "tips": "Indoor Skydiving at iFLY Hollywood's vertical wind tunnel is safe for kids, challenging for adults, exciting for teens and realistic for skydivers.",
                         "category": "leisure",
                         "location": "34.139822362045436, -118.35393536412957",
                         "address": "100 Universal City Plaza, Universal City, CA 91608, United States",
@@ -2418,7 +2418,7 @@
                     {
                         "id": 54,
                         "name": "Antojitos Cocina Mexicana",
-                        "tips": "Explore the tastes, sounds and sights of Mexico at Antojitos Cocina Mexicana, authentic Mexican cuisine in the heart of the Universal CityWalk. Explore a menu that boasts traditional favorites like signature guacamole and tacos. Plus enjoy over 150 tequilas, handcrafted cocktails and draft imports.",
+                        "tips": "Explore the tastes, sounds and sights of Mexico at Antojitos Cocina Mexicana, authentic Mexican cuisine in the heart of the Universal CityWalk.",
                         "category": "food",
                         "location": "34.139822362045436, -118.35393536412957",
                         "address": "100 Universal City Plaza, Universal City, CA 91608, United States",
@@ -2496,12 +2496,12 @@
                     {
                         "id": 60,
                         "name": "High Rooftop Lounge",
-                        "tips": "Very nice location, very good to admire the sunset over Venice. Cocktails and food to nibble on while the DJ plays throughout the night. The drinks we received we fantastic and the food tasted great. Highly recommend and we will definitely be returning to enjoy some more of that amazing view.",
+                        "tips": "Very nice location, very good to admire the sunset over Venice.",
                         "category": "food",
                         "location": "33.987303836409566, -118.4721886122371",
                         "address": "XGPH+V5 Venice, Los Angeles, CA, EUA",
                         "link": "https://www.hotelerwin.com/food-drink/high-rooftop-lounge/",
-                        "hour": "21:00",
+                        "hour": "20:30",
                         "budget": 170.0,
                         "currency": "U$"
                     },
@@ -2513,7 +2513,7 @@
                         "location": "34.10610088343829, -118.33779690013664",
                         "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
                         "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
-                        "hour": "01:00",
+                        "hour": "23:50",
                         "budget": 0.0,
                         "currency": "U$"
                     }
