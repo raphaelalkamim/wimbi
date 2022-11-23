@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import GoogleMobileAds
 
 extension ExploreViewController {
     func setupExplorerView() {
@@ -67,10 +68,41 @@ extension ExploreViewController: UICollectionViewDataSource {
         
         if !roadmaps.isEmpty {
             let roadmap = roadmaps[indexPath.row]
-            FirebaseManager.shared.getImage(category: 0, uuid: roadmap.imageId) { image in
-                cell.cover.image = image
+            if roadmap.id == -5 {
+                guard let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: UIAdViewCell.identifier, for: indexPath) as? UIAdViewCell else {
+                    preconditionFailure("Cell not find")
+                }
+                guard let nAd = adsNatives[0] as? GADNativeAd else {preconditionFailure("Cell not find")}
+                nAd.delegate = self
+                nAd.rootViewController = self
+                
+                // Prepare ad content
+                let nativeAd = nAd
+                cell1.adView.nativeAd = nativeAd
+                
+                // Add content to native view
+                cell1.headline.text = nativeAd.headline
+                cell1.adView.mediaView?.mediaContent = nativeAd.mediaContent
+
+                cell1.body.text = nativeAd.body
+                cell1.adView.bodyView?.isHidden = nativeAd.body == nil
+
+                cell1.icon.image = nativeAd.icon?.image
+                cell1.adView.iconView?.isHidden = nativeAd.icon == nil
+
+                cell1.advertiser.text = nativeAd.advertiser
+                cell1.adView.advertiserView?.isHidden = nativeAd.advertiser == nil
+
+                cell1.adView.callToActionView?.isUserInteractionEnabled = false
+                
+                return  cell1
+            } else {
+                FirebaseManager.shared.getImage(category: 0, uuid: roadmap.imageId) { image in
+                    cell.cover.image = image
+                }
+                cell.setupRoadmapBackEnd(roadmap: roadmap)
             }
-            cell.setupRoadmapBackEnd(roadmap: roadmap)
+            
             
         } else if !roadmapsMock.isEmpty {
             let roadmap = roadmapsMock[indexPath.row]

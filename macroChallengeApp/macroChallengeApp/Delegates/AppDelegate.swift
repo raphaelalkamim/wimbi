@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import FirebaseCore
 import FirebaseAnalytics
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.rootViewController = ExploreViewController()
         window?.makeKeyAndVisible()
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         FirebaseApp.configure()
         FirebaseManager.shared.createAnalyticsEvent(event: AnalyticsEventAppOpen)
         Analytics.logEvent(AnalyticsEventAppOpen, parameters: nil)

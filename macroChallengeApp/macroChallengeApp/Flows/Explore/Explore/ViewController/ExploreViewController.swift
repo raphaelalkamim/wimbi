@@ -7,17 +7,20 @@
 
 import UIKit
 import Network
+import GoogleMobileAds
 
 class ExploreViewController: UIViewController {
     weak var coordinator: ExploreCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let locationSearchTable = RoadmapSearchTableViewController()
-    
     let explorerView = ExploreView()
     var roadmaps: [RoadmapDTO] = []
     var roadmapsMock: [Roadmaps] = []
     let network: NetworkMonitor = NetworkMonitor.shared
     let onboardEnable = UserDefaults.standard.bool(forKey: "onboard")
+    
+    var adLoader: GADAdLoader!
+    var adsNatives: [GADNativeAd] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,15 @@ class ExploreViewController: UIViewController {
         if onboardEnable == false {
             coordinator?.startOnboarding()
         }
+        
+        let multipleAdsOptions = GADMultipleAdsAdLoaderOptions()
+        multipleAdsOptions.numberOfAds = 5
+
+        adLoader = GADAdLoader(adUnitID: "ca-app-pub-3940256099942544/3986624511", rootViewController: self,
+                adTypes: [.native],
+                options: [multipleAdsOptions])
+        adLoader.delegate = self
+        adLoader.load(GADRequest())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +55,12 @@ class ExploreViewController: UIViewController {
             self.roadmaps = roadmaps
             self.roadmaps.sort { $0.likesCount > $1.likesCount }
             if roadmaps.isEmpty { self.getMockData() }
+            if !self.adsNatives.isEmpty {
+                for ad in self.adsNatives {
+                    self.roadmaps.append(RoadmapDTO(id: -5, name: ad.headline ?? "Anúncio", location: "", budget: 0, dayCount: 0, dateInitial: "", dateFinal: "", peopleCount: 0, imageId: "", category: "Advertize", currency: "", likesCount: 0))
+                }
+                
+            }
             self.explorerView.roadmapsCollectionView.reloadData()
             self.emptyState(conection: self.network.isReachable)
         })

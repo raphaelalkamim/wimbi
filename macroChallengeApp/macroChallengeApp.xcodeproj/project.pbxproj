@@ -175,8 +175,12 @@
 		DFA30CAF28DA2E5A00F316EB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA30CAE28DA2E5A00F316EB /* TabBarController.swift */; };
 		DFAEB2B3292BF629006BCE46 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DFAEB2B2292BF629006BCE46 /* FirebaseAnalytics */; };
 		DFAEB2B5292BF629006BCE46 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DFAEB2B4292BF629006BCE46 /* FirebaseStorage */; };
+		DFC72A77292D3A770069AC0B /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = DFC72A76292D3A770069AC0B /* GoogleMobileAds */; };
 		DFD23B3E291972C90003307A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFD23B3D291972C90003307A /* GoogleService-Info.plist */; };
 		DFD23B45291978590003307A /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD23B44291978590003307A /* FirebaseManager.swift */; };
+		DFF99B0D292D4097003B54AB /* ExploreViewController+AdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF99B0C292D4097003B54AB /* ExploreViewController+AdMob.swift */; };
+		DFF99B0F292D5D8A003B54AB /* UnifiedNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFF99B0E292D5D89003B54AB /* UnifiedNativeAdView.xib */; };
+		DFF99B11292D5EF2003B54AB /* UIAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF99B10292D5EF2003B54AB /* UIAdView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -399,6 +403,9 @@
 		DFA30CB028DA2F0900F316EB /* macroChallengeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macroChallengeApp.entitlements; sourceTree = "<group>"; };
 		DFD23B3D291972C90003307A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DFD23B44291978590003307A /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		DFF99B0C292D4097003B54AB /* ExploreViewController+AdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreViewController+AdMob.swift"; sourceTree = "<group>"; };
+		DFF99B0E292D5D89003B54AB /* UnifiedNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnifiedNativeAdView.xib; sourceTree = "<group>"; };
+		DFF99B10292D5EF2003B54AB /* UIAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAdView.swift; sourceTree = "<group>"; };
 		F7DE71B5E41E8936B5C2E6AF /* Pods_macroChallengeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macroChallengeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -416,6 +423,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFC72A77292D3A770069AC0B /* GoogleMobileAds in Frameworks */,
 				DFAEB2B3292BF629006BCE46 /* FirebaseAnalytics in Frameworks */,
 				90297BBF83D0A825FF081EB4 /* Pods_macroChallengeApp.framework in Frameworks */,
 				DFAEB2B5292BF629006BCE46 /* FirebaseStorage in Frameworks */,
@@ -461,9 +469,12 @@
 			isa = PBXGroup;
 			children = (
 				137C8D25291C28810007AF5B /* giphy.mp4 */,
+				DFF99B0E292D5D89003B54AB /* UnifiedNativeAdView.xib */,
 				131272BF28E62440000B7968 /* ExploreViewController+ContextMenu.swift */,
 				131272C028E62440000B7968 /* ExploreViewController+PreviewRoadmap.swift */,
 				131272C128E62440000B7968 /* ExploreViewController+Roadmaps.swift */,
+				DFF99B0C292D4097003B54AB /* ExploreViewController+AdMob.swift */,
+				DFF99B10292D5EF2003B54AB /* UIAdView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1091,6 +1102,7 @@
 			packageProductDependencies = (
 				DFAEB2B2292BF629006BCE46 /* FirebaseAnalytics */,
 				DFAEB2B4292BF629006BCE46 /* FirebaseStorage */,
+				DFC72A76292D3A770069AC0B /* GoogleMobileAds */,
 			);
 			productName = macroChallengeApp;
 			productReference = B078F21228C27F2000D46F61 /* macroChallengeApp.app */;
@@ -1174,6 +1186,7 @@
 			mainGroup = B078F20928C27F2000D46F61;
 			packageReferences = (
 				DFAEB2B1292BF629006BCE46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				DFC72A75292D3A770069AC0B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = B078F21328C27F2000D46F61 /* Products */;
 			projectDirPath = "";
@@ -1204,6 +1217,7 @@
 				13C8A10628C6698100994196 /* .swiftlint.yml in Resources */,
 				A0A8BABA28E4E8C0006A8BDD /* Localizable.strings in Resources */,
 				B078F22528C27F2400D46F61 /* LaunchScreen.storyboard in Resources */,
+				DFF99B0F292D5D8A003B54AB /* UnifiedNativeAdView.xib in Resources */,
 				B078F22228C27F2400D46F61 /* Assets.xcassets in Resources */,
 				137C8D26291C29060007AF5B /* giphy.mp4 in Resources */,
 				13737BF42915845F00BC4373 /* dataRoadmaps.json in Resources */,
@@ -1431,6 +1445,7 @@
 				13737BF92915CBEC00BC4373 /* ReviewTravelViewControllerExtension.swift in Sources */,
 				A0B9F4BD28D8FB5000F2DF06 /* NotificationsViewController.swift in Sources */,
 				1467706728D2699D00D55098 /* LabelTableViewCell.swift in Sources */,
+				DFF99B0D292D4097003B54AB /* ExploreViewController+AdMob.swift in Sources */,
 				13BD501128DA297500C0EA7C /* LoginView.swift in Sources */,
 				132AD924292C14F100DE3E08 /* +Activity.swift in Sources */,
 				13C8A12D28CA6A2500994196 /* ProfileCoordinator.swift in Sources */,
@@ -1471,6 +1486,7 @@
 				1379744128D8E55000AEA662 /* CurrentViewController.swift in Sources */,
 				A0B9F4C328D8FFB600F2DF06 /* NotificationPickerTableViewCell.swift in Sources */,
 				DFA30CAF28DA2E5A00F316EB /* TabBarController.swift in Sources */,
+				DFF99B11292D5EF2003B54AB /* UIAdView.swift in Sources */,
 				137C8D48291D6B060007AF5B /* UserDefaultManager.swift in Sources */,
 				13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */,
 				A04B45D628D5051E0045558E /* ProfileCollectionViewCell.swift in Sources */,
@@ -1968,6 +1984,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		DFC72A75292D3A770069AC0B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1980,6 +2004,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DFAEB2B1292BF629006BCE46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		DFC72A76292D3A770069AC0B /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFC72A75292D3A770069AC0B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -63,6 +63,7 @@ class ExploreView: UIView {
         layout.minimumLineSpacing = designSystem.spacing.largePositive
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(RoadmapExploreCollectionViewCell.self, forCellWithReuseIdentifier: RoadmapExploreCollectionViewCell.identifier)
+        collectionView.register(UIAdViewCell.self, forCellWithReuseIdentifier: UIAdViewCell.identifier)
         collectionView.isUserInteractionEnabled = true
         collectionView.isScrollEnabled = true
         collectionView.backgroundColor = .clear
