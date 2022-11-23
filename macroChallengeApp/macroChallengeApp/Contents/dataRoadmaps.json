@@ -15,7 +15,7 @@
         "shareKey": "gramadoWimbi123",
         "createdAt": "13/10/2022",
         "currency": "R$",
-        "likesCount": 0,
+        "likesCount": 50,
         "day": [
             {
                 "id": 90,
@@ -359,7 +359,7 @@
         "shareKey": "portoSeguroWimbi123",
         "createdAt": "13/10/2022",
         "currency": "R$",
-        "likesCount": 0,
+        "likesCount": 54,
         "day": [
             {
                 "id": 51,
@@ -800,7 +800,7 @@
         "name": "Holambra (SP)",
         "location": "-22.627367308316828, -47.052942121253736",
         "budget": 3750.0,
-        "dayCount": 6,
+        "dayCount": 2,
         "dateInitial": "01/12/2022",
         "dateFinal": "02/12/2022",
         "peopleCount": 2,
@@ -811,7 +811,7 @@
         "shareKey": "portoSeguroWimbi123",
         "createdAt": "13/10/2022",
         "currency": "R$",
-        "likesCount": 0,
+        "likesCount": 42,
         "day": [
             {
                 "id": 50,
@@ -975,7 +975,7 @@
         "shareKey": "florianopolisWimbi123",
         "createdAt": "13/10/2022",
         "currency": "R$",
-        "likesCount": 0,
+        "likesCount": 37,
         "day": [
             {
                 "id": 39,
@@ -1253,7 +1253,7 @@
         "shareKey": "saoPauloWimbi123",
         "createdAt": "13/10/2022",
         "currency": "R$",
-        "likesCount": 0,
+        "likesCount": 65,
         "day": [
             {
                 "id": 38,
@@ -1633,7 +1633,7 @@
         "shareKey": "tailandiaWimbi123",
         "createdAt": "21/11/2022",
         "currency": "U$",
-        "likesCount": 0,
+        "likesCount": 21,
         "day": [
             {
                 "id": 1,
@@ -1948,7 +1948,7 @@
                 ]
             }
         ]
-    }
+    },
     {
         "id": 7,
         "name": "Los Angeles (EUA)",
@@ -1965,7 +1965,7 @@
         "shareKey": "losAngelesWimbi123",
         "createdAt": "23/11/2022",
         "currency": "U$",
-        "likesCount": 0,
+        "likesCount": 29,
         "day": [
             {
                 "id": 1,
@@ -2071,6 +2071,7 @@
                         "id": 28,
                         "name": "Hard Rock Cafe",
                         "tips": "Your COVID vaccination proof and ID are needed to enter the restaurant. To the food and service that were awesome. The atmosphere is smooth, the music is great, lighting is well thought out and the entire place is spotless.",
+                        "category": "food",
                         "location": "34.102222574676105, -118.34074871733434",
                         "address": "6801 Hollywood Blvd Suite 105, Los Angeles, CA 90028, United States",
                         "link": "https://www.hardrockcafe.com",
