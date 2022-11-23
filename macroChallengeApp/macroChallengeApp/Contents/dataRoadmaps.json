@@ -1257,6 +1257,7 @@
         "day": [
             {
                 "id": 39,
+                "id": 38,
                 "date": "01/12/2022",
                 "activity": [
                     {
@@ -1930,6 +1931,619 @@
                         "address": "157, Ao Nang, Mueang Krabi District, Krabi 81210, Thailand",
                         "link": "https://www.chaokohphiphihotel.com/",
                         "hour": "11:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    }
+                ]
+            }
+        ]
+    }
+    {
+        "id": 7,
+        "name": "Los Angeles (EUA)",
+        "location": "34.11458259614904, -118.32799507774047",
+        "budget": 3372.80,
+        "dayCount": 7,
+        "dateInitial": "01/12/2022",
+        "dateFinal": "07/12/2022",
+        "peopleCount": 2,
+        "imageId": "city2",
+        "category": "City",
+        "isShared": false,
+        "isPublic": true,
+        "shareKey": "losAngelesWimbi123",
+        "createdAt": "23/11/2022",
+        "currency": "U$",
+        "likesCount": 0,
+        "day": [
+            {
+                "id": 1,
+                "date": "01/12/2022",
+                "activity": [
+                    {
+                        "id": 20,
+                        "name": "Los Angeles International Airport",
+                        "tips": "Good options for food and shopping in terminal. Parking is right next to the departure and arrival gates.",
+                        "category": "transportation",
+                        "location": "33.94259465602315, -118.41085815943629",
+                        "address": "1 World Way, Los Angeles, CA 90045, United States",
+                        "link": "https://www.flylax.com/",
+                        "hour": "13:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 21,
+                        "name": "Carl's Jr.",
+                        "tips": "Restaurant sitting area was very clean. Male bathroom were spotless. Food and service was great.",
+                        "category": "food",
+                        "location": "33.943400330211404, -118.39721732439024",
+                        "address": "Los Angeles International Airport, Terminal 8, Sp 8E, 1 World Way, Los Angeles, CA 90045, United States",
+                        "link": "https://www.carlsjr.com/",
+                        "hour": "13:30",
+                        "budget": 32.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 22,
+                        "name": "Los Angeles County Museum of Art",
+                        "tips": "8-hectare campus with various collections on the history of art, which also hosts screenings and concerts. This lights art installation is amazing and worth the visit to this place. It really lights up our spirits too.",
+                        "category": "leisure",
+                        "location": "34.07320234262966, -118.35976811390596",
+                        "address": "5905 Wilshire Blvd, Los Angeles, CA 90036, United States",
+                        "link": "http://www.lacma.org/",
+                        "hour": "14:00",
+                        "budget": 50.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 23,
+                        "name": "Check-in - Holiday Inn Express Hotel & Suites Hollywood Walk of Fame, an IHG Hotel",
+                        "tips": "It is a 10-minute drive from Universal Studios Hollywood™ and the Hollywood Walk of Fame. The venue features an outdoor pool, 10 beach bars, a gym, a snack bar and a terrace. The property also has easy access to public transportation: Hollywood - Highland Station is a 7-minute walk away.",
+                        "category": "accommodation",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "16:00",
+                        "budget": 1119.30,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 24,
+                        "name": "Walk to Hall of Fame",
+                        "tips": "- 5 minutes by car and 20 minutes on foot. A tip to help you search for your favorite stars is the website Star Finder, just search for the name of your star and go straight to the point, without having to keep walking to back and forth, reading star by star. If you want a quieter place, go between 6am and 10am",
+                        "category": "leisure",
+                        "location": "34.10182986524827, -118.3267158453144",
+                        "address": "Hollywood Boulevard, Vine St, Los Angeles, CA 90028, United States",
+                        "link": "",
+                        "hour": "16:30",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 25,
+                        "name": "Madame Tussauds Hollywood",
+                        "tips": "The famous Hollywood wax museum has 115 statues of celebrities. There, the areas are divided by themes and personalities. The museum has several branches, but it can be considered one of the unmissable activities for adults and children alike.",
+                        "category": "leisure",
+                        "location": "34.102069464810846, -118.34137782447442",
+                        "address": "6933 Hollywood Blvd, Los Angeles, CA 90028, United States",
+                        "link": "https://www.madametussauds.com/hollywood/",
+                        "hour": "18:00",
+                        "budget": 60.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 26,
+                        "name": "Jack's Candy",
+                        "tips": "Jack’s Candy in DTLA is the best place to shop for your party supplies and candy. Super safe to shop at store is really clean and organized. It has all kinds of sweets and treats, from chocolates to teddy bear candies. If you are traveling with children, this visit is essential!",
+                        "category": "food",
+                        "location": "34.03493663775942, -118.24294704717975",
+                        "address": "777 S Central Ave, Los Angeles, CA 90021, United States",
+                        "link": "http://www.jackscandy.com/",
+                        "hour": "19:40",
+                        "budget": 36.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 27,
+                        "name": "Dolby Theatre",
+                        "tips": "Tours depart every 30 minutes and take tourists to different areas of the theater, backstage, in chairs reserved for certain artists, in addition to showing an original copy of the Oscar, highly protected. For cinema fanatics, a tour of its interior is a must.",
+                        "category": "leisure",
+                        "location": "34.10285520843328, -118.34043994220418",
+                        "address": "6801 Hollywood Blvd, Hollywood, CA 90028, United States",
+                        "link": "http://www.dolbytheatre.com/",
+                        "hour": "20:20",
+                        "budget": 50.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 28,
+                        "name": "Hard Rock Cafe",
+                        "tips": "Your COVID vaccination proof and ID are needed to enter the restaurant. To the food and service that were awesome. The atmosphere is smooth, the music is great, lighting is well thought out and the entire place is spotless.",
+                        "location": "34.102222574676105, -118.34074871733434",
+                        "address": "6801 Hollywood Blvd Suite 105, Los Angeles, CA 90028, United States",
+                        "link": "https://www.hardrockcafe.com",
+                        "hour": "21:20",
+                        "budget": 98.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 29,
+                        "name": "Back to Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "23:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "date": "02/12/2022",
+                "activity": [
+                    {
+                        "id": 30,
+                        "name": "Breakfast at Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "food",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "09:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 31,
+                        "name": "Walk to Rodeo Drive",
+                        "tips": "If you’re looking for designer clothes, Rodeo Drive is the place to go. However, it’s also a great place to find affordable clothes as well. Many of the stores on Rodeo Drive offer lower prices than other stores in the city. ",
+                        "category": "leisure",
+                        "location": "34.06791200556656, -118.40165478849892",
+                        "address": "Santa Monica Blvd at Wilshire Blvd, Beverly Hills, CA 90210, United States",
+                        "link": "",
+                        "hour": "10:30",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 32,
+                        "name": "Dave & Busters",
+                        "tips": "It’s a great place to hang out with family or friends or celebrate a birthday. You can relax and have appetizers while watching a baseball or basketball game, if you’re not into sports you can play a plethora of games.",
+                        "category": "food",
+                        "location": "34.101972782746344, -118.33923742578726",
+                        "address": "6815 Hollywood Blvd, Los Angeles, CA 90028, United States",
+                        "link": "https://www.daveandbusters.com/los-angeles/hollywood",
+                        "hour": "14:00",
+                        "budget": 42.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 33,
+                        "name": "Hollywood & Highland Center",
+                        "tips": "The Shopping center that houses the Oscar theater, brings together good restaurants and a very megalomaniac architecture, referring to epic Hollywood productions",
+                        "category": "leisure",
+                        "location": "34.101972782746344, -118.33923742578726",
+                        "address": "6815 Hollywood Blvd, Los Angeles, CA 90028, United States",
+                        "link": "https://hollywoodandhighland.com/",
+                        "hour": "15:20",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 34,
+                        "name": "Paramount Studios",
+                        "tips": "Warner's studios are one of the largest in the world. It is located in Burbank, a city very close to Los Angeles, less than 1 hour away, with regular buses that stop at the door of the studio. There are three types of tours available that vary in price and duration",
+                        "category" : "leisure",
+                        "location": "34.08463149989909, -118.32083535188055",
+                        "address": "PQHP+PGM, Ao Nang, Mueang Krabi District, Krabi 81000, Thailand",
+                        "link": "http://www.paramountstudiotour.com/",
+                        "hour": "18:00",
+                        "budget": 118.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 35,
+                        "name": "Osteria La Buca",
+                        "tips": "Osteria was delicious farm to table Italian food. The short rib ravioli and the Bolognese was amazing. Highly recommend this as a really great experience for a nice Italian meal. Fresh ingredients, great service",
+                        "category": "food",
+                        "location": "34.083642015115664, -118.31389015020504",
+                        "address": "5210 Melrose Ave, Los Angeles, CA 90038, United States",
+                        "link": "http://www.osterialabuca.com/",
+                        "hour": "21:40",
+                        "budget": 126.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 36,
+                        "name": "Back to Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "23:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "date": "03/12/2022",
+                "activity": [
+                    {
+                        "id": 37,
+                        "name": "Breakfast at Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "food",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "09:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 38,
+                        "name": "The Broad Museum",
+                        "tips": "You have to make ticket reservations online in advance; note that the general admission ticket is separate from the infinity room tickets, so you need to make sure you select both things when reserving tickets.",
+                        "category": "leisure",
+                        "location": "34.05465319172457, -118.2501480154821",
+                        "address": "221 S Grand Ave, Los Angeles, CA 90012, United States",
+                        "link": "http://www.thebroad.org/",
+                        "hour": "11:30",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 39,
+                        "name": "Yuko Kitchen Wilshire",
+                        "tips": "Such huge portions for a healthy and filling rice bowl! They have excellent vegan options and sweets too. Opens at 11 am",
+                        "category": "food",
+                        "location": "34.06215067451208, -118.34838936535957",
+                        "address": "5484 Wilshire Blvd, Los Angeles, CA 90036, United States",
+                        "link": "http://www.yukokitchen.com/",
+                        "hour": "13:00",
+                        "budget": 64.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 40,
+                        "name": "La Brea Tar Pits",
+                        "tips": "One of the most interesting tourist attractions in Los Angeles. Who would have thought that, in the middle of one of the largest metropolises in the world, we would find a great archaeological site? La Brea is a set of tar pits that sprouted from the earth thousands of years ago and which, throughout history, trapped and fossilized Ice Age animals and plants.",
+                        "category": "leisure",
+                        "location": "34.06381991599955, -118.35549360246074",
+                        "address": "5801 Wilshire Blvd, Los Angeles, CA 90036, United States",
+                        "link": "http://tarpits.org/",
+                        "hour": "15:00",
+                        "budget": 30.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 41,
+                        "name": "Griffith Observatory",
+                        "tips": "One of the best spots in the city of Los Angeles to see the Hollywood Sign and the entire city skyline, especially during sunset. In addition, it is an observatory with numerous telescopes to see the moon and some planets, understand better about the universe and visit its planetarium ($7 for adults and $3 for children and seniors).",
+                        "category": "leisure",
+                        "location": "34.119254645389624, -118.30065113203845",
+                        "address": "2800 E Observatory Rd, Los Angeles, CA 90027, United States",
+                        "link": "https://griffithobservatory.org/ ",
+                        "hour": "17:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 42,
+                        "name": "Agua Viva",
+                        "tips": "The drinks and food here are delicious. The classic margarita it was fantastic. The 'make your own sushi' was a different take but fun to eat and tasty as well, the salmon was fresh! The chicken had a great mix of flavors, it was juicy and tender.",
+                        "category": "food",
+                        "location": "34.055092890973825, -118.24837495758739",
+                        "address": "100 S Grand Ave, Los Angeles, CA 90012, Estados Unidos",
+                        "link": "34.055092890973825, -118.24837495758739",
+                        "hour": "18:40",
+                        "budget": 83.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 43,
+                        "name": "Walt Disney Concert Hall ",
+                        "tips": "It is a mandatory stop. Designed by Canadian architect Frank Gehry, it took 16 years to complete due to its bold design. The concert hall itself is so incredibly laid out that acoustically it's one of the best concert Halls I've ever visited in the entire world. And it's just gorgeous. Visit for the architecture alone, but absolutely enjoy the music.",
+                        "category": "leisure",
+                        "location": "34.0554354451524, -118.2498450223235",
+                        "address": "111 S Grand Ave, Los Angeles, CA 90012, United States",
+                        "link": "http://www.laphil.com/",
+                        "hour": "20:30",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 44,
+                        "name": "Back to Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "00:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "date": "04/12/2022",
+                "activity": [
+                    {
+                        "id": 45,
+                        "name": "Breakfast at Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "food",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "07:30",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 46,
+                        "name": "Disneyland Park",
+                        "tips": "Disneyland, is in the city of Anaheim, 1 hour away from Los Angeles. For those who want to experience an amusement park with the Disney brand, but with a more intimate atmosphere, Disneyland is the best option. With two theme parks (Disneyland and Disney California Adventure), an entertainment, shopping and dining center (Downtown Disney District), and three hotels (Grand Californian, Paradise Pier and the Disneyland Hotel), the entire complex is relatively small – you can explore everything on foot.",
+                        "category": "leisure",
+                        "location": "33.81230572207704, -117.91895274432312",
+                        "address": "1313 Disneyland Dr, Anaheim, CA 92802, United States",
+                        "link": "https://disneyland.disney.go.com",
+                        "hour": "10:00",
+                        "budget": 300.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 47,
+                        "name": "Alien Pizza Planet",
+                        "tips": "This delicious restaurant simulates the Pizza Planet restaurant, from the movie Toy Story and it works in fast-food style.",
+                        "category": "food",
+                        "location": "33.81230572207704, -117.91895274432312",
+                        "address": "1313 Disneyland Dr, Anaheim, CA 92802, United States",
+                        "link": "https://disneyland.disney.go.com/dining/disneyland/alien-pizza-planet/",
+                        "hour": "13:00",
+                        "budget": 86.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 48,
+                        "name": "Blue Bayou Restaurant",
+                        "tips": "This French food restaurant is perfect for couples traveling on their honeymoon, as the restaurant is all themed in a romantic way, making you forget the madness of an amusement park.",
+                        "category": "food",
+                        "location": "33.81230572207704, -117.91895274432312",
+                        "address": "1313 Disneyland Dr, Anaheim, CA 92802, United States",
+                        "link": "https://disneyland.disney.go.com/dining/disneyland/blue-bayou-restaurant/",
+                        "hour": "20:00",
+                        "budget": 120.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 49,
+                        "name": "Back to Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "23:30",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "date": "05/12/2022",
+                "activity": [
+                    {
+                        "id": 50,
+                        "name": "Breakfast at Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "food",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "08:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 51,
+                        "name": "Universal Studios Hollywood",
+                        "tips": "An amusement park that combines amazing themed areas like Harry Potter and The Simpsons with extreme roller coasters and a spectacular tour of Universal's movie studios. The first step for anyone wanting to visit Universal Studios is to download the park app. In it you can find interactive maps, waiting times for attractions and show times. With the app in hand, you can make smart decisions and avoid huge queues.",
+                        "category": "leisure",
+                        "location": "34.139822362045436, -118.35393536412957",
+                        "address": "100 Universal City Plaza, Universal City, CA 91608, United States",
+                        "link": "https://www.universalstudioshollywood.com/web/en/us",
+                        "hour": "10:00",
+                        "budget": 260.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 52,
+                        "name": "Hollywood & Dine",
+                        "tips": "Dine like the Stars and let your taste buds enjoy a selection of seasonal favorites and delicious culinary dishes. Also come back for a Freshly Made Funnel Cake with Strawberry & Ice Cream toppings!",
+                        "category": "food",
+                        "location": "34.139822362045436, -118.35393536412957",
+                        "address": "100 Universal City Plaza, Universal City, CA 91608, United States",
+                        "link": "https://www.universalstudioshollywood.com/web/en/us/things-to-do/dining/hollywood-dine",
+                        "hour": "13:30",
+                        "budget": 82.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 53,
+                        "name": "iFLY",
+                        "tips": "You can experience human flight! Indoor Skydiving at iFLY Hollywood's vertical wind tunnel is safe for kids, challenging for adults, exciting for teens and realistic for skydivers. If you are looking for a fun and different excursion in L.A., you've found it!",
+                        "category": "leisure",
+                        "location": "34.139822362045436, -118.35393536412957",
+                        "address": "100 Universal City Plaza, Universal City, CA 91608, United States",
+                        "link": "https://www.universalstudioshollywood.com/web/en/us/things-to-do/entertainment/citywalk/ifly",
+                        "hour": "15:30",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 53,
+                        "name": "Can’t-Miss Experiences in Hogsmeade",
+                        "tips": "Don’t miss the new additions at The Wizarding World of Harry Potter™ including new wand magic experiences and the arrival of Butterbeer™ hard pack ice-cream!",
+                        "category": "leisure",
+                        "location": "34.139822362045436, -118.35393536412957",
+                        "address": "100 Universal City Plaza, Universal City, CA 91608, United States",
+                        "link": "https://www.universalstudioshollywood.com/web/en/us/things-to-do/entertainment/cant-miss-experiences-in-hogsmeade-this-summer",
+                        "hour": "15:30",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 54,
+                        "name": "Antojitos Cocina Mexicana",
+                        "tips": "Explore the tastes, sounds and sights of Mexico at Antojitos Cocina Mexicana, authentic Mexican cuisine in the heart of the Universal CityWalk. Explore a menu that boasts traditional favorites like signature guacamole and tacos. Plus enjoy over 150 tequilas, handcrafted cocktails and draft imports.",
+                        "category": "food",
+                        "location": "34.139822362045436, -118.35393536412957",
+                        "address": "100 Universal City Plaza, Universal City, CA 91608, United States",
+                        "link": "https://www.universalstudioshollywood.com/web/en/us/things-to-do/dining/citywalk/antojitos",
+                        "hour": "20:00",
+                        "budget": 106.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 55,
+                        "name": "Back to Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "23:30",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    }
+                ]
+            },
+            {
+                "id": 6,
+                "date": "06/12/2022",
+                "activity": [
+                    {
+                        "id": 56,
+                        "name": "Breakfast at Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "food",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "08:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 57,
+                        "name": "Venice Beach",
+                        "tips": "The most famous beach in the city of Los Angeles. Walking along its busy seaside promenade and its iconic piers is quite pleasant. It is a great option for anyone who wants to relax and enjoy one side of the city by bicycle or rollerblading.",
+                        "category": "leisure",
+                        "location": "33.99470777540911, -118.480502385521167",
+                        "address": "84. Ocean Front Walk and Rose Avenue SM, Venice, CA 90291, United States",
+                        "link": "",
+                        "hour": "11:00",
+                        "budget": 260.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 58,
+                        "name": "The Butcher's Daughter",
+                        "tips": "Open all day with vegetarian & vegan dishes, plus juices in a laid-back space. The vegan breakfast sausages and the lemon waffles was amazing. The pastries were also very good.",
+                        "category": "food",
+                        "location": "34.003613022131915, -118.46371996508928",
+                        "address": "1205 Abbot Kinney Blvd, Venice, CA 90291, United States",
+                        "link": "https://www.thebutchersdaughter.com/la/",
+                        "hour": "14:00",
+                        "budget": 80.50,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 59,
+                        "name": "Santa Monica Pier",
+                        "tips": "Be ready for the crowds of people that come here and bring your jacket because it can get pretty cold. There are many great spots to take pictures and spend time with family and friends here.",
+                        "category": "leisure",
+                        "location": "34.00844493837358, -118.49871245868658",
+                        "address": "200 Santa Monica Pier, Santa Monica, CA 90401, United States",
+                        "link": "https://santamonicapier.org/",
+                        "hour": "18:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 60,
+                        "name": "High Rooftop Lounge",
+                        "tips": "Very nice location, very good to admire the sunset over Venice. Cocktails and food to nibble on while the DJ plays throughout the night. The drinks we received we fantastic and the food tasted great. Highly recommend and we will definitely be returning to enjoy some more of that amazing view.",
+                        "category": "food",
+                        "location": "33.987303836409566, -118.4721886122371",
+                        "address": "XGPH+V5 Venice, Los Angeles, CA, EUA",
+                        "link": "https://www.hotelerwin.com/food-drink/high-rooftop-lounge/",
+                        "hour": "21:00",
+                        "budget": 170.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 61,
+                        "name": "Back to Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "01:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    }
+                ]
+            },
+            {
+                "id": 7,
+                "date": "07/12/2022",
+                "activity": [
+                    {
+                        "id": 62,
+                        "name": "Breakfast at Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "food",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "09:30",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 63,
+                        "name": "Checkout - Holiday Inn Express Hotel",
+                        "tips": "",
+                        "category": "accommodation",
+                        "location": "34.10610088343829, -118.33779690013664",
+                        "address": "1921 N Highland Ave, Los Angeles, CA 90068, United States",
+                        "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/los-angeles/laxfa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-LAXFA",
+                        "hour": "11:00",
+                        "budget": 0.0,
+                        "currency": "U$"
+                    },
+                    {
+                        "id": 64,
+                        "name": "Los Angeles International Airport",
+                        "tips": "Good options for food and shopping in terminal. Parking is right next to the departure and arrival gates.",
+                        "category": "transportation",
+                        "location": "33.94259465602315, -118.41085815943629",
+                        "address": "1 World Way, Los Angeles, CA 90045, United States",
+                        "link": "https://www.flylax.com/",
+                        "hour": "13:00",
                         "budget": 0.0,
                         "currency": "U$"
                     }
