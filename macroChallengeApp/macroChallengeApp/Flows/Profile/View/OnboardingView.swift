@@ -30,7 +30,7 @@ class OnboardingView: UIView {
     
     lazy var subtitle: UILabel = {
         let title = UILabel()
-        title.text = "The first social travel network".localized() // adicionar nome
+        title.text = "The first travel social network".localized() // adicionar nome
         title.stylize(with: designSystem.text.body)
         title.textAlignment = .center
         return title

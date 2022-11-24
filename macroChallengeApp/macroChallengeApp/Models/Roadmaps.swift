@@ -46,7 +46,7 @@ struct Roadmaps: Codable {
     }
     init() {
         self.id = 1
-        self.name = "New Roadmap"
+        self.name = "New Itinerary"
         self.location = "LocationName"
         self.budget = 0
         self.dayCount = 1
