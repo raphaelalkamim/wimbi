@@ -72,7 +72,7 @@ extension NotificationPickerTableViewCell: UIPickerViewDelegate, UIPickerViewDat
         return 2
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if title.text == "Roadmap to".localized() {
+        if title.text == "Itinerary to".localized() {
             if component == 0 {
                 return 30
             } else {
@@ -89,7 +89,7 @@ extension NotificationPickerTableViewCell: UIPickerViewDelegate, UIPickerViewDat
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if title.text == "Roadmap to".localized() {
+        if title.text == "Itinerary to".localized() {
             if component == 0 {
                 return "\(row + 1)"
             } else {

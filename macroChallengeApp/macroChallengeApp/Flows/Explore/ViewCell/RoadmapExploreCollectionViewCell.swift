@@ -23,7 +23,7 @@ class RoadmapExploreCollectionViewCell: UICollectionViewCell {
     
     lazy var cover: UIImageView = {
         let img = UIImageView()
-        img.image = designSystem.imagesDefault.beach[3]
+        img.image = UIImage(named: "floripa")
         img.clipsToBounds = true
         img.contentMode = .scaleAspectFill
         img.layer.cornerRadius = 16
@@ -185,11 +185,10 @@ extension RoadmapExploreCollectionViewCell {
     
     func setupContent(imageId: String, name: String, peopleCount: Int, dayCount: Int, budget: Double, currency: String, category: String, likesCount: Int) {
         cover.image = UIImage(named: imageId)
-        
         if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: imageId)) {
             cover.image = cachedImage
         } else {
-            cover.image = UIImage(named: setupImage(category: category)) 
+            cover.image = UIImage(named: setupImage(category: category))
         }
         title.text = name
         var travelers = ""

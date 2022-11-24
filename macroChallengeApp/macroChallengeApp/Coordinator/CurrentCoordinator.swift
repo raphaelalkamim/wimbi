@@ -25,7 +25,7 @@ class CurrentCoordinator: Coordinator {
         let tabBarItem = UITabBarItem(title: "Current".localized(), image: UIImage(systemName: "map"), tag: 0)
         tabBarItem.selectedImage = UIImage(systemName: "map.fill")
         viewController.tabBarItem = tabBarItem
-        viewController.navigationItem.title = "Current Roadmap".localized()
+        viewController.navigationItem.title = "Current Itinerary".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
     

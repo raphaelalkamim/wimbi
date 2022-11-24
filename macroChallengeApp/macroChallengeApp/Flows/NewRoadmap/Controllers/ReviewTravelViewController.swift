@@ -115,7 +115,7 @@ class ReviewTravelViewController: UIViewController {
             } else {
             let authorization = PHPhotoLibrary.authorizationStatus()
             if authorization != .denied {
-                self.imagePicker.present(from: self.reviewTravelView, title: "How about inserting a photo into your roadmap?".localized())
+                self.imagePicker.present(from: self.reviewTravelView, title: "How about inserting a photo into your itinerary?".localized())
             } else {
                 print("Nao permitido")
             }

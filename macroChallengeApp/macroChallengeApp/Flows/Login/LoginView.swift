@@ -33,7 +33,7 @@ class LoginView: UIView {
     
     lazy var signInText: UILabel = {
         let label = UILabel()
-        label.text = "Sign in to be able to create, duplicate, like and share a roadmap.".localized()
+        label.text = "Sign in to be able to create, duplicate, like and share a itinerary.".localized()
         label.textAlignment = .center
         label.font = UIFont(name: "Avenir-Roman", size: 17)!
         label.numberOfLines = 0

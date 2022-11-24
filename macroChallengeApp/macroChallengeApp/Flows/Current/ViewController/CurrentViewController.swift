@@ -58,7 +58,7 @@ extension CurrentViewController {
         }
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.navigationItem.largeTitleDisplayMode = .never
-        self.navigationController?.title = "Current Roadmap".localized()
+        self.navigationController?.title = "Current Itinerary".localized()
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
         UINavigationBar.appearance().barTintColor = designSystem.palette.backgroundPrimary
         UINavigationBar.appearance().barStyle = .default
@@ -72,7 +72,7 @@ extension CurrentViewController {
         }
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.navigationItem.largeTitleDisplayMode = .never
-        self.navigationController?.title = "Current Roadmap".localized()
+        self.navigationController?.title = "Current Itinerary".localized()
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
         UINavigationBar.appearance().barTintColor = designSystem.palette.backgroundPrimary
         UINavigationBar.appearance().barStyle = .default

@@ -10,7 +10,7 @@ import UIKit
 
 extension ReviewTravelViewController {
     func setupReviewTravelView() {
-        navigationItem.title = "My roadmap".localized()
+        navigationItem.title = "My itinerary".localized()
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         reviewTravelView.coverImage.addTarget(self, action: #selector(editPhoto), for: .touchUpInside)
         reviewTravelView.bindTableView(delegate: self, dataSource: self)

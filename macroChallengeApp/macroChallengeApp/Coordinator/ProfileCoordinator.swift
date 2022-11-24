@@ -135,7 +135,7 @@ class ProfileCoordinator: Coordinator {
     func startLikedRoadmaps() {
         let viewController = LikedRoadmapsViewController()
         viewController.coordinator = self
-        viewController.navigationItem.title = "Liked roadmaps".localized()
+        viewController.navigationItem.title = "Liked itineraries".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
 

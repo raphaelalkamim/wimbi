@@ -45,7 +45,7 @@ class OnboardingView: UIView {
     
     lazy var createSubtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.text = "Create your roadmap and make it public for people to enjoy and use as inspiration.".localized()
+        subtitle.text = "Create your itinerary and make it public for people to enjoy and use as inspiration.".localized()
         subtitle.stylize(with: designSystem.text.caption)
         return subtitle
     }()
@@ -61,14 +61,14 @@ class OnboardingView: UIView {
     
     lazy var duplicateTitle: UILabel = {
         let title = UILabel()
-        title.text = "Explore roadmaps without sign in".localized()
+        title.text = "Explore itinerary without sign in".localized()
         title.stylize(with: designSystem.text.cellTitle)
         return title
     }()
     
     lazy var duplicateSubtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.text = "If you find a perfect roadmap, duplicate it so you can edit it at any time.".localized()
+        subtitle.text = "If you find a perfect itinerary, duplicate it so you can edit it at any time.".localized()
         subtitle.stylize(with: designSystem.text.caption)
         return subtitle
     }()
@@ -84,14 +84,14 @@ class OnboardingView: UIView {
     
     lazy var likeTitle: UILabel = {
         let title = UILabel()
-        title.text = "Don't miss any roadmap".localized()
+        title.text = "Don't miss any itinerary".localized()
         title.stylize(with: designSystem.text.cellTitle)
         return title
     }()
     
     lazy var likeSubtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.text = "Like a roadmap so that it's saved in settings.".localized()
+        subtitle.text = "Like a itinerary so that it's saved in settings.".localized()
         subtitle.stylize(with: designSystem.text.caption)
         return subtitle
     }()
@@ -114,7 +114,7 @@ class OnboardingView: UIView {
     
     lazy var shareSubtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.text = "Share your roadmap with your friends so everyone can edit it.".localized()
+        subtitle.text = "Share your itinerary with your friends so everyone can edit it.".localized()
         subtitle.stylize(with: designSystem.text.caption)
         return subtitle
     }()
