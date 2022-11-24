@@ -18,7 +18,7 @@
 "By clicking on the button above, you agree to our Privacy Policies" = "Al hacer clic en el botón de arriba, usted acepta nuestras Políticas de Privacidad";
 "User" = "Usuario";
 "@user" = "@usuario";
-"Sign in to be able to create, duplicate, like and share a itinerary." = "Inicie sesión para poder crear, duplicar, dar me gusta y compartir un guía.";
+"Sign in to be able to create, duplicate, like and travel together with a itinerary." = "Inicie sesión para poder crear, duplicar, dar me gusta y compartir un guía.";
 
 // MARK: -  New Activity
 "Type: " = "Tipo: ";
@@ -189,7 +189,7 @@
 "Itinerary to" = "Guía de viaje para";
 
 //MARK: - Onboarding
-"The first social travel network" = "La primera red social de viajes";
+"The first travel social network" = "La primera red social de viajes";
 "Be an explorer" = "Sé un explorador";
 "Create your itinerary and make it public for people to enjoy and use as inspiration." = "Cree su guía y hágalo público para que la gente lo disfrute y lo use como inspiración.";
 "Explore itineraries without sign in" = "Explorar hojas de ruta sin iniciar sesión";
