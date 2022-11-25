@@ -82,7 +82,7 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     func getAllDays() {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
-            newDays.sort { $0.date! < $1.date! }
+            newDays.sort { $0.id < $1.id }
             self.days = newDays
         }
         for index in 0..<days.count where days[index].isSelected == true {
