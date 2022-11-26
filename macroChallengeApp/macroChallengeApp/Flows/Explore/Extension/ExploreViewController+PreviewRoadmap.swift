@@ -95,8 +95,48 @@ extension PreviewRoadmapViewController {
         present(alert, animated: true)
         
     }
+    // MARK: Alerts
+    func loginAlert() {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.view.tintColor = .accent
+        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
+        let string = NSAttributedString(string: "Login required".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
+        alert.setValue(string, forKey: "attributedTitle")
+        let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
+        let subtitleString = NSAttributedString(string: "Access the profile and log-in to duplicate or create new itineraries".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
+        alert.setValue(subtitleString, forKey: "attributedMessage")
+        
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+        }))
+        present(alert, animated: true)
+    }
+    func duplicateAlert() {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.view.tintColor = .accent
+        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
+        let string = NSAttributedString(string: "Successfully duplicated!".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
+        alert.setValue(string, forKey: "attributedTitle")
+        let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
+        let subtitleString = NSAttributedString(string: "The itinerary is now available on your profile.".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
+        alert.setValue(subtitleString, forKey: "attributedMessage")
+        
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
+        }))
+        present(alert, animated: true)
+        roadmap.imageId = "defaultCover"
+        let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: false)
+        guard let days = newRoadmap.day?.allObjects as? [DayLocal] else { return }
+        let roadmapDays = self.roadmap.days
+        for index in 0..<roadmapDays.count {
+            let activiyArray = roadmapDays[index].activity
+            for activity in activiyArray {
+                _ = ActivityRepository.shared.createActivity(day: days[index], activity: activity, isNew: true)
+            }
+        }
+        FirebaseManager.shared.createAnalyticsEvent(event: "duplicate_roadmap", parameters: ["roadmap_id": self.roadmap.id])
+    }
 }
-
+// MARK: - CollectionView
 extension PreviewRoadmapViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // desabilita todas as celulas que nao sao a que recebeu o clique
@@ -123,7 +163,6 @@ extension PreviewRoadmapViewController: UICollectionViewDelegate {
         }
     }
 }
-// MARK: CollectionView
 extension PreviewRoadmapViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == previewView.infoTripCollectionView {
@@ -213,7 +252,7 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
         }
     }
 }
-// MARK: TableView
+// MARK: - TableView
 extension PreviewRoadmapViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
