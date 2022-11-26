@@ -123,6 +123,7 @@ extension PreviewRoadmapViewController {
         alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
         }))
         present(alert, animated: true)
+        roadmap.likesCount = 0
         roadmap.imageId = "defaultCover"
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: false)
         guard let days = newRoadmap.day?.allObjects as? [DayLocal] else { return }
