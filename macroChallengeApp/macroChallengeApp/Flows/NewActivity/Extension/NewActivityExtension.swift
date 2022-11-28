@@ -154,6 +154,7 @@ extension NewActivityViewController: UITableViewDataSource {
                 newCell.delegate = self
                 newCell.label.text = "Currency".localized()
                 newCell.setCurrencyLabel(currency: self.currencyType)
+                newCell.setupCurrency(currencyType: self.currencyType)
                 cell = newCell
             } else if indexPath.row == 1 {
                     guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
