@@ -61,7 +61,7 @@ class OnboardingView: UIView {
     
     lazy var duplicateTitle: UILabel = {
         let title = UILabel()
-        title.text = "Explore itinerary without sign in".localized()
+        title.text = "Explore itineraries without sign in".localized()
         title.stylize(with: designSystem.text.cellTitle)
         return title
     }()
