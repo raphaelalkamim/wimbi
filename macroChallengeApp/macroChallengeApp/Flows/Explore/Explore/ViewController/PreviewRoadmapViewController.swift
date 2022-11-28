@@ -87,7 +87,7 @@ class PreviewRoadmapViewController: UIViewController {
         
         DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser, username in
             print(uuidUser, username)
-            self.previewView.username.text = "@\(username)"
+            self.previewView.username.text = "@\(username)".lowercased()
             // self.previewView.username.textColor = .accent
             self.uuidImage = uuidUser
             FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
