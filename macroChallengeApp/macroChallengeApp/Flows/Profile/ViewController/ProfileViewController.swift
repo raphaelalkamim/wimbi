@@ -134,7 +134,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     func changeToUserInfo(user: UserLocal) {
         self.profileView.getName().text = user.name
-        self.profileView.getUsernameApp().text = "@" + user.usernameApp!
+        self.profileView.getUsernameApp().text = "@" + (user.usernameApp ?? "newUser") 
         self.profileView.getTable().reloadData()
         if var path = user.photoId {
             let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
