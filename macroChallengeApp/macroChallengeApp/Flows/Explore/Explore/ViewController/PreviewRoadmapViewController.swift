@@ -87,7 +87,6 @@ class PreviewRoadmapViewController: UIViewController {
         DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser, username in
             print(uuidUser, username)
             self.previewView.username.text = "@\(username)".lowercased()
-            // self.previewView.username.textColor = .accent
             self.uuidImage = uuidUser
             FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
             }
@@ -148,7 +147,6 @@ class PreviewRoadmapViewController: UIViewController {
     }
     func updateAllBudget() {
         Task {
-           // await budgetTotal = currencyController.updateBudgetTotal(userCurrency: self.userCurrency, days: self.roadmap.days)
             await budgetTotal = currencyController.updateRoadmapTotalBudget(userCurrency: self.userCurrency, budget: roadmap.budget, outgoinCurrency: roadmap.currency)
             roadmap.budget = budgetTotal
             self.updateTotalBudgetValue()
@@ -156,7 +154,6 @@ class PreviewRoadmapViewController: UIViewController {
     }
     func updateTotalBudgetValue() {
         guard let cell = previewView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
-        
         let content = String(format: "\(self.userCurrency)%.2f", self.budgetTotal)
         cell.infoTitle.text = content
         previewView.infoTripCollectionView.reloadData()

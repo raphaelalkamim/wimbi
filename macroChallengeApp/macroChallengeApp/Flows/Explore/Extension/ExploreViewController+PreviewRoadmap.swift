@@ -193,17 +193,6 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
             return cell
         }
     }
-    func setupColor(category: String) -> UIColor {
-        if category == "Beach" {
-            return .blueBeach
-        } else if category == "Mountain" {
-            return .yellowMontain
-        } else if category == "City" {
-            return .redCity
-        } else {
-            return .greenCamp
-        }
-    }
 }
 // MARK: - TableView
 extension PreviewRoadmapViewController: UITableViewDelegate {
@@ -230,7 +219,6 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
                                  value: String(activity.budget),
                                  name: activity.name)
         cell.activityIcon.image = UIImage(named: activity.category)
-        // self.updateAllBudget()
         return cell
     }
     
