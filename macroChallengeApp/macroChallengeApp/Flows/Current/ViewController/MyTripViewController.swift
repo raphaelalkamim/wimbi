@@ -195,7 +195,6 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
             var budgetDay = 0.0
             await budgetDay = currencyController.updateBudget(activites: activites, userCurrency: self.userCurrency)
             await budgetTotal = currencyController.updateBudgetTotal(userCurrency: self.userCurrency, days: days)
-            #warning("mandar valor do budget atualizado para o backend")
             RoadmapRepository.shared.updateRoadmapBudget(roadmap: roadmap, budget: budgetTotal)
             let content = String(format: "\(self.userCurrency)%.2f", budgetDay)
             myTripView.budgetValue.text = content
