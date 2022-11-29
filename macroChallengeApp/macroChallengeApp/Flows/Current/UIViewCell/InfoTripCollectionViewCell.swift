@@ -77,43 +77,38 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         title.text = ""
         return title
     }()
-    
+    func setupContentCell(roadmap: Roadmaps, indexPath: Int, userCurrency: String, uuidImage: String) {
+        switch indexPath {
+        case 0:
+            setupCategory(category: roadmap.category)
+        case 1:
+            setupTotalAmount(userCurrency: userCurrency, budget: roadmap.budget)
+        case 2:
+            setupTravelers(peopleCount: roadmap.peopleCount)
+        case 3:
+            setupLikes(likesCount: roadmap.likesCount)
+        case 4:
+            setupCreatedBy()
+            if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: uuidImage)) {
+                circle.image = cachedImage
+            } else { circle.image = UIImage(named: "icon") }
+        default:
+            break
+        }
+    }
     func setupContent(roadmap: RoadmapLocal, indexPath: Int, user: UserLocal) {
         switch indexPath {
         case 0:
-            title.text = "CATEGORY".localized()
-            circle.isHidden = false
-            categoryTitle.isHidden = false
-            categoryTitle.text = roadmap.category?.localized()
-            info.isHidden = true
-            setupCircleColor(category: roadmap.category ?? "Mountain")
-            circle.snp.makeConstraints { make in
-                make.height.width.equalTo(24)
-            }
+            setupCategory(category: roadmap.category ?? "Mountain")
         case 1:
-            title.text = "TOTAL AMOUNT".localized()
-            info.isHidden = true
-            infoTitle.isHidden = false
-            infoTitle.text = self.userCurrency + String(roadmap.budget)
+            setupTotalAmount(userCurrency: userCurrency, budget: roadmap.budget)
         case 2:
-            title.text = "TRAVELERS".localized()
-            let viajantesCount = roadmap.peopleCount
-            info.setTitle(String(viajantesCount), for: .normal)
-            info.setImage(UIImage(systemName: "person.fill"), for: .normal)
+            setupTravelers(peopleCount: Int(roadmap.peopleCount))
         case 3:
-            title.text = "LIKES".localized()
-            let countLikes = roadmap.likesCount
-            info.setTitle(String(countLikes), for: .normal)
+            setupLikes(likesCount: Int(roadmap.likesCount))
         case 4:
-            title.text = "CREATED BY".localized()
-            separator.isHidden = true
-            circle.isHidden = false
-            info.isHidden = true
+            setupCreatedBy()
             self.setupImage(userId: user.photoId ?? "icon")
-            circle.layer.cornerRadius = 18
-            circle.snp.makeConstraints { make in
-                make.height.width.equalTo(36)
-            }
         default:
             break
         }
@@ -138,6 +133,48 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         } else {
             return currencySymbol ?? "U$"
         }
+    }
+    func setupCategory(category: String) {
+        title.text = "CATEGORY".localized()
+        circle.isHidden = false
+        categoryTitle.isHidden = false
+        categoryTitle.text = category.localized()
+        setupCircleColor(category: category)
+        info.isHidden = true
+        circle.snp.makeConstraints { make in make.height.width.equalTo(24) }
+    }
+    func setupTotalAmount(userCurrency: String, budget: Double) {
+        title.text = "TOTAL AMOUNT".localized()
+        info.isHidden = true
+        infoTitle.isHidden = false
+        circle.isHidden = true
+        categoryTitle.isHidden = true
+        let content = String(format: "\(userCurrency)%.2f", budget)
+        infoTitle.text = content
+    }
+    func setupTravelers(peopleCount: Int) {
+        title.text = "TRAVELERS".localized()
+        info.isHidden = false
+        infoTitle.isHidden = true
+        info.setTitle(" \(peopleCount)", for: .normal)
+        info.setImage(UIImage(systemName: "person.fill"), for: .normal)
+    }
+    func setupLikes(likesCount: Int) {
+        title.text = "LIKES".localized()
+        categoryTitle.isHidden = true
+        circle.isHidden = true
+        infoTitle.isHidden = true
+        info.isHidden = false
+        info.setTitle(" \(likesCount)", for: .normal)
+    }
+    func setupCreatedBy() {
+        title.text = "CREATED BY".localized()
+        separator.isHidden = true
+        circle.isHidden = false
+        info.isHidden = true
+        circle.layer.cornerRadius = 18
+        circle.clipsToBounds = true
+        circle.snp.makeConstraints { make in make.height.width.equalTo(36) }
     }
 }
 

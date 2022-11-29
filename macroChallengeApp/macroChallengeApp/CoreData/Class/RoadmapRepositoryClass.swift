@@ -110,7 +110,6 @@ public class RoadmapRepository: NSManagedObject {
         self.saveContext()
         return newRoadmap
     }
-    
     func updateFromBackend(editRoadmap: RoadmapLocal, roadmap: Roadmaps) -> RoadmapLocal {
         guard let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         
@@ -244,12 +243,18 @@ public class RoadmapRepository: NSManagedObject {
         context.delete(roadmap)
         self.saveContext()
     }
-    
     func deleteOldRoadmap(roadmap: RoadmapLocal) throws {
         context.delete(roadmap)
         self.saveContext()
     }
-    
+    func updateRoadmapBudget(roadmap: RoadmapLocal, budget: Double) {
+        // atualiza localmente
+        roadmap.budget = budget
+        print("budget: ", roadmap.budget)
+        DataManager.shared.putBudgetRoadmap(roadmap: roadmap, roadmapId: Int(roadmap.id))
+        // atualiza no backend
+        self.saveContext()
+    }
     func postInBackend(newRoadmap: RoadmapLocal, roadmap: Roadmaps, newDays: [DayLocal], selectedImage: UIImage? = nil) {
         DataManager.shared.postRoadmap(roadmap: roadmap, roadmapCore: newRoadmap, daysCore: newDays, selectedImage: selectedImage)
     }
@@ -258,3 +263,5 @@ public class RoadmapRepository: NSManagedObject {
         DataManager.shared.putRoadmap(roadmap: roadmap, roadmapId: id, newDaysCore: newDaysCore, selectedImage: selectedImage)
     }
 }
+
+//Oi bia duque

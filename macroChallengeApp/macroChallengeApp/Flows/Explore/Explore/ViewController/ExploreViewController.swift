@@ -12,12 +12,18 @@ class ExploreViewController: UIViewController {
     weak var coordinator: ExploreCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let locationSearchTable = RoadmapSearchTableViewController()
-    
+    let currencyController = CurrencyController()
+
     let explorerView = ExploreView()
     var roadmaps: [RoadmapDTO] = []
     var roadmapsMock: [Roadmaps] = []
     let network: NetworkMonitor = NetworkMonitor.shared
     let onboardEnable = UserDefaults.standard.bool(forKey: "onboard")
+    
+    lazy var userCurrency: String = {
+        let userC = currencyController.getUserCurrency()
+        return userC
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +54,11 @@ class ExploreViewController: UIViewController {
         })
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
     func addNewRoadmap() {
         coordinator?.createNewRoadmap()
     }
+    
     func getMockData() {
         let mockManager = DataMockManager()
         if let localData = mockManager.readLocalFile(forName: "dataRoadmaps") {

@@ -179,7 +179,7 @@ extension DataManager {
         let roadmapJson: [String: Any] = [
             "name": roadmap.name,
             "location": roadmap.location,
-            "budget": 0,
+            "budget": roadmap.budget,
             "dayCount": roadmap.dayCount,
             "dateInitial": roadmap.dateInitial,
             "dateFinal": roadmap.dateFinal,
@@ -267,6 +267,61 @@ extension DataManager {
             task.resume()
         }
     }
+    
+    // MARK: - PUT
+    func putBudgetRoadmap(roadmap: RoadmapLocal, roadmapId: Int) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d/M/y"
+        
+        let roadmapJson: [String: Any] = [
+            "name": roadmap.name,
+            "location": roadmap.location,
+            "budget": roadmap.budget,
+            "dayCount": roadmap.dayCount,
+            "dateInitial": dateFormatter.string(from: roadmap.date ?? Date()),
+            "dateFinal": dateFormatter.string(from: roadmap.dateFinal ?? Date()),
+            "peopleCount": roadmap.peopleCount,
+            "imageId": setupImage(category: roadmap.category ?? "defaultImage"),
+            "category": roadmap.category,
+            "isShared": roadmap.isShared,
+            "isPublic": roadmap.isPublic,
+            "shareKey": "ABC123",
+            "createdAt": dateFormatter.string(from: Date()),
+            "currency": roadmap.currency,
+            "likesCount": roadmap.likesCount
+        ]
+        
+        let session = URLSession.shared
+        guard let url = URL(string: baseURL + "roadmaps/\(roadmapId)") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: roadmapJson, options: .prettyPrinted)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        print("Atualizou")
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+
     // MARK: - JOIN
     func joinRoadmap(roadmapKey: String) {
         let session = URLSession.shared

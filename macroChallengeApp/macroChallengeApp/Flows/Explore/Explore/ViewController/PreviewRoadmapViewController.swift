@@ -33,7 +33,6 @@ class PreviewRoadmapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getRoadmapById(roadmapId: self.roadmapId)
-        self.updateAllBudget()
         self.setupPreviewRoadmapView()
         
         previewView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
@@ -87,8 +86,7 @@ class PreviewRoadmapViewController: UIViewController {
         
         DataManager.shared.getRoadmapUserImage(roadmapId: self.roadmapId) { uuidUser, username in
             print(uuidUser, username)
-            self.previewView.username.text = "@\(username)"
-            // self.previewView.username.textColor = .accent
+            self.previewView.username.text = "@\(username)".lowercased()
             self.uuidImage = uuidUser
             FirebaseManager.shared.getImage(category: 1, uuid: self.uuidImage) { _ in
             }
@@ -116,6 +114,7 @@ class PreviewRoadmapViewController: UIViewController {
         for index in 0..<self.roadmap.days.count {
             self.roadmap.days[index].activity.sort { $0.hour < $1.hour }
         }
+        self.updateAllBudget()
         updateConstraintsTable()
     }
     
@@ -148,16 +147,15 @@ class PreviewRoadmapViewController: UIViewController {
     }
     func updateAllBudget() {
         Task {
-            await budgetTotal = currencyController.updateBudgetTotal(userCurrency: self.userCurrency, days: self.roadmap.days)
+            await budgetTotal = currencyController.updateRoadmapTotalBudget(userCurrency: self.userCurrency, budget: roadmap.budget, outgoinCurrency: roadmap.currency)
             roadmap.budget = budgetTotal
-            RoadmapRepository.shared.saveContext()
             self.updateTotalBudgetValue()
         }
     }
     func updateTotalBudgetValue() {
         guard let cell = previewView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
-        
         let content = String(format: "\(self.userCurrency)%.2f", self.budgetTotal)
         cell.infoTitle.text = content
+        previewView.infoTripCollectionView.reloadData()
     }
 }

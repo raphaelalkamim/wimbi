@@ -23,6 +23,7 @@ extension PreviewRoadmapViewController {
         setupNavControl()
         setupConstraints()
         updateConstraintsTable()
+        
         if tutorialEnable == false { self.previewView.animateCollection() }
     }
     
@@ -178,78 +179,18 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfoTripCollectionViewCell.identifier, for: indexPath) as? InfoTripCollectionViewCell else {
                 preconditionFailure("Cell not find")
             }
-            switch indexPath.row {
-            case 0:
-                cell.title.text = "CATEGORY".localized()
-                cell.circle.isHidden = false
-                cell.categoryTitle.isHidden = false
-                cell.categoryTitle.text = self.roadmap.category.localized()
-                print(self.roadmap.category)
-                cell.circle.backgroundColor = setupColor(category: self.roadmap.category)
-                cell.info.isHidden = true
-                cell.circle.snp.makeConstraints { make in
-                    make.height.width.equalTo(24)
-                }
-                
-            case 1:
-                cell.title.text = "TOTAL AMOUNT".localized()
-                cell.info.isHidden = true
-                cell.infoTitle.isHidden = false
-                cell.circle.isHidden = true
-                cell.categoryTitle.isHidden = true
-                cell.infoTitle.text = "R$ \(self.roadmap.budget)"
-            case 2:
-                cell.title.text = "TRAVELERS".localized()
-                cell.info.isHidden = false
-                cell.infoTitle.isHidden = true
-                cell.info.setTitle(" \(self.roadmap.peopleCount)", for: .normal)
-                cell.info.setImage(UIImage(systemName: "person.fill"), for: .normal)
-            case 3:
-                cell.title.text = "LIKES".localized()
-                cell.info.setTitle(" \(roadmap.likesCount)", for: .normal)
-            case 4:
-                cell.title.text = "CREATED BY".localized()
-                cell.separator.isHidden = true
-                cell.circle.isHidden = false
-                cell.info.isHidden = true
-                cell.circle.layer.cornerRadius = 18
-                cell.circle.clipsToBounds = true
-                if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: self.uuidImage)) {
-                    cell.circle.image = cachedImage
-                } else {
-                    cell.circle.image = UIImage(named: "iconApp")
-                }
-                cell.circle.snp.makeConstraints { make in
-                    make.height.width.equalTo(36)
-                }
-            default:
-                break
-            }
-            
+            cell.setupContentCell(roadmap: roadmap, indexPath: indexPath.row, userCurrency: self.userCurrency, uuidImage: self.uuidImage)
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell else {
                 preconditionFailure("Cell not find")
-                
             }
-            
             cell.setDay(date: self.roadmap.days[indexPath.row].date)
             cell.dayButton.setTitle("\(indexPath.row + 1)º", for: .normal)
             if self.roadmap.days[indexPath.row].isSelected == true {
                 cell.selectedButton()
             } else { cell.disable() }
             return cell
-        }
-    }
-    func setupColor(category: String) -> UIColor {
-        if category == "Beach" {
-            return .blueBeach
-        } else if category == "Mountain" {
-            return .yellowMontain
-        } else if category == "City" {
-            return .redCity
-        } else {
-            return .greenCamp
         }
     }
 }
@@ -278,7 +219,6 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
                                  value: String(activity.budget),
                                  name: activity.name)
         cell.activityIcon.image = UIImage(named: activity.category)
-        self.updateAllBudget()
         return cell
     }
     

@@ -296,4 +296,12 @@ class CurrencyController {
         }
         return budgetTotal
     }
+    func updateRoadmapTotalBudget(userCurrency: String, budget: Double, outgoinCurrency: String) async -> Double {
+        if userCurrency == outgoinCurrency {
+            return budget
+        } else {
+            let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: outgoinCurrency)
+            return budget * value
+        }
+    }
 }

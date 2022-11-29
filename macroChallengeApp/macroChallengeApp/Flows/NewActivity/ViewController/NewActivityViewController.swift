@@ -89,8 +89,6 @@ class NewActivityViewController: UIViewController {
         self.delegate?.attTable()
         coordinator?.backPage()
         coordinatorCurrent?.backPage()
-        print(activity)
-        
         if UserDefaults.standard.bool(forKey: "switch") == true {
             if let safeActivity = createdActivity {
                 NotificationManager.shared.registerActivityNotification(createdActivity: safeActivity)
