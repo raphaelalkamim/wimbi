@@ -11,7 +11,7 @@ import UIKit
 class RoadmapExploreCollectionViewCell: UICollectionViewCell {
     static let identifier = "exploreCell"
     let designSystem: DesignSystem = DefaultDesignSystem.shared
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
@@ -214,5 +214,14 @@ extension RoadmapExploreCollectionViewCell {
         categoryName.text = category.localized()
         setupColor(category: category)
         totalLikes.text = "\(likesCount)"
+    }
+    func setupBudget(budget: Double, currency: String, peopleCount: Int) {
+        var amount = "per person".localized()
+        if budget > 1000 {
+            amount = "thousand per person".localized()
+            costByPerson.text = "\(currency) \(String(format: "%.2f", budget / Double(peopleCount) / 1000)) \(amount)"
+        } else {
+            costByPerson.text = "\(currency) \(String(format: "%.2f", budget / Double(peopleCount))) \(amount)"
+        }
     }
 }

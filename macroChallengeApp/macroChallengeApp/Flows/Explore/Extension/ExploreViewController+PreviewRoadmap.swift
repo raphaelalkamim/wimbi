@@ -197,7 +197,8 @@ extension PreviewRoadmapViewController: UICollectionViewDataSource {
                 cell.infoTitle.isHidden = false
                 cell.circle.isHidden = true
                 cell.categoryTitle.isHidden = true
-                cell.infoTitle.text = "R$ \(self.roadmap.budget)"
+                let content = String(format: "\(self.userCurrency)%.2f", self.roadmap.budget)
+                cell.infoTitle.text = content
             case 2:
                 cell.title.text = "TRAVELERS".localized()
                 cell.info.isHidden = false
@@ -278,7 +279,7 @@ extension PreviewRoadmapViewController: UITableViewDataSource {
                                  value: String(activity.budget),
                                  name: activity.name)
         cell.activityIcon.image = UIImage(named: activity.category)
-        self.updateAllBudget()
+        // self.updateAllBudget()
         return cell
     }
     

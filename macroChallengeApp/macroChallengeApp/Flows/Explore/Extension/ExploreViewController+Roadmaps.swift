@@ -39,7 +39,6 @@ extension ExploreViewController {
             self.explorerView.emptyStateImage.isHidden = false
             self.explorerView.roadmapsCollectionView.isScrollEnabled = false
         }
-        // self.network.stopMonitoring()
     }
 }
 
@@ -64,13 +63,18 @@ extension ExploreViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoadmapExploreCollectionViewCell.identifier, for: indexPath) as? RoadmapExploreCollectionViewCell else {
             preconditionFailure("Cell not find")
         }
-        
         if !roadmaps.isEmpty {
             let roadmap = roadmaps[indexPath.row]
+
             FirebaseManager.shared.getImage(category: 0, uuid: roadmap.imageId) { image in
                 cell.cover.image = image
             }
             cell.setupRoadmapBackEnd(roadmap: roadmap)
+            Task {
+                var budgetTotal = 0.0
+                await budgetTotal = currencyController.updateRoadmapTotalBudget(userCurrency: self.userCurrency, budget: roadmap.budget, outgoinCurrency: roadmap.currency)
+                cell.setupBudget(budget: budgetTotal, currency: self.userCurrency, peopleCount: roadmap.peopleCount)
+            }
             
         } else if !roadmapsMock.isEmpty {
             let roadmap = roadmapsMock[indexPath.row]
