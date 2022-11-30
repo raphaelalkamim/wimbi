@@ -21,7 +21,9 @@ class CurrencyAPI {
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            self.currency = try JSONDecoder().decode(DecodedCurrency.self, from: data)
+            if let newCurrency = try? JSONDecoder().decode(DecodedCurrency.self, from: data) {
+                self.currency = newCurrency
+            } else { print("EXC_Breakpoint error") }
         } catch {
             print(String(describing: error.localizedDescription))
         }
