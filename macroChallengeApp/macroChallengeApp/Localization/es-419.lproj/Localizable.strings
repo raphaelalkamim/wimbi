@@ -154,6 +154,7 @@
 "Open on Waze" = "Abrir en Waze";
 "Open on Google Maps" = "Abrir en Google Maps";
 "Open on" = "Abrir en";
+"Oops, you don't have an itinerary yet! Go to the Explore screen and create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it." = "Vaya, ¡todavía no tienes un itinerario! Vaya a la pantalla Explorar y cree una nuevo. De esa forma, podrás controlar cuánto tiempo te queda para tu ansiada viaje y cuando llegue ese momento, aquí encontrarás un atajo para ella.";
 
 // MARK: -  NewRoadmap
 "Category" = "Categoría";
@@ -187,6 +188,7 @@
 "Back" = "Atrás";
 "Continue" = "Continuar";
 "Itinerary to" = "Guía de viaje para";
+"Add an image so the Itinerary appears on the Explore view" = "Agregue una imagen para que el Itinerario aparezca en la pantalla Explorar";
 
 //MARK: - Onboarding
 "The first travel social network" = "La primera red social de viajes";

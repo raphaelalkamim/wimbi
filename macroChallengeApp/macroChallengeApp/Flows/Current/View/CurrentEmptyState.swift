@@ -39,7 +39,7 @@ class CurrentEmptyState: UIView {
         let label = UILabel()
         label.stylize(with: designSystem.text.body)
         label.textAlignment = .right
-        label.text = "Create a new intinerary and follow the countdown or view your current trip itinerary on this screen.".localized()
+        label.text = "Oops, you don't have an itinerary yet! Go to the Explore screen and create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it.".localized()
         return label
     }()
 }

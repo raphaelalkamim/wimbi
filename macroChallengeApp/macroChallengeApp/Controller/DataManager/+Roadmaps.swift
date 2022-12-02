@@ -109,6 +109,9 @@ extension DataManager {
                 }
             } catch {
                 print("DEU RUIM NO PARSE")
+                DispatchQueue.main.async {
+                    completion([])
+                }
             }
         }
         task.resume()
@@ -152,7 +155,6 @@ extension DataManager {
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
         
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data else { return }
