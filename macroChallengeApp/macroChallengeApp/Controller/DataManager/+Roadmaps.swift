@@ -156,7 +156,6 @@ extension DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data else { return }
             if error != nil {
