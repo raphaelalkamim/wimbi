@@ -109,6 +109,9 @@ extension DataManager {
                 }
             } catch {
                 print("DEU RUIM NO PARSE")
+                DispatchQueue.main.async {
+                    completion([])
+                }
             }
         }
         task.resume()
