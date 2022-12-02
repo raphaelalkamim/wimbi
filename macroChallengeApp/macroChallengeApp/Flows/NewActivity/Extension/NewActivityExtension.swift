@@ -159,8 +159,9 @@ extension NewActivityViewController: UITableViewDataSource {
             } else if indexPath.row == 1 {
                     guard let newCell = tableView.dequeueReusableCell(withIdentifier: ValueTableViewCell.identifier, for: indexPath) as? ValueTableViewCell else { fatalError("TableCell not found") }
                     newCell.setCurrencyValue(currency: self.currencyType, value: activity.budget)
-                    self.activity.currency = self.currencyType
-                    cell = newCell
+                self.setupTextFields(textField: newCell.value)
+                self.activity.currency = self.currencyType
+                cell = newCell
             }
         } else if tableView == newActivityView.detailTable {
             if indexPath.row == 0 {
