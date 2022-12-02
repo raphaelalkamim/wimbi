@@ -32,6 +32,15 @@ class ReviewTravelView: UIView {
         return image
     }()
     
+    public lazy var calloutImage: UILabel = {
+        let title = UILabel()
+        title.textColor = designSystem.palette.caption
+        title.numberOfLines = 0
+        title.stylize(with: designSystem.text.caption)
+        title.text = "Add an image so the Itinerary appears on the Explore view".localized()
+        return title
+    }()
+    
     public lazy var categoryImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleToFill
@@ -113,6 +122,7 @@ extension ReviewTravelView {
         scrollView.addSubview(contentView)
         contentView.addSubview(coverImage)
         contentView.addSubview(categoryImage)
+        contentView.addSubview(calloutImage)
         contentView.addSubview(title)
         contentView.addSubview(subtitle)
         contentView.addSubview(daysTitle)
@@ -157,14 +167,20 @@ extension ReviewTravelView {
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.height.equalTo(350)
         }
+        calloutImage.snp.makeConstraints { make in
+            make.top.equalTo(coverImage.snp.bottom).inset(designSystem.spacing.xSmallNegative)
+            make.leading.equalTo(coverImage.snp.leading).inset(designSystem.spacing.mediumPositive)
+            make.trailing.equalTo(coverImage.snp.trailing).inset(designSystem.spacing.mediumPositive)
+        }
         
         categoryImage.snp.makeConstraints { make in
-            make.top.equalTo(coverImage.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+            make.top.equalTo(calloutImage.snp.bottom).inset(designSystem.spacing.xLargeNegative)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.height.width.equalTo(64)
         }
+        
         title.snp.makeConstraints { make in
-            make.top.equalTo(coverImage.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+            make.top.equalTo(calloutImage.snp.bottom).inset(designSystem.spacing.xLargeNegative)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(categoryImage.snp.trailing).inset(designSystem.spacing.xLargeNegative)
             make.height.equalTo(35)

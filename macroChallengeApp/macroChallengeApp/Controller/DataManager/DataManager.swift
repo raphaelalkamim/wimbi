@@ -12,7 +12,7 @@ import FirebaseAnalytics
 
 class DataManager {
     public static var shared = DataManager()
-    let baseURL: String = "https://macroptrip-api.herokuapp.com/"
+    let baseURL: String = ""
     
     public let imageCash = NSCache<NSNumber, UIImage>()
     
