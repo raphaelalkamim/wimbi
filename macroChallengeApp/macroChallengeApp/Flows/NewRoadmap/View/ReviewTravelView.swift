@@ -168,7 +168,7 @@ extension ReviewTravelView {
             make.height.equalTo(350)
         }
         calloutImage.snp.makeConstraints { make in
-            make.top.equalTo(coverImage.snp.bottom).inset(designSystem.spacing.xSmallNegative)
+            make.top.equalTo(coverImage.snp.bottom).inset(designSystem.spacing.smallNegative)
             make.leading.equalTo(coverImage.snp.leading).inset(designSystem.spacing.mediumPositive)
             make.trailing.equalTo(coverImage.snp.trailing).inset(designSystem.spacing.mediumPositive)
         }
