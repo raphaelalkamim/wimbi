@@ -92,7 +92,7 @@ class DaysViewController: UIViewController {
         self.roadmap.dateFinal = dateFinal
         self.roadmap.dateInitial = date
         self.roadmap.peopleCount = (self.travelersCount.selectedRow(inComponent: 0)) + 1
-        self.roadmap.isPublic = daysView.isPublic
+        self.roadmap.isPublic = daysView.publicSwitch.isOn
     }
 }
 
@@ -114,6 +114,7 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
         if edit {
             if !editRoadmap.isPublic {
                 daysView.publicSwitch.isOn = false
+                daysView.isPublic = false
             }
         }
     }
