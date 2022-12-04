@@ -105,7 +105,12 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         case 2:
             setupTravelers(peopleCount: Int(roadmap.peopleCount))
         case 3:
-            setupLikes(likesCount: Int(roadmap.likesCount))
+            if roadmap.isPublic == true {
+                setupLikes(likesCount: Int(roadmap.likesCount))
+            } else {
+                setupPrivate()
+                
+            }
         case 4:
             setupCreatedBy()
             self.setupImage(userId: user.photoId ?? "icon")
@@ -167,6 +172,24 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         info.isHidden = false
         info.setTitle(" \(likesCount)", for: .normal)
     }
+    
+    func setupPrivate() {
+        title.text = "LIKES".localized()
+        circle.isHidden = true
+        infoTitle.isHidden = true
+        info.isHidden = false
+        let img = UIImage(systemName: "lock.fill", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
+        info.setImage(img, for: .normal)
+        categoryTitle.isHidden = false
+        categoryTitle.text = "Private itinerary"
+        categoryTitle.snp.removeConstraints()
+        categoryTitle.snp.makeConstraints { make in
+            make.top.equalTo(info.snp.bottom).inset(designSystem.spacing.xSmallNegative)
+            make.centerX.equalToSuperview()
+        }
+
+    }
+    
     func setupCreatedBy() {
         title.text = "CREATED BY".localized()
         separator.isHidden = true
