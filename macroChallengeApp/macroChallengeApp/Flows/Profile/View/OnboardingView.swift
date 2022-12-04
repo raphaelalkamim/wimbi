@@ -194,10 +194,10 @@ class OnboardingView: UIView {
         }
         
         createIcon.snp.makeConstraints { make in
-            make.top.equalTo(createTitle.snp.top).inset(27)
-            make.bottom.equalTo(createSubtitle.snp.bottom).inset(27)
-            make.leading.equalToSuperview().inset(24)
-            make.trailing.equalTo(createSubtitle.snp.leading).inset(designSystem.spacing.xLargeNegative)
+            make.top.equalTo(createTitle.snp.top)
+            make.bottom.equalTo(createSubtitle.snp.bottom)
+            make.leading.equalToSuperview().inset(30)
+            make.trailing.equalTo(createSubtitle.snp.leading).inset(-25)
         }
         
         duplicateTitle.snp.makeConstraints { make in
@@ -213,10 +213,10 @@ class OnboardingView: UIView {
         }
         
         duplicateIcon.snp.makeConstraints { make in
-            make.top.equalTo(duplicateTitle.snp.top).inset(17)
-            make.bottom.equalTo(duplicateSubtitle.snp.bottom).inset(17)
-            make.leading.equalToSuperview().inset(20)
-            make.trailing.equalTo(createSubtitle.snp.leading).inset(designSystem.spacing.xLargeNegative)
+            make.top.equalTo(duplicateTitle.snp.top)
+            make.bottom.equalTo(duplicateSubtitle.snp.bottom)
+            make.leading.equalToSuperview().inset(30)
+            make.trailing.equalTo(createSubtitle.snp.leading).inset(-25)
         }
         
         likeTitle.snp.makeConstraints { make in
@@ -233,10 +233,10 @@ class OnboardingView: UIView {
         }
         
         likeIcon.snp.makeConstraints { make in
-            make.top.equalTo(likeTitle.snp.top).inset(17)
-            make.bottom.equalTo(likeSubtitle.snp.bottom).inset(17)
-            make.leading.equalToSuperview().inset(20)
-            make.trailing.equalTo(createSubtitle.snp.leading).inset(designSystem.spacing.xLargeNegative)
+            make.top.equalTo(likeTitle.snp.top)
+            make.bottom.equalTo(likeSubtitle.snp.bottom)
+            make.leading.equalToSuperview().inset(30)
+            make.trailing.equalTo(createSubtitle.snp.leading).inset(-25)
         }
 
         shareTitle.snp.makeConstraints { make in
@@ -253,10 +253,11 @@ class OnboardingView: UIView {
         }
         
         shareIcon.snp.makeConstraints { make in
-            make.top.equalTo(shareTitle.snp.top).inset(17)
-            make.bottom.equalTo(shareSubtitle.snp.bottom).inset(17)
-            make.leading.equalToSuperview().inset(20)
-            make.trailing.equalTo(createSubtitle.snp.leading).inset(designSystem.spacing.xLargeNegative)
+            make.top.equalTo(shareTitle.snp.top)
+            make.bottom.equalTo(shareSubtitle.snp.bottom)
+            make.leading.equalToSuperview().inset(30)
+            make.trailing.equalTo(createSubtitle.snp.leading).inset(-25)
+
         }
         
         exploreButton.snp.makeConstraints { make in
@@ -265,7 +266,7 @@ class OnboardingView: UIView {
             make.width.equalTo(300)
             make.leading.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
             make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
-            make.top.equalTo(likeSubtitle.snp.bottom).inset(-220)
+            make.bottom.equalToSuperview().inset(60)
         }
         
     }
