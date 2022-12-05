@@ -18,6 +18,8 @@ class TabBarController: UITabBarController {
     
     var roadmaps = RoadmapRepository.shared.getRoadmap()
     var roadmap: RoadmapLocal = RoadmapLocal()
+    var mostRecentRoadmaps: [RoadmapLocal] = []
+    
     
     var player = AVPlayer()
     var playerLayer = AVPlayerLayer()
@@ -39,9 +41,8 @@ class TabBarController: UITabBarController {
     func setupCoordnators() {
         explore.start()
         if !roadmaps.isEmpty {
-            var mostRecentRoadmaps: [RoadmapLocal] = []
             roadmaps.sort { $0.date ?? Date() < $1.date ?? Date() }
-            for newRoadmap in roadmaps { if newRoadmap.dateFinal ?? Date() > Date() { mostRecentRoadmaps.append(newRoadmap) } }
+            for newRoadmap in roadmaps { if newRoadmap.dateFinal ?? Date() >= Date() { mostRecentRoadmaps.append(newRoadmap) } }
             if !mostRecentRoadmaps.isEmpty { roadmap = mostRecentRoadmaps[0] }
             let date = Date()
             let dateFormatter = DateFormatter()
@@ -49,14 +50,18 @@ class TabBarController: UITabBarController {
             dateFormatter.timeStyle = .none
             dateFormatter.dateFormat = "dd/MM/yy"
             
-            if configCountDown() > 0 {
-                // abre o countdown
-                current.start()
-            } else if configCountDown() == 0 && dateFormatter.string(from: date) != dateFormatter.string(from: roadmap.date ?? Date()) {
-                current.start()
-
+            if !mostRecentRoadmaps.isEmpty {
+                if configCountDown() > 0 {
+                    // abre o countdown
+                    current.start()
+                } else if configCountDown() == 0 && dateFormatter.string(from: date) != dateFormatter.string(from: roadmap.date ?? Date()) {
+                    current.start()
+                } else {
+                    current.startCurrent(roadmap: roadmap)
+                }
             } else {
-                current.startCurrent(roadmap: roadmap)
+                //empty view de quando nao tem nenhum proximo roteiro
+                current.start()
             }
         } else {
             // abre o countdown mas vai pra empty view
@@ -70,8 +75,13 @@ class TabBarController: UITabBarController {
         viewControllers = [explore.navigationController, current.navigationController, profile.navigationController]
     }
     func configCountDown() -> Int {
-        let time = Int((roadmap.date?.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24))
+        guard let timeRoadmap = roadmap.date else {
+            return 0
+        }
+        let time = Int((timeRoadmap.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24))
         return time
+        return 0
+        
     }
     func loadScene() {
         self.loadVideo()
@@ -86,7 +96,7 @@ class TabBarController: UITabBarController {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
         } catch { }
-
+        
         let path = Bundle.main.path(forResource: "giphy", ofType: "mp4")
         player = AVPlayer(url: NSURL(fileURLWithPath: path!) as URL)
         playerLayer = AVPlayerLayer(player: player)

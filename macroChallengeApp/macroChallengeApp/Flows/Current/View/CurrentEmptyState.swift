@@ -37,7 +37,7 @@ class CurrentEmptyState: UIView {
     
     lazy var subtitle: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.body)
+        label.stylize(with: designSystem.text.caption)
         label.textAlignment = .right
         label.text = "Go to the Explore screen and create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it.".localized()
         return label
