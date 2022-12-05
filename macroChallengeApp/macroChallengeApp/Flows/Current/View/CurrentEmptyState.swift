@@ -37,9 +37,9 @@ class CurrentEmptyState: UIView {
     
     lazy var subtitle: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.body)
         label.textAlignment = .right
-        label.textColor = designSystem.palette.textPrimary
+        label.textColor = designSystem.palette.caption
         label.text = "In the Explore screen you can create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it.".localized()
         return label
     }()
@@ -66,9 +66,10 @@ extension CurrentEmptyState {
             make.width.equalTo(UIScreen.main.bounds.width / 1.5)
         }
         subtitle.snp.makeConstraints { make in
-            make.top.equalTo(image.snp.bottom).inset(-40)
+            make.top.equalTo(image.snp.bottom).inset(-20)
             make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
-            make.width.equalToSuperview().inset(40)
+            //make.bottom.equalTo(self.snp.bottom).inset(100)
+            make.width.equalToSuperview().inset(60)
         }
     }
 }
