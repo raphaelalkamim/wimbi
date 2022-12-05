@@ -25,7 +25,6 @@ class CurrentViewController: UIViewController {
         super.viewWillAppear(animated)
         roadmaps = RoadmapRepository.shared.getRoadmap()
         if !roadmaps.isEmpty {
-            self.mostRecentRoadmaps = []
             roadmaps.sort {
                 $0.date ?? Date() < $1.date ?? Date()
             }

@@ -39,6 +39,7 @@ class CurrentEmptyState: UIView {
         let label = UILabel()
         label.stylize(with: designSystem.text.caption)
         label.textAlignment = .right
+        label.textColor = designSystem.palette.textPrimary
         label.text = "Oops, you don't have an next trip yet! Go to the Explore screen and create a new one. That way, you'll be able to track how much time is left for your trip and when that time arrives, here you'll find a shortcut to it.".localized()
         return label
     }()
