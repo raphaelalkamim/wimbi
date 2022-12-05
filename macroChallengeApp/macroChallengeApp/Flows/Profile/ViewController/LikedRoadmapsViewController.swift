@@ -13,7 +13,7 @@ class LikedRoadmapsViewController: UIViewController {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let likedRoadmapsView = LikedRoadmapsView()
     var likedRoadmaps: [RoadmapDTO] = []
-    weak var exploreCoordinator: ExploreCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
@@ -49,7 +49,7 @@ extension LikedRoadmapsViewController {
 
 extension LikedRoadmapsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        exploreCoordinator?.previewRoadmap(roadmapId: likedRoadmaps[indexPath.row].id)
+        coordinator?.previewRoadmap(roadmapId: likedRoadmaps[indexPath.row].id)
     }
 }
 

@@ -52,11 +52,6 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
         } catch {
             fatalError("Não foi possível atualizar conteúdo")
         }
-        let formatt = DateFormatter()
-        formatt.timeStyle = .none
-        formatt.dateStyle = .short
-        formatt.dateFormat = "dd/MM/yyyy"
-        myTripView.date.text = formatt.string(from: roadmap.date ?? Date())
     }
     
     override func viewWillAppear(_ animated: Bool) {

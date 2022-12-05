@@ -26,7 +26,8 @@ class MyTripView: UIView {
     
     lazy var date: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.cellTitle)
+        label.stylize(with: designSystem.text.caption)
+        label.textColor = designSystem.palette.textPrimary
         label.textAlignment = .left
         label.text = "02.10.2022"
         return label
@@ -206,6 +207,13 @@ class MyTripView: UIView {
     }
     
     func setupContent(roadmap: RoadmapLocal) {
+        let formatt = DateFormatter()
+        formatt.timeStyle = .none
+        formatt.dateStyle = .short
+        formatt.dateFormat = "dd/MM/yyyy"
+        let dateInitial = formatt.string(from: roadmap.date ?? Date())
+        let starts = "Start: ".localized()
+        self.date.text = "\(starts)\(dateInitial)"
     }
     
     func setupConstraints() {
