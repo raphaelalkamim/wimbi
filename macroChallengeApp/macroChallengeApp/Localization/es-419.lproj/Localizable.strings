@@ -147,14 +147,14 @@
 "THU" = "JUE";
 "FRI" = "VIE";
 "SAT" = "SÁB";
-"What do you think about exploring and creating a new itinerary?" = "¿Qué tal explorar y crear una nueva guía de viaje?";
+"Oops. Looks like you don't have an upcoming itinerary yet!" = "Ups. ¡Parece que aún no tienes un itinerario próximo!";
 "Create a new intinerary and follow the countdown or view your current trip itinerary on this screen." = "Cree un nuevo intinerario y siga la cuenta regresiva o vea su guía de viaje actual en esta pantalla.";
 "Which app would you like to use to access the address?" = "¿Quiere abrir la dirección en qué aplicación?";
 "Open on Maps" = "Abrir en Mapas";
 "Open on Waze" = "Abrir en Waze";
 "Open on Google Maps" = "Abrir en Google Maps";
 "Open on" = "Abrir en";
-"Oops, you don't have an next trip yet! Go to the Explore screen and create a new one. That way, you'll be able to track how much time is left for your trip and when that time arrives, here you'll find a shortcut to it." = "Vaya, ¡todavía no tienes una próxima viaje! Vaya a la pantalla Explorar y cree una nueva. De esa forma, podrás controlar cuánto tiempo te queda para su viaje y cuando llegue ese momento, aquí encontrarás un atajo para ella.";
+"In the Explore screen you can create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it." = "En la pantalla Explorar puede crear uno nuevo. De esa forma, podrás controlar cuánto tiempo te queda para su viaje y cuando llegue ese momento, aquí encontrarás un atajo para ella.";
 
 // MARK: -  NewRoadmap
 "Category" = "Categoría";

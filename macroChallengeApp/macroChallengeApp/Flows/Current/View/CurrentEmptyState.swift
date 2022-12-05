@@ -23,7 +23,7 @@ class CurrentEmptyState: UIView {
     lazy var title: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.title)
-        label.text = "Oops.. It looks like you don't have any itinerary yet!".localized()
+        label.text = "Oops. Looks like you don't have an upcoming itinerary yet!".localized()
         return label
     }()
     
@@ -40,7 +40,7 @@ class CurrentEmptyState: UIView {
         label.stylize(with: designSystem.text.caption)
         label.textAlignment = .right
         label.textColor = designSystem.palette.textPrimary
-        label.text = "Go to the Explore screen and create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it.".localized()
+        label.text = "In the Explore screen you can create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it.".localized()
         return label
     }()
 }
