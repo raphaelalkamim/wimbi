@@ -154,7 +154,7 @@
 "Open on Waze" = "Abrir no Waze";
 "Open on Google Maps" = "Abrir no Google Maps";
 "Open on" = "Abrir no";
-"Oops, you don't have an itinerary yet! Go to the Explore screen and create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it." = "Opa, você ainda não tem um itinerário! Vá até a tela Explorar e crie um novo. Assim, você vai conseguir acompanhar quanto tempo falta para a sua tão desejada viagem e quando este tempo chegar, aqui você encontrará um atalho para ela.";
+"Oops, you don't have an next trip yet! Go to the Explore screen and create a new one. That way, you'll be able to track how much time is left for your trip and when that time arrives, here you'll find a shortcut to it." = "Opa, você ainda não tem uma próxima viagem criada! Vá até a tela Explorar e crie uma nova. Assim, você vai conseguir acompanhar quanto tempo falta para a sua viagem e quando este tempo chegar, aqui você encontrará um atalho para ela.";
 
 // MARK: -  NewRoadmap
 "Category" = "Categoria";
