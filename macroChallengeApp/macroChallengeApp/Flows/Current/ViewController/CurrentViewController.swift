@@ -24,12 +24,14 @@ class CurrentViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         roadmaps = RoadmapRepository.shared.getRoadmap()
-        self.mostRecentRoadmaps = []
-        roadmaps.sort {
-            $0.date ?? Date() < $1.date ?? Date()
-        }
-        for newRoadmap in roadmaps {
-            if newRoadmap.dateFinal ?? Date() > Date() { mostRecentRoadmaps.append(newRoadmap) }
+        if !roadmaps.isEmpty {
+            self.mostRecentRoadmaps = []
+            roadmaps.sort {
+                $0.date ?? Date() < $1.date ?? Date()
+            }
+            for newRoadmap in roadmaps {
+                if newRoadmap.dateFinal ?? Date() > Date() { mostRecentRoadmaps.append(newRoadmap) }
+            }
         }
         setup()
     }
