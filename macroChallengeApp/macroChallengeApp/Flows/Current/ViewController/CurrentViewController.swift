@@ -37,7 +37,7 @@ class CurrentViewController: UIViewController {
 
 extension CurrentViewController {
     func setup() {
-        if !roadmaps.isEmpty {
+        if !mostRecentRoadmaps.isEmpty {
             roadmap = mostRecentRoadmaps[0]
             currentEmptyView.removeFromSuperview()
             setupCountDownView()
