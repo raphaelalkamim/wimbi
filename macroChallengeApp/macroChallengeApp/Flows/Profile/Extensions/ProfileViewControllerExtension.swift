@@ -111,13 +111,16 @@ extension ProfileViewController: UICollectionViewDataSource {
             preconditionFailure("Cell not find")
         }
         let isNew = false
+        UserDefaults.standard.bool(forKey: "isPublic")
         cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "floripa", isNew: isNew)
         cell.setupImage(imageId: roadmaps[indexPath.row].imageId ?? "defaultCover", category: roadmaps[indexPath.row].category ?? "City")
         if roadmaps[indexPath.row].isPublic == false {
             cell.likeImage.image = UIImage(systemName: "lock.fill")
+            UserDefaults.standard.set(false, forKey: "isPublic")
             cell.likeLabel.isHidden = true
         } else {
             cell.likeLabel.isHidden = false
+            UserDefaults.standard.set(true, forKey: "isPublic")
             cell.likeImage.image = UIImage(systemName: "heart.fill")
             cell.likeLabel.text = String(roadmaps[indexPath.row].likesCount)
         }

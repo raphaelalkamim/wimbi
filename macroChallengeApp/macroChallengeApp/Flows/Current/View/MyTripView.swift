@@ -24,6 +24,14 @@ class MyTripView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    lazy var date: UILabel = {
+        let label = UILabel()
+        label.stylize(with: designSystem.text.cellTitle)
+        label.textAlignment = .left
+        label.text = "02.10.2022"
+        return label
+    }()
+    
     lazy var emptyStateImage: UIImageView = {
         let img = UIImageView()
         img.image = designSystem.images.map
@@ -168,6 +176,7 @@ class MyTripView: UIView {
         self.backgroundColor = designSystem.palette.backgroundPrimary
         self.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        scrollView.addSubview(date)
         scrollView.addSubview(infoTripCollectionView)
         scrollView.addSubview(calendarCollectionView)
         contentView.addSubview(emptyStateImage)
@@ -216,6 +225,11 @@ class MyTripView: UIView {
             make.edges.equalToSuperview()
         }
         
+        date.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+        }
+        
         infoTripCollectionView.snp.makeConstraints { make in
             make.top.equalTo(infoTitle.snp.bottom)
             make.leading.equalTo(contentView.snp.leading)
@@ -224,7 +238,7 @@ class MyTripView: UIView {
         }
         
         infoTitle.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.topMargin)
+            make.top.equalTo(date.snp.bottomMargin).inset(designSystem.spacing.xLargeNegative)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
 

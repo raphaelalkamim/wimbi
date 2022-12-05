@@ -60,7 +60,7 @@ class TabBarController: UITabBarController {
                     current.startCurrent(roadmap: roadmap)
                 }
             } else {
-                //empty view de quando nao tem nenhum proximo roteiro
+                // empty view de quando nao tem nenhum proximo roteiro
                 current.start()
             }
         } else {
@@ -78,10 +78,8 @@ class TabBarController: UITabBarController {
         guard let timeRoadmap = roadmap.date else {
             return 0
         }
-        let time = Int((timeRoadmap.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24))
-        return time
-        return 0
-        
+        let time = Int((timeRoadmap.timeIntervalSince(Date())) / (60 * 60 * 24))
+        return time        
     }
     func loadScene() {
         self.loadVideo()

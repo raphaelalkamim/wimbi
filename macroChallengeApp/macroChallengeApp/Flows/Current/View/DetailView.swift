@@ -145,7 +145,7 @@ class DetailView: UIView {
         linkButton.setAttributedTitle(NSAttributedString(string: "\(activity.link )", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
         
         if activity.address.isEmpty == true {
-            local.text = "Endereço não disponibilizado"
+            local.text = "Address unavailable".localized()
             local.textColor = .caption
 
         }
@@ -154,13 +154,13 @@ class DetailView: UIView {
             activityCategory.text = "No type"
         }
         if activity.link.isEmpty == true {
-            linkButton.setAttributedTitle(NSAttributedString(string: "Contato indisponível ", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
+            linkButton.setAttributedTitle(NSAttributedString(string: "Contact unavailable".localized(), attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
             linkButton.isEnabled = false
             linkButton.setTitleColor(.caption, for: .normal)
         }
         
         if activity.tips.isEmpty == true {
-            details.text = "Nenhum detalhe informado"
+            details.text = "No details".localized()
             details.textColor = .caption
         }
     }
