@@ -181,7 +181,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         let img = UIImage(systemName: "lock.fill", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         info.setImage(img, for: .normal)
         categoryTitle.isHidden = false
-        categoryTitle.text = "Private itinerary"
+        categoryTitle.text = "Private itinerary".localized()
         categoryTitle.snp.removeConstraints()
         categoryTitle.snp.makeConstraints { make in
             make.top.equalTo(info.snp.bottom).inset(designSystem.spacing.xSmallNegative)
