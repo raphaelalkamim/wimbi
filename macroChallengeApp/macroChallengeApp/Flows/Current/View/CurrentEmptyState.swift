@@ -23,7 +23,7 @@ class CurrentEmptyState: UIView {
     lazy var title: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.title)
-        label.text = "What do you think about exploring and creating a new itinerary?".localized()
+        label.text = "Oops.. It looks like you don't have any itinerary yet!".localized()
         return label
     }()
     
@@ -39,7 +39,7 @@ class CurrentEmptyState: UIView {
         let label = UILabel()
         label.stylize(with: designSystem.text.body)
         label.textAlignment = .right
-        label.text = "Oops, you don't have an itinerary yet! Go to the Explore screen and create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it.".localized()
+        label.text = "Go to the Explore screen and create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it.".localized()
         return label
     }()
 }
@@ -67,7 +67,7 @@ extension CurrentEmptyState {
         subtitle.snp.makeConstraints { make in
             make.top.equalTo(image.snp.bottom).inset(-40)
             make.trailing.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
-            make.width.equalToSuperview().inset(50)
+            make.width.equalToSuperview().inset(40)
         }
     }
 }
