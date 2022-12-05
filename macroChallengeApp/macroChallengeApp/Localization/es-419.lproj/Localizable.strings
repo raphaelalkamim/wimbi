@@ -147,7 +147,7 @@
 "THU" = "JUE";
 "FRI" = "VIE";
 "SAT" = "SÁB";
-"Oops. Looks like you don't have an upcoming itinerary yet!" = "Ups. ¡Parece que aún no tienes un guia de viaje próximo!";
+"Oops. Looks like you don't have an upcoming itinerary yet!" = "Ups. ¡Parece que aún no tienes un guía de viaje próximo!";
 "Create a new intinerary and follow the countdown or view your current trip itinerary on this screen." = "Cree un nuevo intinerario y siga la cuenta regresiva o vea su guía de viaje actual en esta pantalla.";
 "Which app would you like to use to access the address?" = "¿Quiere abrir la dirección en qué aplicación?";
 "Open on Maps" = "Abrir en Mapas";
@@ -155,6 +155,8 @@
 "Open on Google Maps" = "Abrir en Google Maps";
 "Open on" = "Abrir en";
 "In the Explore screen you can create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it." = "En la pantalla Explorar puede crear uno nuevo. De esa forma, podrás controlar cuánto tiempo te queda para su viaje y cuando llegue ese momento, aquí encontrarás un atajo para ella.";
+"Start: " = "Comienzo: ";
+"Private itinerary" = "Guía privado";
 
 // MARK: -  NewRoadmap
 "Category" = "Categoría";

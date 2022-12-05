@@ -161,7 +161,6 @@ class ProfileCoordinator: Coordinator {
     func startOnboarding() {
         let viewController = OnboardingViewController()
         viewController.coordinator = self
-//        viewController.navigationItem.title = "Edit profile".localized()
         navigationController.present(viewController, animated: true)
         navigationController.modalPresentationStyle = .formSheet
     }
@@ -174,6 +173,12 @@ class ProfileCoordinator: Coordinator {
     
     func dismiss() {
         navigationController.dismiss(animated: true)
+    }
+    func previewRoadmap(roadmapId: Int) {
+        let viewController = PreviewRoadmapViewController()
+        viewController.profileCoordinator = self
+        viewController.roadmapId = roadmapId
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func setupBarAppearence() {

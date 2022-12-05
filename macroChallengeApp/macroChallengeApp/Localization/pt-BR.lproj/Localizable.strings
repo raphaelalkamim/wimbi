@@ -155,6 +155,8 @@
 "Open on Google Maps" = "Abrir no Google Maps";
 "Open on" = "Abrir no";
 "In the Explore screen you can create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it." = "Na tela Explorar você pode criar um novo. Assim, você vai conseguir acompanhar quanto tempo falta para a sua viagem e quando este tempo chegar, aqui você encontrará um atalho para ela.";
+"Start: " = "Início: ";
+"Private itinerary" = "Roteiro privado";
 
 // MARK: -  NewRoadmap
 "Category" = "Categoria";
