@@ -190,7 +190,7 @@ extension DataManager {
             "category": roadmap.category,
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
-            "shareKey": "ABC123",
+            "shareKey": roadmap.shareKey,
             "createdAt": dateFormatter.string(from: Date()),
             "currency": roadmap.currency,
             "likesCount": roadmap.likesCount
@@ -220,7 +220,6 @@ extension DataManager {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
                         self.postDays(roadmapId: roadmapId, daysCore: newDaysCore)
-                        
                         if let selectedImage = selectedImage {
                             FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapId, uuid: roadmap.imageId)
                         }

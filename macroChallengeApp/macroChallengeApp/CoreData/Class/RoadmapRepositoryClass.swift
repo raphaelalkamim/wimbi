@@ -103,9 +103,7 @@ public class RoadmapRepository: NSManagedObject {
         }
         if var newDaysCore = newRoadmap.day?.allObjects as? [DayLocal] {
             newDaysCore.sort { $0.id < $1.id }
-            if !isShared {
-                self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDaysCore: newDaysCore, selectedImage: selectedImage)
-            }
+            self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDaysCore: newDaysCore, selectedImage: selectedImage)
         }
         self.saveContext()
         return newRoadmap
@@ -263,5 +261,3 @@ public class RoadmapRepository: NSManagedObject {
         DataManager.shared.putRoadmap(roadmap: roadmap, roadmapId: id, newDaysCore: newDaysCore, selectedImage: selectedImage)
     }
 }
-
-//Oi bia duque
