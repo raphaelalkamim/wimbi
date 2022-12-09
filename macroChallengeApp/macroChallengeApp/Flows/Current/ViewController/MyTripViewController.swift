@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate{
+class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate {
     weak var coordinator: ProfileCoordinator?
     weak var coordinatorCurrent: CurrentCoordinator?
     let network: NetworkMonitor = NetworkMonitor.shared
@@ -42,7 +42,9 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
         frc.delegate = self
         return frc
     }()
-    
+    override func loadView() {
+        self.view = myTripView
+    }
     override func viewDidLoad() {
         network.startMonitoring()
         super.viewDidLoad()
@@ -63,23 +65,11 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
         self.myTripView.activitiesTableView.reloadData()
         self.myTripView.activitiesTableView.layoutIfNeeded()
         self.updateAllBudget()
-        updateConstraintsTable()
+        myTripView.updateConstraintsTable(multiplier: activites.count)
         myTripView.secondTutorialTitle.addTarget(self, action: #selector(tutorialSecond), for: .touchUpInside)
         myTripView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
     }
     
-    func updateConstraintsTable() {
-        let height = 100 * activites.count
-        
-        myTripView.activitiesTableView.snp.removeConstraints()
-        myTripView.activitiesTableView.snp.makeConstraints { make in
-            make.top.equalTo(myTripView.budgetView.snp.bottom).inset(designSystem.spacing.smallNegative)
-            make.leading.equalTo(myTripView.contentView.snp.leading)
-            make.trailing.equalTo(myTripView.contentView.snp.trailing)
-            make.bottom.equalTo(myTripView.scrollView.snp.bottom)
-            make.height.equalTo(height)
-        }
-    }
     func getAllDays() {
         if var newDays = roadmap.day?.allObjects as? [DayLocal] {
             newDays.sort { $0.id < $1.id }
@@ -130,36 +120,10 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
     
     func emptyState(activities: [ActivityLocal]) {
         if activities.isEmpty {
-            if UIDevice.current.name == "iPhone SE (3rd generation)" || UIDevice.current.name == "iPhone 8" {
-                myTripView.emptyStateImage.snp.removeConstraints()
-                myTripView.emptyStateImage.snp.makeConstraints { make in
-                    make.height.equalTo(UIScreen.main.bounds.height / 9)
-                    make.centerX.equalToSuperview()
-                    make.top.equalTo(myTripView.dayTitle.snp.bottom)
-                }
-            } else {
-                myTripView.emptyStateImage.snp.removeConstraints()
-                myTripView.emptyStateImage.snp.makeConstraints { make in
-                    make.height.equalTo(UIScreen.main.bounds.height / 7)
-                    make.centerX.equalToSuperview()
-                    make.top.equalTo(myTripView.dayTitle.snp.bottom).inset(-40)
-                }
-
-            }
-            myTripView.activitiesTableView.isHidden = true
-            myTripView.budgetView.isHidden = true
-            myTripView.emptyStateTitle.isHidden = false
-            myTripView.emptyStateImage.isHidden = false
-
+            myTripView.setEmptyView()
         } else {
-            if tutorialEnable == false {
-                self.tutorialTimer()
-            }
-            myTripView.activitiesTableView.isHidden = false
-            myTripView.budgetView.isHidden = false
-            myTripView.emptyStateTitle.isHidden = true
-            myTripView.emptyStateImage.isHidden = true
-            myTripView.scrollView.isScrollEnabled = true
+            if tutorialEnable == false { self.tutorialTimer() }
+            myTripView.setupActivityTable()
         }
     }
     

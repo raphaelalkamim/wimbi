@@ -17,8 +17,6 @@ protocol DismissBlur: AnyObject {
 // MARK: Setup
 extension MyTripViewController {
     func setupMyTripView() {
-        view.addSubview(myTripView)
-        setupConstraints()
         // se estiver visualizando a viagem e estiver conectado
         network.startMonitoring()
         if coordinator != nil && network.isReachable {
@@ -26,23 +24,20 @@ extension MyTripViewController {
             editItem.tintColor = .accent
             let shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareMyTrip))
             self.navigationItem.rightBarButtonItems = [shareItem, editItem]
+            myTripView.addButton.isHidden = false
+            myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
         }
+        
         myTripView.setupContent(roadmap: roadmap)
         myTripView.bindCollectionView(delegate: self, dataSource: self)
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
-        myTripView.addButton.addTarget(self, action: #selector(goToCreateActivity), for: .touchUpInside)
-
+        
         if tutorialEnable == false {
             if (coordinatorCurrent != nil) {
                 myTripView.animateCollection(index: 2)
             } else {
                 myTripView.animateCollection(index: 3)
             }
-        }
-    }
-    func setupConstraints() {
-        myTripView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
         }
     }
     
@@ -124,7 +119,7 @@ extension MyTripViewController: UICollectionViewDelegate {
             self.emptyState(activities: activites)
             
             // view updates
-            updateConstraintsTable()
+            self.myTripView.updateConstraintsTable(multiplier: activites.count)
             self.myTripView.activitiesTableView.reloadData()
             Task {
                 await currencyController.updateBudget(activites: activites, userCurrency: self.userCurrency)
