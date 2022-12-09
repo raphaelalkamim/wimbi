@@ -12,7 +12,7 @@ class SearchResultTableViewCell: UITableViewCell {
     
     lazy var cover: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "floripa")
+        imageView.image = UIImage(named: "emptySearch")
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         return imageView
