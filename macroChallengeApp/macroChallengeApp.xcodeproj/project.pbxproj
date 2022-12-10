@@ -75,6 +75,9 @@
 		13BD501128DA297500C0EA7C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD500D28DA297500C0EA7C /* LoginView.swift */; };
 		13BD501528DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD501328DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift */; };
 		13BD501628DA2A8300C0EA7C /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */; };
+		13BE583C2943F0D500D653B9 /* MapsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BE583B2943F0D500D653B9 /* MapsAlert.swift */; };
+		13BE583F2943F46B00D653B9 /* LoginAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BE583E2943F46B00D653B9 /* LoginAlert.swift */; };
+		13BE58412943F61900D653B9 /* DuplicateAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BE58402943F61900D653B9 /* DuplicateAlert.swift */; };
 		13C8A10628C6698100994196 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 13C8A10528C6698100994196 /* .swiftlint.yml */; };
 		13C8A10B28C6827800994196 /* Roadmaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A10A28C6827800994196 /* Roadmaps.swift */; };
 		13C8A10D28C6828900994196 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C8A10C28C6828900994196 /* User.swift */; };
@@ -286,6 +289,9 @@
 		13BD500D28DA297500C0EA7C /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		13BD501328DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryActivityCollectionViewCell.swift; sourceTree = "<group>"; };
 		13BD501428DA2A8300C0EA7C /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		13BE583B2943F0D500D653B9 /* MapsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsAlert.swift; sourceTree = "<group>"; };
+		13BE583E2943F46B00D653B9 /* LoginAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAlert.swift; sourceTree = "<group>"; };
+		13BE58402943F61900D653B9 /* DuplicateAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateAlert.swift; sourceTree = "<group>"; };
 		13C8A10528C6698100994196 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		13C8A10A28C6827800994196 /* Roadmaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmaps.swift; sourceTree = "<group>"; };
 		13C8A10C28C6828900994196 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -646,6 +652,16 @@
 			path = ViewCell;
 			sourceTree = "<group>";
 		};
+		13BE583D2943F28E00D653B9 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				13BE583B2943F0D500D653B9 /* MapsAlert.swift */,
+				13BE583E2943F46B00D653B9 /* LoginAlert.swift */,
+				13BE58402943F61900D653B9 /* DuplicateAlert.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
 		13C8A10728C6824F00994196 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
@@ -871,6 +887,7 @@
 		13F994F828D3B1F800B077C0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				13BE583D2943F28E00D653B9 /* Alerts */,
 				1379743C28D5165200AEA662 /* LocationSearchTableViewController.swift */,
 				13F994F928D3B21800B077C0 /* RoadmapToolbar.swift */,
 				1309973028F0BE5C00774E1A /* MyActivityItem.swift */,
@@ -1376,9 +1393,11 @@
 				13BD500628DA28D600C0EA7C /* NewActivityViewController.swift in Sources */,
 				13BD501528DA2A8300C0EA7C /* CategoryActivityCollectionViewCell.swift in Sources */,
 				DF89333E290B1DD900C280FA /* Tag.swift in Sources */,
+				13BE583F2943F46B00D653B9 /* LoginAlert.swift in Sources */,
 				132AD922292C14E700DE3E08 /* +Days.swift in Sources */,
 				13C8A11D28CA681C00994196 /* Coordinator.swift in Sources */,
 				13C8A13228CA6B0400994196 /* DefaultDesignPalette.swift in Sources */,
+				13BE58412943F61900D653B9 /* DuplicateAlert.swift in Sources */,
 				B0E2461728CFA85E00D62AF1 /* CategoryView.swift in Sources */,
 				132AD928292C151200DE3E08 /* +User.swift in Sources */,
 				131272BB28E61B0D000B7968 /* NewActivityExtension.swift in Sources */,
@@ -1402,6 +1421,7 @@
 				13C8A13828CA75EA00994196 /* DesignSystem+UIColor.swift in Sources */,
 				13F994E428D273EB00B077C0 /* NewRoadmapCoordinator.swift in Sources */,
 				13F994E928D393D900B077C0 /* DestinyViewController.swift in Sources */,
+				13BE583C2943F0D500D653B9 /* MapsAlert.swift in Sources */,
 				A0B9F4C128D8FD5100F2DF06 /* SettingsViewController+Notifications.swift in Sources */,
 				A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */,
 				A0FD739D28DA7F780044E47C /* MyTripViewControllerExtension.swift in Sources */,

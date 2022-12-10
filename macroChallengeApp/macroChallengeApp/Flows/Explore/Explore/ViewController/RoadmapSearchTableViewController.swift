@@ -39,11 +39,11 @@ class RoadmapSearchTableViewController: UITableViewController {
 
         let roadmap = matchingRoadmaps[indexPath.row]
         cell.title.text = roadmap.name
-        if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: roadmap.imageId)) {
-            cell.cover.image = cachedImage
-        } else {
-            cell.cover.image = UIImage(named: "button\(roadmap.category)")
+        
+        FirebaseManager.shared.getImage(category: 0, uuid: roadmap.imageId) { image in
+            cell.cover.image = image
         }
+        
         cell.setupContent(roadmap: roadmap)
         
         return cell

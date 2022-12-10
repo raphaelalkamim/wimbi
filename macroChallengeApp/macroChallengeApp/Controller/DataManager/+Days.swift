@@ -37,6 +37,15 @@ extension DataManager {
                             for index in 0..<daysResponse.count {
                                 daysCore[index].id = Int32(daysResponse[index].id)
                                 DayRepository.shared.saveContext()
+                                
+                            }
+                            
+                            for day in daysCore {
+                                if var oldActivities = day.activity?.allObjects as? [ActivityLocal] {
+                                    for activity in oldActivities {
+                                        self.postActivityUpdated(dayId: Int(day.id), activityCore: activity)
+                                    }
+                                }
                             }
                             
                         } catch { print(error) }

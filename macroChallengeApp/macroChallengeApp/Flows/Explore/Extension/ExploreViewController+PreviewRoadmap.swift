@@ -45,85 +45,14 @@ extension PreviewRoadmapViewController {
     
     @objc func addRoute(sender: UIButton) {
         let activity = self.roadmap.days[self.daySelected].activity[sender.tag]
-        let coordsSeparated = activity.location.split(separator: " ")
-        
-        let latitude = String(coordsSeparated[0])
-        let longitude = String(coordsSeparated[1])
-        
-        let googleURL = "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)"
-        
-        let wazeURL = "waze://?ll=\(latitude),\(longitude)&navigate=false"
-        
-        let googleItem = ("Google Maps", URL(string: googleURL)!)
-        let wazeItem = ("Waze", URL(string: wazeURL)!)
-        var installedNavigationApps: [(String, URL)] = []
-        
-        if UIApplication.shared.canOpenURL(googleItem.1) {
-            installedNavigationApps.append(googleItem)
-        }
-        
-        if UIApplication.shared.canOpenURL(wazeItem.1) {
-            installedNavigationApps.append(wazeItem)
-        }
-        
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
-        alert.view.tintColor = .accent
-        
-        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 15)]
-        let string = NSAttributedString(string: "Which app would you like to use to access the address?".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
-        
-        alert.setValue(string, forKey: "attributedTitle")
-        
-        alert.addAction(UIAlertAction(title: "Open on Maps".localized(), style: .default, handler: { _ in
-            let coords = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude) ?? 0, longitude: CLLocationDegrees(longitude) ?? 0)
-            let placemark = MKPlacemark(coordinate: coords)
-            let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = "Target Location"
-            mapItem.openInMaps(launchOptions: [:])
-        }))
-        
-        for app in installedNavigationApps {
-            let title = "Open on".localized()
-            let button = UIAlertAction(title: "\(title) \(app.0)", style: .default, handler: { _ in
-                UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
-            })
-            alert.addAction(button)
-        }
-        
-        alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
-        }))
-        
-        present(alert, animated: true)
-        
+        _ = AlertMapsModel(location: activity.location, controller: self)
     }
     // MARK: Alerts
     func loginAlert() {
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        alert.view.tintColor = .accent
-        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
-        let string = NSAttributedString(string: "Login required".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
-        alert.setValue(string, forKey: "attributedTitle")
-        let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
-        let subtitleString = NSAttributedString(string: "Access the profile and log-in to duplicate or create new itineraries".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
-        alert.setValue(subtitleString, forKey: "attributedMessage")
-        
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
-        }))
-        present(alert, animated: true)
+        _ = LoginAlert(controller: self)
     }
     func duplicateAlert() {
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        alert.view.tintColor = .accent
-        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
-        let string = NSAttributedString(string: "Successfully duplicated!".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
-        alert.setValue(string, forKey: "attributedTitle")
-        let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
-        let subtitleString = NSAttributedString(string: "The itinerary is now available on your profile.".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
-        alert.setValue(subtitleString, forKey: "attributedMessage")
-        
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.cancel, handler: {(_: UIAlertAction!) in
-        }))
-        present(alert, animated: true)
+        _ = DuplicateAlert(controller: self)
         roadmap.likesCount = 0
         roadmap.imageId = "defaultCover"
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: false)

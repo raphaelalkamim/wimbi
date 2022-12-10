@@ -67,6 +67,60 @@ extension DataManager {
             task.resume()
         }
     }
+    func postActivityUpdated(dayId: Int, activityCore: ActivityLocal) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d/M/y"
+        
+        let activity: [String: Any] = [
+            "name": activityCore.name,
+            "tips": activityCore.tips,
+            "category": activityCore.category,
+            "location": activityCore.location,
+            "hour": activityCore.hour,
+            "budget": activityCore.budget,
+            "currency": activityCore.currencyType,
+            "address": activityCore.address,
+            "link": activityCore.link
+        ]
+        
+        let session = URLSession.shared
+        guard let url = URL(string: baseURL + "days/\(dayId)/activities") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        if let token = UserDefaults.standard.string(forKey: "authorization") {
+            request.setValue(token, forHTTPHeaderField: "Authorization")
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: activity, options: .prettyPrinted)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            let task = session.dataTask(with: request) { data, response, error in
+                guard let data = data else { return }
+                if error != nil {
+                    print(String(describing: error?.localizedDescription))
+                }
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        do {
+                            let activityResponse = try JSONDecoder().decode(Activity.self, from: data)
+                            activityCore.id = Int32(activityResponse.id)
+                            ActivityRepository.shared.saveContext()
+                        } catch {
+                            print(error)
+                        }
+                    }
+                    
+                }
+            }
+            task.resume()
+        }
+    }
     // MARK: - PUT
     func putActivity(activity: Activity, dayId: Int) {
         let dateFormatter = DateFormatter()

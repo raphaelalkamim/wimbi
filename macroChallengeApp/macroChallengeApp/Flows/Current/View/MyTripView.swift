@@ -136,6 +136,7 @@ class MyTripView: UIView {
         let img = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         btn.setImage(img, for: .normal)
         btn.tintColor = .accent
+        btn.isHidden = true
         return btn
     }()
     
@@ -375,5 +376,45 @@ extension MyTripView {
                        options: [.allowAnimatedContent],
                        animations: { self.infoTripCollectionView.scrollToItem(at: [0, index], at: .right, animated: true) },
                        completion: nil)
+    }
+    func setEmptyView() {
+        if UIDevice.current.name == "iPhone SE (3rd generation)" || UIDevice.current.name == "iPhone 8" {
+            emptyStateImage.snp.removeConstraints()
+            emptyStateImage.snp.makeConstraints { make in
+                make.height.equalTo(UIScreen.main.bounds.height / 9)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(dayTitle.snp.bottom)
+            }
+        } else {
+            emptyStateImage.snp.removeConstraints()
+            emptyStateImage.snp.makeConstraints { make in
+                make.height.equalTo(UIScreen.main.bounds.height / 7)
+                make.centerX.equalToSuperview()
+                make.top.equalTo(dayTitle.snp.bottom).inset(-40)
+            }
+
+        }
+        activitiesTableView.isHidden = true
+        budgetView.isHidden = true
+        emptyStateTitle.isHidden = false
+        emptyStateImage.isHidden = false
+    }
+    func setupActivityTable() {
+        activitiesTableView.isHidden = false
+        budgetView.isHidden = false
+        emptyStateTitle.isHidden = true
+        emptyStateImage.isHidden = true
+        scrollView.isScrollEnabled = true
+    }
+    func updateConstraintsTable(multiplier: Int) {
+        let height = 100 * multiplier
+        activitiesTableView.snp.removeConstraints()
+        activitiesTableView.snp.makeConstraints { make in
+            make.top.equalTo(budgetView.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.leading.equalTo(contentView.snp.leading)
+            make.trailing.equalTo(contentView.snp.trailing)
+            make.bottom.equalTo(scrollView.snp.bottom)
+            make.height.equalTo(height)
+        }
     }
 }
