@@ -245,7 +245,7 @@ public class RoadmapRepository: NSManagedObject {
         context.delete(roadmap)
         self.saveContext()
     }
-    func updateRoadmapBudget(roadmap: RoadmapLocal, budget: Double) {
+    func updateRoadmapBudget(roadmap: RtoadmapLocal, budget: Double) {
         // atualiza localmente
         roadmap.budget = budget
         print("budget: ", roadmap.budget)
