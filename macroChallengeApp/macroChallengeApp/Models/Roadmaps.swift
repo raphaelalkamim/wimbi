@@ -58,7 +58,6 @@ struct Roadmaps: Codable {
         self.shareKey = "12345"
         self.days = [Day(isSelected: false, date: Date())]
         self.dateFinal = ""
-        self.currency = "U$"
         self.dateInitial = ""
         self.currency = "R$"
         self.likesCount = 0
