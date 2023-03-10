@@ -25,7 +25,7 @@ class LoginView: UIView {
         let label = UILabel()
         label.text = "By clicking on the button above, you agree to our Privacy Policies".localized()
         label.textAlignment = .center
-        label.font = UIFont(name: "Avenir-Book", size: 12)!
+        label.stylize(with: designSystem.text.smallCaption)
         label.numberOfLines = 0
         label.textColor = .textPrimary
         return label
@@ -34,8 +34,8 @@ class LoginView: UIView {
     lazy var signInText: UILabel = {
         let label = UILabel()
         label.text = "Sign in to be able to create, duplicate, like and travel together with a itinerary.".localized()
+        label.stylize(with: designSystem.text.body)
         label.textAlignment = .center
-        label.font = UIFont(name: "Avenir-Roman", size: 17)!
         label.numberOfLines = 0
         label.textColor = .textPrimary
         return label

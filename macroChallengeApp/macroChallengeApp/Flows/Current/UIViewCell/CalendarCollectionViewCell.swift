@@ -24,7 +24,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     lazy var day: UILabel = {
         let title = UILabel()
         title.textColor = .textPrimary
-        title.font = UIFont(name: "Avenir-Roman", size: 10)
+        title.stylize(with: designSystem.text.xSmallCaption)
         title.textAlignment = .center
         title.text = "SUN".localized()
         return title
@@ -35,7 +35,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         btn.setTitle("1", for: .normal)
         btn.layer.cornerRadius = 20
         btn.setTitleColor(designSystem.palette.textPrimary, for: .normal)
-        btn.titleLabel?.font = designSystem.text.infoTitle.font
+        btn.titleLabel?.font = designSystem.text.smallTitle.font
         btn.isUserInteractionEnabled = false
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn

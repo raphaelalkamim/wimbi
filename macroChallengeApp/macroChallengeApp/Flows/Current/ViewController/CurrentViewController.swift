@@ -63,7 +63,7 @@ extension CurrentViewController {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
         UINavigationBar.appearance().barTintColor = designSystem.palette.backgroundPrimary
         UINavigationBar.appearance().barStyle = .default
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.cellTitle]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.headline]
     }
     
     func setupEmptyView() {
@@ -77,7 +77,7 @@ extension CurrentViewController {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
         UINavigationBar.appearance().barTintColor = designSystem.palette.backgroundPrimary
         UINavigationBar.appearance().barStyle = .default
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.cellTitle]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.headline]
     }
     
     func configCountDown() {
@@ -85,14 +85,14 @@ extension CurrentViewController {
         if ceil(time) <= 1 {
             time = 0
             currentCountDownView.timer.text = "Your trip is \ntomorrow!".localized()
-            currentCountDownView.timer.font = UIFont(name: "Avenir-Black", size: 40)
+            currentCountDownView.timer.stylize(with: designSystem.text.xLargeTitle)
             currentCountDownView.timer.numberOfLines = 2
             currentCountDownView.timerType.isHidden = true
             currentCountDownView.subtitle.isHidden = true
             
         } else {
             currentCountDownView.timer.text = String(Int(ceil(time)))
-            currentCountDownView.timer.font = UIFont(name: "Avenir-Black", size: 90)
+            currentCountDownView.timer.stylize(with: designSystem.text.xxLargeTitle)
             currentCountDownView.timerType.isHidden = false
             currentCountDownView.subtitle.isHidden = false
         }

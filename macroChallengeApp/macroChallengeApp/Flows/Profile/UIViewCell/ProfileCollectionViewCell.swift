@@ -23,7 +23,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     lazy var title: UILabel = {
         let title = UILabel()
         title.numberOfLines = 2
-        title.font = designSystem.text.cellTitle.font
+        title.font = designSystem.text.headline.font
         title.textColor = .textPrimary
         return title
     }()
@@ -39,7 +39,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     
     lazy var newTag: UILabel = {
         let tag = UILabel()
-        tag.font = UIFont(name: "Avenir-Medium", size: 15)
+        tag.stylize(with: designSystem.text.subheadline)
         tag.textColor = .white
         tag.text = "NEW".localized()
         tag.textAlignment = .center
@@ -60,7 +60,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     lazy var likeLabel: UILabel = {
         let title = UILabel()
         title.textColor = .textPrimary
-        title.font = UIFont(name: "Avenir-Book", size: 12)
+        title.stylize(with: designSystem.text.smallCaption)
         title.text = String(0)
         title.textAlignment = .center
         return title

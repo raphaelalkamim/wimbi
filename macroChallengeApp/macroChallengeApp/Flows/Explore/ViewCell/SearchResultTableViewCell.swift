@@ -21,14 +21,14 @@ class SearchResultTableViewCell: UITableViewCell {
     lazy var title: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.stylize(with: designSystem.text.cellTitle)
+        label.stylize(with: designSystem.text.headline)
         return label
     }()
     
     lazy var caption: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         return label
     }()
     

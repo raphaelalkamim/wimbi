@@ -29,7 +29,7 @@ class CurrentCountDown: UIView {
     
     lazy var date: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.cellTitle)
+        label.stylize(with: designSystem.text.headline)
         label.textAlignment = .left
         label.text = "02.10.2022"
         return label
@@ -44,7 +44,7 @@ class CurrentCountDown: UIView {
     
     lazy var subtitle: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.cellTitle)
+        label.stylize(with: designSystem.text.headline)
         label.textAlignment = .left
         label.text = "Faltam".localized()
         return label
@@ -52,7 +52,7 @@ class CurrentCountDown: UIView {
     
     lazy var timer: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Avenir-Black", size: 100)
+        label.stylize(with: designSystem.text.xxxLargeTitle)
         label.numberOfLines = 0
         label.textColor = .textPrimary
         label.textAlignment = .left
@@ -62,7 +62,7 @@ class CurrentCountDown: UIView {
     
     lazy var timerType: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.infoTitle)
+        label.stylize(with: designSystem.text.smallTitle)
         label.textAlignment = .left
         label.text = "days left".localized()
         return label

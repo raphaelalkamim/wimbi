@@ -33,7 +33,7 @@ class CategoryActivityCollectionViewCell: UICollectionViewCell {
     lazy var iconDescription: UILabel = {
         let description = UILabel()
         description.text = "oi"
-        description.stylize(with: designSystem.text.smallCaption)
+        description.stylize(with: designSystem.text.caption)
         return description
     }()
     

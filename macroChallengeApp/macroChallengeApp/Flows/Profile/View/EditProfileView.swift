@@ -42,7 +42,7 @@ class EditProfileView: UIView {
     lazy var nameLabel: UILabel = {
         let title = UILabel()
         title.text = "NAME".localized() // adicionar nome
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         title.textColor = .caption
         return title
     }()
@@ -50,7 +50,7 @@ class EditProfileView: UIView {
     lazy var usernameLabel: UILabel = {
         let title = UILabel()
         title.text = "USERNAME".localized() // adicionar nome
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         title.textColor = .caption
         return title
     }()

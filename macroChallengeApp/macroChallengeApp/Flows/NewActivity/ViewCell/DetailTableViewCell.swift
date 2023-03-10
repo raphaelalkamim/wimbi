@@ -17,7 +17,7 @@ class DetailTableViewCell: UITableViewCell {
     lazy var counterLabel: UILabel = {
         let label = UILabel()
         label.text = "0/250"
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         return label
     }()
     

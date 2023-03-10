@@ -43,7 +43,7 @@ class RoadmapExploreCollectionViewCell: UICollectionViewCell {
     lazy var subtitle: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.font = UIFont(name: "Avenir-Roman", size: 15)
+        label.stylize(with: designSystem.text.subheadline)
         label.numberOfLines = 0
         label.textColor = .textPrimary
         return label
@@ -52,7 +52,7 @@ class RoadmapExploreCollectionViewCell: UICollectionViewCell {
     lazy var costByPerson: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.font = UIFont(name: "Avenir-Roman", size: 15)
+        label.stylize(with: designSystem.text.subheadline)
         label.numberOfLines = 0
         label.textColor = .textPrimary
         return label
@@ -67,8 +67,8 @@ class RoadmapExploreCollectionViewCell: UICollectionViewCell {
     
     lazy var totalLikes: UILabel = {
         let title = UILabel()
+        title.stylize(with: designSystem.text.smallCaption)
         title.textColor = .textPrimary
-        title.font = UIFont(name: "Avenir-Book", size: 12)
         title.text = ""
         return title
     }()
@@ -82,8 +82,8 @@ class RoadmapExploreCollectionViewCell: UICollectionViewCell {
     
     lazy var categoryName: UILabel = {
         let title = UILabel()
+        title.stylize(with: designSystem.text.smallCaption)
         title.textColor = .textPrimary
-        title.font = UIFont(name: "Avenir-Book", size: 12)
         title.text = "Praia"
         return title
     }()
