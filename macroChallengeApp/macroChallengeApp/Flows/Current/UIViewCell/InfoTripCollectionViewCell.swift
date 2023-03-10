@@ -133,11 +133,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
     func getUserCurrency() -> String {
         let locale = Locale.current
         let currencySymbol = locale.currencySymbol
-        if currencySymbol == "$" {
-            return "U$"
-        } else {
-            return currencySymbol ?? "U$"
-        }
+        return currencySymbol ?? "$"
     }
     func setupCategory(category: String) {
         title.text = "CATEGORY".localized()

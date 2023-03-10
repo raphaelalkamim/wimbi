@@ -20,11 +20,7 @@ class RoadmapSearchTableViewController: UITableViewController {
     func getUserCurrency() -> String {
         let locale = Locale.current
         let currencySymbol = locale.currencySymbol
-        if currencySymbol == "$" {
-            return "U$"
-        } else {
-            return currencySymbol ?? "U$"
-        }
+        return currencySymbol ?? "$"
     }
     
     // MARK: - Table view data source
