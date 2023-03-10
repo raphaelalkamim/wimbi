@@ -47,4 +47,8 @@ extension UIColor {
     static var redCity: UIColor {
         UIColor(named: "redCity")!
     }
+    
+    static var weatherBackground: UIColor {
+        UIColor(named: "weatherBackground")!
+    }
 }
