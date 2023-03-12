@@ -15,7 +15,7 @@ open class WeatherView: UIView {
     
     var actualTemperature: String? {
         didSet {
-            weatherTemperature.text = (actualTemperature ?? "--") + "º"
+            weatherTemperature.text = (actualTemperature ?? "--") + "ºC"
         }
     }
     
@@ -39,7 +39,7 @@ open class WeatherView: UIView {
     
     var rainfallLevel: String? {
         didSet {
-            rainLevelLabel.text =  rainfallLevel
+            rainLevelLabel.text =  (rainfallLevel ?? "") + " mm"
         }
     }
     
@@ -79,7 +79,7 @@ open class WeatherView: UIView {
     lazy var lowTemperatureLabel: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.smallCaption)
-        label.text = "10"
+        label.text = "--"
         label.textColor = .accent
         label.textAlignment = .left
         return label
@@ -88,7 +88,7 @@ open class WeatherView: UIView {
     lazy var highTemperatureLabel: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.smallCaption)
-        label.text = "20"
+        label.text = "--"
         label.textColor = .yellowMontain
         label.textAlignment = .left
         return label
@@ -97,7 +97,7 @@ open class WeatherView: UIView {
     lazy var rainfallLabel: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.smallCaption)
-        label.text = "RAINFALL".localized()
+        label.text = "PRECIPITATION".localized()
         label.textAlignment = .left
         return label
     }()

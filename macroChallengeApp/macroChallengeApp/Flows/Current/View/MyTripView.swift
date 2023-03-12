@@ -54,11 +54,11 @@ class MyTripView: UIView {
     lazy var weatherView: WeatherView = {
         let view = WeatherView()
         view.layer.cornerRadius = 20
-        view.actualTemperature = "24"
+        view.actualTemperature = "-"
         view.iconTemperature = .weatherCloudSun
-        view.rainfallLevel = "35mm - 30%"
-        view.higherTemperature = "30"
-        view.lowerTemperature =  "4"
+        view.rainfallLevel = "-"
+        view.higherTemperature = "-"
+        view.lowerTemperature =  "-"
         return view
     }()
     
@@ -108,7 +108,7 @@ class MyTripView: UIView {
     
     lazy var weatherTitle: UILabel = {
         let title = UILabel()
-        title.text = "WEATHER PREVISION".localized()
+        title.text = "CURRENT WEATHER".localized()
         title.stylize(with: designSystem.text.caption)
         return title
     }()

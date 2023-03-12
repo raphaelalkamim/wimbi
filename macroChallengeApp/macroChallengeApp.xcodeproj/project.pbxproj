@@ -142,6 +142,7 @@
 		A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD73A428DBA76E0044E47C /* CalendarCollectionViewCell.swift */; };
 		B032E52229B913AA00E02857 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032E52129B913AA00E02857 /* WeatherView.swift */; };
 		B032E52429BBDC5500E02857 /* DesignImagesWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032E52329BBDC5500E02857 /* DesignImagesWeather.swift */; };
+		B032E52729BE23A700E02857 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032E52629BE23A700E02857 /* WeatherViewModel.swift */; };
 		B04777DA28E62B130023540D /* ProfileViewController+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04777D928E62B130023540D /* ProfileViewController+ContextMenu.swift */; };
 		B04BA9A628DA498800EBA44A /* TimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */; };
 		B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */; };
@@ -362,6 +363,7 @@
 		A2717F6A055C734D418E1360 /* Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; path = "Target Support Files/Pods-macroChallengeApp-macroChallengeAppUITests/Pods-macroChallengeApp-macroChallengeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B032E52129B913AA00E02857 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		B032E52329BBDC5500E02857 /* DesignImagesWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImagesWeather.swift; sourceTree = "<group>"; };
+		B032E52629BE23A700E02857 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		B04777D928E62B130023540D /* ProfileViewController+ContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+ContextMenu.swift"; sourceTree = "<group>"; };
 		B04BA9A528DA498800EBA44A /* TimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerTableViewCell.swift; sourceTree = "<group>"; };
 		B04BA9A728DA5B4F00EBA44A /* ValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
@@ -819,6 +821,7 @@
 		13F994F028D3953B00B077C0 /* Current */ = {
 			isa = PBXGroup;
 			children = (
+				B032E52529BE239000E02857 /* ViewModel */,
 				A04959C128DCEC51009156C8 /* Extensions */,
 				A04959C228DCEC5F009156C8 /* UIViewCell */,
 				A04959C328DCEC6B009156C8 /* View */,
@@ -989,6 +992,14 @@
 				A0A8BABC28E4E8C0006A8BDD /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		B032E52529BE239000E02857 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B032E52629BE23A700E02857 /* WeatherViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B078F20928C27F2000D46F61 = {
@@ -1535,6 +1546,7 @@
 				DF5F774128CA7E1600BA5F5F /* DesignSystem+UIFont.swift in Sources */,
 				13732802290C67840021231E /* SaveImageController.swift in Sources */,
 				131272DB28E624CC000B7968 /* ExploreViewController+Roadmaps.swift in Sources */,
+				B032E52729BE23A700E02857 /* WeatherViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
