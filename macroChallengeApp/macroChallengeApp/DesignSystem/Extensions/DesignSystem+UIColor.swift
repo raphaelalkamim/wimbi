@@ -51,4 +51,12 @@ extension UIColor {
     static var weatherBackground: UIColor {
         UIColor(named: "weatherBackground")!
     }
+    
+    static var weatherLowColor: UIColor {
+        UIColor(named: "weatherLowColor")!
+    }
+    
+    static var weatherHighColor: UIColor {
+        UIColor(named: "weatherHighColor")!
+    }
 }

@@ -93,7 +93,8 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
                 await WeatherViewModel.shared.getDayWeather(roadmap.location ?? "")
                 await WeatherViewModel.shared.getCurrentWeather(roadmap.location ?? "")
                 myTripView.weatherView.actualTemperature = String(Int(getCurrentyWeather().temperature))
-                //myTripView.weatherView.rainfallLevel = getCurrentyWeather().condition
+                print(getCurrentyWeather().condition)
+                myTripView.weatherView.changeIcon(getCurrentyWeather().condition)
                 myTripView.weatherView.higherTemperature = String(Int(getDayWeather().higherTemperature))
                 myTripView.weatherView.lowerTemperature = String(Int(getDayWeather().lowerTemperature))
                 myTripView.weatherView.rainfallLevel = String(getDayWeather().rainfall)

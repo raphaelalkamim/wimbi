@@ -158,6 +158,7 @@
 		B078F23A28C27F2500D46F61 /* macroChallengeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */; };
 		B078F23C28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */; };
 		B0AC251628E21DEB00F38525 /* CurrentEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */; };
+		B0AD157F29C2716900885C07 /* WeatherConditionImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD157E29C2716900885C07 /* WeatherConditionImages.swift */; };
 		B0B17FE528E4DABF0010B00C /* CurrentCountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */; };
 		B0CDF35028CFC7E90092A76C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CDF34F28CFC7E90092A76C /* Category.swift */; };
 		B0E0684F28EF50C500418F87 /* CurrencyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E0684E28EF50C500418F87 /* CurrencyAPI.swift */; };
@@ -383,6 +384,7 @@
 		B078F23928C27F2500D46F61 /* macroChallengeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITests.swift; sourceTree = "<group>"; };
 		B078F23B28C27F2500D46F61 /* macroChallengeAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macroChallengeAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B0AC251528E21DEB00F38525 /* CurrentEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentEmptyState.swift; sourceTree = "<group>"; };
+		B0AD157E29C2716900885C07 /* WeatherConditionImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConditionImages.swift; sourceTree = "<group>"; };
 		B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCountDown.swift; sourceTree = "<group>"; };
 		B0CDF34F28CFC7E90092A76C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		B0E0684E28EF50C500418F87 /* CurrencyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPI.swift; sourceTree = "<group>"; };
@@ -772,6 +774,7 @@
 				DF5F774028CA7E1600BA5F5F /* DesignSystem+UIFont.swift */,
 				13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */,
 				DF5F774428CA846C00BA5F5F /* UILabel+Font.swift */,
+				B0AD157E29C2716900885C07 /* WeatherConditionImages.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1400,6 +1403,7 @@
 				B0B17FE528E4DABF0010B00C /* CurrentCountDown.swift in Sources */,
 				135AC6A528DE1BCF003E1CF3 /* DefaultDesignActivitiesImages.swift in Sources */,
 				13C8A15228CFC29500994196 /* HandleMapSearch.swift in Sources */,
+				B0AD157F29C2716900885C07 /* WeatherConditionImages.swift in Sources */,
 				131272DD28E624CE000B7968 /* PreviewRoadmapView.swift in Sources */,
 				13C8A13628CA6C1100994196 /* TextStyle.swift in Sources */,
 				A0B9F4C528D90A7C00F2DF06 /* SwitchTableViewCell.swift in Sources */,

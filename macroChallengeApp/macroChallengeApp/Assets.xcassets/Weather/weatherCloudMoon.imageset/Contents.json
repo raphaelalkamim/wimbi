@@ -1,17 +1,50 @@
 {
   "images" : [
     {
-      "filename" : "Group 428.png",
+      "filename" : "Group 438.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Group 426.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Group 459.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Group 439.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Group 427.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Group 460.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Group 440.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Group 461.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

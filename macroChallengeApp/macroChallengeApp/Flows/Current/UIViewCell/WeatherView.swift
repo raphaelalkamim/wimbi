@@ -80,7 +80,7 @@ open class WeatherView: UIView {
         let label = UILabel()
         label.stylize(with: designSystem.text.smallCaption)
         label.text = "--"
-        label.textColor = .accent
+        label.textColor = .weatherLowColor
         label.textAlignment = .left
         return label
     }()
@@ -89,7 +89,7 @@ open class WeatherView: UIView {
         let label = UILabel()
         label.stylize(with: designSystem.text.smallCaption)
         label.text = "--"
-        label.textColor = .yellowMontain
+        label.textColor = .weatherHighColor
         label.textAlignment = .left
         return label
     }()
@@ -105,7 +105,7 @@ open class WeatherView: UIView {
     lazy var rainLevelLabel: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.smallCaption)
-        label.textColor = .black
+        label.textColor = designSystem.palette.textPrimary
         label.textAlignment = .center
         return label
     }()
@@ -195,5 +195,82 @@ open class WeatherView: UIView {
         }
         
     
+    }
+}
+
+extension WeatherView {
+    func changeIcon(_ condition: String) {
+        switch condition {
+        case "blowingDust" :
+            weatherIcon.image = WeatherConditionImages.VisibilityProperties.blowingDust
+        case "clear":
+            weatherIcon.image = WeatherConditionImages.VisibilityProperties.clear
+        case "cloudy":
+            weatherIcon.image = WeatherConditionImages.VisibilityProperties.cloudy
+        case "foggy":
+            weatherIcon.image = WeatherConditionImages.VisibilityProperties.foggy
+        case "haze":
+            weatherIcon.image = WeatherConditionImages.VisibilityProperties.haze
+        case "mostlyClear":
+            weatherIcon.image = WeatherConditionImages.VisibilityProperties.mostlyClear
+        case "mostlyCloudy":
+            weatherIcon.image = WeatherConditionImages.VisibilityProperties.mostlyCloudy
+        case "partlyCloudy":
+            weatherIcon.image = WeatherConditionImages.VisibilityProperties.partlyCloudy
+        case "smoky":
+            weatherIcon.image = WeatherConditionImages.VisibilityProperties.smoky
+        case "breezy":
+            weatherIcon.image = WeatherConditionImages.WindProperties.breezy
+        case "windy":
+            weatherIcon.image = WeatherConditionImages.WindProperties.windy
+        case "drizzle":
+            weatherIcon.image = WeatherConditionImages.PrecipitationProperties.drizzle
+        case "heavyRain":
+            weatherIcon.image = WeatherConditionImages.PrecipitationProperties.heavyRain
+        case "isolatedThunderstorms":
+            weatherIcon.image = WeatherConditionImages.PrecipitationProperties.isolatedThunderstorms
+        case "rain":
+            weatherIcon.image = WeatherConditionImages.PrecipitationProperties.rain
+        case "sunShowers":
+            weatherIcon.image = WeatherConditionImages.PrecipitationProperties.sunShowers
+        case "scatteredThunderstorm":
+            weatherIcon.image = WeatherConditionImages.PrecipitationProperties.scatteredThunderstorms
+        case "strongStorms":
+            weatherIcon.image = WeatherConditionImages.PrecipitationProperties.strongStorms
+        case "thunderstorms":
+            weatherIcon.image = WeatherConditionImages.PrecipitationProperties.thunderstorms
+        case "frigid":
+            weatherIcon.image = WeatherConditionImages.HazardousProperties.frigid
+        case "hail":
+            weatherIcon.image = WeatherConditionImages.HazardousProperties.hail
+        case "hot":
+            weatherIcon.image = WeatherConditionImages.HazardousProperties.hot
+        case "flurries":
+            weatherIcon.image = WeatherConditionImages.WinterProperties.flurries
+        case "sleet":
+            weatherIcon.image = WeatherConditionImages.WinterProperties.sleet
+        case "snow":
+            weatherIcon.image = WeatherConditionImages.WinterProperties.snow
+        case "sunFlurries":
+            weatherIcon.image = WeatherConditionImages.WinterProperties.sunFlurries
+        case "wintryMix":
+            weatherIcon.image = WeatherConditionImages.WinterProperties.wintryMix
+        case "blizzard":
+            weatherIcon.image = WeatherConditionImages.HazardousWinterProperties.blizzard
+        case "blowingSnow":
+            weatherIcon.image = WeatherConditionImages.HazardousWinterProperties.blowingSnow
+        case "freezingDrizzle":
+            weatherIcon.image = WeatherConditionImages.HazardousWinterProperties.freezingDrizzle
+        case "freezingRain":
+            weatherIcon.image = WeatherConditionImages.HazardousWinterProperties.freezingRain
+        case "heavySnow":
+            weatherIcon.image = WeatherConditionImages.HazardousWinterProperties.heavySnow
+        case "hurricane":
+            weatherIcon.image = WeatherConditionImages.TropicalHazardProperties.hurricane
+        case "tropicalStorm":
+            weatherIcon.image = WeatherConditionImages.TropicalHazardProperties.tropicalStorm
+        default:
+            weatherIcon.image = WeatherConditionImages.TropicalHazardProperties.tropicalStorm
+        }
     }
 }

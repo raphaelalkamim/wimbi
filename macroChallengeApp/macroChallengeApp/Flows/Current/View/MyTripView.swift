@@ -202,9 +202,9 @@ class MyTripView: UIView {
         contentView.addSubview(emptyStateImage)
         contentView.addSubview(emptyStateTitle)
         contentView.addSubview(infoTitle)
-        contentView.addSubview(calendarTitle)
         contentView.addSubview(weatherTitle)
         contentView.addSubview(weatherView)
+        contentView.addSubview(calendarTitle)
         contentView.addSubview(roadmapTitle)
         contentView.addSubview(dayTitle)
         self.addSubview(addButton)
@@ -273,8 +273,21 @@ class MyTripView: UIView {
 
         }
         
-        calendarTitle.snp.makeConstraints { make in
+        weatherTitle.snp.makeConstraints { make in
             make.top.equalTo(infoTripCollectionView.snp.bottom).inset(designSystem.spacing.mediumNegative)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+        }
+        
+        weatherView.snp.makeConstraints { make in
+            make.top.equalTo(weatherTitle.snp.bottom).offset(designSystem.spacing.mediumPositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+            make.height.equalTo(100)
+        }
+        
+        calendarTitle.snp.makeConstraints { make in
+            make.top.equalTo(weatherView.snp.bottom).inset(designSystem.spacing.mediumNegative)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             
@@ -286,21 +299,8 @@ class MyTripView: UIView {
             make.height.equalTo(80)
         }
         
-        weatherTitle.snp.makeConstraints { make in
-            make.top.equalTo(calendarCollectionView.snp.bottom).inset(designSystem.spacing.mediumNegative)
-            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
-            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
-        }
-        
-        weatherView.snp.makeConstraints { make in
-            make.top.equalTo(weatherTitle.snp.bottom)
-            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
-            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
-            make.height.equalTo(100)
-        }
-        
         roadmapTitle.snp.makeConstraints { make in
-            make.top.equalTo(weatherView.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+            make.top.equalTo(calendarCollectionView.snp.bottom).inset(designSystem.spacing.xLargeNegative)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
         }
