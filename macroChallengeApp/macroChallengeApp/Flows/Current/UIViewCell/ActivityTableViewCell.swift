@@ -32,7 +32,7 @@ class ActivityTableViewCell: UITableViewCell {
     
     lazy var activityInfo: UILabel = {
         let title = UILabel()
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         title.textColor = .textPrimary
         title.text = "08h00  •  Free"
         return title
@@ -40,7 +40,7 @@ class ActivityTableViewCell: UITableViewCell {
     
     lazy var activityTitle: UILabel = {
         let title = UILabel()
-        title.stylize(with: designSystem.text.cellTitle)
+        title.stylize(with: designSystem.text.headline)
         title.textColor = .textPrimary
         title.text = "Malibu Beach"
         title.numberOfLines = 1

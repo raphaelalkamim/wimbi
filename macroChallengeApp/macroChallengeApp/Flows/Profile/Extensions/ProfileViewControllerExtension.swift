@@ -38,13 +38,13 @@ extension ProfileViewController {
                     let action = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
                     
                     let roadmapName = "'\(roadmaps[indexPath.item].name ?? "NONE")'"
-                    
-                    let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 16)]
+                    let titleFont = UIFont(name: "Avenir-Black", size: 16)!
+                    let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
                     let title = "Delete all content from".localized()
                     let string = NSAttributedString(string: "\(title) \(roadmapName)", attributes: titleAtt as [NSAttributedString.Key: Any])
                     action.setValue(string, forKey: "attributedTitle")
-                    
-                    let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 16)]
+                    let subtitleFont = UIFont(name: "Avenir-Roman", size: 16)!
+                    let subtitleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: subtitleFont)]
                     let subtitleString = NSAttributedString(string: "The content cannot be recovered.".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
                     action.setValue(subtitleString, forKey: "attributedMessage")
                     
@@ -88,7 +88,8 @@ extension ProfileViewController: UICollectionViewDataSource {
                         
                         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
                         alert.view.tintColor = .accent
-                        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
+                        let titleFont = UIFont(name: "Avenir-Black", size: 18)!
+                        let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
                         let string = NSAttributedString(string: "This itinerary has been deleted by another user".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
                         alert.setValue(string, forKey: "attributedMessage")
                         

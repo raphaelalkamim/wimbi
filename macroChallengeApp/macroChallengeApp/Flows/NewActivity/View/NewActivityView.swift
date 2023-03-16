@@ -25,7 +25,7 @@ class NewActivityView: UIView {
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
         label.text = "TYPE".localized()
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         return label
     }()
     
@@ -44,7 +44,7 @@ class NewActivityView: UIView {
     lazy var localyLabel: UILabel = {
         let label = UILabel()
         label.text = "LOCATION".localized()
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         return label
     }()
     
@@ -63,7 +63,7 @@ class NewActivityView: UIView {
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.text = "TIME".localized()
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         return label
     }()
     
@@ -82,7 +82,7 @@ class NewActivityView: UIView {
     lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.text = "EXPENSE".localized()
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         return label
     }()
     
@@ -101,7 +101,7 @@ class NewActivityView: UIView {
     lazy var contactLabel: UILabel = {
         let label = UILabel()
         label.text = "CONTACT".localized()
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         return label
     }()
     
@@ -109,7 +109,7 @@ class NewActivityView: UIView {
         let title = UILabel()
         title.text = "Enter here the location's website or phone number.".localized()
         title.textColor = .caption
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         return title
     }()
     
@@ -127,7 +127,7 @@ class NewActivityView: UIView {
     lazy var detailLabel: UILabel = {
         let label = UILabel()
         label.text = "DETAILS".localized()
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         return label
     }()
     
@@ -136,7 +136,7 @@ class NewActivityView: UIView {
         title.text = "Describe here curiosities, tips or interesting facts about the place.".localized()
         title.textColor = .caption
         title.numberOfLines = 0
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         return title
     }()
     

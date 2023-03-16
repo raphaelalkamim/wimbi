@@ -36,8 +36,8 @@ class AlertMapsModel: UIAlertController {
         
         let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         alert.view.tintColor = .accent
-        
-        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 16)]
+        let titleFont = UIFont(name: "Avenir-Roman", size: 16)!
+        let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
         let string = NSAttributedString(string: "Which app would you like to use to access the address?".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
         
         alert.setValue(string, forKey: "attributedTitle")

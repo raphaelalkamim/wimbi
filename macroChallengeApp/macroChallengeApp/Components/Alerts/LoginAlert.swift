@@ -13,10 +13,12 @@ class LoginAlert: UIAlertController {
         super.init(nibName: nil, bundle: nil)
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alert.view.tintColor = .accent
-        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
+        let titleFont = UIFont(name: "Avenir-Black", size: 18)!
+        let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
         let string = NSAttributedString(string: "Login required".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
         alert.setValue(string, forKey: "attributedTitle")
-        let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
+        let subtitleFont = UIFont(name: "Avenir-Roman", size: 14)!
+        let subtitleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .footnote).scaledFont(for: subtitleFont)]
         let subtitleString = NSAttributedString(string: "Access the profile and log-in to duplicate or create new itineraries".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
         alert.setValue(subtitleString, forKey: "attributedMessage")
         

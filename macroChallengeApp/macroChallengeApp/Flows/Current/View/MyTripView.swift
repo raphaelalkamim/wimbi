@@ -26,7 +26,7 @@ class MyTripView: UIView {
     
     lazy var date: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         label.textColor = designSystem.palette.textPrimary
         label.textAlignment = .left
         label.text = "02.10.2022"
@@ -95,14 +95,14 @@ class MyTripView: UIView {
     lazy var infoTitle: UILabel = {
         let title = UILabel()
         title.text = "ABOUT".localized()
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         return title
     }()
     
     lazy var calendarTitle: UILabel = {
         let title = UILabel()
         title.text = "TRAVEL DAYS".localized()
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         return title
     }()
     
@@ -116,7 +116,7 @@ class MyTripView: UIView {
     lazy var roadmapTitle: UILabel = {
         let title = UILabel()
         title.text = "ITINERARY".localized()
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         return title
     }()
     
@@ -137,7 +137,7 @@ class MyTripView: UIView {
     lazy var budgetLabel: UILabel = {
         let title = UILabel()
         title.text = "DAILY COSTS".localized()
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         return title
     }()
     

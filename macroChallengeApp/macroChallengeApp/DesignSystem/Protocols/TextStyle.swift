@@ -9,6 +9,7 @@ import UIKit
 
 protocol TextStyle {
     var font: UIFont { get }
+    var style: UIFont.TextStyle { get }
     var color: UIColor { get }
     var alignment: NSTextAlignment { get }
 }

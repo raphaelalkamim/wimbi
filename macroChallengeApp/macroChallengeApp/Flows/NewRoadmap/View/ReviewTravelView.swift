@@ -36,7 +36,7 @@ class ReviewTravelView: UIView {
         let title = UILabel()
         title.textColor = designSystem.palette.caption
         title.numberOfLines = 0
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         title.text = "Add an image so the Itinerary appears on the Explore view".localized()
         return title
     }()
@@ -59,14 +59,14 @@ class ReviewTravelView: UIView {
     
     public lazy var subtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.stylize(with: designSystem.text.caption)
+        subtitle.stylize(with: designSystem.text.footnote)
         subtitle.textColor = designSystem.palette.textPrimary
         subtitle.text = "Beach".localized()
         return subtitle
     }()
     public lazy var daysTitle: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         label.text = "DATE".localized()
         return label
     }()
@@ -82,7 +82,7 @@ class ReviewTravelView: UIView {
     }()
     public lazy var travelersTitle: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         label.text = "TRAVELERS".localized()
         return label
     }()
@@ -98,7 +98,7 @@ class ReviewTravelView: UIView {
     }()
     public lazy var privacyTitle: UILabel = {
         let label = UILabel()
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         label.text = "PRIVACY".localized()
         return label
     }()

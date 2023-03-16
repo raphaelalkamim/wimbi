@@ -13,7 +13,7 @@ class DaysView: UIView {
     
     lazy var dataTitleLabel: UILabel = {
         let dataTitleLabel = UILabel()
-        dataTitleLabel.stylize(with: designSystem.text.caption)
+        dataTitleLabel.stylize(with: designSystem.text.footnote)
         dataTitleLabel.text = "DATE".localized()
         return dataTitleLabel
     }()
@@ -83,9 +83,9 @@ class DaysView: UIView {
         self.addSubview(publicCaption)
         self.addSubview(publicSwitch)
 
-        viajantesTitleLabel.stylize(with: designSystem.text.caption)
+        viajantesTitleLabel.stylize(with: designSystem.text.footnote)
         publicTitle.stylize(with: designSystem.text.body)
-        publicCaption.stylize(with: designSystem.text.caption)
+        publicCaption.stylize(with: designSystem.text.footnote)
 
         setupConstraints()
     }

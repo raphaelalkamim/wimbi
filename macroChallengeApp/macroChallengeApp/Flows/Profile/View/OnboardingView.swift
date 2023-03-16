@@ -39,14 +39,14 @@ class OnboardingView: UIView {
     lazy var createTitle: UILabel = {
         let title = UILabel()
         title.text = "Be an explorer".localized()
-        title.stylize(with: designSystem.text.cellTitle)
+        title.stylize(with: designSystem.text.headline)
         return title
     }()
     
     lazy var createSubtitle: UILabel = {
         let subtitle = UILabel()
         subtitle.text = "Create your itinerary and make it public for people to enjoy and use as inspiration.".localized()
-        subtitle.stylize(with: designSystem.text.caption)
+        subtitle.stylize(with: designSystem.text.footnote)
         return subtitle
     }()
     
@@ -62,14 +62,14 @@ class OnboardingView: UIView {
     lazy var duplicateTitle: UILabel = {
         let title = UILabel()
         title.text = "Explore itineraries without sign in".localized()
-        title.stylize(with: designSystem.text.cellTitle)
+        title.stylize(with: designSystem.text.headline)
         return title
     }()
     
     lazy var duplicateSubtitle: UILabel = {
         let subtitle = UILabel()
         subtitle.text = "If you find a perfect itinerary, duplicate it so you can edit it at any time.".localized()
-        subtitle.stylize(with: designSystem.text.caption)
+        subtitle.stylize(with: designSystem.text.footnote)
         return subtitle
     }()
     
@@ -85,14 +85,14 @@ class OnboardingView: UIView {
     lazy var likeTitle: UILabel = {
         let title = UILabel()
         title.text = "Don't miss any itinerary".localized()
-        title.stylize(with: designSystem.text.cellTitle)
+        title.stylize(with: designSystem.text.headline)
         return title
     }()
     
     lazy var likeSubtitle: UILabel = {
         let subtitle = UILabel()
         subtitle.text = "Like a itinerary so that it's saved in settings.".localized()
-        subtitle.stylize(with: designSystem.text.caption)
+        subtitle.stylize(with: designSystem.text.footnote)
         return subtitle
     }()
     
@@ -108,14 +108,14 @@ class OnboardingView: UIView {
     lazy var shareTitle: UILabel = {
         let title = UILabel()
         title.text = "Travel together with your friends".localized()
-        title.stylize(with: designSystem.text.cellTitle)
+        title.stylize(with: designSystem.text.headline)
         return title
     }()
     
     lazy var shareSubtitle: UILabel = {
         let subtitle = UILabel()
         subtitle.text = "Share your itinerary with your friends so everyone can edit it.".localized()
-        subtitle.stylize(with: designSystem.text.caption)
+        subtitle.stylize(with: designSystem.text.footnote)
         return subtitle
     }()
     
@@ -130,7 +130,8 @@ class OnboardingView: UIView {
     
     lazy var exploreButton: UIButton = {
         let button = UIButton()
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
+        let font = UIFont(name: "Avenir-Medium", size: 17)!
+        let attributes = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: font)]
         button.setAttributedTitle(NSAttributedString(string: "Explore", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
         button.backgroundColor = .accent
         button.setTitleColor(.backgroundPrimary, for: .normal)

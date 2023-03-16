@@ -17,7 +17,7 @@ class DetailTableViewCell: UITableViewCell {
     lazy var counterLabel: UILabel = {
         let label = UILabel()
         label.text = "0/250"
-        label.stylize(with: designSystem.text.caption)
+        label.stylize(with: designSystem.text.footnote)
         return label
     }()
     
@@ -43,7 +43,8 @@ class DetailTableViewCell: UITableViewCell {
         textView.returnKeyType = UIReturnKeyType.done
         textView.isUserInteractionEnabled = true
         textView.delegate = self
-        textView.font = UIFont(name: "Avenir-Roman", size: 17)
+        let textFont = UIFont(name: "Avenir-Roman", size: 17)!
+        textView.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: textFont)
         textView.adjustsFontForContentSizeCategory = true
         return textView
     }()

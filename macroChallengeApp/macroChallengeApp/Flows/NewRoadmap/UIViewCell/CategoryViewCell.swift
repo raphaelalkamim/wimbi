@@ -30,7 +30,7 @@ class CategoryViewCell: UICollectionViewCell {
     
     lazy var subtitle: UILabel = {
         let subtitle = UILabel()
-        subtitle.stylize(with: designSystem.text.smallCaption)
+        subtitle.stylize(with: designSystem.text.caption)
         return subtitle
     }()
     

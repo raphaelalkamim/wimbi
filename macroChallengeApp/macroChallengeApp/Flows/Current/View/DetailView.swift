@@ -33,7 +33,7 @@ class DetailView: UIView {
         let title = UILabel()
         title.text = "Nome da atividade"
         title.numberOfLines = 0
-        title.font = designSystem.text.infoTitle.font
+        title.font = designSystem.text.smallTitle.font
         title.textAlignment = .center
         title.textColor = .textPrimary
         return title
@@ -43,7 +43,7 @@ class DetailView: UIView {
         let title = UILabel()
         title.text = "Categoria: Praia"
         title.numberOfLines = 0
-        title.font = designSystem.text.caption.font
+        title.font = designSystem.text.footnote.font
         title.textAlignment = .center
         title.textColor = .caption
         return title
@@ -62,7 +62,7 @@ class DetailView: UIView {
     lazy var localTitle: UILabel = {
         let title = UILabel()
         title.text = "LOCATION".localized()
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         return title
     }()
     
@@ -76,7 +76,7 @@ class DetailView: UIView {
     lazy var detailTitle: UILabel = {
         let title = UILabel()
         title.text = "DETAILS".localized()
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         return title
     }()
     
@@ -90,7 +90,7 @@ class DetailView: UIView {
     lazy var linkTitle: UILabel = {
         let title = UILabel()
         title.text = "CONTACT".localized()
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         return title
     }()
     
@@ -140,8 +140,9 @@ class DetailView: UIView {
         local.text = activity.address
         details.text = activity.tips
         
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 17)]
-        
+        let font = UIFont(name: "Avenir-Medium", size: 17)!
+        let attributes = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: font)]
+
         linkButton.setAttributedTitle(NSAttributedString(string: "\(activity.link )", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
         
         if activity.address.isEmpty == true {
@@ -188,8 +189,9 @@ class DetailView: UIView {
         local.text = activity.address
         details.text = activity.tips
         
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 17)]
-        
+        let font = UIFont(name: "Avenir-Roman", size: 17)!
+        let attributes = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: font)]
+
         linkButton.setAttributedTitle(NSAttributedString(string: "\(activity.link ?? "https://www.google.com")", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
         
         if activity.address?.isEmpty == true {

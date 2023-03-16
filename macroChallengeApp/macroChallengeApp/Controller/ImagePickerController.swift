@@ -44,7 +44,8 @@ open class ImagePicker: NSObject {
     public func present(from sourceView: UIView, title: String) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.view.tintColor = .accent
-        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir", size: 18)]
+        let titleFont = UIFont(name: "Avenir", size: 18)!
+        let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
         let string = NSAttributedString(string: title, attributes: titleAtt as [NSAttributedString.Key: Any])
         alertController.setValue(string, forKey: "attributedTitle")
         

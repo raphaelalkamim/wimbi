@@ -27,7 +27,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
     lazy var title: UILabel = {
         let title = UILabel()
         title.textColor = .textPrimary
-        title.font = designSystem.text.caption.font
+        title.font = designSystem.text.footnote.font
         title.textAlignment = .center
         title.text = ""
         return title
@@ -42,7 +42,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
     lazy var infoTitle: UILabel = {
         let title = UILabel()
         title.textColor = .textPrimary
-        title.font = designSystem.text.infoTitle.font
+        title.font = designSystem.text.smallTitle.font
         title.textAlignment = .center
         title.text = ""
         return title
@@ -55,7 +55,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         btn.tintColor = .textPrimary
         btn.setTitle("", for: .normal)
         btn.setTitleColor(designSystem.palette.textPrimary, for: .normal)
-        btn.titleLabel?.font = designSystem.text.infoTitle.font
+        btn.titleLabel?.font = designSystem.text.smallTitle.font
         //        btn.titleLabel?.textColor = .textPrimary
         btn.isUserInteractionEnabled = false
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -71,9 +71,9 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
     
     lazy var categoryTitle: UILabel = {
         let title = UILabel()
-        title.textColor = .textPrimary
-        title.font = UIFont(name: "Avenir-Book", size: 12)
+        title.stylize(with: designSystem.text.smallCaption)
         title.textAlignment = .center
+        title.textColor = .textPrimary
         title.text = ""
         return title
     }()

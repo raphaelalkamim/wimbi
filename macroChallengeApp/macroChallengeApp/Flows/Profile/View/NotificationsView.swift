@@ -38,7 +38,7 @@ class NotificationsView: UIView {
         let title = UILabel()
         title.text = "By activating the notification you will configure the frequency of the reminders before every activity.".localized()
         title.textColor = .caption
-        title.stylize(with: designSystem.text.caption)
+        title.stylize(with: designSystem.text.footnote)
         return title
     }()
     

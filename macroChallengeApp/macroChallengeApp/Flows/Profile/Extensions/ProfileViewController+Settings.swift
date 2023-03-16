@@ -45,7 +45,8 @@ extension SettingsViewController: UITableViewDataSource {
         case 4:
             let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
             alert.view.tintColor = .accent
-            let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
+            let titleFont = UIFont(name: "Avenir-Medium", size: 17)!
+            let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
             let string = NSAttributedString(string: "Delete your account?".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
             alert.setValue(string, forKey: "attributedTitle")
             alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
@@ -83,7 +84,8 @@ extension SettingsViewController: UITableViewDataSource {
         case 5:
             let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
             alert.view.tintColor = .accent
-            let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
+            let titleFont = UIFont(name: "Avenir-Medium", size: 17)!
+            let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
             let string = NSAttributedString(string: "Sign out of your account?".localized(), attributes: titleAtt)
             alert.setValue(string, forKey: "attributedTitle")
             alert.addAction(UIAlertAction(title: "Cancel".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
