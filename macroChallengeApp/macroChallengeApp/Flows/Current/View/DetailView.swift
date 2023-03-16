@@ -140,8 +140,9 @@ class DetailView: UIView {
         local.text = activity.address
         details.text = activity.tips
         
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 17)]
-        
+        let font = UIFont(name: "Avenir-Medium", size: 17)!
+        let attributes = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: font)]
+
         linkButton.setAttributedTitle(NSAttributedString(string: "\(activity.link )", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
         
         if activity.address.isEmpty == true {
@@ -188,8 +189,9 @@ class DetailView: UIView {
         local.text = activity.address
         details.text = activity.tips
         
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 17)]
-        
+        let font = UIFont(name: "Avenir-Roman", size: 17)!
+        let attributes = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: font)]
+
         linkButton.setAttributedTitle(NSAttributedString(string: "\(activity.link ?? "https://www.google.com")", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
         
         if activity.address?.isEmpty == true {

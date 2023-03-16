@@ -43,7 +43,8 @@ class DetailTableViewCell: UITableViewCell {
         textView.returnKeyType = UIReturnKeyType.done
         textView.isUserInteractionEnabled = true
         textView.delegate = self
-        textView.font = UIFont(name: "Avenir-Roman", size: 17)
+        let textFont = UIFont(name: "Avenir-Roman", size: 17)!
+        textView.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: textFont)
         textView.adjustsFontForContentSizeCategory = true
         return textView
     }()

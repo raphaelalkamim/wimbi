@@ -33,7 +33,8 @@ class EditProfileView: UIView {
     
     lazy var editButton: UIButton = {
         let button = UIButton()
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 15)]
+        let font = UIFont(name: "Avenir-Medium", size: 15)!
+        let attributes = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .subheadline).scaledFont(for: font)]
         button.setAttributedTitle(NSAttributedString(string: "Change profile photo".localized(), attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
         button.setTitleColor(.accent, for: .normal)
         return button

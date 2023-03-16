@@ -34,11 +34,13 @@ extension ExploreViewController {
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alert.view.tintColor = .accent
         
-        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
+        let titleFont = UIFont(name: "Avenir-Black", size: 18)!
+        let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
         let stringTitle = NSAttributedString(string: "Join itinerary".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
         alert.setValue(stringTitle, forKey: "attributedTitle")
         
-        let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
+        let subtitleFont = UIFont(name: "Avenir-Roman", size: 14)!
+        let subtitleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .footnote).scaledFont(for: subtitleFont)]
         let stringSub = NSAttributedString(string: "Add a trip code that a friend shared with you to have access to the itinerary".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
         alert.setValue(stringSub, forKey: "attributedMessage")
         

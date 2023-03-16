@@ -55,11 +55,13 @@ class NewRoadmapCoordinator: Coordinator {
     func dismissRoadmap(isNewRoadmap: Bool) {
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alert.view.tintColor = .accent
-        let titleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 18)]
+        let titleFont = UIFont(name: "Avenir-Black", size: 18)!
+        let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .headline).scaledFont(for: titleFont)]
         let string = NSAttributedString(string: "Are you sure?".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
         alert.setValue(string, forKey: "attributedTitle")
         
-        let subtitleAtt = [NSAttributedString.Key.font: UIFont(name: "Avenir-Roman", size: 14)]
+        let subtitleFont = UIFont(name: "Avenir-Roman", size: 14)!
+        let subtitleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .footnote).scaledFont(for: subtitleFont)]
         let subtitleString = NSAttributedString(string: "By canceling you’ll lose your entire progress.".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
         alert.setValue(subtitleString, forKey: "attributedMessage")
         alert.addAction(UIAlertAction(title: "No".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
@@ -124,6 +126,6 @@ class NewRoadmapCoordinator: Coordinator {
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
         UINavigationBar.appearance().barTintColor = designSystem.palette.backgroundPrimary
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
-        self.navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.largeTitle]
+        self.navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: UIFont.largeTitle)]
     }
 }

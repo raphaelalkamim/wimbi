@@ -130,7 +130,8 @@ class OnboardingView: UIView {
     
     lazy var exploreButton: UIButton = {
         let button = UIButton()
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir-Medium", size: 17)]
+        let font = UIFont(name: "Avenir-Medium", size: 17)!
+        let attributes = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: font)]
         button.setAttributedTitle(NSAttributedString(string: "Explore", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
         button.backgroundColor = .accent
         button.setTitleColor(.backgroundPrimary, for: .normal)

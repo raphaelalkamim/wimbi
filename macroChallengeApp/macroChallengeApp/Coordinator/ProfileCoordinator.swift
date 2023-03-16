@@ -191,7 +191,7 @@ class ProfileCoordinator: Coordinator {
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: designSystem.palette.titlePrimary]
         
-        self.navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.largeTitle]
+        self.navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: UIFont.largeTitle)]
     }
 }
 
