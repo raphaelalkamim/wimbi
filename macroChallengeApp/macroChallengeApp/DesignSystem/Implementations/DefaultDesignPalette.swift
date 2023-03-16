@@ -18,5 +18,7 @@ struct DefaultDesignPalette: DesignPalette {
     var blueBeach: UIColor = .blueBeach
     var redCity: UIColor = .redCity
     var yellowMontain: UIColor = .yellowMontain
-    
+    var weatherBackground: UIColor = .weatherBackground
+    var weatherHighColor: UIColor = .weatherHighColor
+    var weatherLowColor: UIColor = .weatherLowColor
 }
