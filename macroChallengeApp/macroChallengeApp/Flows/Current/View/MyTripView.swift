@@ -51,6 +51,17 @@ class MyTripView: UIView {
         return title
     }()
     
+    lazy var weatherView: WeatherView = {
+        let view = WeatherView()
+        view.layer.cornerRadius = 20
+        view.actualTemperature = "-"
+        view.iconTemperature = .weatherCloudSun
+        view.rainfallLevel = "-"
+        view.higherTemperature = "-"
+        view.lowerTemperature =  "-"
+        return view
+    }()
+    
     lazy var infoTripCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 140, height: 90)
@@ -92,6 +103,13 @@ class MyTripView: UIView {
         let title = UILabel()
         title.text = "TRAVEL DAYS".localized()
         title.stylize(with: designSystem.text.footnote)
+        return title
+    }()
+    
+    lazy var weatherTitle: UILabel = {
+        let title = UILabel()
+        title.text = "CURRENT WEATHER".localized()
+        title.stylize(with: designSystem.text.caption)
         return title
     }()
     
@@ -184,6 +202,8 @@ class MyTripView: UIView {
         contentView.addSubview(emptyStateImage)
         contentView.addSubview(emptyStateTitle)
         contentView.addSubview(infoTitle)
+        contentView.addSubview(weatherTitle)
+        contentView.addSubview(weatherView)
         contentView.addSubview(calendarTitle)
         contentView.addSubview(roadmapTitle)
         contentView.addSubview(dayTitle)
@@ -253,8 +273,21 @@ class MyTripView: UIView {
 
         }
         
-        calendarTitle.snp.makeConstraints { make in
+        weatherTitle.snp.makeConstraints { make in
             make.top.equalTo(infoTripCollectionView.snp.bottom).inset(designSystem.spacing.mediumNegative)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+        }
+        
+        weatherView.snp.makeConstraints { make in
+            make.top.equalTo(weatherTitle.snp.bottom).offset(designSystem.spacing.mediumPositive)
+            make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
+            make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
+            make.height.equalTo(100)
+        }
+        
+        calendarTitle.snp.makeConstraints { make in
+            make.top.equalTo(weatherView.snp.bottom).inset(designSystem.spacing.mediumNegative)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             
@@ -265,6 +298,7 @@ class MyTripView: UIView {
             make.trailing.equalTo(contentView.snp.trailing)
             make.height.equalTo(80)
         }
+        
         roadmapTitle.snp.makeConstraints { make in
             make.top.equalTo(calendarCollectionView.snp.bottom).inset(designSystem.spacing.xLargeNegative)
             make.leading.equalTo(contentView.snp.leading).inset(designSystem.spacing.xLargePositive)

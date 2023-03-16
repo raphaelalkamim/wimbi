@@ -60,4 +60,25 @@ extension UIImage {
     static var lostConnection: UIImage {
         UIImage(named: "lostConnection")!
     }
+    static var weatherCloud: UIImage {
+        UIImage(named: "weatherCloud")!
+    }
+    static var weatherCloudMoon: UIImage {
+        UIImage(named: "weatherCloudMoon")!
+    }
+    static var weatherCloudSun: UIImage {
+        UIImage(named: "weatherCloudSun")!
+    }
+    static var weatherRain: UIImage {
+        UIImage(named: "weatherRain")!
+    }
+    static var weatherSun: UIImage {
+        UIImage(named: "weatherSun")!
+    }
+    static var weatherThunder: UIImage {
+        UIImage(named: "weatherThunder")!
+    }
+
 }
+
+

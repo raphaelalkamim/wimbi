@@ -216,3 +216,9 @@
 "Contact unavailable" = "Contato indisponível";
 "No details" = "Nenhum detalhe informado";
 "Address unavailable" = "Endereço não disponibilizado";
+
+//MARK: - Weather
+"PRECIPITATION" = "PRECIPITAÇÃO";
+"NOW" = "AGORA";
+"TEMPERATURE" = "TEMPERATURA";
+"CURRENT WEATHER" = "TEMPERATURA ATUAL";

@@ -18,4 +18,8 @@ protocol DesignPalette {
     var blueBeach: UIColor { get }
     var yellowMontain: UIColor { get }
     var redCity: UIColor { get }
+    var weatherBackground: UIColor { get }
+    var weatherHighColor: UIColor { get }
+    var weatherLowColor: UIColor { get }
+    
 }

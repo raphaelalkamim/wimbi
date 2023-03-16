@@ -11,7 +11,7 @@ import UIKit
 class ValueTableViewCell: UITableViewCell {
     static let identifier = "valueCell"
     let designSystem = DefaultDesignSystem.shared
-    var currencyType: String = "U$"
+    var currencyType: String = "$"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
