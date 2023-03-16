@@ -24,11 +24,7 @@ class CurrencyController {
     func getUserCurrency() -> String {
         let locale = Locale.current
         let currencySymbol = locale.currencySymbol
-        if currencySymbol == "$" {
-            return "U$"
-        } else {
-            return currencySymbol ?? "U$"
-        }
+        return currencySymbol ?? "$"
     }
     
     func updateBudget(activites: [ActivityLocal], userCurrency: String) async -> Double {
@@ -51,9 +47,9 @@ class CurrencyController {
                     budgetDay += activite.budget * value
                 }
                 
-            case "U$":
+            case "$":
                 totalDollar += activite.budget
-                if userCurrency == "U$" {
+                if userCurrency == "$" {
                     budgetDay += activite.budget
                 } else {
                     let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
@@ -117,8 +113,8 @@ class CurrencyController {
                         budgetTotal += activite.budget * value
                     }
                     
-                case "U$":
-                    if userCurrency == "U$" {
+                case "$":
+                    if userCurrency == "$" {
                         budgetTotal += activite.budget
                     } else {
                         let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
@@ -184,9 +180,9 @@ class CurrencyController {
                     budgetDay += activite.budget * value
                 }
                 
-            case "U$":
+            case "$":
                 totalDollar += activite.budget
-                if userCurrency == "U$" {
+                if userCurrency == "$" {
                     budgetDay += activite.budget
                 } else {
                     let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currency )
@@ -249,8 +245,8 @@ class CurrencyController {
                         budgetTotal += activite.budget * value
                     }
                     
-                case "U$":
-                    if userCurrency == "U$" {
+                case "$":
+                    if userCurrency == "$" {
                         budgetTotal += activite.budget
                     } else {
                         let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currency )

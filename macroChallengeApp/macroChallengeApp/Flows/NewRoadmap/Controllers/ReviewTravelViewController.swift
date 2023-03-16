@@ -95,11 +95,7 @@ class ReviewTravelViewController: UIViewController {
     func getUserCurrency() -> String {
         let locale = Locale.current
         let currencySymbol = locale.currencySymbol
-        if currencySymbol == "$" {
-            return "U$"
-        } else {
-            return currencySymbol ?? "U$"
-        }
+        return currencySymbol ?? "$"
     }
     @objc func editPhoto(_ sender: Any) {
         let photos = PHPhotoLibrary.authorizationStatus()

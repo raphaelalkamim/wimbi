@@ -217,3 +217,9 @@
 "No details" = "Sin detalles";
 "Address unavailable" = "Dirección no disponible";
 
+//MARK: - Weather
+"PRECIPITATION" = "PRECIPITACIÓN";
+"NOW" = "AHORA";
+"TEMPERATURE" = "TEMPERATURA";
+"CURRENT WEATHER" = "TEMPERATURA ACTUAL";
+

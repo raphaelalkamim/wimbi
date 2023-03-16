@@ -36,7 +36,7 @@ class CurrencyAPI {
         switch currency {
         case "R$":
             currencyConverted = "BRL"
-        case "U$":
+        case "$":
             currencyConverted = "USD"
         case "€":
             currencyConverted = "EUR"
