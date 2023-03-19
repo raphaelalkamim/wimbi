@@ -121,13 +121,16 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     
     func getAllActivities() -> [ActivityLocal] {
-        guard var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] else {
-            return []
+        if !days.isEmpty {
+            guard var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] else {
+                return []
+            }
+            newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
+            self.myTripView.dayTitle.text = "Day ".localized() + String(daySelected + 1)
+            self.myTripView.activitiesTableView.reloadData()
+            return newActivities
         }
-        newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
-        self.myTripView.dayTitle.text = "Day ".localized() + String(daySelected + 1)
-        self.myTripView.activitiesTableView.reloadData()
-        return newActivities
+        return []
     }
     
     func tutorialTimer() {
