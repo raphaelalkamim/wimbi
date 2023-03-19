@@ -132,7 +132,7 @@ class DaysView: UIView {
         
         publicSwitch.snp.makeConstraints { make in
             make.centerY.equalTo(publicTitle.snp.centerY)
-            make.leading.equalTo(publicTitle.snp.trailing).offset(70)
+//            make.leading.equalToSuperview().offset(designSystem.spacing.xLargeNegative)
             make.trailing.equalToSuperview().offset(designSystem.spacing.xLargeNegative)
         }
         
