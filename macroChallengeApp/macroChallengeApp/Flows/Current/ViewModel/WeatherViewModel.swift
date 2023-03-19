@@ -31,9 +31,10 @@ public class WeatherViewModel: ObservableObject {
     func getCurrentWeather(_ location: String) async {
         do {
             let forecast = try await self.service.weather(for: locationManager(location))
-            currentWeather =  forecast.currentWeather
+            currentWeather = forecast.currentWeather
         } catch {
-            assertionFailure(error.localizedDescription)
+            //assertionFailure(error.localizedDescription)
+            print("ERRO")
         }
     }
     
@@ -42,7 +43,8 @@ public class WeatherViewModel: ObservableObject {
             let forecast = try await self.service.weather(for: locationManager(location))
             dayWeather = forecast.dailyForecast.forecast
         } catch {
-            assertionFailure(error.localizedDescription)
+            //assertionFailure(error.localizedDescription)
+            print("ERRO")
         }
     }
     
