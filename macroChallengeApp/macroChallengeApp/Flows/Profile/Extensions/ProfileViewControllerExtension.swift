@@ -85,7 +85,6 @@ extension ProfileViewController: UICollectionViewDataSource {
                 } else {
                     do {
                         try RoadmapRepository.shared.deleteRoadmap(roadmap: openRoadmap)
-                        
                         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
                         alert.view.tintColor = .accent
                         let titleFont = UIFont(name: "Avenir-Black", size: 18)!

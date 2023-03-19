@@ -74,7 +74,7 @@ class ReviewTravelViewController: UIViewController {
     func updateCoreData() {
         roadmap.currency = getUserCurrency()
         roadmap.budget = editRoadmap.budget
-        let newRoadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.editRoadmap, roadmap: self.roadmap, isShared: false, selectedImage: imageSelected)
+        let newRoadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.editRoadmap, roadmap: self.roadmap, isShared: self.editRoadmap.isShared, selectedImage: imageSelected)
         delegateRoadmap?.updateRoadmapScreen(roadmap: newRoadmap)
     }
     func saveCoreData() {
