@@ -26,8 +26,8 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
     
     lazy var title: UILabel = {
         let title = UILabel()
+        title.stylize(with: designSystem.text.footnote)
         title.textColor = .textPrimary
-        title.font = designSystem.text.footnote.font
         title.textAlignment = .center
         title.text = ""
         return title

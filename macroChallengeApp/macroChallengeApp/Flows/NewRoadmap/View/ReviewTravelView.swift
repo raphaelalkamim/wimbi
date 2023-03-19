@@ -77,6 +77,8 @@ class ReviewTravelView: UIView {
         table.isScrollEnabled = false
         table.separatorColor = .clear
         table.allowsSelection = false
+        table.rowHeight = UITableView.automaticDimension
+        table.estimatedRowHeight = 50
         table.backgroundColor = designSystem.palette.backgroundCell
         return table
     }()
@@ -157,7 +159,7 @@ extension ReviewTravelView {
 
         contentView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top)
-            make.bottom.equalTo(privacyTable.snp.bottom)
+            make.bottom.equalTo(daysTable.snp.bottom)
             make.left.right.equalTo(self)
         }
         
@@ -183,41 +185,48 @@ extension ReviewTravelView {
             make.top.equalTo(calloutImage.snp.bottom).inset(designSystem.spacing.xLargeNegative)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(categoryImage.snp.trailing).inset(designSystem.spacing.xLargeNegative)
-            make.height.equalTo(35)
+            make.bottom.equalTo(subtitle.snp.top)
+//            make.height.equalTo(35)
         }
         subtitle.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.top.equalTo(title.snp.bottom)
             make.trailing.equalTo(contentView.snp.trailing).inset(designSystem.spacing.xLargePositive)
             make.leading.equalTo(categoryImage.snp.trailing).inset(designSystem.spacing.xLargeNegative)
-            make.height.equalTo(16)
+            make.bottom.equalTo(daysTitle.snp.top).inset(designSystem.spacing.xLargeNegative)
+//            make.height.equalTo(16)
         }
         daysTitle.snp.makeConstraints { make in
-            make.top.equalTo(categoryImage.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+            make.top.equalTo(subtitle.snp.bottom).inset(designSystem.spacing.xxLargePositive)
             make.leading.trailing.equalToSuperview().inset(30)
+            make.bottom.equalTo(daysTable.snp.top).inset(designSystem.spacing.mediumNegative)
         }
         daysTable.snp.makeConstraints { make in
-            make.top.equalTo(daysTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.top.equalTo(daysTitle.snp.bottom).inset(designSystem.spacing.mediumNegative)
             make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
             make.height.equalTo(150)
+            make.bottom.equalTo(travelersTitle.snp.top).inset(designSystem.spacing.xxLargeNegative)
         }
         travelersTitle.snp.makeConstraints { make in
-            make.top.equalTo(daysTable.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+            make.top.equalTo(daysTable.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
             make.leading.trailing.equalToSuperview().inset(30)
+            make.bottom.equalTo(travelersTable.snp.top).inset(designSystem.spacing.mediumNegative)
         }
         travelersTable.snp.makeConstraints { make in
-            make.top.equalTo(travelersTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.top.equalTo(travelersTitle.snp.bottom).inset(designSystem.spacing.mediumNegative)
             make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
             make.height.equalTo(50)
+            make.bottom.equalTo(privacyTitle.snp.top).inset(designSystem.spacing.xxLargeNegative)
         }
         privacyTitle.snp.makeConstraints { make in
-            make.top.equalTo(travelersTable.snp.bottom).inset(designSystem.spacing.xLargeNegative)
+            make.top.equalTo(travelersTable.snp.bottom).inset(designSystem.spacing.xxLargeNegative)
             make.leading.trailing.equalToSuperview().inset(30)
+            make.bottom.equalTo(privacyTable.snp.top).inset(designSystem.spacing.mediumNegative)
         }
         privacyTable.snp.makeConstraints { make in
-            make.top.equalTo(privacyTitle.snp.bottom).inset(designSystem.spacing.smallNegative)
+            make.top.equalTo(privacyTitle.snp.bottom).inset(designSystem.spacing.mediumNegative)
             make.leading.trailing.equalToSuperview().inset(designSystem.spacing.xLargePositive)
             make.bottom.equalTo(scrollView.snp.bottom)
-            make.height.equalTo(100)
+            make.height.equalTo(50)
         }
     }
     

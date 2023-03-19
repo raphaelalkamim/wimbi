@@ -13,7 +13,7 @@ class LabelTableViewCell: UITableViewCell {
     let designSystem = DefaultDesignSystem.shared
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
         setup()
     }
     
@@ -25,45 +25,19 @@ class LabelTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-   public lazy var title: UILabel = {
-       let label = UILabel()
-       label.stylize(with: designSystem.text.body)
-       label.text = "Title"
-       return label
-    }()
     
-    public lazy var value: UILabel = {
-        let label = UILabel()
-        label.stylize(with: designSystem.text.body)
-        label.textColor = designSystem.palette.caption
-        label.text = "Value"
-        return label
-    }()
     
     func setup() {
-        contentView.addSubview(title)
-        contentView.addSubview(value)
-        setupConstraints()
         self.backgroundColor = designSystem.palette.backgroundCell
+        self.textLabel?.stylize(with: designSystem.text.body)
+        self.detailTextLabel?.stylize(with: designSystem.text.body)
+        self.detailTextLabel?.textColor = .caption
     }
     
-    func setupConstraints() {
-        title.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(designSystem.spacing.largePositive)
-            make.top.equalToSuperview().offset(designSystem.spacing.largeNegative)
-            make.bottom.equalToSuperview().offset(designSystem.spacing.largePositive)
-        }
-        
-        value.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(designSystem.spacing.xSmallNegative)
-            make.bottom.equalToSuperview().offset(designSystem.spacing.xSmallPositive)
-            make.trailing.equalToSuperview().offset(designSystem.spacing.largeNegative)
-        }
-    }
     func configureDays(indexPath: Int, value: String) {
         if indexPath == 0 {
-            self.title.text = "Travel days".localized()
-            self.value.text = value
+            self.textLabel?.text = "Travel days".localized()
+            self.detailTextLabel?.text = value
             let separator = UIView()
             self.addSubview(separator)
             separator.backgroundColor = .gray
@@ -76,8 +50,8 @@ class LabelTableViewCell: UITableViewCell {
             }
         }
         if indexPath == 1 {
-            self.title.text = "Start date".localized()
-            self.value.text = value
+            self.textLabel?.text = "Start date".localized()
+            self.detailTextLabel?.text = value
             let separator = UIView()
             self.addSubview(separator)
             separator.backgroundColor = .gray
@@ -90,22 +64,22 @@ class LabelTableViewCell: UITableViewCell {
             }
         }
         if indexPath == 2 {
-            self.title.text = "End date".localized()
-            self.value.text = value
+            self.textLabel?.text = "End date".localized()
+            self.detailTextLabel?.text = value
         }
     }
     
     func configureTravelers(daysValue: Int) {
-        self.title.text = "Number of travelers".localized()
-        self.value.text = String(daysValue)
+        self.textLabel?.text = "Number of travelers".localized()
+        self.detailTextLabel?.text = String(daysValue)
     }
     func configureTripStatus(isPublic: Bool) {
         self.layer.cornerRadius = 16
-        self.title.text = "Itinerary".localized()
+        self.textLabel?.text = "Itinerary".localized()
         if isPublic == true {
-            self.value.text = "Public".localized()
+            self.detailTextLabel?.text = "Public".localized()
         } else {
-            self.value.text = "Private".localized()
+            self.detailTextLabel?.text = "Private".localized()
         }
     }
 }
