@@ -16,11 +16,14 @@ class DetailViewController: UIViewController {
     weak var delegate: DismissBlur?
     weak var delegateExplore: DismissBlurExplore?
     var activity = ActivityLocal()
+    var roadmap = RoadmapLocal()
+    var day = DayLocal()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPrimary
         setupDetailView()
+        detailView.editButton.addTarget(self, action: #selector(editMyTrip), for: .touchUpInside)
         detailView.linkButton.addTarget(self, action: #selector(openLink), for: .touchUpInside)
         
     }
@@ -44,6 +47,11 @@ class DetailViewController: UIViewController {
                 UIApplication.shared.open(URL(string: "https://www.instagram.com/wimbi.app/")! as URL)
             }
         }
+    }
+    
+    @objc func editMyTrip() {
+        self.dismiss(animated: true)
+        coordinator?.editActivity(roadmap: self.roadmap, day: self.day, delegate: delegate as? MyTripViewController ?? MyTripViewController(), activity: self.activity)
     }
 }
 

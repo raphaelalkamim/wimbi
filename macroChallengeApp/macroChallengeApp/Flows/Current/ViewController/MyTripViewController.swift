@@ -174,11 +174,13 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
         coordinatorCurrent?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
         
     }
+    
     @objc func editMyTrip() {
         coordinator?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
         coordinatorCurrent?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
         
     }
+    
     @objc func shareMyTrip() {
         if roadmap.isPublic {
             let action = UIAlertController(title: "Share this itinerary".localized(), message: nil, preferredStyle: .actionSheet)

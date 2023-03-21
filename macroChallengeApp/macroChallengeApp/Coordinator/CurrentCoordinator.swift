@@ -102,10 +102,12 @@ class CurrentCoordinator: Coordinator {
         delegate?.didFinishPresent(of: self, isNewRoadmap: false)
     }
     
-    func showActivitySheet(tripVC: MyTripViewController, activity: ActivityLocal) {
+    func showActivitySheet(tripVC: MyTripViewController, roadmap: RoadmapLocal, day: DayLocal, activity: ActivityLocal) {
         let viewControllerToPresent = DetailViewController()
         viewControllerToPresent.detailView.setupContent(activity: activity)
         viewControllerToPresent.activity = activity
+        viewControllerToPresent.roadmap = roadmap
+        viewControllerToPresent.day = day
         viewControllerToPresent.delegate = tripVC
         
         if let sheet = viewControllerToPresent.sheetPresentationController {

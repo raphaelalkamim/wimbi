@@ -100,6 +100,14 @@ class DetailView: UIView {
         btn.setTitleColor(.accent, for: .normal)
         return btn
     }()
+    
+    lazy var editButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Edit".localized(), for: .normal)
+        btn.contentHorizontalAlignment = .left
+        btn.setTitleColor(.accent, for: .normal)
+        return btn
+    }()
 
     func setup() {
         self.backgroundColor = .backgroundPrimary
@@ -113,6 +121,7 @@ class DetailView: UIView {
         self.addSubview(details)
         self.addSubview(linkTitle)
         self.addSubview(linkButton)
+        self.addSubview(editButton)
         setupConstraints()
         
     }
@@ -219,7 +228,7 @@ class DetailView: UIView {
         activityIcon.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.height.width.equalTo(80)
-            make.topMargin.equalToSuperview().inset(designSystem.spacing.xLargePositive)
+            make.topMargin.equalToSuperview().inset(80)
         }
         activityTitle.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -259,6 +268,10 @@ class DetailView: UIView {
         details.snp.makeConstraints { make in
             make.topMargin.equalTo(detailTitle.snp.bottom).inset(designSystem.spacing.mediumNegative)
             make.leading.trailing.equalToSuperview()
+        }
+        editButton.snp.makeConstraints { make in
+            make.topMargin.equalToSuperview().inset(designSystem.spacing.xxLargePositive)
+            make.trailing.equalToSuperview()
         }
     }
 }
