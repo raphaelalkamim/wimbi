@@ -82,7 +82,7 @@ class ProfileCoordinator: Coordinator {
         viewController.edit = true
         viewController.activityEdit = activity
         viewController.roadmap = roadmap
-        viewController.navigationItem.title = "New activity".localized()
+        viewController.navigationItem.title = "Edit activity".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
     
