@@ -73,6 +73,7 @@ class ProfileCoordinator: Coordinator {
         viewController.navigationItem.title = "New activity".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
+    
     func editActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController, activity: ActivityLocal) {
         let viewController = NewActivityViewController()
         viewController.delegate = delegate
@@ -81,9 +82,10 @@ class ProfileCoordinator: Coordinator {
         viewController.edit = true
         viewController.activityEdit = activity
         viewController.roadmap = roadmap
-        viewController.navigationItem.title = "New activity".localized()
+        viewController.navigationItem.title = "Edit activity".localized()
         navigationController.pushViewController(viewController, animated: true)
     }
+    
     func openLocationActivity(delegate: ChangeTextTableDelegate, roadmap: RoadmapLocal) {
         let viewController = LocationNewActivityViewController()
         if let location = roadmap.location {
@@ -103,12 +105,14 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func showActivitySheet(tripVC: MyTripViewController, activity: ActivityLocal) {
+    func showActivitySheet(tripVC: MyTripViewController, roadmap: RoadmapLocal, day: DayLocal, activity: ActivityLocal) {
         let viewControllerToPresent = DetailViewController()
         viewControllerToPresent.detailView.setupContent(activity: activity)
         viewControllerToPresent.activity = activity
+        viewControllerToPresent.roadmap = roadmap
+        viewControllerToPresent.day = day
+        viewControllerToPresent.coordinator = self
         viewControllerToPresent.delegate = tripVC
-        
         if let sheet = viewControllerToPresent.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.largestUndimmedDetentIdentifier = .medium

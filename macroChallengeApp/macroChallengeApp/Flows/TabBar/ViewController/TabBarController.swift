@@ -20,7 +20,6 @@ class TabBarController: UITabBarController {
     var roadmap: RoadmapLocal = RoadmapLocal()
     var mostRecentRoadmaps: [RoadmapLocal] = []
     
-    
     var player = AVPlayer()
     var playerLayer = AVPlayerLayer()
     
@@ -29,7 +28,10 @@ class TabBarController: UITabBarController {
     }
     
     override func viewDidLoad() {
-        self.loadScene()
+        self.setupCoordnators()
+        self.setupNavigators()
+        self.tabBar.barTintColor = self.designSystem.palette.backgroundPrimary
+
         if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()

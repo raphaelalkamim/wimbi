@@ -120,8 +120,9 @@ extension MyTripViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let activity = self.activites[indexPath.row]
 
-        self.coordinator?.showActivitySheet(tripVC: self, activity: activity)
-        self.coordinatorCurrent?.showActivitySheet(tripVC: self, activity: activity)
+        self.coordinator?.showActivitySheet(tripVC: self, roadmap: self.roadmap, day: self.days[daySelected], activity: activity)
+        self.coordinatorCurrent?.showActivitySheet(tripVC: self, roadmap: self.roadmap, day: self.days[daySelected], activity: activity)
+        
         navigationController?.navigationBar.backgroundColor = UIColor(white: 0, alpha: 0.001)
         myTripView.transparentView.isHidden = false
     }

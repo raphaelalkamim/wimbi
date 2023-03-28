@@ -157,6 +157,10 @@
 "In the Explore screen you can create a new one. That way, you'll be able to track how much time is left for your much-desired trip and when that time arrives, here you'll find a shortcut to it." = "En la pantalla Explorar puede crear uno nuevo. De esa forma, podrás controlar cuánto tiempo te queda para su viaje y cuando llegue ese momento, aquí encontrarás un atajo para ella.";
 "Start: " = "Comienzo: ";
 "Private itinerary" = "Guía privado";
+"Share this itinerary" = "Comparte este guía";
+"Generate share code" = "Generar código compartido";
+"Share itinerary link" = "Comparte el link del guía";
+"Edit activity" = "Editar actividad";
 
 // MARK: -  NewRoadmap
 "Category" = "Categoría";

@@ -30,17 +30,17 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
     let tutorialEnable = UserDefaults.standard.bool(forKey: "tutorialMyTrip")
     var location = CLLocation(latitude: 37.7749, longitude: 122.4194)
     
-    func getDayWeather( ) -> MyDayWeather{
+    func getDayWeather( ) -> MyDayWeather {
         if #available(iOS 16.0, *) {
             let day = WeatherViewModel.shared.dayWeather
-            print("---" + String(day[0].precipitationChance))
-            return MyDayWeather(higherTemperature: day[0].highTemperature.value, lowerTemperature: day[0].lowTemperature.value, rainfall: day[0].precipitationChance)
-        } else {
-            return MyDayWeather(higherTemperature: 0, lowerTemperature: 0, rainfall: 0)
+            if !day.isEmpty {
+                return MyDayWeather(higherTemperature: day[0].highTemperature.value, lowerTemperature: day[0].lowTemperature.value, rainfall: day[0].precipitationChance)
+            }
         }
+        return MyDayWeather(higherTemperature: 0, lowerTemperature: 0, rainfall: 0)
     }
     
-    func getCurrentyWeather( ) -> MyCurrentWeather{
+    func getCurrentyWeather( ) -> MyCurrentWeather {
         if #available(iOS 16.0, *) {
             let current = WeatherViewModel.shared.currentWeather
             return MyCurrentWeather(temperature: current?.temperature.value ?? 0, condition: current?.condition.rawValue ?? "")
@@ -121,13 +121,16 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     
     func getAllActivities() -> [ActivityLocal] {
-        guard var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] else {
-            return []
+        if !days.isEmpty {
+            guard var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] else {
+                return []
+            }
+            newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
+            self.myTripView.dayTitle.text = "Day ".localized() + String(daySelected + 1)
+            self.myTripView.activitiesTableView.reloadData()
+            return newActivities
         }
-        newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
-        self.myTripView.dayTitle.text = "Day ".localized() + String(daySelected + 1)
-        self.myTripView.activitiesTableView.reloadData()
-        return newActivities
+        return []
     }
     
     func tutorialTimer() {
@@ -171,22 +174,24 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
         coordinatorCurrent?.startActivity(roadmap: self.roadmap, day: self.days[daySelected], delegate: self)
         
     }
+    
     @objc func editMyTrip() {
         coordinator?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
         coordinatorCurrent?.editRoadmap(editRoadmap: self.roadmap, delegate: self)
         
     }
+    
     @objc func shareMyTrip() {
         if roadmap.isPublic {
-            let introduction = "Hey! Join my itinerary in Wimbi app using the code: ".localized() + (roadmap.shareKey ?? "0")
-            let activityItem = MyActivityItemSource(title: "Share your itinerary code!".localized(), text: introduction)
-            let activityViewController = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = self.view
-            activityViewController.excludedActivityTypes = []
-            self.roadmap.isShared = true
-            FirebaseManager.shared.createAnalyticsEvent(event: "share_roadmap")
-            RoadmapRepository.shared.saveContext()
-            self.present(activityViewController, animated: true, completion: nil)
+            let action = UIAlertController(title: "Share this itinerary".localized(), message: nil, preferredStyle: .actionSheet)
+            action.addAction(UIAlertAction(title: "Generate share code".localized(), style: .default, handler: {(_: UIAlertAction!) in
+                self.present(self.generateShareCode(), animated: true, completion: nil)
+            }))
+            action.addAction(UIAlertAction(title: "Share itinerary link".localized(), style: .default, handler: {(_: UIAlertAction!) in
+                #warning("add deeplink")
+            }))
+            action.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil))
+            present(action, animated: true)
         } else {
             let action = UIAlertController(title: "To share this itinerary, turn it public".localized(), message: nil, preferredStyle: .actionSheet)
             action.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -204,10 +209,23 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
             self.updateTotalBudgetValue()
         }
     }
+    
     func updateTotalBudgetValue() {
         guard let cell = myTripView.infoTripCollectionView.cellForItem(at: [0, 1]) as? InfoTripCollectionViewCell else { return }
         let content = String(format: "\(self.userCurrency)%.2f", self.budgetTotal)
         cell.infoTitle.text = content
+    }
+    
+    func generateShareCode() -> UIActivityViewController {
+        let introduction = "Hey! Join my itinerary in Wimbi app using the code: ".localized() + (self.roadmap.shareKey ?? "0")
+        let activityItem = MyActivityItemSource(title: "Share your itinerary code!".localized(), text: introduction)
+        let activityViewController = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.excludedActivityTypes = []
+        self.roadmap.isShared = true
+        FirebaseManager.shared.createAnalyticsEvent(event: "share_roadmap")
+        RoadmapRepository.shared.saveContext()
+        return activityViewController
     }
 }
 
