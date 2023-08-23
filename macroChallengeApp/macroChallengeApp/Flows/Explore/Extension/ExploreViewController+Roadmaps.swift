@@ -11,7 +11,7 @@ import UIKit
 extension ExploreViewController {
     func setupExplorerView() {
         view.addSubview(explorerView)
-        explorerView.setupSearchController(locationTable: locationSearchTable, roadmaps: self.roadmaps)
+        explorerView.setupSearchController(locationTable: locationSearchTable)
         explorerView.bindCollectionView(delegate: self, dataSource: self)
         explorerView.addSearchBarNavigation(navigation: navigationItem)
         explorerView.searchBar.delegate = self
