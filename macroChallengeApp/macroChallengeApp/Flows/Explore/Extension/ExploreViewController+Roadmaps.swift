@@ -11,7 +11,7 @@ import UIKit
 extension ExploreViewController {
     func setupExplorerView() {
         view.addSubview(explorerView)
-        explorerView.setupSearchController(locationTable: locationSearchTable)
+        explorerView.setupSearchController(locationTable: locationSearchTable, roadmaps: self.roadmaps)
         explorerView.bindCollectionView(delegate: self, dataSource: self)
         explorerView.addSearchBarNavigation(navigation: navigationItem)
         explorerView.searchBar.delegate = self
@@ -69,6 +69,7 @@ extension ExploreViewController: UICollectionViewDataSource {
             FirebaseManager.shared.getImage(category: 0, uuid: roadmap.imageId) { image in
                 cell.cover.image = image
             }
+            
             cell.setupRoadmapBackEnd(roadmap: roadmap)
             Task {
                 var budgetTotal = 0.0

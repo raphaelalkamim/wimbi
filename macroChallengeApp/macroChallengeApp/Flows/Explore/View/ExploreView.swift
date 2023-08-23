@@ -119,15 +119,15 @@ class ExploreView: UIView {
         navigation.searchController = searchController
     }
     
-    func setupSearchController(locationTable: RoadmapSearchTableViewController) {
+    func setupSearchController(locationTable: RoadmapSearchTableViewController, roadmaps: [RoadmapDTO]) {
         // searchBar
         searchController = UISearchController(searchResultsController: locationTable)
+        
         guard let searchController = searchController else {
             return
         }
         
         searchController.searchResultsUpdater = locationTable
-        
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = true
         

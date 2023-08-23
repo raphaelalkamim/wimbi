@@ -20,7 +20,7 @@ class RoadmapSearchTableViewController: UITableViewController {
     func getUserCurrency() -> String {
         let locale = Locale.current
         let currencySymbol = locale.currencySymbol
-        return currencySymbol ?? "$"
+        return currencySymbol ?? "U$"
     }
     
     // MARK: - Table view data source
@@ -32,12 +32,13 @@ class RoadmapSearchTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultTableViewCell.identifier, for: indexPath) as? SearchResultTableViewCell else {
             preconditionFailure("Cell not found")
         }
-
         let roadmap = matchingRoadmaps[indexPath.row]
         cell.title.text = roadmap.name
         
-        FirebaseManager.shared.getImage(category: 0, uuid: roadmap.imageId) { image in
-            cell.cover.image = image
+        if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: roadmap.imageId)) {
+            cell.cover.image = cachedImage
+        } else {
+            cell.cover.image = UIImage(named: cell.setupImage(category: roadmap.category))
         }
         
         cell.setupContent(roadmap: roadmap)
@@ -71,15 +72,17 @@ extension RoadmapSearchTableViewController: UISearchResultsUpdating {
         
         guard let searchBarText = searchController.searchBar.text?.lowercased() else { return }
                 
-        DataManager.shared.getPublicRoadmaps({ roadmaps in
-            self.roadmaps = roadmaps
-        })
         matchingRoadmaps = roadmaps.filter({ roadmap in
-            var category = roadmap.category.localized()
+            let category = roadmap.category.localized()
             return roadmap.name.lowercased().contains(searchBarText) || category.lowercased().contains(searchBarText)
         })
         
         self.tableView.reloadData()
     }
-    
+}
+
+extension RoadmapSearchTableViewController: RoadmapSearchTableDidUpdateRoadmaps {
+    func updateRoadmaps(roadmaps: [RoadmapDTO]) {
+        self.roadmaps = roadmaps
+    }
 }
