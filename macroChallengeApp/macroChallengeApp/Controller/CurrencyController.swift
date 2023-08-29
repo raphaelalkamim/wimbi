@@ -47,9 +47,9 @@ class CurrencyController {
                     budgetDay += activite.budget * value
                 }
                 
-            case "$":
+            case "U$":
                 totalDollar += activite.budget
-                if userCurrency == "$" {
+                if userCurrency == "U$" {
                     budgetDay += activite.budget
                 } else {
                     let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
@@ -113,8 +113,8 @@ class CurrencyController {
                         budgetTotal += activite.budget * value
                     }
                     
-                case "$":
-                    if userCurrency == "$" {
+                case "U$":
+                    if userCurrency == "U$" {
                         budgetTotal += activite.budget
                     } else {
                         let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currencyType ?? "R$")
@@ -180,9 +180,9 @@ class CurrencyController {
                     budgetDay += activite.budget * value
                 }
                 
-            case "$":
+            case "U$":
                 totalDollar += activite.budget
-                if userCurrency == "$" {
+                if userCurrency == "U$" {
                     budgetDay += activite.budget
                 } else {
                     let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currency )
@@ -245,8 +245,8 @@ class CurrencyController {
                         budgetTotal += activite.budget * value
                     }
                     
-                case "$":
-                    if userCurrency == "$" {
+                case "U$":
+                    if userCurrency == "U$" {
                         budgetTotal += activite.budget
                     } else {
                         let value = await getCurrencyFromAPI(userCurrency: userCurrency, outgoinCurrency: activite.currency )

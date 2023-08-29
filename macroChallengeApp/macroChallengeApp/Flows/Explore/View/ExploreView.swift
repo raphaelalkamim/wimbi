@@ -122,18 +122,14 @@ class ExploreView: UIView {
     func setupSearchController(locationTable: RoadmapSearchTableViewController) {
         // searchBar
         searchController = UISearchController(searchResultsController: locationTable)
+        
         guard let searchController = searchController else {
             return
         }
         
         searchController.searchResultsUpdater = locationTable
-        
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = true
-        
-        // Filtro
-//        searchController.searchBar.showsBookmarkButton = false
-//        searchController.searchBar.setImage(UIImage(systemName: "slider.horizontal.3"), for: .bookmark, state: .normal)
         
         searchBar = searchController.searchBar
         searchBar.placeholder = "Where do you want to go?".localized()

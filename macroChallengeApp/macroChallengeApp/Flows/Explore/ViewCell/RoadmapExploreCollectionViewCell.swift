@@ -217,7 +217,7 @@ extension RoadmapExploreCollectionViewCell {
     }
     func setupBudget(budget: Double, currency: String, peopleCount: Int) {
         var amount = "per person".localized()
-        if budget > 1000 {
+        if (Int(budget)/peopleCount) > 1000 {
             amount = "thousand per person".localized()
             costByPerson.text = "\(currency) \(String(format: "%.2f", budget / Double(peopleCount) / 1000)) \(amount)"
         } else {

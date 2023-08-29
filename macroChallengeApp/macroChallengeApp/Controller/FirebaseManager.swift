@@ -98,7 +98,6 @@ class FirebaseManager {
                 }
             }
         }
-        
     }
     
     func deleteImage(category: Int, uuid: String) {

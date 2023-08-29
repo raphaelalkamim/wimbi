@@ -96,7 +96,7 @@ extension CurrencyTableViewCell {
         switch currencyType {
         case "R$":
             self.setCurrencyLabel(currency: "Real  ")
-        case "$":
+        case "U$":
             self.setCurrencyLabel(currency: "Dollar  ")
         case "€":
             self.setCurrencyLabel(currency: "Euro  ")
@@ -121,7 +121,7 @@ extension CurrencyTableViewCell {
         
         let dollar = UIAction(title: NSLocalizedString("USD", comment: "United States currency Dollar"), image: UIImage(systemName: "dollarsign.circle.fill")) { _ in
             self.setCurrencyLabel(currency: "Dollar  ".localized())
-            self.delegate?.didChangeFormatter(formatter: "$")
+            self.delegate?.didChangeFormatter(formatter: "U$")
         }
         
         let euro = UIAction(title: NSLocalizedString("EUR", comment: "European currency Euro"), image: UIImage(systemName: "eurosign.circle.fill")) { _ in

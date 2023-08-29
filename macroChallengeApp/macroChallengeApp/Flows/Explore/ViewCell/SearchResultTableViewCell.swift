@@ -15,6 +15,7 @@ class SearchResultTableViewCell: UITableViewCell {
         imageView.image = UIImage(named: "emptySearch")
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 3
         return imageView
     }()
     
@@ -98,7 +99,7 @@ class SearchResultTableViewCell: UITableViewCell {
                days = "days".localized()
            }
            
-           if roadmap.budget > 1000 {
+           if (Int(roadmap.budget) / roadmap.peopleCount) > 1000 {
                amount = "thousand per person".localized()
                cost = " •  \(roadmap.currency) \(String(format: "%.2f", roadmap.budget / Double(roadmap.peopleCount) / 1000)) \(amount)"
            } else {
@@ -107,4 +108,8 @@ class SearchResultTableViewCell: UITableViewCell {
            self.caption.text = "\(roadmap.peopleCount) \(travelers)  \(roadmap.dayCount) \(days) \(cost)"
 
        }
+    
+    func setupImage(category: String) -> String {
+        return String("\(category)Cover")
+    }
 }

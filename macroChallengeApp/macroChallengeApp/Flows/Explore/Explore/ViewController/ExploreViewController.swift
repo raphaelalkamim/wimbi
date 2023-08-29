@@ -8,8 +8,14 @@
 import UIKit
 import Network
 
+protocol RoadmapSearchTableDidUpdateRoadmaps: AnyObject {
+    func updateRoadmaps(roadmaps: [RoadmapDTO])
+}
+
 class ExploreViewController: UIViewController {
     weak var coordinator: ExploreCoordinator?
+    weak var delegate:RoadmapSearchTableDidUpdateRoadmaps?
+    
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let locationSearchTable = RoadmapSearchTableViewController()
     let currencyController = CurrencyController()
@@ -41,6 +47,8 @@ class ExploreViewController: UIViewController {
         if onboardEnable == false {
             coordinator?.startOnboarding()
         }
+        
+        self.delegate = locationSearchTable
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,14 +57,26 @@ class ExploreViewController: UIViewController {
             self.roadmaps = roadmaps
             self.roadmaps.sort { $0.likesCount > $1.likesCount }
             if roadmaps.isEmpty { self.getMockData() }
-            self.explorerView.roadmapsCollectionView.reloadData()
             self.emptyState(conection: self.network.isReachable)
+            self.filterRoadmapsToAppear()
         })
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func addNewRoadmap() {
         coordinator?.createNewRoadmap()
+    }
+    
+    func filterRoadmapsToAppear() {
+        var filteredRoadmaps: [RoadmapDTO] = []
+        for roadmap in roadmaps.indices {
+            if !(roadmaps[roadmap].budget == 0.0) {
+                filteredRoadmaps.append(roadmaps[roadmap])
+            }
+        }
+        self.roadmaps = filteredRoadmaps
+        self.delegate?.updateRoadmaps(roadmaps: filteredRoadmaps)
+        self.explorerView.roadmapsCollectionView.reloadData()
     }
     
     func getMockData() {

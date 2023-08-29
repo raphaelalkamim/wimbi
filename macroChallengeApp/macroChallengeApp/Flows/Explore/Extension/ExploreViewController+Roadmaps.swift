@@ -69,6 +69,7 @@ extension ExploreViewController: UICollectionViewDataSource {
             FirebaseManager.shared.getImage(category: 0, uuid: roadmap.imageId) { image in
                 cell.cover.image = image
             }
+            
             cell.setupRoadmapBackEnd(roadmap: roadmap)
             Task {
                 var budgetTotal = 0.0
