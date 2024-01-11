@@ -12,20 +12,7 @@ import UIKit
 
 public class RoadmapRepository: NSManagedObject {
     static let shared: RoadmapRepository = RoadmapRepository()
-    
-    private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "macroChallengeApp")
-        container.loadPersistentStores { _, error in
-            if let erro = error {
-                preconditionFailure(erro.localizedDescription)
-            }
-            
-        }
-        return container
-    }()
-    
-    var context = UserRepository.shared.context
-    
+        
     func createRoadmap(roadmap: Roadmap, isNew: Bool, selectedImage: UIImage? = nil)  {
         if isNew {
             var createdDays = roadmap.days
