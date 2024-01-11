@@ -27,9 +27,6 @@
 		132AD926292C14FE00DE3E08 /* +Likes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132AD925292C14FE00DE3E08 /* +Likes.swift */; };
 		132AD928292C151200DE3E08 /* +User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132AD927292C151100DE3E08 /* +User.swift */; };
 		133BE5B4290092590045E742 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BE5B3290092590045E742 /* NetworkMonitor.swift */; };
-		1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14728DA4869009509DF /* ActivityRepository.swift */; };
-		1359F14B28DA489A009509DF /* DayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14A28DA489A009509DF /* DayRepository.swift */; };
-		1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14C28DA48A8009509DF /* RoadmapRepository.swift */; };
 		1359F14F28DA48AF009509DF /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F14E28DA48AF009509DF /* UserRepository.swift */; };
 		1359F15228DA48D5009509DF /* ActivityRepositoryClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F15128DA48D5009509DF /* ActivityRepositoryClass.swift */; };
 		1359F15428DA48E5009509DF /* RoadmapRepositoryClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1359F15328DA48E5009509DF /* RoadmapRepositoryClass.swift */; };
@@ -244,9 +241,6 @@
 		132AD925292C14FE00DE3E08 /* +Likes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Likes.swift"; sourceTree = "<group>"; };
 		132AD927292C151100DE3E08 /* +User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+User.swift"; sourceTree = "<group>"; };
 		133BE5B3290092590045E742 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
-		1359F14728DA4869009509DF /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
-		1359F14A28DA489A009509DF /* DayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepository.swift; sourceTree = "<group>"; };
-		1359F14C28DA48A8009509DF /* RoadmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapRepository.swift; sourceTree = "<group>"; };
 		1359F14E28DA48AF009509DF /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		1359F15128DA48D5009509DF /* ActivityRepositoryClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepositoryClass.swift; sourceTree = "<group>"; };
 		1359F15328DA48E5009509DF /* RoadmapRepositoryClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapRepositoryClass.swift; sourceTree = "<group>"; };
@@ -535,9 +529,6 @@
 			isa = PBXGroup;
 			children = (
 				1359F14E28DA48AF009509DF /* UserRepository.swift */,
-				1359F14C28DA48A8009509DF /* RoadmapRepository.swift */,
-				1359F14A28DA489A009509DF /* DayRepository.swift */,
-				1359F14728DA4869009509DF /* ActivityRepository.swift */,
 			);
 			path = Propierties;
 			sourceTree = "<group>";
@@ -1446,7 +1437,6 @@
 				A0B9F4C128D8FD5100F2DF06 /* SettingsViewController+Notifications.swift in Sources */,
 				A04B45DE28D62A4B0045558E /* SettingsTableViewCell.swift in Sources */,
 				A0FD739D28DA7F780044E47C /* MyTripViewControllerExtension.swift in Sources */,
-				1359F14828DA4869009509DF /* ActivityRepository.swift in Sources */,
 				B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */,
 				A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */,
 				13C8A13028CA6AF400994196 /* DefaultDesignSystem.swift in Sources */,
@@ -1493,7 +1483,6 @@
 				131272D728E6249E000B7968 /* RoadmapSearchTableViewController.swift in Sources */,
 				13BD500E28DA297500C0EA7C /* SignInWithAppleManager.swift in Sources */,
 				B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */,
-				1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */,
 				13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */,
 				1379743D28D5165200AEA662 /* LocationSearchTableViewController.swift in Sources */,
 				1379743B28D5162C00AEA662 /* ReviewTravelView.swift in Sources */,
@@ -1543,7 +1532,6 @@
 				13BD501028DA297500C0EA7C /* LoginViewController.swift in Sources */,
 				13732804290C67900021231E /* ImagePickerController.swift in Sources */,
 				A0252CB429118E7700093E14 /* OnboardingView.swift in Sources */,
-				1359F14B28DA489A009509DF /* DayRepository.swift in Sources */,
 				A0A8BAB628E4E824006A8BDD /* String+Localization.swift in Sources */,
 				131272DE28E624D1000B7968 /* RoadmapExploreCollectionViewCell.swift in Sources */,
 				131272DA28E624CC000B7968 /* ExploreViewController+PreviewRoadmap.swift in Sources */,
