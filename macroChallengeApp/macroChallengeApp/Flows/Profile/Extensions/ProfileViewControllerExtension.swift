@@ -80,7 +80,6 @@ extension ProfileViewController: UICollectionViewDataSource {
             // chama o roadmap do back
             DataManager.shared.getRoadmapById(roadmapId: Int(roadmaps[indexPath.row].id)) { backRoadmap in
                 if let backRoadmap = backRoadmap {
-                    openRoadmap = RoadmapRepository.shared.updateFromBackend(editRoadmap: self.roadmaps[indexPath.row], roadmap: backRoadmap)
                     self.coordinator?.openRoadmap(roadmap: openRoadmap )
                 } else {
                     do {

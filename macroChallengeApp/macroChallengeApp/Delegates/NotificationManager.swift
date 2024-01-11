@@ -12,12 +12,12 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     static let shared = NotificationManager()
     let center = UNUserNotificationCenter.current()
     var roadmaps = RoadmapRepository.shared.getRoadmap()
-    var roadmap: RoadmapLocal = RoadmapLocal()
-    var days: [DayLocal] = []
-    var activities: [ActivityLocal] = []
+    var roadmap: Roadmap = Roadmap()
+    var days: [Day] = []
+    var activities: [Activity] = []
     var daySelected = 0
     var notificationPhrases = ["Your trip to".localized(), "starts now!".localized(), "The".localized(), "activity".localized(), "starts in".localized()]
-        
+    
     override init() {
         super.init()
         center.delegate = self
@@ -106,7 +106,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
             }
         }
     }
-        
+    
     @objc func createTripNotification(day: Int, month: Int, year: Int, tripName: String) {
         registerCategories()
         let content = UNMutableNotificationContent()
@@ -159,35 +159,30 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     
     func registerActivityNotification(createdActivity: Activity) {
         let delimiter = ":"
-        let hour = createdActivity.hour?.components(separatedBy: delimiter)
+        let hour = createdActivity.hour.components(separatedBy: delimiter)
         
         let delimiterDay = "/"
-        let date = createdActivity.day?.date?.components(separatedBy: delimiterDay)
+        let date = createdActivity.day?.date.components(separatedBy: delimiterDay)
         
-        let activityHour = hour?[0] ?? "0"
-        let activityMinute = hour?[1] ?? "0"
-        let activityDay = date?[0] ?? "0"
-        let activityMonth = date?[1] ?? "0"
-        let activityYear = date?[2] ?? "0"
+        let activityHour = hour[0]
+        let activityMinute = hour[1]
+        let activityDay = date?[0]
+        let activityMonth = date?[1]
+        let activityYear = date?[2]
         
         createActivityNotification(hour: Int(activityHour) ?? 0,
                                    min: Int(activityMinute) ?? 0,
-                                   day: Int(activityDay) ?? 0,
-                                   month: Int(activityMonth) ?? 0,
-                                   year: Int(activityYear) ?? 0,
-                                   activityName: createdActivity.name ?? "Atividade",
+                                   day: Int(activityDay ?? "") ?? 0,
+                                   month: Int(activityMonth ?? "") ?? 0,
+                                   year: Int(activityYear ?? "") ?? 0,
+                                   activityName: createdActivity.name,
                                    number: UserDefaults.standard.integer(forKey: "number") + 1,
                                    interval: UserDefaults.standard.integer(forKey: "interval") + 1)
     }
     
     func registerTripNotification(roadmap: Roadmap) {
         let delimiter = "/"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        
-        let newDate = dateFormatter.string(from: roadmap.date ?? Date())
+        let newDate = roadmap.dateInitial
         let new = newDate.components(separatedBy: delimiter)
         
         let roadmapDay = new[0]
@@ -197,26 +192,24 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         createTripNotification(day: Int(String(roadmapDay))!,
                                month: Int(String(roadmapMonth)) ?? 0,
                                year: Int(String(roadmapYear)) ?? 0,
-                               tripName: roadmap.name ?? "Destino")
+                               tripName: roadmap.name)
         
     }
     
     // MARK: Data collection
     func getAllDays() {
-        if var newDays = roadmap.day?.allObjects as? [DayLocal] {
-            newDays.sort { $0.id < $1.id }
-            self.days = newDays
-        }
+        var newDays = roadmap.days
+        newDays.sort { $0.id < $1.id }
+        self.days = newDays
+        
         for index in 0..<days.count where days[index].isSelected == true {
             self.daySelected = index
         }
     }
     
-    func getAllActivities(day: DayLocal) -> [ActivityLocal] {
-        if var newActivities = day.activity?.allObjects as? [ActivityLocal] {
-            newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
-            return newActivities
-        }
-        return []
+    func getAllActivities(day: Day) -> [Activity] {
+        var newActivities = day.activity
+        newActivities.sort { $0.hour < $1.hour }
+        return newActivities
     }
 }

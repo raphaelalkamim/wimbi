@@ -228,11 +228,7 @@ class MyTripView: UIView {
     }
     
     func setupContent(roadmap: Roadmap) {
-        let formatt = DateFormatter()
-        formatt.timeStyle = .none
-        formatt.dateStyle = .short
-        formatt.dateFormat = "dd/MM/yyyy"
-        let dateInitial = formatt.string(from: roadmap.date ?? Date())
+        let dateInitial = roadmap.dateInitial
         let starts = "Start: ".localized()
         self.date.text = "\(starts)\(dateInitial)"
     }

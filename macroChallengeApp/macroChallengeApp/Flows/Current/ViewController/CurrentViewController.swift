@@ -12,8 +12,8 @@ class CurrentViewController: UIViewController {
     let currentEmptyView = CurrentEmptyState()
     let currentCountDownView = CurrentCountDown()
     var roadmaps = RoadmapRepository.shared.getRoadmap()
-    var roadmap: RoadmapLocal = RoadmapLocal()
-    var mostRecentRoadmaps: [RoadmapLocal] = []
+    var roadmap: Roadmap = Roadmap()
+    var mostRecentRoadmaps: [Roadmap] = []
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     
     override func viewDidLoad() {
@@ -26,10 +26,10 @@ class CurrentViewController: UIViewController {
         roadmaps = RoadmapRepository.shared.getRoadmap()
         if !roadmaps.isEmpty {
             roadmaps.sort {
-                $0.date ?? Date() < $1.date ?? Date()
+                $0.dateInitial.toDate() < $1.dateInitial.toDate()
             }
             for newRoadmap in roadmaps {
-                if newRoadmap.dateFinal ?? Date() > Date() { mostRecentRoadmaps.append(newRoadmap) }
+                if newRoadmap.dateFinal.toDate() > Date() { mostRecentRoadmaps.append(newRoadmap) }
             }
         }
         setup()
@@ -81,7 +81,7 @@ extension CurrentViewController {
     }
     
     func configCountDown() {
-        var time = Double((roadmap.date?.timeIntervalSince(Date()) ?? 300) / (60 * 60 * 24))
+        var time = Double((roadmap.dateInitial.toDate().timeIntervalSince(Date())) / (60 * 60 * 24))
         if ceil(time) <= 1 {
             time = 0
             currentCountDownView.timer.text = "Your trip is \ntomorrow!".localized()
@@ -96,12 +96,9 @@ extension CurrentViewController {
             currentCountDownView.timerType.isHidden = false
             currentCountDownView.subtitle.isHidden = false
         }
-        let formatt = DateFormatter()
-        formatt.timeStyle = .none
-        formatt.dateStyle = .short
-        formatt.dateFormat = "dd/MM/yyyy"
+
         currentCountDownView.title.text = roadmap.name
-        currentCountDownView.date.text = formatt.string(from: roadmap.date ?? Date())
+        currentCountDownView.date.text = roadmap.dateInitial
         
         // passa o timer para o widget
         UserDefaultsManager.shared.nextTrip = roadmap.name

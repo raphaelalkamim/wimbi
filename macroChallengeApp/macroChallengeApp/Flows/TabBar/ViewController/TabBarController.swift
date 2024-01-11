@@ -17,8 +17,8 @@ class TabBarController: UITabBarController {
     private let profile = ProfileCoordinator(navigationController: UINavigationController())
     
     var roadmaps = RoadmapRepository.shared.getRoadmap()
-    var roadmap: RoadmapLocal = RoadmapLocal()
-    var mostRecentRoadmaps: [RoadmapLocal] = []
+    var roadmap: Roadmap = Roadmap()
+    var mostRecentRoadmaps: [Roadmap] = []
     
     var player = AVPlayer()
     var playerLayer = AVPlayerLayer()
@@ -43,8 +43,8 @@ class TabBarController: UITabBarController {
     func setupCoordnators() {
         explore.start()
         if !roadmaps.isEmpty {
-            roadmaps.sort { $0.date ?? Date() < $1.date ?? Date() }
-            for newRoadmap in roadmaps { if newRoadmap.dateFinal ?? Date() >= Date() { mostRecentRoadmaps.append(newRoadmap) } }
+            roadmaps.sort { $0.dateInitial.toDate() < $1.dateInitial.toDate()}
+            for newRoadmap in roadmaps { if newRoadmap.dateFinal.toDate() >= Date() { mostRecentRoadmaps.append(newRoadmap) } }
             if !mostRecentRoadmaps.isEmpty { roadmap = mostRecentRoadmaps[0] }
             let date = Date()
             let dateFormatter = DateFormatter()
@@ -56,7 +56,7 @@ class TabBarController: UITabBarController {
                 if configCountDown() > 0 {
                     // abre o countdown
                     current.start()
-                } else if configCountDown() == 0 && dateFormatter.string(from: date) != dateFormatter.string(from: roadmap.date ?? Date()) {
+                } else if configCountDown() == 0 && dateFormatter.string(from: date) != roadmap.dateInitial {
                     current.start()
                 } else {
                     current.startCurrent(roadmap: roadmap)
@@ -77,9 +77,7 @@ class TabBarController: UITabBarController {
         viewControllers = [explore.navigationController, current.navigationController, profile.navigationController]
     }
     func configCountDown() -> Int {
-        guard let timeRoadmap = roadmap.date else {
-            return 0
-        }
+        let timeRoadmap = roadmap.dateInitial.toDate()
         let time = Int((timeRoadmap.timeIntervalSince(Date())) / (60 * 60 * 24))
         return time        
     }
