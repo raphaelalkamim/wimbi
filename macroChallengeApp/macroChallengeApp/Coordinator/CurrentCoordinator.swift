@@ -29,7 +29,7 @@ class CurrentCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func startCurrent(roadmap: RoadmapLocal) {
+    func startCurrent(roadmap: Roadmap) {
         let viewController = MyTripViewController()
         viewController.coordinatorCurrent = self
         viewController.roadmap = roadmap
@@ -55,7 +55,7 @@ class CurrentCoordinator: Coordinator {
         self.navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: UIFont.largeTitle)]
     }
     // MARK: Current Roadmap MyTripViewController
-    func editRoadmap(editRoadmap: RoadmapLocal, delegate: MyTripViewController) {
+    func editRoadmap(editRoadmap: Roadmap, delegate: MyTripViewController) {
         let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
         childCoordinators.append(coordinator)
         coordinator.delegate = self
@@ -64,7 +64,7 @@ class CurrentCoordinator: Coordinator {
         }
     }
     
-    func startActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController) {
+    func startActivity(roadmap: Roadmap, day: Day, delegate: MyTripViewController) {
         let viewController = NewActivityViewController()
         viewController.delegate = delegate
         viewController.coordinatorCurrent = self
@@ -74,7 +74,7 @@ class CurrentCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func editActivity(roadmap: RoadmapLocal, day: DayLocal, delegate: MyTripViewController, activity: ActivityLocal) {
+    func editActivity(roadmap: Roadmap, day: Day, delegate: MyTripViewController, activity: Activity) {
         let viewController = NewActivityViewController()
         viewController.delegate = delegate
         viewController.coordinatorCurrent = self
@@ -86,11 +86,9 @@ class CurrentCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func openLocationActivity(delegate: ChangeTextTableDelegate, roadmap: RoadmapLocal) {
+    func openLocationActivity(delegate: ChangeTextTableDelegate, roadmap: Roadmap) {
         let viewController = LocationNewActivityViewController()
-        if let location = roadmap.location {
-            viewController.coordsMap = location
-        }
+        viewController.coordsMap = roadmap.location
         viewController.delegate = delegate
         viewController.coordinatorCurrent = self
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
@@ -102,7 +100,7 @@ class CurrentCoordinator: Coordinator {
         delegate?.didFinishPresent(of: self, isNewRoadmap: false)
     }
     
-    func showActivitySheet(tripVC: MyTripViewController, roadmap: RoadmapLocal, day: DayLocal, activity: ActivityLocal) {
+    func showActivitySheet(tripVC: MyTripViewController, roadmap: Roadmap, day: Day, activity: Activity) {
         let viewControllerToPresent = DetailViewController()
         viewControllerToPresent.detailView.setupContent(activity: activity)
         viewControllerToPresent.activity = activity

@@ -12,10 +12,7 @@ import FirebaseAnalytics
 
 extension DataManager {
     // MARK: - POST
-    func postActivity(activity: Activity, dayId: Int, activityCore: ActivityLocal) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
+    func postActivity(activity: Activity, dayId: Int) {
         let activity: [String: Any] = [
             "name": activity.name,
             "tips": activity.tips,
@@ -54,9 +51,6 @@ extension DataManager {
                     if httpResponse.statusCode == 200 {
                         do {
                             let activityResponse = try JSONDecoder().decode(Activity.self, from: data)
-                            
-                            activityCore.id = Int32(activityResponse.id)
-                            ActivityRepository.shared.saveContext()
                         } catch {
                             print(error)
                         }
@@ -67,20 +61,20 @@ extension DataManager {
             task.resume()
         }
     }
-    func postActivityUpdated(dayId: Int, activityCore: ActivityLocal) {
+    func postActivityUpdated(dayId: Int, newActivity: Activity) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
         
         let activity: [String: Any] = [
-            "name": activityCore.name,
-            "tips": activityCore.tips,
-            "category": activityCore.category,
-            "location": activityCore.location,
-            "hour": activityCore.hour,
-            "budget": activityCore.budget,
-            "currency": activityCore.currencyType,
-            "address": activityCore.address,
-            "link": activityCore.link
+            "name": newActivity.name,
+            "tips": newActivity.tips,
+            "category": newActivity.category,
+            "location": newActivity.location,
+            "hour": newActivity.hour,
+            "budget": newActivity.budget,
+            "currency": newActivity.currency,
+            "address": newActivity.address,
+            "link": newActivity.link
         ]
         
         let session = URLSession.shared
@@ -109,8 +103,6 @@ extension DataManager {
                     if httpResponse.statusCode == 200 {
                         do {
                             let activityResponse = try JSONDecoder().decode(Activity.self, from: data)
-                            activityCore.id = Int32(activityResponse.id)
-                            ActivityRepository.shared.saveContext()
                         } catch {
                             print(error)
                         }
@@ -123,9 +115,6 @@ extension DataManager {
     }
     // MARK: - PUT
     func putActivity(activity: Activity, dayId: Int) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let activityNew: [String: Any] = [
             "name": activity.name,
             "tips": activity.tips,

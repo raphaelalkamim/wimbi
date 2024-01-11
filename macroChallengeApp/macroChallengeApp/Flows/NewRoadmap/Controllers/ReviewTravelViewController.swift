@@ -9,7 +9,7 @@ import UIKit
 import PhotosUI
 
 protocol ReviewTravelDelegate: AnyObject {
-    func updateRoadmapScreen(roadmap: RoadmapLocal)
+    func updateRoadmapScreen(roadmap: Roadmap)
 }
 
 class ReviewTravelViewController: UIViewController {
@@ -21,7 +21,7 @@ class ReviewTravelViewController: UIViewController {
     var imagePicker: ImagePicker!
     var access = false
     
-    var roadmap: Roadmaps
+    var roadmap: Roadmap
     var category = ""
     var location = ""
     var daysCount = 1
@@ -31,7 +31,7 @@ class ReviewTravelViewController: UIViewController {
     var isPublic = false
     var imageId = "defaultCover"
     var imageSelected: UIImage?
-    var editRoadmap = RoadmapLocal()
+    var editRoadmap = Roadmap()
     var edit = false
     
     weak var delegateRoadmap: ReviewTravelDelegate?

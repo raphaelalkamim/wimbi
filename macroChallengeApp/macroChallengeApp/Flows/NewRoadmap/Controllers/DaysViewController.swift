@@ -136,14 +136,14 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.label.text = "Start date".localized()
                     self.initialDate = cell.datePicker
                     if edit {
-                        cell.datePicker.date = editRoadmap.dateInitial
+                        cell.datePicker.date = editRoadmap.dateInitial.toDate()
                     }
                     cell.setupSeparator()
                 } else {
                     cell.label.text = "End date".localized()
                     self.finalDate = cell.datePicker
                     if edit {
-                        cell.datePicker.date = editRoadmap.dateFinal
+                        cell.datePicker.date = editRoadmap.dateFinal.toDate()
                     }
                 }
                 cell.datePicker.minimumDate = Date()

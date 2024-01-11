@@ -96,7 +96,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
             break
         }
     }
-    func setupContent(roadmap: RoadmapLocal, indexPath: Int, user: UserLocal) {
+    func setupContent(roadmap: Roadmap, indexPath: Int, user: UserLocal) {
         switch indexPath {
         case 0:
             setupCategory(category: roadmap.category ?? "Mountain")

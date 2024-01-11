@@ -41,11 +41,11 @@ extension DataManager {
                             }
                             
                             for day in daysCore {
-                                if var oldActivities = day.activity {
-                                    for activity in oldActivities {
-                                        self.postActivityUpdated(dayId: Int(day.id), activityCore: activity)
-                                    }
+                                let oldActivities = day.activity
+                                for activity in oldActivities {
+                                    self.postActivityUpdated(dayId: Int(day.id), newActivity: activity)
                                 }
+                                
                             }
                             
                         } catch { print(error) }

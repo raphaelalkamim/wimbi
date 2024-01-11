@@ -9,7 +9,7 @@ import Foundation
 
 struct Like: Codable {
     var id: Int
-    var roadmap: Roadmaps
+    var roadmap: Roadmap
     var user: User
     
     enum CodingKeys: String, CodingKey {

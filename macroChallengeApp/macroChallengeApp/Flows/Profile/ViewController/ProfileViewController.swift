@@ -17,21 +17,10 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     weak var exploreCoordinator: ExploreCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let profileView = ProfileView()
-    var roadmaps: [RoadmapLocal] = []
+    var roadmaps: [Roadmap] = []
     var dataManager = DataManager.shared
     let network: NetworkMonitor = NetworkMonitor.shared
     let tutorialEnable = UserDefaults.standard.bool(forKey: "tutorialProfile")
-
-    private lazy var fetchResultController: NSFetchedResultsController<RoadmapLocal> = {
-        let request: NSFetchRequest<RoadmapLocal> = RoadmapLocal.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal.createdAt, ascending: false)]
-        let frc = NSFetchedResultsController(fetchRequest: request,
-                                             managedObjectContext: RoadmapRepository.shared.context,
-                                             sectionNameKeyPath: nil,
-                                             cacheName: nil)
-        frc.delegate = self
-        return frc
-    }()
 
     override func loadView() {
         view = profileView
@@ -49,13 +38,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         profileView.bindColletionView(delegate: self, dataSource: self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
         self.setContextMenu()
-        
-        do {
-            try fetchResultController.performFetch()
-            self.roadmaps = fetchResultController.fetchedObjects ?? []
-        } catch {
-            fatalError("Não foi possível atualizar conteúdo")
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,7 +89,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         // let newRoadmaps = RoadmapRepository.shared.getRoadmap()
-        guard let newRoadmaps = controller.fetchedObjects as? [RoadmapLocal] else { return }
+        let newRoadmaps = self.getDataCloud()
         self.roadmaps = newRoadmaps
         profileView.setup()
         profileView.roadmaps = newRoadmaps
@@ -117,7 +99,8 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     // MARK: Manage Data Cloud
-    func getDataCloud() {
+    func getDataCloud() -> [Roadmap] {
+        var roadmaps: [Roadmap]?
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
             DataManager.shared.getUser(username: userID, { user in
@@ -125,11 +108,12 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
                 self.changeToUserInfo(user: userLocal)
                 if !user.userRoadmap.isEmpty {
                     for roadmap in user.userRoadmap {
-                        RoadmapRepository.shared.pushRoadmap(newRoadmap: roadmap)
+                        roadmaps?.append(RoadmapRepository.shared.pushRoadmap(newRoadmap: roadmap) ?? Roadmap())
                     }
                 }
             })
         }
+        return roadmaps ?? []
     }
     
     func changeToUserInfo(user: UserLocal) {

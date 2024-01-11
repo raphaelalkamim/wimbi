@@ -67,12 +67,8 @@ extension DataManager {
                                 let roadmapResponse = try JSONDecoder().decode(RoadmapDTO.self, from: data)
                                 
                                 self.postDays(roadmapId: roadmapResponse.id, daysCore: days)
-                                
-                                roadmap.id = Int32(roadmapResponse.id)
-                                roadmap.shareKey = codeTrip
-                                
                                 if let selectedImage = selectedImage {
-                                    FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapResponse.id, roadmapCore: roadmap)
+                                    FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapResponse.id)
                                 }
                             } catch {
                                 print(error)

@@ -180,7 +180,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
                                    interval: UserDefaults.standard.integer(forKey: "interval") + 1)
     }
     
-    func registerTripNotification(roadmap: RoadmapLocal) {
+    func registerTripNotification(roadmap: Roadmap) {
         let delimiter = "/"
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short

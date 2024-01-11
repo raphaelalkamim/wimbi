@@ -19,8 +19,8 @@ class CategoryViewController: UIViewController {
      Category(title: "Mountain", subtitle: "A cozy trip, with cooler temperatures to enjoy the view.".localized(), icon: "categoryMountain"),
      Category(title: "City", subtitle: "An immersive journey into the habits of other cities or countries.".localized(), icon: "categoryCity")]
     
-    var roadmap = Roadmaps()
-    var editRoadmap = RoadmapLocal()
+    var roadmap = Roadmap()
+    var editRoadmap = Roadmap()
     var edit = false
     var nextButton = UIBarButtonItem()
     var categorySelected = ""

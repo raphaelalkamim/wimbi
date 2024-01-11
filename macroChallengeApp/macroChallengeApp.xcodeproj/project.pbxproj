@@ -61,6 +61,7 @@
 		137C8D49291D6B0C0007AF5B /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D47291D6B060007AF5B /* UserDefaultManager.swift */; };
 		137C8D52291D85960007AF5B /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D51291D85960007AF5B /* EmptyWidgetView.swift */; };
 		137C8D54291D862C0007AF5B /* CountdownWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D53291D862C0007AF5B /* CountdownWidgetView.swift */; };
+		13898E4B2B509E51003DB8AF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13898E4A2B509E51003DB8AF /* String.swift */; };
 		13BD4FFB28D90EF700C0EA7C /* DesignSystem+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */; };
 		13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */; };
 		13BD4FFF28D90F9700C0EA7C /* DefaultDesignSystemImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */; };
@@ -276,6 +277,7 @@
 		137C8D4A291D6D480007AF5B /* wimbWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wimbWidgetExtension.entitlements; sourceTree = "<group>"; };
 		137C8D51291D85960007AF5B /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
 		137C8D53291D862C0007AF5B /* CountdownWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownWidgetView.swift; sourceTree = "<group>"; };
+		13898E4A2B509E51003DB8AF /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+UIImage.swift"; sourceTree = "<group>"; };
 		13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImages.swift; sourceTree = "<group>"; };
 		13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignSystemImages.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				1309973328F0C11200774E1A /* Sequence.swift */,
+				13898E4A2B509E51003DB8AF /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1432,6 +1435,7 @@
 				B05A9C5328DB860F004859F8 /* CurrencyTableViewCell.swift in Sources */,
 				13C8A13828CA75EA00994196 /* DesignSystem+UIColor.swift in Sources */,
 				13F994E428D273EB00B077C0 /* NewRoadmapCoordinator.swift in Sources */,
+				13898E4B2B509E51003DB8AF /* String.swift in Sources */,
 				13F994E928D393D900B077C0 /* DestinyViewController.swift in Sources */,
 				13BE583C2943F0D500D653B9 /* MapsAlert.swift in Sources */,
 				A0B9F4C128D8FD5100F2DF06 /* SettingsViewController+Notifications.swift in Sources */,

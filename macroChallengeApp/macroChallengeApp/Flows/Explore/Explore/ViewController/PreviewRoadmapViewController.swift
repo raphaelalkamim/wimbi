@@ -105,7 +105,7 @@ class PreviewRoadmapViewController: UIViewController {
         }
     }
     
-    func setupContent(roadmap: Roadmaps) {
+    func setupContent(roadmap: Roadmap) {
         if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: roadmap.imageId)) {
             self.previewView.cover.image = cachedImage
         } else { self.previewView.cover.image = UIImage(named: ("\(roadmap.category)Cover")) }

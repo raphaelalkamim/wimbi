@@ -29,18 +29,18 @@ extension NewActivityViewController {
     }
     
     func getData() {
-        self.activity.currency = activityEdit.currencyType ?? "R$"
+        self.activity.currency = activityEdit.currency
         self.currencyType = self.activity.currency
-        self.activity.location = activityEdit.location ?? "Coord"
-        self.activity.hour = activityEdit.hour ?? "23/10/2000"
-        self.activity.name = activityEdit.name ?? "No name"
+        self.activity.location = activityEdit.location
+        self.activity.hour = activityEdit.hour
+        self.activity.name = activityEdit.name
         self.activity.budget = activityEdit.budget
-        self.activity.tips = activityEdit.tips ?? "Details"
-        self.activity.category = activityEdit.category ?? "empty"
-        self.activity.address = activityEdit.address ?? "Address"
-        self.activity.link = activityEdit.link ?? "www"
-        self.address = activityEdit.address ?? "Address"
-        self.activity.tips = activityEdit.tips ?? ""
+        self.activity.tips = activityEdit.tips
+        self.activity.category = activityEdit.category
+        self.activity.address = activityEdit.address
+        self.activity.link = activityEdit.link
+        self.address = activityEdit.address
+        self.activity.tips = activityEdit.tips
     }
     
     // MARK: Save new Activity functions
@@ -130,8 +130,8 @@ extension NewActivityViewController: UITableViewDataSource {
                 guard let newCell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier, for: indexPath) as? DatePickerTableViewCell else { fatalError("TableCell not found") }
                 newCell.label.text = "Date".localized()
                 newCell.setupDate(date: day.date ?? "23/10/2022",
-                                  dateInitial: roadmap.date ?? Date(),
-                                  dateFinal: roadmap.dateFinal ?? Date())
+                                  dateInitial: roadmap.dateInitial.toDate() ?? Date(),
+                                  dateFinal: roadmap.dateFinal.toDate() ?? Date())
                 newCell.setupSeparator()
                 
                 cell = newCell

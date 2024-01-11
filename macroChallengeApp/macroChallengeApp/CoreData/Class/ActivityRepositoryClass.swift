@@ -12,10 +12,11 @@ import CoreData
 class ActivityRepository {
     static let shared: ActivityRepository = ActivityRepository()
     
-    func createActivity(day: Day, activity: Activity, isNew: Bool)  {
+    func createActivity(day: Day, activity: Activity, isNew: Bool) -> Activity {
         if isNew {
-            DataManager.shared.postActivity(activity: activity, dayId: Int(day.id), activityCore: newActivity)
+            DataManager.shared.postActivity(activity: activity, dayId: Int(day.id))
         }
+        return activity
     }
     
     func copyActivity(day: Day, activity: Activity) {

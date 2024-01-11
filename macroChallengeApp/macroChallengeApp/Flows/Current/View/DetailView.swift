@@ -175,7 +175,7 @@ class DetailView: UIView {
         }
     }
     
-    func setupContent(activity: ActivityLocal) {
+    func setupContent(activity: Activity) {
         var value = ""
         var currency = ""
         let starts = "Starts at: ".localized()
@@ -183,18 +183,18 @@ class DetailView: UIView {
         let type = "Type: ".localized()
         
         activityTitle.text = activity.name
-        activityIcon.image = UIImage(named: "\(activity.category ?? "food")Selected")
+        activityIcon.image = UIImage(named: "\(activity.category)Selected")
         
-        activityCategory.text = type + (activity.category?.capitalized.localized() ?? "Category")
+        activityCategory.text = type + (activity.category.capitalized.localized() ?? "Category")
         if activity.budget == 0.0 {
             value = "Free"
             currency = ""
         } else {
             value = "\(activity.budget)"
-            currency = "\(activity.currencyType ?? "R$")"
+            currency = "\(activity.currency)"
         }
         
-        activityInfo.text = "\(starts)\(activity.hour ?? "8h")    •    \(coin)\(currency )\(value)"
+        activityInfo.text = "\(starts)\(activity.hour)    •    \(coin)\(currency )\(value)"
         local.text = activity.address
         details.text = activity.tips
         
@@ -203,7 +203,7 @@ class DetailView: UIView {
 
         linkButton.setAttributedTitle(NSAttributedString(string: "\(activity.link ?? "https://www.google.com")", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
         
-        if activity.address?.isEmpty == true {
+        if activity.address.isEmpty == true {
             local.text = "Endereço não disponibilizado"
             local.textColor = .caption
 
@@ -212,13 +212,13 @@ class DetailView: UIView {
             activityIcon.image = UIImage(named: "empty")
             activityCategory.text = "No type"
         }
-        if activity.link?.isEmpty == true {
+        if activity.link.isEmpty == true {
             linkButton.setAttributedTitle(NSAttributedString(string: "Contato indisponível ", attributes: attributes as [NSAttributedString.Key: Any]), for: .normal)
             linkButton.isEnabled = false
             linkButton.setTitleColor(.caption, for: .normal)
         }
         
-        if activity.tips?.isEmpty == true {
+        if activity.tips.isEmpty == true {
             details.text = "Nenhum detalhe informado"
             details.textColor = .caption
         }

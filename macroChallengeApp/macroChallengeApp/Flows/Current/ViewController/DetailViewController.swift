@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
     weak var delegateExplore: DismissBlurExplore?
     var activity = Activity()
     var roadmap = Roadmap()
-    var day = Day()
+    var day = Day(isSelected: true, date: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()

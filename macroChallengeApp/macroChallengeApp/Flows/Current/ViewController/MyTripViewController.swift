@@ -21,9 +21,9 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
     let myTripView = MyTripView()
     let detailView = DetailView()
     
-    var roadmap = RoadmapLocal()
-    var activites: [ActivityLocal] = []
-    var days: [DayLocal] = []
+    var roadmap = Roadmap()
+    var activites: [Activity] = []
+    var days: [Day] = []
     var daySelected = 0
     var budgetTotal: Double = 0
     let currencyController = CurrencyController()
@@ -54,28 +54,14 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
         return userC
     }()
     
-    private lazy var fetchResultController: NSFetchedResultsController<RoadmapLocal> = {
-        let request: NSFetchRequest<RoadmapLocal> = RoadmapLocal.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \RoadmapLocal.createdAt, ascending: false)]
-        let frc = NSFetchedResultsController(fetchRequest: request,
-                                             managedObjectContext: RoadmapRepository.shared.context,
-                                             sectionNameKeyPath: nil,
-                                             cacheName: nil)
-        frc.delegate = self
-        return frc
-    }()
     override func loadView() {
         self.view = myTripView
     }
+    
     override func viewDidLoad() {
         network.startMonitoring()
         super.viewDidLoad()
         self.setupMyTripView()
-        do {
-            try fetchResultController.performFetch()
-        } catch {
-            fatalError("Não foi possível atualizar conteúdo")
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,8 +76,8 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
         
         if #available(iOS 16.0, *) {
             Task {
-                await WeatherViewModel.shared.getDayWeather(roadmap.location ?? "")
-                await WeatherViewModel.shared.getCurrentWeather(roadmap.location ?? "")
+                await WeatherViewModel.shared.getDayWeather(roadmap.location)
+                await WeatherViewModel.shared.getCurrentWeather(roadmap.location)
                 myTripView.weatherView.actualTemperature = String(Int(getCurrentyWeather().temperature))
                 print(getCurrentyWeather().condition)
                 myTripView.weatherView.changeIcon(getCurrentyWeather().condition)
@@ -110,22 +96,20 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     
     func getAllDays() {
-        if var newDays = roadmap.day?.allObjects as? [DayLocal] {
-            newDays.sort { $0.id < $1.id }
-            self.days = newDays
-        }
+        var newDays = roadmap.days
+        newDays.sort { $0.id < $1.id }
+        self.days = newDays
+        
         for index in 0..<days.count where days[index].isSelected == true {
             self.daySelected = index
             myTripView.dayTitle.text = "Day ".localized() + String(daySelected + 1)
         }
     }
     
-    func getAllActivities() -> [ActivityLocal] {
+    func getAllActivities() -> [Activity] {
         if !days.isEmpty {
-            guard var newActivities = days[daySelected].activity?.allObjects as? [ActivityLocal] else {
-                return []
-            }
-            newActivities.sort { $0.hour ?? "1" < $1.hour ?? "2" }
+            var newActivities = days[daySelected].activity
+            newActivities.sort { $0.hour < $1.hour }
             self.myTripView.dayTitle.text = "Day ".localized() + String(daySelected + 1)
             self.myTripView.activitiesTableView.reloadData()
             return newActivities
@@ -160,7 +144,7 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
         myTripView.secondTutorialView.removeFromSuperview()
     }
     
-    func emptyState(activities: [ActivityLocal]) {
+    func emptyState(activities: [Activity]) {
         if activities.isEmpty {
             myTripView.setEmptyView()
         } else {
@@ -188,9 +172,9 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
                 self.present(self.generateShareCode(), animated: true, completion: nil)
             }))
             ///Commented to archive in app store
-//            action.addAction(UIAlertAction(title: "Share itinerary link".localized(), style: .default, handler: {(_: UIAlertAction!) in
-//                #warning("add deeplink")
-//            }))
+            //            action.addAction(UIAlertAction(title: "Share itinerary link".localized(), style: .default, handler: {(_: UIAlertAction!) in
+            //                #warning("add deeplink")
+            //            }))
             action.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil))
             present(action, animated: true)
         } else {
@@ -202,7 +186,7 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
     func updateAllBudget() {
         Task {
             var budgetDay = 0.0
-            await budgetDay = currencyController.updateBudget(activites: activites, userCurrency: self.userCurrency)
+            await budgetDay = currencyController.updateBudgetBackend(activites: activites, userCurrency: self.userCurrency)
             await budgetTotal = currencyController.updateBudgetTotal(userCurrency: self.userCurrency, days: days)
             RoadmapRepository.shared.updateRoadmapBudget(roadmap: roadmap, budget: budgetTotal)
             let content = String(format: "\(self.userCurrency)%.2f", budgetDay)
@@ -218,26 +202,25 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
     }
     
     func generateShareCode() -> UIActivityViewController {
-        let introduction = "Hey! Join my itinerary in Wimbi app using the code: ".localized() + (self.roadmap.shareKey ?? "0")
+        let introduction = "Hey! Join my itinerary in Wimbi app using the code: ".localized() + self.roadmap.shareKey
         let activityItem = MyActivityItemSource(title: "Share your itinerary code!".localized(), text: introduction)
         let activityViewController = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         activityViewController.excludedActivityTypes = []
         self.roadmap.isShared = true
         FirebaseManager.shared.createAnalyticsEvent(event: "share_roadmap")
-        RoadmapRepository.shared.saveContext()
         return activityViewController
     }
 }
 
 extension MyTripViewController: ReviewTravelDelegate {
-    func updateRoadmapScreen(roadmap: RoadmapLocal) {
+    func updateRoadmapScreen(roadmap: Roadmap) {
         self.roadmap = roadmap
         self.getAllDays()
         self.activites = self.getAllActivities()
         self.emptyState(activities: activites)
         Task {
-            await currencyController.updateBudget(activites: activites, userCurrency: self.userCurrency)
+            await currencyController.updateBudgetBackend(activites: activites, userCurrency: self.userCurrency)
         }
         self.updateTotalBudgetValue()
         
@@ -248,12 +231,12 @@ extension MyTripViewController: ReviewTravelDelegate {
         coordinatorCurrent?.backPage()
     }
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        // let newRoadmaps = RoadmapRepository.shared.getRoadmap()
-        guard let newRoadmaps = controller.fetchedObjects as? [RoadmapLocal] else { return }
+        #warning("COREDATA: Corrigir funcao para pegar roadmaps do usuario")
+        let newRoadmaps = RoadmapRepository.shared.getRoadmap()
         self.roadmap = self.findRoadmap(roadmaps: newRoadmaps) ?? self.roadmap
         
     }
-    func findRoadmap(roadmaps: [RoadmapLocal]) -> RoadmapLocal? {
+    func findRoadmap(roadmaps: [Roadmap]) -> Roadmap? {
         for roadmap in roadmaps where roadmap.name == self.roadmap.name { return roadmap }
         return nil
     }

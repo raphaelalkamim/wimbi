@@ -33,6 +33,20 @@ struct Activity: Codable {
         case link
         case day
     }
+    
+    init() {
+        self.id = 0
+        self.name = "New Activity"
+        self.tips = ""
+        self.category = "food"
+        self.location = ""
+        self.hour = ""
+        self.budget = 0.00
+        self.currency = "R$"
+        self.address = ""
+        self.link = ""
+        self.day = Day(isSelected: true, date: Date())
+    }
 }
 
 extension Activity: CustomStringConvertible {

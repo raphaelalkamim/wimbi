@@ -227,7 +227,7 @@ class MyTripView: UIView {
         setupConstraints()
     }
     
-    func setupContent(roadmap: RoadmapLocal) {
+    func setupContent(roadmap: Roadmap) {
         let formatt = DateFormatter()
         formatt.timeStyle = .none
         formatt.dateStyle = .short

@@ -33,7 +33,7 @@ extension MyTripViewController {
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
         
         if tutorialEnable == false {
-            if (coordinatorCurrent != nil) {
+            if coordinatorCurrent != nil {
                 myTripView.animateCollection(index: 2)
             } else {
                 myTripView.animateCollection(index: 3)
@@ -43,7 +43,7 @@ extension MyTripViewController {
     
     @objc func addRoute(sender: UIButton) {
         let activity = activites[sender.tag]
-        let alert = AlertMapsModel(location: activity.location ?? "", controller: self)
+        let alert = AlertMapsModel(location: activity.location, controller: self)
     }
 }
 
@@ -51,8 +51,8 @@ extension MyTripViewController {
 extension MyTripViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // desabilita todas as celulas que nao sao a que recebeu o clique
-        for daysCallendar in days {
-            daysCallendar.isSelected = false
+        for day in 0..<days.count {
+            days[day].isSelected = false
         }
         
         if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
@@ -70,13 +70,12 @@ extension MyTripViewController: UICollectionViewDelegate {
             self.myTripView.updateConstraintsTable(multiplier: activites.count)
             self.myTripView.activitiesTableView.reloadData()
             Task {
-                await currencyController.updateBudget(activites: activites, userCurrency: self.userCurrency)
+                await currencyController.updateBudgetBackend(activites: activites, userCurrency: userCurrency)
             }
             self.updateTotalBudgetValue()
         }
         collectionView.reloadData()
         self.updateAllBudget()
-        RoadmapRepository.shared.saveContext()
     }
 }
 
@@ -101,7 +100,7 @@ extension MyTripViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell else {
                 preconditionFailure("Cell not find")
             }
-            cell.setDay(date: days[indexPath.row].date ?? "1")
+            cell.setDay(date: days[indexPath.row].date)
             if days[indexPath.row].isSelected == true {
                 cell.selectedButton()
                 
@@ -119,14 +118,14 @@ extension MyTripViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let activity = self.activites[indexPath.row]
-
+        
         self.coordinator?.showActivitySheet(tripVC: self, roadmap: self.roadmap, day: self.days[daySelected], activity: activity)
         self.coordinatorCurrent?.showActivitySheet(tripVC: self, roadmap: self.roadmap, day: self.days[daySelected], activity: activity)
         
         navigationController?.navigationBar.backgroundColor = UIColor(white: 0, alpha: 0.001)
         myTripView.transparentView.isHidden = false
     }
-
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editAction = UIContextualAction(style: .normal,
                                             title: "Edit".localized()) { [weak self] _, _, completionHandler in
@@ -169,19 +168,19 @@ extension MyTripViewController: UITableViewDataSource {
         }
         cell.localButton.tag = indexPath.row
         cell.localButton.addTarget(self, action: #selector(addRoute(sender:)), for: .touchUpInside)
-        cell.setupDaysActivities(hour: self.activites[indexPath.row].hour ?? "10h00",
-                                 currency: self.activites[indexPath.row].currencyType ?? "$",
+        cell.setupDaysActivities(hour: self.activites[indexPath.row].hour,
+                                 currency: self.activites[indexPath.row].currency,
                                  value: String(self.activites[indexPath.row].budget),
-                                 name: self.activites[indexPath.row].name ?? "Nova atividade")
-        cell.setupCategoryImage(image: self.activites[indexPath.row].category ?? "empty")
-        if self.activites[indexPath.row].location?.isEmpty == true {
+                                 name: self.activites[indexPath.row].name)
+        cell.setupCategoryImage(image: self.activites[indexPath.row].category)
+        if self.activites[indexPath.row].location.isEmpty == true {
             cell.localButton.isHidden = true
         } else {
             cell.localButton.isHidden = false
         }
-
+        
         return cell
-     
+        
     }
     
 }
@@ -197,9 +196,9 @@ extension MyTripViewController: UITableViewDragDelegate {
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         var hoursBefore: [String] = []
         for activity in activites {
-            if let hour = activity.hour {
-                hoursBefore.append(hour)
-            }
+            let hour = activity.hour
+            hoursBefore.append(hour)
+            
         }
         
         let mover = activites.remove(at: sourceIndexPath.row)
@@ -209,7 +208,6 @@ extension MyTripViewController: UITableViewDragDelegate {
             activites[index].hour = hoursBefore[index]
         }
         
-        ActivityRepository.shared.saveContext()
         tableView.reloadData()
     }
 }

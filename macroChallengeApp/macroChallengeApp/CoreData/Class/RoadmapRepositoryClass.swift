@@ -27,7 +27,7 @@ public class RoadmapRepository: NSManagedObject {
         return roadmap
     }
     
-    func updateRoadmap(oldRoadmap: Roadmap, newRoadmap: Roadmap, isShared: Bool, selectedImage: UIImage? = nil) {
+    func updateRoadmap(oldRoadmap: Roadmap, newRoadmap: Roadmap, isShared: Bool, selectedImage: UIImage? = nil) -> Roadmap {
         var roadmap = newRoadmap
         roadmap.id = oldRoadmap.id
         roadmap.shareKey = oldRoadmap.shareKey
@@ -37,14 +37,13 @@ public class RoadmapRepository: NSManagedObject {
         newDays[0].isSelected = true
         
         self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDays: newDays, selectedImage: selectedImage)
-        
+        return newRoadmap
     }
     
     func pushRoadmap(newRoadmap: UserRoadmap) -> Roadmap? {
-//        DataManager.shared.getRoadmapById(roadmapId: Int(newRoadmap.roadmap.id)) { roadmap in
-//            guard let roadmap = roadmap else { return }
-//            return roadmap
-//        }
+        DataManager.shared.getRoadmapById(roadmapId: Int(newRoadmap.roadmap.id)) { roadmap in
+            //return roadmap
+        }
         return Roadmap()
     }
     
