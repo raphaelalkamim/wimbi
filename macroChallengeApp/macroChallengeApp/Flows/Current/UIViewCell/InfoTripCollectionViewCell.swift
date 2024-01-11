@@ -77,7 +77,7 @@ class InfoTripCollectionViewCell: UICollectionViewCell {
         title.text = ""
         return title
     }()
-    func setupContentCell(roadmap: Roadmaps, indexPath: Int, userCurrency: String, uuidImage: String) {
+    func setupContentCell(roadmap: Roadmap, indexPath: Int, userCurrency: String, uuidImage: String) {
         switch indexPath {
         case 0:
             setupCategory(category: roadmap.category)

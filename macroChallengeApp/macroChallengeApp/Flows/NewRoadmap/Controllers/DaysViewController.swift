@@ -12,12 +12,12 @@ class DaysViewController: UIViewController {
     let daysView = DaysView(frame: .zero)
     weak var coordinator: NewRoadmapCoordinator?
 
-    var roadmap: Roadmaps
+    var roadmap: Roadmap
     var initialDate = UIDatePicker()
     var finalDate = UIDatePicker()
     var travelersCount = UIPickerView()
     
-    var editRoadmap = RoadmapLocal()
+    var editRoadmap = Roadmap()
     var edit = false
     
     weak var delegateRoadmap: MyTripViewController?
@@ -27,7 +27,7 @@ class DaysViewController: UIViewController {
         self.setupDaysView()
         self.setupToolbar()
     }
-    init(roadmap: Roadmaps) {
+    init(roadmap: Roadmap) {
         self.roadmap = roadmap
         super.init(nibName: nil, bundle: nil)
     }
@@ -136,14 +136,14 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.label.text = "Start date".localized()
                     self.initialDate = cell.datePicker
                     if edit {
-                        cell.datePicker.date = editRoadmap.date ?? Date()
+                        cell.datePicker.date = editRoadmap.dateInitial
                     }
                     cell.setupSeparator()
                 } else {
                     cell.label.text = "End date".localized()
                     self.finalDate = cell.datePicker
                     if edit {
-                        cell.datePicker.date = editRoadmap.dateFinal ?? Date()
+                        cell.datePicker.date = editRoadmap.dateFinal
                     }
                 }
                 cell.datePicker.minimumDate = Date()

@@ -157,7 +157,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
-    func registerActivityNotification(createdActivity: ActivityLocal) {
+    func registerActivityNotification(createdActivity: Activity) {
         let delimiter = ":"
         let hour = createdActivity.hour?.components(separatedBy: delimiter)
         

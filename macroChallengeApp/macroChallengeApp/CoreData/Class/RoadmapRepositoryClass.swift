@@ -13,13 +13,18 @@ import UIKit
 public class RoadmapRepository: NSManagedObject {
     static let shared: RoadmapRepository = RoadmapRepository()
         
-    func createRoadmap(roadmap: Roadmap, isNew: Bool, selectedImage: UIImage? = nil)  {
+    func getRoadmap() -> [Roadmap] {
+      return [Roadmap()]
+    }
+    
+    func createRoadmap(roadmap: Roadmap, isNew: Bool, selectedImage: UIImage? = nil) -> Roadmap {
         if isNew {
             var createdDays = roadmap.days
             createdDays.sort { $0.id < $1.id }
             self.postInBackend(roadmap: roadmap, newDays: createdDays, selectedImage: selectedImage)
             
         }
+        return roadmap
     }
     
     func updateRoadmap(oldRoadmap: Roadmap, newRoadmap: Roadmap, isShared: Bool, selectedImage: UIImage? = nil) {
@@ -35,10 +40,12 @@ public class RoadmapRepository: NSManagedObject {
         
     }
     
-    func pushRoadmap(newRoadmap: UserRoadmap) -> Roadmap {
-        DataManager.shared.getRoadmapById(roadmapId: Int(newRoadmap.roadmap.id)) { roadmap in
-            return roadmap
-        }
+    func pushRoadmap(newRoadmap: UserRoadmap) -> Roadmap? {
+//        DataManager.shared.getRoadmapById(roadmapId: Int(newRoadmap.roadmap.id)) { roadmap in
+//            guard let roadmap = roadmap else { return }
+//            return roadmap
+//        }
+        return Roadmap()
     }
     
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {
@@ -47,7 +54,6 @@ public class RoadmapRepository: NSManagedObject {
         day.id = indexPath
         return day
     }
-    
     
     func deleteRoadmap(roadmap: Roadmap) throws {
         FirebaseManager.shared.deleteImage(category: 0, uuid: roadmap.imageId)

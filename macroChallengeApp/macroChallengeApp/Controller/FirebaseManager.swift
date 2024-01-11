@@ -16,7 +16,7 @@ class FirebaseManager {
     
     private init() {}
 
-    func uploadImageRoadmap(image: UIImage, roadmapId: Int, roadmapCore: RoadmapLocal? = nil, uuid: String? = nil) {
+    func uploadImageRoadmap(image: UIImage, roadmapId: Int, roadmapCore: Roadmap? = nil, uuid: String? = nil) {
         // create storage reference
         let storageRef = Storage.storage().reference()
         var uuidImage = ""

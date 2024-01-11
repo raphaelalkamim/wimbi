@@ -176,7 +176,7 @@ extension RoadmapExploreCollectionViewCell {
         return String("\(category)Cover")
     }
     
-    func setupRoadmapMock(roadmap: Roadmaps) {
+    func setupRoadmapMock(roadmap: Roadmap) {
         self.setupContent(imageId: roadmap.imageId, name: roadmap.name, peopleCount: roadmap.peopleCount, dayCount: roadmap.dayCount, budget: roadmap.budget, currency: roadmap.currency, category: roadmap.category, likesCount: roadmap.likesCount)
     }
     func setupRoadmapBackEnd(roadmap: RoadmapDTO) {

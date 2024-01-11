@@ -65,7 +65,7 @@ class ExploreCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func previewMockRoadmap(roadmap: Roadmaps) {
+    func previewMockRoadmap(roadmap: Roadmap) {
         let viewController = PreviewRoadmapViewController()
         viewController.coordinator = self
         viewController.roadmap = roadmap

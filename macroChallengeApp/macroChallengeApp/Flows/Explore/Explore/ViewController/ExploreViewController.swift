@@ -22,7 +22,7 @@ class ExploreViewController: UIViewController {
 
     let explorerView = ExploreView()
     var roadmaps: [RoadmapDTO] = []
-    var roadmapsMock: [Roadmaps] = []
+    var roadmapsMock: [Roadmap] = []
     let network: NetworkMonitor = NetworkMonitor.shared
     let onboardEnable = UserDefaults.standard.bool(forKey: "onboard")
     

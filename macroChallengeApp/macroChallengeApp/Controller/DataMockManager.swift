@@ -32,9 +32,9 @@ class DataMockManager {
         return nil
     }
     
-    func parse(jsonData: Data) -> [Roadmaps]? {
+    func parse(jsonData: Data) -> [Roadmap]? {
         do {
-            let decodedData = try JSONDecoder().decode([Roadmaps].self,
+            let decodedData = try JSONDecoder().decode([Roadmap].self,
                                                        from: jsonData)
             return decodedData
         } catch {

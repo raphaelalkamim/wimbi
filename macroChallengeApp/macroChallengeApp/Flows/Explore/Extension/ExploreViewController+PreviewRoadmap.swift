@@ -56,7 +56,7 @@ extension PreviewRoadmapViewController {
         roadmap.likesCount = 0
         roadmap.imageId = "defaultCover"
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: false)
-        guard let days = newRoadmap.day?.allObjects as? [DayLocal] else { return }
+        let days = newRoadmap.days
         let roadmapDays = self.roadmap.days
         for index in 0..<roadmapDays.count {
             let activiyArray = roadmapDays[index].activity

@@ -40,7 +40,7 @@ class ReviewTravelViewController: UIViewController {
         view = reviewTravelView
     }
     
-    init(roadmap: Roadmaps) {
+    init(roadmap: Roadmap) {
         self.roadmap = roadmap
         super.init(nibName: nil, bundle: nil)
     }
@@ -74,14 +74,13 @@ class ReviewTravelViewController: UIViewController {
     func updateCoreData() {
         roadmap.currency = getUserCurrency()
         roadmap.budget = editRoadmap.budget
-        let newRoadmap = RoadmapRepository.shared.updateRoadmap(editRoadmap: self.editRoadmap, roadmap: self.roadmap, isShared: self.editRoadmap.isShared, selectedImage: imageSelected)
+        let newRoadmap = RoadmapRepository.shared.updateRoadmap(oldRoadmap: self.editRoadmap, newRoadmap: self.roadmap, isShared: self.editRoadmap.isShared, selectedImage: imageSelected)
         delegateRoadmap?.updateRoadmapScreen(roadmap: newRoadmap)
     }
     func saveCoreData() {
         roadmap.currency = getUserCurrency()
         // save in Core Data
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: true, selectedImage: imageSelected)
-        RoadmapRepository.shared.saveContext()
         
         NotificationManager.shared.registerTripNotification(roadmap: newRoadmap)
     }

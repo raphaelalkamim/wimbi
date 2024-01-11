@@ -12,7 +12,8 @@ import FirebaseAnalytics
 
 extension DataManager {
     // MARK: - POST
-    func postDays(roadmapId: Int, daysCore: [DayLocal]) {
+    func postDays(roadmapId: Int, daysCore: [Day]) {
+        var daysCore = daysCore
         let session = URLSession.shared
         guard let url = URL(string: baseURL + "roadmaps/\(roadmapId)/days") else { return }
         
@@ -35,13 +36,12 @@ extension DataManager {
                             daysResponse.sort { $0.id < $1.id }
                             
                             for index in 0..<daysResponse.count {
-                                daysCore[index].id = Int32(daysResponse[index].id)
-                                DayRepository.shared.saveContext()
+                                daysCore[index].id = daysResponse[index].id
                                 
                             }
                             
                             for day in daysCore {
-                                if var oldActivities = day.activity?.allObjects as? [ActivityLocal] {
+                                if var oldActivities = day.activity {
                                     for activity in oldActivities {
                                         self.postActivityUpdated(dayId: Int(day.id), activityCore: activity)
                                     }

@@ -19,7 +19,7 @@ class DataManager {
     
     public let imageCash = NSCache<NSNumber, UIImage>()
     
-    var roadmaps: Roadmaps?
+    var roadmaps: Roadmap?
     var user: User?
     var activity: Activity?
     var day: Day?
@@ -52,7 +52,7 @@ class DataManager {
             }
         case .ROADMAPS:
             do {
-                self.roadmaps = try JSONDecoder().decode(Roadmaps.self, from: data)
+                self.roadmaps = try JSONDecoder().decode(Roadmap.self, from: data)
             } catch {
                 print("Parse Error")
             }

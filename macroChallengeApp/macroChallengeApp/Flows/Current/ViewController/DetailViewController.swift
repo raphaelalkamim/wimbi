@@ -15,9 +15,9 @@ class DetailViewController: UIViewController {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     weak var delegate: DismissBlur?
     weak var delegateExplore: DismissBlurExplore?
-    var activity = ActivityLocal()
-    var roadmap = RoadmapLocal()
-    var day = DayLocal()
+    var activity = Activity()
+    var roadmap = Roadmap()
+    var day = Day()
     
     override func viewDidLoad() {
         super.viewDidLoad()

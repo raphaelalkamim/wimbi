@@ -28,20 +28,20 @@ class NewRoadmapCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
 
-    func startDestiny(roadmap: Roadmaps) {
+    func startDestiny(roadmap: Roadmap) {
         let viewController = DestinyViewController(roadmap: roadmap)
         viewController.coordinator = self
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func startDays(roadmap: Roadmaps) {
+    func startDays(roadmap: Roadmap) {
         let viewController = DaysViewController(roadmap: roadmap)
         viewController.coordinator = self
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
-    func startReview(roadmap: Roadmaps) {
+    func startReview(roadmap: Roadmap) {
         let viewController = ReviewTravelViewController(roadmap: roadmap)
         viewController.coordinator = self
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
@@ -80,7 +80,7 @@ class NewRoadmapCoordinator: Coordinator {
     }
     
     // MARK: Edit Functions
-    func startEditing(editRoadmap: RoadmapLocal, delegate: MyTripViewController) {
+    func startEditing(editRoadmap: Roadmap, delegate: MyTripViewController) {
         navigationController.modalPresentationStyle = .fullScreen
         let viewController = CategoryViewController()
         viewController.coordinator = self
@@ -92,7 +92,7 @@ class NewRoadmapCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func startEditDestiny( roadmap: Roadmaps, editRoadmap: RoadmapLocal, delegate: MyTripViewController) {
+    func startEditDestiny(roadmap: Roadmap, editRoadmap: Roadmap, delegate: MyTripViewController) {
         let viewController = DestinyViewController(roadmap: roadmap)
         viewController.coordinator = self
         viewController.editRoadmap = editRoadmap
@@ -101,7 +101,7 @@ class NewRoadmapCoordinator: Coordinator {
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
-    func startEditDays(roadmap: Roadmaps, editRoadmap: RoadmapLocal, delegate: MyTripViewController) {
+    func startEditDays(roadmap: Roadmap, editRoadmap: Roadmap, delegate: MyTripViewController) {
         let viewController = DaysViewController(roadmap: roadmap)
         viewController.coordinator = self
         viewController.editRoadmap = editRoadmap
@@ -110,7 +110,7 @@ class NewRoadmapCoordinator: Coordinator {
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
-    func startEditReview(roadmap: Roadmaps, editRoadmap: RoadmapLocal, delegate: MyTripViewController) {
+    func startEditReview(roadmap: Roadmap, editRoadmap: Roadmap, delegate: MyTripViewController) {
         let viewController = ReviewTravelViewController(roadmap: roadmap)
         viewController.coordinator = self
         viewController.editRoadmap = editRoadmap

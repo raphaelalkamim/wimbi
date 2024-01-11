@@ -30,7 +30,7 @@ class DestinyViewController: UIViewController {
     
     weak var delegateRoadmap: MyTripViewController?
     
-    init(roadmap: Roadmaps) {
+    init(roadmap: Roadmap) {
         self.roadmap = roadmap
         super.init(nibName: nil, bundle: nil)
     }

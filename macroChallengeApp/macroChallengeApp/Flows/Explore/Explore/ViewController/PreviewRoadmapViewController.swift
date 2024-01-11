@@ -16,7 +16,7 @@ class PreviewRoadmapViewController: UIViewController {
     var like = UIBarButtonItem()
     var duplicate = UIBarButtonItem()
     var roadmapId: Int = 0
-    var roadmap: Roadmaps = Roadmaps()
+    var roadmap: Roadmap = Roadmap()
     var days: [Day] = []
     var daySelected = 0
     var likeId = 0

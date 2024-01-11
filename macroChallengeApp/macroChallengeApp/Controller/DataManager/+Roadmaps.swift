@@ -12,7 +12,7 @@ import FirebaseAnalytics
 
 extension DataManager {
     // MARK: - POST
-    func postRoadmap(roadmap: Roadmaps, days: [Day], selectedImage: UIImage? = nil) {
+    func postRoadmap(roadmap: Roadmap, days: [Day], selectedImage: UIImage? = nil) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
         
@@ -66,14 +66,13 @@ extension DataManager {
                                 // tentar transformar os dados no tipo Cohort
                                 let roadmapResponse = try JSONDecoder().decode(RoadmapDTO.self, from: data)
                                 
-                                self.postDays(roadmapId: roadmapResponse.id, daysCore: daysCore)
+                                self.postDays(roadmapId: roadmapResponse.id, daysCore: days)
                                 
-                                roadmapCore.id = Int32(roadmapResponse.id)
-                                roadmapCore.shareKey = codeTrip
-                                RoadmapRepository.shared.saveContext()
+                                roadmap.id = Int32(roadmapResponse.id)
+                                roadmap.shareKey = codeTrip
                                 
                                 if let selectedImage = selectedImage {
-                                    FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapResponse.id, roadmapCore: roadmapCore)
+                                    FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapResponse.id, roadmapCore: roadmap)
                                 }
                             } catch {
                                 print(error)
@@ -117,8 +116,8 @@ extension DataManager {
         task.resume()
     }
     
-    func getRoadmapById(roadmapId: Int, _ completion: @escaping ((_ roadmap: Roadmaps?) -> Void)) {
-        var roadmap: Roadmaps?
+    func getRoadmapById(roadmapId: Int, _ completion: @escaping ((_ roadmap: Roadmap?) -> Void)) {
+        var roadmap: Roadmap?
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "roadmaps/\(roadmapId)")!
         
@@ -134,7 +133,7 @@ extension DataManager {
             }
             
             do {
-                roadmap = try JSONDecoder().decode(Roadmaps.self, from: data)
+                roadmap = try JSONDecoder().decode(Roadmap.self, from: data)
             } catch {
                 print(error)
                 print("DEU RUIM NO PARSE")
@@ -147,6 +146,7 @@ extension DataManager {
         task.resume()
         
     }
+    
     func getRoadmapUserImage(roadmapId: Int, _ completion: @escaping ((_ uuidUser: String, _ username: String) -> Void)) {
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "roadmaps/\(roadmapId)/userImage")!
@@ -174,7 +174,7 @@ extension DataManager {
         
     }
     // MARK: - PUT
-    func putRoadmap(roadmap: Roadmaps, roadmapId: Int, newDays: [Day], selectedImage: UIImage? = nil) {
+    func putRoadmap(roadmap: Roadmap, roadmapId: Int, newDays: [Day], selectedImage: UIImage? = nil) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
         
@@ -219,7 +219,7 @@ extension DataManager {
                 }
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
-                        self.postDays(roadmapId: roadmapId, daysCore: newDaysCore)
+                        self.postDays(roadmapId: roadmapId, daysCore: newDays)
                         if let selectedImage = selectedImage {
                             FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapId, uuid: roadmap.imageId)
                         }
@@ -270,7 +270,7 @@ extension DataManager {
     }
     
     // MARK: - PUT
-    func putBudgetRoadmap(roadmap: RoadmapLocal, roadmapId: Int) {
+    func putBudgetRoadmap(roadmap: Roadmap, roadmapId: Int) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
         
@@ -279,8 +279,8 @@ extension DataManager {
             "location": roadmap.location,
             "budget": roadmap.budget,
             "dayCount": roadmap.dayCount,
-            "dateInitial": dateFormatter.string(from: roadmap.date ?? Date()),
-            "dateFinal": dateFormatter.string(from: roadmap.dateFinal ?? Date()),
+            "dateInitial": roadmap.dateInitial,
+            "dateFinal": roadmap.dateFinal,
             "peopleCount": roadmap.peopleCount,
             "imageId": setupImage(category: roadmap.category ?? "defaultImage"),
             "category": roadmap.category,
@@ -346,26 +346,24 @@ extension DataManager {
                     if let httpResponse = response as? HTTPURLResponse {
                         if httpResponse.statusCode == 200 {
                             do {
-                                let roadmapJoin = try JSONDecoder().decode(Roadmaps.self, from: data)
-                                let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: roadmapJoin, isNew: false)
-                                newRoadmap.id = Int32(roadmapJoin.id)
+                                let roadmapJoin = try JSONDecoder().decode(Roadmap.self, from: data)
+                                var newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: roadmapJoin, isNew: false)
+                                newRoadmap.id = roadmapJoin.id
                                 newRoadmap.shareKey = roadmapJoin.shareKey
                                 newRoadmap.isShared = true
                                 
-                                guard var days  = newRoadmap.day?.allObjects as? [DayLocal] else { return }
+                                var days = newRoadmap.days
                                 var roadmapDays = roadmapJoin.days
                                 days.sort { $0.id < $1.id }
                                 roadmapDays.sort { $0.id < $1.id }
                                 
                                 for index in 0..<roadmapDays.count {
-                                    days[index].id = Int32(roadmapDays[index].id)
+                                    days[index].id = roadmapDays[index].id
                                     let activiyArray = roadmapDays[index].activity
                                     for activity in activiyArray {
                                         _ = ActivityRepository.shared.createActivity(day: days[index], activity: activity, isNew: false)
                                     }
                                 }
-                                RoadmapRepository.shared.saveContext()
-                                DayRepository.shared.saveContext()
                             } catch {
                                 print(error)
                             }
