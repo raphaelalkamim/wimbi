@@ -12,7 +12,7 @@ import FirebaseAnalytics
 
 extension DataManager {
     // MARK: - POST
-    func postRoadmap(roadmap: Roadmaps, roadmapCore: RoadmapLocal, daysCore: [DayLocal], selectedImage: UIImage? = nil) {
+    func postRoadmap(roadmap: Roadmaps, days: [Day], selectedImage: UIImage? = nil) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
         
@@ -174,7 +174,7 @@ extension DataManager {
         
     }
     // MARK: - PUT
-    func putRoadmap(roadmap: Roadmaps, roadmapId: Int, newDaysCore: [DayLocal], selectedImage: UIImage? = nil) {
+    func putRoadmap(roadmap: Roadmaps, roadmapId: Int, newDays: [Day], selectedImage: UIImage? = nil) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/M/y"
         

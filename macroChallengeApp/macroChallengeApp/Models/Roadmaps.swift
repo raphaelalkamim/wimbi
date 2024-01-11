@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Roadmaps: Codable {
+struct Roadmap: Codable {
     var id: Int
     var name: String
     var location: String
@@ -64,7 +64,7 @@ struct Roadmaps: Codable {
     }
 }
 
-extension Roadmaps: CustomStringConvertible {
+extension Roadmap: CustomStringConvertible {
     var description: String {
         return "{id: \(id), roadmapName: \(name), location: \(location)}"
     }
