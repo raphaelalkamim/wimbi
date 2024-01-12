@@ -141,7 +141,6 @@ extension DataManager {
             }
         }
         task.resume()
-        
     }
     
     func getRoadmapUserImage(roadmapId: Int, _ completion: @escaping ((_ uuidUser: String, _ username: String) -> Void)) {

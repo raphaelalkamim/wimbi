@@ -15,13 +15,16 @@ extension ProfileViewController {
         profileView.updateConstraintsCollection()
         profileView.bindColletionView(delegate: self, dataSource: self)
     }
+    
     func setupGestures() {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
         profileView.myRoadmapCollectionView.addGestureRecognizer(longPress)
     }
+    
     func setupNavButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
     }
+    
     // MARK: Long press and delete
     @objc public func handleLongPress(sender: UILongPressGestureRecognizer) {
         network.startMonitoring()

@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     var dataManager = DataManager.shared
     let network: NetworkMonitor = NetworkMonitor.shared
     let tutorialEnable = UserDefaults.standard.bool(forKey: "tutorialProfile")
-    let user = UserRepository.shared.getUser()
+    var user = UserRepository.shared.getUser()
 
     override func loadView() {
         view = profileView
@@ -89,10 +89,9 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        let newRoadmaps = RoadmapRepository.shared.getDataCloud()
-        self.roadmaps = newRoadmaps
+        self.roadmaps = RoadmapRepository.shared.getDataCloud()
         profileView.setup()
-        profileView.roadmaps = newRoadmaps
+        profileView.roadmaps = self.roadmaps
         profileView.myRoadmapCollectionView.reloadData()
         profileView.myRoadmapCollectionView.layoutIfNeeded()
         profileView.updateConstraintsCollection()
