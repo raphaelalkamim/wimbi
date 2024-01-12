@@ -80,7 +80,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             // chama o roadmap do back
             DataManager.shared.getRoadmapById(roadmapId: Int(roadmaps[indexPath.row].id)) { backRoadmap in
                 if let backRoadmap = backRoadmap {
-                    self.coordinator?.openRoadmap(roadmap: openRoadmap )
+                    self.coordinator?.openRoadmap(roadmap: backRoadmap )
                 } else {
                     do {
                         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
@@ -107,10 +107,12 @@ extension ProfileViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else {
             preconditionFailure("Cell not find")
         }
+        
         let isNew = false
         UserDefaults.standard.bool(forKey: "isPublic")
-        cell.setup(name: roadmaps[indexPath.row].name ?? "Erro", image: roadmaps[indexPath.row].imageId ?? "floripa", isNew: isNew)
-        cell.setupImage(imageId: roadmaps[indexPath.row].imageId ?? "defaultCover", category: roadmaps[indexPath.row].category ?? "City")
+        cell.setup(name: roadmaps[indexPath.row].name , image: roadmaps[indexPath.row].imageId ?? "floripa", isNew: isNew)
+        cell.setupImage(imageId: roadmaps[indexPath.row].imageId , category: roadmaps[indexPath.row].category ?? "City")
+        
         if roadmaps[indexPath.row].isPublic == false {
             cell.likeImage.image = UIImage(systemName: "lock.fill")
             UserDefaults.standard.set(false, forKey: "isPublic")

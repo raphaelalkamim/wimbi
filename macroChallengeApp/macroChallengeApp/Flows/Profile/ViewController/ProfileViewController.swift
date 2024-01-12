@@ -21,12 +21,14 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     var dataManager = DataManager.shared
     let network: NetworkMonitor = NetworkMonitor.shared
     let tutorialEnable = UserDefaults.standard.bool(forKey: "tutorialProfile")
+    let user = UserRepository.shared.getUser()
 
     override func loadView() {
         view = profileView
     }
+    
     override func viewDidLoad() {
-        self.roadmaps = RoadmapRepository.shared.getRoadmap()
+        self.roadmaps = RoadmapRepository.shared.getDataCloud()
         profileView.roadmaps = self.roadmaps
         
         super.viewDidLoad()
@@ -52,14 +54,13 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
                 self.tutorialTimer()
             }
         }
-        
-        let user = UserRepository.shared.getUser()
         if user.isEmpty {
             self.profileView.getName().text = "Usuário"
             self.profileView.getUsernameApp().text = "Usuário"
-            self.getDataCloud()
+            self.roadmaps = RoadmapRepository.shared.getDataCloud()
         } else {
-            self.changeToUserInfo(user: user[0])
+            guard let user = user.first else { return }
+            self.changeToUserInfo(user: user)
         }
     }
     
@@ -88,32 +89,13 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        // let newRoadmaps = RoadmapRepository.shared.getRoadmap()
-        let newRoadmaps = self.getDataCloud()
+        let newRoadmaps = RoadmapRepository.shared.getDataCloud()
         self.roadmaps = newRoadmaps
         profileView.setup()
         profileView.roadmaps = newRoadmaps
         profileView.myRoadmapCollectionView.reloadData()
         profileView.myRoadmapCollectionView.layoutIfNeeded()
         profileView.updateConstraintsCollection()
-    }
-    
-    // MARK: Manage Data Cloud
-    func getDataCloud() -> [Roadmap] {
-        var roadmaps: [Roadmap]?
-        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
-            let userID = String(data: data, encoding: .utf8)!
-            DataManager.shared.getUser(username: userID, { user in
-                let userLocal = UserRepository.shared.createUser(user: user)
-                self.changeToUserInfo(user: userLocal)
-                if !user.userRoadmap.isEmpty {
-                    for roadmap in user.userRoadmap {
-                        roadmaps?.append(RoadmapRepository.shared.pushRoadmap(newRoadmap: roadmap) ?? Roadmap())
-                    }
-                }
-            })
-        }
-        return roadmaps ?? []
     }
     
     func changeToUserInfo(user: UserLocal) {

@@ -103,7 +103,7 @@ extension DataManager {
                     completion(roadmaps)
                 }
             } catch {
-                print("DEU RUIM NO PARSE")
+                print("Erro ao coletar roadmaps públicos")
                 DispatchQueue.main.async {
                     completion([])
                 }
@@ -122,7 +122,7 @@ extension DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        let task = session.dataTask(with: request) { data, _, error in
+        let task = session.dataTask(with: request) { data, response, error in
             guard let data = data else { return }
             if error != nil {
                 print(String(describing: error?.localizedDescription))
@@ -132,7 +132,8 @@ extension DataManager {
                 roadmap = try JSONDecoder().decode(Roadmap.self, from: data)
             } catch {
                 print(error)
-                print("DEU RUIM NO PARSE")
+                print(response)
+                print("Erro ao coletar roadmap pelo ID")
             }
             
             DispatchQueue.main.async {
@@ -257,7 +258,7 @@ extension DataManager {
                 }
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
-                        print("Atualizou")
+                        print("Atualizou imagem")
                     }
                 }
             }
@@ -311,7 +312,7 @@ extension DataManager {
                 }
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
-                        print("Atualizou")
+                        print("Bugget atualizado")
                     }
                 }
             }

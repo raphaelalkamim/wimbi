@@ -67,7 +67,7 @@ extension SettingsViewController: UITableViewDataSource {
                     FirebaseManager.shared.deleteImage(category: 1, uuid: photoId)
                 }
                 FirebaseManager.shared.createAnalyticsEvent(event: "delete_account")
-                let roadmaps = RoadmapRepository.shared.getRoadmap()
+                let roadmaps = RoadmapRepository.shared.getDataCloud()
                 for roadmap in roadmaps {
                     FirebaseManager.shared.deleteImage(category: 0, uuid: roadmap.imageId ?? "defaultImage")
                 }

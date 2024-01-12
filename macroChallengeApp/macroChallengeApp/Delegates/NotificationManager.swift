@@ -11,7 +11,7 @@ import UserNotifications
 class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     static let shared = NotificationManager()
     let center = UNUserNotificationCenter.current()
-    var roadmaps = RoadmapRepository.shared.getRoadmap()
+    var roadmaps = RoadmapRepository.shared.getDataCloud()
     var roadmap: Roadmap = Roadmap()
     var days: [Day] = []
     var activities: [Activity] = []

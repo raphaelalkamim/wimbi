@@ -11,7 +11,7 @@ class CurrentViewController: UIViewController {
     weak var coordinator: CurrentCoordinator?
     let currentEmptyView = CurrentEmptyState()
     let currentCountDownView = CurrentCountDown()
-    var roadmaps = RoadmapRepository.shared.getRoadmap()
+    var roadmaps = RoadmapRepository.shared.getDataCloud()
     var roadmap: Roadmap = Roadmap()
     var mostRecentRoadmaps: [Roadmap] = []
     let designSystem: DesignSystem = DefaultDesignSystem.shared
@@ -23,13 +23,13 @@ class CurrentViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        roadmaps = RoadmapRepository.shared.getRoadmap()
+        roadmaps = RoadmapRepository.shared.getDataCloud()
         if !roadmaps.isEmpty {
             roadmaps.sort {
                 $0.dateInitial.toDate() < $1.dateInitial.toDate()
             }
             for newRoadmap in roadmaps {
-                if newRoadmap.dateFinal.toDate() > Date() { mostRecentRoadmaps.append(newRoadmap) }
+                //if newRoadmap.dateFinal.toDate() > Date() { mostRecentRoadmaps.append(newRoadmap) }
             }
         }
         setup()

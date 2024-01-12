@@ -16,7 +16,7 @@ class TabBarController: UITabBarController {
     private let current = CurrentCoordinator(navigationController: UINavigationController())
     private let profile = ProfileCoordinator(navigationController: UINavigationController())
     
-    var roadmaps = RoadmapRepository.shared.getRoadmap()
+    var roadmaps = RoadmapRepository.shared.getDataCloud()
     var roadmap: Roadmap = Roadmap()
     var mostRecentRoadmaps: [Roadmap] = []
     
@@ -44,7 +44,7 @@ class TabBarController: UITabBarController {
         explore.start()
         if !roadmaps.isEmpty {
             roadmaps.sort { $0.dateInitial.toDate() < $1.dateInitial.toDate()}
-            for newRoadmap in roadmaps { if newRoadmap.dateFinal.toDate() >= Date() { mostRecentRoadmaps.append(newRoadmap) } }
+            //for newRoadmap in roadmaps { if newRoadmap.dateFinal.toDate() >= Date() { mostRecentRoadmaps.append(newRoadmap) } }
             if !mostRecentRoadmaps.isEmpty { roadmap = mostRecentRoadmaps[0] }
             let date = Date()
             let dateFormatter = DateFormatter()

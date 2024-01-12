@@ -13,15 +13,22 @@ class ProfileView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let scrollView = UIScrollView()
     let contentView = UIView()
-    var roadmaps = RoadmapRepository.shared.getRoadmap()
+    var roadmaps: [Roadmap] = []
 
+    init (roadmaps: [Roadmap]) {
+        super.init(frame: .zero)
+        self.roadmaps = roadmaps
+        self.setup()
+
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     private lazy var name: UILabel = {
@@ -105,7 +112,7 @@ class ProfileView: UIView {
     }()
     
     func emptyState() {
-        if RoadmapRepository.shared.getRoadmap().isEmpty {
+        if roadmaps.isEmpty {
             myRoadmapCollectionView.isHidden = true
             emptyStateTitle.isHidden = false
             emptyStateImage.isHidden = false
