@@ -58,10 +58,13 @@ public class RoadmapRepository: NSManagedObject {
     }
     
     func pushRoadmap(newRoadmap: UserRoadmap) -> Roadmap? {
+        var newRoad = Roadmap()
         DataManager.shared.getRoadmapById(roadmapId: Int(newRoadmap.roadmap.id)) { roadmap in
-           // return roadmap
+            if let roadmap = roadmap {
+                newRoad = roadmap
+            }
         }
-        return Roadmap()
+        return newRoad
     }
     
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {
