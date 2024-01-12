@@ -35,11 +35,15 @@ public class RoadmapRepository: NSManagedObject {
     }
     
     func createRoadmap(roadmap: Roadmap, isNew: Bool, selectedImage: UIImage? = nil) -> Roadmap {
+        var newRoadmap = roadmap
+        for day in 0..<roadmap.dayCount {
+            let newDay = self.setupDays(startDay: roadmap.dateInitial.toDate(), indexPath: day, isSelected: day == 0)
+            newRoadmap.days.append(newDay)
+        }
         if isNew {
-            var createdDays = roadmap.days
+            var createdDays = newRoadmap.days
             createdDays.sort { $0.id < $1.id }
-            self.postInBackend(roadmap: roadmap, newDays: createdDays, selectedImage: selectedImage)
-            
+            self.postInBackend(roadmap: newRoadmap, newDays: createdDays, selectedImage: selectedImage)
         }
         return roadmap
     }
@@ -51,7 +55,6 @@ public class RoadmapRepository: NSManagedObject {
          
         var newDays = newRoadmap.days
         newDays.sort { $0.id < $1.id }
-        newDays[0].isSelected = true
         
         self.updateBackend(roadmap: roadmap, id: Int(newRoadmap.id), newDays: newDays, selectedImage: selectedImage)
         return newRoadmap

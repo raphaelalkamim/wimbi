@@ -103,7 +103,7 @@ extension CategoryViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 16
         
         if edit {
-            if categories[indexPath.row].title == editRoadmap.category ?? "NoCategory" {
+            if categories[indexPath.row].title == editRoadmap.category {
                 self.categorySelected = categories[indexPath.row].title
                 cell.selectedBackgroundView()
             }

@@ -13,8 +13,7 @@ import FirebaseAnalytics
 extension DataManager {
     // MARK: - POST
     func postRoadmap(roadmap: Roadmap, days: [Day], selectedImage: UIImage? = nil) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
+        let reciviedRoadmap = roadmap
         
         let keyWords = ["trip", "viagem", "travel", "viaggiare"]
         let codeTrip = "\(Int.random(in: 0..<1_000_000))\(keyWords.randomElement() ?? "space")\(Int.random(in: 0..<1_000_000))"
@@ -32,7 +31,7 @@ extension DataManager {
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
             "shareKey": codeTrip,
-            "createdAt": dateFormatter.string(from: Date()),
+            "createdAt": Date().toString(),
             "currency": roadmap.currency,
             "likesCount": 0
         ]
@@ -68,7 +67,7 @@ extension DataManager {
                                 
                                 self.postDays(roadmapId: roadmapResponse.id, daysCore: days)
                                 if let selectedImage = selectedImage {
-                                    FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapResponse.id)
+                                    FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapResponse.id, roadmapCore: reciviedRoadmap, uuid: roadmapResponse.imageId)
                                 }
                             } catch {
                                 print(error)
@@ -171,9 +170,6 @@ extension DataManager {
     }
     // MARK: - PUT
     func putRoadmap(roadmap: Roadmap, roadmapId: Int, newDays: [Day], selectedImage: UIImage? = nil) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let roadmapJson: [String: Any] = [
             "name": roadmap.name,
             "location": roadmap.location,
@@ -187,7 +183,7 @@ extension DataManager {
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
             "shareKey": roadmap.shareKey,
-            "createdAt": dateFormatter.string(from: Date()),
+            "createdAt": Date().toString(),
             "currency": roadmap.currency,
             "likesCount": roadmap.likesCount
         ]
@@ -217,7 +213,7 @@ extension DataManager {
                     if httpResponse.statusCode == 200 {
                         self.postDays(roadmapId: roadmapId, daysCore: newDays)
                         if let selectedImage = selectedImage {
-                            FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapId, uuid: roadmap.imageId)
+                            FirebaseManager.shared.uploadImageRoadmap(image: selectedImage, roadmapId: roadmapId, roadmapCore: roadmap, uuid: roadmap.imageId)
                         }
                         print("Atualizou")
                     }
@@ -267,9 +263,6 @@ extension DataManager {
     
     // MARK: - PUT
     func putBudgetRoadmap(roadmap: Roadmap, roadmapId: Int) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let roadmapJson: [String: Any] = [
             "name": roadmap.name,
             "location": roadmap.location,
@@ -283,7 +276,7 @@ extension DataManager {
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
             "shareKey": "ABC123",
-            "createdAt": dateFormatter.string(from: Date()),
+            "createdAt": Date().toString(),
             "currency": roadmap.currency,
             "likesCount": roadmap.likesCount
         ]
