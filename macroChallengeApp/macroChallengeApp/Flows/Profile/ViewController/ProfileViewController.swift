@@ -57,7 +57,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         if user.isEmpty {
             self.profileView.getName().text = "Usuário"
             self.profileView.getUsernameApp().text = "Usuário"
-            self.roadmaps = RoadmapRepository.shared.getDataCloud()
+            self.getDataCloud()
         } else {
             guard let user = user.first else { return }
             self.changeToUserInfo(user: user)
@@ -117,7 +117,22 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
                 self.profileView.setupImage(image: imageNew ?? UIImage(named: "icon")!)
             }
         }
- 
+    }
+    
+    // MARK: Manage Data Cloud
+    func getDataCloud() {
+        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+            let userID = String(data: data, encoding: .utf8)!
+            DataManager.shared.getUser(username: userID, { user in
+                let userLocal = UserRepository.shared.createUser(user: user)
+                self.changeToUserInfo(user: userLocal)
+                if !user.userRoadmap.isEmpty {
+                    for roadmap in user.userRoadmap {
+                        self.roadmaps.append(RoadmapRepository.shared.pushRoadmap(newRoadmap: roadmap) ?? Roadmap())
+                    }
+                }
+            })
+        }
     }
 }
 
