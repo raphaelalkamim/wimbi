@@ -73,13 +73,13 @@ extension ProfileViewController: UICollectionViewDelegate {
 
 extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.roadmaps = getDataCloud()
         profileView.emptyState()
+        print("roadmaps.count\(roadmaps.count)")
         return roadmaps.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var openRoadmap = roadmaps[indexPath.row]
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        var openRoadmap = roadmaps[indexPath.row]
 //        if openRoadmap.isShared {
 //            // chama o roadmap do back
 //            DataManager.shared.getRoadmapById(roadmapId: Int(roadmaps[indexPath.row].id)) { backRoadmap in
@@ -105,11 +105,12 @@ extension ProfileViewController: UICollectionViewDataSource {
 //        } else {
 //            self.coordinator?.openRoadmap(roadmap: openRoadmap)
 //        }
-    }
+//    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else {
             preconditionFailure("Cell not find")
+            print("cell guard let")
         }
         
         let isNew = false
@@ -131,6 +132,7 @@ extension ProfileViewController: UICollectionViewDataSource {
 //            cell.likeLabel.text = String(roadmaps[indexPath.row].likesCount)
 //        }
         cell.setupAnchors()
+        print("roadmaps.cell\(cell.title)")
         return cell
     }
 }

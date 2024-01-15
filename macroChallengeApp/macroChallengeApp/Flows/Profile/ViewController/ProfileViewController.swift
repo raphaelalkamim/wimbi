@@ -26,28 +26,23 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     override func loadView() {
         view = profileView
     }
-    
+
     override func viewDidLoad() {
-        self.roadmaps = self.getDataCloud()
-        profileView.roadmaps = self.roadmaps
-        
         super.viewDidLoad()
-        
         self.network.startMonitoring()
-        self.setupProfileView()
 
         profileView.userImage.addTarget(self, action: #selector(editProfile), for: .touchUpInside)
-        profileView.bindColletionView(delegate: self, dataSource: self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
         self.setContextMenu()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         SignInWithAppleManager.shared.checkUserStatus()
-
+        self.setupProfileView()
+        
         if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
             coordinator?.startLogin()
-            
+
         } else {
             profileView.tutorialTitle.addTarget(self, action: #selector(tutorial), for: .touchUpInside)
             if tutorialEnable == false {
@@ -58,49 +53,50 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
             self.profileView.getName().text = "Usuário"
             self.profileView.getUsernameApp().text = "Usuário"
             self.roadmaps = self.getDataCloud()
+            self.profileView.roadmaps =  self.roadmaps
+            self.profileView.myRoadmapCollectionView.reloadData()
+            print("fuck empty")
         } else {
             guard let user = user.first else { return }
             self.roadmaps = self.getDataCloud()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.profileView.roadmaps =  self.roadmaps
+                self.profileView.myRoadmapCollectionView.reloadData()
+            }
+
             self.changeToUserInfo(user: user)
+            print("fuck else")
         }
     }
-    
+
     @objc func profileSettings() {
         coordinator?.settings(profileVC: self)
     }
-    
+
     @objc func editProfile() {
         coordinator?.startEditProfile()
     }
-    
+
     func tutorialTimer() {
         UserDefaults.standard.set(true, forKey: "tutorialProfile")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.profileView.tutorialView.isHidden = false
         }
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
             self.profileView.tutorialView.removeFromSuperview()
         }
     }
-    
+
     @objc func tutorial() {
         UserDefaults.standard.set(true, forKey: "tutorialProfile")
         profileView.tutorialView.removeFromSuperview()
     }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        // self.roadmaps = self.getDataCloud()
-        profileView.setup()
-        profileView.roadmaps = self.roadmaps
-        profileView.myRoadmapCollectionView.reloadData()
-        profileView.myRoadmapCollectionView.layoutIfNeeded()
-        profileView.updateConstraintsCollection()
-    }
-    
+
     func changeToUserInfo(user: UserLocal) {
         self.profileView.getName().text = user.name
-        self.profileView.getUsernameApp().text = "@" + (user.usernameApp ?? "newUser") 
+        self.profileView.getUsernameApp().text = "@" + (user.usernameApp ?? "newUser")
         self.profileView.getTable().reloadData()
         if var path = user.photoId {
             let imageNew = UIImage(contentsOfFile: SaveImagecontroller.getFilePath(fileName: path))
@@ -119,7 +115,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
             }
         }
     }
-    
+
     // MARK: Manage Data Cloud
     func getDataCloud() -> [RoadmapDTO] {
         var newRoadmaps: [RoadmapDTO] = []
@@ -132,8 +128,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
                     newRoadmaps.append(roadmap.roadmap)
                 }
                 self.roadmaps = newRoadmaps
-                self.profileView.roadmaps = newRoadmaps
-                self.profileView.myRoadmapCollectionView.reloadData()
             })
             return newRoadmaps
         }

@@ -13,8 +13,8 @@ class ProfileView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let scrollView = UIScrollView()
     let contentView = UIView()
-    var roadmaps: [RoadmapDTO] = [] { didSet
-        {
+    var roadmaps: [RoadmapDTO] = [] { 
+        didSet {
             print("Atualizou")
             print(roadmaps.count)
         }
