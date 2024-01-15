@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     override func viewDidLoad() {
-        self.getDataCloud()
+        self.roadmaps = self.getDataCloud()
         profileView.roadmaps = self.roadmaps
         
         super.viewDidLoad()
@@ -57,10 +57,10 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         if user.isEmpty {
             self.profileView.getName().text = "Usuário"
             self.profileView.getUsernameApp().text = "Usuário"
-            self.getDataCloud()
+            self.roadmaps = self.getDataCloud()
         } else {
             guard let user = user.first else { return }
-            self.getDataCloud()
+            self.roadmaps = self.getDataCloud()
             self.changeToUserInfo(user: user)
         }
     }
@@ -90,7 +90,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.getDataCloud()
+        // self.roadmaps = self.getDataCloud()
         profileView.setup()
         profileView.roadmaps = self.roadmaps
         profileView.myRoadmapCollectionView.reloadData()
@@ -121,18 +121,23 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     // MARK: Manage Data Cloud
-    func getDataCloud() {
+    func getDataCloud() -> [RoadmapDTO] {
+        var newRoadmaps: [RoadmapDTO] = []
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
             DataManager.shared.getUser(username: userID, { user in
                 let userLocal = UserRepository.shared.createUser(user: user)
                 self.changeToUserInfo(user: userLocal)
                 for roadmap in user.userRoadmap {
-                    self.roadmaps.append(roadmap.roadmap)
+                    newRoadmaps.append(roadmap.roadmap)
                 }
-                
+                self.roadmaps = newRoadmaps
+                self.profileView.roadmaps = newRoadmaps
+                self.profileView.myRoadmapCollectionView.reloadData()
             })
+            return newRoadmaps
         }
+        return []
     }
 }
 

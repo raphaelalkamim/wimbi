@@ -53,7 +53,7 @@ extension ProfileViewController {
                     
                     action.addAction(UIAlertAction(title: "Delete".localized(), style: .destructive, handler: { [weak self] _ in
                         do {
-                            try RoadmapRepository.shared.deleteRoadmap(roadmap: self!.roadmaps[indexPath.row])
+                            //try RoadmapRepository.shared.deleteRoadmap(roadmap: self!.roadmaps[indexPath.row])
                         } catch { print(error) }
                         self?.profileView.myRoadmapCollectionView.reloadData()
                     }))
@@ -73,37 +73,38 @@ extension ProfileViewController: UICollectionViewDelegate {
 
 extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        self.roadmaps = getDataCloud()
         profileView.emptyState()
         return roadmaps.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var openRoadmap = roadmaps[indexPath.row]
-        if openRoadmap.isShared {
-            // chama o roadmap do back
-            DataManager.shared.getRoadmapById(roadmapId: Int(roadmaps[indexPath.row].id)) { backRoadmap in
-                if let backRoadmap = backRoadmap {
-                    self.coordinator?.openRoadmap(roadmap: backRoadmap )
-                } else {
-                    do {
-                        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-                        alert.view.tintColor = .accent
-                        let titleFont = UIFont(name: "Avenir-Black", size: 18)!
-                        let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
-                        let string = NSAttributedString(string: "This itinerary has been deleted by another user".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
-                        alert.setValue(string, forKey: "attributedMessage")
-                        
-                        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-                        }))
-                        self.coordinator?.showAlertController(alert: alert)
-                    } catch {
-                        print(error)
-                    }
-                }
-            }
-        } else {
-            self.coordinator?.openRoadmap(roadmap: openRoadmap)
-        }
+//        if openRoadmap.isShared {
+//            // chama o roadmap do back
+//            DataManager.shared.getRoadmapById(roadmapId: Int(roadmaps[indexPath.row].id)) { backRoadmap in
+//                if let backRoadmap = backRoadmap {
+//                    self.coordinator?.openRoadmap(roadmap: backRoadmap )
+//                } else {
+//                    do {
+//                        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+//                        alert.view.tintColor = .accent
+//                        let titleFont = UIFont(name: "Avenir-Black", size: 18)!
+//                        let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
+//                        let string = NSAttributedString(string: "This itinerary has been deleted by another user".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
+//                        alert.setValue(string, forKey: "attributedMessage")
+//
+//                        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+//                        }))
+//                        self.coordinator?.showAlertController(alert: alert)
+//                    } catch {
+//                        print(error)
+//                    }
+//                }
+//            }
+//        } else {
+//            self.coordinator?.openRoadmap(roadmap: openRoadmap)
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -113,19 +114,22 @@ extension ProfileViewController: UICollectionViewDataSource {
         
         let isNew = false
         UserDefaults.standard.bool(forKey: "isPublic")
-        cell.setup(name: roadmaps[indexPath.row].name , image: roadmaps[indexPath.row].imageId ?? "floripa", isNew: isNew)
-        cell.setupImage(imageId: roadmaps[indexPath.row].imageId , category: roadmaps[indexPath.row].category ?? "City")
+        cell.setup(name: roadmaps[indexPath.row].name,
+                   image: roadmaps[indexPath.row].imageId,
+                   isNew: isNew)
+        cell.setupImage(imageId: roadmaps[indexPath.row].imageId,
+                        category: roadmaps[indexPath.row].category )
         
-        if roadmaps[indexPath.row].isPublic == false {
-            cell.likeImage.image = UIImage(systemName: "lock.fill")
-            UserDefaults.standard.set(false, forKey: "isPublic")
-            cell.likeLabel.isHidden = true
-        } else {
-            cell.likeLabel.isHidden = false
-            UserDefaults.standard.set(true, forKey: "isPublic")
-            cell.likeImage.image = UIImage(systemName: "heart.fill")
-            cell.likeLabel.text = String(roadmaps[indexPath.row].likesCount)
-        }
+//        if roadmaps[indexPath.row].isPublic == false {
+//            cell.likeImage.image = UIImage(systemName: "lock.fill")
+//            UserDefaults.standard.set(false, forKey: "isPublic")
+//            cell.likeLabel.isHidden = true
+//        } else {
+//            cell.likeLabel.isHidden = false
+//            UserDefaults.standard.set(true, forKey: "isPublic")
+//            cell.likeImage.image = UIImage(systemName: "heart.fill")
+//            cell.likeLabel.text = String(roadmaps[indexPath.row].likesCount)
+//        }
         cell.setupAnchors()
         return cell
     }
