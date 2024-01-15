@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     weak var exploreCoordinator: ExploreCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let profileView = ProfileView()
-    var roadmaps: [Roadmap] = []
+    var roadmaps: [RoadmapDTO] = []
     var dataManager = DataManager.shared
     let network: NetworkMonitor = NetworkMonitor.shared
     let tutorialEnable = UserDefaults.standard.bool(forKey: "tutorialProfile")
@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     override func viewDidLoad() {
-        self.roadmaps = RoadmapRepository.shared.getDataCloud()
+        self.getDataCloud()
         profileView.roadmaps = self.roadmaps
         
         super.viewDidLoad()
@@ -60,6 +60,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
             self.getDataCloud()
         } else {
             guard let user = user.first else { return }
+            self.getDataCloud()
             self.changeToUserInfo(user: user)
         }
     }
@@ -89,7 +90,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.roadmaps = RoadmapRepository.shared.getDataCloud()
+        self.getDataCloud()
         profileView.setup()
         profileView.roadmaps = self.roadmaps
         profileView.myRoadmapCollectionView.reloadData()
@@ -126,11 +127,10 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
             DataManager.shared.getUser(username: userID, { user in
                 let userLocal = UserRepository.shared.createUser(user: user)
                 self.changeToUserInfo(user: userLocal)
-                if !user.userRoadmap.isEmpty {
-                    for roadmap in user.userRoadmap {
-                        self.roadmaps.append(RoadmapRepository.shared.pushRoadmap(newRoadmap: roadmap) ?? Roadmap())
-                    }
+                for roadmap in user.userRoadmap {
+                    self.roadmaps.append(roadmap.roadmap)
                 }
+                
             })
         }
     }

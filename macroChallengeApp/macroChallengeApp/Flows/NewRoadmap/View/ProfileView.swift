@@ -13,9 +13,9 @@ class ProfileView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let scrollView = UIScrollView()
     let contentView = UIView()
-    var roadmaps: [Roadmap] = []
+    var roadmaps: [RoadmapDTO] = []
 
-    init (roadmaps: [Roadmap]) {
+    init (roadmaps: [RoadmapDTO]) {
         super.init(frame: .zero)
         self.roadmaps = roadmaps
         self.setup()

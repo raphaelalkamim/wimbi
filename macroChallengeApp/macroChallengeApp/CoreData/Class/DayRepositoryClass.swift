@@ -13,7 +13,6 @@ class DayRepository: NSManagedObject {
     static let shared: DayRepository = DayRepository()
     
     func createDay(roadmap: Roadmap, day: Day) {
-        
     }
     
     func getDay() -> [Day] {
@@ -21,7 +20,6 @@ class DayRepository: NSManagedObject {
     }
     
     func deleteDay(day: Day) throws {
-
     }
     
 }
