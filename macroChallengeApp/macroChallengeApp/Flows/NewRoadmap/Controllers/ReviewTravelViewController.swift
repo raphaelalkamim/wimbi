@@ -35,6 +35,7 @@ class ReviewTravelViewController: UIViewController {
     var edit = false
     
     weak var delegateRoadmap: ReviewTravelDelegate?
+    weak var updateDelegate: UpdateDelegate?
     
     override func loadView() {
         view = reviewTravelView

@@ -29,7 +29,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getContent()
         self.network.startMonitoring()
         profileView.userImage.addTarget(self, action: #selector(editProfile), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
@@ -61,6 +60,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         } else {
             guard let user = user.first else { return }
             self.changeToUserInfo(user: user)
+            getContent()
             print("fuck else")
         }
     }
@@ -131,6 +131,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     // MARK: Manage Data Cloud
     func getContent() {
+        self.roadmaps = []
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
             DataManager.shared.getUser(username: userID, { user in
@@ -139,7 +140,6 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
                     self.reloadViewItems()
                 }
             })
-            self.reloadViewItems()
         }
     }
     
@@ -152,4 +152,14 @@ extension ProfileViewController: SignOutDelegate {
     func reloadScreenStatus() {
         self.coordinator?.backPage()
     }
+}
+
+extension ProfileViewController: UpdateDelegate {
+    func updateRoadmaps() {
+        self.getContent()
+    }
+}
+
+protocol UpdateDelegate: AnyObject {
+    func updateRoadmaps() 
 }
