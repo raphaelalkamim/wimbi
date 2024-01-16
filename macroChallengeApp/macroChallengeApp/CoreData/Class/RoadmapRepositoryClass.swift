@@ -14,24 +14,18 @@ public class RoadmapRepository: NSManagedObject {
     static let shared: RoadmapRepository = RoadmapRepository()
         
     // MARK: Manage Data Cloud
-    func getDataCloud() -> [Roadmap] {
-        var roadmaps: [Roadmap]?
+    func getDataCloud() -> [RoadmapDTO] {
+        var newRoadmaps: [RoadmapDTO] = []
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
             DataManager.shared.getUser(username: userID, { user in
-                if UserRepository.shared.getUser().isEmpty {
-                    let userLocal = UserRepository.shared.createUser(user: user)
-                }
-                if !user.userRoadmap.isEmpty {
-                    for roadmap in user.userRoadmap {
-                        DataManager.shared.getRoadmapById(roadmapId: roadmap.id) { pushedRoadmap in
-                            roadmaps?.append(pushedRoadmap ?? Roadmap())
-                        }
-                    }
+                for roadmap in user.userRoadmap {
+                    newRoadmaps.append(roadmap.roadmap)
                 }
             })
+            return newRoadmaps
         }
-        return roadmaps ?? []
+        return []
     }
     
     func createRoadmap(roadmap: Roadmap, isNew: Bool, selectedImage: UIImage? = nil) -> Roadmap {

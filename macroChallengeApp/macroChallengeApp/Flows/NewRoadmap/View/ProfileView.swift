@@ -116,18 +116,26 @@ class ProfileView: UIView {
         return button
     }()
     
-    func emptyState() {
+    func reloadItems(roadmaps: [RoadmapDTO]) {
+        self.roadmaps = roadmaps
         if roadmaps.isEmpty {
-            myRoadmapCollectionView.isHidden = true
-            emptyStateTitle.isHidden = false
-            emptyStateImage.isHidden = false
-            scrollView.isScrollEnabled = false
+            emptyState()
         } else {
             myRoadmapCollectionView.isHidden = false
             emptyStateTitle.isHidden = true
             emptyStateImage.isHidden = true
             scrollView.isScrollEnabled = true
         }
+        updateConstraintsCollection()
+        myRoadmapCollectionView.reloadData()
+        myRoadmapCollectionView.reloadInputViews()
+    }
+    
+    func emptyState() {
+        myRoadmapCollectionView.isHidden = true
+        emptyStateTitle.isHidden = false
+        emptyStateImage.isHidden = false
+        scrollView.isScrollEnabled = false
     }
     
     func setup() {

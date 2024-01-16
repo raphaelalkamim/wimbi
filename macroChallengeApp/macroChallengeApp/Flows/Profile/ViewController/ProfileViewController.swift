@@ -29,8 +29,8 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getContent()
         self.network.startMonitoring()
-
         profileView.userImage.addTarget(self, action: #selector(editProfile), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(profileSettings))
         self.setContextMenu()
@@ -38,6 +38,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
 
     override func viewWillAppear(_ animated: Bool) {
         SignInWithAppleManager.shared.checkUserStatus()
+        self.user = UserRepository.shared.getUser()
         self.setupProfileView()
         
         if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
@@ -49,22 +50,16 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
                 self.tutorialTimer()
             }
         }
+
         if user.isEmpty {
             self.profileView.getName().text = "Usuário"
             self.profileView.getUsernameApp().text = "Usuário"
             self.roadmaps = self.getDataCloud()
-            self.profileView.roadmaps =  self.roadmaps
+            self.profileView.roadmaps = self.roadmaps
             self.profileView.myRoadmapCollectionView.reloadData()
             print("fuck empty")
         } else {
             guard let user = user.first else { return }
-            self.roadmaps = self.getDataCloud()
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.profileView.roadmaps =  self.roadmaps
-                self.profileView.myRoadmapCollectionView.reloadData()
-            }
-
             self.changeToUserInfo(user: user)
             print("fuck else")
         }
@@ -116,7 +111,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
         }
     }
 
-    // MARK: Manage Data Cloud
+    // MARK: Manage Data Cloud: if is the first login (new user)
     func getDataCloud() -> [RoadmapDTO] {
         var newRoadmaps: [RoadmapDTO] = []
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
@@ -132,6 +127,24 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
             return newRoadmaps
         }
         return []
+    }
+    
+    // MARK: Manage Data Cloud
+    func getContent() {
+        if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
+            let userID = String(data: data, encoding: .utf8)!
+            DataManager.shared.getUser(username: userID, { user in
+                for roadmap in user.userRoadmap {
+                    self.roadmaps.append(roadmap.roadmap)
+                    self.reloadViewItems()
+                }
+            })
+            self.reloadViewItems()
+        }
+    }
+    
+    func reloadViewItems() {
+        self.profileView.reloadItems(roadmaps: self.roadmaps)
     }
 }
 

@@ -233,7 +233,7 @@ extension MyTripViewController: ReviewTravelDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         #warning("COREDATA: Corrigir funcao para pegar roadmaps do usuario")
         let newRoadmaps = RoadmapRepository.shared.getDataCloud()
-        self.roadmap = self.findRoadmap(roadmaps: newRoadmaps) ?? self.roadmap
+        // self.roadmap = self.findRoadmap(roadmaps: newRoadmaps) ?? self.roadmap
         
     }
     func findRoadmap(roadmaps: [Roadmap]) -> Roadmap? {

@@ -73,8 +73,6 @@ extension ProfileViewController: UICollectionViewDelegate {
 
 extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        profileView.emptyState()
-        print("roadmaps.count\(roadmaps.count)")
         return roadmaps.count
     }
     
