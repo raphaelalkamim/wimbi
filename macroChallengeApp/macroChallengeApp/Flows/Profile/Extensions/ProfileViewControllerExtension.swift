@@ -76,34 +76,29 @@ extension ProfileViewController: UICollectionViewDataSource {
         return roadmaps.count
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        var openRoadmap = roadmaps[indexPath.row]
-//        if openRoadmap.isShared {
-//            // chama o roadmap do back
-//            DataManager.shared.getRoadmapById(roadmapId: Int(roadmaps[indexPath.row].id)) { backRoadmap in
-//                if let backRoadmap = backRoadmap {
-//                    self.coordinator?.openRoadmap(roadmap: backRoadmap )
-//                } else {
-//                    do {
-//                        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-//                        alert.view.tintColor = .accent
-//                        let titleFont = UIFont(name: "Avenir-Black", size: 18)!
-//                        let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
-//                        let string = NSAttributedString(string: "This itinerary has been deleted by another user".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
-//                        alert.setValue(string, forKey: "attributedMessage")
-//
-//                        alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-//                        }))
-//                        self.coordinator?.showAlertController(alert: alert)
-//                    } catch {
-//                        print(error)
-//                    }
-//                }
-//            }
-//        } else {
-//            self.coordinator?.openRoadmap(roadmap: openRoadmap)
-//        }
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var openRoadmap = roadmaps[indexPath.row]
+        DataManager.shared.getRoadmapById(roadmapId: Int(roadmaps[indexPath.row].id)) { backRoadmap in
+            if let backRoadmap = backRoadmap {
+                self.coordinator?.openRoadmap(roadmap: backRoadmap )
+            } else {
+                do {
+                    let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+                    alert.view.tintColor = .accent
+                    let titleFont = UIFont(name: "Avenir-Black", size: 18)!
+                    let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
+                    let string = NSAttributedString(string: "This itinerary has been deleted by another user".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
+                    alert.setValue(string, forKey: "attributedMessage")
+
+                    alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+                    }))
+                    self.coordinator?.showAlertController(alert: alert)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else {

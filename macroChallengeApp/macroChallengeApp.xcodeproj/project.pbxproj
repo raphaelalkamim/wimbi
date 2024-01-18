@@ -671,6 +671,7 @@
 		13C8A10928C6826B00994196 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B007A6582B59802100119FCE /* ModelsDTO */,
 				13C8A10C28C6828900994196 /* User.swift */,
 				13C8A10A28C6827800994196 /* Roadmaps.swift */,
 				13C8A11228C6835300994196 /* Activity.swift */,
@@ -679,10 +680,8 @@
 				13C8A11728C691F100994196 /* DataType.swift */,
 				B0CDF34F28CFC7E90092A76C /* Category.swift */,
 				DF2643AA28DB9CC500053180 /* UserRoadmap.swift */,
-				DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */,
 				B0E0684E28EF50C500418F87 /* CurrencyAPI.swift */,
 				B0E0685028EF5FD700418F87 /* Currency.swift */,
-				DF66658128F0991100E37429 /* DayDTO.swift */,
 				DF89333D290B1DD900C280FA /* Tag.swift */,
 				DF2FAF812911B51A00194F04 /* RefreshToken.swift */,
 			);
@@ -963,6 +962,15 @@
 				A0A8BABC28E4E8C0006A8BDD /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		B007A6582B59802100119FCE /* ModelsDTO */ = {
+			isa = PBXGroup;
+			children = (
+				DF2643AC28DB9EAD00053180 /* RoadmapDTO.swift */,
+				DF66658128F0991100E37429 /* DayDTO.swift */,
+			);
+			path = ModelsDTO;
 			sourceTree = "<group>";
 		};
 		B032E52529BE239000E02857 /* ViewModel */ = {
