@@ -18,12 +18,15 @@ struct Roadmap: Codable {
     var peopleCount: Int
     var imageId: String
     var category: String
-    var isShared: Bool
-    var isPublic: Bool
-    var shareKey: String
-    var createdAt = Date()
     var currency: String
     var likesCount: Int
+
+    // we need to add to BE
+    var isShared: Bool
+    var shareKey: String
+    var isPublic: Bool
+    var createdAt = Date()
+
     var days: [Day]
     
     enum CodingKeys: String, CodingKey {
