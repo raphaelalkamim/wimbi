@@ -35,7 +35,11 @@ class DaysViewController: UIViewController {
     required init?(coder: NSCoder) {
         return nil
     }
-    
+
+    @objc func handleInitialDateChange() {
+          finalDate.minimumDate = initialDate.date
+      }
+
     func setupToolbar() {
         let barItems = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelRoadmap))
         barItems.tintColor = .accent
@@ -135,6 +139,7 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as? DatePickerTableViewCell {
                 if indexPath.row == 0 {
                     cell.label.text = "Start date".localized()
+                    cell.datePicker.addTarget(self, action: #selector(handleInitialDateChange), for: .valueChanged)
                     self.initialDate = cell.datePicker
                     if edit {
                         cell.datePicker.date = editRoadmap.dateInitial.toDate()
@@ -142,12 +147,12 @@ extension DaysViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.setupSeparator()
                 } else {
                     cell.label.text = "End date".localized()
+                    cell.datePicker.minimumDate = initialDate.date
                     self.finalDate = cell.datePicker
                     if edit {
                         cell.datePicker.date = editRoadmap.dateFinal.toDate()
                     }
                 }
-                cell.datePicker.minimumDate = Date()
                 cellTable = cell
             }
         } else {
