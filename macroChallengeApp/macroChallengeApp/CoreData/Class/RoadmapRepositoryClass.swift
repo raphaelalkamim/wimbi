@@ -71,7 +71,7 @@ public class RoadmapRepository: NSManagedObject {
         return day
     }
     
-    func deleteRoadmap(roadmap: Roadmap) throws {
+    func deleteRoadmap(roadmap: RoadmapDTO) throws {
         FirebaseManager.shared.deleteImage(category: 0, uuid: roadmap.imageId)
         DataManager.shared.deleteObjectBack(objectID: Int(roadmap.id), urlPrefix: "roadmaps")
     }

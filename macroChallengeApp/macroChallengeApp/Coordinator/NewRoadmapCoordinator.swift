@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol UpdateRoadmapsDelegate: AnyObject {
+    func updateRoadmaps()
+}
+
 class NewRoadmapCoordinator: Coordinator {
     var childCoordinators: [Coordinator]
     
     var navigationController: UINavigationController
     weak var delegate: PresentationCoordinatorDelegate?
+    weak var delegateNewRoadmaps: UpdateRoadmapsDelegate?
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -44,6 +49,7 @@ class NewRoadmapCoordinator: Coordinator {
     func startReview(roadmap: Roadmap) {
         let viewController = ReviewTravelViewController(roadmap: roadmap)
         viewController.coordinator = self
+        viewController.delegateNewRoadmap = delegateNewRoadmaps
         UIAccessibility.post(notification: .screenChanged, argument: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }

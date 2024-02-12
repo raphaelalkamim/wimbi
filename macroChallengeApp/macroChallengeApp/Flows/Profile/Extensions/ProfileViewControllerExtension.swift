@@ -32,35 +32,13 @@ extension ProfileViewController {
             let touchPoint = sender.location(in: profileView.myRoadmapCollectionView)
             if let indexPath = profileView.myRoadmapCollectionView.indexPathForItem(at: touchPoint) {
                 if roadmaps.isEmpty || !network.isReachable {
-                    let action = UIAlertController(title: "Can't delete", message: nil, preferredStyle: .actionSheet)
-                    action.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { [weak self] _ in
-                        self?.profileView.myRoadmapCollectionView.reloadData()
-                    }))
-                    present(action, animated: true)
+                    present(RoadmapAlertController.cantDelete(handler: self.profileView.myRoadmapCollectionView.reloadData()), animated: true)
                 } else {
-                    let action = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
-                    
-                    let roadmapName = "'\(roadmaps[indexPath.item].name ?? "NONE")'"
-                    let titleFont = UIFont(name: "Avenir-Black", size: 16)!
-                    let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
-                    let title = "Delete all content from".localized()
-                    let string = NSAttributedString(string: "\(title) \(roadmapName)", attributes: titleAtt as [NSAttributedString.Key: Any])
-                    action.setValue(string, forKey: "attributedTitle")
-                    let subtitleFont = UIFont(name: "Avenir-Roman", size: 16)!
-                    let subtitleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: subtitleFont)]
-                    let subtitleString = NSAttributedString(string: "The content cannot be recovered.".localized(), attributes: subtitleAtt as [NSAttributedString.Key: Any])
-                    action.setValue(subtitleString, forKey: "attributedMessage")
-                    
-                    action.addAction(UIAlertAction(title: "Delete".localized(), style: .destructive, handler: { [weak self] _ in
-                        do {
-                            //try RoadmapRepository.shared.deleteRoadmap(roadmap: self!.roadmaps[indexPath.row])
-                        } catch { print(error) }
-                        self?.profileView.myRoadmapCollectionView.reloadData()
-                    }))
-                    action.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil))
-                    action.view.tintColor = .accent
-                    present(action, animated: true)
-                    
+                    present(RoadmapAlertController.deleteRoadmap(roadmap: roadmaps[indexPath.item], handler: self.getContent()), animated: true)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                        self.getContent()
+                        print("atualizar tabela")
+                    }
                 }
                 navigationController?.navigationBar.prefersLargeTitles = true
             }
@@ -77,25 +55,12 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var openRoadmap = roadmaps[indexPath.row]
-        DataManager.shared.getRoadmapById(roadmapId: Int(roadmaps[indexPath.row].id)) { backRoadmap in
+        let openRoadmap = roadmaps[indexPath.row]
+        DataManager.shared.getRoadmapById(roadmapId: Int(openRoadmap.id)) { backRoadmap in
             if let backRoadmap = backRoadmap {
                 self.coordinator?.openRoadmap(roadmap: backRoadmap )
             } else {
-                do {
-                    let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-                    alert.view.tintColor = .accent
-                    let titleFont = UIFont(name: "Avenir-Black", size: 18)!
-                    let titleAtt = [NSAttributedString.Key.font: UIFontMetrics(forTextStyle: .body).scaledFont(for: titleFont)]
-                    let string = NSAttributedString(string: "This itinerary has been deleted by another user".localized(), attributes: titleAtt as [NSAttributedString.Key: Any])
-                    alert.setValue(string, forKey: "attributedMessage")
-
-                    alert.addAction(UIAlertAction(title: "OK".localized(), style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
-                    }))
-                    self.coordinator?.showAlertController(alert: alert)
-                } catch {
-                    print(error)
-                }
+                self.coordinator?.showAlertController(alert: RoadmapAlertController.roadmapsHasBeenDeleted())
             }
         }
     }
@@ -103,7 +68,6 @@ extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as? ProfileCollectionViewCell else {
             preconditionFailure("Cell not find")
-            print("cell guard let")
         }
         
         let isNew = false
@@ -114,16 +78,16 @@ extension ProfileViewController: UICollectionViewDataSource {
         cell.setupImage(imageId: roadmaps[indexPath.row].imageId,
                         category: roadmaps[indexPath.row].category )
         
-//        if roadmaps[indexPath.row].isPublic == false {
-//            cell.likeImage.image = UIImage(systemName: "lock.fill")
-//            UserDefaults.standard.set(false, forKey: "isPublic")
-//            cell.likeLabel.isHidden = true
-//        } else {
-//            cell.likeLabel.isHidden = false
-//            UserDefaults.standard.set(true, forKey: "isPublic")
-//            cell.likeImage.image = UIImage(systemName: "heart.fill")
-//            cell.likeLabel.text = String(roadmaps[indexPath.row].likesCount)
-//        }
+        //        if roadmaps[indexPath.row].isPublic == false {
+        //            cell.likeImage.image = UIImage(systemName: "lock.fill")
+        //            UserDefaults.standard.set(false, forKey: "isPublic")
+        //            cell.likeLabel.isHidden = true
+        //        } else {
+        //            cell.likeLabel.isHidden = false
+        //            UserDefaults.standard.set(true, forKey: "isPublic")
+        //            cell.likeImage.image = UIImage(systemName: "heart.fill")
+        //            cell.likeLabel.text = String(roadmaps[indexPath.row].likesCount)
+        //        }
         cell.setupAnchors()
         print("roadmaps.cell\(cell.title)")
         return cell

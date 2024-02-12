@@ -26,7 +26,6 @@ class CategoryViewController: UIViewController {
     var categorySelected = ""
     
     weak var delegateRoadmap: MyTripViewController?
-    weak var updateRoadmap: UpdateDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()

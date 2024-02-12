@@ -11,7 +11,7 @@ import UIKit
 extension ProfileViewController {
     func setContextMenu() {
         let addRoadMap = UIAction(title: "New itinerary".localized(), image: UIImage(systemName: "pencil")) { _ in
-            self.coordinator?.newRoadmap()
+            self.coordinator?.newRoadmap(delegateNewRoadmaps: self)
         }
         
         let insertRoadMap = UIAction(title: "Join itinerary".localized(), image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis")) { _ in

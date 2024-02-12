@@ -141,6 +141,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
                 }
             })
         }
+        updateRoadmaps()
     }
     
     func reloadViewItems() {
@@ -154,12 +155,8 @@ extension ProfileViewController: SignOutDelegate {
     }
 }
 
-extension ProfileViewController: UpdateDelegate {
+extension ProfileViewController: UpdateRoadmapsDelegate {
     func updateRoadmaps() {
-        self.getContent()
+        profileView.myRoadmapCollectionView.reloadData()
     }
-}
-
-protocol UpdateDelegate: AnyObject {
-    func updateRoadmaps() 
 }

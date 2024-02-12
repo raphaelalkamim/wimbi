@@ -12,6 +12,7 @@ class ProfileCoordinator: Coordinator {
     
     var navigationController: UINavigationController
     weak var delegate: PresentationCoordinatorDelegate?
+
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -29,9 +30,10 @@ class ProfileCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func newRoadmap() {
+    func newRoadmap(delegateNewRoadmaps: ProfileViewController) {
         let coordinator = NewRoadmapCoordinator(navigationController: UINavigationController())
         childCoordinators.append(coordinator)
+        coordinator.delegateNewRoadmaps = delegateNewRoadmaps
         coordinator.delegate = self
         coordinator.start()
         navigationController.present(coordinator.navigationController, animated: true) {

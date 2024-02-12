@@ -63,6 +63,7 @@
 		137C8D54291D862C0007AF5B /* CountdownWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C8D53291D862C0007AF5B /* CountdownWidgetView.swift */; };
 		13898E4B2B509E51003DB8AF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13898E4A2B509E51003DB8AF /* String.swift */; };
 		13898E4D2B50E358003DB8AF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13898E4C2B50E358003DB8AF /* Date.swift */; };
+		1397AA7F2B7AC65B00C07C1E /* RoadmapAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1397AA7E2B7AC65B00C07C1E /* RoadmapAlertController.swift */; };
 		13BD4FFB28D90EF700C0EA7C /* DesignSystem+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */; };
 		13BD4FFD28D90F5200C0EA7C /* DesignImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */; };
 		13BD4FFF28D90F9700C0EA7C /* DefaultDesignSystemImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */; };
@@ -278,6 +279,7 @@
 		137C8D53291D862C0007AF5B /* CountdownWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownWidgetView.swift; sourceTree = "<group>"; };
 		13898E4A2B509E51003DB8AF /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		13898E4C2B50E358003DB8AF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		1397AA7E2B7AC65B00C07C1E /* RoadmapAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapAlertController.swift; sourceTree = "<group>"; };
 		13BD4FFA28D90EF700C0EA7C /* DesignSystem+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+UIImage.swift"; sourceTree = "<group>"; };
 		13BD4FFC28D90F5200C0EA7C /* DesignImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignImages.swift; sourceTree = "<group>"; };
 		13BD4FFE28D90F9700C0EA7C /* DefaultDesignSystemImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDesignSystemImages.swift; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 				13BE583B2943F0D500D653B9 /* MapsAlert.swift */,
 				13BE583E2943F46B00D653B9 /* LoginAlert.swift */,
 				13BE58402943F61900D653B9 /* DuplicateAlert.swift */,
+				1397AA7E2B7AC65B00C07C1E /* RoadmapAlertController.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -1374,6 +1377,7 @@
 				13C8A10D28C6828900994196 /* User.swift in Sources */,
 				131272DC28E624CE000B7968 /* ExploreView.swift in Sources */,
 				13C8A13428CA6B4200994196 /* DefaultDesignSpacing.swift in Sources */,
+				1397AA7F2B7AC65B00C07C1E /* RoadmapAlertController.swift in Sources */,
 				B0E0685128EF5FD700418F87 /* Currency.swift in Sources */,
 				132AD926292C14FE00DE3E08 /* +Likes.swift in Sources */,
 				DF2EA1BD28DE28BA002F12D8 /* ActivityDestinyView.swift in Sources */,
@@ -1870,7 +1874,7 @@
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.0;
+				minimumVersion = 5.0.1;
 			};
 		};
 		DFAEB2B1292BF629006BCE46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {

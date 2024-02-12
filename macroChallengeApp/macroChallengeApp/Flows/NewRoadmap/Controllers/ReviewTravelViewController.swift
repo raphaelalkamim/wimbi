@@ -35,7 +35,7 @@ class ReviewTravelViewController: UIViewController {
     var edit = false
     
     weak var delegateRoadmap: ReviewTravelDelegate?
-    weak var updateDelegate: UpdateDelegate?
+    weak var delegateNewRoadmap: UpdateRoadmapsDelegate?
     
     override func loadView() {
         view = reviewTravelView
@@ -70,6 +70,8 @@ class ReviewTravelViewController: UIViewController {
             self.saveCoreData()
         }
         UIAccessibility.post(notification: .screenChanged, argument: coordinator?.navigationController)
+        
+        delegateNewRoadmap?.updateRoadmaps()
         coordinator?.dismiss(isNewRoadmap: true)
     }
     func updateCoreData() {
@@ -82,9 +84,9 @@ class ReviewTravelViewController: UIViewController {
         roadmap.currency = getUserCurrency()
         // save in Core Data
         let newRoadmap = RoadmapRepository.shared.createRoadmap(roadmap: self.roadmap, isNew: true, selectedImage: imageSelected)
-        
         NotificationManager.shared.registerTripNotification(roadmap: newRoadmap)
     }
+    
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {
         let date = startDay.addingTimeInterval(Double(indexPath) * 24 * 3600)
         var day = Day(isSelected: isSelected, date: date)
