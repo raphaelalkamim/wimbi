@@ -13,6 +13,12 @@ class ProfileView: UIView {
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let scrollView = UIScrollView()
     let contentView = UIView()
+    
+    lazy var activity: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        return spinner
+    }()
+    
     var roadmaps: [RoadmapDTO] = [] { 
         didSet {
             print("Atualizou")
@@ -281,6 +287,19 @@ class ProfileView: UIView {
     
     func getImage() -> UIButton {
         return userImage
+    }
+    
+    func showSpinner() {
+        activity.color = designSystem.palette.accent
+        activity.startAnimating()
+        self.addSubview(activity)
+        activity.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY)
+        }
+    }
+    func hiddenSpinner() {
+        activity.removeFromSuperview()
     }
     
 }

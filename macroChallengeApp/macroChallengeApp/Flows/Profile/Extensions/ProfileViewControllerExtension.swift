@@ -35,7 +35,7 @@ extension ProfileViewController {
                     present(RoadmapAlertController.cantDelete(handler: self.profileView.myRoadmapCollectionView.reloadData()), animated: true)
                 } else {
                     present(RoadmapAlertController.deleteRoadmap(roadmap: roadmaps[indexPath.item], handler: self.getContent()), animated: true)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                         self.getContent()
                         print("atualizar tabela")
                     }

@@ -131,6 +131,7 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
     
     // MARK: Manage Data Cloud
     func getContent() {
+        self.profileView.showSpinner()
         self.roadmaps = []
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
             let userID = String(data: data, encoding: .utf8)!
@@ -139,9 +140,10 @@ class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegat
                     self.roadmaps.append(roadmap.roadmap)
                     self.reloadViewItems()
                 }
+                self.profileView.hiddenSpinner()
             })
         }
-        updateRoadmaps()
+        self.profileView.myRoadmapCollectionView.reloadData()
     }
     
     func reloadViewItems() {
@@ -157,6 +159,9 @@ extension ProfileViewController: SignOutDelegate {
 
 extension ProfileViewController: UpdateRoadmapsDelegate {
     func updateRoadmaps() {
-        profileView.myRoadmapCollectionView.reloadData()
+        profileView.showSpinner()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.getContent()
+        }
     }
 }
