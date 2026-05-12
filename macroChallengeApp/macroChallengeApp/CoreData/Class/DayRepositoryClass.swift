@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class DayRepository: NSManagedObject {
+class DayRepository {
     static let shared: DayRepository = DayRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {

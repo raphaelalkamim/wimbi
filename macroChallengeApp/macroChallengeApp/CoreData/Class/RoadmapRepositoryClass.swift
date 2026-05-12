@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-public class RoadmapRepository: NSManagedObject {
+public class RoadmapRepository {
     static let shared: RoadmapRepository = RoadmapRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {
