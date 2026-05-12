@@ -21,8 +21,6 @@ class DatePickerTableViewCell: UITableViewCell {
         let datePicker = UIDatePicker()
         datePicker.preferredDatePickerStyle = .compact
         datePicker.datePickerMode = .date
-        let currentDate = Date()
-        datePicker.minimumDate = currentDate
         return datePicker
     }()
     

@@ -10,24 +10,23 @@ import UIKit
 
 class CurrencyAPI {
     public static var shared = CurrencyAPI()
-    var currency: DecodedCurrency?
     let baseURL: String = "https://economia.awesomeapi.com.br/last/"
-    
+
     func getCurrency(incomingCurrency: String, outgoingCurrency: String) async -> DecodedCurrency? {
         let convertedIncomingCurrency = convertCurrency(currency: incomingCurrency)
         let convertedOutgoingCurrency = convertCurrency(currency: outgoingCurrency)
-        
+
         let url = URL(string: baseURL + convertedOutgoingCurrency + "-" + convertedIncomingCurrency)!
-        
+
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             if let newCurrency = try? JSONDecoder().decode(DecodedCurrency.self, from: data) {
-                self.currency = newCurrency
+                return newCurrency
             } else { print("EXC_Breakpoint error") }
         } catch {
             print(String(describing: error.localizedDescription))
         }
-        return self.currency
+        return nil
     }
     
     private func convertCurrency(currency: String) -> String {
