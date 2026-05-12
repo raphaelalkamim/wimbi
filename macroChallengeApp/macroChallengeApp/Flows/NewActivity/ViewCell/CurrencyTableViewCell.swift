@@ -26,11 +26,6 @@ class CurrencyTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-    
     lazy var label: UILabel = {
         let label = UILabel()
         label.text = ""

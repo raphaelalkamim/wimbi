@@ -1,3 +1,4 @@
+// swiftlint:disable file_length
 //
 //  MyTripView.swift
 //  macroChallengeApp
@@ -58,7 +59,7 @@ class MyTripView: UIView {
         view.iconTemperature = .weatherCloudSun
         view.rainfallLevel = "-"
         view.higherTemperature = "-"
-        view.lowerTemperature =  "-"
+        view.lowerTemperature = "-"
         return view
     }()
     

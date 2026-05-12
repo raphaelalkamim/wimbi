@@ -23,16 +23,12 @@ class ValueTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     public lazy var title: UILabel = {
         let label = UILabel()
         label.stylize(with: designSystem.text.body)
         label.text = ""
         return label
-     }()
+    }()
     
     lazy var value: UITextField = {
         let textField = UITextField()
@@ -92,7 +88,7 @@ extension ValueTableViewCell {
     func getNumber(textNumber: String, userCurrency: String) -> String {
         var number = ""
         for index in 0..<textNumber.count {
-            if userCurrency == "R$" || userCurrency == "€"{
+            if userCurrency == "R$" || userCurrency == "€" {
                 if textNumber[index].isNumber {
                     number += String(textNumber[index])
                 } else if textNumber[index] == "," {
@@ -132,7 +128,7 @@ extension String {
         // remove from String: "$", ".", ","
         do {
             let regex = try NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
-            amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
+            amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: self.count), withTemplate: "")
         
             let double = (amountWithPrefix as NSString).doubleValue
             number = NSNumber(value: (double / 100))

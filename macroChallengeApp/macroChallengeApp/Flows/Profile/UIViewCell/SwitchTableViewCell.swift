@@ -22,10 +22,6 @@ class SwitchTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     lazy var title: UILabel = {
         let title = UILabel()
         title.text = ""

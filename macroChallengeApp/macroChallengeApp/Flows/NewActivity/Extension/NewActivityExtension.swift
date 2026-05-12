@@ -49,7 +49,7 @@ extension NewActivityViewController {
         let tableView = newActivityView.localyTable
         guard let cell = tableView.cellForRow(at: [0, 1]) as? TextFieldTableViewCell else { return }
         activity.name = cell.title.text ?? "New activity".localized()
-        if activity.name == "" { activity.name = "New activity".localized() }
+        if activity.name.isEmpty { activity.name = "New activity".localized() }
 
         // date
         let dateTable = newActivityView.dateTable

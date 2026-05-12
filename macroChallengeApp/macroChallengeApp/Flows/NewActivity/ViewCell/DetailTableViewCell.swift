@@ -31,10 +31,6 @@ class DetailTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     lazy var detailText: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .backgroundCell

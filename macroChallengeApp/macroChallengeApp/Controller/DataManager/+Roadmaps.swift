@@ -108,7 +108,7 @@ extension DataManager {
                     completion(roadmaps)
                 }
             } catch {
-                print("DEU RUIM NO PARSE")
+                print("DEU RUIM NO PARSE - GET PUBLIC ROADMAPS")
                 DispatchQueue.main.async {
                     completion([])
                 }
@@ -137,7 +137,7 @@ extension DataManager {
                 roadmap = try JSONDecoder().decode(Roadmaps.self, from: data)
             } catch {
                 print(error)
-                print("DEU RUIM NO PARSE")
+                print("DEU RUIM NO PARSE - GET ROADMAP BY ID \(roadmapId)")
             }
             
             DispatchQueue.main.async {
@@ -156,7 +156,7 @@ extension DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        let task = session.dataTask(with: request) { data, response, error in
+        let task = session.dataTask(with: request) { data, _, error in
             guard let data = data else { return }
             if error != nil {
                 print(String(describing: error?.localizedDescription))
@@ -213,7 +213,7 @@ extension DataManager {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
-            let task = session.dataTask(with: request) { data, response, error in
+            let task = session.dataTask(with: request) { _, response, error in
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
                 }
@@ -255,7 +255,7 @@ extension DataManager {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
-            let task = session.dataTask(with: request) { data, response, error in
+            let task = session.dataTask(with: request) { _, response, error in
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
                 }
@@ -275,20 +275,20 @@ extension DataManager {
         dateFormatter.dateFormat = "d/M/y"
         
         let roadmapJson: [String: Any] = [
-            "name": roadmap.name,
-            "location": roadmap.location,
+            "name": roadmap.name ?? "",
+            "location": roadmap.location ?? "",
             "budget": roadmap.budget,
             "dayCount": roadmap.dayCount,
             "dateInitial": dateFormatter.string(from: roadmap.date ?? Date()),
             "dateFinal": dateFormatter.string(from: roadmap.dateFinal ?? Date()),
             "peopleCount": roadmap.peopleCount,
             "imageId": setupImage(category: roadmap.category ?? "defaultImage"),
-            "category": roadmap.category,
+            "category": roadmap.category ?? "",
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
             "shareKey": "ABC123",
             "createdAt": dateFormatter.string(from: Date()),
-            "currency": roadmap.currency,
+            "currency": roadmap.currency ?? "",
             "likesCount": roadmap.likesCount
         ]
         
@@ -309,7 +309,7 @@ extension DataManager {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
-            let task = session.dataTask(with: request) { data, response, error in
+            let task = session.dataTask(with: request) { _, response, error in
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
                 }

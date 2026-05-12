@@ -12,6 +12,7 @@ import FirebaseAnalytics
 
 extension DataManager {
     // MARK: - Post
+    // swiftlint:disable:next function_parameter_count
     func postUser(username: String, usernameApp: String, name: String, photoId: String, password: String, _ completion: @escaping (() -> Void)) {
         let user: [String: Any] = [
             "username": username,
@@ -118,7 +119,7 @@ extension DataManager {
         
         if let token = UserDefaults.standard.string(forKey: "authorization") {
             request.setValue(token, forHTTPHeaderField: "Authorization")
-            let task = session.dataTask(with: request) { data, response, error in
+            let task = session.dataTask(with: request) { data, _, error in
                 guard let data = data else { return }
                 if error != nil {
                     print(String(describing: error?.localizedDescription))

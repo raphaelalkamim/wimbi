@@ -11,7 +11,7 @@ disabled_rules:
   - type_body_length
   - unavailable_function
   - cyclomatic_complexity
-  - redundant_optional_initialization
+  - implicit_optional_initialization
   - overridden_super_call
   - empty_xctest_method
   - lower_acl_than_parent
@@ -34,12 +34,13 @@ identifier_name:
   max_length:
     warning: 25
     error: 30
+  excluded:
+    - id
 
 analyzer_rules:
   - unused_declaration
   - unused_import
 opt_in_rules:
-  - anyobject_protocol
   - array_init
   - attributes
   - closure_end_indentation
@@ -61,7 +62,6 @@ opt_in_rules:
   - fallthrough
   - fatal_error_message
   - file_header
-  - file_name
   - first_where
   - flatmap_over_map_reduce
   - identical_operands
@@ -108,19 +108,8 @@ opt_in_rules:
   - xct_specific_matcher
   - yoda_condition
 
-identifier_name:
-  excluded:
-    - id
 number_separator:
   minimum_length: 5
-
-file_name:
-  excluded:
-    - main.swift
-    - LinuxMain.swift
-    - TestHelpers.swift
-    - shim.swift
-    - AutomaticRuleTests.generated.swift
 
 custom_rules:
   rule_id:

@@ -72,15 +72,15 @@ extension DataManager {
         dateFormatter.dateFormat = "d/M/y"
         
         let activity: [String: Any] = [
-            "name": activityCore.name,
-            "tips": activityCore.tips,
-            "category": activityCore.category,
-            "location": activityCore.location,
-            "hour": activityCore.hour,
+            "name": activityCore.name ?? "",
+            "tips": activityCore.tips ?? "",
+            "category": activityCore.category ?? "",
+            "location": activityCore.location ?? "",
+            "hour": activityCore.hour ?? "",
             "budget": activityCore.budget,
-            "currency": activityCore.currencyType,
-            "address": activityCore.address,
-            "link": activityCore.link
+            "currency": activityCore.currencyType ?? "",
+            "address": activityCore.address ?? "",
+            "link": activityCore.link ?? ""
         ]
         
         let session = URLSession.shared
@@ -156,18 +156,9 @@ extension DataManager {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
-            let task = session.dataTask(with: request) { data, response, error in
-                guard let data = data else { return }
+            let task = session.dataTask(with: request) { _, _, error in
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
-                }
-                if let httpResponse = response as? HTTPURLResponse {
-                    if httpResponse.statusCode == 200 {
-                        do {
-                        } catch {
-                            print(error)
-                        }
-                    }
                 }
             }
             task.resume()

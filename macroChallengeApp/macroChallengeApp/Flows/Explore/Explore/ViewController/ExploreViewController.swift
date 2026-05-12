@@ -14,7 +14,7 @@ protocol RoadmapSearchTableDidUpdateRoadmaps: AnyObject {
 
 class ExploreViewController: UIViewController {
     weak var coordinator: ExploreCoordinator?
-    weak var delegate:RoadmapSearchTableDidUpdateRoadmaps?
+    weak var delegate: RoadmapSearchTableDidUpdateRoadmaps?
     
     let designSystem: DesignSystem = DefaultDesignSystem.shared
     let locationSearchTable = RoadmapSearchTableViewController()
@@ -69,10 +69,8 @@ class ExploreViewController: UIViewController {
     
     func filterRoadmapsToAppear() {
         var filteredRoadmaps: [RoadmapDTO] = []
-        for roadmap in roadmaps.indices {
-            if !(roadmaps[roadmap].budget == 0.0) {
-                filteredRoadmaps.append(roadmaps[roadmap])
-            }
+        for roadmap in roadmaps.indices where !(roadmaps[roadmap].budget == 0.0) {
+            filteredRoadmaps.append(roadmaps[roadmap])
         }
         self.roadmaps = filteredRoadmaps
         self.delegate?.updateRoadmaps(roadmaps: filteredRoadmaps)

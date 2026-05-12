@@ -33,7 +33,7 @@ extension MyTripViewController {
         myTripView.bindTableView(delegate: self, dataSource: self, dragDelegate: self)
         
         if tutorialEnable == false {
-            if (coordinatorCurrent != nil) {
+            if coordinatorCurrent != nil {
                 myTripView.animateCollection(index: 2)
             } else {
                 myTripView.animateCollection(index: 3)
@@ -43,7 +43,7 @@ extension MyTripViewController {
     
     @objc func addRoute(sender: UIButton) {
         let activity = activites[sender.tag]
-        let alert = AlertMapsModel(location: activity.location ?? "", controller: self)
+        _ = AlertMapsModel(location: activity.location ?? "", controller: self)
     }
 }
 

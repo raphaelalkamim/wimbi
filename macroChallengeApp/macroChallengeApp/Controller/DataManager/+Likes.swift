@@ -26,25 +26,19 @@ extension DataManager {
             
             if let token = UserDefaults.standard.string(forKey: "authorization") {
                 request.setValue(token, forHTTPHeaderField: "Authorization")
-                let task = session.dataTask(with: request) { data, response, error in
-                    print(response)
+                let task = session.dataTask(with: request) { data, _, error in
                     guard let data = data else { return }
                     if error != nil {
                         print(String(describing: error?.localizedDescription))
                     }
                     
-                    do {
-                        let stringInt = String(data: data, encoding: String.Encoding.utf8)
-                        var likeId: Int = 0
-                        if let likeIdConvert = Int(stringInt ?? "0") {
-                            likeId = likeIdConvert
-                        }
-                        DispatchQueue.main.async {
-                            completion(likeId)
-                        }
-                    } catch {
-                        print(error)
-                        print("DEU RUIM NO PARSE")
+                    let stringInt = String(data: data, encoding: String.Encoding.utf8)
+                    var likeId: Int = 0
+                    if let likeIdConvert = Int(stringInt ?? "0") {
+                        likeId = likeIdConvert
+                    }
+                    DispatchQueue.main.async {
+                        completion(likeId)
                     }
                 }
                 task.resume()
@@ -74,17 +68,12 @@ extension DataManager {
                         print(String(describing: error?.localizedDescription))
                     }
                     
-                    do {
-                        let stringInt = String(data: data, encoding: String.Encoding.utf8)
-                        var likeId: Int = 0
-                        if let likeIdConvert = Int(stringInt ?? "0") {
-                            likeId = likeIdConvert
-                        }
-                        DispatchQueue.main.async { completion(likeId) }
-                    } catch {
-                        print(error)
-                        print("DEU RUIM NO PARSE")
+                    let stringInt = String(data: data, encoding: String.Encoding.utf8)
+                    var likeId: Int = 0
+                    if let likeIdConvert = Int(stringInt ?? "0") {
+                        likeId = likeIdConvert
                     }
+                    DispatchQueue.main.async { completion(likeId) }
                 }
                 task.resume()
             }
@@ -117,7 +106,7 @@ extension DataManager {
                             completion(roadmaps)
                         }
                     } catch {
-                        print("DEU RUIM NO PARSE")
+                        print("DEU RUIM NO PARSE - GET LIKED ROADMAPS")
                     }
                 }
                 task.resume()

@@ -17,7 +17,7 @@ class KeychainManager {
         let data = value.data(using: .utf8)
         
         let query = [
-            kSecValueData: data,
+            kSecValueData: data ?? "",
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,
             kSecAttrAccount: account

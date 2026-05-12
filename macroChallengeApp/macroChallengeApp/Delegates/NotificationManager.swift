@@ -48,6 +48,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         }
     }
     
+    // swiftlint:disable:next function_parameter_count
     @objc func createActivityNotification(hour: Int, min: Int, day: Int, month: Int, year: Int, activityName: String, number: Int, interval: Int) {
         registerCategories()
         let content = UNMutableNotificationContent()

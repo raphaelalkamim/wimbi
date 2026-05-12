@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 open class WeatherView: UIView {
-    
     // MARK: - Variables
     var designSystem: DesignSystem = DefaultDesignSystem.shared
     
@@ -21,7 +20,7 @@ open class WeatherView: UIView {
     
     var iconTemperature: UIImage? {
         didSet {
-            weatherIcon.image =  iconTemperature
+            weatherIcon.image = iconTemperature
         }
     }
     
@@ -39,7 +38,7 @@ open class WeatherView: UIView {
     
     var rainfallLevel: String? {
         didSet {
-            rainLevelLabel.text =  (rainfallLevel ?? "") + " mm"
+            rainLevelLabel.text = (rainfallLevel ?? "") + " mm"
         }
     }
     
@@ -117,16 +116,15 @@ open class WeatherView: UIView {
         return view
     }()
     
+    // MARK: - Initialization
     
-    //MARK: - Initialization
-    
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
         self.setupConstraints()
     }
     
-    required public init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -177,13 +175,11 @@ open class WeatherView: UIView {
             make.trailing.equalToSuperview().inset(28)
         }
         
-        
         lowTemperatureLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(32)
             make.trailing.equalTo(highTemperatureLabel.snp.leading).offset(-8)
         }
         
-      
         rainfallLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(32)
             make.leading.equalTo(weatherIcon.snp.trailing).offset(28)
@@ -194,14 +190,13 @@ open class WeatherView: UIView {
             make.trailing.equalToSuperview().inset(24)
         }
         
-    
     }
 }
 
 extension WeatherView {
     func changeIcon(_ condition: String) {
         switch condition {
-        case "blowingDust" :
+        case "blowingDust": 
             weatherIcon.image = WeatherConditionImages.VisibilityProperties.blowingDust
         case "clear":
             weatherIcon.image = WeatherConditionImages.VisibilityProperties.clear

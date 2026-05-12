@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             let url = userActivity.webpageURL!
             print(url.absoluteString)
-            //handle url and open whatever page you want to open.
+            // handle url and open whatever page you want to open.
         }
         return true
     }
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data Saving support
 
-    func saveContext () {
+    func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {

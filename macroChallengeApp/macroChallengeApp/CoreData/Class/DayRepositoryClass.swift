@@ -61,7 +61,7 @@ class DayRepository: NSManagedObject {
     
     func deleteDay(day: DayLocal) throws {
         context.delete(day)
-        try saveContext()
+        saveContext()
     }
     
 }

@@ -187,7 +187,7 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
             action.addAction(UIAlertAction(title: "Generate share code".localized(), style: .default, handler: {(_: UIAlertAction!) in
                 self.present(self.generateShareCode(), animated: true, completion: nil)
             }))
-            ///Commented to archive in app store
+            // Commented to archive in app store
 //            action.addAction(UIAlertAction(title: "Share itinerary link".localized(), style: .default, handler: {(_: UIAlertAction!) in
 //                #warning("add deeplink")
 //            }))

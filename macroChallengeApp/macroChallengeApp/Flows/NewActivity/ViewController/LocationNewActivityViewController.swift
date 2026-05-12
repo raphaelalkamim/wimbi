@@ -179,13 +179,11 @@ extension LocationNewActivityViewController: HandleMapSearch {
         
         let addressInformation: [String] = [placemark.thoroughfare ?? "", placemark.subThoroughfare ?? "", placemark.locality ?? "", placemark.subLocality ?? "", placemark.administrativeArea ?? "", placemark.country ?? ""]
         
-        for index in 0..<addressInformation.count {
-            if !addressInformation[index].isEmpty {
-                if index == addressInformation.count - 1 {
-                    address += "\(addressInformation[index])"
-                } else {
-                    address += "\(addressInformation[index]), "
-                }
+        for index in 0..<addressInformation.count where !addressInformation[index].isEmpty {
+            if index == addressInformation.count - 1 {
+                address += "\(addressInformation[index])"
+            } else {
+                address += "\(addressInformation[index]), "
             }
         }
         

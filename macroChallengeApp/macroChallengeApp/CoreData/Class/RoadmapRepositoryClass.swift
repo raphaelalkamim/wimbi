@@ -155,6 +155,8 @@ public class RoadmapRepository: NSManagedObject {
         self.saveContext()
         return newRoadmap
     }
+
+    @discardableResult
     func pushRoadmap(newRoadmap: UserRoadmap) -> RoadmapLocal {
         guard var newCopyRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         
