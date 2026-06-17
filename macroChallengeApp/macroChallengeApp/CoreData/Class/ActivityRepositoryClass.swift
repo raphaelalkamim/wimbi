@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class ActivityRepository {
+class ActivityRepository: @unchecked Sendable {
     static let shared: ActivityRepository = ActivityRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {

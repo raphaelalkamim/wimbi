@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserDefaultsManager {
+class UserDefaultsManager: @unchecked Sendable {
     static let shared = UserDefaultsManager()
     var nextTrip: String? {
         didSet {

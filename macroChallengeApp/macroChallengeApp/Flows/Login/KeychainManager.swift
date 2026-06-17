@@ -8,7 +8,7 @@
 import Security
 import Foundation
 
-class KeychainManager {
+class KeychainManager: @unchecked Sendable {
     static let shared = KeychainManager()
     
     private init() {}

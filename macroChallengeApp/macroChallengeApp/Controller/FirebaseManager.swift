@@ -10,8 +10,8 @@ import FirebaseStorage
 import FirebaseAnalytics
 import UIKit
 
-class FirebaseManager {
-    public static var shared = FirebaseManager()
+class FirebaseManager: @unchecked Sendable {
+    public static let shared = FirebaseManager()
     public let imageCash = NSCache<NSString, UIImage>()
     private var inProgressDownloads = Set<String>()
 

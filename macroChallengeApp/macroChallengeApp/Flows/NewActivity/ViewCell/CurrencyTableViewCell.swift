@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
  
+@MainActor
 protocol CurrencyTableViewCellDelegate: AnyObject {
     func didChangeFormatter(formatter: String)
 }

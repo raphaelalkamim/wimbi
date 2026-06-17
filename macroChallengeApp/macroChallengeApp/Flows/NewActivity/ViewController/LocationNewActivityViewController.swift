@@ -117,7 +117,7 @@ extension LocationNewActivityViewController: UISearchBarDelegate {
     }
 }
 
-extension LocationNewActivityViewController: CLLocationManagerDelegate {
+extension LocationNewActivityViewController: @preconcurrency CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         if manager.authorizationStatus == .authorizedWhenInUse || manager.authorizationStatus == .authorizedAlways {
             locationManager.requestLocation()

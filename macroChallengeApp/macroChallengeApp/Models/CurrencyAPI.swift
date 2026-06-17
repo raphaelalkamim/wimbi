@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-class CurrencyAPI {
-    public static var shared = CurrencyAPI()
+class CurrencyAPI: @unchecked Sendable {
+    public static let shared = CurrencyAPI()
     let baseURL: String = "https://economia.awesomeapi.com.br/last/"
 
     func getCurrency(incomingCurrency: String, outgoingCurrency: String) async -> DecodedCurrency? {

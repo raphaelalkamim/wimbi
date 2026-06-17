@@ -10,14 +10,10 @@ import UIKit
 import FirebaseCore
 import FirebaseAnalytics
 
-class DataManager {
-    public static var shared = DataManager()
+class DataManager: @unchecked Sendable {
+    public static let shared = DataManager()
     
-    #if DEBUG
-    let baseURL: String = "https://macrotrip-dev.herokuapp.com/"
-    #else
     let baseURL: String = "https://macroptrip-api.herokuapp.com/"
-    #endif
     
     public let imageCash = NSCache<NSNumber, UIImage>()
     

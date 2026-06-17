@@ -19,7 +19,7 @@ struct MyDayWeather {
     let rainfall: Double
 }
 
-@available(iOS 16.0, *)
+@MainActor
 public class WeatherViewModel: ObservableObject {
     static let shared = WeatherViewModel()
     

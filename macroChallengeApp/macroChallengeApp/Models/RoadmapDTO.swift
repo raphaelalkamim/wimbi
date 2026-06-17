@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RoadmapDTO: Codable {
+struct RoadmapDTO: Codable, Sendable {
     var id: Int
     var name: String
     var location: String

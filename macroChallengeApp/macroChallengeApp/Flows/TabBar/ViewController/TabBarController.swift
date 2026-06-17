@@ -24,7 +24,7 @@ class TabBarController: UITabBarController {
     var playerLayer = AVPlayerLayer()
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "stopVideo"), object: player.currentTime)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "stopVideo"), object: nil)
     }
     
     override func viewDidLoad() {

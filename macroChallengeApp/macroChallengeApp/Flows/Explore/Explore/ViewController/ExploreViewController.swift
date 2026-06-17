@@ -8,6 +8,7 @@
 import UIKit
 import Network
 
+@MainActor
 protocol RoadmapSearchTableDidUpdateRoadmaps: AnyObject {
     func updateRoadmaps(roadmaps: [RoadmapDTO])
 }

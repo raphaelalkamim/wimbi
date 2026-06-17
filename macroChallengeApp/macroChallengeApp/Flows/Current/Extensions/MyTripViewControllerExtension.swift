@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
+@MainActor
 protocol DismissBlur: AnyObject {
     func dismissBlur()
 }

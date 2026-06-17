@@ -162,7 +162,7 @@ extension DestinyViewController: UISearchBarDelegate {
     }
 }
 
-extension DestinyViewController: CLLocationManagerDelegate {
+extension DestinyViewController: @preconcurrency CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         if manager.authorizationStatus == .authorizedWhenInUse || manager.authorizationStatus == .authorizedAlways {
             locationManager.requestLocation()

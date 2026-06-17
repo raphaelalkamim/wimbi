@@ -11,7 +11,7 @@ import CoreData
 import CoreLocation
 import WeatherKit
 
-class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class MyTripViewController: UIViewController, @preconcurrency NSFetchedResultsControllerDelegate {
     weak var coordinator: ProfileCoordinator?
     weak var coordinatorCurrent: CurrentCoordinator?
     let network: NetworkMonitor = NetworkMonitor.shared
@@ -31,22 +31,16 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
     var location = CLLocation(latitude: 37.7749, longitude: 122.4194)
     
     func getDayWeather( ) -> MyDayWeather {
-        if #available(iOS 16.0, *) {
-            let day = WeatherViewModel.shared.dayWeather
-            if !day.isEmpty {
-                return MyDayWeather(higherTemperature: day[0].highTemperature.value, lowerTemperature: day[0].lowTemperature.value, rainfall: day[0].precipitationChance)
-            }
+        let day = WeatherViewModel.shared.dayWeather
+        if !day.isEmpty {
+            return MyDayWeather(higherTemperature: day[0].highTemperature.value, lowerTemperature: day[0].lowTemperature.value, rainfall: day[0].precipitationChance)
         }
         return MyDayWeather(higherTemperature: 0, lowerTemperature: 0, rainfall: 0)
     }
     
     func getCurrentyWeather( ) -> MyCurrentWeather {
-        if #available(iOS 16.0, *) {
-            let current = WeatherViewModel.shared.currentWeather
-            return MyCurrentWeather(temperature: current?.temperature.value ?? 0, condition: current?.condition.rawValue ?? "")
-        } else {
-            return MyCurrentWeather(temperature: 0, condition: "")
-        }
+        let current = WeatherViewModel.shared.currentWeather
+        return MyCurrentWeather(temperature: current?.temperature.value ?? 0, condition: current?.condition.rawValue ?? "")
     }
     
     lazy var userCurrency: String = {
@@ -88,19 +82,15 @@ class MyTripViewController: UIViewController, NSFetchedResultsControllerDelegate
         self.myTripView.activitiesTableView.layoutIfNeeded()
         self.updateAllBudget()
         
-        if #available(iOS 16.0, *) {
-            Task {
-                await WeatherViewModel.shared.getDayWeather(roadmap.location ?? "")
-                await WeatherViewModel.shared.getCurrentWeather(roadmap.location ?? "")
-                myTripView.weatherView.actualTemperature = String(Int(getCurrentyWeather().temperature))
-                print(getCurrentyWeather().condition)
-                myTripView.weatherView.changeIcon(getCurrentyWeather().condition)
-                myTripView.weatherView.higherTemperature = String(Int(getDayWeather().higherTemperature))
-                myTripView.weatherView.lowerTemperature = String(Int(getDayWeather().lowerTemperature))
-                myTripView.weatherView.rainfallLevel = String(getDayWeather().rainfall)
-            }
-        } else {
-            // Fallback on earlier versions
+        Task {
+            await WeatherViewModel.shared.getDayWeather(roadmap.location ?? "")
+            await WeatherViewModel.shared.getCurrentWeather(roadmap.location ?? "")
+            myTripView.weatherView.actualTemperature = String(Int(getCurrentyWeather().temperature))
+            print(getCurrentyWeather().condition)
+            myTripView.weatherView.changeIcon(getCurrentyWeather().condition)
+            myTripView.weatherView.higherTemperature = String(Int(getDayWeather().higherTemperature))
+            myTripView.weatherView.lowerTemperature = String(Int(getDayWeather().lowerTemperature))
+            myTripView.weatherView.rainfallLevel = String(getDayWeather().rainfall)
         }
         
         myTripView.updateConstraintsTable(multiplier: activites.count)

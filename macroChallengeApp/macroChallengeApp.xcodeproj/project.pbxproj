@@ -137,6 +137,7 @@
 		A0FD739D28DA7F780044E47C /* MyTripViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739C28DA7F780044E47C /* MyTripViewControllerExtension.swift */; };
 		A0FD739F28DA82250044E47C /* InfoTripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD739E28DA82250044E47C /* InfoTripCollectionViewCell.swift */; };
 		A0FD73A528DBA76F0044E47C /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FD73A428DBA76E0044E47C /* CalendarCollectionViewCell.swift */; };
+		AA000003AABBCCDD00112233 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AA000002AABBCCDD00112233 /* SnapKit */; };
 		B032E52229B913AA00E02857 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032E52129B913AA00E02857 /* WeatherView.swift */; };
 		B032E52429BBDC5500E02857 /* DesignImagesWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032E52329BBDC5500E02857 /* DesignImagesWeather.swift */; };
 		B032E52729BE23A700E02857 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032E52629BE23A700E02857 /* WeatherViewModel.swift */; };
@@ -176,7 +177,6 @@
 		DF66658228F0991100E37429 /* DayDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66658128F0991100E37429 /* DayDTO.swift */; };
 		DF89333E290B1DD900C280FA /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF89333D290B1DD900C280FA /* Tag.swift */; };
 		DFA30CAF28DA2E5A00F316EB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA30CAE28DA2E5A00F316EB /* TabBarController.swift */; };
-		AA000003AABBCCDD00112233 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AA000002AABBCCDD00112233 /* SnapKit */; };
 		DFAEB2B3292BF629006BCE46 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DFAEB2B2292BF629006BCE46 /* FirebaseAnalytics */; };
 		DFAEB2B5292BF629006BCE46 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DFAEB2B4292BF629006BCE46 /* FirebaseStorage */; };
 		DFD23B3E291972C90003307A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFD23B3D291972C90003307A /* GoogleService-Info.plist */; };
@@ -1680,6 +1680,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 18;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1691,7 +1692,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1718,6 +1719,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 18;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1729,7 +1731,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1861,14 +1863,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DFAEB2B1292BF629006BCE46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
 		AA000001AABBCCDD00112233 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1877,9 +1871,22 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		DFAEB2B1292BF629006BCE46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AA000002AABBCCDD00112233 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA000001AABBCCDD00112233 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		DFAEB2B2292BF629006BCE46 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DFAEB2B1292BF629006BCE46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1889,11 +1896,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DFAEB2B1292BF629006BCE46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
-		};
-		AA000002AABBCCDD00112233 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA000001AABBCCDD00112233 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

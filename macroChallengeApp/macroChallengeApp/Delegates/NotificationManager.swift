@@ -8,7 +8,7 @@
 import Foundation
 import UserNotifications
 
-class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
+class NotificationManager: NSObject, UNUserNotificationCenterDelegate, @unchecked Sendable {
     static let shared = NotificationManager()
     let center = UNUserNotificationCenter.current()
     var roadmaps = RoadmapRepository.shared.getRoadmap()

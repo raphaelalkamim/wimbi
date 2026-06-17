@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-public class RoadmapRepository {
+public class RoadmapRepository: @unchecked Sendable {
     static let shared: RoadmapRepository = RoadmapRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -157,6 +157,7 @@ public class RoadmapRepository {
     }
 
     @discardableResult
+    @MainActor
     func pushRoadmap(newRoadmap: UserRoadmap) -> RoadmapLocal {
         guard var newCopyRoadmap = NSEntityDescription.insertNewObject(forEntityName: "RoadmapLocal", into: context) as? RoadmapLocal else { preconditionFailure() }
         

@@ -12,7 +12,7 @@ import FirebaseAnalytics
 
 extension DataManager {
     // MARK: - POST
-    func postLike(roadmapId: Int, _ completion: @escaping ((_ response: Int) -> Void)) {
+    func postLike(roadmapId: Int, _ completion: @escaping @MainActor (_ response: Int) -> Void) {
         let session: URLSession = URLSession.shared
         
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
@@ -47,7 +47,7 @@ extension DataManager {
         }
     }
     // MARK: - GET
-    func getLike(roadmapId: Int, _ completion: @escaping ((_ response: Int) -> Void)) {
+    func getLike(roadmapId: Int, _ completion: @escaping @MainActor (_ response: Int) -> Void) {
         let session: URLSession = URLSession.shared
         
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
@@ -79,8 +79,7 @@ extension DataManager {
             }
         }
     }
-    func getLikedRoadmaps(_ completion: @escaping ((_ roadmaps: [RoadmapDTO]) -> Void)) {
-        var roadmaps: [RoadmapDTO] = []
+    func getLikedRoadmaps(_ completion: @escaping @MainActor (_ roadmaps: [RoadmapDTO]) -> Void) {
         let session: URLSession = URLSession.shared
         
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
@@ -100,7 +99,7 @@ extension DataManager {
                     }
                     
                     do {
-                        roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
+                        let roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
                         
                         DispatchQueue.main.async {
                             completion(roadmaps)

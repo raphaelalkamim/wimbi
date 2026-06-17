@@ -86,8 +86,7 @@ extension DataManager {
         }
     }
     // MARK: - GET
-    func getPublicRoadmaps(_ completion: @escaping ((_ roadmaps: [RoadmapDTO]) -> Void)) {
-        var roadmaps: [RoadmapDTO] = []
+    func getPublicRoadmaps(_ completion: @escaping @MainActor (_ roadmaps: [RoadmapDTO]) -> Void) {
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "roadmaps")!
         
@@ -103,7 +102,7 @@ extension DataManager {
             }
             
             do {
-                roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
+                let roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
                 DispatchQueue.main.async {
                     completion(roadmaps)
                 }
@@ -117,8 +116,7 @@ extension DataManager {
         task.resume()
     }
     
-    func getRoadmapById(roadmapId: Int, _ completion: @escaping ((_ roadmap: Roadmaps?) -> Void)) {
-        var roadmap: Roadmaps?
+    func getRoadmapById(roadmapId: Int, _ completion: @escaping @MainActor (_ roadmap: Roadmaps?) -> Void) {
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "roadmaps/\(roadmapId)")!
         
@@ -133,11 +131,13 @@ extension DataManager {
                 print(String(describing: error?.localizedDescription))
             }
             
+            let roadmap: Roadmaps?
             do {
                 roadmap = try JSONDecoder().decode(Roadmaps.self, from: data)
             } catch {
                 print(error)
                 print("DEU RUIM NO PARSE - GET ROADMAP BY ID \(roadmapId)")
+                roadmap = nil
             }
             
             DispatchQueue.main.async {
@@ -147,7 +147,7 @@ extension DataManager {
         task.resume()
         
     }
-    func getRoadmapUserImage(roadmapId: Int, _ completion: @escaping ((_ uuidUser: String, _ username: String) -> Void)) {
+    func getRoadmapUserImage(roadmapId: Int, _ completion: @escaping @MainActor (_ uuidUser: String, _ username: String) -> Void) {
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "roadmaps/\(roadmapId)/userImage")!
         

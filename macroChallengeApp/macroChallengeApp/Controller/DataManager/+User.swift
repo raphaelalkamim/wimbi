@@ -13,7 +13,7 @@ import FirebaseAnalytics
 extension DataManager {
     // MARK: - Post
     // swiftlint:disable:next function_parameter_count
-    func postUser(username: String, usernameApp: String, name: String, photoId: String, password: String, _ completion: @escaping (() -> Void)) {
+    func postUser(username: String, usernameApp: String, name: String, photoId: String, password: String, _ completion: @escaping @MainActor () -> Void) {
         let user: [String: Any] = [
             "username": username,
             "usernameApp": usernameApp,
@@ -42,7 +42,7 @@ extension DataManager {
                 print(error)
             } else if data != nil {
                 if let httpResponse = response as? HTTPURLResponse {
-                    DispatchQueue.main.async {
+                    Task { @MainActor in
                         completion()
                     }
                     if httpResponse.statusCode == 200 {
@@ -107,8 +107,7 @@ extension DataManager {
         task.resume()
     }
     // MARK: - Get
-    func getUser(username: String, _ completion: @escaping ((_ user: User) -> Void)) {
-        var user: User?
+    func getUser(username: String, _ completion: @escaping @MainActor (_ user: User) -> Void) {
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "users/\(username)")!
         
@@ -126,8 +125,10 @@ extension DataManager {
                 }
                 
                 do {
-                    user = try JSONDecoder().decode(User.self, from: data)
-                    DispatchQueue.main.async { completion(user!) }
+                    let user = try JSONDecoder().decode(User.self, from: data)
+                    Task { @MainActor in
+                        completion(user)
+                    }
                 } catch {
                     print(error)
                 }

@@ -9,9 +9,11 @@ import Foundation
 import UIKit
 
 // MARK: Protocolos
+@MainActor
 protocol AddNewActivityDelegate: AnyObject {
     func attTable()
 }
+@MainActor
 protocol ChangeTextTableDelegate: AnyObject {
     func changeText(coords: String, locationName: String, address: String)
 }

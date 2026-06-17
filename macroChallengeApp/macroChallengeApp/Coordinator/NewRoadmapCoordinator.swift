@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 class NewRoadmapCoordinator: Coordinator {
     var childCoordinators: [Coordinator]
     
@@ -52,6 +53,7 @@ class NewRoadmapCoordinator: Coordinator {
         delegate?.didFinishPresent(of: self, isNewRoadmap: isNewRoadmap)
     }
     
+    @MainActor
     func dismissRoadmap(isNewRoadmap: Bool) {
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alert.view.tintColor = .accent
