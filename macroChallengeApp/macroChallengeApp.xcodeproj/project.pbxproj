@@ -159,6 +159,8 @@
 		B0AD157F29C2716900885C07 /* WeatherConditionImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AD157E29C2716900885C07 /* WeatherConditionImages.swift */; };
 		B0B17FE528E4DABF0010B00C /* CurrentCountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */; };
 		B0CDF35028CFC7E90092A76C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CDF34F28CFC7E90092A76C /* Category.swift */; };
+		B0D563202FE28BCC00F18D68 /* AppDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D5631F2FE28BCC00F18D68 /* AppDateFormat.swift */; };
+		B0D563222FE28C6500F18D68 /* CoreDataSendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D563212FE28C6500F18D68 /* CoreDataSendable.swift */; };
 		B0E0684F28EF50C500418F87 /* CurrencyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E0684E28EF50C500418F87 /* CurrencyAPI.swift */; };
 		B0E0685128EF5FD700418F87 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E0685028EF5FD700418F87 /* Currency.swift */; };
 		B0E2461528CFA3EE00D62AF1 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */; };
@@ -380,6 +382,8 @@
 		B0AD157E29C2716900885C07 /* WeatherConditionImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConditionImages.swift; sourceTree = "<group>"; };
 		B0B17FE428E4DABF0010B00C /* CurrentCountDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCountDown.swift; sourceTree = "<group>"; };
 		B0CDF34F28CFC7E90092A76C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		B0D5631F2FE28BCC00F18D68 /* AppDateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDateFormat.swift; sourceTree = "<group>"; };
+		B0D563212FE28C6500F18D68 /* CoreDataSendable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSendable.swift; sourceTree = "<group>"; };
 		B0E0684E28EF50C500418F87 /* CurrencyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAPI.swift; sourceTree = "<group>"; };
 		B0E0685028EF5FD700418F87 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		B0E2461428CFA3EE00D62AF1 /* CategoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
@@ -444,6 +448,7 @@
 			isa = PBXGroup;
 			children = (
 				1309973328F0C11200774E1A /* Sequence.swift */,
+				B0D5631F2FE28BCC00F18D68 /* AppDateFormat.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 			children = (
 				1359F15928DA4904009509DF /* Class */,
 				1359F15028DA48B9009509DF /* Propierties */,
+				B0D563212FE28C6500F18D68 /* CoreDataSendable.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -1297,6 +1303,7 @@
 				13C8A12928CA69F300994196 /* ExploreCoordinator.swift in Sources */,
 				DF66658228F0991100E37429 /* DayDTO.swift in Sources */,
 				B04BA9A828DA5B4F00EBA44A /* ValueTableViewCell.swift in Sources */,
+				B0D563202FE28BCC00F18D68 /* AppDateFormat.swift in Sources */,
 				A0287558290870C000894B6D /* DetailView.swift in Sources */,
 				13C8A14928CFA66200994196 /* DestinyView.swift in Sources */,
 				A0B9F4CD28DA2E6100F2DF06 /* EditProfileViewController.swift in Sources */,
@@ -1358,6 +1365,7 @@
 				1379744B28D8E57B00AEA662 /* ProfileViewController+Settings.swift in Sources */,
 				DF5F774728CA853000BA5F5F /* CustomLabelDesignable.swift in Sources */,
 				131272D728E6249E000B7968 /* RoadmapSearchTableViewController.swift in Sources */,
+				B0D563222FE28C6500F18D68 /* CoreDataSendable.swift in Sources */,
 				13BD500E28DA297500C0EA7C /* SignInWithAppleManager.swift in Sources */,
 				B05A9C5528DBA53D004859F8 /* LocationNewActivityViewController.swift in Sources */,
 				1359F14D28DA48A8009509DF /* RoadmapRepository.swift in Sources */,

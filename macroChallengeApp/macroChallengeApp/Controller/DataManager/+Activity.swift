@@ -13,9 +13,6 @@ import FirebaseAnalytics
 extension DataManager {
     // MARK: - POST
     func postActivity(activity: Activity, dayId: Int, activityCore: ActivityLocal) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let activity: [String: Any] = [
             "name": activity.name,
             "tips": activity.tips,
@@ -68,9 +65,6 @@ extension DataManager {
         }
     }
     func postActivityUpdated(dayId: Int, activityCore: ActivityLocal) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let activity: [String: Any] = [
             "name": activityCore.name ?? "",
             "tips": activityCore.tips ?? "",
@@ -123,9 +117,6 @@ extension DataManager {
     }
     // MARK: - PUT
     func putActivity(activity: Activity, dayId: Int) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let activityNew: [String: Any] = [
             "name": activity.name,
             "tips": activity.tips,

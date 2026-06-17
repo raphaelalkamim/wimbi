@@ -13,9 +13,6 @@ import FirebaseAnalytics
 extension DataManager {
     // MARK: - POST
     func postRoadmap(roadmap: Roadmaps, roadmapCore: RoadmapLocal, daysCore: [DayLocal], selectedImage: UIImage? = nil) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let keyWords = ["trip", "viagem", "travel", "viaggiare"]
         let codeTrip = "\(Int.random(in: 0..<1_000_000))\(keyWords.randomElement() ?? "space")\(Int.random(in: 0..<1_000_000))"
         
@@ -32,7 +29,7 @@ extension DataManager {
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
             "shareKey": codeTrip,
-            "createdAt": dateFormatter.string(from: Date()),
+            "createdAt": AppDateFormat.compactBackendDateString(from: Date()),
             "currency": roadmap.currency,
             "likesCount": 0
         ]
@@ -175,9 +172,6 @@ extension DataManager {
     }
     // MARK: - PUT
     func putRoadmap(roadmap: Roadmaps, roadmapId: Int, newDaysCore: [DayLocal], selectedImage: UIImage? = nil) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let roadmapJson: [String: Any] = [
             "name": roadmap.name,
             "location": roadmap.location,
@@ -191,7 +185,7 @@ extension DataManager {
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
             "shareKey": roadmap.shareKey,
-            "createdAt": dateFormatter.string(from: Date()),
+            "createdAt": AppDateFormat.compactBackendDateString(from: Date()),
             "currency": roadmap.currency,
             "likesCount": roadmap.likesCount
         ]
@@ -271,23 +265,20 @@ extension DataManager {
     
     // MARK: - PUT
     func putBudgetRoadmap(roadmap: RoadmapLocal, roadmapId: Int) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let roadmapJson: [String: Any] = [
             "name": roadmap.name ?? "",
             "location": roadmap.location ?? "",
             "budget": roadmap.budget,
             "dayCount": roadmap.dayCount,
-            "dateInitial": dateFormatter.string(from: roadmap.date ?? Date()),
-            "dateFinal": dateFormatter.string(from: roadmap.dateFinal ?? Date()),
+            "dateInitial": AppDateFormat.compactBackendDateString(from: roadmap.date ?? Date()),
+            "dateFinal": AppDateFormat.compactBackendDateString(from: roadmap.dateFinal ?? Date()),
             "peopleCount": roadmap.peopleCount,
             "imageId": setupImage(category: roadmap.category ?? "defaultImage"),
             "category": roadmap.category ?? "",
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
             "shareKey": "ABC123",
-            "createdAt": dateFormatter.string(from: Date()),
+            "createdAt": AppDateFormat.compactBackendDateString(from: Date()),
             "currency": roadmap.currency ?? "",
             "likesCount": roadmap.likesCount
         ]

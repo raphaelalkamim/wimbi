@@ -46,6 +46,9 @@ class DaysView: UIView {
     lazy var publicTitle: UILabel = {
         let publicTitle = UILabel()
         publicTitle.text = "Would you like to make this itinerary public?".localized()
+        publicTitle.numberOfLines = 0
+        publicTitle.lineBreakMode = .byWordWrapping
+        publicTitle.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return publicTitle
     }()
     
@@ -85,6 +88,8 @@ class DaysView: UIView {
 
         viajantesTitleLabel.stylize(with: designSystem.text.footnote)
         publicTitle.stylize(with: designSystem.text.body)
+        publicTitle.numberOfLines = 0
+        publicTitle.lineBreakMode = .byWordWrapping
         publicCaption.stylize(with: designSystem.text.footnote)
 
         setupConstraints()
@@ -128,11 +133,11 @@ class DaysView: UIView {
         publicTitle.snp.makeConstraints { make in
             make.top.equalTo(numberPickerTableView.snp.bottom).offset(26)
             make.leading.equalToSuperview().offset(designSystem.spacing.xLargePositive)
+            make.trailing.lessThanOrEqualTo(publicSwitch.snp.leading).offset(designSystem.spacing.mediumNegative)
         }
         
         publicSwitch.snp.makeConstraints { make in
             make.centerY.equalTo(publicTitle.snp.centerY)
-//            make.leading.equalToSuperview().offset(designSystem.spacing.xLargeNegative)
             make.trailing.equalToSuperview().offset(designSystem.spacing.xLargeNegative)
         }
         

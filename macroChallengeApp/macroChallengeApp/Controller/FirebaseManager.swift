@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import FirebaseStorage
+@preconcurrency import FirebaseStorage
 import FirebaseAnalytics
 import UIKit
 
@@ -86,14 +86,12 @@ class FirebaseManager: @unchecked Sendable {
         let path = category == 0 ? "images/\(uuid)" : "profile/\(uuid)"
         let reference = Storage.storage().reference(withPath: path)
 
-        DispatchQueue.global(qos: .utility).async {
-            reference.getData(maxSize: 1 * 1024 * 1024) { [weak self] data, error in
-                guard let self else { return }
-                self.inProgressDownloads.remove(uuid)
-                if error == nil, let imageData = data, let image = UIImage(data: imageData) {
-                    self.imageCash.setObject(image, forKey: NSString(string: uuid))
-                    completion(image)
-                }
+        reference.getData(maxSize: 1 * 1024 * 1024) { [weak self] data, error in
+            guard let self else { return }
+            self.inProgressDownloads.remove(uuid)
+            if error == nil, let imageData = data, let image = UIImage(data: imageData) {
+                self.imageCash.setObject(image, forKey: NSString(string: uuid))
+                completion(image)
             }
         }
     }

@@ -99,18 +99,15 @@ class ReviewTravelViewController: UIViewController {
         return currencySymbol ?? "$"
     }
     @objc func editPhoto(_ sender: Any) {
-        let photos = PHPhotoLibrary.authorizationStatus()
+        let photos = PHPhotoLibrary.authorizationStatus(for: .readWrite)
             if photos == .notDetermined {
-                PHPhotoLibrary.requestAuthorization({status in
-                    if status != .denied {
-                        self.access = true
-
-                    } else {
-                        self.access = false
+                PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
+                    DispatchQueue.main.async {
+                        self?.access = status != .denied
                     }
-                })
+                }
             } else {
-            let authorization = PHPhotoLibrary.authorizationStatus()
+            let authorization = PHPhotoLibrary.authorizationStatus(for: .readWrite)
             if authorization != .denied {
                 self.imagePicker.present(from: self.reviewTravelView, title: "How about inserting a photo into your itinerary?".localized())
             } else {

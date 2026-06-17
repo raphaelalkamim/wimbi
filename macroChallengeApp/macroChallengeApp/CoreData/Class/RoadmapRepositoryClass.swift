@@ -70,10 +70,9 @@ public class RoadmapRepository: @unchecked Sendable {
             oldDays.sort { $0.id < $1.id }
             
             // adiciona os novos dias no roteiro
+            let startDate = AppDateFormat.backendDate(from: roadmap.dateInitial) ?? Date()
             for index in 0..<roadmap.dayCount {
-                let dateFormat = DateFormatter()
-                dateFormat.dateFormat = "dd/MM/yyyy"
-                _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: dateFormat.date(from: roadmap.dateInitial) ?? Date(), indexPath: Int(index), isSelected: false))
+                _ = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: startDate, indexPath: Int(index), isSelected: false))
             }
             
             var range = roadmap.dayCount
@@ -121,10 +120,9 @@ public class RoadmapRepository: @unchecked Sendable {
         oldDays.sort { $0.id < $1.id }
         
         // adiciona os novos dias no roteiro
+        let startDate = AppDateFormat.backendDate(from: roadmap.dateInitial) ?? Date()
         for index in 0..<roadmap.dayCount {
-            let dateFormat = DateFormatter()
-            dateFormat.dateFormat = "dd/MM/yyyy"
-            let day = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: dateFormat.date(from: roadmap.dateInitial) ?? Date(), indexPath: Int(index), isSelected: false))
+            let day = DayRepository.shared.createDay(roadmap: newRoadmap, day: setupDays(startDay: startDate, indexPath: Int(index), isSelected: false))
             day.id = Int32(oldDays[index].id)
         }
         
@@ -174,11 +172,6 @@ public class RoadmapRepository: @unchecked Sendable {
     }
     
     func setRoadmapData(fromRoadmap: Roadmaps, toRoadmap: RoadmapLocal) {
-        let dateFormat = DateFormatter()
-        dateFormat.dateStyle = .short
-        dateFormat.timeStyle = .none
-        dateFormat.dateFormat = "dd/MM/yyyy"
-        
         toRoadmap.name = fromRoadmap.name
         toRoadmap.location = fromRoadmap.location
         toRoadmap.budget = fromRoadmap.budget
@@ -194,14 +187,15 @@ public class RoadmapRepository: @unchecked Sendable {
         toRoadmap.isPublic = fromRoadmap.isPublic
         toRoadmap.shareKey = fromRoadmap.shareKey
         toRoadmap.currency = fromRoadmap.currency
-        toRoadmap.date = dateFormat.date(from: fromRoadmap.dateInitial)
-        toRoadmap.dateFinal = dateFormat.date(from: fromRoadmap.dateFinal)
+        toRoadmap.date = AppDateFormat.backendDate(from: fromRoadmap.dateInitial)
+        toRoadmap.dateFinal = AppDateFormat.backendDate(from: fromRoadmap.dateFinal)
         toRoadmap.createdAt = fromRoadmap.createdAt
         toRoadmap.likesCount = Int32(fromRoadmap.likesCount)
     }
     
     func createDaysInRoadmap(fromRoadmap: Roadmaps, toRoadmap: RoadmapLocal) {
         var isFirstDay = false
+        let startDate = AppDateFormat.backendDate(from: fromRoadmap.dateInitial) ?? Date()
         for index in 0..<fromRoadmap.dayCount {
             if index == 0 {
                 isFirstDay = true
@@ -209,18 +203,12 @@ public class RoadmapRepository: @unchecked Sendable {
                 isFirstDay = false
             }
             
-            let dateFormat = DateFormatter()
-            dateFormat.dateStyle = .short
-            dateFormat.timeStyle = .none
-            dateFormat.dateFormat = "dd/MM/yyyy"
-            
-            let date = dateFormat.date(from: fromRoadmap.dateInitial)
-            _ = DayRepository.shared.createDay(roadmap: toRoadmap, day: setupDays(startDay: date ?? Date(), indexPath: index, isSelected: isFirstDay))
+            _ = DayRepository.shared.createDay(roadmap: toRoadmap, day: setupDays(startDay: startDate, indexPath: index, isSelected: isFirstDay))
         }
     }
     
     func setupDays(startDay: Date, indexPath: Int, isSelected: Bool) -> Day {
-        let date = startDay.addingTimeInterval(Double(indexPath) * 24 * 3600)
+        let date = Calendar.current.date(byAdding: .day, value: indexPath, to: startDay) ?? startDay
         var day = Day(isSelected: isSelected, date: date)
         day.id = indexPath
         return day
