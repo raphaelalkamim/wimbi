@@ -14,7 +14,7 @@ struct CountdownWidgetView: View {
     
     var body: some View {
         ZStack {
-            Color(uiColor: UIColor(named: "backgroundWidget")!).edgesIgnoringSafeArea(.all)
+            Color(uiColor: UIColor(named: "backgroundWidget")!).ignoresSafeArea()
             HStack {
                 Spacer()
                 VStack {

@@ -13,9 +13,6 @@ import FirebaseAnalytics
 extension DataManager {
     // MARK: - POST
     func postRoadmap(roadmap: Roadmaps, roadmapCore: RoadmapLocal, daysCore: [DayLocal], selectedImage: UIImage? = nil) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let keyWords = ["trip", "viagem", "travel", "viaggiare"]
         let codeTrip = "\(Int.random(in: 0..<1_000_000))\(keyWords.randomElement() ?? "space")\(Int.random(in: 0..<1_000_000))"
         
@@ -32,7 +29,7 @@ extension DataManager {
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
             "shareKey": codeTrip,
-            "createdAt": dateFormatter.string(from: Date()),
+            "createdAt": AppDateFormat.compactBackendDateString(from: Date()),
             "currency": roadmap.currency,
             "likesCount": 0
         ]
@@ -86,8 +83,7 @@ extension DataManager {
         }
     }
     // MARK: - GET
-    func getPublicRoadmaps(_ completion: @escaping ((_ roadmaps: [RoadmapDTO]) -> Void)) {
-        var roadmaps: [RoadmapDTO] = []
+    func getPublicRoadmaps(_ completion: @escaping @MainActor (_ roadmaps: [RoadmapDTO]) -> Void) {
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "roadmaps")!
         
@@ -103,12 +99,12 @@ extension DataManager {
             }
             
             do {
-                roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
+                let roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
                 DispatchQueue.main.async {
                     completion(roadmaps)
                 }
             } catch {
-                print("DEU RUIM NO PARSE")
+                print("DEU RUIM NO PARSE - GET PUBLIC ROADMAPS")
                 DispatchQueue.main.async {
                     completion([])
                 }
@@ -117,8 +113,7 @@ extension DataManager {
         task.resume()
     }
     
-    func getRoadmapById(roadmapId: Int, _ completion: @escaping ((_ roadmap: Roadmaps?) -> Void)) {
-        var roadmap: Roadmaps?
+    func getRoadmapById(roadmapId: Int, _ completion: @escaping @MainActor (_ roadmap: Roadmaps?) -> Void) {
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "roadmaps/\(roadmapId)")!
         
@@ -133,11 +128,13 @@ extension DataManager {
                 print(String(describing: error?.localizedDescription))
             }
             
+            let roadmap: Roadmaps?
             do {
                 roadmap = try JSONDecoder().decode(Roadmaps.self, from: data)
             } catch {
                 print(error)
-                print("DEU RUIM NO PARSE")
+                print("DEU RUIM NO PARSE - GET ROADMAP BY ID \(roadmapId)")
+                roadmap = nil
             }
             
             DispatchQueue.main.async {
@@ -147,7 +144,7 @@ extension DataManager {
         task.resume()
         
     }
-    func getRoadmapUserImage(roadmapId: Int, _ completion: @escaping ((_ uuidUser: String, _ username: String) -> Void)) {
+    func getRoadmapUserImage(roadmapId: Int, _ completion: @escaping @MainActor (_ uuidUser: String, _ username: String) -> Void) {
         let session: URLSession = URLSession.shared
         let url: URL = URL(string: baseURL + "roadmaps/\(roadmapId)/userImage")!
         
@@ -156,7 +153,7 @@ extension DataManager {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        let task = session.dataTask(with: request) { data, response, error in
+        let task = session.dataTask(with: request) { data, _, error in
             guard let data = data else { return }
             if error != nil {
                 print(String(describing: error?.localizedDescription))
@@ -175,9 +172,6 @@ extension DataManager {
     }
     // MARK: - PUT
     func putRoadmap(roadmap: Roadmaps, roadmapId: Int, newDaysCore: [DayLocal], selectedImage: UIImage? = nil) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let roadmapJson: [String: Any] = [
             "name": roadmap.name,
             "location": roadmap.location,
@@ -191,7 +185,7 @@ extension DataManager {
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
             "shareKey": roadmap.shareKey,
-            "createdAt": dateFormatter.string(from: Date()),
+            "createdAt": AppDateFormat.compactBackendDateString(from: Date()),
             "currency": roadmap.currency,
             "likesCount": roadmap.likesCount
         ]
@@ -213,7 +207,7 @@ extension DataManager {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
-            let task = session.dataTask(with: request) { data, response, error in
+            let task = session.dataTask(with: request) { _, response, error in
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
                 }
@@ -255,7 +249,7 @@ extension DataManager {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
-            let task = session.dataTask(with: request) { data, response, error in
+            let task = session.dataTask(with: request) { _, response, error in
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
                 }
@@ -271,24 +265,21 @@ extension DataManager {
     
     // MARK: - PUT
     func putBudgetRoadmap(roadmap: RoadmapLocal, roadmapId: Int) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d/M/y"
-        
         let roadmapJson: [String: Any] = [
-            "name": roadmap.name,
-            "location": roadmap.location,
+            "name": roadmap.name ?? "",
+            "location": roadmap.location ?? "",
             "budget": roadmap.budget,
             "dayCount": roadmap.dayCount,
-            "dateInitial": dateFormatter.string(from: roadmap.date ?? Date()),
-            "dateFinal": dateFormatter.string(from: roadmap.dateFinal ?? Date()),
+            "dateInitial": AppDateFormat.compactBackendDateString(from: roadmap.date ?? Date()),
+            "dateFinal": AppDateFormat.compactBackendDateString(from: roadmap.dateFinal ?? Date()),
             "peopleCount": roadmap.peopleCount,
             "imageId": setupImage(category: roadmap.category ?? "defaultImage"),
-            "category": roadmap.category,
+            "category": roadmap.category ?? "",
             "isShared": roadmap.isShared,
             "isPublic": roadmap.isPublic,
             "shareKey": "ABC123",
-            "createdAt": dateFormatter.string(from: Date()),
-            "currency": roadmap.currency,
+            "createdAt": AppDateFormat.compactBackendDateString(from: Date()),
+            "currency": roadmap.currency ?? "",
             "likesCount": roadmap.likesCount
         ]
         
@@ -309,7 +300,7 @@ extension DataManager {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
-            let task = session.dataTask(with: request) { data, response, error in
+            let task = session.dataTask(with: request) { _, response, error in
                 if error != nil {
                     print(String(describing: error?.localizedDescription))
                 }

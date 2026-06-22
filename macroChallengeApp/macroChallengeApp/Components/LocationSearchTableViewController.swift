@@ -14,11 +14,6 @@ class LocationSearchTableViewController: UITableViewController {
     var handleMapSearchDelegate: HandleMapSearch?
     let designSystem = DefaultDesignSystem.shared
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matchingItems.count
@@ -32,13 +27,11 @@ class LocationSearchTableViewController: UITableViewController {
         let addressInformation: [String] = [selectedItem.thoroughfare ?? "", selectedItem.subThoroughfare ?? "", selectedItem.locality ?? "", selectedItem.subLocality ?? "", selectedItem.administrativeArea ?? "", selectedItem.country ?? ""]
         
         var address = ""
-        for index in 0..<addressInformation.count {
-            if !addressInformation[index].isEmpty {
-                if index == addressInformation.count - 1 {
-                    address += "\(addressInformation[index])"
-                } else {
-                    address += "\(addressInformation[index]), "
-                }
+        for index in 0..<addressInformation.count where !addressInformation[index].isEmpty {
+            if index == addressInformation.count - 1 {
+                address += "\(addressInformation[index])"
+            } else {
+                address += "\(addressInformation[index]), "
             }
         }
         cell.detailTextLabel?.text = address

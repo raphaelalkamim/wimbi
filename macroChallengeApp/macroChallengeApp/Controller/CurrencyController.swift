@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+@MainActor
 class CurrencyController {
     func getCurrencyFromAPI(userCurrency: String, outgoinCurrency: String) async -> Double {
         var total: Double = 0
@@ -292,6 +293,7 @@ class CurrencyController {
         }
         return budgetTotal
     }
+
     func updateRoadmapTotalBudget(userCurrency: String, budget: Double, outgoinCurrency: String) async -> Double {
         if userCurrency == outgoinCurrency {
             return budget

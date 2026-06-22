@@ -117,7 +117,7 @@ extension LocationNewActivityViewController: UISearchBarDelegate {
     }
 }
 
-extension LocationNewActivityViewController: CLLocationManagerDelegate {
+extension LocationNewActivityViewController: @preconcurrency CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         if manager.authorizationStatus == .authorizedWhenInUse || manager.authorizationStatus == .authorizedAlways {
             locationManager.requestLocation()
@@ -154,7 +154,7 @@ extension LocationNewActivityViewController: MKMapViewDelegate {
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         
         if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView!.canShowCallout = true
         } else {
             annotationView!.annotation = annotation
@@ -179,13 +179,11 @@ extension LocationNewActivityViewController: HandleMapSearch {
         
         let addressInformation: [String] = [placemark.thoroughfare ?? "", placemark.subThoroughfare ?? "", placemark.locality ?? "", placemark.subLocality ?? "", placemark.administrativeArea ?? "", placemark.country ?? ""]
         
-        for index in 0..<addressInformation.count {
-            if !addressInformation[index].isEmpty {
-                if index == addressInformation.count - 1 {
-                    address += "\(addressInformation[index])"
-                } else {
-                    address += "\(addressInformation[index]), "
-                }
+        for index in 0..<addressInformation.count where !addressInformation[index].isEmpty {
+            if index == addressInformation.count - 1 {
+                address += "\(addressInformation[index])"
+            } else {
+                address += "\(addressInformation[index]), "
             }
         }
         

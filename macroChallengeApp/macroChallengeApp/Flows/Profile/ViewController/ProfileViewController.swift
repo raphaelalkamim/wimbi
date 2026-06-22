@@ -8,11 +8,12 @@
 import UIKit
 import CoreData
 
+@MainActor
 protocol SignOutDelegate: AnyObject {
     func reloadScreenStatus()
 }
 
-class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class ProfileViewController: UIViewController, @preconcurrency NSFetchedResultsControllerDelegate {
     weak var coordinator: ProfileCoordinator?
     weak var exploreCoordinator: ExploreCoordinator?
     let designSystem: DesignSystem = DefaultDesignSystem.shared

@@ -21,12 +21,6 @@ class LabelTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    
-    
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundCell
         self.textLabel?.stylize(with: designSystem.text.body)

@@ -28,10 +28,6 @@ class DetailViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         delegate?.dismissBlur()
@@ -39,7 +35,6 @@ class DetailViewController: UIViewController {
     }
     
     @objc func openLink() {
-        let text = detailView.linkButton.titleLabel?.text
         if let text = detailView.linkButton.titleLabel?.text {
             if text.contains("https://") || text.contains("http://") {
                 UIApplication.shared.open(URL(string: text )! as URL)

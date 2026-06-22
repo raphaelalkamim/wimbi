@@ -21,7 +21,7 @@ class LikedRoadmapsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
  
-    lazy var likedRoadmapsCollectionView: UICollectionView = {
+    lazy var roadmapsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width - designSystem.spacing.xLargePositive, height: 292)
         layout.scrollDirection = .vertical
@@ -37,12 +37,12 @@ class LikedRoadmapsView: UIView {
     
     func setup() {
         self.backgroundColor = designSystem.palette.backgroundPrimary
-        self.addSubview(likedRoadmapsCollectionView)
+        self.addSubview(roadmapsCollectionView)
         setupConstraints()
     }
     
     func setupConstraints() {
-        likedRoadmapsCollectionView.snp.makeConstraints { make in
+        roadmapsCollectionView.snp.makeConstraints { make in
             make.topMargin.equalToSuperview()
             make.trailing.leading.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -52,8 +52,8 @@ class LikedRoadmapsView: UIView {
 }
 extension LikedRoadmapsView {
     func bindCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
-        likedRoadmapsCollectionView.delegate = delegate
-        likedRoadmapsCollectionView.dataSource = dataSource
+        roadmapsCollectionView.delegate = delegate
+        roadmapsCollectionView.dataSource = dataSource
     }
     
 }

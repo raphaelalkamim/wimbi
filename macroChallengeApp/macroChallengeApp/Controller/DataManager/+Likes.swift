@@ -12,7 +12,7 @@ import FirebaseAnalytics
 
 extension DataManager {
     // MARK: - POST
-    func postLike(roadmapId: Int, _ completion: @escaping ((_ response: Int) -> Void)) {
+    func postLike(roadmapId: Int, _ completion: @escaping @MainActor (_ response: Int) -> Void) {
         let session: URLSession = URLSession.shared
         
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
@@ -26,25 +26,19 @@ extension DataManager {
             
             if let token = UserDefaults.standard.string(forKey: "authorization") {
                 request.setValue(token, forHTTPHeaderField: "Authorization")
-                let task = session.dataTask(with: request) { data, response, error in
-                    print(response)
+                let task = session.dataTask(with: request) { data, _, error in
                     guard let data = data else { return }
                     if error != nil {
                         print(String(describing: error?.localizedDescription))
                     }
                     
-                    do {
-                        let stringInt = String(data: data, encoding: String.Encoding.utf8)
-                        var likeId: Int = 0
-                        if let likeIdConvert = Int(stringInt ?? "0") {
-                            likeId = likeIdConvert
-                        }
-                        DispatchQueue.main.async {
-                            completion(likeId)
-                        }
-                    } catch {
-                        print(error)
-                        print("DEU RUIM NO PARSE")
+                    let stringInt = String(data: data, encoding: String.Encoding.utf8)
+                    var likeId: Int = 0
+                    if let likeIdConvert = Int(stringInt ?? "0") {
+                        likeId = likeIdConvert
+                    }
+                    DispatchQueue.main.async {
+                        completion(likeId)
                     }
                 }
                 task.resume()
@@ -53,7 +47,7 @@ extension DataManager {
         }
     }
     // MARK: - GET
-    func getLike(roadmapId: Int, _ completion: @escaping ((_ response: Int) -> Void)) {
+    func getLike(roadmapId: Int, _ completion: @escaping @MainActor (_ response: Int) -> Void) {
         let session: URLSession = URLSession.shared
         
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
@@ -74,24 +68,18 @@ extension DataManager {
                         print(String(describing: error?.localizedDescription))
                     }
                     
-                    do {
-                        let stringInt = String(data: data, encoding: String.Encoding.utf8)
-                        var likeId: Int = 0
-                        if let likeIdConvert = Int(stringInt ?? "0") {
-                            likeId = likeIdConvert
-                        }
-                        DispatchQueue.main.async { completion(likeId) }
-                    } catch {
-                        print(error)
-                        print("DEU RUIM NO PARSE")
+                    let stringInt = String(data: data, encoding: String.Encoding.utf8)
+                    var likeId: Int = 0
+                    if let likeIdConvert = Int(stringInt ?? "0") {
+                        likeId = likeIdConvert
                     }
+                    DispatchQueue.main.async { completion(likeId) }
                 }
                 task.resume()
             }
         }
     }
-    func getLikedRoadmaps(_ completion: @escaping ((_ roadmaps: [RoadmapDTO]) -> Void)) {
-        var roadmaps: [RoadmapDTO] = []
+    func getLikedRoadmaps(_ completion: @escaping @MainActor (_ roadmaps: [RoadmapDTO]) -> Void) {
         let session: URLSession = URLSession.shared
         
         if let data = KeychainManager.shared.read(service: "username", account: "explorer") {
@@ -111,13 +99,13 @@ extension DataManager {
                     }
                     
                     do {
-                        roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
+                        let roadmaps = try JSONDecoder().decode([RoadmapDTO].self, from: data)
                         
                         DispatchQueue.main.async {
                             completion(roadmaps)
                         }
                     } catch {
-                        print("DEU RUIM NO PARSE")
+                        print("DEU RUIM NO PARSE - GET LIKED ROADMAPS")
                     }
                 }
                 task.resume()

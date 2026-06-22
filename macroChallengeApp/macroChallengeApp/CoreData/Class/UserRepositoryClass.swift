@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class UserRepository: NSManagedObject {
+class UserRepository: @unchecked Sendable {
     static let shared: UserRepository = UserRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {

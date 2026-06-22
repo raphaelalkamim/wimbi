@@ -29,7 +29,7 @@ class LikedRoadmapsViewController: UIViewController {
         DataManager.shared.getLikedRoadmaps { roadmaps in
             self.likedRoadmaps = roadmaps
             self.likedRoadmapsView.bindCollectionView(delegate: self, dataSource: self)
-            self.likedRoadmapsView.likedRoadmapsCollectionView.reloadData()
+            self.likedRoadmapsView.roadmapsCollectionView.reloadData()
 
         }
     }

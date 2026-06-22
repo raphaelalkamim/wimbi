@@ -6,14 +6,15 @@
 //
 
 import Foundation
-import FirebaseStorage
+@preconcurrency import FirebaseStorage
 import FirebaseAnalytics
 import UIKit
 
-class FirebaseManager {
-    public static var shared = FirebaseManager()
+class FirebaseManager: @unchecked Sendable {
+    public static let shared = FirebaseManager()
     public let imageCash = NSCache<NSString, UIImage>()
-    
+    private var inProgressDownloads = Set<String>()
+
     private init() {}
 
     func uploadImageRoadmap(image: UIImage, roadmapId: Int, roadmapCore: RoadmapLocal? = nil, uuid: String? = nil) {
@@ -72,30 +73,25 @@ class FirebaseManager {
     }
     
     func getImage(category: Int, uuid: String, _ completion: @escaping ((_ image: UIImage) -> Void)) {
-        var path = ""
-        
-        if category == 0 {
-            path = "images/\(uuid)"
-        } else {
-            path = "profile/\(uuid)"
-        }
-        
-        let reference = Storage.storage().reference(withPath: path)
-        if self.imageCash.object(forKey: NSString(string: uuid)) != nil || !uuid.contains("jpeg") {
+        guard uuid.contains("jpeg") else { return }
+
+        if let cached = imageCash.object(forKey: NSString(string: uuid)) {
+            completion(cached)
             return
         }
-        print(uuid, "arroz")
-        DispatchQueue.global(qos: .utility).async {
-            reference.getData(maxSize: (1 * 1024 * 1024)) { data, error in
-                if let err = error {
-                    print(err)
-                } else {
-                    if let image = data {
-                        let myImage: UIImage! = UIImage(data: image)
-                        completion(myImage)
-                        self.imageCash.setObject(myImage, forKey: NSString(string: uuid))
-                    }
-                }
+
+        if inProgressDownloads.contains(uuid) { return }
+        inProgressDownloads.insert(uuid)
+
+        let path = category == 0 ? "images/\(uuid)" : "profile/\(uuid)"
+        let reference = Storage.storage().reference(withPath: path)
+
+        reference.getData(maxSize: 1 * 1024 * 1024) { [weak self] data, error in
+            guard let self else { return }
+            self.inProgressDownloads.remove(uuid)
+            if error == nil, let imageData = data, let image = UIImage(data: imageData) {
+                self.imageCash.setObject(image, forKey: NSString(string: uuid))
+                completion(image)
             }
         }
     }

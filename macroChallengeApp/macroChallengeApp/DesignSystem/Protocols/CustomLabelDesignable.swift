@@ -8,5 +8,5 @@
 import UIKit
 
 protocol CustomLabelDesignable: TextStyle {
-    func custom(_ label: UILabel)
+    @MainActor func custom(_ label: UILabel)
 }

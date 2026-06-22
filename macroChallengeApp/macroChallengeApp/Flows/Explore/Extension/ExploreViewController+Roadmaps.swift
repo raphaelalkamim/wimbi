@@ -71,10 +71,15 @@ extension ExploreViewController: UICollectionViewDataSource {
             }
             
             cell.setupRoadmapBackEnd(roadmap: roadmap)
-            Task {
+            Task { [weak self] in
+                guard let self else { return }
                 var budgetTotal = 0.0
-                await budgetTotal = currencyController.updateRoadmapTotalBudget(userCurrency: self.userCurrency, budget: roadmap.budget, outgoinCurrency: roadmap.currency)
-                cell.setupBudget(budget: budgetTotal, currency: self.userCurrency, peopleCount: roadmap.peopleCount)
+                await budgetTotal = currencyController.updateRoadmapTotalBudget(
+                    userCurrency: self.userCurrency,
+                    budget: roadmap.budget,
+                    outgoinCurrency: roadmap.currency
+                )
+                cell.setupBudget(budget: budgetTotal, currency: userCurrency, peopleCount: roadmap.peopleCount)
             }
             
         } else if !roadmapsMock.isEmpty {

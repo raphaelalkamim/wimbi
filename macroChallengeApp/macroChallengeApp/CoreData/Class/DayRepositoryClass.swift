@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class DayRepository: NSManagedObject {
+class DayRepository: @unchecked Sendable {
     static let shared: DayRepository = DayRepository()
     
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -61,7 +61,7 @@ class DayRepository: NSManagedObject {
     
     func deleteDay(day: DayLocal) throws {
         context.delete(day)
-        try saveContext()
+        saveContext()
     }
     
 }

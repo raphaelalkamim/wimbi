@@ -183,6 +183,7 @@ extension RoadmapExploreCollectionViewCell {
         self.setupContent(imageId: roadmap.imageId, name: roadmap.name, peopleCount: roadmap.peopleCount, dayCount: roadmap.dayCount, budget: roadmap.budget, currency: roadmap.currency, category: roadmap.category, likesCount: roadmap.likesCount)
     }
     
+    // swiftlint:disable:next function_parameter_count
     func setupContent(imageId: String, name: String, peopleCount: Int, dayCount: Int, budget: Double, currency: String, category: String, likesCount: Int) {
         cover.image = UIImage(named: imageId)
         if let cachedImage = FirebaseManager.shared.imageCash.object(forKey: NSString(string: imageId)) {
@@ -217,7 +218,7 @@ extension RoadmapExploreCollectionViewCell {
     }
     func setupBudget(budget: Double, currency: String, peopleCount: Int) {
         var amount = "per person".localized()
-        if (Int(budget)/peopleCount) > 1000 {
+        if (Int(budget) / peopleCount) > 1000 {
             amount = "thousand per person".localized()
             costByPerson.text = "\(currency) \(String(format: "%.2f", budget / Double(peopleCount) / 1000)) \(amount)"
         } else {

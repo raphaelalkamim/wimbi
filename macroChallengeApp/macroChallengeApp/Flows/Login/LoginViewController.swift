@@ -57,6 +57,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
     }
 }
 
+@MainActor
 protocol UserLoggedInDelegate: AnyObject {
     func finishLogin()
 }

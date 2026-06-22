@@ -52,7 +52,7 @@ struct WimbWidgetEntryView: View {
     var body: some View {
         let countdown = entry.countdown
         let nextTrip = entry.nextTrip
-        if countdown == "" {
+        if countdown.isEmpty {
             EmptyWidgetView()
         } else {
             CountdownWidgetView(countdown: countdown,

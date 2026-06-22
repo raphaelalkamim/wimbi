@@ -8,10 +8,12 @@
 import Foundation
 import UIKit
 
+@MainActor
 public protocol ImagePickerDelegate: AnyObject {
     func didSelect(image: UIImage?)
 }
 
+@MainActor
 open class ImagePicker: NSObject {
     private let pickerController: UIImagePickerController
     private weak var presentationController: UIViewController?

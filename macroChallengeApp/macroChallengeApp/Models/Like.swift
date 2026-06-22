@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Like: Codable {
+struct Like: Codable, Sendable {
     var id: Int
     var roadmap: Roadmaps
     var user: User

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Network
 
-class NetworkMonitor {
+class NetworkMonitor: @unchecked Sendable {
     static let shared = NetworkMonitor()
 
     let monitor = NWPathMonitor()

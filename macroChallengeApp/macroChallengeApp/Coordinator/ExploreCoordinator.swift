@@ -130,6 +130,7 @@ extension ExploreCoordinator: PresentationCoordinatorDelegate {
     }
 }
 
+@MainActor
 protocol PresentationCoordinatorDelegate: AnyObject {
     func didFinishPresent(of coordinator: Coordinator, isNewRoadmap: Bool)
 }

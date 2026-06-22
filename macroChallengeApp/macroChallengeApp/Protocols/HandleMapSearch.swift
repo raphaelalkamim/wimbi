@@ -8,6 +8,7 @@
 import Foundation
 import MapKit
 
+@MainActor
 protocol HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark)
 }

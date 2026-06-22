@@ -7,6 +7,7 @@
 
 import func Foundation.NSLocalizedString
 
+// swiftlint:disable nslocalizedstring_key
 extension String {
     func localized() -> String {
         return NSLocalizedString(
@@ -17,3 +18,4 @@ extension String {
             comment: self)
     }
 }
+// swiftlint:enable nslocalizedstring_key

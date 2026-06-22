@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
  
+@MainActor
 protocol CurrencyTableViewCellDelegate: AnyObject {
     func didChangeFormatter(formatter: String)
 }
@@ -24,11 +25,6 @@ class CurrencyTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
     }
     
     lazy var label: UILabel = {

@@ -22,10 +22,6 @@ class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     lazy var title: UITextField = {
         let textField = UITextField()
         textField.textColor = designSystem.palette.textPrimary

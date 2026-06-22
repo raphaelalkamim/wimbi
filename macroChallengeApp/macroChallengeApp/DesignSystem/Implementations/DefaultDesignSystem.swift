@@ -7,8 +7,8 @@
 
 import UIKit
 
-struct DefaultDesignSystem: DesignSystem {
-    static var shared: DesignSystem = DefaultDesignSystem()
+struct DefaultDesignSystem: DesignSystem, @unchecked Sendable {
+    static let shared = Self()
     let text = DesignText()
     let palette: DesignPalette = DefaultDesignPalette()
     let spacing: DesignSpacing = DefaultDesignSpacing()
