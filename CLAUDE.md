@@ -12,8 +12,8 @@
 | Area | Choice |
 |---|---|
 | Language | Swift |
-| UI | UIKit — programmatic layout via SnapKit 5.6.0 |
-| Dependency manager | CocoaPods |
+| UI | UIKit — programmatic layout via SnapKit (SPM requirement: 5.6.0+, resolved: 5.7.1) |
+| Dependency manager | Swift Package Manager |
 | Backend | REST — `https://macroptrip-api.herokuapp.com/` |
 | Images / Analytics | Firebase Storage + Firebase Analytics |
 | Local persistence | Core Data (SQLite) |
